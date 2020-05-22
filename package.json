@@ -18,6 +18,7 @@
     "type": "git",
     "url": "https://github.com/HombachC/ioBroker.kostal_piko_ba"
   },
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "dependencies": {
     "@iobroker/adapter-core": "^2.3.1"
   },
