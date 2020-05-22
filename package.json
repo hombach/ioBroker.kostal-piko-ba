@@ -1,5 +1,5 @@
 {
-  "name": "iobroker.kostal_piko_ba",
+  "name": "iobroker.kostal-piko-ba",
   "version": "0.0.1",
   "description": "Adapter for reading Kostal Piko BA data",
   "author": {
