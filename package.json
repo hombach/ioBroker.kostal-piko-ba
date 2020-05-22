@@ -6,7 +6,7 @@
     "name": "HombachC",
     "email": "Christian@Homba.ch"
   },
-  "homepage": "https://github.com/HombachC/ioBroker.kostal_piko_ba",
+  "homepage": "https://github.com/HombachC/ioBroker.kostal-piko-ba",
   "license": "MIT",
   "keywords": [
     "ioBroker",
@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/HombachC/ioBroker.kostal_piko_ba"
+    "url": "https://github.com/HombachC/ioBroker.kostal-piko-ba"
   },
   "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "dependencies": {
@@ -52,7 +52,7 @@
     "lint": "eslint"
   },
   "bugs": {
-    "url": "https://github.com/HombachC/ioBroker.kostal_piko_ba/issues"
+    "url": "https://github.com/HombachC/ioBroker.kostal-piko-ba/issues"
   },
   "readmeFilename": "README.md"
 }
