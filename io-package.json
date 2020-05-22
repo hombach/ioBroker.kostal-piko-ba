@@ -1,6 +1,6 @@
 {
   "common": {
-    "name": "ioBroker.Kostal_PikoBA",
+    "name": "ioBroker.kostal_piko_ba",
     "version": "0.0.1",
     "news": {
       "0.0.1": {
@@ -55,8 +55,8 @@
     "main": "main.js",
     "icon": "template.png",
     "enabled": true,
-    "extIcon": "https://raw.githubusercontent.com/Author/ioBroker.template/master/admin/template.png",
-    "readme": "https://github.com/Author/ioBroker.template/blob/master/README.md",
+    "extIcon": "https://raw.githubusercontent.com/HombachC/ioBroker.kostal_piko_ba/master/admin/template.png",
+    "readme": "https://github.com/HombachC/ioBroker.kostal_piko_ba/blob/master/README.md",
     "loglevel": "info",
     "mode": "daemon",
     "type": "energy",

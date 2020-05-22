@@ -1,12 +1,12 @@
 {
-  "name": "iobroker.Kostal_PikoBA",
+  "name": "iobroker.kostal_piko_ba",
   "version": "0.0.1",
   "description": "Template for adapter development",
   "author": {
     "name": "HombachC",
     "email": "Christian@Homba.ch"
   },
-  "homepage": "https://github.com/HombachC/ioBroker.Kostal_PicoBA",
+  "homepage": "https://github.com/HombachC/ioBroker.kostal_piko_ba",
   "license": "MIT",
   "keywords": [
     "ioBroker",
@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/HombachC/ioBroker.Kostal_PicoBA"
+    "url": "https://github.com/HombachC/ioBroker.kostal_piko_ba"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^2.3.1"
@@ -51,7 +51,7 @@
     "lint": "eslint"
   },
   "bugs": {
-    "url": "https://github.com/HombachC/ioBroker.Kostal_PicoBA/issues"
+    "url": "https://github.com/HombachC/ioBroker.kostal_piko_ba/issues"
   },
   "readmeFilename": "README.md"
 }
