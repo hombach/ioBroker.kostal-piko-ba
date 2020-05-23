@@ -382,11 +382,11 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Power.SolarDC', { val: 10, ack: true });
                     //        setState('Kostal.Messwerte.Momentan.Leistung_DC', Math.round(result[0].value), true);
                     //        setState('Kostal.Messwerte.Momentan.Leistung_AC', Math.round(result[1].value), true);
-                    this.setStateAsync('Statistics_Daily.SelfConsumption', { val: (Math.round(result[2].value)), ack: true });
-                    this.log.debug('Daily Self Consumption: ' + result[2].value);
-                    this.log.debug(response.body);
                     //        setState('Kostal.Messwerte.Momentan.Eigenverbrauch', Math.round(result[2].value), true);
                     //        setState('Kostal.Messwerte.Tag.Eigenverbrauch', Math.round(result[3].value) / 1000 + ' kWh', true);
+                    this.setStateAsync('Statistics_Daily.SelfConsumption', { val: (Math.round(result[3].value)/1000), ack: true });
+                    this.log.debug('Daily Self Consumption: ' + result[3].value);
+                    this.log.debug(response.body);
                     //        setState('Kostal.Messwerte.Gesamt.Eigenverbrauch', Math.round(result[4].value) + ' kWh', true);
                     //        if (logging) log('Eigenverbrauch Gesamt: ' + Math.round(result[4].value) + ' kWh');
                     //        setState('Kostal.Messwerte.Tag.Eigenverbrauchsquote', Math.round(result[5].value), true);
