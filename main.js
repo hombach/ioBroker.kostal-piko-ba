@@ -295,8 +295,6 @@ class KostalPikoBA extends utils.Adapter {
         result = await this.checkGroupAsync('admin', 'admin');
         this.log.info('check group user admin group admin: ' + result);
         */
-        this.ReadPiko();
-        //schedule("*/10 * 0-23 * * *", ReadPiko);
     }
 
 
@@ -416,18 +414,27 @@ class KostalPikoBA extends utils.Adapter {
         })();
 
     } //END ReadPiko
-
+      
 }
 
 
+let adapter;
 // @ts-ignore parent is a valid property on module
 if (module.parent) {
     // Export the constructor in compact mode
     /**
      * @param {Partial<utils.AdapterOptions>} [options={}]
      */
-    module.exports = (options) => new KostalPikoBA(options);
+    module.exports = (options) => adapter = new KostalPikoBA(options);
 } else {
     // otherwise start the instance directly
-    new KostalPikoBA();
+    adapter = new KostalPikoBA();
+ 
 }
+adapter?.ReadPiko
+var schedule = require('node-schedule');
+schedule.scheduleJob('*/10 * * * * *', adapter?.ReadPiko);
+
+
+//let AutoRun = window.setInterval(adapter?.ReadPiko, 1000);
+//clearInterval(AutoRun);
