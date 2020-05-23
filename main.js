@@ -7,7 +7,68 @@ const utils = require('@iobroker/adapter-core');
 // Load your modules here, e.g.:
 // const fs = require("fs");
 
-class Template extends utils.Adapter {
+
+//Leistungswerte
+const ID_DCEingangGesamt = 33556736;  // in W  -  dcPowerPV
+const ID_Ausgangsleistung = 67109120;  // in W  -  GridOutputPower without battery charging
+//Status
+const ID_OperatingStatus = 16780032;  // 0:Off; 3:Einspeissen(MPP)
+//Statistik - Tag
+const ID_Ertrag_d = 251658754; // in Wh
+const ID_Hausverbrauch_d = 251659010; // in Wh
+const ID_Eigenverbrauch_d = 251659266; // in Wh
+const ID_Eigenverbrauchsquote_d = 251659278; // in %
+const ID_Autarkiegrad_d = 251659279; // in %
+//Statistik - Gesamt
+const ID_Betriebszeit = 251658496; // in h
+const ID_Ertrag_G = 251658753; // in kWh
+const ID_Hausverbrauch_G = 251659009; // in kWh
+const ID_Eigenverbrauch_G = 251659265; // in kWh
+const ID_Eigenverbrauchsquote_G = 251659280; // in %
+const ID_Autarkiegrad_G = 251659281; // in %
+//Momentanwerte - PV Generator
+const ID_DC1Strom = 33555201;  // in A   -   nicht interessant
+const ID_DC1Spannung = 33555202;  // in V   -   nicht interessant
+const ID_DC1Leistung = 33555203;  // in W   -   nicht interessant, da bei Single String identisch zu ID_DCEingangGesamt
+const ID_DC2Strom = 33555457;  // in A   -   String nicht belegt
+const ID_DC2Spannung = 33555458;  // in V   -   String nicht belegt
+const ID_DC2Leistung = 33555459;  // in W   -   String nicht belegt
+//Momentanwerte Haus
+const ID_HausverbrauchSolar = 83886336;  // in W   -   AktHomeConsumptionSolar
+const ID_HausverbrauchBatterie = 83886592;  // in W   -   AktHomeConsumptionBat
+const ID_HausverbrauchNetz = 83886848;  // in W   -   AktHomeConsumptionGrid
+const ID_HausverbrauchPhase1 = 83887106;  // in W   -   nicht interessant
+const ID_HausverbrauchPhase2 = 83887362;  // in W   -   nicht interessant
+const ID_HausverbrauchPhase3 = 83887618;  // in W   -   nicht interessant
+const ID_Hausverbrauch = 83887872;  // in W   -   AktHomeConsumption
+const ID_Eigenverbrauch = 83888128;  // in W   -   ownConsumption
+//Netz Netzparameter
+const ID_NetzAbregelung = 67110144;  // in %   -   GridLimitation
+const ID_NetzFrequenz = 67110400;  // in Hz  -   nicht interessant
+const ID_NetzCosPhi = 67110656;  //        -   nicht interessant
+//Netz Phase 1
+const ID_P1Strom = 67109377;  // in A   -   nicht interessant
+const ID_P1Spannung = 67109378;  // in V   -   nicht interessant
+const ID_P1Leistung = 67109379;  // in W   -   GridPowerL1
+//Netz Phase 2
+const ID_P2Strom = 67109633;  // in A   -   nicht interessant
+const ID_P2Spannung = 67109634;  // in V   -   nicht interessant
+const ID_P2Leistung = 67109635;  // in W   -   GridPowerL2
+//Netz Phase 3
+const ID_P3Strom = 67109889;  // in A   -   nicht interessant
+const ID_P3Spannung = 67109890;  // in V   -   nicht interessant
+const ID_P3Leistung = 67109891;  // in W   -   GridPowerL3
+//Batterie
+const ID_BatVoltage = 33556226;  // in V   -   nicht interessant
+const ID_BatTemperature = 33556227;  // in ?   -   nicht interessant
+const ID_BatChargeCycles = 33556228;  // in 1   -   nicht interessant
+const ID_BatStateOfCharge = 33556229;  // in %
+const ID_BatCurrentDir = 33556230;  // 1 = Entladen; 0 = Laden
+const ID_BatCurrent = 33556238;  // in A
+
+
+
+class KostalPikoBA extends utils.Adapter {
 
     /**
      * @param {Partial<utils.AdapterOptions>} [options={}]
@@ -15,7 +76,7 @@ class Template extends utils.Adapter {
     constructor(options) {
         super({
             ...options,
-            name: 'iobroker.kostal-piko-ba',
+            name: 'kostal-piko-ba',
         });
         this.on('ready', this.onReady.bind(this));
         this.on('objectChange', this.onObjectChange.bind(this));
@@ -29,6 +90,9 @@ class Template extends utils.Adapter {
      */
     async onReady() {
         // Initialize your adapter here
+        if (!this.config.ipaddress) {
+            this.log.warn('[START] IP address not set');
+        } 
 
         // The adapters config (in the instance object everything under the attribute "native") is accessible via
         // this.config:
@@ -77,7 +141,8 @@ class Template extends utils.Adapter {
         this.log.info('check group user admin group admin: ' + result);
     }
 
-    /**
+
+    /****************************************************************************************
      * Is called when adapter shuts down - callback has to be called under any circumstances!
      * @param {() => void} callback
      */
@@ -111,12 +176,14 @@ class Template extends utils.Adapter {
      * @param {ioBroker.State | null | undefined} state
      */
     onStateChange(id, state) {
-        if (state) {
-            // The state was changed
-            this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
-        } else {
-            // The state was deleted
-            this.log.info(`state ${id} deleted`);
+        try {
+            if (state) { // The state was changed
+                this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
+            } else { // The state was deleted
+                this.log.info(`state ${id} deleted`);
+            }
+        } catch (e) {
+            this.log.info("Unhandled exception processing stateChange: " + e);
         }
     }
 
@@ -145,8 +212,8 @@ if (module.parent) {
     /**
      * @param {Partial<utils.AdapterOptions>} [options={}]
      */
-    module.exports = (options) => new Template(options);
+    module.exports = (options) => new KostalPikoBA(options);
 } else {
     // otherwise start the instance directly
-    new Template();
+    new KostalPikoBA();
 }

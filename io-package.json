@@ -48,6 +48,7 @@
       "ioBroker",
       "Kostal",
       "Piko",
+      "inverter",
       "Smart Home",
       "home automation"
     ],
@@ -89,9 +90,105 @@
     ]
   },
     "native": {
-        "option1": true,
-        "option2": "42"
+        "ipaddress": "",
+        "option1": true
     },
     "objects": [],
-    "instanceObjects": []
+  "instanceObjects": [
+    {
+      "_id": "live",
+      "type": "channel",
+      "common": {
+        "name": "live data"
+      },
+      "native": {}
+    },
+    {
+      "_id": "live.powerAC", //Kostal.Messwerte.Momentan.Leistung_AC // in W  -  GridOutputPower without battery charging
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "GridOutputPower without battery charging",
+        "type": "number",
+        "unit": "%",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    },
+
+    //"createState('Kostal.Messwerte.Momentan.Leistung_DC'",
+    //"createState('Kostal.Messwerte.Momentan.Eigenverbrauch'",
+    //"createState('Kostal.Messwerte.Momentan.Hausverbrauch'",
+    //"createState('Kostal.Messwerte.Momentan.Status');",
+    //NOcreateState('Kostal.Messwerte.Momentan.Leistung_String1');
+    //NOcreateState('Kostal.Messwerte.Momentan.Leistung_String2');
+    //"createState('Kostal.Messwerte.Momentan.Ueberschuss');",
+    //"createState('Kostal.Messwerte.Momentan.Abregelung');",
+    //"createState('Kostal.Messwerte.Momentan.Batterie_SoC'",
+    //"createState('Kostal.Messwerte.Momentan.Batterie_Strom'",
+    //NOcreateState('Kostal.Messwerte.Momentan.Batterie_Richtung', 0);
+
+
+    {
+      "_id": "day",
+      "type": "channel",
+      "common": {
+        "name": "daily data"
+      },
+      "native": {}
+    },
+    {
+      "_id": "day.autarky", //Kostal.Messwerte.Gesamt.Autarkiegrad // in %  -  degree of autarky
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Degree of autarky per day",
+        "type": "number",
+        "unit": "%",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    },
+
+    //"createState('Kostal.Messwerte.Tag.Eigenverbrauch'",
+    //"createState('Kostal.Messwerte.Tag.Eigenverbrauchsquote'",
+    //"createState('Kostal.Messwerte.Tag.Ertrag'",
+    //"createState('Kostal.Messwerte.Tag.Hausverbrauch'",
+
+
+    {
+      "_id": "lifetime",
+      "type": "channel",
+      "common": {
+        "name": "lifetime data"
+      },
+      "native": {}
+    },
+    {
+      "_id": "lifetime.autarky", //Kostal.Messwerte.Gesamt.Autarkiegrad // in %  -  degree of autarky
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Degree of autarky per inverter lifetime",
+        "type": "number",
+        "unit": "%",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    }
+
+    //"createState('Kostal.Messwerte.Gesamt.Betriebszeit'",
+    //"createState('Kostal.Messwerte.Gesamt.Eigenverbrauch'",
+    //"createState('Kostal.Messwerte.Gesamt.Eigenverbrauchsquote'",
+    //"createState('Kostal.Messwerte.Gesamt.Ertrag'
+    //"createState('Kostal.Messwerte.Gesamt.Hausverbrauch'",
+
+
+  ]
 }
