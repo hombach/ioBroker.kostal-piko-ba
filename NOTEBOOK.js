@@ -88,6 +88,32 @@ createState('Kostal.Messwerte.Momentan.Batterie_SoC', 0);
 createState('Kostal.Messwerte.Momentan.Batterie_Strom', 0);
 //createState('Kostal.Messwerte.Momentan.Batterie_Richtung', 0);
 
+//___ >>> noch für io - package:
+
+ //"createState('Kostal.Messwerte.Momentan.Leistung_DC'
+ //"createState('Kostal.Messwerte.Momentan.Eigenverbrauch'
+ //"createState('Kostal.Messwerte.Momentan.Hausverbrauch'
+ //"createState('Kostal.Messwerte.Momentan.Status'
+ //NOcreateState('Kostal.Messwerte.Momentan.Leistung_String1'
+ //NOcreateState('Kostal.Messwerte.Momentan.Leistung_String2'
+ //"createState('Kostal.Messwerte.Momentan.Ueberschuss'
+ //"createState('Kostal.Messwerte.Momentan.Abregelung'
+ //"createState('Kostal.Messwerte.Momentan.Batterie_SoC'
+ //"createState('Kostal.Messwerte.Momentan.Batterie_Strom'
+ //NOcreateState('Kostal.Messwerte.Momentan.Batterie_Richtung'
+
+ //"createState('Kostal.Messwerte.Tag.Eigenverbrauch'
+ //"createState('Kostal.Messwerte.Tag.Eigenverbrauchsquote'
+ //"createState('Kostal.Messwerte.Tag.Ertrag'
+ //"createState('Kostal.Messwerte.Tag.Hausverbrauch'
+
+ //"createState('Kostal.Messwerte.Gesamt.Betriebszeit'
+ //"createState('Kostal.Messwerte.Gesamt.Eigenverbrauch'
+ //"createState('Kostal.Messwerte.Gesamt.Eigenverbrauchsquote'
+ //"createState('Kostal.Messwerte.Gesamt.Ertrag'
+ //"createState('Kostal.Messwerte.Gesamt.Hausverbrauch'
+
+
 var logging = false;
 var request = require('request');
 

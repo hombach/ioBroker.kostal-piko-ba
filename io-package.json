@@ -1,9 +1,8 @@
 {
+  "//HINTS": "https://github.com/ioBroker/ioBroker/wiki/Adapter-Development-Documentation#structure-of-io-packagejson",
+
+
   "common": {
-    // https://github.com/ioBroker/ioBroker/wiki/Adapter-Development-Documentation#structure-of-io-packagejson
-
-    // *** COMMON ***
-
     "name": "kostal-piko-ba",
     "version": "0.0.3",
     "title": "Kostal PikoBA",
@@ -22,19 +21,17 @@
     "mode": "daemon",
     "enabled": true,
     "license": "MIT",
-    "loglevel": "debug", // Can be "debug", "info", "warn" or "error"
-    "readme": "https://github.com/hombach/iobroker.kostal-piko-ba/blob/master/README.md", // link to readme page in internet. Used by admin adapter to show the link if "?" button clicked
-    "icon": "picoba.png", // icon name (not the path) of adapter icon. This icon must be in admin directory of adapter
-    "extIcon": "https://raw.githubusercontent.com/hombach/iobroker.kostal-piko-ba/admin/picoba.png", //icon path in internet to show the icon for adapter if the adapter is not yet installed.
+    "loglevel": "debug",
+    "readme": "https://github.com/hombach/iobroker.kostal-piko-ba/blob/master/README.md",
+    "icon": "picoba.png",
+    "extIcon": "https://raw.githubusercontent.com/hombach/iobroker.kostal-piko-ba/admin/picoba.png",
     "keywords": [ "Kostal", "Piko", "inverter" ],
-    // "localLink": link to adapter "www" files (or adapter server). "http://192.168.0.100"
-    "type": "energy", // type: following are possible: hardware, social, storage, visual, api, scripting, weather, other, connection
-    // "messagebox": true, // optional. Must be set to true if adapter should receive system messages.
-
-
-
-
+    "type": "energy",
     "news": {
+      "0.0.3": {
+        "en": "training",
+        "de": "Training"
+      },
       "0.0.1": {
         "en": "initial release",
         "de": "Erstveröffentlichung"
@@ -60,22 +57,19 @@
       }
     ]
   },
+  
 
-
-  // *** NATIVE ***
   "native": {
     "ipaddress": "",
     "option1": true
   },
 
 
-  // *** OBJECTS ***
   "objects": [],
 
 
-  // *** INSTANCEOBJECTS ***
   "instanceObjects": [
-    /*  {
+    {
       "_id": "live",
       "type": "channel",
       "common": {
@@ -84,7 +78,7 @@
       "native": {}
     },
     {
-      "_id": "live.powerAC", //Kostal.Messwerte.Momentan.Leistung_AC // in W  -  GridOutputPower without battery charging
+      "_id": "live.powerAC",
       "type": "state",
       "common": {
         "role": "value",
@@ -98,18 +92,6 @@
       "native": {}
     },
 
-    //"createState('Kostal.Messwerte.Momentan.Leistung_DC'
-    //"createState('Kostal.Messwerte.Momentan.Eigenverbrauch'
-    //"createState('Kostal.Messwerte.Momentan.Hausverbrauch'
-    //"createState('Kostal.Messwerte.Momentan.Status'
-    //NOcreateState('Kostal.Messwerte.Momentan.Leistung_String1'
-    //NOcreateState('Kostal.Messwerte.Momentan.Leistung_String2'
-    //"createState('Kostal.Messwerte.Momentan.Ueberschuss'
-    //"createState('Kostal.Messwerte.Momentan.Abregelung'
-    //"createState('Kostal.Messwerte.Momentan.Batterie_SoC'
-    //"createState('Kostal.Messwerte.Momentan.Batterie_Strom'
-    //NOcreateState('Kostal.Messwerte.Momentan.Batterie_Richtung'
-
     {
       "_id": "day",
       "type": "channel",
@@ -119,7 +101,7 @@
       "native": {}
     },
     {
-      "_id": "day.autarky", //Kostal.Messwerte.Gesamt.Autarkiegrad // in %  -  degree of autarky
+      "_id": "day.autarky",
       "type": "state",
       "common": {
         "role": "value",
@@ -133,11 +115,6 @@
       "native": {}
     },
 
-    //"createState('Kostal.Messwerte.Tag.Eigenverbrauch'
-    //"createState('Kostal.Messwerte.Tag.Eigenverbrauchsquote'
-    //"createState('Kostal.Messwerte.Tag.Ertrag'
-    //"createState('Kostal.Messwerte.Tag.Hausverbrauch'
-
     {
       "_id": "lifetime",
       "type": "channel",
@@ -147,7 +124,7 @@
       "native": {}
     },
     {
-      "_id": "lifetime.autarky", //Kostal.Messwerte.Gesamt.Autarkiegrad // in %  -  degree of autarky
+      "_id": "lifetime.autarky",
       "type": "state",
       "common": {
         "role": "value",
@@ -160,12 +137,5 @@
       },
       "native": {}
     }
-
-    //"createState('Kostal.Messwerte.Gesamt.Betriebszeit'
-    //"createState('Kostal.Messwerte.Gesamt.Eigenverbrauch'
-    //"createState('Kostal.Messwerte.Gesamt.Eigenverbrauchsquote'
-    //"createState('Kostal.Messwerte.Gesamt.Ertrag'
-    //"createState('Kostal.Messwerte.Gesamt.Hausverbrauch'
-*/
   ]
 }
