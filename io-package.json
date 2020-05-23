@@ -1,7 +1,9 @@
-{ // https://github.com/ioBroker/ioBroker/wiki/Adapter-Development-Documentation#structure-of-io-packagejson
-
-  // *** COMMON ***
+{
   "common": {
+    // https://github.com/ioBroker/ioBroker/wiki/Adapter-Development-Documentation#structure-of-io-packagejson
+
+    // *** COMMON ***
+
     "name": "kostal-piko-ba",
     "version": "0.0.3",
     "title": "Kostal PikoBA",
@@ -73,7 +75,7 @@
 
   // *** INSTANCEOBJECTS ***
   "instanceObjects": [
-  /*  {
+    /*  {
       "_id": "live",
       "type": "channel",
       "common": {
