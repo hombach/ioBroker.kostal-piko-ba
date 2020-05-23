@@ -354,11 +354,9 @@ class KostalPikoBA extends utils.Adapter {
 
     /****************************************************************************************
     */
-
-
     ReadPiko() {
         this.log.debug('Piko 6.0 BA auslesen');
-
+        
         const PICOIP = IPAnlage + '?dxsEntries=' + ID_DCEingangGesamt +
             '&dxsEntries=' + ID_Ausgangsleistung + '&dxsEntries=' + ID_Eigenverbrauch +
             '&dxsEntries=' + ID_Eigenverbrauch_d + '&dxsEntries=' + ID_Eigenverbrauch_G +
@@ -383,6 +381,7 @@ class KostalPikoBA extends utils.Adapter {
                     //        setState('Kostal.Messwerte.Momentan.Leistung_DC', Math.round(result[0].value), true);
                     //        setState('Kostal.Messwerte.Momentan.Leistung_AC', Math.round(result[1].value), true);
                     this.setStateAsync('Statistics_Daily.SelfConsumption', { val: Math.round(result[2].value) });
+                    this.log.debug(response.body);
                     //        setState('Kostal.Messwerte.Momentan.Eigenverbrauch', Math.round(result[2].value), true);
                     //        setState('Kostal.Messwerte.Tag.Eigenverbrauch', Math.round(result[3].value) / 1000 + ' kWh', true);
                     //        setState('Kostal.Messwerte.Gesamt.Eigenverbrauch', Math.round(result[4].value) + ' kWh', true);
