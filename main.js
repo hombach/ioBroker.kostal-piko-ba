@@ -288,11 +288,13 @@ class KostalPikoBA extends utils.Adapter {
         */
 
         // examples for the checkPassword/checkGroup functions
+        /*
         let result = await this.checkPasswordAsync('admin', 'iobroker');
         this.log.info('check user admin pw iobroker: ' + result);
 
         result = await this.checkGroupAsync('admin', 'admin');
         this.log.info('check group user admin group admin: ' + result);
+        */
         this.ReadPiko();
     }
 
@@ -369,18 +371,18 @@ class KostalPikoBA extends utils.Adapter {
             '&dxsEntries=' + ID_BatCurrent + '&dxsEntries=' + ID_BatCurrentDir +
             '&dxsEntries=' + ID_NetzAbregelung;
 
-        const got = require('got');
+        var got = require('got');
 
         (async () => {
             try {
-                const response = await got(PICOIP);
+                var response = await got(PICOIP);
                 if (!response.error && response.statusCode == 200) {
                     //        if (logging) log(body);
                     var result = await JSON.parse(response.body).dxsEntries;
-                    this.setStateAsync('Power.SolarDC', { val: 10 });
+                    this.setStateAsync('Power.SolarDC', { val: 10, ack: true });
                     //        setState('Kostal.Messwerte.Momentan.Leistung_DC', Math.round(result[0].value), true);
                     //        setState('Kostal.Messwerte.Momentan.Leistung_AC', Math.round(result[1].value), true);
-                    this.setStateAsync('Statistics_Daily.SelfConsumption', { val: Math.round(result[2].value) });
+                    this.setStateAsync('Statistics_Daily.SelfConsumption', { val: (Math.round(result[2].value)), ack: true });
                     this.log.debug('Daily Self Consumption: ' + result[2].value);
                     this.log.debug(response.body);
                     //        setState('Kostal.Messwerte.Momentan.Eigenverbrauch', Math.round(result[2].value), true);
