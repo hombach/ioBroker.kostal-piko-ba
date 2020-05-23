@@ -431,8 +431,9 @@ if (module.parent) {
     adapter = new KostalPikoBA();
  
 }
-adapter?.ReadPiko
+
 try {
+    adapter?.ReadPiko
     var schedule = require('node-schedule');
     var sched10 = schedule('*/10 * * * * *', adapter?.ReadPiko);
 } catch (e) {
