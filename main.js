@@ -90,7 +90,7 @@ class KostalPikoBA extends utils.Adapter {
     */
     async onReady() {
         // Initialize your adapter here
-        if (!this.config.ipaddress) this.log.error('[START] IP address not set'); 
+        if (!this.config.ipaddress) this.log.error('[START] IP address not set');
 
         // The adapters config (in the instance object everything under the attribute "native") is accessible via
         // this.config:
@@ -102,7 +102,12 @@ class KostalPikoBA extends utils.Adapter {
         Here a simple template for a boolean variable named "testVariable"
         Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
         */
-        await this.setObjectAsync('state', { val: 10 } )
+        try {
+            await this.setObjectAsync('state', { val: 10 })
+        } catch (e) { 
+        this.log.info("Unhandled exception processing setObject: " + e);
+        }
+
         await this.setObjectAsync('testVariableHOM', {
             type: 'state',
             common: {
@@ -198,6 +203,65 @@ class KostalPikoBA extends utils.Adapter {
     // }
 
 }
+
+
+/****************************************************************************************
+function Piko() {
+    if (logging) log("Piko 6.0 BA auslesen");
+    request(IPAnlage + '?dxsEntries=' + ID_DCEingangGesamt +
+        '&dxsEntries=' + ID_Ausgangsleistung + '&dxsEntries=' + ID_Eigenverbrauch +
+        '&dxsEntries=' + ID_Eigenverbrauch_d + '&dxsEntries=' + ID_Eigenverbrauch_G +
+        '&dxsEntries=' + ID_Eigenverbrauchsquote_d + '&dxsEntries=' + ID_Eigenverbrauchsquote_G +
+        '&dxsEntries=' + ID_Ertrag_d + '&dxsEntries=' + ID_Ertrag_G +
+        '&dxsEntries=' + ID_Hausverbrauch_d + '&dxsEntries=' + ID_Hausverbrauch_G +
+        '&dxsEntries=' + ID_Hausverbrauch + '&dxsEntries=' + ID_Autarkiegrad_G +
+        '&dxsEntries=' + ID_Autarkiegrad_d + '&dxsEntries=' + ID_Betriebszeit +
+        '&dxsEntries=' + ID_OperatingStatus + '&dxsEntries=' + ID_BatStateOfCharge +
+        '&dxsEntries=' + ID_BatCurrent + '&dxsEntries=' + ID_BatCurrentDir +
+        '&dxsEntries=' + ID_NetzAbregelung,
+
+        function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                if (logging) log(body);
+                var result = JSON.parse(body).dxsEntries;
+                setState('Kostal.Messwerte.Momentan.Leistung_DC', Math.round(result[0].value), true);
+                setState('Kostal.Messwerte.Momentan.Leistung_AC', Math.round(result[1].value), true);
+                setState('Kostal.Messwerte.Momentan.Eigenverbrauch', Math.round(result[2].value), true);
+                setState('Kostal.Messwerte.Tag.Eigenverbrauch', Math.round(result[3].value) / 1000 + ' kWh', true);
+                setState('Kostal.Messwerte.Gesamt.Eigenverbrauch', Math.round(result[4].value) + ' kWh', true);
+                if (logging) log('Eigenverbrauch Gesamt: ' + Math.round(result[4].value) + ' kWh');
+                setState('Kostal.Messwerte.Tag.Eigenverbrauchsquote', Math.round(result[5].value), true);
+                setState('Kostal.Messwerte.Gesamt.Eigenverbrauchsquote', Math.round(result[6].value) + ' %', true);
+                setState('Kostal.Messwerte.Tag.Ertrag', Math.round(result[7].value), true);
+                setState('Kostal.Messwerte.Gesamt.Ertrag', Math.round(result[8].value) + ' kWh', true);
+                setState('Kostal.Messwerte.Tag.Hausverbrauch', Math.round(result[9].value), true);
+                setState('Kostal.Messwerte.Gesamt.Hausverbrauch', Math.round(result[10].value) + ' kWh', true);
+                setState('Kostal.Messwerte.Momentan.Hausverbrauch', Math.floor(result[11].value), true);
+                setState('Kostal.Messwerte.Gesamt.Autarkiegrad', Math.round(result[12].value), true);
+                setState('Kostal.Messwerte.Tag.Autarkiegrad', Math.round(result[13].value), true);
+                setState('Kostal.Messwerte.Gesamt.Betriebszeit', result[14].value + ' h', true);
+                setState('Kostal.Messwerte.Momentan.Status', result[15].value, true);
+                setState('Kostal.Messwerte.Momentan.Batterie_SoC', result[16].value, true);
+                if (result[18].value) {
+                    setState('Kostal.Messwerte.Momentan.Batterie_Strom', result[17].value, true);
+                }     // result[18] = 'Kostal.Messwerte.Momentan.Batterie_Richtung'
+                else {
+                    setState('Kostal.Messwerte.Momentan.Batterie_Strom', -1 * result[17].value, true);
+                }
+                // setState('Kostal.Messwerte.Momentan.Ueberschuss',
+                //    getState('Kostal.Messwerte.Momentan.Leistung_AC') - getState('Kostal.Messwerte.Gesamt.Eigenverbrauch'), true);
+                setState('Kostal.Messwerte.Momentan.Ueberschuss', Math.round(result[1].value - result[2].value), true);
+                setState('Kostal.Messwerte.Momentan.Abregelung', result[19].value, true);
+            }
+            else {
+                log('Fehler: ' + error + ' bei Abfrage von Pico-BA: ' + IPAnlage, "warn");
+            }
+        });
+}
+*/
+
+
+
 
 // @ts-ignore parent is a valid property on module
 if (module.parent) {
