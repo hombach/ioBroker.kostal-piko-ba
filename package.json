@@ -1,6 +1,6 @@
 {
   "name": "iobroker.kostal-piko-ba",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Adapter for reading Kostal Piko BA data",
   "author": {
     "name": "hombach",

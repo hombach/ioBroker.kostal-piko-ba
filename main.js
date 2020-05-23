@@ -70,9 +70,9 @@ const ID_BatCurrent = 33556238;  // in A
 
 class KostalPikoBA extends utils.Adapter {
 
-    /**
-     * @param {Partial<utils.AdapterOptions>} [options={}]
-     */
+    /****************************************************************************************
+    * @param {Partial<utils.AdapterOptions>} [options={}]
+    */
     constructor(options) {
         super({
             ...options,
@@ -85,14 +85,12 @@ class KostalPikoBA extends utils.Adapter {
         this.on('unload', this.onUnload.bind(this));
     }
 
-    /**
-     * Is called when databases are connected and adapter received configuration.
-     */
+    /****************************************************************************************
+    * Is called when databases are connected and adapter received configuration.
+    */
     async onReady() {
         // Initialize your adapter here
-        if (!this.config.ipaddress) {
-            this.log.warn('[START] IP address not set');
-        } 
+        if (!this.config.ipaddress) this.log.error('[START] IP address not set'); 
 
         // The adapters config (in the instance object everything under the attribute "native") is accessible via
         // this.config:
@@ -104,10 +102,11 @@ class KostalPikoBA extends utils.Adapter {
         Here a simple template for a boolean variable named "testVariable"
         Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
         */
-        await this.setObjectAsync('testVariable', {
+        await this.setObjectAsync('state', { val: 10 } )
+        await this.setObjectAsync('testVariableHOM', {
             type: 'state',
             common: {
-                name: 'testVariable',
+                name: 'testVariableHOMname',
                 type: 'boolean',
                 role: 'indicator',
                 read: true,
@@ -143,43 +142,38 @@ class KostalPikoBA extends utils.Adapter {
 
 
     /****************************************************************************************
-     * Is called when adapter shuts down - callback has to be called under any circumstances!
-     * @param {() => void} callback
-     */
+    * Is called when adapter shuts down - callback has to be called under any circumstances!
+    * @param {() => void} callback */
     onUnload(callback) {
         try {
-            this.log.info('cleaned everything up...');
+            this.log.info('Adaptor Kostal-Piko-BA cleaned everything up...');
             callback();
         } catch (e) {
             callback();
         }
     }
 
-    /**
-     * Is called if a subscribed object changes
-     * @param {string} id
-     * @param {ioBroker.Object | null | undefined} obj
-     */
+    /****************************************************************************************
+    * Is called if a subscribed object changes
+    * @param {string} id
+    * @param {ioBroker.Object | null | undefined} obj */
     onObjectChange(id, obj) {
-        if (obj) {
-            // The object was changed
+        if (obj) { // The object was changed
             this.log.info(`object ${id} changed: ${JSON.stringify(obj)}`);
-        } else {
-            // The object was deleted
+        } else {   // The object was deleted
             this.log.info(`object ${id} deleted`);
         }
     }
 
-    /**
-     * Is called if a subscribed state changes
-     * @param {string} id
-     * @param {ioBroker.State | null | undefined} state
-     */
+    /****************************************************************************************
+    * Is called if a subscribed state changes
+    * @param {string} id
+    * @param {ioBroker.State | null | undefined} state */
     onStateChange(id, state) {
         try {
             if (state) { // The state was changed
                 this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
-            } else { // The state was deleted
+            } else {     // The state was deleted
                 this.log.info(`state ${id} deleted`);
             }
         } catch (e) {
@@ -187,11 +181,10 @@ class KostalPikoBA extends utils.Adapter {
         }
     }
 
-    // /**
-    //  * Some message was sent to this instance over message box. Used by email, pushover, text2speech, ...
-    //  * Using this method requires "common.message" property to be set to true in io-package.json
-    //  * @param {ioBroker.Message} obj
-    //  */
+    /****************************************************************************************
+    * Some message was sent to this instance over message box. Used by email, pushover, text2speech, ...
+    * Using this method requires "common.message" property to be set to true in io-package.json
+    * @param {ioBroker.Message} obj */
     // onMessage(obj) {
     // 	if (typeof obj === 'object' && obj.message) {
     // 		if (obj.command === 'send') {

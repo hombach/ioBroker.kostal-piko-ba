@@ -4,7 +4,7 @@
 
   "common": {
     "name": "kostal-piko-ba",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -28,6 +28,10 @@
     "keywords": [ "Kostal", "Piko", "inverter" ],
     "type": "energy",
     "news": {
+      "0.0.4": {
+        "en": "states working",
+        "de": "Objektstatus funktionieren"
+      },
       "0.0.3": {
         "en": "training",
         "de": "Training"
@@ -70,19 +74,25 @@
 
   "instanceObjects": [
     {
-      "_id": "live",
-      "type": "channel",
+      "_id": "state",
+      "type": "state",
       "common": {
-        "name": "live data"
+        "role": "value",
+        "name": "Inverter state; 0:off; 3:feed grid(MPP)",
+        "type": "number",
+        "unit": "",
+        "read": true,
+        "write": false,
+        "def": 0
       },
       "native": {}
     },
     {
-      "_id": "live.powerAC",
+      "_id": "gridlimitation",
       "type": "state",
       "common": {
         "role": "value",
-        "name": "GridOutputPower without battery charging",
+        "name": "Power limit of inverter by grid parameters",
         "type": "number",
         "unit": "%",
         "read": true,
@@ -92,27 +102,97 @@
       "native": {}
     },
 
+
     {
-      "_id": "day", "type": "channel",
-      "common": { "name": "daily data" },
+      "_id": "power",
+      "type": "channel",
+      "common": { "name": "current inverter power data" },
       "native": {}
     },
     {
-      "_id": "day.autarky", "type": "state",
+      "_id": "power.GridAC",
+      "type": "state",
       "common": {
-        "role": "value", "name": "Degree of autarky per day",
-        "type": "number", "unit": "%",
-        "read": true, "write": false,
+        "role": "value",
+        "name": "Grid output power without battery charging",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
         "def": 0
       },
       "native": {}
     },
     {
-      "_id": "day.selfconsumption",
+      "_id": "power.SolarDC",
       "type": "state",
       "common": {
         "role": "value",
-        "name": "Selfconsumption today",
+        "name": "Total solar input power",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": { "referece": 33556736 }
+    },
+    {
+      "_id": "power.selfconsumption",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Selfconsumption Power",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "power.houseconsumption",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Powerconsumption of house",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "power.surplus",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Power surplus of system",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+
+
+    {
+      "_id": "statistics_daily",
+      "type": "channel",
+      "common": { "name": "statistical data daily" },
+      "native": {}
+    },
+    {
+      "_id": "statistics_daily.yield",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Total yield today",
         "type": "number",
         "unit": "kWh",
         "read": true,
@@ -122,11 +202,39 @@
       "native": {}
     },
     {
-      "_id": "day.selfconsumptionquote",
+      "_id": "statistics_daily.houseconsumption",
       "type": "state",
       "common": {
         "role": "value",
-        "name": "Quote of selfconsumption today",
+        "name": "Total consumption house today",
+        "type": "number",
+        "unit": "kWh",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "statistics_daily.selfconsumption",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Total selfconsumption today",
+        "type": "number",
+        "unit": "kWh",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "statistics_daily.selfconsumptionrate",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Rate of selfconsumption today",
         "type": "number",
         "unit": "%",
         "read": true,
@@ -136,25 +244,11 @@
       "native": {}
     },
     {
-      "_id": "day.yield",
+      "_id": "statistics_daily.autarky",
       "type": "state",
       "common": {
         "role": "value",
-        "name": "Yield today",
-        "type": "number",
-        "unit": "%",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "day.powerselfconsumption",
-      "type": "state",
-      "common": {
-        "role": "value",
-        "name": "Yield today",
+        "name": "Degree of autarky today",
         "type": "number",
         "unit": "%",
         "read": true,
@@ -164,20 +258,33 @@
       "native": {}
     },
 
+
     {
-      "_id": "lifetime",
+      "_id": "statistics_total",
       "type": "channel",
+      "common": { "name": "statistical data total lifetime" },
+      "native": {}
+    },
+    {
+      "_id": "statistics_total.operatingtime",
+      "type": "state",
       "common": {
-        "name": "lifetime data"
+        "role": "value",
+        "name": "Total time of inverter operation",
+        "type": "number",
+        "unit": "h",
+        "read": true,
+        "write": false,
+        "def": 0
       },
       "native": {}
     },
     {
-      "_id": "lifetime.autarky",
+      "_id": "statistics_total.yield",
       "type": "state",
       "common": {
         "role": "value",
-        "name": "Degree of autarky per inverter lifetime",
+        "name": "Total yield of inverter lifetime",
         "type": "number",
         "unit": "%",
         "read": true,
@@ -185,6 +292,84 @@
         "def": 0
       },
       "native": {}
+    },
+    {
+      "_id": "statistics_total.houseconsumption",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Total consumption of house in inverter lifetime",
+        "type": "number",
+        "unit": "kWh",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "statistics_total.selfconsumption",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Total selfconsumption in inverter lifetime",
+        "type": "number",
+        "unit": "kWh",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "statistics_total.selfconsumptionrate",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Rate of selfconsumption in inverter lifetime",
+        "type": "number",
+        "unit": "%",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "statistics_total.autarky",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Degree of autarky in inverter lifetime",
+        "type": "number",
+        "unit": "%",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+
+
+
+
+
+
+
+    {
+      "_id": "battery",
+      "type": "channel",
+      "common": { "name": "battery data" },
+      "native": {}
     }
+
+
+    //"createState('Kostal.Messwerte.Momentan.Batterie_SoC'
+    //"createState('Kostal.Messwerte.Momentan.Batterie_Strom'
+    //"createState('Kostal.Messwerte.Momentan.Batterie_Richtung'
+
+
+
+
   ]
 }
