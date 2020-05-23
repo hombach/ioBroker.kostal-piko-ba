@@ -3,7 +3,7 @@
 
   "common": {
     "name": "kostal-piko-ba",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -27,6 +27,10 @@
     "keywords": [ "Kostal", "Piko", "inverter" ],
     "type": "energy",
     "news": {
+      "0.0.6": {
+        "en": "data load working",
+        "de": "Daten auslesen funktionsfähig"
+      },
       "0.0.5": {
         "en": "first data load",
         "de": "erste Daten ausgelesen"
