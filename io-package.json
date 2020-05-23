@@ -351,25 +351,55 @@
     },
 
 
-
-
-
-
-
     {
       "_id": "battery",
       "type": "channel",
       "common": { "name": "battery data" },
       "native": {}
+    },
+    {
+      "_id": "battery.stateofcharge",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Battery State of Charge",
+        "type": "number",
+        "unit": "%",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "battery.current",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Battery current unsigned",
+        "type": "number",
+        "unit": "A",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "battery.currentdir",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Battery currentdirection",
+        "type": "number",
+        "unit": "",
+        "//unit":  "1=Load - 0=Unload",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
     }
-
-
-    //"createState('Kostal.Messwerte.Momentan.Batterie_SoC'
-    //"createState('Kostal.Messwerte.Momentan.Batterie_Strom'
-    //"createState('Kostal.Messwerte.Momentan.Batterie_Richtung'
-
-
-
 
   ]
 }
