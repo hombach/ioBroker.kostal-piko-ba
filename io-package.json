@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "news": {
       "0.0.1": {
         "en": "initial release",
@@ -55,7 +55,7 @@
     "license": "MIT",
     "platform": "Javascript/Node.js",
     "main": "main.js",
-    "icon": "template.png",
+    "icon": "picoba.png",
     "enabled": true,
     "extIcon": "https://raw.githubusercontent.com/hombach/iobroker.kostal-piko-ba/master/admin/template.png",
     "readme": "https://github.com/hombach/iobroker.kostal-piko-ba/blob/master/README.md",
@@ -89,11 +89,11 @@
       }
     ]
   },
-    "native": {
-        "ipaddress": "",
-        "option1": true
-    },
-    "objects": [],
+  "native": {
+    "ipaddress": "",
+    "option1": true
+  },
+  "objects": [],
   "instanceObjects": [
     {
       "_id": "live",
@@ -130,7 +130,6 @@
     //"createState('Kostal.Messwerte.Momentan.Batterie_Strom'",
     //NOcreateState('Kostal.Messwerte.Momentan.Batterie_Richtung', 0);
 
-
     {
       "_id": "day",
       "type": "channel",
@@ -158,7 +157,6 @@
     //"createState('Kostal.Messwerte.Tag.Eigenverbrauchsquote'",
     //"createState('Kostal.Messwerte.Tag.Ertrag'",
     //"createState('Kostal.Messwerte.Tag.Hausverbrauch'",
-
 
     {
       "_id": "lifetime",
@@ -188,7 +186,6 @@
     //"createState('Kostal.Messwerte.Gesamt.Eigenverbrauchsquote'",
     //"createState('Kostal.Messwerte.Gesamt.Ertrag'
     //"createState('Kostal.Messwerte.Gesamt.Hausverbrauch'",
-
 
   ]
 }
