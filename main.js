@@ -376,11 +376,12 @@ class KostalPikoBA extends utils.Adapter {
                 const response = await got(PICOIP);
                 if (!response.error && response.statusCode == 200) {
                     //        if (logging) log(body);
-                    var result = JSON.parse(response.body).dxsEntries;
+                    var result = await JSON.parse(response.body).dxsEntries;
                     this.setStateAsync('Power.SolarDC', { val: 10 });
                     //        setState('Kostal.Messwerte.Momentan.Leistung_DC', Math.round(result[0].value), true);
                     //        setState('Kostal.Messwerte.Momentan.Leistung_AC', Math.round(result[1].value), true);
                     this.setStateAsync('Statistics_Daily.SelfConsumption', { val: Math.round(result[2].value) });
+                    this.log.debug('Daily Self Consumption: ' + result[2].value);
                     this.log.debug(response.body);
                     //        setState('Kostal.Messwerte.Momentan.Eigenverbrauch', Math.round(result[2].value), true);
                     //        setState('Kostal.Messwerte.Tag.Eigenverbrauch', Math.round(result[3].value) / 1000 + ' kWh', true);
