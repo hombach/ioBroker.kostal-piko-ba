@@ -1,67 +1,44 @@
-{
+{ // https://github.com/ioBroker/ioBroker/wiki/Adapter-Development-Documentation#structure-of-io-packagejson
+
+  // *** COMMON ***
   "common": {
     "name": "kostal-piko-ba",
     "version": "0.0.3",
-    "news": {
-      "0.0.1": {
-        "en": "initial release",
-        "de": "Erstveröffentlichung",
-        "ru": "Начальная версия",
-        "pt": "lançamento inicial",
-        "nl": "Eerste uitgave",
-        "fr": "Première version",
-        "it": "Versione iniziale",
-        "es": "Versión inicial",
-        "pl": "Pierwsze wydanie",
-        "zh-cn": "首次出版"
-      }
-    },
-    "title": "Kostal_PikoBA",
+    "title": "Kostal PikoBA",
     "titleLang": {
-      "en": "Kostal_PikoBA",
-      "de": "Kostal_PikoBA",
-      "ru": "Шаблон (JavaScript)",
-      "pt": "Modelo (JavaScript)",
-      "nl": "Sjabloon (JavaScript)",
-      "fr": "Modèle (JavaScript)",
-      "it": "Modello (JavaScript)",
-      "es": "Plantilla (JavaScript)",
-      "pl": "Szablon (JavaScript)",
-      "zh-cn": "范本（JavaScript）"
+      "en": "Kostal PikoBA",
+      "de": "Kostal PikoBA"
     },
     "desc": {
       "en": "Adapter for reading Kostal Piko BA data",
-      "de": "Adapter zum lesen von Kostal Piko BA Daten",
-      "ru": "Шаблон для разработки адаптера",
-      "pt": "Modelo para desenvolvimento de adaptadores",
-      "nl": "Sjabloon voor adapterontwikkeling",
-      "fr": "Modèle de développement d'adaptateur",
-      "it": "Modello per lo sviluppo dell'adattatore",
-      "es": "Plantilla para desarrollo de adaptadores",
-      "pl": "Szablon do opracowania adaptera",
-      "zh-cn": "适配器开发的模板"
+      "de": "Adapter zum lesen von Kostal Piko BA Daten"
     },
     "authors": [
-      "Author <Hombach>"
+      "Christian Hombach"
     ],
-    "keywords": [
-      "ioBroker",
-      "Kostal",
-      "Piko",
-      "inverter",
-      "Smart Home",
-      "home automation"
-    ],
-    "license": "MIT",
     "platform": "Javascript/Node.js",
-    "main": "main.js",
-    "icon": "picoba.png",
-    "enabled": true,
-    "extIcon": "https://raw.githubusercontent.com/hombach/iobroker.kostal-piko-ba/master/admin/template.png",
-    "readme": "https://github.com/hombach/iobroker.kostal-piko-ba/blob/master/README.md",
-    "loglevel": "info",
     "mode": "daemon",
-    "type": "energy",
+    "enabled": true,
+    "license": "MIT",
+    "loglevel": "debug", // Can be "debug", "info", "warn" or "error"
+    "readme": "https://github.com/hombach/iobroker.kostal-piko-ba/blob/master/README.md", // link to readme page in internet. Used by admin adapter to show the link if "?" button clicked
+    "icon": "picoba.png", // icon name (not the path) of adapter icon. This icon must be in admin directory of adapter
+    "extIcon": "https://raw.githubusercontent.com/hombach/iobroker.kostal-piko-ba/admin/picoba.png", //icon path in internet to show the icon for adapter if the adapter is not yet installed.
+    "keywords": [ "Kostal", "Piko", "inverter" ],
+    // "localLink": link to adapter "www" files (or adapter server). "http://192.168.0.100"
+    "type": "energy", // type: following are possible: hardware, social, storage, visual, api, scripting, weather, other, connection
+    // "messagebox": true, // optional. Must be set to true if adapter should receive system messages.
+
+
+
+
+    "news": {
+      "0.0.1": {
+        "en": "initial release",
+        "de": "Erstveröffentlichung"
+      }
+    },
+    "main": "main.js",
     "compact": true,
     "materialize": true,
     "materializeTab": true,
@@ -69,15 +46,7 @@
       "singleton": true,
       "name": {
         "en": "Kostal-PikoBA",
-        "de": "Kostal-PikoBA",
-        "ru": "Шаблон (JavaScript)",
-        "pt": "Modelo (JavaScript)",
-        "nl": "Sjabloon (JavaScript)",
-        "fr": "Modèle (JavaScript)",
-        "it": "Modello (JavaScript)",
-        "es": "Plantilla (JavaScript)",
-        "pl": "Szablon (JavaScript)",
-        "zh-cn": "范本（JavaScript）"
+        "de": "Kostal-PikoBA"
       },
       "link": "",
       "fa-icon": "info"
@@ -89,13 +58,22 @@
       }
     ]
   },
+
+
+  // *** NATIVE ***
   "native": {
     "ipaddress": "",
     "option1": true
   },
+
+
+  // *** OBJECTS ***
   "objects": [],
+
+
+  // *** INSTANCEOBJECTS ***
   "instanceObjects": [
-    {
+  /*  {
       "_id": "live",
       "type": "channel",
       "common": {
@@ -118,17 +96,17 @@
       "native": {}
     },
 
-    //"createState('Kostal.Messwerte.Momentan.Leistung_DC'",
-    //"createState('Kostal.Messwerte.Momentan.Eigenverbrauch'",
-    //"createState('Kostal.Messwerte.Momentan.Hausverbrauch'",
-    //"createState('Kostal.Messwerte.Momentan.Status');",
-    //NOcreateState('Kostal.Messwerte.Momentan.Leistung_String1');
-    //NOcreateState('Kostal.Messwerte.Momentan.Leistung_String2');
-    //"createState('Kostal.Messwerte.Momentan.Ueberschuss');",
-    //"createState('Kostal.Messwerte.Momentan.Abregelung');",
-    //"createState('Kostal.Messwerte.Momentan.Batterie_SoC'",
-    //"createState('Kostal.Messwerte.Momentan.Batterie_Strom'",
-    //NOcreateState('Kostal.Messwerte.Momentan.Batterie_Richtung', 0);
+    //"createState('Kostal.Messwerte.Momentan.Leistung_DC'
+    //"createState('Kostal.Messwerte.Momentan.Eigenverbrauch'
+    //"createState('Kostal.Messwerte.Momentan.Hausverbrauch'
+    //"createState('Kostal.Messwerte.Momentan.Status'
+    //NOcreateState('Kostal.Messwerte.Momentan.Leistung_String1'
+    //NOcreateState('Kostal.Messwerte.Momentan.Leistung_String2'
+    //"createState('Kostal.Messwerte.Momentan.Ueberschuss'
+    //"createState('Kostal.Messwerte.Momentan.Abregelung'
+    //"createState('Kostal.Messwerte.Momentan.Batterie_SoC'
+    //"createState('Kostal.Messwerte.Momentan.Batterie_Strom'
+    //NOcreateState('Kostal.Messwerte.Momentan.Batterie_Richtung'
 
     {
       "_id": "day",
@@ -153,10 +131,10 @@
       "native": {}
     },
 
-    //"createState('Kostal.Messwerte.Tag.Eigenverbrauch'",
-    //"createState('Kostal.Messwerte.Tag.Eigenverbrauchsquote'",
-    //"createState('Kostal.Messwerte.Tag.Ertrag'",
-    //"createState('Kostal.Messwerte.Tag.Hausverbrauch'",
+    //"createState('Kostal.Messwerte.Tag.Eigenverbrauch'
+    //"createState('Kostal.Messwerte.Tag.Eigenverbrauchsquote'
+    //"createState('Kostal.Messwerte.Tag.Ertrag'
+    //"createState('Kostal.Messwerte.Tag.Hausverbrauch'
 
     {
       "_id": "lifetime",
@@ -181,11 +159,11 @@
       "native": {}
     }
 
-    //"createState('Kostal.Messwerte.Gesamt.Betriebszeit'",
-    //"createState('Kostal.Messwerte.Gesamt.Eigenverbrauch'",
-    //"createState('Kostal.Messwerte.Gesamt.Eigenverbrauchsquote'",
+    //"createState('Kostal.Messwerte.Gesamt.Betriebszeit'
+    //"createState('Kostal.Messwerte.Gesamt.Eigenverbrauch'
+    //"createState('Kostal.Messwerte.Gesamt.Eigenverbrauchsquote'
     //"createState('Kostal.Messwerte.Gesamt.Ertrag'
-    //"createState('Kostal.Messwerte.Gesamt.Hausverbrauch'",
-
+    //"createState('Kostal.Messwerte.Gesamt.Hausverbrauch'
+*/
   ]
 }
