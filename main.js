@@ -98,20 +98,11 @@ class KostalPikoBA extends utils.Adapter {
         this.log.info('config option2: ' + this.config.option2);
 
         /*
-        For every state in the system there has to be also an object of type state
-        Here a simple template for a boolean variable named "testVariable"
-        Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
-        */
-        try {
-            await this.setObjectAsync('state', { val: 10 })
-        } catch (e) { 
-        this.log.info("Unhandled exception processing setObject: " + e);
-        }
-
+        For every state in the system there has to be also an object of type state. Here a simple template for a boolean variable
         await this.setObjectAsync('testVariableHOM', {
             type: 'state',
             common: {
-                name: 'testVariableHOMname',
+                name: 'testVariableHOM',
                 type: 'boolean',
                 role: 'indicator',
                 read: true,
@@ -119,6 +110,18 @@ class KostalPikoBA extends utils.Adapter {
             },
             native: {},
         });
+        */
+
+        await this.setObjectAsync('state', { type: 'state',
+            common: {
+                role: 'value', name: 'Inverter state; 0:off; 3:feed grid(MPP)',
+                type: 'number', unit: '',
+                read: true, write: false,
+                def: 0
+            },
+            native: {},
+        });
+
 
         // in this template all states changes inside the adapters namespace are subscribed
         this.subscribeStates('*');
@@ -126,16 +129,15 @@ class KostalPikoBA extends utils.Adapter {
         /*
         setState examples
         you will notice that each setState will cause the stateChange event to fire (because of above subscribeStates cmd)
+        try {
+            await this.setStateAsync('state', { val: 10 })
+            await this.setStateAsync('testVariableHOM', true); // the variable testVariableHOM is set to true as command (ack=false)
+            await this.setStateAsync('testVariableHOM', { val: true, ack: true }); // ack should be always set to true if the value is received from or acknowledged from the target system
+            await this.setStateAsync('testVariableHOM', { val: true, ack: true, expire: 30 }); // same thing, but the state is deleted after 30s (getState will return null afterwards)
+        } catch (e) {
+            this.log.error("Unhandled exception processing setStateAsync: " + e);
+        }
         */
-        // the variable testVariable is set to true as command (ack=false)
-        await this.setStateAsync('testVariable', true);
-
-        // same thing, but the value is flagged "ack"
-        // ack should be always set to true if the value is received from or acknowledged from the target system
-        await this.setStateAsync('testVariable', { val: true, ack: true });
-
-        // same thing, but the state is deleted after 30s (getState will return null afterwards)
-        await this.setStateAsync('testVariable', { val: true, ack: true, expire: 30 });
 
         // examples for the checkPassword/checkGroup functions
         let result = await this.checkPasswordAsync('admin', 'iobroker');
