@@ -1,10 +1,9 @@
 {
   "//HINTS": "https://github.com/ioBroker/ioBroker/wiki/Adapter-Development-Documentation#structure-of-io-packagejson",
 
-
   "common": {
     "name": "kostal-piko-ba",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -28,6 +27,10 @@
     "keywords": [ "Kostal", "Piko", "inverter" ],
     "type": "energy",
     "news": {
+      "0.0.5": {
+        "en": "first data load",
+        "de": "erste Daten ausgelesen"
+      },
       "0.0.4": {
         "en": "states working",
         "de": "Objektstatus funktionieren"
@@ -61,13 +64,11 @@
       }
     ]
   },
-  
 
   "native": {
     "ipaddress": "",
     "option1": true
   },
-
 
   "objects": [],
 

@@ -89,7 +89,7 @@ class KostalPikoBA extends utils.Adapter {
     */
     async onReady() {
         // Initialize your adapter here
-        if (!this.config.ipaddress) this.log.error('[START] IP address not set');
+        if (!this.config.ipaddress) this.log.error('Kostal Piko IP address not set');
 
         // The adapters config (in the instance object everything under the attribute "native") is accessible via
         // this.config:
@@ -293,6 +293,7 @@ class KostalPikoBA extends utils.Adapter {
 
         result = await this.checkGroupAsync('admin', 'admin');
         this.log.info('check group user admin group admin: ' + result);
+        this.ReadPiko();
     }
 
 
