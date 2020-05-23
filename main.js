@@ -7,7 +7,6 @@ const utils = require('@iobroker/adapter-core');
 // Load your modules here, e.g.:
 // const fs = require("fs");
 
-
 //Leistungswerte
 const ID_DCEingangGesamt = 33556736;  // in W  -  dcPowerPV
 const ID_Ausgangsleistung = 67109120;  // in W  -  GridOutputPower without battery charging
@@ -66,7 +65,7 @@ const ID_BatStateOfCharge = 33556229;  // in %
 const ID_BatCurrentDir = 33556230;  // 1 = Entladen; 0 = Laden
 const ID_BatCurrent = 33556238;  // in A
 
-
+const IPAnlage = 'http://192.168.100.121/api/dxs.json'; // IP der Photovoltaik-Anlage
 
 class KostalPikoBA extends utils.Adapter {
 
@@ -97,33 +96,182 @@ class KostalPikoBA extends utils.Adapter {
         this.log.info('config option1: ' + this.config.option1);
         this.log.info('config option2: ' + this.config.option2);
 
-        /*
-        For every state in the system there has to be also an object of type state. Here a simple template for a boolean variable
-        await this.setObjectAsync('testVariableHOM', {
+        //For every state in the system there has to be also an object of type state. Here a simple template for a boolean variable
+        // General state-objects
+        await this.setObjectAsync('State', {
             type: 'state',
             common: {
-                name: 'testVariableHOM',
-                type: 'boolean',
-                role: 'indicator',
-                read: true,
-                write: true,
-            },
-            native: {},
-        });
-        */
-
-        await this.setObjectAsync('state', { type: 'state',
-            common: {
                 role: 'value', name: 'Inverter state; 0:off; 3:feed grid(MPP)',
-                type: 'number', unit: '',
-                read: true, write: false,
-                def: 0
+                type: 'number', unit: '', read: true, write: false, def: 0 },
+            native: {},
+        });
+        await this.setObjectAsync('GridLimitation', { type: 'state',
+            common: {
+                role: 'value', name: 'Power limit of inverter by grid parameters',
+                type: 'number', unit: '%', read: true, write: false, def: 0
+            },
+            native: {},
+        });
+
+        // Power state-objects
+        await this.setObjectAsync('Power', { type: 'channel',
+            common: { name: 'current inverter power data' },
+            native: {},
+        });
+        await this.setObjectAsync('Power.GridAC', { type: 'state',
+            common: {
+                role: 'value', name: 'Grid output power without battery chargin',
+                type: 'number', unit: 'W', read: true, write: false, def: 0
+            },
+            native: {},
+        });
+        await this.setObjectAsync('Power.SolarDC', { type: 'state',
+            common: {
+                role: 'value', name: 'Total solar input power',
+                type: 'number', unit: 'W', read: true, write: false, def: 0
+            },
+            native: {},
+        });
+        await this.setObjectAsync('Power.SelfConsumption', { type: 'state',
+            common: {
+                role: 'value', name: 'Selfconsumption Power',
+                type: 'number', unit: 'W', read: true, write: false, def: 0
+            },
+            native: {},
+        });
+        await this.setObjectAsync('Power.HouseConsumption', { type: 'state',
+            common: {
+                role: 'value', name: 'Powerconsumption of house',
+                type: 'number', unit: 'W', read: true, write: false, def: 0
+            },
+            native: {},
+        });
+        await this.setObjectAsync('Power.Surplus', { type: 'state',
+            common: {
+                role: 'value', name: 'Power surplus of system',
+                type: 'number', unit: 'W', read: true, write: false, def: 0
+            },
+            native: {},
+        });
+
+        // Daily statistics state-objects
+        await this.setObjectAsync('Statistics_Daily', { type: 'channel',
+            common: { name: 'statistical data daily' },
+            native: {},
+        });
+        await this.setObjectAsync('Statistics_Daily.Yield', { type: 'state',
+            common: {
+                role: 'value', name: 'Total yield today',
+                type: 'number', unit: 'kWh', read: true, write: false, def: 0
+            },
+            native: {},
+        });
+        await this.setObjectAsync('Statistics_Daily.HouseConsumption', { type: 'state',
+            common: {
+                role: 'value', name: 'Total consumption house today',
+                type: 'number', unit: 'kWh', read: true, write: false, def: 0
+            },
+            native: {},
+        });
+        await this.setObjectAsync('Statistics_Daily.SelfConsumption', { type: 'state',
+            common: {
+                role: 'value', name: 'Total selfconsumption today',
+                type: 'number', unit: 'kWh', read: true, write: false, def: 0
+            },
+            native: {},
+        });
+        await this.setObjectAsync('Statistics_Daily.SelfConsumptionRate', { type: 'state',
+            common: {
+                role: 'value', name: 'Rate of selfconsumption today',
+                type: 'number', unit: '%', read: true, write: false, def: 0
+            },
+            native: {},
+        });
+        await this.setObjectAsync('Statistics_Daily.Autarky', { type: 'state',
+            common: {
+                role: 'value', name: 'Degree of autarky today',
+                type: 'number', unit: '%', read: true, write: false, def: 0
+            },
+            native: {},
+        });
+
+        // Total statistics state-objects
+        await this.setObjectAsync('Statistics_Total', { type: 'channel',
+            common: { name: 'statistical data total lifetime' },
+            native: {},
+        });
+        await this.setObjectAsync('Statistics_Total.OperatingTime', { type: 'state',
+            common: {
+                role: 'value', name: 'Total time of inverter operation',
+                type: 'number', unit: 'h', read: true, write: false, def: 0
+            },
+            native: {},
+        });
+        await this.setObjectAsync('Statistics_Total.Yield', { type: 'state',
+            common: {
+                role: 'value', name: 'Total yield of inverter lifetime',
+                type: 'number', unit: 'kWh', read: true, write: false, def: 0
+            },
+            native: {},
+        });
+        await this.setObjectAsync('Statistics_Total.HouseConsumption', { type: 'state',
+            common: {
+                role: 'value', name: 'Total consumption of house in inverter lifetime',
+                type: 'number', unit: 'kWh', read: true, write: false, def: 0
+            },
+            native: {},
+        });
+        await this.setObjectAsync('Statistics_Total.SelfConsumption', { type: 'state',
+            common: {
+                role: 'value', name: 'Total selfconsumption in inverter lifetime',
+                type: 'number', unit: 'kWh', read: true, write: false, def: 0
+            },
+            native: {},
+        });
+        await this.setObjectAsync('Statistics_Total.SelfConsumptionRate', { type: 'state',
+            common: {
+                role: 'value', name: 'Rate of selfconsumption in inverter lifetime',
+                type: 'number', unit: 'kWh', read: true, write: false, def: 0
+            },
+            native: {},
+        });
+        await this.setObjectAsync('Statistics_Total.Autarky', { type: 'state',
+            common: {
+                role: 'value', name: 'Degree of autarky in inverter lifetime',
+                type: 'number', unit: '%', read: true, write: false, def: 0
+            },
+            native: {},
+        });
+
+        // Battery data state-objects
+        await this.setObjectAsync('Battery', { type: 'channel',
+            common: { name: 'Battery data' },
+            native: {},
+        });
+        await this.setObjectAsync('Battery.SoC', { type: 'state',
+            common: {
+                role: 'value', name: 'Battery State of Charge',
+                type: 'number', unit: '%', read: true, write: false, def: 0
+            },
+            native: {},
+        });
+        await this.setObjectAsync('Battery.Current', { type: 'state',
+            common: {
+                role: 'value', name: 'Battery current unsigned',
+                type: 'number', unit: 'A', read: true, write: false, def: 0
+            },
+            native: {},
+        });
+        await this.setObjectAsync('Battery.CurrentDir', { type: 'state',
+            common: {
+                role: 'indicator', name: 'Battery currentdirection; 1=Load; 0=Unload',
+                type: 'boolean', unit: '', read: true, write: false, def: false
             },
             native: {},
         });
 
 
-        // in this template all states changes inside the adapters namespace are subscribed
+        // all states changes inside the adapters namespace are subscribed
         this.subscribeStates('*');
 
         /*
@@ -184,7 +332,7 @@ class KostalPikoBA extends utils.Adapter {
                 this.log.info(`state ${id} deleted`);
             }
         } catch (e) {
-            this.log.info("Unhandled exception processing stateChange: " + e);
+            this.log.error("Unhandled exception processing stateChange: " + e);
         }
     }
 
@@ -194,8 +342,7 @@ class KostalPikoBA extends utils.Adapter {
     * @param {ioBroker.Message} obj */
     // onMessage(obj) {
     // 	if (typeof obj === 'object' && obj.message) {
-    // 		if (obj.command === 'send') {
-    // 			// e.g. send email or pushover or whatever
+    // 		if (obj.command === 'send') { // e.g. send email or pushover or whatever
     // 			this.log.info('send command');
 
     // 			// Send response in callback if required
@@ -204,11 +351,140 @@ class KostalPikoBA extends utils.Adapter {
     // 	}
     // }
 
+    /****************************************************************************************
+    */
+
+
+    ReadPiko() {
+        this.log.debug('Piko 6.0 BA auslesen');
+
+        const PICOIP = IPAnlage + '?dxsEntries=' + ID_DCEingangGesamt +
+            '&dxsEntries=' + ID_Ausgangsleistung + '&dxsEntries=' + ID_Eigenverbrauch +
+            '&dxsEntries=' + ID_Eigenverbrauch_d + '&dxsEntries=' + ID_Eigenverbrauch_G +
+            '&dxsEntries=' + ID_Eigenverbrauchsquote_d + '&dxsEntries=' + ID_Eigenverbrauchsquote_G +
+            '&dxsEntries=' + ID_Ertrag_d + '&dxsEntries=' + ID_Ertrag_G +
+            '&dxsEntries=' + ID_Hausverbrauch_d + '&dxsEntries=' + ID_Hausverbrauch_G +
+            '&dxsEntries=' + ID_Hausverbrauch + '&dxsEntries=' + ID_Autarkiegrad_G +
+            '&dxsEntries=' + ID_Autarkiegrad_d + '&dxsEntries=' + ID_Betriebszeit +
+            '&dxsEntries=' + ID_OperatingStatus + '&dxsEntries=' + ID_BatStateOfCharge +
+            '&dxsEntries=' + ID_BatCurrent + '&dxsEntries=' + ID_BatCurrentDir +
+            '&dxsEntries=' + ID_NetzAbregelung;
+
+        const got = require('got');
+
+        (async () => {
+            try {
+                const response = await got(PICOIP);
+                if (!response.error && response.statusCode == 200) {
+                    //        if (logging) log(body);
+                    var result = JSON.parse(response.body).dxsEntries;
+                    this.setStateAsync('Power.SolarDC', { val: 10 });
+                    //        setState('Kostal.Messwerte.Momentan.Leistung_DC', Math.round(result[0].value), true);
+                    //        setState('Kostal.Messwerte.Momentan.Leistung_AC', Math.round(result[1].value), true);
+                    this.setStateAsync('Statistics_Daily.SelfConsumption', { val: Math.round(result[2].value) });
+                    //        setState('Kostal.Messwerte.Momentan.Eigenverbrauch', Math.round(result[2].value), true);
+                    //        setState('Kostal.Messwerte.Tag.Eigenverbrauch', Math.round(result[3].value) / 1000 + ' kWh', true);
+                    //        setState('Kostal.Messwerte.Gesamt.Eigenverbrauch', Math.round(result[4].value) + ' kWh', true);
+                    //        if (logging) log('Eigenverbrauch Gesamt: ' + Math.round(result[4].value) + ' kWh');
+                    //        setState('Kostal.Messwerte.Tag.Eigenverbrauchsquote', Math.round(result[5].value), true);
+                    //        setState('Kostal.Messwerte.Gesamt.Eigenverbrauchsquote', Math.round(result[6].value) + ' %', true);
+                    //        setState('Kostal.Messwerte.Tag.Ertrag', Math.round(result[7].value), true);
+                    //        setState('Kostal.Messwerte.Gesamt.Ertrag', Math.round(result[8].value) + ' kWh', true);
+                    //        setState('Kostal.Messwerte.Tag.Hausverbrauch', Math.round(result[9].value), true);
+                    //        setState('Kostal.Messwerte.Gesamt.Hausverbrauch', Math.round(result[10].value) + ' kWh', true);
+                    //        setState('Kostal.Messwerte.Momentan.Hausverbrauch', Math.floor(result[11].value), true);
+                    //        setState('Kostal.Messwerte.Gesamt.Autarkiegrad', Math.round(result[12].value), true);
+                    //        setState('Kostal.Messwerte.Tag.Autarkiegrad', Math.round(result[13].value), true);
+                    //        setState('Kostal.Messwerte.Gesamt.Betriebszeit', result[14].value + ' h', true);
+                    //        setState('Kostal.Messwerte.Momentan.Status', result[15].value, true);
+                    //        setState('Kostal.Messwerte.Momentan.Batterie_SoC', result[16].value, true);
+                    //        if (result[18].value) {
+                    //            setState('Kostal.Messwerte.Momentan.Batterie_Strom', result[17].value, true);
+                    //        }     // result[18] = 'Kostal.Messwerte.Momentan.Batterie_Richtung'
+                    //        else {
+                    //            setState('Kostal.Messwerte.Momentan.Batterie_Strom', -1 * result[17].value, true);
+                    //        }
+                    // setState('Kostal.Messwerte.Momentan.Ueberschuss',
+                    //    getState('Kostal.Messwerte.Momentan.Leistung_AC') - getState('Kostal.Messwerte.Gesamt.Eigenverbrauch'), true);
+                    //        setState('Kostal.Messwerte.Momentan.Ueberschuss', Math.round(result[1].value - result[2].value), true);
+                    //        setState('Kostal.Messwerte.Momentan.Abregelung', result[19].value, true);
+                }
+                else {
+                    this.log.error('Fehler: ' + response.error + ' bei Abfrage von Pico-BA: ' + IPAnlage);
+                }
+            } catch (e) {
+                this.log.error('Error in calling Piko API:' + e);
+            }
+        })();
+
+
+
+        
+
+        /*
+        var request = require('request');
+
+        request(IPAnlage + '?dxsEntries=' + ID_DCEingangGesamt +
+            '&dxsEntries=' + ID_Ausgangsleistung + '&dxsEntries=' + ID_Eigenverbrauch +
+            '&dxsEntries=' + ID_Eigenverbrauch_d + '&dxsEntries=' + ID_Eigenverbrauch_G +
+            '&dxsEntries=' + ID_Eigenverbrauchsquote_d + '&dxsEntries=' + ID_Eigenverbrauchsquote_G +
+            '&dxsEntries=' + ID_Ertrag_d + '&dxsEntries=' + ID_Ertrag_G +
+            '&dxsEntries=' + ID_Hausverbrauch_d + '&dxsEntries=' + ID_Hausverbrauch_G +
+            '&dxsEntries=' + ID_Hausverbrauch + '&dxsEntries=' + ID_Autarkiegrad_G +
+            '&dxsEntries=' + ID_Autarkiegrad_d + '&dxsEntries=' + ID_Betriebszeit +
+            '&dxsEntries=' + ID_OperatingStatus + '&dxsEntries=' + ID_BatStateOfCharge +
+            '&dxsEntries=' + ID_BatCurrent + '&dxsEntries=' + ID_BatCurrentDir +
+            '&dxsEntries=' + ID_NetzAbregelung,
+
+            function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+            //        if (logging) log(body);
+                    var result = JSON.parse(body).dxsEntries;
+      this.setStateAsync('Power.SolarDC', { val: 10 })
+            //        setState('Kostal.Messwerte.Momentan.Leistung_DC', Math.round(result[0].value), true);
+            //        setState('Kostal.Messwerte.Momentan.Leistung_AC', Math.round(result[1].value), true);
+            //        setState('Kostal.Messwerte.Momentan.Eigenverbrauch', Math.round(result[2].value), true);
+            //        setState('Kostal.Messwerte.Tag.Eigenverbrauch', Math.round(result[3].value) / 1000 + ' kWh', true);
+            //        setState('Kostal.Messwerte.Gesamt.Eigenverbrauch', Math.round(result[4].value) + ' kWh', true);
+            //        if (logging) log('Eigenverbrauch Gesamt: ' + Math.round(result[4].value) + ' kWh');
+            //        setState('Kostal.Messwerte.Tag.Eigenverbrauchsquote', Math.round(result[5].value), true);
+            //        setState('Kostal.Messwerte.Gesamt.Eigenverbrauchsquote', Math.round(result[6].value) + ' %', true);
+            //        setState('Kostal.Messwerte.Tag.Ertrag', Math.round(result[7].value), true);
+            //        setState('Kostal.Messwerte.Gesamt.Ertrag', Math.round(result[8].value) + ' kWh', true);
+            //        setState('Kostal.Messwerte.Tag.Hausverbrauch', Math.round(result[9].value), true);
+            //        setState('Kostal.Messwerte.Gesamt.Hausverbrauch', Math.round(result[10].value) + ' kWh', true);
+            //        setState('Kostal.Messwerte.Momentan.Hausverbrauch', Math.floor(result[11].value), true);
+            //        setState('Kostal.Messwerte.Gesamt.Autarkiegrad', Math.round(result[12].value), true);
+            //        setState('Kostal.Messwerte.Tag.Autarkiegrad', Math.round(result[13].value), true);
+            //        setState('Kostal.Messwerte.Gesamt.Betriebszeit', result[14].value + ' h', true);
+            //        setState('Kostal.Messwerte.Momentan.Status', result[15].value, true);
+            //        setState('Kostal.Messwerte.Momentan.Batterie_SoC', result[16].value, true);
+            //        if (result[18].value) {
+            //            setState('Kostal.Messwerte.Momentan.Batterie_Strom', result[17].value, true);
+            //        }     // result[18] = 'Kostal.Messwerte.Momentan.Batterie_Richtung'
+            //        else {
+            //            setState('Kostal.Messwerte.Momentan.Batterie_Strom', -1 * result[17].value, true);
+            //        }
+                    // setState('Kostal.Messwerte.Momentan.Ueberschuss',
+                    //    getState('Kostal.Messwerte.Momentan.Leistung_AC') - getState('Kostal.Messwerte.Gesamt.Eigenverbrauch'), true);
+            //        setState('Kostal.Messwerte.Momentan.Ueberschuss', Math.round(result[1].value - result[2].value), true);
+            //        setState('Kostal.Messwerte.Momentan.Abregelung', result[19].value, true);
+                }
+                else {
+            //        log('Fehler: ' + error + ' bei Abfrage von Pico-BA: ' + IPAnlage, "warn");
+                }
+            });
+            */
+
+    }
+
 }
 
 
 /****************************************************************************************
-function Piko() {
+
+function ReadPiko() {
+    this.log.debug('Piko 6.0 BA auslesen');
     if (logging) log("Piko 6.0 BA auslesen");
     request(IPAnlage + '?dxsEntries=' + ID_DCEingangGesamt +
         '&dxsEntries=' + ID_Ausgangsleistung + '&dxsEntries=' + ID_Eigenverbrauch +

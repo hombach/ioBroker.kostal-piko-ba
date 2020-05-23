@@ -161,22 +161,3 @@ function Piko() {
 
 //schedule("*/10 * 5-23 * * *", Piko);
 schedule("*/10 * 0-23 * * *", Piko);
-
-
-
-
-
-{
-    "_id": "state",
-        "type": "state",
-            "common": {
-        "role": "value",
-            "name": "Inverter state; 0:off; 3:feed grid(MPP)",
-                "type": "number",
-                    "unit": "",
-                        "read": true,
-                            "write": false,
-                                "def": 0
-    },
-    "native": { }
-},
