@@ -433,7 +433,7 @@ if (module.parent) {
 }
 adapter?.ReadPiko
 var schedule = require('node-schedule');
-schedule.scheduleJob('*/10 * * * * *', adapter?.ReadPiko);
+var sched10 = schedule('*/10 * * * * *', adapter?.ReadPiko);
 
 
 //let AutoRun = window.setInterval(adapter?.ReadPiko, 1000);
