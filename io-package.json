@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "news": {
       "0.0.1": {
         "en": "initial release",
@@ -30,8 +30,8 @@
       "zh-cn": "范本（JavaScript）"
     },
     "desc": {
-      "en": "Template for adapter development",
-      "de": "Vorlage für die Adapterentwicklung",
+      "en": "Adapter for reading Kostal Piko BA data",
+      "de": "Adapter zum lesen von Kostal Piko BA Daten",
       "ru": "Шаблон для разработки адаптера",
       "pt": "Modelo para desenvolvimento de adaptadores",
       "nl": "Sjabloon voor adapterontwikkeling",
@@ -42,11 +42,12 @@
       "zh-cn": "适配器开发的模板"
     },
     "authors": [
-      "Author <HombachC>"
+      "Author <Hombach>"
     ],
     "keywords": [
       "ioBroker",
-      "template",
+      "Kostal",
+      "Piko",
       "Smart Home",
       "home automation"
     ],
@@ -66,8 +67,8 @@
     "adminTab": {
       "singleton": true,
       "name": {
-        "en": "Kostal_PikoBA",
-        "de": "Kostal_PikoBA",
+        "en": "Kostal-PikoBA",
+        "de": "Kostal-PikoBA",
         "ru": "Шаблон (JavaScript)",
         "pt": "Modelo (JavaScript)",
         "nl": "Sjabloon (JavaScript)",

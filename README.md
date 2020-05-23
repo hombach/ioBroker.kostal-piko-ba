@@ -1,44 +1,23 @@
-![Logo](admin/template.png)
+![Logo](admin/picoba.png)
 # ioBroker.kostal_piko_ba
 
-[![NPM version](http://img.shields.io/npm/v/iobroker.kostal_piko_ba.svg)](https://www.npmjs.com/package/iobroker.kostal_piko_ba)
-[![Downloads](https://img.shields.io/npm/dm/iobroker.kostal_piko_ba.svg)](https://www.npmjs.com/package/iobroker.kostal_piko_ba)
+[![NPM version](http://img.shields.io/npm/v/iobroker.kostal-piko-ba.svg)](https://www.npmjs.com/package/iobroker.kostal-piko-ba)
+[![Downloads](https://img.shields.io/npm/dm/iobroker.kostal-piko-ba.svg)](https://www.npmjs.com/package/iobroker.kostal-piko-ba)
 ![Number of Installations (latest)](http://iobroker.live/badges/template-installed.svg)
 ![Number of Installations (stable)](http://iobroker.live/badges/template-stable.svg)
-[![Dependency Status](https://img.shields.io/david/HombachC/iobroker.template.svg)](https://david-dm.org/HombachC/iobroker.kostal_piko_ba)
-[![Known Vulnerabilities](https://snyk.io/test/github/HombachC/ioBroker.template/badge.svg)](https://snyk.io/test/github/HombachC/ioBroker.template)
+[![Dependency Status](https://img.shields.io/david/hombach/iobroker.kostal-piko-ba.svg)](https://david-dm.org/hombachc/iobroker.kostal-piko-ba)
+[![Known Vulnerabilities](https://snyk.io/test/github/hombach/ioBroker.template/badge.svg)](https://snyk.io/test/github/hombach/ioBroker.kostal-piko-ba)
 
-[![NPM](https://nodei.co/npm/iobroker.template.png?downloads=true)](https://nodei.co/npm/iobroker.kostal_piko_ba/)
+[![NPM](https://nodei.co/npm/iobroker.template.png?downloads=true)](https://nodei.co/npm/iobroker.kostal-piko-ba/)
 
-**Tests:**: [![Travis-CI](http://img.shields.io/travis/HombachC/ioBroker.template/master.svg)](https://travis-ci.org/HombachC/ioBroker.template)
+**Tests:**: [![Travis-CI](http://img.shields.io/travis/hombach/ioBroker.kostal-piko-ba/master.svg)](https://travis-ci.org/hombach/ioBroker.kostal-piko-ba)
 
-## template adapter for ioBroker
+## Adapter for reading Kostal Piko BA data for iOBroker
 
-Template for adapter development
+Adapter for reading Kostal Piko BA data
 
 ## Developer manual
 This section is intended for the developer. It can be deleted later
-
-### Getting started
-
-You are almost done, only a few steps left:
-1. Create a new repository on GitHub with the name `ioBroker.kostal_piko_ba`
-1. Initialize the current folder as a new git repository:  
-    ```bash
-    git init
-    git add .
-    git commit -m "Initial commit"
-    ```
-1. Link your local repository with the one on GitHub:  
-    ```bash
-    git remote add origin https://github.com/HombachC/ioBroker.kostal_piko_ba
-    ```
-
-1. Push all files to the GitHub repo:  
-    ```bash
-    git push origin master
-    ```
-1. Head over to [main.js](main.js) and start programming!
 
 ### Best Practices
 We've collected some [best practices](https://github.com/ioBroker/ioBroker.repositories#development-and-coding-best-practices) regarding ioBroker development and coding in general. If you're new to ioBroker or Node.js, you should
