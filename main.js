@@ -433,11 +433,11 @@ if (module.parent) {
 }
 
 try {
-    adapter?.ReadPiko
-    var schedule = require('node-schedule');
-    var sched10 = schedule('*/10 * * * * *', adapter?.ReadPiko);
+//    adapter?.ReadPiko
+//    var schedule = require('node-schedule');
+//    var sched10 = schedule('*/10 * * * * *', adapter?.ReadPiko);
 } catch (e) {
-    adapter?.log.error('Error in schedule' + e);
+//    adapter?.log.error('Error in schedule' + e);
 }
 
 
