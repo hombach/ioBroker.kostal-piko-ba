@@ -87,30 +87,79 @@
         "unit": "%",
         "read": true,
         "write": false,
-        "def": false
+        "def": 0
       },
       "native": {}
     },
 
     {
-      "_id": "day",
-      "type": "channel",
+      "_id": "day", "type": "channel",
+      "common": { "name": "daily data" },
+      "native": {}
+    },
+    {
+      "_id": "day.autarky", "type": "state",
       "common": {
-        "name": "daily data"
+        "role": "value", "name": "Degree of autarky per day",
+        "type": "number", "unit": "%",
+        "read": true, "write": false,
+        "def": 0
       },
       "native": {}
     },
     {
-      "_id": "day.autarky",
+      "_id": "day.selfconsumption",
       "type": "state",
       "common": {
         "role": "value",
-        "name": "Degree of autarky per day",
+        "name": "Selfconsumption today",
+        "type": "number",
+        "unit": "kWh",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "day.selfconsumptionquote",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Quote of selfconsumption today",
         "type": "number",
         "unit": "%",
         "read": true,
         "write": false,
-        "def": false
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "day.yield",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Yield today",
+        "type": "number",
+        "unit": "%",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "day.powerselfconsumption",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Yield today",
+        "type": "number",
+        "unit": "%",
+        "read": true,
+        "write": false,
+        "def": 0
       },
       "native": {}
     },
@@ -133,7 +182,7 @@
         "unit": "%",
         "read": true,
         "write": false,
-        "def": false
+        "def": 0
       },
       "native": {}
     }
