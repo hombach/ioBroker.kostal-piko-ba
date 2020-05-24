@@ -434,16 +434,7 @@ if (module.parent) {
 } else { // otherwise start the instance directly
     adapter = new KostalPikoBA();
 }
-
-
-try {
-//    adapter?.ReadPiko
-//    var schedule = require('node-schedule');
-//    var sched10 = schedule('*/10 * * * * *', adapter?.ReadPiko);
-} catch (e) {
-//    adapter?.log.error('Error in schedule' + e);
-}
-
+main();
 
 //let AutoRun = window.setInterval(adapter?.ReadPiko, 1000);
 //clearInterval(AutoRun);
@@ -451,4 +442,11 @@ try {
 function main() {
     adapter.log.debug("Hello");
     adapter.ReadPiko;
+    try {
+        //    adapter?.ReadPiko
+        //    var schedule = require('node-schedule');
+        //    var sched10 = schedule('*/10 * * * * *', adapter?.ReadPiko);
+    } catch (e) {
+        //    adapter?.log.error('Error in schedule' + e);
+    }
 }
