@@ -311,8 +311,9 @@ class KostalPikoBA extends utils.Adapter {
      //   console.log("ERROR: " + e);
         // adapter.log.error('Error in schedule' + e);
 
-        adapterIntervals.sec5 = await setInterval(await this.ReadPiko, 5000);
+        adapterIntervals.sec5 = setInterval(await this.ReadPiko, 5000);
      //clearInterval(adapterIntervals.sec5);
+
 
     }
 
