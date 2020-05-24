@@ -431,11 +431,11 @@ if (module.parent) {
      * @param {Partial<utils.AdapterOptions>} [options={}]
      */
     module.exports = (options) => adapter = new KostalPikoBA(options);
-    adapter?.log.debug("Adapter instanciated compact mode constructor");
+//    adapter?.log.debug("Adapter instanciated compact mode constructor");
 } else {
     // otherwise start the instance directly
     adapter = new KostalPikoBA();
-    adapter?.log.debug("Adapter instanciated directly");
+//    adapter?.log.debug("Adapter instanciated directly");
 }
 
 
