@@ -441,10 +441,11 @@ function main() {
     try {
         adapter.ReadPiko;
         adapter.log.debug("Hello");
-        //    var schedule = require('node-schedule');
-        //    var sched10 = schedule('*/10 * * * * *', adapter?.ReadPiko);
+        // var schedule = require('node-schedule');
+        // var sched10 = schedule('*/10 * * * * *', adapter?.ReadPiko);
     } catch (e) {
-        //    adapter?.log.error('Error in schedule' + e);
+        console.log("ERROR: " + e);
+        // adapter.log.error('Error in schedule' + e);
     }
 
     //let AutoRun = window.setInterval(adapter?.ReadPiko, 1000);
