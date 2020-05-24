@@ -67,6 +67,9 @@ const ID_BatCurrent = 33556238;  // in A
 
 const IPAnlage = 'http://192.168.100.121/api/dxs.json'; // IP der Photovoltaik-Anlage
 
+let adapter//??????????????????????????
+
+
 class KostalPikoBA extends utils.Adapter {
 
     /****************************************************************************************
@@ -419,23 +422,17 @@ class KostalPikoBA extends utils.Adapter {
         })();
 
     } //END ReadPiko
-//    this.ReadPiko() 
 }
-
-let adapter
 
 // @ts-ignore parent is a valid property on module
 if (module.parent) {
     // Export the constructor in compact mode
     /**
-     * @param {Partial<utils.AdapterOptions>} [options={}]
-     */
+    * @param {Partial<utils.AdapterOptions>} [options={}]
+    */
     module.exports = (options) => adapter = new KostalPikoBA(options);
-//    adapter?.log.debug("Adapter instanciated compact mode constructor");
-} else {
-    // otherwise start the instance directly
+} else { // otherwise start the instance directly
     adapter = new KostalPikoBA();
-//    adapter?.log.debug("Adapter instanciated directly");
 }
 
 
@@ -450,3 +447,8 @@ try {
 
 //let AutoRun = window.setInterval(adapter?.ReadPiko, 1000);
 //clearInterval(AutoRun);
+
+function main() {
+    adapter.log.debug("Hello");
+    adapter.ReadPiko;
+}
