@@ -90,8 +90,7 @@ class KostalPikoBA extends utils.Adapter {
     /****************************************************************************************
     * Is called when databases are connected and adapter received configuration.
     */
-    //async onReady() {
-    onReady() {
+    async onReady() {
         // Initialize your adapter here
         if (!this.config.ipaddress) this.log.warn('Kostal Piko IP address not set');
 
@@ -312,7 +311,7 @@ class KostalPikoBA extends utils.Adapter {
      //   console.log("ERROR: " + e);
         // adapter.log.error('Error in schedule' + e);
 
-        adapterIntervals.sec5 = setInterval(this.ReadPiko, 5000);
+        adapterIntervals.sec5 = await setInterval(await this.ReadPiko, 5000);
      //clearInterval(adapterIntervals.sec5);
 
     }
