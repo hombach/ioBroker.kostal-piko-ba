@@ -86,7 +86,7 @@ class KostalPikoBA extends utils.Adapter {
         this.on('stateChange', this.onStateChange.bind(this));
         // this.on('message', this.onMessage.bind(this));
         this.on('unload', this.onUnload.bind(this));
-        this.ReadPiko.bind(this);
+        this.ReadPiko();
     }
 
     /****************************************************************************************
@@ -443,6 +443,7 @@ if (module.parent) {
 
 //function main() {
  //   try {
+// @ts-ignore
 adapter.ReadPiko();
 
     //    adapter.log.debug("Hello");
