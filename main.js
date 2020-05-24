@@ -302,6 +302,13 @@ class KostalPikoBA extends utils.Adapter {
         this.log.debug("OnReady done");
         await this.ReadPiko();
         this.log.debug("Initial ReadPico done");
+
+//        let AutoRun = window.setInterval(this.ReadPiko(), 1000);
+        //clearInterval(AutoRun);
+        var schedule = require('node-schedule');
+        var sched10 = schedule('*/10 * * * * *', this.ReadPiko());
+
+
     }
 
     /****************************************************************************************
@@ -433,20 +440,20 @@ if (module.parent) {
     adapter = new KostalPikoBA();
 }
 
-main();
+//main();
 
-function main() {
+//function main() {
     try {
-        adapter.ReadPiko();
-        adapter.log.debug("Hello");
+  //      adapter.ReadPiko();
+    //    adapter.log.debug("Hello");
         // var schedule = require('node-schedule');
-        // var sched10 = schedule('*/10 * * * * *', adapter?.ReadPiko);
+        // var sched10 = schedule('*/10 * * * * *', adapter.ReadPiko);
     } catch (e) {
-        console.log("ERROR: " + e);
+     //   console.log("ERROR: " + e);
         // adapter.log.error('Error in schedule' + e);
     }
 
     //let AutoRun = window.setInterval(adapter?.ReadPiko, 1000);
     //clearInterval(AutoRun);
 
-}
+//}
