@@ -435,9 +435,9 @@ if (module.parent) {
     adapter = new KostalPikoBA();
 }
 
-main();
+//main();
 
-function main() {
+//function main() {
     try {
         adapter.ReadPiko;
         adapter.log.debug("Hello");
@@ -451,4 +451,4 @@ function main() {
     //let AutoRun = window.setInterval(adapter?.ReadPiko, 1000);
     //clearInterval(AutoRun);
 
-}
+//}
