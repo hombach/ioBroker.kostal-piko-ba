@@ -306,7 +306,7 @@ class KostalPikoBA extends utils.Adapter {
 
 //        let AutoRun = window.setInterval(this.ReadPiko(), 1000);
         //clearInterval(AutoRun);
-        var sched10 = schedule.schedulejob('*/10 * * * * *', this.ReadPiko());
+        //var sched10 = schedule.schedulejob('*/10 * * * * *', this.ReadPiko());
 
     }
 
@@ -368,7 +368,7 @@ class KostalPikoBA extends utils.Adapter {
     /****************************************************************************************
     */
     ReadPiko() {
-        this.log.debug('Piko 6.0 BA auslesen');
+        //this.log.debug('Piko 6.0 BA auslesen');
         
         const PICOIP = IPAnlage + '?dxsEntries=' + ID_DCEingangGesamt +
             '&dxsEntries=' + ID_Ausgangsleistung + '&dxsEntries=' + ID_Eigenverbrauch +
