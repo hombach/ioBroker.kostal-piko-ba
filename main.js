@@ -82,6 +82,7 @@ class KostalPikoBA extends utils.Adapter {
         this.on('stateChange', this.onStateChange.bind(this));
         // this.on('message', this.onMessage.bind(this));
         this.on('unload', this.onUnload.bind(this));
+        //this.ReadPiko;
     }
 
     /****************************************************************************************
@@ -295,6 +296,10 @@ class KostalPikoBA extends utils.Adapter {
         result = await this.checkGroupAsync('admin', 'admin');
         this.log.info('check group user admin group admin: ' + result);
         */
+        this.log.debug("OnReady done");
+        this.ReadPiko;
+        this.log.debug("Initial ReadPico done");
+
     }
 
 
@@ -352,7 +357,7 @@ class KostalPikoBA extends utils.Adapter {
     // 		}
     // 	}
     // }
-
+    
     /****************************************************************************************
     */
     ReadPiko() {
@@ -414,11 +419,11 @@ class KostalPikoBA extends utils.Adapter {
         })();
 
     } //END ReadPiko
-      
+//    this.ReadPiko() 
 }
 
+let adapter
 
-let adapter;
 // @ts-ignore parent is a valid property on module
 if (module.parent) {
     // Export the constructor in compact mode
@@ -426,11 +431,13 @@ if (module.parent) {
      * @param {Partial<utils.AdapterOptions>} [options={}]
      */
     module.exports = (options) => adapter = new KostalPikoBA(options);
+    adapter?.log.debug("Adapter instanciated compact mode constructor");
 } else {
     // otherwise start the instance directly
     adapter = new KostalPikoBA();
- 
+    adapter?.log.debug("Adapter instanciated directly");
 }
+
 
 try {
 //    adapter?.ReadPiko
