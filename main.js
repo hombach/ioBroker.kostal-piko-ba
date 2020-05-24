@@ -86,7 +86,7 @@ class KostalPikoBA extends utils.Adapter {
         this.on('stateChange', this.onStateChange.bind(this));
         // this.on('message', this.onMessage.bind(this));
         this.on('unload', this.onUnload.bind(this));
-        //this.ReadPiko;
+        this.ReadPiko.bind(this);
     }
 
     /****************************************************************************************
@@ -443,7 +443,8 @@ if (module.parent) {
 
 //function main() {
  //   try {
-  //      adapter.ReadPiko();
+adapter.ReadPiko();
+
     //    adapter.log.debug("Hello");
         // var schedule = require('node-schedule');
         // var sched10 = schedule('*/10 * * * * *', adapter.ReadPiko);
