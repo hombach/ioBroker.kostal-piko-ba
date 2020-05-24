@@ -300,7 +300,7 @@ class KostalPikoBA extends utils.Adapter {
         this.log.info('check group user admin group admin: ' + result);
         */
         this.log.debug("OnReady done");
-        this.ReadPiko;
+        await this.ReadPiko;
         this.log.debug("Initial ReadPico done");
 
     }
