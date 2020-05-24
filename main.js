@@ -433,11 +433,11 @@ if (module.parent) {
     adapter = new KostalPikoBA();
 }
 
-//main();
+main();
 
-//function main() {
+function main() {
     try {
-        adapter.ReadPiko;
+        adapter.ReadPiko();
         adapter.log.debug("Hello");
         // var schedule = require('node-schedule');
         // var sched10 = schedule('*/10 * * * * *', adapter?.ReadPiko);
@@ -449,4 +449,4 @@ if (module.parent) {
     //let AutoRun = window.setInterval(adapter?.ReadPiko, 1000);
     //clearInterval(AutoRun);
 
-//}
+}
