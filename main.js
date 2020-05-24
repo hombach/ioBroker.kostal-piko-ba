@@ -6,7 +6,9 @@ const utils = require('@iobroker/adapter-core');
 
 // Load your modules here, e.g.:
 // const fs = require("fs");
-const schedule = require('node-schedule');
+// const schedule = require('node-schedule');
+
+const adapterIntervals = {};
 
 //Leistungswerte
 const ID_DCEingangGesamt = 33556736;  // in W  -  dcPowerPV
@@ -68,9 +70,6 @@ const ID_BatCurrent = 33556238;  // in A
 
 const IPAnlage = 'http://192.168.100.121/api/dxs.json'; // IP der Photovoltaik-Anlage
 
-let adapter//??????????????????????????
-
-
 class KostalPikoBA extends utils.Adapter {
 
     /****************************************************************************************
@@ -86,7 +85,6 @@ class KostalPikoBA extends utils.Adapter {
         this.on('stateChange', this.onStateChange.bind(this));
         // this.on('message', this.onMessage.bind(this));
         this.on('unload', this.onUnload.bind(this));
-       // this.ReadPiko();
     }
     
     /****************************************************************************************
@@ -306,7 +304,18 @@ class KostalPikoBA extends utils.Adapter {
 
 //        let AutoRun = window.setInterval(this.ReadPiko(), 1000);
         //clearInterval(AutoRun);
-        var sched10 = schedule.schedulejob('*/10 * * * * *', this.ReadPiko());
+        //var sched10 = schedule.schedulejob('*/10 * * * * *', this.ReadPiko());
+
+                // var schedule = require('node-schedule');
+        // var sched10 = schedule('*/10 * * * * *', adapter.ReadPiko);
+     //   console.log("ERROR: " + e);
+        // adapter.log.error('Error in schedule' + e);
+
+    //let AutoRun = window.setInterval(adapter?.ReadPiko, 1000);
+    //clearInterval(AutoRun);
+
+        adapterIntervals.sec5 = setInterval(this.ReadPiko, 5000);
+     //clearInterval(adapterIntervals.sec5);
 
     }
 
@@ -315,6 +324,7 @@ class KostalPikoBA extends utils.Adapter {
     * @param {() => void} callback */
     onUnload(callback) {
         try {
+            Object.keys(adapterIntervals).forEach(interval => clearInterval(adapterIntervals[interval]));
             this.log.info('Adaptor Kostal-Piko-BA cleaned everything up...');
             callback();
         } catch (e) {
@@ -434,27 +444,7 @@ if (module.parent) {
     /**
     * @param {Partial<utils.AdapterOptions>} [options={}]
     */
-    module.exports = (options) => adapter = new KostalPikoBA(options);
+    module.exports = (options) => new KostalPikoBA(options);
 } else { // otherwise start the instance directly
-    adapter = new KostalPikoBA();
+    new KostalPikoBA();
 }
-
-//main();
-
-//function main() {
- //   try {
-// @ts-ignore
-//adapter.ReadPiko();
-
-    //    adapter.log.debug("Hello");
-        // var schedule = require('node-schedule');
-        // var sched10 = schedule('*/10 * * * * *', adapter.ReadPiko);
- //   } catch (e) {
-     //   console.log("ERROR: " + e);
-        // adapter.log.error('Error in schedule' + e);
-  //  }
-
-    //let AutoRun = window.setInterval(adapter?.ReadPiko, 1000);
-    //clearInterval(AutoRun);
-
-//}
