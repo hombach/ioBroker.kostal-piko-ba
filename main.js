@@ -93,7 +93,7 @@ class KostalPikoBA extends utils.Adapter {
     */
     async onReady() {
         // Initialize your adapter here
-        if (!this.config.ipaddress) this.log.error('Kostal Piko IP address not set');
+        if (!this.config.ipaddress) this.log.warn('Kostal Piko IP address not set');
 
         // The adapters config (in the instance object everything under the attribute "native") is accessible via
         // this.config:
@@ -434,19 +434,20 @@ if (module.parent) {
 } else { // otherwise start the instance directly
     adapter = new KostalPikoBA();
 }
+
 main();
 
-//let AutoRun = window.setInterval(adapter?.ReadPiko, 1000);
-//clearInterval(AutoRun);
-
 function main() {
-    adapter.log.debug("Hello");
-    adapter.ReadPiko;
     try {
-        //    adapter?.ReadPiko
+        adapter.ReadPiko;
+        adapter.log.debug("Hello");
         //    var schedule = require('node-schedule');
         //    var sched10 = schedule('*/10 * * * * *', adapter?.ReadPiko);
     } catch (e) {
         //    adapter?.log.error('Error in schedule' + e);
     }
+
+    //let AutoRun = window.setInterval(adapter?.ReadPiko, 1000);
+    //clearInterval(AutoRun);
+
 }
