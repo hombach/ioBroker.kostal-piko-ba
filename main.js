@@ -88,7 +88,7 @@ class KostalPikoBA extends utils.Adapter {
         this.on('unload', this.onUnload.bind(this));
        // this.ReadPiko();
     }
-
+    
     /****************************************************************************************
     * Is called when databases are connected and adapter received configuration.
     */
@@ -306,7 +306,7 @@ class KostalPikoBA extends utils.Adapter {
 
 //        let AutoRun = window.setInterval(this.ReadPiko(), 1000);
         //clearInterval(AutoRun);
-        //var sched10 = schedule.schedulejob('*/10 * * * * *', this.ReadPiko());
+        var sched10 = schedule.schedulejob('*/10 * * * * *', this.ReadPiko());
 
     }
 
