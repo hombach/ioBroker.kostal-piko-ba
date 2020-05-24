@@ -6,7 +6,7 @@ const utils = require('@iobroker/adapter-core');
 
 // Load your modules here, e.g.:
 // const fs = require("fs");
-var schedule = require('node-schedule');
+const schedule = require('node-schedule');
 
 //Leistungswerte
 const ID_DCEingangGesamt = 33556736;  // in W  -  dcPowerPV
@@ -306,7 +306,7 @@ class KostalPikoBA extends utils.Adapter {
 
 //        let AutoRun = window.setInterval(this.ReadPiko(), 1000);
         //clearInterval(AutoRun);
-        //var sched10 = schedule.schedulejob('*/10 * * * * *', this.ReadPiko());
+        var sched10 = schedule.schedulejob('*/10 * * * * *', this.ReadPiko());
 
     }
 
@@ -444,7 +444,7 @@ if (module.parent) {
 //function main() {
  //   try {
 // @ts-ignore
-adapter.ReadPiko();
+//adapter.ReadPiko();
 
     //    adapter.log.debug("Hello");
         // var schedule = require('node-schedule');
