@@ -300,11 +300,9 @@ class KostalPikoBA extends utils.Adapter {
         this.log.info('check group user admin group admin: ' + result);
         */
         this.log.debug("OnReady done");
-        await this.ReadPiko;
+        await this.ReadPiko();
         this.log.debug("Initial ReadPico done");
-
     }
-
 
     /****************************************************************************************
     * Is called when adapter shuts down - callback has to be called under any circumstances!
