@@ -6,6 +6,7 @@ const utils = require('@iobroker/adapter-core');
 
 // Load your modules here, e.g.:
 // const fs = require("fs");
+var schedule = require('node-schedule');
 
 //Leistungswerte
 const ID_DCEingangGesamt = 33556736;  // in W  -  dcPowerPV
@@ -67,7 +68,7 @@ const ID_BatCurrent = 33556238;  // in A
 
 const IPAnlage = 'http://192.168.100.121/api/dxs.json'; // IP der Photovoltaik-Anlage
 
-let adapter//??????????????????????????
+//let adapter//??????????????????????????
 
 
 class KostalPikoBA extends utils.Adapter {
@@ -276,7 +277,7 @@ class KostalPikoBA extends utils.Adapter {
 
 
         // all states changes inside the adapters namespace are subscribed
-        this.subscribeStates('*');
+        // this.subscribeStates('*');
 
         /*
         setState examples
@@ -305,9 +306,7 @@ class KostalPikoBA extends utils.Adapter {
 
 //        let AutoRun = window.setInterval(this.ReadPiko(), 1000);
         //clearInterval(AutoRun);
-        var schedule = require('node-schedule');
-        var sched10 = schedule('*/10 * * * * *', this.ReadPiko());
-
+        var sched10 = schedule.schedulejob('*/10 * * * * *', this.ReadPiko());
 
     }
 
@@ -443,15 +442,15 @@ if (module.parent) {
 //main();
 
 //function main() {
-    try {
+ //   try {
   //      adapter.ReadPiko();
     //    adapter.log.debug("Hello");
         // var schedule = require('node-schedule');
         // var sched10 = schedule('*/10 * * * * *', adapter.ReadPiko);
-    } catch (e) {
+ //   } catch (e) {
      //   console.log("ERROR: " + e);
         // adapter.log.error('Error in schedule' + e);
-    }
+  //  }
 
     //let AutoRun = window.setInterval(adapter?.ReadPiko, 1000);
     //clearInterval(AutoRun);
