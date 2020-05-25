@@ -1,6 +1,6 @@
 'use strict';
 
-import { log } from 'console';
+//import { log } from 'console';
 
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
@@ -309,6 +309,7 @@ class KostalPikoBA extends utils.Adapter {
         await this.ReadPiko();
         await this.ReadPiko();
         await this.ReadPiko();
+        this.log.warn("4x ReadPico done");
 
         //do {
          //   setTimeout(this.ReadPiko, 5000);
