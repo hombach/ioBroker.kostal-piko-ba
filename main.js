@@ -444,6 +444,7 @@ class KostalPikoBA extends utils.Adapter {
 
     } //END ReadPiko
 } // END Class
+
 function main() {
 // @ts-ignore parent is a valid property on module
 if (module.parent) {
@@ -460,6 +461,8 @@ if (module.parent) {
    otto.log.info('Hello Juergen!');
 
 }
+
+main();
 
 //adapter = new KostalPikoBA();
 //adapterIntervals.sec5 = setInterval(adapter.ReadPiko, 5000);
