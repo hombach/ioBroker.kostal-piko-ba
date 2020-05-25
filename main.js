@@ -71,22 +71,6 @@ const ID_BatCurrent = 33556238;  // in A
 const IPAnlage = 'http://192.168.100.121/api/dxs.json'; // IP der Photovoltaik-Anlage
 
 let otto;
-let ottolight;
-
-class helga extends utils.Adapter {
-/****************************************************************************************
-* @param {Partial<utils.AdapterOptions>} [options={}]
-*/
-    constructor(options) {
-        super({
-            ...options,
-            name: 'grosse Helga'
-        });
-    }
-}
-ottolight = new helga();
-
-ottolight.log.error('grosse Helga');
 
 class KostalPikoBA extends utils.Adapter {
 
@@ -460,16 +444,21 @@ class KostalPikoBA extends utils.Adapter {
 
     } //END ReadPiko
 } // END Class
-
+function main() {
 // @ts-ignore parent is a valid property on module
 if (module.parent) {
     // Export the constructor in compact mode
     /**
     * @param {Partial<utils.AdapterOptions>} [options={}]
     */
- //   module.exports = (options) => otto = new KostalPikoBA(options);
+    module.exports = (options) => otto = new KostalPikoBA(options);
 } else { // otherwise start the instance directly
- //   otto = new KostalPikoBA();
+    otto = new KostalPikoBA();
+}
+
+
+   otto?.log?.info('Hello Juergen!');
+
 }
 
 //adapter = new KostalPikoBA();
