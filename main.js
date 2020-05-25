@@ -378,8 +378,8 @@ class KostalPikoBA extends utils.Adapter {
     /****************************************************************************************
     */
     ReadPiko() { // only working if instanciated!!
-        adapter.log.debug('Piko 6.0 BA auslesen');
-        
+        this.log.debug('Piko 6.0 BA auslesen');
+
         const PICOIP = IPAnlage + '?dxsEntries=' + ID_DCEingangGesamt +
             '&dxsEntries=' + ID_Ausgangsleistung + '&dxsEntries=' + ID_Eigenverbrauch +
             '&dxsEntries=' + ID_Eigenverbrauch_d + '&dxsEntries=' + ID_Eigenverbrauch_G +
@@ -439,17 +439,19 @@ class KostalPikoBA extends utils.Adapter {
 }
 
 // @ts-ignore parent is a valid property on module
-if (module.parent) {
+//if (module.parent) {
     // Export the constructor in compact mode
     /**
     * @param {Partial<utils.AdapterOptions>} [options={}]
     */
-    module.exports = (options) => adapter = new KostalPikoBA(options);
-} else { // otherwise start the instance directly
+ //   module.exports = (options) => adapter = new KostalPikoBA(options);
+ //   adapter.ReadPiko();
+//} else { // otherwise start the instance directly
     adapter = new KostalPikoBA();
-}
+    adapter.ReadPiko();
+//}
 // @ts-ignore
-adapter.ReadPiko();
+
 //adapter = new KostalPikoBA();
 // @ts-ignore At runtime adapter will be defined
 adapterIntervals.sec5 = setInterval(adapter.ReadPiko, 5000);
