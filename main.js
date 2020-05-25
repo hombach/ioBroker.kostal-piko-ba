@@ -70,7 +70,7 @@ const ID_BatCurrent = 33556238;  // in A
 
 const IPAnlage = 'http://192.168.100.121/api/dxs.json'; // IP der Photovoltaik-Anlage
 
-let adapter;
+let otto;
 
 class KostalPikoBA extends utils.Adapter {
 
@@ -453,13 +453,16 @@ class KostalPikoBA extends utils.Adapter {
     */
  //   module.exports = (options) => adapter = new KostalPikoBA(options);
 //} else { // otherwise start the instance directly
-    adapter = new KostalPikoBA();
+otto = new KostalPikoBA();
 //}
 // @ts-ignore
 
 //adapter = new KostalPikoBA();
 // @ts-ignore At runtime adapter will be defined
 //adapterIntervals.sec5 = setInterval(adapter.ReadPiko, 5000);
-adapter.log.warn('Hello Juergen!');
-   // @ts-ignore
+
+if (otto) {
+    otto.log.warn('Hello Juergen!');
+}
+// @ts-ignore
 //  adapter.ReadPiko;
