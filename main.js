@@ -302,7 +302,7 @@ class KostalPikoBA extends utils.Adapter {
         */
         this.log.debug("OnReady done");
         await this.ReadPiko();
-        this.log.debug("Initial ReadPico done");
+        this.log.warn("Initial ReadPico done");
 
         //do {
          //   setTimeout(this.ReadPiko, 5000);
@@ -383,7 +383,7 @@ class KostalPikoBA extends utils.Adapter {
     /****************************************************************************************
     */
     ReadPiko() { // only working if instanciated!!
-        this.log.debug('Piko 6.0 BA auslesen');
+     //   this.log.debug('Piko 6.0 BA auslesen');
         
         const PICOIP = IPAnlage + '?dxsEntries=' + ID_DCEingangGesamt +
             '&dxsEntries=' + ID_Ausgangsleistung + '&dxsEntries=' + ID_Eigenverbrauch +
@@ -445,7 +445,6 @@ class KostalPikoBA extends utils.Adapter {
     } //END ReadPiko
 } // END Class
 
-function main() {
 // @ts-ignore parent is a valid property on module
 if (module.parent) {
     // Export the constructor in compact mode
@@ -458,11 +457,8 @@ if (module.parent) {
 }
 
 
-   otto.log.info('Hello Juergen!');
 
-}
 
-main();
 
 //adapter = new KostalPikoBA();
 //adapterIntervals.sec5 = setInterval(adapter.ReadPiko, 5000);
