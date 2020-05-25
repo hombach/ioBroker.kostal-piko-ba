@@ -230,7 +230,7 @@ class KostalPikoBA extends utils.Adapter {
         await this.setObjectAsync('Statistics_Total.SelfConsumptionRate', { type: 'state',
             common: {
                 role: 'value', name: 'Rate of selfconsumption in inverter lifetime',
-                type: 'number', unit: 'kWh', read: true, write: false, def: 0
+                type: 'number', unit: '%', read: true, write: false, def: 0
             },
             native: {},
         });
@@ -367,7 +367,7 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Statistics_Total.SelfConsumption', { val: Math.round(result[4].value), ack: true });
                     this.setStateAsync('Statistics_Daily.SelfConsumptionRate', { val: Math.round(result[5].value), ack: true });
                     this.setStateAsync('Statistics_Total.SelfConsumptionRate', { val: Math.round(result[6].value), ack: true });
-                    this.setStateAsync('Statistics_Daily.Yield', { val: Math.round(result[7].value), ack: true });
+                    this.setStateAsync('Statistics_Daily.Yield', { val: Math.round(result[7].value)/1000, ack: true });
                     this.setStateAsync('Statistics_Total.Yield', { val: Math.round(result[8].value), ack: true });
                     this.setStateAsync('Statistics_Daily.HouseConsumption', { val: Math.round(result[9].value)/1000, ack: true });
                     this.setStateAsync('Statistics_Total.HouseConsumption', { val: Math.round(result[10].value), ack: true });
