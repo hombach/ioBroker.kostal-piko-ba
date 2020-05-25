@@ -383,7 +383,7 @@ class KostalPikoBA extends utils.Adapter {
     /****************************************************************************************
     */
     ReadPiko() { // only working if instanciated!!
-     //   this.log.debug('Piko 6.0 BA auslesen');
+        //this.log.debug('Piko 6.0 BA auslesen');
         
         const PICOIP = IPAnlage + '?dxsEntries=' + ID_DCEingangGesamt +
             '&dxsEntries=' + ID_Ausgangsleistung + '&dxsEntries=' + ID_Eigenverbrauch +
@@ -438,7 +438,7 @@ class KostalPikoBA extends utils.Adapter {
             } catch (e) {
                 this.log.error('Error in calling Piko API:' + e);
             }
-            this.log.debug('Piko 6.0 BA auslesen');
+            //this.log.debug('Piko 6.0 BA auslesen');
 
         })();
 
@@ -455,7 +455,8 @@ if (module.parent) {
 } else { // otherwise start the instance directly
     otto = new KostalPikoBA();
 }
-
+// @ts-ignore
+otto.ReadPiko;
 
 
 
