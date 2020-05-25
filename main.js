@@ -80,7 +80,7 @@ class KostalPikoBA extends utils.Adapter {
     constructor(options) {
         super({
             ...options,
-            name: 'kostal-piko-ba',
+            name: 'kostal-piko-ba'
         });
         this.on('ready', this.onReady.bind(this));
         this.on('objectChange', this.onObjectChange.bind(this));
@@ -304,10 +304,10 @@ class KostalPikoBA extends utils.Adapter {
         await this.ReadPiko();
         this.log.debug("Initial ReadPico done");
 
-        do {
-            setTimeout(this.ReadPiko, 5000);
-        }
-        while (true);
+        //do {
+         //   setTimeout(this.ReadPiko, 5000);
+       // }
+        //while (true);
 
 //        let AutoRun = window.setInterval(this.ReadPiko(), 1000);
         //clearInterval(AutoRun);
@@ -383,7 +383,7 @@ class KostalPikoBA extends utils.Adapter {
     /****************************************************************************************
     */
     ReadPiko() { // only working if instanciated!!
-        this.log.debug('Piko 6.0 BA auslesen');
+        //this.log.debug('Piko 6.0 BA auslesen');
         
         const PICOIP = IPAnlage + '?dxsEntries=' + ID_DCEingangGesamt +
             '&dxsEntries=' + ID_Ausgangsleistung + '&dxsEntries=' + ID_Eigenverbrauch +
@@ -438,6 +438,8 @@ class KostalPikoBA extends utils.Adapter {
             } catch (e) {
                 this.log.error('Error in calling Piko API:' + e);
             }
+            this.log.debug('Piko 6.0 BA auslesen');
+
         })();
 
     } //END ReadPiko
@@ -459,4 +461,4 @@ if (module.parent) {
 // @ts-ignore At runtime adapter will be defined
 //adapterIntervals.sec5 = setInterval(adapter.ReadPiko, 5000);
 
-
+   adapter?.ReadPiko();
