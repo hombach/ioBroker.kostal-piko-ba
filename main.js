@@ -307,13 +307,13 @@ class KostalPikoBA extends utils.Adapter {
         await this.ReadPiko();
         this.log.warn("Initial ReadPico done");
         var i=0;
-
+        
         do {
-            setTimeout(this.ReadPiko, 5000);
+            setTimeout(this.ReadPiko.bind(this), 5000);
             this.log.warn(i + "x ReadPico done");
             i++;
         }
-        while (i<20);
+        while (i<10);
 
 //        let AutoRun = window.setInterval(this.ReadPiko(), 1000);
         //clearInterval(AutoRun);
@@ -326,8 +326,6 @@ class KostalPikoBA extends utils.Adapter {
 
      //   adapterIntervals.sec5 = setInterval(await this.ReadPiko(), 5000);
      //clearInterval(adapterIntervals.sec5);
-
-
     }
 
     /****************************************************************************************
@@ -385,7 +383,8 @@ class KostalPikoBA extends utils.Adapter {
     // 		}
     // 	}
     // }
-    
+
+  
     /****************************************************************************************
     */
     ReadPiko() { // only working if instanciated!!
@@ -457,18 +456,16 @@ if (module.parent) {
     /**
     * @param {Partial<utils.AdapterOptions>} [options={}]
     */
-    module.exports = (options) => otto = new KostalPikoBA(options);
+    module.exports = (options) => new KostalPikoBA(options);
 } else { // otherwise start the instance directly
-    otto = new KostalPikoBA();
+    new KostalPikoBA();
 }
-
-
 
 
 //adapter = new KostalPikoBA();
 // @ts-ignore
 //adapterIntervals.sec5 = setInterval(otto.ReadPiko, 5000);
 
-   // otto?.log?.info('Hello Juergen!');
+//    otto?.log?.info('Hello Juergen!');
 
 //  adapter.ReadPiko;
