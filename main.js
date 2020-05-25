@@ -264,17 +264,8 @@ class KostalPikoBA extends utils.Adapter {
             },
             native: {},
         });
-        await this.setObjectAsync('Battery.CurrentDir', { type: 'state',
-            common: {
-                role: 'indicator', name: 'Battery current direction; 1=Load; 0=Unload',
-                type: 'boolean', unit: '', read: true, write: false, def: false
-            },
-            native: {},
-        });
-
-        await this.MySetObject('Battery.CurrentDir2', 'state', 'indicator', 'Battery current direction; 1=Load; 0=Unload', 'boolean', '', false)
-        // all states changes inside the adapters namespace are subscribed
-        // this.subscribeStates('*');
+       
+        // this.subscribeStates('*'); // all states changes inside the adapters namespace are subscribed
 
         /*
         setState examples
@@ -350,19 +341,6 @@ class KostalPikoBA extends utils.Adapter {
      
     /****************************************************************************************
     */
-    MySetObject(id, type, role, name, vartype, unit, def) {
-        this.setObjectAsync(id, {
-            type: type,
-            common: {
-                role: role, name: name, type: vartype, unit: unit, read: true, write: false, def: def
-            },
-            native: {},
-        });
-    }
-
-  
-    /****************************************************************************************
-    */
     ReadPiko() {
         const PICOIP = IPAnlage + '?dxsEntries=' + ID_DCEingangGesamt +
             '&dxsEntries=' + ID_Ausgangsleistung + '&dxsEntries=' + ID_Eigenverbrauch +
@@ -382,14 +360,12 @@ class KostalPikoBA extends utils.Adapter {
                 // @ts-ignore got is valid
                 var response = await got(PICOIP);
                 if (!response.error && response.statusCode == 200) {
-                    // if (logging) this.log.debug(response.body);
                     var result = await JSON.parse(response.body).dxsEntries;
                     this.setStateAsync('Power.SolarDC', { val: Math.round(result[0].value), ack: true });
                     this.setStateAsync('Power.GridAC', { val: Math.round(result[1].value), ack: true });
                     this.setStateAsync('Power.SelfConsumption', { val: Math.round(result[2].value), ack: true });
                     this.setStateAsync('Statistics_Daily.SelfConsumption', { val: Math.round(result[3].value)/1000, ack: true });
                     this.setStateAsync('Statistics_Total.SelfConsumption', { val: Math.round(result[4].value), ack: true });
-                    // if (logging) this.log.debug('Eigenverbrauch Gesamt: ' + Math.round(result[4].value));
                     this.setStateAsync('Statistics_Daily.SelfConsumptionRate', { val: Math.round(result[5].value), ack: true });
                     this.setStateAsync('Statistics_Total.SelfConsumptionRate', { val: Math.round(result[6].value), ack: true });
                     this.setStateAsync('Statistics_Daily.Yield', { val: Math.round(result[7].value), ack: true });
