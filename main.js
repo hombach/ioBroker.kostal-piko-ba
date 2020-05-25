@@ -446,19 +446,20 @@ class KostalPikoBA extends utils.Adapter {
 } // END Class
 
 // @ts-ignore parent is a valid property on module
-if (module.parent) {
+//if (module.parent) {
     // Export the constructor in compact mode
     /**
     * @param {Partial<utils.AdapterOptions>} [options={}]
     */
-    module.exports = (options) => adapter = new KostalPikoBA(options);
-} else { // otherwise start the instance directly
+ //   module.exports = (options) => adapter = new KostalPikoBA(options);
+//} else { // otherwise start the instance directly
     adapter = new KostalPikoBA();
-}
+//}
 // @ts-ignore
 
 //adapter = new KostalPikoBA();
 // @ts-ignore At runtime adapter will be defined
 //adapterIntervals.sec5 = setInterval(adapter.ReadPiko, 5000);
-adapter?.log.warn('Hello Juergen!');
-   adapter?.ReadPiko;
+adapter.log.warn('Hello Juergen!');
+   // @ts-ignore
+//  adapter.ReadPiko;
