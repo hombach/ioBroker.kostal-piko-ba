@@ -1,13 +1,10 @@
 'use strict';
 
-//import { log } from 'console';
-
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require('@iobroker/adapter-core');
 
 // Load your modules here, e.g.:
-// const fs = require("fs");
 // const schedule = require('node-schedule');
 
 const adapterIntervals = {};
@@ -71,8 +68,6 @@ const ID_BatCurrentDir = 33556230;  // 1 = Entladen; 0 = Laden
 const ID_BatCurrent = 33556238;  // in A
 
 const IPAnlage = 'http://192.168.100.121/api/dxs.json'; // IP der Photovoltaik-Anlage
-
-let otto;
 
 class KostalPikoBA extends utils.Adapter {
 
@@ -305,27 +300,10 @@ class KostalPikoBA extends utils.Adapter {
        
         this.log.debug("OnReady done");
         await this.ReadPiko();
-        this.log.warn("Initial ReadPico done");
-        var i=0;
-        
-        do {
-//            await setTimeout(this.ReadPiko.bind(this), 5000);
-            this.log.warn(i + "x ReadPico done");
-            i++;
-        }
-        while (i<10);
+        this.log.debug("Initial ReadPico done");
 
-        let AutoRun = setInterval(this.ReadPiko.bind(this), 5000);
-        //clearInterval(AutoRun);
-        //var sched10 = schedule.schedulejob('*/10 * * * * *', this.ReadPiko());
-
-                // var schedule = require('node-schedule');
-        // var sched10 = schedule('*/10 * * * * *', adapter.ReadPiko);
-     //   console.log("ERROR: " + e);
-        // adapter.log.error('Error in schedule' + e);
-
-     //   adapterIntervals.sec5 = setInterval(await this.ReadPiko(), 5000);
-     //clearInterval(adapterIntervals.sec5);
+        adapterIntervals.sec10 = setInterval(this.ReadPiko.bind(this), 10000);
+        //clearInterval(adapterIntervals.sec10);
     }
 
     /****************************************************************************************
