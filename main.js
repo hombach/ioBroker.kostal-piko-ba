@@ -457,7 +457,7 @@ if (module.parent) {
 }
 
 
-   otto?.log?.info('Hello Juergen!');
+   otto.log.info('Hello Juergen!');
 
 }
 
