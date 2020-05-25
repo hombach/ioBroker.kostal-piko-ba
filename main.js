@@ -305,8 +305,7 @@ class KostalPikoBA extends utils.Adapter {
         this.log.debug("Initial ReadPico done");
 
         do {
-            setTimeout('', 5000);
-            this.ReadPiko();
+            setTimeout(this.ReadPiko, 5000);
         }
         while (true);
 
