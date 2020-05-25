@@ -377,8 +377,8 @@ class KostalPikoBA extends utils.Adapter {
     
     /****************************************************************************************
     */
-    ReadPiko() {
-        this.log.debug('Piko 6.0 BA auslesen');
+    ReadPiko() { // only working if instanciated!!
+        adapter.log.debug('Piko 6.0 BA auslesen');
         
         const PICOIP = IPAnlage + '?dxsEntries=' + ID_DCEingangGesamt +
             '&dxsEntries=' + ID_Ausgangsleistung + '&dxsEntries=' + ID_Eigenverbrauch +
