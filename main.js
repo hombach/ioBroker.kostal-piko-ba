@@ -309,7 +309,7 @@ class KostalPikoBA extends utils.Adapter {
         var i=0;
         
         do {
-            setTimeout(this.ReadPiko.bind(this), 5000);
+            await setTimeout(this.ReadPiko.bind(this), 5000);
             this.log.warn(i + "x ReadPico done");
             i++;
         }
@@ -443,7 +443,7 @@ class KostalPikoBA extends utils.Adapter {
             } catch (e) {
                 this.log.error('Error in calling Piko API:' + e);
             }
-            this.log.debug('Piko 6.0 BA auslesen');
+            this.log.debug('Piko 6.0 BA ausgelesen');
             
         })();
 
@@ -460,12 +460,3 @@ if (module.parent) {
 } else { // otherwise start the instance directly
     new KostalPikoBA();
 }
-
-
-//adapter = new KostalPikoBA();
-// @ts-ignore
-//adapterIntervals.sec5 = setInterval(otto.ReadPiko, 5000);
-
-//    otto?.log?.info('Hello Juergen!');
-
-//  adapter.ReadPiko;
