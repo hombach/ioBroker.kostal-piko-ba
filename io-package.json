@@ -3,7 +3,7 @@
 
   "common": {
     "name": "kostal-piko-ba",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -27,6 +27,10 @@
     "keywords": [ "Kostal", "Piko", "inverter" ],
     "type": "energy",
     "news": {
+      "0.0.8": {
+        "en": "internal release candidate",
+        "de": "internal release candidate"
+      },
       "0.0.7": {
         "en": "scheduler working",
         "de": "Abruftrigger funktionsfähig"
@@ -74,9 +78,7 @@
   },
 
   "native": {
-    "ipaddress": "",
-    "Versuch": false,
-    "option1": true
+    "ipaddress": ""
   },
 
   "objects": [],

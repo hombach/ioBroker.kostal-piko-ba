@@ -67,7 +67,7 @@ const ID_BatStateOfCharge = 33556229;  // in %
 const ID_BatCurrentDir = 33556230;  // 1 = Entladen; 0 = Laden
 const ID_BatCurrent = 33556238;  // in A
 
-const IPAnlage = 'http://192.168.100.121/api/dxs.json'; // IP der Photovoltaik-Anlage
+var KostalRequest = ''; // IP request for PicoBA
 
 class KostalPikoBA extends utils.Adapter {
 
@@ -90,18 +90,15 @@ class KostalPikoBA extends utils.Adapter {
     * Is called when databases are connected and adapter received configuration.
     */
     async onReady() {
-        // Initialize your adapter here
-        if (!this.config.ipaddress) this.log.warn('Kostal Piko IP address not set');
-
-        // The adapters config (in the instance object everything under the attribute "native") is accessible via
-        // this.config:
-        this.log.info('config option1: ' + this.config.option1);
-        this.log.info('config option2: ' + this.config.option2);
+        if (!this.config.ipaddress) {
+            this.log.warn('Kostal Piko IP address not set');
+        } else {
+            this.log.info('IP address found in config: ' + this.config.ipaddress);
+        }
 
         //For every state in the system there has to be also an object of type state. Here a simple template for a boolean variable
         // General state-objects
-        await this.setObjectAsync('State', {
-            type: 'state',
+        await this.setObjectAsync('State', { type: 'state',
             common: {
                 role: 'value', name: 'Inverter state; 0:off; 3:feed grid(MPP)',
                 type: 'number', unit: '', read: true, write: false, def: 0 },
@@ -288,12 +285,26 @@ class KostalPikoBA extends utils.Adapter {
         result = await this.checkGroupAsync('admin', 'admin');
         this.log.info('check group user admin group admin: ' + result);
         */
-       
-        this.log.debug("OnReady done");
-        await this.ReadPiko();
-        this.log.debug("Initial ReadPico done");
 
-        adapterIntervals.sec10 = setInterval(this.ReadPiko.bind(this), 10000);
+        if (this.config.ipaddress) {
+            KostalRequest = 'http://' + this.config.ipaddress + '/api/dxs.json' +
+                '?dxsEntries=' + ID_DCEingangGesamt + '&dxsEntries=' + ID_Ausgangsleistung +
+                '&dxsEntries=' + ID_Eigenverbrauch + '&dxsEntries=' + ID_Eigenverbrauch_d +
+                '&dxsEntries=' + ID_Eigenverbrauch_G + '&dxsEntries=' + ID_Eigenverbrauchsquote_d +
+                '&dxsEntries=' + ID_Eigenverbrauchsquote_G + '&dxsEntries=' + ID_Ertrag_d +
+                '&dxsEntries=' + ID_Ertrag_G + '&dxsEntries=' + ID_Hausverbrauch_d +
+                '&dxsEntries=' + ID_Hausverbrauch_G + '&dxsEntries=' + ID_Hausverbrauch +
+                '&dxsEntries=' + ID_Autarkiegrad_G + '&dxsEntries=' + ID_Autarkiegrad_d +
+                '&dxsEntries=' + ID_Betriebszeit + '&dxsEntries=' + ID_OperatingStatus +
+                '&dxsEntries=' + ID_BatStateOfCharge + '&dxsEntries=' + ID_BatCurrent +
+                '&dxsEntries=' + ID_BatCurrentDir + '&dxsEntries=' + ID_NetzAbregelung;
+            this.log.debug("OnReady done");
+            await this.ReadPiko();
+            this.log.debug("Initial ReadPico done");
+            adapterIntervals.sec10 = setInterval(this.ReadPiko.bind(this), 10000);
+        } else {
+            this.stop;
+        }
     }
 
     /****************************************************************************************
@@ -342,23 +353,11 @@ class KostalPikoBA extends utils.Adapter {
     /****************************************************************************************
     */
     ReadPiko() {
-        const PICOIP = IPAnlage + '?dxsEntries=' + ID_DCEingangGesamt +
-            '&dxsEntries=' + ID_Ausgangsleistung + '&dxsEntries=' + ID_Eigenverbrauch +
-            '&dxsEntries=' + ID_Eigenverbrauch_d + '&dxsEntries=' + ID_Eigenverbrauch_G +
-            '&dxsEntries=' + ID_Eigenverbrauchsquote_d + '&dxsEntries=' + ID_Eigenverbrauchsquote_G +
-            '&dxsEntries=' + ID_Ertrag_d + '&dxsEntries=' + ID_Ertrag_G +
-            '&dxsEntries=' + ID_Hausverbrauch_d + '&dxsEntries=' + ID_Hausverbrauch_G +
-            '&dxsEntries=' + ID_Hausverbrauch + '&dxsEntries=' + ID_Autarkiegrad_G +
-            '&dxsEntries=' + ID_Autarkiegrad_d + '&dxsEntries=' + ID_Betriebszeit +
-            '&dxsEntries=' + ID_OperatingStatus + '&dxsEntries=' + ID_BatStateOfCharge +
-            '&dxsEntries=' + ID_BatCurrent + '&dxsEntries=' + ID_BatCurrentDir +
-            '&dxsEntries=' + ID_NetzAbregelung;
-
-        var got = require('got');
+         var got = require('got');
         (async () => {
             try {
                 // @ts-ignore got is valid
-                var response = await got(PICOIP);
+                var response = await got(KostalRequest);
                 if (!response.error && response.statusCode == 200) {
                     var result = await JSON.parse(response.body).dxsEntries;
                     this.setStateAsync('Power.SolarDC', { val: Math.round(result[0].value), ack: true });
