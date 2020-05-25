@@ -309,13 +309,13 @@ class KostalPikoBA extends utils.Adapter {
         var i=0;
         
         do {
-            await setTimeout(this.ReadPiko.bind(this), 5000);
+//            await setTimeout(this.ReadPiko.bind(this), 5000);
             this.log.warn(i + "x ReadPico done");
             i++;
         }
         while (i<10);
 
-//        let AutoRun = window.setInterval(this.ReadPiko(), 1000);
+        let AutoRun = setInterval(this.ReadPiko.bind(this), 5000);
         //clearInterval(AutoRun);
         //var sched10 = schedule.schedulejob('*/10 * * * * *', this.ReadPiko());
 
