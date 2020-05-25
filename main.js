@@ -272,7 +272,7 @@ class KostalPikoBA extends utils.Adapter {
             native: {},
         });
 
-
+        await this.MySetObject('Battery.CurrentDir2', 'state', 'indicator', 'Battery current direction; 1=Load; 0=Unload', 'boolean', '', false)
         // all states changes inside the adapters namespace are subscribed
         // this.subscribeStates('*');
 
@@ -303,7 +303,6 @@ class KostalPikoBA extends utils.Adapter {
         this.log.debug("Initial ReadPico done");
 
         adapterIntervals.sec10 = setInterval(this.ReadPiko.bind(this), 10000);
-        //clearInterval(adapterIntervals.sec10);
     }
 
     /****************************************************************************************
@@ -311,6 +310,7 @@ class KostalPikoBA extends utils.Adapter {
     * @param {() => void} callback */
     onUnload(callback) {
         try {
+            clearInterval(adapterIntervals.sec10);
             Object.keys(adapterIntervals).forEach(interval => clearInterval(adapterIntervals[interval]));
             this.log.info('Adaptor Kostal-Piko-BA cleaned everything up...');
             callback();
@@ -347,27 +347,23 @@ class KostalPikoBA extends utils.Adapter {
         }
     }
 
+     
     /****************************************************************************************
-    * Some message was sent to this instance over message box. Used by email, pushover, text2speech, ...
-    * Using this method requires "common.message" property to be set to true in io-package.json
-    * @param {ioBroker.Message} obj */
-    // onMessage(obj) {
-    // 	if (typeof obj === 'object' && obj.message) {
-    // 		if (obj.command === 'send') { // e.g. send email or pushover or whatever
-    // 			this.log.info('send command');
-
-    // 			// Send response in callback if required
-    // 			if (obj.callback) this.sendTo(obj.from, obj.command, 'Message received', obj.callback);
-    // 		}
-    // 	}
-    // }
+    */
+    MySetObject(id, type, role, name, vartype, unit, def) {
+        this.setObjectAsync(id, {
+            type: type,
+            common: {
+                role: role, name: name, type: vartype, unit: unit, read: true, write: false, def: def
+            },
+            native: {},
+        });
+    }
 
   
     /****************************************************************************************
     */
-    ReadPiko() { // only working if instanciated!!
-        this.log.debug('Piko 6.0 BA auslesen');
-        
+    ReadPiko() {
         const PICOIP = IPAnlage + '?dxsEntries=' + ID_DCEingangGesamt +
             '&dxsEntries=' + ID_Ausgangsleistung + '&dxsEntries=' + ID_Eigenverbrauch +
             '&dxsEntries=' + ID_Eigenverbrauch_d + '&dxsEntries=' + ID_Eigenverbrauch_G +
@@ -383,7 +379,7 @@ class KostalPikoBA extends utils.Adapter {
         var got = require('got');
         (async () => {
             try {
-                // @ts-ignore got is a valid
+                // @ts-ignore got is valid
                 var response = await got(PICOIP);
                 if (!response.error && response.statusCode == 200) {
                     // if (logging) this.log.debug(response.body);
@@ -421,10 +417,9 @@ class KostalPikoBA extends utils.Adapter {
             } catch (e) {
                 this.log.error('Error in calling Piko API:' + e);
             }
-            this.log.debug('Piko 6.0 BA ausgelesen');
+            this.log.debug('Piko-BA ausgelesen');
             
         })();
-
     } //END ReadPiko
 } // END Class
 

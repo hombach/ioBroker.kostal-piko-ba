@@ -1,6 +1,6 @@
 {
   "name": "iobroker.kostal-piko-ba",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Adapter for reading Kostal Piko BA data",
   "author": {
     "name": "hombach",
@@ -23,8 +23,7 @@
   },
   "dependencies": {
     "@iobroker/adapter-core": "^2.4.0",
-    "got": "^11.1.4",
-    "node-schedule": "^1.3.2"
+    "got": "^11.1.4"
   },
   "devDependencies": {
     "@iobroker/testing": "^2.2.0",
@@ -34,7 +33,7 @@
     "@types/mocha": "^7.0.2",
     "@types/node": "^12.12.37",
     "@types/proxyquire": "^1.3.28",
-    "@types/sinon": "^9.0.0",
+    "@types/sinon": "^9.0.4",
     "@types/sinon-chai": "^3.2.4",
     "axios": "^0.19.2",
     "chai": "^4.2.0",
