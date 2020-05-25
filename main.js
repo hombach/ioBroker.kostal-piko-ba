@@ -93,6 +93,8 @@ class KostalPikoBA extends utils.Adapter {
         // Initialize your adapter here
         if (!this.config.ipaddress) this.log.warn('Kostal Piko IP address not set');
 
+        this.updateConfig
+
         // The adapters config (in the instance object everything under the attribute "native") is accessible via
         // this.config:
         this.log.info('config option1: ' + this.config.option1);
