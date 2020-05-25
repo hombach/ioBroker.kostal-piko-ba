@@ -302,19 +302,18 @@ class KostalPikoBA extends utils.Adapter {
         result = await this.checkGroupAsync('admin', 'admin');
         this.log.info('check group user admin group admin: ' + result);
         */
+       
         this.log.debug("OnReady done");
         await this.ReadPiko();
         this.log.warn("Initial ReadPico done");
-        await this.ReadPiko();
-        await this.ReadPiko();
-        await this.ReadPiko();
-        await this.ReadPiko();
-        this.log.warn("4x ReadPico done");
+        var i=0;
 
-        //do {
-         //   setTimeout(this.ReadPiko, 5000);
-       // }
-        //while (true);
+        do {
+            setTimeout(this.ReadPiko, 5000);
+            this.log.warn(i + "x ReadPico done");
+            i++;
+        }
+        while (i<20);
 
 //        let AutoRun = window.setInterval(this.ReadPiko(), 1000);
         //clearInterval(AutoRun);
@@ -446,7 +445,7 @@ class KostalPikoBA extends utils.Adapter {
                 this.log.error('Error in calling Piko API:' + e);
             }
             this.log.debug('Piko 6.0 BA auslesen');
-
+            
         })();
 
     } //END ReadPiko
