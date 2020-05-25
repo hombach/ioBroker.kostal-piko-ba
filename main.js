@@ -455,14 +455,13 @@ if (module.parent) {
 } else { // otherwise start the instance directly
     otto = new KostalPikoBA();
 }
-// @ts-ignore
-otto.ReadPiko;
 
 
 
 
 //adapter = new KostalPikoBA();
-//adapterIntervals.sec5 = setInterval(adapter.ReadPiko, 5000);
+// @ts-ignore
+adapterIntervals.sec5 = setInterval(otto.ReadPiko, 5000);
 
    // otto?.log?.info('Hello Juergen!');
 
