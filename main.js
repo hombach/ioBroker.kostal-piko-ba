@@ -387,7 +387,7 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('GridLimitation', { val: result[19].value, ack: true });
                 }
                 else {
-                    this.log.error('Fehler: ' + response.error + ' bei Abfrage von Pico-BA: ' + IPAnlage);
+                    this.log.error('Fehler: ' + response.error + ' bei Abfrage von Pico-BA: ' + KostalRequest);
                 }
             } catch (e) {
                 this.log.error('Error in calling Piko API:' + e);

@@ -15,15 +15,15 @@ systemDictionary = {
         'zh-cn': 'Kostal Piko BA的适配器设置'
     },
     'ipaddress': {
-        'en': 'IP address',
-        'de': 'IP Adresse',
-        'ru': 'IP address',
-        'pt': 'IP address',
-        'nl': 'IP address',
-        'fr': 'IP address',
-        'it': 'IP address',
-        'es': 'IP address',
-        'pl': 'IP address',
-        'zh-cn': 'IP address'
+        'en': 'IP address of Kostal Piko BA',
+        'de': 'IP Adresse des Kostal Piko BA',
+        'ru': 'IP address of Kostal Piko BA',
+        'pt': 'IP address of Kostal Piko BA',
+        'nl': 'IP address of Kostal Piko BA',
+        'fr': 'IP address of Kostal Piko BA',
+        'it': 'IP address of Kostal Piko BA',
+        'es': 'IP address of Kostal Piko BA',
+        'pl': 'IP address of Kostal Piko BA',
+        'zh-cn': 'IP address of Kostal Piko BA'
     }
 };
