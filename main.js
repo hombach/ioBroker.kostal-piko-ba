@@ -461,8 +461,8 @@ otto = new KostalPikoBA();
 // @ts-ignore At runtime adapter will be defined
 //adapterIntervals.sec5 = setInterval(adapter.ReadPiko, 5000);
 
-if (otto) {
-    otto.log.warn('Hello Juergen!');
+if (otto.log) {
+    otto.log.info('Hello Juergen!');
 }
 // @ts-ignore
 //  adapter.ReadPiko;
