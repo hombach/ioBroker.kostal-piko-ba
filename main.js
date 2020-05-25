@@ -71,6 +71,22 @@ const ID_BatCurrent = 33556238;  // in A
 const IPAnlage = 'http://192.168.100.121/api/dxs.json'; // IP der Photovoltaik-Anlage
 
 let otto;
+let ottolight;
+
+class helga extends utils.Adapter {
+/****************************************************************************************
+* @param {Partial<utils.AdapterOptions>} [options={}]
+*/
+    constructor(options) {
+        super({
+            ...options,
+            name: 'grosse Helga'
+        });
+    }
+}
+ottolight = new helga();
+
+ottolight.log.error('grosse Helga');
 
 class KostalPikoBA extends utils.Adapter {
 
@@ -383,7 +399,7 @@ class KostalPikoBA extends utils.Adapter {
     /****************************************************************************************
     */
     ReadPiko() { // only working if instanciated!!
-        //this.log.debug('Piko 6.0 BA auslesen');
+        this.log.debug('Piko 6.0 BA auslesen');
         
         const PICOIP = IPAnlage + '?dxsEntries=' + ID_DCEingangGesamt +
             '&dxsEntries=' + ID_Ausgangsleistung + '&dxsEntries=' + ID_Eigenverbrauch +
@@ -446,23 +462,19 @@ class KostalPikoBA extends utils.Adapter {
 } // END Class
 
 // @ts-ignore parent is a valid property on module
-//if (module.parent) {
+if (module.parent) {
     // Export the constructor in compact mode
     /**
     * @param {Partial<utils.AdapterOptions>} [options={}]
     */
- //   module.exports = (options) => adapter = new KostalPikoBA(options);
-//} else { // otherwise start the instance directly
-otto = new KostalPikoBA();
-//}
-// @ts-ignore
+ //   module.exports = (options) => otto = new KostalPikoBA(options);
+} else { // otherwise start the instance directly
+ //   otto = new KostalPikoBA();
+}
 
 //adapter = new KostalPikoBA();
-// @ts-ignore At runtime adapter will be defined
 //adapterIntervals.sec5 = setInterval(adapter.ReadPiko, 5000);
 
-if (otto.log) {
-    otto.log.info('Hello Juergen!');
-}
-// @ts-ignore
+   // otto?.log?.info('Hello Juergen!');
+
 //  adapter.ReadPiko;
