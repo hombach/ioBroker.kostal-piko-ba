@@ -1,5 +1,7 @@
 'use strict';
 
+import { log } from 'console';
+
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require('@iobroker/adapter-core');
@@ -303,6 +305,10 @@ class KostalPikoBA extends utils.Adapter {
         this.log.debug("OnReady done");
         await this.ReadPiko();
         this.log.warn("Initial ReadPico done");
+        await this.ReadPiko();
+        await this.ReadPiko();
+        await this.ReadPiko();
+        await this.ReadPiko();
 
         //do {
          //   setTimeout(this.ReadPiko, 5000);
@@ -383,7 +389,7 @@ class KostalPikoBA extends utils.Adapter {
     /****************************************************************************************
     */
     ReadPiko() { // only working if instanciated!!
-        //this.log.debug('Piko 6.0 BA auslesen');
+        this.log.debug('Piko 6.0 BA auslesen');
         
         const PICOIP = IPAnlage + '?dxsEntries=' + ID_DCEingangGesamt +
             '&dxsEntries=' + ID_Ausgangsleistung + '&dxsEntries=' + ID_Eigenverbrauch +
@@ -438,7 +444,7 @@ class KostalPikoBA extends utils.Adapter {
             } catch (e) {
                 this.log.error('Error in calling Piko API:' + e);
             }
-            //this.log.debug('Piko 6.0 BA auslesen');
+            this.log.debug('Piko 6.0 BA auslesen');
 
         })();
 
@@ -461,7 +467,7 @@ if (module.parent) {
 
 //adapter = new KostalPikoBA();
 // @ts-ignore
-adapterIntervals.sec5 = setInterval(otto.ReadPiko, 5000);
+//adapterIntervals.sec5 = setInterval(otto.ReadPiko, 5000);
 
    // otto?.log?.info('Hello Juergen!');
 
