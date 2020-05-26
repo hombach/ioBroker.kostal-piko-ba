@@ -2,8 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\.github",
-    "\\lib",
-    "\\test"
+    "\\admin"
   ],
   "SelectedNode": "\\main.js",
   "PreviewInSolutionExplorer": false

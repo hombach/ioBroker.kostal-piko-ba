@@ -14,10 +14,7 @@
 
 ## Adapter for reading Kostal Piko BA data for iOBroker
 
-Adapter for reading Kostal Piko BA data
-
-## Developer manual
-This section is intended for the developer. It can be deleted later
+Adapter for reading Kostal Piko BA data. Adapter creates some states and updates sequenzially.
 
 ### Best Practices
 We've collected some [best practices](https://github.com/ioBroker/ioBroker.repositories#development-and-coding-best-practices) regarding ioBroker development and coding in general. If you're new to ioBroker or Node.js, you should
