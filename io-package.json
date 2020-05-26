@@ -21,9 +21,9 @@
     "enabled": true,
     "license": "MIT",
     "loglevel": "debug",
-    "readme": "https://github.com/hombach/iobroker.kostal-piko-ba/blob/master/README.md",
+    "readme": "https://github.com/hombach/ioBroker.kostal-piko-ba/blob/master/README.md",
     "icon": "picoba.png",
-    "extIcon": "https://github.com/hombach/iobroker.kostal-piko-ba/admin/picoba.png",
+    "extIcon": "https://github.com/hombach/ioBroker.kostal-piko-ba/admin/picoba.png",
     "keywords": [ "Kostal", "Piko", "inverter" ],
     "type": "energy",
     "news": {
