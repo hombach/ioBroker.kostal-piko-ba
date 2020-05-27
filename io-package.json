@@ -27,6 +27,10 @@
     "keywords": [ "Kostal", "Piko", "inverter" ],
     "type": "energy",
     "news": {
+      "0.1.1": {
+        "en": "first working release - bugfix",
+        "de": "Erste voll funktionsfähige Version - Bugfix"
+      },
       "0.1.0": {
         "en": "first working release",
         "de": "Erste voll funktionsfähige Version"
