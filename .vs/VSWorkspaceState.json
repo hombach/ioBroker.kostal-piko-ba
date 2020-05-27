@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\.github",
-    "\\admin"
+    "\\.github\\ISSUE_TEMPLATE",
+    "\\admin",
+    "\\lib"
   ],
-  "SelectedNode": "\\main.js",
+  "SelectedNode": "\\package.json",
   "PreviewInSolutionExplorer": false
 }
