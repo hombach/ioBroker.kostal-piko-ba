@@ -3,7 +3,7 @@
 
   "common": {
     "name": "kostal-piko-ba",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -20,70 +20,74 @@
     "mode": "daemon",
     "enabled": true,
     "license": "MIT",
-    "loglevel": "debug",
+    "loglevel": "info",
     "readme": "https://github.com/hombach/ioBroker.kostal-piko-ba/blob/master/README.md",
     "icon": "picoba.png",
     "extIcon": "https://github.com/hombach/ioBroker.kostal-piko-ba/blob/master/admin/picoba.png",
     "keywords": [ "Kostal", "Piko", "inverter" ],
     "type": "energy",
     "news": {
-      "0.1.1": {
-        "en": "first working release - bugfix",
-        "de": "Erste voll funktionsfähige Version - Bugfix"
+        "0.2.0": {
+          "en": "debug phase finished",
+          "de": "Debug modus beendet"
+        },
+        "0.1.1": {
+          "en": "first working release - bugfix",
+          "de": "Erste voll funktionsfähige Version - Bugfix"
+        },
+        "0.1.0": {
+          "en": "first working release",
+          "de": "Erste voll funktionsfähige Version"
+        },
+        "0.0.8": {
+          "en": "internal release candidate",
+          "de": "internal release candidate"
+        },
+        "0.0.7": {
+          "en": "scheduler working",
+          "de": "Abruftrigger funktionsfähig"
+        },
+        "0.0.6": {
+          "en": "data load working",
+          "de": "Daten auslesen funktionsfähig"
+        },
+        "0.0.5": {
+          "en": "first data load",
+          "de": "erste Daten ausgelesen"
+        },
+        "0.0.4": {
+          "en": "states working",
+          "de": "Objektstatus funktionieren"
+        },
+        "0.0.3": {
+          "en": "training",
+          "de": "Training"
+        },
+        "0.0.1": {
+          "en": "initial release",
+          "de": "Erstveröffentlichung"
+        }
       },
-      "0.1.0": {
-        "en": "first working release",
-        "de": "Erste voll funktionsfähige Version"
+      "main": "main.js",
+      "compact": true,
+      "materialize": true,
+      "materializeTab": true,
+      "adminTab": {
+        "singleton": true,
+        "name": {
+          "en": "Kostal-PikoBA",
+          "de": "Kostal-PikoBA"
+        },
+        "link": "",
+        "fa-icon": "info"
       },
-      "0.0.8": {
-        "en": "internal release candidate",
-        "de": "internal release candidate"
-      },
-      "0.0.7": {
-        "en": "scheduler working",
-        "de": "Abruftrigger funktionsfähig"
-      },
-      "0.0.6": {
-        "en": "data load working",
-        "de": "Daten auslesen funktionsfähig"
-      },
-      "0.0.5": {
-        "en": "first data load",
-        "de": "erste Daten ausgelesen"
-      },
-      "0.0.4": {
-        "en": "states working",
-        "de": "Objektstatus funktionieren"
-      },
-      "0.0.3": {
-        "en": "training",
-        "de": "Training"
-      },
-      "0.0.1": {
-        "en": "initial release",
-        "de": "Erstveröffentlichung"
-      }
+      "supportCustoms": true,
+      "dependencies": [
+        {
+          "js-controller": ">=2.0.0"
+        }
+      ]
     },
-    "main": "main.js",
-    "compact": true,
-    "materialize": true,
-    "materializeTab": true,
-    "adminTab": {
-      "singleton": true,
-      "name": {
-        "en": "Kostal-PikoBA",
-        "de": "Kostal-PikoBA"
-      },
-      "link": "",
-      "fa-icon": "info"
-    },
-    "supportCustoms": true,
-    "dependencies": [
-      {
-        "js-controller": ">=2.0.0"
-      }
-    ]
-  },
 
   "native": {
     "ipaddress": ""
