@@ -1,5 +1,5 @@
 ---
-name: Bug report
+name: ioBroker.kostal-piko-ba Bug report
 about: Something is not working as it should
 title: ''
 labels: ''
