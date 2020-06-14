@@ -32,6 +32,9 @@ You can run them using `npm run <scriptname>`
 To get your adapter released in ioBroker, please refer to the documentation 
 of [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories#requirements-for-adapter-to-get-added-to-the-latest-repository).
 
+### Settings
+To connect to the Kostal Pico BA inverter type in its IP-address in the config.
+
 ## Changelog
 
 ### 0.0.2
@@ -43,7 +46,7 @@ of [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories#req
 ## License
 MIT License
 
-Copyright (c) 2020 Author <christian@homba.ch>
+Copyright (c) 2020 Author HombachC
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
