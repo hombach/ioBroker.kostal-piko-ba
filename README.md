@@ -1,5 +1,5 @@
 ![Logo](admin/picoba.png)
-# ioBroker.kostal_piko_ba
+# ioBroker.kostal-piko-ba
 
 [![NPM version](http://img.shields.io/npm/v/ioBroker.kostal-piko-ba.svg)](https://www.npmjs.com/package/ioBroker.kostal-piko-ba)
 [![Downloads](https://img.shields.io/npm/dm/ioBroker.kostal-piko-ba.svg)](https://www.npmjs.com/package/ioBroker.kostal-piko-ba)
