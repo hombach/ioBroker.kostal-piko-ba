@@ -37,10 +37,10 @@ To connect to the Kostal Pico BA inverter type in its IP-address in the config.
 
 ## Changelog
 
-### 0.0.2
+### 0.2.0
 * (HombachC) debug phase finished
 
-### 0.0.1
+### 0.1.0
 * (HombachC) initial working release
 
 ## License
