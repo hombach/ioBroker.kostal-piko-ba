@@ -1,8 +1,8 @@
 ![Logo](admin/picoba.png)
 # ioBroker.kostal-piko-ba
 
-[![NPM version](http://img.shields.io/npm/v/ioBroker.kostal-piko-ba.svg)](https://www.npmjs.com/package/ioBroker.kostal-piko-ba)
-[![Downloads](https://img.shields.io/npm/dm/ioBroker.kostal-piko-ba.svg)](https://www.npmjs.com/package/ioBroker.kostal-piko-ba)
+[![NPM version](http://img.shields.io/npm/v/iobroker.kostal-piko-ba.svg)](https://www.npmjs.com/package/iobroker.kostal-piko-ba)
+[![Downloads](https://img.shields.io/npm/dm/iobroker.kostal-piko-ba.svg)](https://www.npmjs.com/package/iobroker.kostal-piko-ba)
 ![Number of Installations (latest)](http://ioBroker.live/badges/template-installed.svg)
 ![Number of Installations (stable)](http://ioBroker.live/badges/template-stable.svg)
 [![Dependency Status](https://img.shields.io/david/hombach/ioBroker.kostal-piko-ba.svg)](https://david-dm.org/hombach/ioBroker.kostal-piko-ba)
