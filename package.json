@@ -13,10 +13,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/hombach/ioBroker.kostal-piko-ba.git"
+    "url": "git+https://github.com/hombach/ioBroker.kostal-piko-ba.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^2.4.0",
