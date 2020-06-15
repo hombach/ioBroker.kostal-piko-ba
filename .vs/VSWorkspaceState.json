@@ -2,7 +2,6 @@
   "ExpandedNodes": [
     "",
     "\\.github",
-    "\\.github\\workflows",
     "\\admin",
     "\\lib"
   ],

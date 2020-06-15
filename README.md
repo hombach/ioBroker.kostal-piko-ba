@@ -16,31 +16,18 @@
 ## Adapter for reading Kostal Piko BA data for iOBroker
 Adapter for reading Kostal Piko BA data. Adapter creates some states and updates sequenzially.
 
-### Best Practices
-We've collected some [best practices](https://github.com/ioBroker/ioBroker.repositories#development-and-coding-best-practices) regarding ioBroker development and coding in general.
-
-### Scripts in `package.json`
-You can run them using `npm run <scriptname>`
-| Script name | Description                                              |
-|-------------|----------------------------------------------------------|
-| `test:js`   | Executes the tests you defined in `*.test.js` files.     |
-| `test:package`    | Ensures your `package.json` and `io-package.json` are valid. |
-| `test` | Performs a minimal test run on package files and your tests. |
-| `lint` | Runs `ESLint` to check your code for formatting errors and potential bugs. |
-
-### Publishing the adapter
-To get your adapter released in ioBroker, please refer to the documentation 
-of [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories#requirements-for-adapter-to-get-added-to-the-latest-repository).
-
 ### Settings
 To connect to the Kostal Pico BA inverter type in its IP-address in the config.
 
 ## Changelog
 
-### 0.2.0
+### 0.2.3 (16.06.2020)
+* (HombachC) fixing npm trouble
+
+### 0.2.0 (15.06.2020)
 * (HombachC) debug phase finished
 
-### 0.1.0
+### 0.1.0 (15.05.2020)
 * (HombachC) initial working release
 
 ## License
