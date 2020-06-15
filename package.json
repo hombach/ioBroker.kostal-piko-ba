@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hombach/ioBroker.kostal-piko-ba.git"
+    "url": "https://github.com/hombach/ioBroker.kostal-piko-ba.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
