@@ -1,9 +1,11 @@
 {
   "ExpandedNodes": [
     "",
+    "\\.github",
+    "\\.github\\workflows",
     "\\admin",
     "\\lib"
   ],
-  "SelectedNode": "\\admin\\tab_m.html",
+  "SelectedNode": "\\package.json",
   "PreviewInSolutionExplorer": false
 }
