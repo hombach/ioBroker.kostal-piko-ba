@@ -5,7 +5,7 @@
 [![Downloads](https://img.shields.io/npm/dm/ioBroker.kostal-piko-ba.svg)](https://www.npmjs.com/package/ioBroker.kostal-piko-ba)
 ![Number of Installations (latest)](http://ioBroker.live/badges/template-installed.svg)
 ![Number of Installations (stable)](http://ioBroker.live/badges/template-stable.svg)
-[![Dependency Status](https://img.shields.io/david/hombach/ioBroker.kostal-piko-ba.svg)](https://david-dm.org/hombachc/ioBroker.kostal-piko-ba)
+[![Dependency Status](https://img.shields.io/david/hombach/ioBroker.kostal-piko-ba.svg)](https://david-dm.org/hombach/ioBroker.kostal-piko-ba)
 [![Known Vulnerabilities](https://snyk.io/test/github/hombach/ioBroker.kostal-piko-ba/badge.svg)](https://snyk.io/test/github/hombach/ioBroker.kostal-piko-ba)
 ![Node.js CI](https://github.com/hombach/ioBroker.kostal-piko-ba/workflows/Node.js%20CI/badge.svg)
 
