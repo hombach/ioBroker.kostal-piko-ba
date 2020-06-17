@@ -14,12 +14,15 @@
 **Tests:**: [![Travis-CI](http://img.shields.io/travis/hombach/ioBroker.kostal-piko-ba/master.svg)](https://travis-ci.org/hombach/ioBroker.kostal-piko-ba)
 
 ## Adapter for reading Kostal Piko BA data for iOBroker
-Adapter for reading Kostal Piko BA data. Adapter creates some states and updates sequenzially.
+Adapter for reading Kostal Piko BA data. Adapter creates some states and updates sequentially.
 
 ### Settings
 To connect to the Kostal Pico BA inverter type in its IP-address in the config.
 
 ## Changelog
+
+### 0.2.4 (16.06.2020)
+* (HombachC) fixed typos
 
 ### 0.2.3 (16.06.2020)
 * (HombachC) fixing npm trouble
