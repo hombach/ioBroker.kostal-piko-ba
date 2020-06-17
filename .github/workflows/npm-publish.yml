@@ -28,11 +28,12 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - run: npm ci
-      - run: npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM }}
-      - run: npm publish          
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM}}
 
   publish-gpr:
-    needs: build
+    needs: publish-npm
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
