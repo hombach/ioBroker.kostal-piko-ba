@@ -31,15 +31,9 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM}}
-      - name: npm publish
-         run: |
-           npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
-           npm run trypublish
-         env:
-           CI: true
-           NODE_AUTH_TOKEN: ${{ secrets.NPM }}
-
-
+      - run: npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM }}
+      - run: npm run trypublish
+                
 
   publish-gpr:
     needs: build
