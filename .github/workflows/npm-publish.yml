@@ -30,19 +30,7 @@ jobs:
       - run: npm ci
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npm }}
-
-
-      - name: npm publish
-        run: |
-          npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
-          npm run trypublish
-        env:
-          CI: true
-          NODE_AUTH_TOKEN: ${{ secrets.npm }}
-
-
-
+          NODE_AUTH_TOKEN: ${{secrets.npm}}
 
   publish-gpr:
     needs: build
