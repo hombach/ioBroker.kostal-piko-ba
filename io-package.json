@@ -29,6 +29,10 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "0.2.8": {
+        "en": "debuging NPM publish trouble",
+        "de": "Debugen von NPM publish Fehlern"
+      },
       "0.2.0": {
         "en": "debug phase finished",
         "de": "Debug modus beendet"
