@@ -53,17 +53,9 @@
         "en": "data load working",
         "de": "Daten auslesen funktionsfähig"
       },
-      "0.0.5": {
-        "en": "first data load",
-        "de": "erste Daten ausgelesen"
-      },
       "0.0.4": {
         "en": "states working",
         "de": "Objektstatus funktionieren"
-      },
-      "0.0.3": {
-        "en": "training",
-        "de": "Training"
       },
       "0.0.1": {
         "en": "initial release",

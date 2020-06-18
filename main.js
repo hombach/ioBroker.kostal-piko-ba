@@ -272,19 +272,9 @@ class KostalPikoBA extends utils.Adapter {
             await this.setStateAsync('state', { val: 10 })
             await this.setStateAsync('state', true); // the variable state is set to true as command (ack=false)
             await this.setStateAsync('state', { val: true, ack: true }); // ack should be always set to true if the value is received from or acknowledged from the target system
-            await this.setStateAsync('state', { val: true, ack: true, expire: 30 }); // same thing, but the state is deleted after 30s (getState will return null afterwards)
         } catch (e) {
             this.log.error("Unhandled exception processing setStateAsync: " + e);
         }
-        */
-
-        // examples for the checkPassword/checkGroup functions
-        /*
-        let result = await this.checkPasswordAsync('admin', 'iobroker');
-        this.log.info('check user admin pw iobroker: ' + result);
-
-        result = await this.checkGroupAsync('admin', 'admin');
-        this.log.info('check group user admin group admin: ' + result);
         */
 
         if (this.config.ipaddress) {
@@ -396,7 +386,7 @@ class KostalPikoBA extends utils.Adapter {
             this.log.debug('Piko-BA ausgelesen');
             
         })();
-    } //END ReadPiko
+    } // END ReadPiko
 } // END Class
 
 // @ts-ignore parent is a valid property on module
