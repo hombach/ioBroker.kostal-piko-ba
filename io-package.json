@@ -3,7 +3,7 @@
 
   "common": {
     "name": "kostal-piko-ba",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -29,7 +29,7 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
-      "0.3.1": {
+      "0.3.2": {
         "en": "updated npm-publish.yml"
       },
       "0.3.0": {
