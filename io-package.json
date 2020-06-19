@@ -3,7 +3,7 @@
 
   "common": {
     "name": "kostal-piko-ba",
-    "version": "0.2.8",
+    "version": "0.2.9",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -29,6 +29,10 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "0.2.9": {
+        "en": "fixed gitignore error",
+        "de": "gitignore Fehler beseitigt"
+      },
       "0.2.8": {
         "en": "debuging NPM publish trouble",
         "de": "Debugen von NPM publish Fehlern"
