@@ -3,7 +3,7 @@
 
   "common": {
     "name": "kostal-piko-ba",
-    "version": "0.2.9",
+    "version": "0.3.0",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -29,41 +29,32 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
-      "0.2.9": {
-        "en": "fixed gitignore error",
-        "de": "gitignore Fehler beseitigt"
+      "0.3.0": {
+        "en": "updated dependency _got_ to 11.3.0"
       },
-      "0.2.8": {
-        "en": "debuging NPM publish trouble",
-        "de": "Debugen von NPM publish Fehlern"
+      "0.2.9": {
+        "en": "fixed gitignore error"
       },
       "0.2.0": {
-        "en": "debug phase finished",
-        "de": "Debug modus beendet"
+        "en": "debug phase finished"
       },
       "0.1.0": {
-        "en": "first working release",
-        "de": "Erste voll funktionsfähige Version"
+        "en": "first working release"
       },
       "0.0.8": {
-        "en": "internal release candidate",
-        "de": "internal release candidate"
+        "en": "internal release candidate"
       },
       "0.0.7": {
-        "en": "scheduler working",
-        "de": "Abruftrigger funktionsfähig"
+        "en": "scheduler working"
       },
       "0.0.6": {
-        "en": "data load working",
-        "de": "Daten auslesen funktionsfähig"
+        "en": "data load working"
       },
       "0.0.4": {
-        "en": "states working",
-        "de": "Objektstatus funktionieren"
+        "en": "states working"
       },
       "0.0.1": {
-        "en": "initial release",
-        "de": "Erstveröffentlichung"
+        "en": "initial release"
       }
     },
     "main": "main.js",

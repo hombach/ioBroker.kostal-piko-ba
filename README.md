@@ -21,26 +21,11 @@ To connect to the Kostal Pico BA inverter type in its IP-address in the config.
 
 ## Changelog
 
-### 0.2.9 (19.06.2020)
-* (HombachC) fixed gitignore error
-
-### 0.2.8 (17.06.2020)
-* (HombachC) fixing npm trouble
-
-### 0.2.7 (17.06.2020)
-* (HombachC) fixing npm trouble
-
-### 0.2.6 (17.06.2020)
-* (HombachC) another typo
+### 0.3.0 (19.06.2020)
+* (HombachC) updated dependency 'got' to 11.3.0
 
 ### 0.2.5 (17.06.2020)
 * (HombachC) added tests for node.js 14
-
-### 0.2.4 (17.06.2020)
-* (HombachC) fixed typos
-
-### 0.2.3 (16.06.2020)
-* (HombachC) fixing npm trouble
 
 ### 0.2.0 (15.06.2020)
 * (HombachC) debug phase finished
