@@ -1,12 +1,8 @@
 .git
 .idea
-.vscode/*
-.vscode
-.vs/*
-.vs
+.vscode/
 .suo
 *.code-workspace
-node_modules
 nbproject
 
 # npm package files
@@ -17,3 +13,10 @@ Thumbs.db
 # i18n intermediate files
 admin/i18n/flat.txt
 admin/i18n/*/flat.txt
+
+# Visual Studio cache/options directory
+.vs/
+
+# Node.js Tools for Visual Studio
+.ntvs_analysis.dat
+node_modules/
