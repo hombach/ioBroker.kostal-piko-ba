@@ -118,7 +118,7 @@ class KostalPikoBA extends utils.Adapter {
         });
         await this.setObjectAsync('Power.GridAC', { type: 'state',
             common: {
-                role: 'value', name: 'Grid output power without battery chargin',
+                role: 'value', name: 'Grid output power without battery charging',
                 type: 'number', unit: 'W', read: true, write: false, def: 0
             },
             native: {},
