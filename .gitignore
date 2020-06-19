@@ -2,7 +2,9 @@
 .idea
 .vscode/*
 .vscode
-.vs\*
+.vs/*
+.vs
+.suo
 *.code-workspace
 node_modules
 nbproject
