@@ -93,7 +93,7 @@
 
   "instanceObjects": [
     {
-      "_id": "State_NEW",
+      "_id": "State",
       "type": "state",
       "common": {
         "role": "value",
@@ -107,7 +107,7 @@
       "native": {} 
     },
     {
-      "_id": "GridLimitation_NEW",
+      "_id": "GridLimitation",
       "type": "state",
       "common": {
         "role": "value",

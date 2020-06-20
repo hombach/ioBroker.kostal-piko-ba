@@ -129,35 +129,35 @@ class KostalPikoBA extends utils.Adapter {
             common: { name: 'current inverter power data' },
             native: {},
         });
-        await this.setObjectAsync('Power.GridAC', { type: 'state',
+        await this.setObjectNotExists('Power.GridAC', { type: 'state',
             common: {
                 role: 'value', name: 'Grid output power without battery charging',
                 type: 'number', unit: 'W', read: true, write: false, def: 0
             },
             native: {},
         });
-        await this.setObjectAsync('Power.SolarDC', { type: 'state',
+        await this.setObjectNotExists('Power.SolarDC', { type: 'state',
             common: {
                 role: 'value', name: 'Total solar input power',
                 type: 'number', unit: 'W', read: true, write: false, def: 0
             },
             native: {},
         });
-        await this.setObjectAsync('Power.SelfConsumption', { type: 'state',
+        await this.setObjectNotExists('Power.SelfConsumption', { type: 'state',
             common: {
                 role: 'value', name: 'Selfconsumption Power',
                 type: 'number', unit: 'W', read: true, write: false, def: 0
             },
             native: {},
         });
-        await this.setObjectAsync('Power.HouseConsumption', { type: 'state',
+        await this.setObjectNotExists('Power.HouseConsumption', { type: 'state',
             common: {
                 role: 'value', name: 'Powerconsumption of house',
                 type: 'number', unit: 'W', read: true, write: false, def: 0
             },
             native: {},
         });
-        await this.setObjectAsync('Power.Surplus', { type: 'state',
+        await this.setObjectNotExists('Power.Surplus', { type: 'state',
             common: {
                 role: 'value', name: 'Power surplus of system',
                 type: 'number', unit: 'W', read: true, write: false, def: 0
