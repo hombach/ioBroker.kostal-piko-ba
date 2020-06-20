@@ -7,7 +7,7 @@
 - The way you have defined the dependencies only works correct since js - controller 3. Best put the admin dependency in "globalDependencies"
 - Is "supportCustoms": true, correct ? !Yes there is a custom_m.html but do you really want to use it ? Idon't thinl so. Please remove both
 + Please do not use setObjectAsync, but setObjectNotExists => MOVED TO io-package.json
-- You could move all those statically defined objects into io - package.json => GOOD!
++ You could move all those statically defined objects into io - package.json => MOVED TO io-package.json
 - If you do not need state / object changes please also not implement onObject / StateChange methods
 - As personal note: using intervals for "external communication" can lead to problems if there are network problems because then requests can pile up(especially when no timeouts were set) ...better is a timeout which is newly set at the end of the former request
 */
@@ -91,8 +91,8 @@ class KostalPikoBA extends utils.Adapter {
             name: 'kostal-piko-ba'
         });
         this.on('ready', this.onReady.bind(this));
-        this.on('objectChange', this.onObjectChange.bind(this));
-        this.on('stateChange', this.onStateChange.bind(this));
+        // this.on('objectChange', this.onObjectChange.bind(this));
+        // this.on('stateChange', this.onStateChange.bind(this));
         // this.on('message', this.onMessage.bind(this));
         this.on('unload', this.onUnload.bind(this));
     }
@@ -107,157 +107,7 @@ class KostalPikoBA extends utils.Adapter {
             this.log.info('IP address found in config: ' + this.config.ipaddress);
         }
 
-       /*
-        // Power state-objects
-        await this.setObjectNotExists('Power', { type: 'channel',
-            common: { name: 'current inverter power data' },
-            native: {},
-        });
-        await this.setObjectNotExists('Power.GridAC', { type: 'state',
-            common: {
-                role: 'value', name: 'Grid output power without battery charging',
-                type: 'number', unit: 'W', read: true, write: false, def: 0
-            },
-            native: {},
-        });
-        await this.setObjectNotExists('Power.SolarDC', { type: 'state',
-            common: {
-                role: 'value', name: 'Total solar input power',
-                type: 'number', unit: 'W', read: true, write: false, def: 0
-            },
-            native: {},
-        });
-        await this.setObjectNotExists('Power.SelfConsumption', { type: 'state',
-            common: {
-                role: 'value', name: 'Selfconsumption Power',
-                type: 'number', unit: 'W', read: true, write: false, def: 0
-            },
-            native: {},
-        });
-        await this.setObjectNotExists('Power.HouseConsumption', { type: 'state',
-            common: {
-                role: 'value', name: 'Powerconsumption of house',
-                type: 'number', unit: 'W', read: true, write: false, def: 0
-            },
-            native: {},
-        });
-        await this.setObjectNotExists('Power.Surplus', { type: 'state',
-            common: {
-                role: 'value', name: 'Power surplus of system',
-                type: 'number', unit: 'W', read: true, write: false, def: 0
-            },
-            native: {},
-        });
-        
-        // Daily statistics state-objects
-        await this.setObjectNotExists('Statistics_Daily', { type: 'channel',
-            common: { name: 'statistical data daily' },
-            native: {},
-        });
-        await this.setObjectNotExists('Statistics_Daily.Yield', { type: 'state',
-            common: {
-                role: 'value', name: 'Total yield today',
-                type: 'number', unit: 'kWh', read: true, write: false, def: 0
-            },
-            native: {},
-        });
-        await this.setObjectNotExists('Statistics_Daily.HouseConsumption', { type: 'state',
-            common: {
-                role: 'value', name: 'Total consumption house today',
-                type: 'number', unit: 'kWh', read: true, write: false, def: 0
-            },
-            native: {},
-        });
-        await this.setObjectNotExists('Statistics_Daily.SelfConsumption', { type: 'state',
-            common: {
-                role: 'value', name: 'Total selfconsumption today',
-                type: 'number', unit: 'kWh', read: true, write: false, def: 0
-            },
-            native: {},
-        });
-        await this.setObjectNotExists('Statistics_Daily.SelfConsumptionRate', { type: 'state',
-            common: {
-                role: 'value', name: 'Rate of selfconsumption today',
-                type: 'number', unit: '%', read: true, write: false, def: 0
-            },
-            native: {},
-        });
-        await this.setObjectNotExists('Statistics_Daily.Autarky', { type: 'state',
-            common: {
-                role: 'value', name: 'Degree of autarky today',
-                type: 'number', unit: '%', read: true, write: false, def: 0
-            },
-            native: {},
-        });
-        
-        // Total statistics state-objects
-        await this.setObjectNotExists('Statistics_Total', { type: 'channel',
-            common: { name: 'statistical data total lifetime' },
-            native: {},
-        });
-        await this.setObjectNotExists('Statistics_Total.OperatingTime', { type: 'state',
-            common: {
-                role: 'value', name: 'Total time of inverter operation',
-                type: 'number', unit: 'h', read: true, write: false, def: 0
-            },
-            native: {},
-        });
-        await this.setObjectNotExists('Statistics_Total.Yield', { type: 'state',
-            common: {
-                role: 'value', name: 'Total yield of inverter lifetime',
-                type: 'number', unit: 'kWh', read: true, write: false, def: 0
-            },
-            native: {},
-        });
-        await this.setObjectNotExists('Statistics_Total.HouseConsumption', { type: 'state',
-            common: {
-                role: 'value', name: 'Total consumption of house in inverter lifetime',
-                type: 'number', unit: 'kWh', read: true, write: false, def: 0
-            },
-            native: {},
-        });
-        await this.setObjectNotExists('Statistics_Total.SelfConsumption', { type: 'state',
-            common: {
-                role: 'value', name: 'Total selfconsumption in inverter lifetime',
-                type: 'number', unit: 'kWh', read: true, write: false, def: 0
-            },
-            native: {},
-        });
-        await this.setObjectNotExists('Statistics_Total.SelfConsumptionRate', { type: 'state',
-            common: {
-                role: 'value', name: 'Rate of selfconsumption in inverter lifetime',
-                type: 'number', unit: '%', read: true, write: false, def: 0
-            },
-            native: {},
-        });
-        await this.setObjectNotExists('Statistics_Total.Autarky', { type: 'state',
-            common: {
-                role: 'value', name: 'Degree of autarky in inverter lifetime',
-                type: 'number', unit: '%', read: true, write: false, def: 0
-            },
-            native: {},
-        });
-        
-        // Battery data state-objects
-        await this.setObjectNotExists('Battery', { type: 'channel',
-            common: { name: 'Battery data' },
-            native: {},
-        });
-        await this.setObjectNotExists('Battery.SoC', { type: 'state',
-            common: {
-                role: 'value', name: 'Battery State of Charge',
-                type: 'number', unit: '%', read: true, write: false, def: 0
-            },
-            native: {},
-        });
-        await this.setObjectNotExists('Battery.Current', { type: 'state',
-            common: {
-                role: 'value', name: 'Battery current; >0 => charge; <0 => discharge',
-                type: 'number', unit: 'A', read: true, write: false, def: 0
-            },
-            native: {},
-        });
-       */
+      
         // this.subscribeStates('*'); // all states changes inside the adapters namespace are subscribed
 
         /*
@@ -306,24 +156,24 @@ class KostalPikoBA extends utils.Adapter {
             callback();
         }
     }
-
+    /*
     /****************************************************************************************
     * Is called if a subscribed object changes
     * @param {string} id
     * @param {ioBroker.Object | null | undefined} obj */
-    onObjectChange(id, obj) {
+    /*onObjectChange(id, obj) {
         if (obj) { // The object was changed
             this.log.info(`object ${id} changed: ${JSON.stringify(obj)}`);
         } else {   // The object was deleted
             this.log.info(`object ${id} deleted`);
         }
     }
-
+    
     /****************************************************************************************
     * Is called if a subscribed state changes
     * @param {string} id
     * @param {ioBroker.State | null | undefined} state */
-    onStateChange(id, state) {
+    /*onStateChange(id, state) {
         try {
             if (state) { // The state was changed
                 this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
@@ -334,7 +184,7 @@ class KostalPikoBA extends utils.Adapter {
             this.log.error("Unhandled exception processing stateChange: " + e);
         }
     }
-
+    */
      
     /****************************************************************************************
     */

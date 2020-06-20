@@ -3,7 +3,7 @@
 
   "common": {
     "name": "kostal-piko-ba",
-    "version": "0.3.3",
+    "version": "0.3.4",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -29,10 +29,13 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "0.3.4": {
+        "en": "removed unused onObjectChange / onStateChange methods"
+      },
       "0.3.3": {
         "en": "changed instance object creation to to io-package.json"
       },
-      "0.3.2": { 
+      "0.3.2": {
         "en": "updated npm-publish.yml"
       },
       "0.3.0": {
