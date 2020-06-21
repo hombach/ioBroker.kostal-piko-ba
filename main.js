@@ -1,6 +1,5 @@
 'use strict';
 
-
 /*Hi, some review comments:
 
 - is the admin Tab really planned ? The tab_m.html seems to be test stuff only ...please remove it also in io - package or implement it as planned
@@ -8,7 +7,7 @@
 - Is "supportCustoms": true, correct ? !Yes there is a custom_m.html but do you really want to use it ? Idon't thinl so. Please remove both
 + Please do not use setObjectAsync, but setObjectNotExists => MOVED TO io-package.json
 + You could move all those statically defined objects into io - package.json => MOVED TO io-package.json
-- If you do not need state / object changes please also not implement onObject / StateChange methods
++ If you do not need state/object changes please also not implement onObject/onStateChange methods => METHODS REMOVED
 - As personal note: using intervals for "external communication" can lead to problems if there are network problems because then requests can pile up(especially when no timeouts were set) ...better is a timeout which is newly set at the end of the former request
 */
 
@@ -156,35 +155,7 @@ class KostalPikoBA extends utils.Adapter {
             callback();
         }
     }
-    /*
-    /****************************************************************************************
-    * Is called if a subscribed object changes
-    * @param {string} id
-    * @param {ioBroker.Object | null | undefined} obj */
-    /*onObjectChange(id, obj) {
-        if (obj) { // The object was changed
-            this.log.info(`object ${id} changed: ${JSON.stringify(obj)}`);
-        } else {   // The object was deleted
-            this.log.info(`object ${id} deleted`);
-        }
-    }
     
-    /****************************************************************************************
-    * Is called if a subscribed state changes
-    * @param {string} id
-    * @param {ioBroker.State | null | undefined} state */
-    /*onStateChange(id, state) {
-        try {
-            if (state) { // The state was changed
-                this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
-            } else {     // The state was deleted
-                this.log.info(`state ${id} deleted`);
-            }
-        } catch (e) {
-            this.log.error("Unhandled exception processing stateChange: " + e);
-        }
-    }
-    */
      
     /****************************************************************************************
     */
