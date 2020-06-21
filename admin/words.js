@@ -26,7 +26,7 @@ systemDictionary = {
         'pl': 'IP address of Kostal Piko BA',
         'zh-cn': 'IP address of Kostal Piko BA'
     },
-    'polltime': {
+    'polltimelive': {
         'en': 'Time between data polls from inverter [s]',
         'de': 'Zeit zwischen Datenabrufen vom Umrichter [s]',
         'ru': 'Time between data polls from inverter [s]',

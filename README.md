@@ -21,6 +21,9 @@ To connect to the Kostal Pico BA inverter type in its IP-address in the config.
 
 ## Changelog
 
+### 0.5.0 (21.06.2020)
+* (HombachC) introduced editable poll interval 
+
 ### 0.4.0 (21.06.2020)
 * (HombachC) changed poll interval to timeout
 

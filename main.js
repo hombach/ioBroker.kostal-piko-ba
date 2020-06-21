@@ -94,11 +94,11 @@ class KostalPikoBA extends utils.Adapter {
             this.log.info('IP address found in config: ' + this.config.ipaddress);
         }
 
-        if (!this.config.polltime) {
+        if (!this.config.polltimelive) {
             this.log.warn('Polltime not set or zero - will be set to 10 seconds');
-            this.config.polltime = 10000;
+            this.config.polltimelive = 10000;
         } 
-        this.log.info('Polltime set to: ' + (this.config.polltime / 1000) + ' seconds');
+        this.log.info('Polltime set to: ' + (this.config.polltimelive / 1000) + ' seconds');
  
         // this.subscribeStates('*'); // all states changes inside the adapters namespace are subscribed
 
@@ -186,7 +186,7 @@ class KostalPikoBA extends utils.Adapter {
                     }
                     this.setStateAsync('Power.Surplus', { val: Math.round(result[1].value - result[2].value), ack: true });
                     this.setStateAsync('GridLimitation', { val: result[19].value, ack: true });
-                    adapterIntervals.live = setTimeout(this.ReadPiko.bind(this), this.config.polltime);
+                    adapterIntervals.live = setTimeout(this.ReadPiko.bind(this), this.config.polltimelive);
                     this.log.debug('Piko-BA ausgelesen');
                 }
                 else {

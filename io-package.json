@@ -96,7 +96,7 @@
 
   "native": {
     "ipaddress": "",
-    "polltime": 10000
+    "polltimelive": 10000
   },
 
   "objects": [],
