@@ -4,7 +4,7 @@
 
 - is the admin Tab really planned ? The tab_m.html seems to be test stuff only ...please remove it also in io - package or implement it as planned
 - The way you have defined the dependencies only works correct since js - controller 3. Best put the admin dependency in "globalDependencies"
-- Is "supportCustoms": true, correct ? !Yes there is a custom_m.html but do you really want to use it ? Idon't thinl so. Please remove both
++ Is "supportCustoms": true, correct ? There is a custom_m.html but do you want to use it? => REMOVED BOTH
 + Please do not use setObjectAsync, but setObjectNotExists => MOVED TO io-package.json
 + You could move all those statically defined objects into io - package.json => MOVED TO io-package.json
 + If you do not need state/object changes please also not implement onObject/onStateChange methods => METHODS REMOVED
