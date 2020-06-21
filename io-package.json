@@ -3,7 +3,7 @@
 
   "common": {
     "name": "kostal-piko-ba",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -29,6 +29,9 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "0.5.0": {
+        "en": "editable poll timer"
+      },
       "0.4.0": {
         "en": "changed poll interval to timeout"
       },
@@ -92,7 +95,8 @@
   },
 
   "native": {
-    "ipaddress": ""
+    "ipaddress": "",
+    "polltime": 10000
   },
 
   "objects": [],
