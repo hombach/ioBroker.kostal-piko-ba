@@ -2,7 +2,7 @@
 
 /*Hi, some review comments:
 
-- is the adminTab really planned ? The tab_m.html seems to be test stuff only
++ is the adminTab really planned ? The tab_m.html seems to be test stuff only
         ...please remove it also in io-package or implement it as planned => REMOVED adminTab
 + The way you have defined the dependencies only works correct since js - controller 3.
         Best put the admin dependency in "globalDependencies" => CHANGED to ">=3.0.0"
