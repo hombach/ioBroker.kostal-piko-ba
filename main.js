@@ -3,7 +3,8 @@
 /*Hi, some review comments:
 
 - is the admin Tab really planned ? The tab_m.html seems to be test stuff only ...please remove it also in io - package or implement it as planned
-- The way you have defined the dependencies only works correct since js - controller 3. Best put the admin dependency in "globalDependencies"
++ The way you have defined the dependencies only works correct since js - controller 3.
+        Best put the admin dependency in "globalDependencies" => CHANGED to ">=3.0.0"
 + Is "supportCustoms": true, correct ? There is a custom_m.html but do you want to use it? => REMOVED BOTH
 + Please do not use setObjectAsync, but setObjectNotExists => MOVED TO io-package.json
 + You could move all those statically defined objects into io - package.json => MOVED TO io-package.json
