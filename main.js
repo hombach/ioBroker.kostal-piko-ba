@@ -10,9 +10,9 @@
 + Please do not use setObjectAsync, but setObjectNotExists => MOVED TO io-package.json
 + You could move all those statically defined objects into io - package.json => MOVED TO io-package.json
 + If you do not need state/object changes please also not implement onObject/onStateChange methods => METHODS REMOVED
-- As personal note: using intervals for "external communication" can lead to problems if there are
++ As personal note: using intervals for "external communication" can lead to problems if there are
         network problems because then requests can pile up (especially when no timeouts were set)
-        ...better is a timeout which is newly set at the end of the former request
+        ...better is a timeout which is newly set at the end of the former request => CHANGED to setTimeout - 10 min in case of trouble
 */
 
 // The adapter-core module gives you access to the core ioBroker functions, you need to create an adapter
@@ -153,7 +153,7 @@ class KostalPikoBA extends utils.Adapter {
             clearInterval(adapterIntervals.sec10);
             clearTimeout(adapterIntervals.live);
             Object.keys(adapterIntervals).forEach(interval => clearInterval(adapterIntervals[interval]));
-            this.log.info('Adaptor Kostal-Piko-BA cleaned everything up...');
+            this.log.info('Adaptor Kostal-Piko-BA cleaned up everything...');
             callback();
         } catch (e) {
             callback();
