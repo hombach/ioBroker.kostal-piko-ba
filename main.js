@@ -197,6 +197,7 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Power.Surplus', { val: Math.round(result[1].value - result[2].value), ack: true });
                     this.setStateAsync('GridLimitation', { val: result[19].value, ack: true });
                     adapterIntervals.live = setTimeout(this.ReadPiko.bind(this), 10000);
+                    this.log.debug('Piko-BA ausgelesen');
                 }
                 else {
                     this.log.error('Fehler: ' + response.error + ' bei Abfrage von Pico-BA: ' + KostalRequest);
@@ -206,9 +207,7 @@ class KostalPikoBA extends utils.Adapter {
                 this.log.error('Please verify IP address: ' + this.config.ipaddress + ' !!!');
                 adapterIntervals.live
                 adapterIntervals.live = setTimeout(this.ReadPiko.bind(this), 600000);
-            }
-            this.log.debug('Piko-BA ausgelesen');
-            
+            } // END catch
         })();
     } // END ReadPiko
 } // END Class
