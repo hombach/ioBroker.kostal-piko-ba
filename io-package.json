@@ -3,7 +3,7 @@
 
   "common": {
     "name": "kostal-piko-ba",
-    "version": "0.3.6",
+    "version": "0.3.7",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -29,6 +29,9 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "0.3.7": {
+        "en": "removed unused adminTab"
+      },
       "0.3.6": {
         "en": "changed min. mandatory js-controller to 3.x"
       },
@@ -76,15 +79,6 @@
     "compact": true,
     "materialize": true,
     "materializeTab": true,
-    "adminTab": {
-      "singleton": true,
-      "name": {
-        "en": "Kostal-PikoBA",
-        "de": "Kostal-PikoBA"
-      },
-      "link": "",
-      "fa-icon": "info"
-    },
     "supportCustoms": false,
     "dependencies": [
       {
