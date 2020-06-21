@@ -3,7 +3,7 @@
 
   "common": {
     "name": "kostal-piko-ba",
-    "version": "0.3.4",
+    "version": "0.3.5",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -29,6 +29,9 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "0.3.5": {
+        "en": "unused supportCustoms and custom_m.html removed"
+      },
       "0.3.4": {
         "en": "removed unused onObjectChange / onStateChange methods"
       },
