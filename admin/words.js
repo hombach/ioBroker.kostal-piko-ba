@@ -27,15 +27,15 @@ systemDictionary = {
         'zh-cn': 'IP address of Kostal Piko BA'
     },
     'polltimelive': {
-        'en': 'Time between data polls from inverter [s]',
-        'de': 'Zeit zwischen Datenabrufen vom Umrichter [s]',
-        'ru': 'Time between data polls from inverter [s]',
-        'pt': 'Time between data polls from inverter [s]',
-        'nl': 'Time between data polls from inverter [s]',
-        'fr': 'Time between data polls from inverter [s]',
-        'it': 'Time between data polls from inverter [s]',
-        'es': 'Time between data polls from inverter [s]',
-        'pl': 'Time between data polls from inverter [s]',
-        'zh-cn': 'Time between data polls from inverter [s]'
+        'en': 'Time between data polls from inverter [ms]',
+        'de': 'Zeit zwischen Datenabrufen vom Umrichter [ms]',
+        'ru': 'Time between data polls from inverter [ms]',
+        'pt': 'Time between data polls from inverter [ms]',
+        'nl': 'Time between data polls from inverter [ms]',
+        'fr': 'Time between data polls from inverter [ms]',
+        'it': 'Time between data polls from inverter [ms]',
+        'es': 'Time between data polls from inverter [ms]',
+        'pl': 'Time between data polls from inverter [ms]',
+        'zh-cn': 'Time between data polls from inverter [ms]'
     }
 };

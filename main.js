@@ -195,7 +195,6 @@ class KostalPikoBA extends utils.Adapter {
             } catch (e) {
                 this.log.error('Error in calling Piko API: ' + e);
                 this.log.error('Please verify IP address: ' + this.config.ipaddress + ' !!!');
-                adapterIntervals.live
                 adapterIntervals.live = setTimeout(this.ReadPiko.bind(this), 600000);
             } // END catch
         })();
