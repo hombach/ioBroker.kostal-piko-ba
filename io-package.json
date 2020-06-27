@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "0.5.3",
+    "version": "0.5.4",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -43,6 +43,9 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "0.5.4": {
+        "en": "changed github actions"
+      },
       "0.5.3": {
         "en": "changed travis flow"
       },
