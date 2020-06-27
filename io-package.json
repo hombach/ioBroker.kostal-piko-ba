@@ -1,17 +1,33 @@
-{
+﻿{
   "//HINTS": "https://github.com/ioBroker/ioBroker/wiki/Adapter-Development-Documentation#structure-of-io-packagejson",
 
   "common": {
     "name": "kostal-piko-ba",
-    "version": "0.5.1",
+    "version": "0.5.2",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
-      "de": "Kostal PikoBA"
+      "de": "Kostal PikoBA",
+      "ru": "Костал ПиКОБА",
+      "pt": "Kostal PikoBA",
+      "nl": "Kostal PikoBA",
+      "fr": "Kostal PikoBA",
+      "it": "Kostal PikoBA",
+      "es": "Kostal PikoBA",
+      "pl": "Kostal PikoBA",
+      "zh-cn": "科斯塔尔皮科巴"
     },
     "desc": {
       "en": "Adapter for reading Kostal Piko BA data",
-      "de": "Adapter zum lesen von Kostal Piko BA Daten"
+      "de": "Adapter zum Lesen von Kostal Piko BA Daten",
+      "ru": "Адаптер для чтения данных Kostal Piko BA",
+      "pt": "Adaptador para leitura de dados Kostal Piko BA",
+      "nl": "Adapter voor het lezen van Kostal Piko BA gegevens",
+      "fr": "Adaptateur pour la lecture des données Kostal Piko BA",
+      "it": "Adattatore per la lettura dei dati Kostal Piko BA",
+      "es": "Adaptador para leer datos de Kostal Piko BA",
+      "pl": "Adapter do odczytu danych Kostal Piko BA",
+      "zh-cn": "用于读取Kostal Piko BA数据的适配器"
     },
     "authors": [
       "Christian Hombach"
@@ -29,6 +45,9 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "0.5.2": {
+        "en": "added more translations"
+      },
       "0.5.1": {
         "en": "editable poll timer"
       },
@@ -48,10 +67,7 @@
         "en": "removed unused onObjectChange / onStateChange methods"
       },
       "0.3.3": {
-        "en": "changed instance object creation to to io-package.json"
-      },
-      "0.3.2": {
-        "en": "updated npm-publish.yml"
+        "en": "changed instance object creation to io-package.json"
       },
       "0.3.0": {
         "en": "updated dependency _got_ to 11.3.0"
@@ -68,14 +84,8 @@
       "0.0.8": {
         "en": "internal release candidate"
       },
-      "0.0.7": {
-        "en": "scheduler working"
-      },
       "0.0.6": {
-        "en": "data load working"
-      },
-      "0.0.4": {
-        "en": "states working"
+        "en": "data poll working"
       },
       "0.0.1": {
         "en": "initial release"

@@ -21,6 +21,9 @@ To connect to the Kostal Pico BA inverter type in its IP-address in the config.
 
 ## Changelog
 
+### 0.5.2 (27.06.2020)
+* (HombachC) added more translations 
+ 
 ### 0.5.1 (22.06.2020)
 * (HombachC) introduced editable poll interval 
 
@@ -42,7 +45,7 @@ To connect to the Kostal Pico BA inverter type in its IP-address in the config.
 ## License
 MIT License
 
-Copyright (c) 2020 Author HombachC
+Copyright (c) 2020 HombachC
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
