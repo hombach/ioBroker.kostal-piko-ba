@@ -180,7 +180,7 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Power.HouseConsumption', { val: Math.floor(result[3].value), ack: true });
                     this.setStateAsync('State', { val: result[4].value, ack: true });
                     this.setStateAsync('Battery.SoC', { val: result[5].value, ack: true });
-                    if (result[17].value) { // result[7] = 'Battery current direction; 1=Load; 0=Unload'
+                    if (result[7].value) { // result[7] = 'Battery current direction; 1=Load; 0=Unload'
                         this.setStateAsync('Battery.Current', { val: result[6].value, ack: true});
                     }
                     else { // discharge
@@ -197,7 +197,7 @@ class KostalPikoBA extends utils.Adapter {
             } catch (e) {
                 this.log.error('Error in calling Piko API: ' + e);
                 this.log.error('Please verify IP address: ' + this.config.ipaddress + ' !!!');
-                adapterIntervals.live = setTimeout(this.ReadPiko.bind(this), 600000);
+                adapterIntervals.live = setTimeout(this.ReadPiko.bind(this), 10000); //600000
             } // END catch
         })();
     } // END ReadPiko
