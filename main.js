@@ -120,15 +120,10 @@ class KostalPikoBA extends utils.Adapter {
 
             KostalRequest = 'http://' + this.config.ipaddress + '/api/dxs.json' +
                 '?dxsEntries=' + ID_Power_SolarDC + '&dxsEntries=' + ID_Power_GridAC +
-                '&dxsEntries=' + ID_Power_SelfConsumption + '&dxsEntries=' + ID_StatDay_SelfConsumption +
-                '&dxsEntries=' + ID_StatTot_SelfConsumption + '&dxsEntries=' + ID_StatDay_SelfConsumptionRate +
-                '&dxsEntries=' + ID_StatTot_SelfConsumptionRate + '&dxsEntries=' + ID_StatDay_Yield +
-                '&dxsEntries=' + ID_StatTot_Yield + '&dxsEntries=' + ID_StatDay_HouseConsumption +
-                '&dxsEntries=' + ID_StatTot_HouseConsumption + '&dxsEntries=' + ID_Power_HouseConsumption +
-                '&dxsEntries=' + ID_StatTot_Autarky + '&dxsEntries=' + ID_StatDay_Autarky +
-                '&dxsEntries=' + ID_StatTot_OperatingTime + '&dxsEntries=' + ID_OperatingState +
-                '&dxsEntries=' + ID_BatStateOfCharge + '&dxsEntries=' + ID_BatCurrent +
-                '&dxsEntries=' + ID_BatCurrentDir + '&dxsEntries=' + ID_GridLimitation;
+                '&dxsEntries=' + ID_Power_SelfConsumption + '&dxsEntries=' + ID_Power_HouseConsumption +
+                '&dxsEntries=' + ID_OperatingState + '&dxsEntries=' + ID_BatStateOfCharge +
+                '&dxsEntries=' + ID_BatCurrent + '&dxsEntries=' + ID_BatCurrentDir +
+                '&dxsEntries=' + ID_GridLimitation;
 
             KostalRequestDay = 'http://' + this.config.ipaddress + '/api/dxs.json' +
                 '?dxsEntries=' + ID_StatDay_SelfConsumption + '&dxsEntries=' + ID_StatDay_SelfConsumptionRate +
@@ -142,6 +137,8 @@ class KostalPikoBA extends utils.Adapter {
  
             this.log.debug("OnReady done");
             await this.ReadPiko();
+            await this.ReadPikoDaily();
+            await this.ReadPikoTotal();
             this.log.debug("Initial ReadPiko done");
 //            adapterIntervals.sec10 = setInterval(this.ReadPiko.bind(this), this.config.polltime);
         } else {
@@ -180,30 +177,19 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Power.SolarDC', { val: Math.round(result[0].value), ack: true });
                     this.setStateAsync('Power.GridAC', { val: Math.round(result[1].value), ack: true });
                     this.setStateAsync('Power.SelfConsumption', { val: Math.round(result[2].value), ack: true });
-                    this.setStateAsync('Statistics_Daily.SelfConsumption', { val: Math.round(result[3].value)/1000, ack: true });
-                    this.setStateAsync('Statistics_Total.SelfConsumption', { val: Math.round(result[4].value), ack: true });
-                    this.setStateAsync('Statistics_Daily.SelfConsumptionRate', { val: Math.round(result[5].value), ack: true });
-                    this.setStateAsync('Statistics_Total.SelfConsumptionRate', { val: Math.round(result[6].value), ack: true });
-                    this.setStateAsync('Statistics_Daily.Yield', { val: Math.round(result[7].value)/1000, ack: true });
-                    this.setStateAsync('Statistics_Total.Yield', { val: Math.round(result[8].value), ack: true });
-                    this.setStateAsync('Statistics_Daily.HouseConsumption', { val: Math.round(result[9].value)/1000, ack: true });
-                    this.setStateAsync('Statistics_Total.HouseConsumption', { val: Math.round(result[10].value), ack: true });
-                    this.setStateAsync('Power.HouseConsumption', { val: Math.floor(result[11].value), ack: true });
-                    this.setStateAsync('Statistics_Total.Autarky', { val: Math.round(result[12].value), ack: true });
-                    this.setStateAsync('Statistics_Daily.Autarky', { val: Math.round(result[13].value), ack: true });
-                    this.setStateAsync('Statistics_Total.OperatingTime', { val: result[14].value, ack: true });
-                    this.setStateAsync('State', { val: result[15].value, ack: true });
-                    this.setStateAsync('Battery.SoC', { val: result[16].value, ack: true });
-                    if (result[18].value) { // result[18] = 'Battery current direction; 1=Load; 0=Unload'
-                        this.setStateAsync('Battery.Current', { val: result[17].value, ack: true});
+                    this.setStateAsync('Power.HouseConsumption', { val: Math.floor(result[3].value), ack: true });
+                    this.setStateAsync('State', { val: result[4].value, ack: true });
+                    this.setStateAsync('Battery.SoC', { val: result[5].value, ack: true });
+                    if (result[17].value) { // result[7] = 'Battery current direction; 1=Load; 0=Unload'
+                        this.setStateAsync('Battery.Current', { val: result[6].value, ack: true});
                     }
                     else { // discharge
-                        this.setStateAsync('Battery.Current', { val: result[17].value * -1, ack: true});
+                        this.setStateAsync('Battery.Current', { val: result[6].value * -1, ack: true});
                     }
                     this.setStateAsync('Power.Surplus', { val: Math.round(result[1].value - result[2].value), ack: true });
-                    this.setStateAsync('GridLimitation', { val: result[19].value, ack: true });
+                    this.setStateAsync('GridLimitation', { val: result[8].value, ack: true });
                     adapterIntervals.live = setTimeout(this.ReadPiko.bind(this), this.config.polltimelive);
-                    this.log.debug('Piko-BA ausgelesen');
+                    this.log.debug('Piko-BA live data updated');
                 }
                 else {
                     this.log.error('Error: ' + response.error + ' by polling Piko-BA: ' + KostalRequest);
@@ -232,7 +218,7 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Statistics_Daily.HouseConsumption', { val: Math.round(result[3].value) / 1000, ack: true });
                     this.setStateAsync('Statistics_Daily.Autarky', { val: Math.round(result[4].value), ack: true });
                     adapterIntervals.daily = setTimeout(this.ReadPikoDaily.bind(this), this.config.polltimelive);
-                    this.log.debug('Piko-BA ausgelesen');
+                    this.log.debug('Piko-BA daily data updated');
                 }
                 else {
                     this.log.error('Error: ' + response.error + ' by polling Piko-BA: ' + KostalRequest);
@@ -262,7 +248,7 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Statistics_Total.Autarky', { val: Math.round(result[4].value), ack: true });
                     this.setStateAsync('Statistics_Total.OperatingTime', { val: result[5].value, ack: true });
                     adapterIntervals.total = setTimeout(this.ReadPikoTotal.bind(this), this.config.polltimelive);
-                    this.log.debug('Piko-BA ausgelesen');
+                    this.log.debug('Piko-BA lifetime data updated');
                 }
                 else {
                     this.log.error('Error: ' + response.error + ' by polling Piko-BA: ' + KostalRequest);
