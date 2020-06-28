@@ -93,14 +93,14 @@ class KostalPikoBA extends utils.Adapter {
         if (!this.config.ipaddress) {
             this.log.warn('Kostal Piko IP address not set');
         } else {
-            this.log.info('IP address found in config: ' + this.config.ipaddress);
+            this.log.info(`IP address found in config: ${this.config.ipaddress}`);
         }
 
         if (!this.config.polltimelive) {
             this.log.warn('Polltime not set or zero - will be set to 10 seconds');
             this.config.polltimelive = 10000;
         } 
-        this.log.info('Polltime set to: ' + (this.config.polltimelive / 1000) + ' seconds');
+        this.log.info(`Polltime set to: ${(this.config.polltimelive / 1000)} seconds`);
  
         // this.subscribeStates('*'); // all states changes inside the adapters namespace are subscribed
 
@@ -130,16 +130,16 @@ class KostalPikoBA extends utils.Adapter {
                 '&dxsEntries=' + ID_StatDay_Yield + '&dxsEntries=' + ID_StatDay_HouseConsumption +
                 '&dxsEntries=' + ID_StatDay_Autarky;
 
-            KostalRequestTotal = 'http://' + this.config.ipaddress + '/api/dxs.json' +
-                '?dxsEntries=' + ID_StatTot_SelfConsumption + '&dxsEntries=' + ID_StatTot_SelfConsumptionRate +
-                '&dxsEntries=' + ID_StatTot_Yield + '&dxsEntries=' + ID_StatTot_HouseConsumption +
-                '&dxsEntries=' + ID_StatTot_Autarky + '&dxsEntries=' + ID_StatTot_OperatingTime;
+            KostalRequestTotal = `http://${this.config.ipaddress}/api/dxs.json`
+                + `?dxsEntries=${ID_StatTot_SelfConsumption}&dxsEntries=${ID_StatTot_SelfConsumptionRate}`
+                + `&dxsEntries=${ID_StatTot_Yield          }&dxsEntries=${ID_StatTot_HouseConsumption   }`
+                + `&dxsEntries=${ID_StatTot_Autarky        }&dxsEntries=${ID_StatTot_OperatingTime      }`;
  
-            this.log.debug("OnReady done");
+            this.log.debug('OnReady done');
             await this.ReadPiko();
             await this.ReadPikoDaily();
             await this.ReadPikoTotal();
-            this.log.debug("Initial ReadPiko done");
+            this.log.debug('Initial ReadPiko done');
 //            adapterIntervals.sec10 = setInterval(this.ReadPiko.bind(this), this.config.polltime);
         } else {
             this.stop;
@@ -192,11 +192,11 @@ class KostalPikoBA extends utils.Adapter {
                     this.log.debug('Piko-BA live data updated');
                 }
                 else {
-                    this.log.error('Error: ' + response.error + ' by polling Piko-BA: ' + KostalRequest);
+                    this.log.error(`Error: ${response.error} by polling Piko-BA: ${KostalRequest}`);
                 }
             } catch (e) {
-                this.log.error('Error in calling Piko API: ' + e);
-                this.log.error('Please verify IP address: ' + this.config.ipaddress + ' !!!');
+                this.log.error(`Error in calling Piko API: ${e}`);
+                this.log.error(`Please verify IP address: ${this.config.ipaddress} !!!`);
                 adapterIntervals.live = setTimeout(this.ReadPiko.bind(this), 600000);
             } // END catch
         })();
@@ -221,11 +221,11 @@ class KostalPikoBA extends utils.Adapter {
                     this.log.debug('Piko-BA daily data updated');
                 }
                 else {
-                    this.log.error('Error: ' + response.error + ' by polling Piko-BA: ' + KostalRequest);
+                    this.log.error(`Error: ${response.error} by polling Piko-BA: ${KostalRequest}`);
                 }
             } catch (e) {
-                this.log.error('Error in calling Piko API: ' + e);
-                this.log.error('Please verify IP address: ' + this.config.ipaddress + ' !!!');
+                this.log.error(`Error in calling Piko API: ${e}`);
+                this.log.error(`Please verify IP address: ${this.config.ipaddress} !!!`);
                 adapterIntervals.daily = setTimeout(this.ReadPikoDaily.bind(this), 600000);
             } // END catch
         })();
@@ -251,11 +251,11 @@ class KostalPikoBA extends utils.Adapter {
                     this.log.debug('Piko-BA lifetime data updated');
                 }
                 else {
-                    this.log.error('Error: ' + response.error + ' by polling Piko-BA: ' + KostalRequest);
+                    this.log.error(`Error: ${response.error} by polling Piko-BA: ${KostalRequest}`);
                 }
             } catch (e) {
-                this.log.error('Error in calling Piko API: ' + e);
-                this.log.error('Please verify IP address: ' + this.config.ipaddress + ' !!!');
+                this.log.error(`Error in calling Piko API: ${e}`);
+                this.log.error(`Please verify IP address: ${this.config.ipaddress} !!!`);
                 adapterIntervals.total = setTimeout(this.ReadPikoTotal.bind(this), 600000);
             } // END catch
         })();

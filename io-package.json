@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "0.6.1",
+    "version": "0.7.0",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -43,6 +43,9 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "0.7.0": {
+        "en": "code optimizations"
+      },
       "0.6.1": {
         "en": "poll of statistics data separated"
       },
