@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "0.6.0",
+    "version": "0.6.1",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -43,7 +43,7 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
-      "0.6.0": {
+      "0.6.1": {
         "en": "poll of statistics data separated"
       },
       "0.5.4": {
@@ -78,9 +78,6 @@
       },
       "0.3.0": {
         "en": "updated dependency _got_ to 11.3.0"
-      },
-      "0.2.9": {
-        "en": "fixed gitignore error"
       },
       "0.2.0": {
         "en": "debug phase finished"

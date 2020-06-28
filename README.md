@@ -21,7 +21,7 @@ To connect to the Kostal Pico BA inverter type in its IP-address in the config.
 
 ## Changelog
 
-### 0.6.0 (28.06.2020)
+### 0.6.1 (28.06.2020)
 * (HombachC) poll of statistics data separated
 
 ### 0.5.1 (22.06.2020)
