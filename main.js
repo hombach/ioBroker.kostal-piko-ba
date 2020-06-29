@@ -118,17 +118,17 @@ class KostalPikoBA extends utils.Adapter {
 
         if (this.config.ipaddress) {
 
-            KostalRequest = 'http://' + this.config.ipaddress + '/api/dxs.json' +
-                '?dxsEntries=' + ID_Power_SolarDC + '&dxsEntries=' + ID_Power_GridAC +
-                '&dxsEntries=' + ID_Power_SelfConsumption + '&dxsEntries=' + ID_Power_HouseConsumption +
-                '&dxsEntries=' + ID_OperatingState + '&dxsEntries=' + ID_BatStateOfCharge +
-                '&dxsEntries=' + ID_BatCurrent + '&dxsEntries=' + ID_BatCurrentDir +
-                '&dxsEntries=' + ID_GridLimitation;
+            KostalRequest = `http://${this.config.ipaddress}/api/dxs.json`
+                + `?dxsEntries=${ID_Power_SolarDC        }&dxsEntries=${ID_Power_GridAC          }`
+                + `&dxsEntries=${ID_Power_SelfConsumption}&dxsEntries=${ID_Power_HouseConsumption}`
+                + `&dxsEntries=${ID_OperatingState       }&dxsEntries=${ID_BatStateOfCharge      }`
+                + `&dxsEntries=${ID_BatCurrent           }&dxsEntries=${ID_BatCurrentDir         }`
+                + `&dxsEntries=${ID_GridLimitation       }`;
 
-            KostalRequestDay = 'http://' + this.config.ipaddress + '/api/dxs.json' +
-                '?dxsEntries=' + ID_StatDay_SelfConsumption + '&dxsEntries=' + ID_StatDay_SelfConsumptionRate +
-                '&dxsEntries=' + ID_StatDay_Yield + '&dxsEntries=' + ID_StatDay_HouseConsumption +
-                '&dxsEntries=' + ID_StatDay_Autarky;
+            KostalRequestDay = `http://${this.config.ipaddress}/api/dxs.json`
+                + `?dxsEntries=${ID_StatDay_SelfConsumption}&dxsEntries=${ID_StatDay_SelfConsumptionRate}`
+                + `&dxsEntries=${ID_StatDay_Yield          }&dxsEntries=${ID_StatDay_HouseConsumption   }`
+                + `&dxsEntries=${ID_StatDay_Autarky        }`;
 
             KostalRequestTotal = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_StatTot_SelfConsumption}&dxsEntries=${ID_StatTot_SelfConsumptionRate}`
