@@ -21,6 +21,9 @@ To connect to the Kostal Pico BA inverter type in its IP-address in the config.
 
 ## Changelog
 
+### 0.7.2 (03.07.2020)
+* (HombachC) added sentry.io support
+
 ### 0.7.1 (29.06.2020)
 * (HombachC) code optimizations
 

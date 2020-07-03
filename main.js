@@ -217,7 +217,7 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Statistics_Daily.Yield', { val: Math.round(result[2].value) / 1000, ack: true });
                     this.setStateAsync('Statistics_Daily.HouseConsumption', { val: Math.round(result[3].value) / 1000, ack: true });
                     this.setStateAsync('Statistics_Daily.Autarky', { val: Math.round(result[4].value), ack: true });
-                    adapterIntervals.daily = setTimeout(this.ReadPikoDaily.bind(this), 2 * this.config.polltimelive);
+                    adapterIntervals.daily = setTimeout(this.ReadPikoDaily.bind(this), 6 * this.config.polltimelive);
                     this.log.debug('Piko-BA daily data updated');
                 }
                 else {
@@ -247,7 +247,7 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Statistics_Total.HouseConsumption', { val: Math.round(result[3].value), ack: true });
                     this.setStateAsync('Statistics_Total.Autarky', { val: Math.round(result[4].value), ack: true });
                     this.setStateAsync('Statistics_Total.OperatingTime', { val: result[5].value, ack: true });
-                    adapterIntervals.total = setTimeout(this.ReadPikoTotal.bind(this), 3 * this.config.polltimelive);
+                    adapterIntervals.total = setTimeout(this.ReadPikoTotal.bind(this), 20 * this.config.polltimelive);
                     this.log.debug('Piko-BA lifetime data updated');
                 }
                 else {
