@@ -104,7 +104,7 @@ class KostalPikoBA extends utils.Adapter {
 
 
         //sentry.io ping
-        if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
+/*        if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
             const sentryInstance = this.getPluginInstance('sentry');
             if (sentryInstance) {
                 const Sentry = sentryInstance.getSentryObject();
@@ -115,7 +115,7 @@ class KostalPikoBA extends utils.Adapter {
                 });
             }
         }
-
+*/
 
         // this.subscribeStates('*'); // all states changes inside the adapters namespace are subscribed
 
