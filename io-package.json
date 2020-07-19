@@ -58,15 +58,6 @@
       "0.6.1": {
         "en": "poll of statistics data separated"
       },
-      "0.5.4": {
-        "en": "changed github actions"
-      },
-      "0.5.3": {
-        "en": "changed travis flow"
-      },
-      "0.5.2": {
-        "en": "added more translations"
-      },
       "0.5.1": {
         "en": "editable poll timer"
       },
