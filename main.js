@@ -26,12 +26,12 @@ const ID_StatTot_SelfConsumption = 251659265;     // in kWh
 const ID_StatTot_SelfConsumptionRate = 251659280; // in %
 const ID_StatTot_Autarky = 251659281;             // in %
 // Momentanwerte - PV Generator
-const ID_DC1Strom = 33555201;                     // in A  -  not implemented
-const ID_DC1Spannung = 33555202;                  // in V  -  not implemented
-const ID_DC1Leistung = 33555203;                  // in W  -  not implemented
-const ID_DC2Strom = 33555457;                     // in A  -  not implemented
-const ID_DC2Spannung = 33555458;                  // in V  -  not implemented
-const ID_DC2Leistung = 33555459;                  // in W  -  not implemented
+const ID_DC1Current = 33555201;                   // in A  -  not implemented
+const ID_DC1Voltage = 33555202;                   // in V  -  not implemented
+const ID_DC1Power = 33555203;                     // in W  -  not implemented
+const ID_DC2Current = 33555457;                   // in A  -  not implemented
+const ID_DC2Voltage = 33555458;                   // in V  -  not implemented
+const ID_DC2Power = 33555459;                     // in W  -  not implemented
 // Momentanwerte Haus
 const ID_HausverbrauchSolar = 83886336;           // in W  -  ActHomeConsumptionSolar
 const ID_HausverbrauchBatterie = 83886592;        // in W  -  ActHomeConsumptionBat
@@ -41,22 +41,22 @@ const ID_HausverbrauchPhase2 = 83887362;          // in W  -  not implemented
 const ID_HausverbrauchPhase3 = 83887618;          // in W  -  not implemented
 const ID_Power_HouseConsumption = 83887872;       // in W  -  ActHomeConsumption
 const ID_Power_SelfConsumption = 83888128;        // in W  -  ownConsumption
-// Netzparameter
+// drid parameter
 const ID_GridLimitation = 67110144;               // in %   -  GridLimitation
 const ID_GridFrequency = 67110400;                // in Hz  -  not implemented
-const ID_NetzCosPhi = 67110656;                   //        -  not implemented
-// Netz Phase 1
-const ID_P1Strom = 67109377;                      // in A  -  not implemented
-const ID_P1Spannung = 67109378;                   // in V  -  not implemented
-const ID_P1Leistung = 67109379;                   // in W  -  GridPowerL1, not implemented
-// Netz Phase 2
-const ID_P2Strom = 67109633;                      // in A  -  not implemented
-const ID_P2Spannung = 67109634;                   // in V  -  not implemented
-const ID_P2Leistung = 67109635;                   // in W  -  GridPowerL2, not implemented
-// Netz Phase 3
-const ID_P3Strom = 67109889;                      // in A  -  not implemented
-const ID_P3Spannung = 67109890;                   // in V  -  not implemented
-const ID_P3Leistung = 67109891;                   // in W  -  GridPowerL3, not implemented
+const ID_GridCosPhi = 67110656;                   //        -  not implemented
+// grid phase 1
+const ID_L1GridCurrent = 67109377;                // in A  -  not implemented
+const ID_L1GridVoltage = 67109378;                // in V  -  not implemented
+const ID_L1GridPower = 67109379;                  // in W  -  not implemented
+// grid phase 2
+const ID_L2GridCurrent = 67109633;                // in A  -  not implemented
+const ID_L2GridVoltage = 67109634;                // in V  -  not implemented
+const ID_L2GridPower = 67109635;                  // in W  -  not implemented
+// grid phase 3
+const ID_L3GridCurrent = 67109889;                // in A  -  not implemented
+const ID_L3GridVoltage = 67109890;                // in V  -  not implemented
+const ID_L3GridPower = 67109891;                  // in W  -  not implemented
 // Battery
 const ID_BatVoltage = 33556226;                   // in V  -  not implemented
 const ID_BatTemperature = 33556227;               // in ?  -  not implemented
@@ -65,7 +65,7 @@ const ID_BatStateOfCharge = 33556229;             // in %
 const ID_BatCurrentDir = 33556230;                // 1 = discharge; 0 = charge
 const ID_BatCurrent = 33556238;                   // in A
 
-var KostalRequest = '';      // IP request-string for PicoBA complete data
+var KostalRequest = '';      // IP request-string for PicoBA current data
 var KostalRequestDay = '';   // IP request-string for PicoBA daily statistics
 var KostalRequestTotal = ''; // IP request-string for PicoBA total statistics
 
@@ -155,7 +155,6 @@ class KostalPikoBA extends utils.Adapter {
             await this.ReadPikoDaily();
             await this.ReadPikoTotal();
             this.log.debug('Initial ReadPiko done');
-//            adapterIntervals.sec10 = setInterval(this.ReadPiko.bind(this), this.config.polltime);
         } else {
             this.stop;
         }
@@ -166,7 +165,6 @@ class KostalPikoBA extends utils.Adapter {
     * @param {() => void} callback */
     onUnload(callback) {
         try {
-//            clearInterval(adapterIntervals.live);
             clearTimeout(adapterIntervals.live);
             clearTimeout(adapterIntervals.daily);
             clearTimeout(adapterIntervals.total);
@@ -241,7 +239,7 @@ class KostalPikoBA extends utils.Adapter {
             } catch (e) {
                 this.log.error(`Error in calling Piko API: ${e}`);
                 this.log.error(`Please verify IP address: ${this.config.ipaddress} !!!`);
-                adapterIntervals.daily = setTimeout(this.ReadPikoDaily.bind(this), 60000);
+                adapterIntervals.daily = setTimeout(this.ReadPikoDaily.bind(this), 180000);
             } // END catch
         })();
     } // END ReadPikoDaily
@@ -271,7 +269,7 @@ class KostalPikoBA extends utils.Adapter {
             } catch (e) {
                 this.log.error(`Error in calling Piko API: ${e}`);
                 this.log.error(`Please verify IP address: ${this.config.ipaddress} !!!`);
-                adapterIntervals.total = setTimeout(this.ReadPikoTotal.bind(this), 60000);
+                adapterIntervals.total = setTimeout(this.ReadPikoTotal.bind(this), 200000);
             } // END catch
         })();
     } // END ReadPikoTotal
