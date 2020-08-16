@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "0.7.6",
+    "version": "0.7.7",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -43,6 +43,9 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "0.7.7": {
+        "en": "fix error with timeout"
+      },
       "0.7.6": {
         "en": "code cleanup"
       },
@@ -76,14 +79,8 @@
       "0.3.5": {
         "en": "unused supportCustoms and custom_m.html removed"
       },
-      "0.3.4": {
-        "en": "removed unused onObjectChange / onStateChange methods"
-      },
       "0.3.3": {
         "en": "changed instance object creation to io-package.json"
-      },
-      "0.3.0": {
-        "en": "updated dependency _got_ to 11.3.0"
       },
       "0.2.0": {
         "en": "debug phase finished"
@@ -121,7 +118,9 @@
 
   "native": {
     "ipaddress": "",
-    "polltimelive": 10000
+    "polltimelive": 10000,
+    "polltimedaily": 60000,
+    "polltimetotal": 200000
   },
 
   "objects": [],

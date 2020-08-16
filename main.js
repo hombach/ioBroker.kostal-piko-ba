@@ -33,15 +33,15 @@ const ID_DC2Current = 33555457;                   // in A  -  not implemented
 const ID_DC2Voltage = 33555458;                   // in V  -  not implemented
 const ID_DC2Power = 33555459;                     // in W  -  not implemented
 // Momentanwerte Haus
-const ID_HausverbrauchSolar = 83886336;           // in W  -  ActHomeConsumptionSolar
-const ID_HausverbrauchBatterie = 83886592;        // in W  -  ActHomeConsumptionBat
-const ID_HausverbrauchNetz = 83886848;            // in W  -  ActHomeConsumptionGrid
-const ID_HausverbrauchPhase1 = 83887106;          // in W  -  not implemented
-const ID_HausverbrauchPhase2 = 83887362;          // in W  -  not implemented
-const ID_HausverbrauchPhase3 = 83887618;          // in W  -  not implemented
+const ID_Power_HouseConsumptionSolar = 83886336;  // in W  -  ActHomeConsumptionSolar
+const ID_Power_HouseConsumptionBat = 83886592;    // in W  -  ActHomeConsumptionBat
+const ID_Power_HouseConsumptionGrid = 83886848;   // in W  -  ActHomeConsumptionGrid
+const ID_Power_HouseConsumptionPhase1 = 83887106; // in W  -  not implemented
+const ID_Power_HouseConsumptionPhase2 = 83887362; // in W  -  not implemented
+const ID_Power_HouseConsumptionPhase3 = 83887618; // in W  -  not implemented
 const ID_Power_HouseConsumption = 83887872;       // in W  -  ActHomeConsumption
 const ID_Power_SelfConsumption = 83888128;        // in W  -  ownConsumption
-// drid parameter
+// grid parameter
 const ID_GridLimitation = 67110144;               // in %   -  GridLimitation
 const ID_GridFrequency = 67110400;                // in Hz  -  not implemented
 const ID_GridCosPhi = 67110656;                   //        -  not implemented
@@ -102,9 +102,22 @@ class KostalPikoBA extends utils.Adapter {
         } 
         this.log.info(`Polltime set to: ${(this.config.polltimelive / 1000)} seconds`);
 
+        if (!this.config.polltimedaily) {
+            this.log.warn('Polltime daily data not set or zero - will be set to 60 seconds');
+            this.config.polltimedaily = 60000;
+        }
+        this.log.info(`Polltime daily data set to: ${(this.config.polltimedaily / 1000)} seconds`);
+
+        if (!this.config.polltimetotal) {
+            this.log.warn('Polltime alltime data not set or zero - will be set to 10 seconds');
+            this.config.polltimetotal = 200000;
+        }
+        this.log.info(`Polltime alltime data set to: ${(this.config.polltimetotal / 1000)} seconds`);
+
 
         //sentry.io ping
-/*        if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
+        /*
+        if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
             const sentryInstance = this.getPluginInstance('sentry');
             if (sentryInstance) {
                 const Sentry = sentryInstance.getSentryObject();
@@ -115,7 +128,10 @@ class KostalPikoBA extends utils.Adapter {
                 });
             }
         }
-*/
+        */
+
+//        https://www.onsip.com/voip-resources/voip-fundamentals/avoiding-javascript-settimeout-and-setinterval-problems#:~:text=%20Avoiding%20JavaScript%20setTimeout%20and%20setInterval%20Problems%20,crux%20of%20the%20solution%20is%20mini...%20More%20
+
 
         // this.subscribeStates('*'); // all states changes inside the adapters namespace are subscribed
 
@@ -169,7 +185,7 @@ class KostalPikoBA extends utils.Adapter {
             clearTimeout(adapterIntervals.daily);
             clearTimeout(adapterIntervals.total);
             Object.keys(adapterIntervals).forEach(interval => clearInterval(adapterIntervals[interval]));
-            this.log.info('Adaptor Kostal-Piko-BA cleaned up everything...');
+            this.log.info('Adapter Kostal-Piko-BA cleaned up everything...');
             callback();
         } catch (e) {
             callback();
@@ -201,7 +217,6 @@ class KostalPikoBA extends utils.Adapter {
                     }
                     this.setStateAsync('Power.Surplus', { val: Math.round(result[1].value - result[2].value), ack: true });
                     this.setStateAsync('GridLimitation', { val: result[8].value, ack: true });
-                    adapterIntervals.live = setTimeout(this.ReadPiko.bind(this), this.config.polltimelive);
                     this.log.debug('Piko-BA live data updated');
                 }
                 else {
@@ -210,8 +225,8 @@ class KostalPikoBA extends utils.Adapter {
             } catch (e) {
                 this.log.error(`Error in calling Piko API: ${e}`);
                 this.log.error(`Please verify IP address: ${this.config.ipaddress} !!!`);
-                adapterIntervals.live = setTimeout(this.ReadPiko.bind(this), 60000);
             } // END catch
+            adapterIntervals.live = setTimeout(this.ReadPiko.bind(this), this.config.polltimelive);
         })();
     } // END ReadPiko
 
@@ -230,7 +245,6 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Statistics_Daily.Yield', { val: Math.round(result[2].value) / 1000, ack: true });
                     this.setStateAsync('Statistics_Daily.HouseConsumption', { val: Math.round(result[3].value) / 1000, ack: true });
                     this.setStateAsync('Statistics_Daily.Autarky', { val: Math.round(result[4].value), ack: true });
-                    adapterIntervals.daily = setTimeout(this.ReadPikoDaily.bind(this), 6 * this.config.polltimelive);
                     this.log.debug('Piko-BA daily data updated');
                 }
                 else {
@@ -239,8 +253,8 @@ class KostalPikoBA extends utils.Adapter {
             } catch (e) {
                 this.log.error(`Error in calling Piko API: ${e}`);
                 this.log.error(`Please verify IP address: ${this.config.ipaddress} !!!`);
-                adapterIntervals.daily = setTimeout(this.ReadPikoDaily.bind(this), 180000);
             } // END catch
+            adapterIntervals.daily = setTimeout(this.ReadPikoDaily.bind(this), this.config.polltimedaily);
         })();
     } // END ReadPikoDaily
 
@@ -260,7 +274,6 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Statistics_Total.HouseConsumption', { val: Math.round(result[3].value), ack: true });
                     this.setStateAsync('Statistics_Total.Autarky', { val: Math.round(result[4].value), ack: true });
                     this.setStateAsync('Statistics_Total.OperatingTime', { val: result[5].value, ack: true });
-                    adapterIntervals.total = setTimeout(this.ReadPikoTotal.bind(this), 20 * this.config.polltimelive);
                     this.log.debug('Piko-BA lifetime data updated');
                 }
                 else {
@@ -269,9 +282,9 @@ class KostalPikoBA extends utils.Adapter {
             } catch (e) {
                 this.log.error(`Error in calling Piko API: ${e}`);
                 this.log.error(`Please verify IP address: ${this.config.ipaddress} !!!`);
-                adapterIntervals.total = setTimeout(this.ReadPikoTotal.bind(this), 200000);
             } // END catch
         })();
+        adapterIntervals.total = setTimeout(this.ReadPikoTotal.bind(this), this.config.polltimetotal);
     } // END ReadPikoTotal
 
 } // END Class
