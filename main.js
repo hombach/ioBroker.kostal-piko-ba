@@ -226,8 +226,13 @@ class KostalPikoBA extends utils.Adapter {
                 this.log.error(`Error in calling Piko API: ${e}`);
                 this.log.error(`Please verify IP address: ${this.config.ipaddress} !!!`);
             } // END catch
-            adapterIntervals.live = setTimeout(this.ReadPiko.bind(this), this.config.polltimelive);
-        })();
+            try {
+                adapterIntervals.live = setTimeout(this.ReadPiko.bind(this), this.config.polltimelive);
+            } catch (e) {
+                this.log.error(`Error in setting adapter schedule: ${e}`);
+                this.restart;
+            }
+            }) ();
     } // END ReadPiko
 
     /****************************************************************************************
