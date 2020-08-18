@@ -43,6 +43,9 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "0.8.0": {
+        "en": "seperate editable poll timer for statistics data"
+      },
       "0.7.7": {
         "en": "fix error with timeout"
       },
@@ -53,13 +56,7 @@
         "en": "dependencies updated"
       },
       "0.7.4": {
-        "en": "fixed travis"
-      },
-      "0.7.2": {
-        "en": "added sentry.io support"
-      },
-      "0.7.1": {
-        "en": "code optimizations"
+        "en": "added sentry.io support, fixed travis"
       },
       "0.6.1": {
         "en": "poll of statistics data separated"
@@ -70,17 +67,8 @@
       "0.4.0": {
         "en": "changed poll interval to timeout"
       },
-      "0.3.7": {
-        "en": "removed unused adminTab"
-      },
-      "0.3.6": {
-        "en": "changed min. mandatory js-controller to 3.x"
-      },
-      "0.3.5": {
-        "en": "unused supportCustoms and custom_m.html removed"
-      },
-      "0.3.3": {
-        "en": "changed instance object creation to io-package.json"
+      "0.3.0": {
+        "en": "updated dependencies"
       },
       "0.2.0": {
         "en": "debug phase finished"

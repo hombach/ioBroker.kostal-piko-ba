@@ -103,13 +103,13 @@ class KostalPikoBA extends utils.Adapter {
         this.log.info(`Polltime set to: ${(this.config.polltimelive / 1000)} seconds`);
 
         if (!this.config.polltimedaily) {
-            this.log.warn('Polltime daily data not set or zero - will be set to 60 seconds');
+            this.log.warn('Polltime statistics data not set or zero - will be set to 60 seconds');
             this.config.polltimedaily = 60000;
         }
         this.log.info(`Polltime daily data set to: ${(this.config.polltimedaily / 1000)} seconds`);
 
         if (!this.config.polltimetotal) {
-            this.log.warn('Polltime alltime data not set or zero - will be set to 10 seconds');
+            this.log.warn('Polltime alltime statistics not set or zero - will be set to 10 seconds');
             this.config.polltimetotal = 200000;
         }
         this.log.info(`Polltime alltime data set to: ${(this.config.polltimetotal / 1000)} seconds`);
@@ -227,12 +227,13 @@ class KostalPikoBA extends utils.Adapter {
                 this.log.error(`Please verify IP address: ${this.config.ipaddress} !!!`);
             } // END catch
             try {
-                adapterIntervals.live = setTimeout(this.ReadPiko.bind(this), this.config.polltimelive);
+                // await clearTimeout(adapterIntervals.live);
+                adapterIntervals.live = await setTimeout(this.ReadPiko.bind(this), this.config.polltimelive);
             } catch (e) {
                 this.log.error(`Error in setting adapter schedule: ${e}`);
                 this.restart;
             }
-            }) ();
+        }) ();
     } // END ReadPiko
 
     /****************************************************************************************
