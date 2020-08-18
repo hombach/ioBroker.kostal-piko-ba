@@ -97,22 +97,22 @@ class KostalPikoBA extends utils.Adapter {
         }
 
         if (!this.config.polltimelive) {
-            this.log.warn('Polltime not set or zero - will be set to 10 seconds');
             this.config.polltimelive = 10000;
+            this.log.warn(`Polltime not set or zero - will be set to ${(this.config.polltimelive / 1000)} seconds`);
         } 
         this.log.info(`Polltime set to: ${(this.config.polltimelive / 1000)} seconds`);
 
         if (!this.config.polltimedaily) {
-            this.log.warn('Polltime statistics data not set or zero - will be set to 60 seconds');
             this.config.polltimedaily = 60000;
+            this.log.warn(`Polltime statistics data not set or zero - will be set to ${(this.config.polltimedaily / 1000)} seconds`);
         }
-        this.log.info(`Polltime daily data set to: ${(this.config.polltimedaily / 1000)} seconds`);
+        this.log.info(`Polltime daily statistics set to: ${(this.config.polltimedaily / 1000)} seconds`);
 
         if (!this.config.polltimetotal) {
-            this.log.warn('Polltime alltime statistics not set or zero - will be set to 10 seconds');
             this.config.polltimetotal = 200000;
+            this.log.warn(`Polltime alltime statistics not set or zero - will be set to ${(this.config.polltimetotal / 1000)} seconds`);
         }
-        this.log.info(`Polltime alltime data set to: ${(this.config.polltimetotal / 1000)} seconds`);
+        this.log.info(`Polltime alltime statistics set to: ${(this.config.polltimetotal / 1000)} seconds`);
 
 
         //sentry.io ping
@@ -192,7 +192,15 @@ class KostalPikoBA extends utils.Adapter {
         }
     }
 
+
+    /****************************************************************************************
+    */
+    Scheduler() {
+        this.ReadPiko();
+ //       adapterIntervals.live = setTimeout(this.Scheduler.bind(this), this.config.polltimelive);
+    }
     
+
     /****************************************************************************************
     */
     ReadPiko() {

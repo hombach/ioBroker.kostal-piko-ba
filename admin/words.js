@@ -52,14 +52,14 @@ systemDictionary = {
     },
     'polltimetotal': {
         "en": "Time between data polls from inverter alltime statistics [ms]",
-        "de": "        \"en\": \"Zeit zwischen Datenabfragen aus der Wechselrichter-Allzeitstatistik [ms]\"",
-        "ru": "        \"ru\": \"Время между опросами данных постоянной статистики инвертора [мс]\"",
-        "pt": "        \"en\": \"Tempo entre as pesquisas de dados das estatísticas de todos os tempos do inversor [ms]\"",
-        "nl": "        \"en\": \"Tijd tussen datapolls van omvormer alltime statistieken [ms]\"",
-        "fr": "        \"fr\": \"Temps entre les interrogations de données à partir des statistiques permanentes de l'onduleur [ms]\"",
-        "it": "        \"en\": \"Tempo tra i sondaggi di dati dalle statistiche di tutti i tempi dell'inverter [ms]\"",
-        "es": "        \"en\": \"Tiempo entre sondeos de datos de estadísticas de tiempo del inversor [ms]\"",
-        "pl": "        \"en\": \"Czas między odpytywaniem danych ze statystyk całego czasu falownika [ms]\"",
-        "zh-cn": "        “ en”：“来自逆变器常时统计的数据轮询之间的时间[ms]”"
+        "de": "Zeit zwischen Datenabfragen aus der Wechselrichter-Allzeitstatistik [ms]",
+        "ru": "Время между опросами данных постоянной статистики инвертора [мс]",
+        "pt": "Tempo entre as pesquisas de dados das estatísticas de todos os tempos do inversor [ms]",
+        "nl": "Tijd tussen datapolls van omvormer alltime statistieken [ms]",
+        "fr": "Temps entre les interrogations de données à partir des statistiques permanentes de l'onduleur [ms]",
+        "it": "Tempo tra i sondaggi di dati dalle statistiche di tutti i tempi dell'inverter [ms]",
+        "es": "Tiempo entre sondeos de datos de estadísticas de tiempo del inversor [ms]",
+        "pl": "Czas między odpytywaniem danych ze statystyk całego czasu falownika [ms]",
+        "zh-cn": "来自逆变器常时统计的数据轮询之间的时间[ms]"
     }
 };
