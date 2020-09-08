@@ -64,9 +64,6 @@
       "0.7.7": {
         "en": "fix error with timeout"
       },
-      "0.7.6": {
-        "en": "code cleanup"
-      },
       "0.7.5": {
         "en": "dependencies updated"
       },
