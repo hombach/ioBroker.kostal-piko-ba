@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "0.8.5",
+    "version": "1.0.0",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -43,29 +43,17 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "1.0.0": {
+        "en": "first public release for stable repo"
+      },
       "0.8.5": {
-        "en": "bumped dependencies"
-      },
-      "0.8.4": {
-        "en": "bumped eslint"
-      },
-      "0.8.3": {
         "en": "bumped dependencies"
       },
       "0.8.2": {
         "en": "changed scheduling code"
       },
-      "0.8.1": {
-        "en": "fixed typos in translations"
-      },
       "0.8.0": {
         "en": "seperate editable poll timer for statistics data"
-      },
-      "0.7.7": {
-        "en": "fix error with timeout"
-      },
-      "0.7.5": {
-        "en": "dependencies updated"
       },
       "0.7.4": {
         "en": "added sentry.io support, fixed travis"
@@ -75,15 +63,6 @@
       },
       "0.5.1": {
         "en": "editable poll timer"
-      },
-      "0.4.0": {
-        "en": "changed poll interval to timeout"
-      },
-      "0.3.0": {
-        "en": "updated dependencies"
-      },
-      "0.2.0": {
-        "en": "debug phase finished"
       },
       "0.1.0": {
         "en": "first working release"
