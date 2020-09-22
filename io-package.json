@@ -170,7 +170,7 @@
       "_id": "Power.SelfConsumption",
       "type": "state",
       "common": {
-        "role": "value",
+        "role": "value.power.consumption",
         "name": "Selfconsumption Power",
         "type": "number",
         "unit": "W",
