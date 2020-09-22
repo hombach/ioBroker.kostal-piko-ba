@@ -198,7 +198,7 @@ class KostalPikoBA extends utils.Adapter {
     Scheduler() {
         this.ReadPiko();
         try {
-            // clearTimeout(adapterIntervals.live);
+            clearTimeout(adapterIntervals.live);
             adapterIntervals.live = setTimeout(this.Scheduler.bind(this), this.config.polltimelive);
         } catch (e) {
             this.log.error(`Error in setting adapter schedule: ${e}`);
@@ -267,6 +267,7 @@ class KostalPikoBA extends utils.Adapter {
                 this.log.error(`Error in calling Piko API: ${e}`);
                 this.log.error(`Please verify IP address: ${this.config.ipaddress} !!!`);
             } // END catch
+            clearTimeout(adapterIntervals.daily);
             adapterIntervals.daily = setTimeout(this.ReadPikoDaily.bind(this), this.config.polltimedaily);
         })();
     } // END ReadPikoDaily
@@ -297,6 +298,7 @@ class KostalPikoBA extends utils.Adapter {
                 this.log.error(`Please verify IP address: ${this.config.ipaddress} !!!`);
             } // END catch
         })();
+        clearTimeout(adapterIntervals.total);
         adapterIntervals.total = setTimeout(this.ReadPikoTotal.bind(this), this.config.polltimetotal);
     } // END ReadPikoTotal
 
