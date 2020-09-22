@@ -20,6 +20,8 @@ Adapter for reading Kostal Piko BA data. Adapter creates some states and updates
 To connect to the Kostal Pico BA inverter type in its IP-address in the config.
 
 ## Changelog
+### 1.0.1 (23.09.2020)
+* (HombachC) bumped dependencies; added some clearing of timeouts
 
 ### 1.0.0 (11.09.2020)
 * (HombachC) first public release for stable repo
