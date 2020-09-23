@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -43,10 +43,13 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "1.0.3": {
+        "en": "bumbed got; added battery.temperature"
+      },
       "1.0.2": {
         "en": "optimized object roles"
       },
-       "1.0.1": {
+      "1.0.1": {
         "en": "bumped dependencies; added some clearing of timeouts"
       },
       "1.0.0": {
@@ -386,6 +389,20 @@
       "_id": "Battery",
       "type": "channel",
       "common": { "name": "Battery data" },
+      "native": {}
+    },
+    {
+      "_id": "Battery.Temperature",
+      "type": "state",
+      "common": {
+        "role": "value.temperature",
+        "name": "Battery Temperature",
+        "type": "number",
+        "unit": "°C",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
       "native": {}
     },
     {

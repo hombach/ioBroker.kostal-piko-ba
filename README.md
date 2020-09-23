@@ -30,6 +30,9 @@ All of this helps me to provide error free adapters that basically never crashs.
 
 
 ## Changelog
+### 1.0.3 (23.09.2020)
+* (HombachC) bumbed got; added battery.temperature
+
 ### 1.0.2 (23.09.2020)
 * (HombachC) optimized object roles
 
