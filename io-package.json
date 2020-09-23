@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -43,7 +43,10 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
-      "1.0.1": {
+      "1.0.2": {
+        "en": "optimized object roles",
+      },
+       "1.0.1": {
         "en": "bumped dependencies; added some clearing of timeouts"
       },
       "1.0.0": {
@@ -80,17 +83,17 @@
     "materializeTab": true,
     "supportCustoms": false,
     "dependencies": [
-      {
-        "js-controller": ">=3.0.0",
-        "admin": ">=3.0.0"
+        {
+          "js-controller": ">=3.0.0",
+          "admin": ">=3.0.0"
+        }
+      ],
+      "plugins": {
+        "sentry": {
+          "dsn": "https://0e33dc63a0e34165850d97add3cc3684@o415875.ingest.sentry.io/5307610"
+        }
       }
-    ],
-    "plugins": {
-      "sentry": {
-        "dsn": "https://0e33dc63a0e34165850d97add3cc3684@o415875.ingest.sentry.io/5307610"
-      }
-    }
-  },
+    },
 
   "native": {
     "ipaddress": "",
@@ -106,7 +109,7 @@
       "_id": "State",
       "type": "state",
       "common": {
-        "role": "value",
+        "role": "value.state",
         "name": "Inverter state; 0:off; 3:feed grid(MPP)",
         "type": "number",
         "unit": "",
@@ -142,7 +145,7 @@
       "_id": "Power.GridAC",
       "type": "state",
       "common": {
-        "role": "value",
+        "role": "value.power",
         "name": "Grid output power without battery charging",
         "type": "number",
         "unit": "W",
@@ -156,7 +159,7 @@
       "_id": "Power.SolarDC",
       "type": "state",
       "common": {
-        "role": "value",
+        "role": "value.power",
         "name": "Total solar input power",
         "type": "number",
         "unit": "W",
@@ -184,7 +187,7 @@
       "_id": "Power.HouseConsumption",
       "type": "state",
       "common": {
-        "role": "value",
+        "role": "value.power.consumption",
         "name": "Powerconsumption of house",
         "type": "number",
         "unit": "W",
@@ -198,7 +201,7 @@
       "_id": "Power.Surplus",
       "type": "state",
       "common": {
-        "role": "value",
+        "role": "value.power",
         "name": "Power surplus of system",
         "type": "number",
         "unit": "W",
@@ -234,7 +237,7 @@
       "_id": "Statistics_Daily.HouseConsumption",
       "type": "state",
       "common": {
-        "role": "value",
+        "role": "value.power.consumption",
         "name": "Total consumption house today",
         "type": "number",
         "unit": "kWh",
@@ -248,7 +251,7 @@
       "_id": "Statistics_Daily.SelfConsumption",
       "type": "state",
       "common": {
-        "role": "value",
+        "role": "value.power.consumption",
         "name": "Total selfconsumption today",
         "type": "number",
         "unit": "kWh",
@@ -298,7 +301,7 @@
       "_id": "Statistics_Total.OperatingTime",
       "type": "state",
       "common": {
-        "role": "value",
+        "role": "value.time",
         "name": "Total time of inverter operation",
         "type": "number",
         "unit": "h",
@@ -326,7 +329,7 @@
       "_id": "Statistics_Total.HouseConsumption",
       "type": "state",
       "common": {
-        "role": "value",
+        "role": "value.power.consumption",
         "name": "Total consumption of house in inverter lifetime",
         "type": "number",
         "unit": "kWh",
@@ -340,7 +343,7 @@
       "_id": "Statistics_Total.SelfConsumption",
       "type": "state",
       "common": {
-        "role": "value",
+        "role": "value.power.consumption",
         "name": "Total selfconsumption in inverter lifetime",
         "type": "number",
         "unit": "kWh",
@@ -389,7 +392,7 @@
       "_id": "Battery.SoC",
       "type": "state",
       "common": {
-        "role": "value",
+        "role": "value.battery",
         "name": "Battery State of Charge",
         "type": "number",
         "unit": "%",
@@ -403,7 +406,7 @@
       "_id": "Battery.Current",
       "type": "state",
       "common": {
-        "role": "value",
+        "role": "value.current",
         "name": "Battery current; >0 => charge; <0 => discharge",
         "type": "number",
         "unit": "A",
