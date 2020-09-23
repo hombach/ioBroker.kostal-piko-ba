@@ -3,11 +3,13 @@
 
 [![NPM version](http://img.shields.io/npm/v/iobroker.kostal-piko-ba.svg)](https://www.npmjs.com/package/iobroker.kostal-piko-ba)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.kostal-piko-ba.svg)](https://www.npmjs.com/package/iobroker.kostal-piko-ba)
-![Number of Installations (latest)](http://ioBroker.live/badges/template-installed.svg)
-![Number of Installations (stable)](http://ioBroker.live/badges/template-stable.svg)
+![Number of Installations (latest)](http://ioBroker.live/badges/kostal-piko-ba-installed.svg)
+![Number of Installations (stable)](http://ioBroker.live/badges/kostal-piko-ba-stable.svg)
 [![Dependency Status](https://img.shields.io/david/hombach/ioBroker.kostal-piko-ba.svg)](https://david-dm.org/hombach/ioBroker.kostal-piko-ba)
 [![Known Vulnerabilities](https://snyk.io/test/github/hombach/ioBroker.kostal-piko-ba/badge.svg)](https://snyk.io/test/github/hombach/ioBroker.kostal-piko-ba)
 ![Node.js CI](https://github.com/hombach/ioBroker.kostal-piko-ba/workflows/Node.js%20CI/badge.svg)
+
+[![Travis-CI](http://img.shields.io/travis/hombach/ioBroker.kostal-piko-ba/master.svg)](https://travis-ci.org/hombach/ioBroker.kostal-piko-ba)
 
 [![NPM](https://nodei.co/npm/iobroker.kostal-piko-ba.png?downloads=true)](https://nodei.co/npm/iobroker.kostal-piko-ba/)
 
