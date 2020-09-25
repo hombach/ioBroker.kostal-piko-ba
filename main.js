@@ -65,8 +65,8 @@ const ID_BatStateOfCharge = 33556229;             // in %
 const ID_BatCurrentDir = 33556230;                // 1 = discharge; 0 = charge
 const ID_BatCurrent = 33556238;                   // in A
 
-var KostalRequest = '';      // IP request-string for PicoBA current data
-var KostalRequestDay = '';   // IP request-string for PicoBA daily statistics
+var KostalRequest      = ''; // IP request-string for PicoBA current data
+var KostalRequestDay   = ''; // IP request-string for PicoBA daily statistics
 var KostalRequestTotal = ''; // IP request-string for PicoBA total statistics
 
 class KostalPikoBA extends utils.Adapter {
@@ -91,7 +91,7 @@ class KostalPikoBA extends utils.Adapter {
     */
     async onReady() {
         if (!this.config.ipaddress) {
-            this.log.warn('Kostal Piko IP address not set');
+            this.log.error('Kostal Piko IP address not set');
         } else {
             this.log.info(`IP address found in config: ${this.config.ipaddress}`);
         }
@@ -129,7 +129,6 @@ class KostalPikoBA extends utils.Adapter {
             }
         }
         */
-
 
         // this.subscribeStates('*'); // all states changes inside the adapters namespace are subscribed
 

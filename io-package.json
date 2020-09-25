@@ -43,23 +43,17 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "1.0.4": {
+        "en": "code cleanup"
+      },
       "1.0.3": {
         "en": "bumbed got; added battery.temperature"
       },
       "1.0.2": {
         "en": "optimized object roles"
       },
-      "1.0.1": {
-        "en": "bumped dependencies; added some clearing of timeouts"
-      },
       "1.0.0": {
         "en": "first public release for stable repo"
-      },
-      "0.8.5": {
-        "en": "bumped dependencies"
-      },
-      "0.8.2": {
-        "en": "changed scheduling code"
       },
       "0.8.0": {
         "en": "seperate editable poll timer for statistics data"
@@ -75,9 +69,6 @@
       },
       "0.1.0": {
         "en": "first working release"
-      },
-      "0.0.1": {
-        "en": "initial release"
       }
     },
     "main": "main.js",
