@@ -44,7 +44,7 @@
     "dataSource": "poll",
     "news": {
       "1.0.4": {
-        "en": "code cleanup"
+        "en": "code cleanup; bumped mocha"
       },
       "1.0.3": {
         "en": "bumbed got; added battery.temperature"
