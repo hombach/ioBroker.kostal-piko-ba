@@ -59,7 +59,7 @@ const ID_L3GridVoltage = 67109890;                // in V  -  not implemented
 const ID_L3GridPower = 67109891;                  // in W  -  not implemented
 // Battery
 const ID_BatVoltage = 33556226;                   // in V  -  not implemented
-const ID_BatTemperature = 33556227;               // in ?
+const ID_BatTemperature = 33556227;               // in °C
 const ID_BatChargeCycles = 33556228;              // in 1  -  not implemented
 const ID_BatStateOfCharge = 33556229;             // in %
 const ID_BatCurrentDir = 33556230;                // 1 = discharge; 0 = charge
@@ -210,7 +210,7 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Power.SelfConsumption', { val: Math.round(result[2].value), ack: true });
                     this.setStateAsync('Power.HouseConsumption', { val: Math.floor(result[3].value), ack: true });
                     this.setStateAsync('State', { val: result[4].value, ack: true });
-                    this.setStateAsync('Battery.Temperature', { val: result[5].value, ack: true });
+                    this.setStateAsync('Battery.Temperature', { val: Math.round(result[5].value * 10) / 10, ack: true });
                     this.setStateAsync('Battery.SoC', { val: result[6].value, ack: true });
                     if (result[8].value) { // result[8] = 'Battery current direction; 1=Load; 0=Unload'
                         this.setStateAsync('Battery.Current', { val: result[7].value, ack: true});
