@@ -31,6 +31,9 @@ All of this helps me to provide error free adapters that basically never crashs.
 
 
 ## Changelog
+### 1.0.6 (05.10.2020)
+* (HombachC) added battery.ChargeCycles
+
 ### 1.0.5 (26.09.2020)
 * (HombachC) battery.temperature rounded
 

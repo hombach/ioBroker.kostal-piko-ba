@@ -150,8 +150,9 @@ class KostalPikoBA extends utils.Adapter {
             KostalRequestTotal = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_StatTot_SelfConsumption}&dxsEntries=${ID_StatTot_SelfConsumptionRate}`
                 + `&dxsEntries=${ID_StatTot_Yield          }&dxsEntries=${ID_StatTot_HouseConsumption   }`
-                + `&dxsEntries=${ID_StatTot_Autarky        }&dxsEntries=${ID_StatTot_OperatingTime      }`;
- 
+                + `&dxsEntries=${ID_StatTot_Autarky        }&dxsEntries=${ID_StatTot_OperatingTime      }`
+                + `&dxsEntries=${ID_BatChargeCycles}`;
+
             this.log.debug('OnReady done');
             await this.ReadPikoTotal();
             await this.ReadPikoDaily();
@@ -279,6 +280,7 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Statistics_Total.HouseConsumption', { val: Math.round(result[3].value), ack: true });
                     this.setStateAsync('Statistics_Total.Autarky', { val: Math.round(result[4].value), ack: true });
                     this.setStateAsync('Statistics_Total.OperatingTime', { val: result[5].value, ack: true });
+                    this.setStateAsync('Battery.ChargeCycles', { val: result[6].value, ack: true });
                     this.log.debug('Piko-BA lifetime data updated');
                 }
                 else {
