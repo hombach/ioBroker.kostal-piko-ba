@@ -1,7 +1,10 @@
 {
-    "extends": "../tsconfig.json",
-    "include": [
-        "./**/*.d.ts",
-        "./**/*.js"
-    ]
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "noImplicitAny": false
+  },
+  "include": [
+    "./**/*.d.ts",
+    "./**/*.js"
+  ]
 }
