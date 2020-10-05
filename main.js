@@ -8,62 +8,62 @@ const utils = require('@iobroker/adapter-core');
 const adapterIntervals = {};
 
 // Leistungswerte
-const ID_Power_SolarDC = 33556736;                // in W  -  DC Power PV
-const ID_Power_GridAC = 67109120;                 // in W  -  GridOutputPower without battery charging
+const ID_Power_SolarDC                = 33556736;  // in W  -  DC Power PV
+const ID_Power_GridAC                 = 67109120;  // in W  -  GridOutputPower without battery charging
 // State
-const ID_OperatingState = 16780032;               // 0:Off; 3:Einspeissen(MPP)
+const ID_OperatingState               = 16780032;  // 0:Off; 3:Einspeissen(MPP)
 // Statistics - Daily
-const ID_StatDay_Yield = 251658754;               // in Wh
-const ID_StatDay_HouseConsumption = 251659010;    // in Wh
-const ID_StatDay_SelfConsumption = 251659266;     // in Wh
-const ID_StatDay_SelfConsumptionRate = 251659278; // in %
-const ID_StatDay_Autarky = 251659279;             // in %
+const ID_StatDay_Yield                = 251658754; // in Wh
+const ID_StatDay_HouseConsumption     = 251659010; // in Wh
+const ID_StatDay_SelfConsumption      = 251659266; // in Wh
+const ID_StatDay_SelfConsumptionRate  = 251659278; // in %
+const ID_StatDay_Autarky              = 251659279; // in %
 // Statistics - Total
-const ID_StatTot_OperatingTime = 251658496;       // in h
-const ID_StatTot_Yield = 251658753;               // in kWh
-const ID_StatTot_HouseConsumption = 251659009;    // in kWh
-const ID_StatTot_SelfConsumption = 251659265;     // in kWh
-const ID_StatTot_SelfConsumptionRate = 251659280; // in %
-const ID_StatTot_Autarky = 251659281;             // in %
+const ID_StatTot_OperatingTime        = 251658496; // in h
+const ID_StatTot_Yield                = 251658753; // in kWh
+const ID_StatTot_HouseConsumption     = 251659009; // in kWh
+const ID_StatTot_SelfConsumption      = 251659265; // in kWh
+const ID_StatTot_SelfConsumptionRate  = 251659280; // in %
+const ID_StatTot_Autarky              = 251659281; // in %
 // Momentanwerte - PV Generator
-const ID_DC1Current = 33555201;                   // in A  -  not implemented
-const ID_DC1Voltage = 33555202;                   // in V  -  not implemented
-const ID_DC1Power = 33555203;                     // in W  -  not implemented
-const ID_DC2Current = 33555457;                   // in A  -  not implemented
-const ID_DC2Voltage = 33555458;                   // in V  -  not implemented
-const ID_DC2Power = 33555459;                     // in W  -  not implemented
+const ID_DC1Current                   = 33555201;  // in A  -  not implemented
+const ID_DC1Voltage                   = 33555202;  // in V  -  not implemented
+const ID_DC1Power                     = 33555203;  // in W  -  not implemented
+const ID_DC2Current                   = 33555457;  // in A  -  not implemented
+const ID_DC2Voltage                   = 33555458;  // in V  -  not implemented
+const ID_DC2Power                     = 33555459;  // in W  -  not implemented
 // Momentanwerte Haus
-const ID_Power_HouseConsumptionSolar = 83886336;  // in W  -  ActHomeConsumptionSolar - not implemented
-const ID_Power_HouseConsumptionBat = 83886592;    // in W  -  ActHomeConsumptionBat - not implemented
-const ID_Power_HouseConsumptionGrid = 83886848;   // in W  -  ActHomeConsumptionGrid - not implemented
-const ID_Power_HouseConsumptionPhase1 = 83887106; // in W  -  ActHomeConsumptionPhase1 - not implemented
-const ID_Power_HouseConsumptionPhase2 = 83887362; // in W  -  ActHomeConsumptionPhase2 - not implemented
-const ID_Power_HouseConsumptionPhase3 = 83887618; // in W  -  ActHomeConsumptionPhase3 - not implemented
-const ID_Power_HouseConsumption = 83887872;       // in W  -  ActHomeConsumption
-const ID_Power_SelfConsumption = 83888128;        // in W  -  ownConsumption
+const ID_Power_HouseConsumptionSolar  = 83886336;  // in W  -  ActHomeConsumptionSolar - not implemented
+const ID_Power_HouseConsumptionBat    = 83886592;  // in W  -  ActHomeConsumptionBat - not implemented
+const ID_Power_HouseConsumptionGrid   = 83886848;  // in W  -  ActHomeConsumptionGrid - not implemented
+const ID_Power_HouseConsumptionPhase1 = 83887106;  // in W  -  ActHomeConsumptionPhase1 - not implemented
+const ID_Power_HouseConsumptionPhase2 = 83887362;  // in W  -  ActHomeConsumptionPhase2 - not implemented
+const ID_Power_HouseConsumptionPhase3 = 83887618;  // in W  -  ActHomeConsumptionPhase3 - not implemented
+const ID_Power_HouseConsumption       = 83887872;  // in W  -  ActHomeConsumption
+const ID_Power_SelfConsumption        = 83888128;  // in W  -  ownConsumption
 // grid parameter
-const ID_GridLimitation = 67110144;               // in %   -  GridLimitation
-const ID_GridFrequency = 67110400;                // in Hz  -  GridFrequency - not implemented
-const ID_GridCosPhi = 67110656;                   //        -  GridCosPhi - not implemented
+const ID_GridLimitation               = 67110144;  // in %   -  GridLimitation
+const ID_GridFrequency                = 67110400;  // in Hz  -  GridFrequency - not implemented
+const ID_GridCosPhi                   = 67110656;  //        -  GridCosPhi - not implemented
 // grid phase 1
-const ID_L1GridCurrent = 67109377;                // in A  -  not implemented
-const ID_L1GridVoltage = 67109378;                // in V  -  not implemented
-const ID_L1GridPower = 67109379;                  // in W  -  not implemented
+const ID_L1GridCurrent                = 67109377;  // in A  -  not implemented
+const ID_L1GridVoltage                = 67109378;  // in V  -  not implemented
+const ID_L1GridPower                  = 67109379;  // in W  -  not implemented
 // grid phase 2
-const ID_L2GridCurrent = 67109633;                // in A  -  not implemented
-const ID_L2GridVoltage = 67109634;                // in V  -  not implemented
-const ID_L2GridPower = 67109635;                  // in W  -  not implemented
+const ID_L2GridCurrent                = 67109633;  // in A  -  not implemented
+const ID_L2GridVoltage                = 67109634;  // in V  -  not implemented
+const ID_L2GridPower                  = 67109635;  // in W  -  not implemented
 // grid phase 3
-const ID_L3GridCurrent = 67109889;                // in A  -  not implemented
-const ID_L3GridVoltage = 67109890;                // in V  -  not implemented
-const ID_L3GridPower = 67109891;                  // in W  -  not implemented
+const ID_L3GridCurrent                = 67109889;  // in A  -  not implemented
+const ID_L3GridVoltage                = 67109890;  // in V  -  not implemented
+const ID_L3GridPower                  = 67109891;  // in W  -  not implemented
 // Battery
-const ID_BatVoltage = 33556226;                   // in V  -  not implemented
-const ID_BatTemperature = 33556227;               // in °C
-const ID_BatChargeCycles = 33556228;              // in 1  -  not implemented
-const ID_BatStateOfCharge = 33556229;             // in %
-const ID_BatCurrentDir = 33556230;                // 1 = discharge; 0 = charge
-const ID_BatCurrent = 33556238;                   // in A
+const ID_BatVoltage                   = 33556226;  // in V  -  not implemented
+const ID_BatTemperature               = 33556227;  // in °C
+const ID_BatChargeCycles              = 33556228;  // in 1  -  not implemented
+const ID_BatStateOfCharge             = 33556229;  // in %
+const ID_BatCurrentDir                = 33556230;  // 1 = discharge; 0 = charge
+const ID_BatCurrent                   = 33556238;  // in A
 
 var KostalRequest      = ''; // IP request-string for PicoBA current data
 var KostalRequestDay   = ''; // IP request-string for PicoBA daily statistics
