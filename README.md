@@ -28,7 +28,7 @@ You could also edit the update frequencies of live, daily and livetime data.
 
 ## Changelog
 ### 1.1.1 (09.10.2020)
-* (HombachC) minor documentation tweaks
+* (HombachC) minor documentation tweaks; DC current accuracy changed to mA
 
 ### 1.1.0 (09.10.2020)
 * (tobstare) added DC1-3 Current, Voltage and Power
