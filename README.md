@@ -16,8 +16,8 @@
 
 ## Adapter for reading Kostal Piko BA data for iOBroker
 Adapter for reading Kostal Piko BA data. Adapter creates some states and updates them sequentially.
-Adapter also working with Piko 15 converter. 
-It's greatly appreciated if you verify functionality with other converters and please send me a note.
+Adapter also working with Kostal Piko 15 inverter. 
+It's greatly appreciated if you verify functionality with other inverters and please send me a note.
 
 ## Settings
 To connect to the Kostal Pico BA inverter noting its IP-address into the config is mandatory.
