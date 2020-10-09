@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -43,6 +43,9 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "1.1.1": {
+        "en": "minor documentation tweaks"
+      },
       "1.1.0": {
         "en": "added battery.ChargeCycles; battery.temperature; DC1-3 Current, Voltage and Power"
       },

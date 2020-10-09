@@ -32,9 +32,9 @@ const ID_Power_DC1Power               = 33555203;  // in W  -  DC power line 1
 const ID_Power_DC2Current             = 33555457;  // in A  -  DC current line 2
 const ID_Power_DC2Voltage             = 33555458;  // in V  -  DC voltage line 2
 const ID_Power_DC2Power               = 33555459;  // in W  -  DC power line 2
-const ID_Power_DC3Current             = 33555713;  // in A  -  DC current line 3
-const ID_Power_DC3Voltage             = 33555714;  // in V  -  DC voltage line 3
-const ID_Power_DC3Power               = 33555715;  // in W  -  DC power line 3
+const ID_Power_DC3Current             = 33555713;  // in A  -  DC current line 3 (equals to battery current in case of Pico BA)
+const ID_Power_DC3Voltage             = 33555714;  // in V  -  DC voltage line 3 (equals to battery voltage in case of Pico BA)
+const ID_Power_DC3Power               = 33555715;  // in W  -  DC power line 3 (equals to battery power in case of Pico BA)
 // live values - home
 const ID_Power_HouseConsumptionSolar  = 83886336;  // in W  -  ActHomeConsumptionSolar - not implemented
 const ID_Power_HouseConsumptionBat    = 83886592;  // in W  -  ActHomeConsumptionBat - not implemented
