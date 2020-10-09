@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "1.0.7",
+    "version": "1.1.0",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -43,26 +43,11 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
-      "1.0.7": {
-        "en": "added DC1-3 Current, Voltage and Power"
-      },
-      "1.0.6": {
-        "en": "added battery.ChargeCycles"
-      },
-      "1.0.5": {
-        "en": "battery.temperature rounded"
-      },
-      "1.0.4": {
-        "en": "code cleanup; bumped mocha"
-      },
-      "1.0.3": {
-        "en": "bumbed got; added battery.temperature"
+      "1.1.0": {
+        "en": "added battery.ChargeCycles; battery.temperature; DC1-3 Current, Voltage and Power"
       },
       "1.0.2": {
-        "en": "optimized object roles"
-      },
-      "1.0.0": {
-        "en": "first public release for stable repo"
+        "en": "public release for stable repo"
       },
       "0.8.0": {
         "en": "seperate editable poll timer for statistics data"
@@ -188,7 +173,7 @@
       "_id": "Power.DC1Current",
       "type": "state",
       "common": {
-        "role": "value.power",
+        "role": "value.current",
         "name": "Solar input current 1",
         "type": "number",
         "unit": "A",
@@ -202,7 +187,7 @@
       "_id": "Power.DC1Voltage",
       "type": "state",
       "common": {
-        "role": "value.power",
+        "role": "value.voltage",
         "name": "Solar input voltage 1",
         "type": "number",
         "unit": "V",
@@ -230,7 +215,7 @@
       "_id": "Power.DC2Current",
       "type": "state",
       "common": {
-        "role": "value.power",
+        "role": "value.current",
         "name": "Solar input current 2",
         "type": "number",
         "unit": "A",
@@ -244,7 +229,7 @@
       "_id": "Power.DC2Voltage",
       "type": "state",
       "common": {
-        "role": "value.power",
+        "role": "value.voltage",
         "name": "Solar input voltage 2",
         "type": "number",
         "unit": "V",
@@ -272,7 +257,7 @@
       "_id": "Power.DC3Current",
       "type": "state",
       "common": {
-        "role": "value.power",
+        "role": "value.current",
         "name": "Solar input current 3",
         "type": "number",
         "unit": "A",
@@ -286,7 +271,7 @@
       "_id": "Power.DC3Voltage",
       "type": "state",
       "common": {
-        "role": "value.power",
+        "role": "value.voltage",
         "name": "Solar input voltage 3",
         "type": "number",
         "unit": "V",

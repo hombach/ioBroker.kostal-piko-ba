@@ -7,43 +7,43 @@ const utils = require('@iobroker/adapter-core');
 // const schedule = require('node-schedule');
 const adapterIntervals = {};
 
-// Leistungswerte
-const ID_Power_SolarDC                = 33556736;  // in W  -  DC Power PV
-const ID_Power_GridAC                 = 67109120;  // in W  -  GridOutputPower without battery charging
-// State
+// live values power output
+const ID_Power_GridAC                 = 67109120;  // in W  -  GridOutputPower excluding power for battery charging
+// state
 const ID_OperatingState               = 16780032;  // 0:Off; 3:Einspeissen(MPP)
-// Statistics - Daily
+// statistics - daily
 const ID_StatDay_Yield                = 251658754; // in Wh
 const ID_StatDay_HouseConsumption     = 251659010; // in Wh
 const ID_StatDay_SelfConsumption      = 251659266; // in Wh
 const ID_StatDay_SelfConsumptionRate  = 251659278; // in %
 const ID_StatDay_Autarky              = 251659279; // in %
-// Statistics - Total
+// statistics - total
 const ID_StatTot_OperatingTime        = 251658496; // in h
 const ID_StatTot_Yield                = 251658753; // in kWh
 const ID_StatTot_HouseConsumption     = 251659009; // in kWh
 const ID_StatTot_SelfConsumption      = 251659265; // in kWh
 const ID_StatTot_SelfConsumptionRate  = 251659280; // in %
 const ID_StatTot_Autarky              = 251659281; // in %
-// Momentanwerte - PV Generator
-const ID_Power_DC1Current             = 33555201;  // in A
-const ID_Power_DC1Voltage             = 33555202;  // in V
-const ID_Power_DC1Power               = 33555203;  // in W
-const ID_Power_DC2Current             = 33555457;  // in A
-const ID_Power_DC2Voltage             = 33555458;  // in V
-const ID_Power_DC2Power               = 33555459;  // in W
-const ID_Power_DC3Current             = 33555713;  // in A
-const ID_Power_DC3Voltage             = 33555714;  // in V
-const ID_Power_DC3Power               = 33555715;  // in W
-// Momentanwerte Haus
+// live values - PV generator power
+const ID_Power_SolarDC                = 33556736;  // in W  -  DC Power PV generator in total
+const ID_Power_DC1Current             = 33555201;  // in A  -  DC current line 1
+const ID_Power_DC1Voltage             = 33555202;  // in V  -  DC voltage line 1
+const ID_Power_DC1Power               = 33555203;  // in W  -  DC power line 1 
+const ID_Power_DC2Current             = 33555457;  // in A  -  DC current line 2
+const ID_Power_DC2Voltage             = 33555458;  // in V  -  DC voltage line 2
+const ID_Power_DC2Power               = 33555459;  // in W  -  DC power line 2
+const ID_Power_DC3Current             = 33555713;  // in A  -  DC current line 3
+const ID_Power_DC3Voltage             = 33555714;  // in V  -  DC voltage line 3
+const ID_Power_DC3Power               = 33555715;  // in W  -  DC power line 3
+// live values - home
 const ID_Power_HouseConsumptionSolar  = 83886336;  // in W  -  ActHomeConsumptionSolar - not implemented
 const ID_Power_HouseConsumptionBat    = 83886592;  // in W  -  ActHomeConsumptionBat - not implemented
 const ID_Power_HouseConsumptionGrid   = 83886848;  // in W  -  ActHomeConsumptionGrid - not implemented
 const ID_Power_HouseConsumptionPhase1 = 83887106;  // in W  -  ActHomeConsumptionPhase1 - not implemented
 const ID_Power_HouseConsumptionPhase2 = 83887362;  // in W  -  ActHomeConsumptionPhase2 - not implemented
 const ID_Power_HouseConsumptionPhase3 = 83887618;  // in W  -  ActHomeConsumptionPhase3 - not implemented
-const ID_Power_HouseConsumption       = 83887872;  // in W  -  ActHomeConsumption
-const ID_Power_SelfConsumption        = 83888128;  // in W  -  ownConsumption
+const ID_Power_HouseConsumption       = 83887872;  // in W  -  Consumption of your home, measured by PIKO sensor
+const ID_Power_SelfConsumption        = 83888128;  // in W  -  SelfConsumption
 // grid parameter
 const ID_GridLimitation               = 67110144;  // in %   -  GridLimitation
 const ID_GridFrequency                = 67110400;  // in Hz  -  GridFrequency - not implemented
@@ -67,6 +67,8 @@ const ID_BatChargeCycles              = 33556228;  // in 1  -  not implemented
 const ID_BatStateOfCharge             = 33556229;  // in %
 const ID_BatCurrentDir                = 33556230;  // 1 = discharge; 0 = charge
 const ID_BatCurrent                   = 33556238;  // in A
+
+
 
 var KostalRequest      = ''; // IP request-string for PicoBA current data
 var KostalRequestDay   = ''; // IP request-string for PicoBA daily statistics
@@ -145,8 +147,8 @@ class KostalPikoBA extends utils.Adapter {
 				+ `&dxsEntries=${ID_Power_DC3Power       }&dxsEntries=${ID_Power_DC3Current      }`
 				+ `&dxsEntries=${ID_Power_DC3Voltage     }`            
                 + `&dxsEntries=${ID_Power_SelfConsumption}&dxsEntries=${ID_Power_HouseConsumption}`
-                + `&dxsEntries=${ID_OperatingState       }&dxsEntries=${ID_BatTemperature        }`
-                + `&dxsEntries=${ID_BatStateOfCharge     }`
+                + `&dxsEntries=${ID_OperatingState       }`
+                + `&dxsEntries=${ID_BatTemperature       }&dxsEntries=${ID_BatStateOfCharge      }`
                 + `&dxsEntries=${ID_BatCurrent           }&dxsEntries=${ID_BatCurrentDir         }`
                 + `&dxsEntries=${ID_GridLimitation       }`;
 
