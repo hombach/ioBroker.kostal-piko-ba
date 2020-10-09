@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -43,6 +43,9 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "1.0.7": {
+        "en": "added DC1-3 Current, Voltage and Power"
+      },
       "1.0.6": {
         "en": "added battery.ChargeCycles"
       },
@@ -133,8 +136,6 @@
       },
       "native": {}
     },
-
-
     {
       "_id": "Power",
       "type": "channel",
@@ -163,6 +164,132 @@
         "name": "Total solar input power",
         "type": "number",
         "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Power.DC1Power",
+      "type": "state",
+      "common": {
+        "role": "value.power",
+        "name": "Solar input power 1",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+	  {
+      "_id": "Power.DC1Current",
+      "type": "state",
+      "common": {
+        "role": "value.power",
+        "name": "Solar input current 1",
+        "type": "number",
+        "unit": "A",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+	  {
+      "_id": "Power.DC1Voltage",
+      "type": "state",
+      "common": {
+        "role": "value.power",
+        "name": "Solar input voltage 1",
+        "type": "number",
+        "unit": "V",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+	  {
+      "_id": "Power.DC2Power",
+      "type": "state",
+      "common": {
+        "role": "value.power",
+        "name": "Solar input power 2",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+	  {
+      "_id": "Power.DC2Current",
+      "type": "state",
+      "common": {
+        "role": "value.power",
+        "name": "Solar input current 2",
+        "type": "number",
+        "unit": "A",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+	  {
+      "_id": "Power.DC2Voltage",
+      "type": "state",
+      "common": {
+        "role": "value.power",
+        "name": "Solar input voltage 2",
+        "type": "number",
+        "unit": "V",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+  	{
+      "_id": "Power.DC3Power",
+      "type": "state",
+      "common": {
+        "role": "value.power",
+        "name": "Solar input power 3",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+  	{
+      "_id": "Power.DC3Current",
+      "type": "state",
+      "common": {
+        "role": "value.power",
+        "name": "Solar input current 3",
+        "type": "number",
+        "unit": "A",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+	  {
+      "_id": "Power.DC3Voltage",
+      "type": "state",
+      "common": {
+        "role": "value.power",
+        "name": "Solar input voltage 3",
+        "type": "number",
+        "unit": "V",
         "read": true,
         "write": false,
         "def": 0
