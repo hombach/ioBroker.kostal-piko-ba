@@ -141,11 +141,11 @@ class KostalPikoBA extends utils.Adapter {
 
             KostalRequest = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_Power_SolarDC        }&dxsEntries=${ID_Power_GridAC          }`
-				+ `&dxsEntries=${ID_Power_DC1Power       }&dxsEntries=${ID_Power_DC1Current      }`
-				+ `&dxsEntries=${ID_Power_DC1Voltage     }&dxsEntries=${ID_Power_DC2Power        }`
-				+ `&dxsEntries=${ID_Power_DC2Current     }&dxsEntries=${ID_Power_DC2Voltage      }`
-				+ `&dxsEntries=${ID_Power_DC3Power       }&dxsEntries=${ID_Power_DC3Current      }`
-				+ `&dxsEntries=${ID_Power_DC3Voltage     }`            
+                + `&dxsEntries=${ID_Power_DC1Power       }&dxsEntries=${ID_Power_DC1Current      }`
+                + `&dxsEntries=${ID_Power_DC1Voltage     }&dxsEntries=${ID_Power_DC2Power        }`
+                + `&dxsEntries=${ID_Power_DC2Current     }&dxsEntries=${ID_Power_DC2Voltage      }`
+                + `&dxsEntries=${ID_Power_DC3Power       }&dxsEntries=${ID_Power_DC3Current      }`
+                + `&dxsEntries=${ID_Power_DC3Voltage     }`            
                 + `&dxsEntries=${ID_Power_SelfConsumption}&dxsEntries=${ID_Power_HouseConsumption}`
                 + `&dxsEntries=${ID_OperatingState       }`
                 + `&dxsEntries=${ID_BatTemperature       }&dxsEntries=${ID_BatStateOfCharge      }`
@@ -217,16 +217,16 @@ class KostalPikoBA extends utils.Adapter {
                 if (!response.error && response.statusCode == 200) {
                     var result = await JSON.parse(response.body).dxsEntries;
                     this.setStateAsync('Power.SolarDC', { val: Math.round(result[0].value), ack: true });
-					this.setStateAsync('Power.GridAC', { val: Math.round(result[1].value), ack: true });
-					this.setStateAsync('Power.DC1Power', { val: Math.round(result[2].value), ack: true });
-					this.setStateAsync('Power.DC1Current', { val: (Math.round(1000 * result[3].value)) / 1000, ack: true });
-					this.setStateAsync('Power.DC1Voltage', { val: Math.round(result[4].value), ack: true });
-					this.setStateAsync('Power.DC2Power', { val: Math.round(result[5].value), ack: true });
-					this.setStateAsync('Power.DC2Current', { val: (Math.round(1000 * result[6].value)) / 1000, ack: true });
-					this.setStateAsync('Power.DC2Voltage', { val: Math.round(result[7].value), ack: true });
-					this.setStateAsync('Power.DC3Power', { val: Math.round(result[8].value), ack: true });
-					this.setStateAsync('Power.DC3Current', { val: (Math.round(1000 * result[9].value)) / 1000, ack: true });
-					this.setStateAsync('Power.DC3Voltage', { val: Math.round(result[10].value), ack: true });
+                    this.setStateAsync('Power.GridAC', { val: Math.round(result[1].value), ack: true });
+                    this.setStateAsync('Power.DC1Power', { val: Math.round(result[2].value), ack: true });
+                    this.setStateAsync('Power.DC1Current', { val: (Math.round(1000 * result[3].value)) / 1000, ack: true });
+                    this.setStateAsync('Power.DC1Voltage', { val: Math.round(result[4].value), ack: true });
+                    this.setStateAsync('Power.DC2Power', { val: Math.round(result[5].value), ack: true });
+                    this.setStateAsync('Power.DC2Current', { val: (Math.round(1000 * result[6].value)) / 1000, ack: true });
+                    this.setStateAsync('Power.DC2Voltage', { val: Math.round(result[7].value), ack: true });
+                    this.setStateAsync('Power.DC3Power', { val: Math.round(result[8].value), ack: true });
+                    this.setStateAsync('Power.DC3Current', { val: (Math.round(1000 * result[9].value)) / 1000, ack: true });
+                    this.setStateAsync('Power.DC3Voltage', { val: Math.round(result[10].value), ack: true });
                     this.setStateAsync('Power.SelfConsumption', { val: Math.round(result[11].value), ack: true });
                     this.setStateAsync('Power.HouseConsumption', { val: Math.floor(result[12].value), ack: true });
                     this.setStateAsync('State', { val: result[13].value, ack: true });
