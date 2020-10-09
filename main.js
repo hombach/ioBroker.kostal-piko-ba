@@ -26,12 +26,15 @@ const ID_StatTot_SelfConsumption      = 251659265; // in kWh
 const ID_StatTot_SelfConsumptionRate  = 251659280; // in %
 const ID_StatTot_Autarky              = 251659281; // in %
 // Momentanwerte - PV Generator
-const ID_DC1Current                   = 33555201;  // in A  -  not implemented
-const ID_DC1Voltage                   = 33555202;  // in V  -  not implemented
-const ID_DC1Power                     = 33555203;  // in W  -  not implemented
-const ID_DC2Current                   = 33555457;  // in A  -  not implemented
-const ID_DC2Voltage                   = 33555458;  // in V  -  not implemented
-const ID_DC2Power                     = 33555459;  // in W  -  not implemented
+const ID_Power_DC1Current             = 33555201;  // in A
+const ID_Power_DC1Voltage             = 33555202;  // in V
+const ID_Power_DC1Power               = 33555203;  // in W
+const ID_Power_DC2Current             = 33555457;  // in A
+const ID_Power_DC2Voltage             = 33555458;  // in V
+const ID_Power_DC2Power               = 33555459;  // in W
+const ID_Power_DC3Current             = 33555713;  // in A
+const ID_Power_DC3Voltage             = 33555714;  // in V
+const ID_Power_DC3Power               = 33555715;  // in W
 // Momentanwerte Haus
 const ID_Power_HouseConsumptionSolar  = 83886336;  // in W  -  ActHomeConsumptionSolar - not implemented
 const ID_Power_HouseConsumptionBat    = 83886592;  // in W  -  ActHomeConsumptionBat - not implemented
@@ -59,7 +62,7 @@ const ID_L3GridVoltage                = 67109890;  // in V  -  not implemented
 const ID_L3GridPower                  = 67109891;  // in W  -  not implemented
 // Battery
 const ID_BatVoltage                   = 33556226;  // in V  -  not implemented
-const ID_BatTemperature               = 33556227;  // in °C
+const ID_BatTemperature               = 33556227;  // in Â°C
 const ID_BatChargeCycles              = 33556228;  // in 1  -  not implemented
 const ID_BatStateOfCharge             = 33556229;  // in %
 const ID_BatCurrentDir                = 33556230;  // 1 = discharge; 0 = charge
@@ -136,6 +139,11 @@ class KostalPikoBA extends utils.Adapter {
 
             KostalRequest = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_Power_SolarDC        }&dxsEntries=${ID_Power_GridAC          }`
+				+ `&dxsEntries=${ID_Power_DC1Power       }&dxsEntries=${ID_Power_DC1Current      }`
+				+ `&dxsEntries=${ID_Power_DC1Voltage     }&dxsEntries=${ID_Power_DC2Power        }`
+				+ `&dxsEntries=${ID_Power_DC2Current     }&dxsEntries=${ID_Power_DC2Voltage      }`
+				+ `&dxsEntries=${ID_Power_DC3Power       }&dxsEntries=${ID_Power_DC3Current      }`
+				+ `&dxsEntries=${ID_Power_DC3Voltage     }`            
                 + `&dxsEntries=${ID_Power_SelfConsumption}&dxsEntries=${ID_Power_HouseConsumption}`
                 + `&dxsEntries=${ID_OperatingState       }&dxsEntries=${ID_BatTemperature        }`
                 + `&dxsEntries=${ID_BatStateOfCharge     }`
@@ -207,20 +215,29 @@ class KostalPikoBA extends utils.Adapter {
                 if (!response.error && response.statusCode == 200) {
                     var result = await JSON.parse(response.body).dxsEntries;
                     this.setStateAsync('Power.SolarDC', { val: Math.round(result[0].value), ack: true });
-                    this.setStateAsync('Power.GridAC', { val: Math.round(result[1].value), ack: true });
-                    this.setStateAsync('Power.SelfConsumption', { val: Math.round(result[2].value), ack: true });
-                    this.setStateAsync('Power.HouseConsumption', { val: Math.floor(result[3].value), ack: true });
-                    this.setStateAsync('State', { val: result[4].value, ack: true });
-                    this.setStateAsync('Battery.Temperature', { val: Math.round(result[5].value * 10) / 10, ack: true });
-                    this.setStateAsync('Battery.SoC', { val: result[6].value, ack: true });
-                    if (result[8].value) { // result[8] = 'Battery current direction; 1=Load; 0=Unload'
-                        this.setStateAsync('Battery.Current', { val: result[7].value, ack: true});
+					this.setStateAsync('Power.GridAC', { val: Math.round(result[1].value), ack: true });
+					this.setStateAsync('Power.DC1Power', { val: Math.round(result[2].value), ack: true });
+					this.setStateAsync('Power.DC1Current', { val: Math.round(result[3].value), ack: true });
+					this.setStateAsync('Power.DC1Voltage', { val: Math.round(result[4].value), ack: true });
+					this.setStateAsync('Power.DC2Power', { val: Math.round(result[5].value), ack: true });
+					this.setStateAsync('Power.DC2Current', { val: Math.round(result[6].value), ack: true });
+					this.setStateAsync('Power.DC2Voltage', { val: Math.round(result[7].value), ack: true });
+					this.setStateAsync('Power.DC3Power', { val: Math.round(result[8].value), ack: true });
+					this.setStateAsync('Power.DC3Current', { val: Math.round(result[9].value), ack: true });
+					this.setStateAsync('Power.DC3Voltage', { val: Math.round(result[10].value), ack: true });
+                    this.setStateAsync('Power.SelfConsumption', { val: Math.round(result[11].value), ack: true });
+                    this.setStateAsync('Power.HouseConsumption', { val: Math.floor(result[12].value), ack: true });
+                    this.setStateAsync('State', { val: result[13].value, ack: true });
+                    this.setStateAsync('Battery.Temperature', { val: result[14].value, ack: true });
+                    this.setStateAsync('Battery.SoC', { val: result[15].value, ack: true });
+                    if (result[17].value) { // result[8] = 'Battery current direction; 1=Load; 0=Unload'
+                        this.setStateAsync('Battery.Current', { val: result[16].value, ack: true});
                     }
                     else { // discharge
-                        this.setStateAsync('Battery.Current', { val: result[7].value * -1, ack: true});
+                        this.setStateAsync('Battery.Current', { val: result[16].value * -1, ack: true});
                     }
-                    this.setStateAsync('Power.Surplus', { val: Math.round(result[1].value - result[2].value), ack: true });
-                    this.setStateAsync('GridLimitation', { val: result[9].value, ack: true });
+                    this.setStateAsync('Power.Surplus', { val: Math.round(result[1].value - result[11].value), ack: true });
+                    this.setStateAsync('GridLimitation', { val: result[18].value, ack: true });
                     this.log.debug('Piko-BA live data updated');
                 }
                 else {
