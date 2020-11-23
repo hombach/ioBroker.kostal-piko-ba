@@ -29,7 +29,7 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 ## Changelog
 
 ### 1.1.3 (23.11.2020)
-* (HombachC) added additional error handler; bumped dependencies
+* (HombachC) added battery.Voltage; added additional error handler; bumped dependencies
 
 ### 1.1.2 (26.10.2020)
 * (HombachC) bumped dependencies
