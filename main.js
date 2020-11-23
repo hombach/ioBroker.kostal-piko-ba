@@ -10,7 +10,8 @@ const adapterIntervals = {};
 // live values power output
 const ID_Power_GridAC                 = 67109120;  // in W  -  GridOutputPower excluding power for battery charging
 // state
-const ID_OperatingState               = 16780032;  // 0:Off; 3:Einspeissen(MPP)
+const ID_OperatingState               = 16780032;  // 0 = aus; 1 = Leerlauf(?); 2 = Anfahren, DC Spannung noch zu klein(?)
+                                                   // 3 = Einspeisen(MPP); 4 = Einspeisen(abgeregelt)
 // statistics - daily
 const ID_StatDay_Yield                = 251658754; // in Wh
 const ID_StatDay_HouseConsumption     = 251659010; // in Wh
@@ -44,30 +45,36 @@ const ID_Power_HouseConsumptionPhase2 = 83887362;  // in W  -  ActHomeConsumptio
 const ID_Power_HouseConsumptionPhase3 = 83887618;  // in W  -  ActHomeConsumptionPhase3 - not implemented
 const ID_Power_HouseConsumption       = 83887872;  // in W  -  Consumption of your home, measured by PIKO sensor
 const ID_Power_SelfConsumption        = 83888128;  // in W  -  SelfConsumption
-// grid parameter
+// live values - grid parameter
 const ID_GridLimitation               = 67110144;  // in %   -  GridLimitation
 const ID_GridFrequency                = 67110400;  // in Hz  -  GridFrequency - not implemented
 const ID_GridCosPhi                   = 67110656;  //        -  GridCosPhi - not implemented
-// grid phase 1
+// live values - grid phase 1
 const ID_L1GridCurrent                = 67109377;  // in A  -  not implemented
 const ID_L1GridVoltage                = 67109378;  // in V  -  not implemented
 const ID_L1GridPower                  = 67109379;  // in W  -  not implemented
-// grid phase 2
+// live values - grid phase 2
 const ID_L2GridCurrent                = 67109633;  // in A  -  not implemented
 const ID_L2GridVoltage                = 67109634;  // in V  -  not implemented
 const ID_L2GridPower                  = 67109635;  // in W  -  not implemented
-// grid phase 3
+// live values - grid phase 3
 const ID_L3GridCurrent                = 67109889;  // in A  -  not implemented
 const ID_L3GridVoltage                = 67109890;  // in V  -  not implemented
 const ID_L3GridPower                  = 67109891;  // in W  -  not implemented
-// Battery
-const ID_BatVoltage                   = 33556226;  // in V  -  not implemented
+// live values - Battery
+const ID_BatVoltage                   = 33556226;  // in V
 const ID_BatTemperature               = 33556227;  // in °C
 const ID_BatChargeCycles              = 33556228;  // in 1  -  not implemented
 const ID_BatStateOfCharge             = 33556229;  // in %
 const ID_BatCurrentDir                = 33556230;  // 1 = discharge; 0 = charge
 const ID_BatCurrent                   = 33556238;  // in A
-
+// live values - inputs
+const ID_InputAnalog1                 = 167772417; // in V  -  not implemented
+const ID_InputAnalog2                 = 167772673; // in V  -  not implemented
+const ID_InputAnalog3                 = 167772929; // in V  -  not implemented
+const ID_InputAnalog4                 = 167773185; // in V  -  not implemented
+const ID_Input_S0_count               = 184549632; // in 1  -  not implemented
+const ID_Input_S0_seconds             = 150995968; // in sec  -  not implemented
 
 
 var KostalRequest      = ''; // IP request-string for PicoBA current data
@@ -119,9 +126,7 @@ class KostalPikoBA extends utils.Adapter {
         }
         this.log.info(`Polltime alltime statistics set to: ${(this.config.polltimetotal / 1000)} seconds`);
 
-
         //sentry.io ping
-        /*
         if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
             const sentryInstance = this.getPluginInstance('sentry');
             if (sentryInstance) {
@@ -133,12 +138,11 @@ class KostalPikoBA extends utils.Adapter {
                 });
             }
         }
-        */
+        
 
         // this.subscribeStates('*'); // all states changes inside the adapters namespace are subscribed
 
         if (this.config.ipaddress) {
-
             KostalRequest = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_Power_SolarDC        }&dxsEntries=${ID_Power_GridAC          }`
                 + `&dxsEntries=${ID_Power_DC1Power       }&dxsEntries=${ID_Power_DC1Current      }`
@@ -147,7 +151,7 @@ class KostalPikoBA extends utils.Adapter {
                 + `&dxsEntries=${ID_Power_DC3Power       }&dxsEntries=${ID_Power_DC3Current      }`
                 + `&dxsEntries=${ID_Power_DC3Voltage     }`            
                 + `&dxsEntries=${ID_Power_SelfConsumption}&dxsEntries=${ID_Power_HouseConsumption}`
-                + `&dxsEntries=${ID_OperatingState       }`
+                + `&dxsEntries=${ID_OperatingState       }&dxsEntries=${ID_BatVoltage}`
                 + `&dxsEntries=${ID_BatTemperature       }&dxsEntries=${ID_BatStateOfCharge      }`
                 + `&dxsEntries=${ID_BatCurrent           }&dxsEntries=${ID_BatCurrentDir         }`
                 + `&dxsEntries=${ID_GridLimitation       }`;
@@ -201,7 +205,7 @@ class KostalPikoBA extends utils.Adapter {
         } catch (e) {
             this.log.error(`Error in setting adapter schedule: ${e}`);
             this.restart;
-        }
+        } // END try catch
     }
     
 
@@ -230,16 +234,17 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Power.SelfConsumption', { val: Math.round(result[11].value), ack: true });
                     this.setStateAsync('Power.HouseConsumption', { val: Math.floor(result[12].value), ack: true });
                     this.setStateAsync('State', { val: result[13].value, ack: true });
-                    this.setStateAsync('Battery.Temperature', { val: result[14].value, ack: true });
-                    this.setStateAsync('Battery.SoC', { val: result[15].value, ack: true });
-                    if (result[17].value) { // result[8] = 'Battery current direction; 1=Load; 0=Unload'
-                        this.setStateAsync('Battery.Current', { val: result[16].value, ack: true});
+                    this.setStateAsync('Battery.Voltage', { val: Math.round(result[14].value), ack: true });
+                    this.setStateAsync('Battery.Temperature', { val: result[15].value, ack: true });
+                    this.setStateAsync('Battery.SoC', { val: result[16].value, ack: true });
+                    if (result[18].value) { // result[8] = 'Battery current direction; 1=Load; 0=Unload'
+                        this.setStateAsync('Battery.Current', { val: result[17].value, ack: true});
                     }
                     else { // discharge
-                        this.setStateAsync('Battery.Current', { val: result[16].value * -1, ack: true});
+                        this.setStateAsync('Battery.Current', { val: result[17].value * -1, ack: true});
                     }
                     this.setStateAsync('Power.Surplus', { val: Math.round(result[1].value - result[11].value), ack: true });
-                    this.setStateAsync('GridLimitation', { val: result[18].value, ack: true });
+                    this.setStateAsync('GridLimitation', { val: result[19].value, ack: true });
                     this.log.debug('Piko-BA live data updated');
                 }
                 else {
@@ -277,8 +282,14 @@ class KostalPikoBA extends utils.Adapter {
                 this.log.error(`Error in calling Piko API: ${e}`);
                 this.log.error(`Please verify IP address: ${this.config.ipaddress} !!!`);
             } // END try catch
-            clearTimeout(adapterIntervals.daily);
-            adapterIntervals.daily = setTimeout(this.ReadPikoDaily.bind(this), this.config.polltimedaily);
+
+            try {
+                clearTimeout(adapterIntervals.daily);
+                adapterIntervals.daily = setTimeout(this.ReadPikoDaily.bind(this), this.config.polltimedaily);
+            } catch (e) {
+                this.log.error(`Error in setting adapter schedule: ${e}`);
+            } // END try catch
+
         })();
     } // END ReadPikoDaily
 
@@ -310,8 +321,14 @@ class KostalPikoBA extends utils.Adapter {
                 this.log.error(`Please verify IP address: ${this.config.ipaddress} !!!`);
             } // END try catch
         })();
-        clearTimeout(adapterIntervals.total);
-        adapterIntervals.total = setTimeout(this.ReadPikoTotal.bind(this), this.config.polltimetotal);
+
+        try {
+            clearTimeout(adapterIntervals.total);
+            adapterIntervals.total = setTimeout(this.ReadPikoTotal.bind(this), this.config.polltimetotal);
+        } catch (e) {
+            this.log.error(`Error in setting adapter schedule: ${e}`);
+        } // END try catch
+
     } // END ReadPikoTotal
 
 } // END Class
