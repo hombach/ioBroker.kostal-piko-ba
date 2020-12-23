@@ -38,7 +38,7 @@
     "readme": "https://github.com/hombach/ioBroker.kostal-piko-ba/blob/master/README.md",
     "icon": "picoba.png",
     "extIcon": "https://github.com/hombach/ioBroker.kostal-piko-ba/blob/master/admin/picoba.png",
-    "keywords": [ "Kostal", "Piko", "inverter" ],
+    "keywords": [ "Kostal", "Piko", "inverter", "solar" ],
     "type": "energy",
     "connectionType": "local",
     "dataSource": "poll",
