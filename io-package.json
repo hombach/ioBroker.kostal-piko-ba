@@ -56,28 +56,10 @@
         "en": "minor documentation tweaks; DC current accuracy changed to mA"
       },
       "1.1.0": {
-        "en": "added battery.ChargeCycles; battery.temperature; DC1-3 Current, Voltage and Power",
-        "de": "Batterie hinzugefügt.ChargeCycles; Batterietemperatur; DC1-3 Strom, Spannung und Leistung",
-        "ru": "добавлен battery.ChargeCycles; аккумулятор. температура; DC1-3 Ток, напряжение и мощность",
-        "pt": "adicionado bateria.ChargeCycles; bateria.temperatura; Corrente DC1-3, tensão e potência",
-        "nl": "batterij toegevoegd.ChargeCycles; batterij. temperatuur; DC1-3 stroom, spanning en vermogen",
-        "fr": "batterie supplémentaire.ChargeCycles; batterie.température; Courant, tension et puissance DC1-3",
-        "it": "batteria aggiunta.Cicli di carica; battery.temperature; Corrente, tensione e potenza DC1-3",
-        "es": "battery.ChargeCycles agregado; batería.temperatura; Corriente, voltaje y potencia DC1-3",
-        "pl": "dodana bateria.ChargeCycles; temperatura baterii; DC1-3 Prąd, napięcie i moc",
-        "zh-cn": "增加电池.ChargeCycles;电池温度DC1-3电流，电压和功率"
+        "en": "added battery.ChargeCycles; battery.temperature; DC1-3 Current, Voltage and Power"
       },
       "1.0.2": {
-        "en": "public release for stable repo",
-        "de": "Veröffentlichung für stabiles Repo",
-        "ru": "публичный выпуск для стабильного репо",
-        "pt": "lançamento público para repo estável",
-        "nl": "openbare uitgave voor stabiele opslagplaats",
-        "fr": "publication publique pour le repo stable",
-        "it": "rilascio pubblico per repo stabile",
-        "es": "lanzamiento público para repositorio estable",
-        "pl": "publiczne wydanie stabilnego repozytorium",
-        "zh-cn": "公开发布稳定回购"
+        "en": "public release for stable repo"
       },
       "0.8.0": {
         "en": "seperate editable poll timer for statistics data"
