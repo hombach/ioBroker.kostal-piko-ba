@@ -28,7 +28,7 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 
 ## Changelog
 ### 1.1.7 (09.05.2021)
-* (HombachC) added tests for node.js 16
+* (HombachC) added tests for node.js 16; fixed vulnerability
 ### 1.1.6 (02.03.2021)
 * (HombachC) bumped dependencies; changes for new year 2021
 ### 1.1.5 (14.12.2020)

@@ -44,7 +44,7 @@
     "dataSource": "poll",
     "news": {
       "1.1.7": {
-        "en": "added tests for node.js 16"
+        "en": "added tests for node.js 16; fixed vulnerability"
       },
       "1.1.6": {
         "en": "bumped dependencies; changes for new year 2021"
