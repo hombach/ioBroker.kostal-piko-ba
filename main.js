@@ -187,7 +187,7 @@ class KostalPikoBA extends utils.Adapter {
             callback();
         } catch (e) {
             callback();
-        }
+        } // END try catch
     }
 
 
