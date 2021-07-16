@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "1.1.9",
+    "version": "1.1.10",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -43,11 +43,11 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
-      "1.1.9": {
+      "1.1.10": {
         "en": "bumped dependencies; fixed vulnerability"
       },
-      "1.1.8": {
-        "en": "bumped dependencies"
+      "1.1.9": {
+        "en": "bumped dependencies; fixed vulnerability"
       },
       "1.1.7": {
         "en": "added tests for node.js 16; fixed vulnerability"
