@@ -22,7 +22,7 @@
     "node": ">= 10.0.0"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^2.5.0",
+    "@iobroker/adapter-core": "^2.5.1",
     "got": "^11.8.2"
   },
   "devDependencies": {
