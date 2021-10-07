@@ -44,7 +44,7 @@
     "dataSource": "poll",
     "news": {
       "1.1.12": {
-        "en": "fixed icon link"
+        "en": "bumped dependencies; fixed icon link"
       },
       "1.1.10": {
         "en": "bumped dependencies; fixed vulnerability"
