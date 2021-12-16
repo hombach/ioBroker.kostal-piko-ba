@@ -131,7 +131,7 @@ class KostalPikoBA extends utils.Adapter {
                 const Sentry = sentryInstance.getSentryObject();
                 Sentry && Sentry.withScope(scope => {
                     scope.setLevel('info');
-                    scope.setExtra('key', 'value');
+                    scope.setTag('Inverter', this.config.ipaddress);
                     Sentry.captureMessage('Adapter kostal-piko-ba started', 'info'); // Level "info"
                 });
             }
