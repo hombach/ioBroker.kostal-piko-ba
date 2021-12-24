@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -43,6 +43,9 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "1.2.1": {
+        "en": "introduced rounding of battery temp"
+      },
       "1.2.0": {
         "en": "dropped node.js 10 support; bumped dependencies; fixed vulnerability"
       },

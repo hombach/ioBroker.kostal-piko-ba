@@ -230,7 +230,7 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Power.HouseConsumption', { val: Math.floor(result[12].value), ack: true });
                     this.setStateAsync('State', { val: result[13].value, ack: true });
                     this.setStateAsync('Battery.Voltage', { val: Math.round(result[14].value), ack: true });
-                    this.setStateAsync('Battery.Temperature', { val: result[15].value, ack: true });
+                    this.setStateAsync('Battery.Temperature', { val: (Math.round(10 * result[15].value)) / 10, ack: true });
                     this.setStateAsync('Battery.SoC', { val: result[16].value, ack: true });
                     if (result[18].value) { // result[8] = 'Battery current direction; 1=Load; 0=Unload'
                         this.setStateAsync('Battery.Current', { val: result[17].value, ack: true});
