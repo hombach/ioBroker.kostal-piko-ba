@@ -69,12 +69,12 @@ const ID_BatStateOfCharge             = 33556229;  // in %
 const ID_BatCurrentDir                = 33556230;  // 1 = discharge; 0 = charge
 const ID_BatCurrent                   = 33556238;  // in A
 // live values - inputs
-const ID_InputAnalog1                 = 167772417; // in V    -  not implemented
-const ID_InputAnalog2                 = 167772673; // in V    -  not implemented
-const ID_InputAnalog3                 = 167772929; // in V    -  not implemented
-const ID_InputAnalog4                 = 167773185; // in V    -  not implemented
-const ID_Input_S0_count               = 184549632; // in 1    -  not implemented
-const ID_Input_S0_seconds             = 150995968; // in sec  -  not implemented
+const ID_InputAnalog1                 = 167772417; // in V   - 10bit resolution
+const ID_InputAnalog2                 = 167772673; // in V   -  not implemented
+const ID_InputAnalog3                 = 167772929; // in V   -  not implemented
+const ID_InputAnalog4                 = 167773185; // in V   -  not implemented
+const ID_Input_S0_count               = 184549632; // in 1   -  not implemented
+const ID_Input_S0_seconds             = 150995968; // in sec -  not implemented
 
 var KostalRequest      = ''; // IP request-string for PicoBA current data
 var KostalRequestDay   = ''; // IP request-string for PicoBA daily statistics
