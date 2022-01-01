@@ -64,7 +64,7 @@ const ID_L3GridPower                  = 67109891;  // in W  -  not implemented
 // live values - Battery
 const ID_BatVoltage                   = 33556226;  // in V
 const ID_BatTemperature               = 33556227;  // in °C
-const ID_BatChargeCycles              = 33556228;  // in 1  -  not implemented
+const ID_BatChargeCycles              = 33556228;  // in 1
 const ID_BatStateOfCharge             = 33556229;  // in %
 const ID_BatCurrentDir                = 33556230;  // 1 = discharge; 0 = charge
 const ID_BatCurrent                   = 33556238;  // in A
@@ -151,7 +151,8 @@ class KostalPikoBA extends utils.Adapter {
                 + `&dxsEntries=${ID_OperatingState       }&dxsEntries=${ID_BatVoltage}`
                 + `&dxsEntries=${ID_BatTemperature       }&dxsEntries=${ID_BatStateOfCharge      }`
                 + `&dxsEntries=${ID_BatCurrent           }&dxsEntries=${ID_BatCurrentDir         }`
-                + `&dxsEntries=${ID_GridLimitation       }`;
+                + `&dxsEntries=${ID_GridLimitation}`
+                + `&dxsEntries=${ID_InputAnalog1}`;
 
             KostalRequestDay = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_StatDay_SelfConsumption}&dxsEntries=${ID_StatDay_SelfConsumptionRate}`
@@ -240,6 +241,7 @@ class KostalPikoBA extends utils.Adapter {
                     }
                     this.setStateAsync('Power.Surplus', { val: Math.round(result[1].value - result[11].value), ack: true });
                     this.setStateAsync('GridLimitation', { val: result[19].value, ack: true });
+                    this.setStateAsync('Inputs.Analog1', { val: result[20].value, ack: true });
                     this.log.debug('Piko-BA live data updated');
                 }
                 else {
@@ -270,7 +272,7 @@ class KostalPikoBA extends utils.Adapter {
                     this.log.debug('Piko-BA daily data updated');
                 }
                 else {
-                    this.log.error(`Error: ${response.error} by polling Piko-BA: ${KostalRequest}`);
+                    this.log.error(`Error: ${response.error} by polling Piko-BA: ${KostalRequestDay}`);
                 }
             } catch (e) {
                 this.log.error(`Error in calling Piko API: ${e}`);
@@ -307,7 +309,7 @@ class KostalPikoBA extends utils.Adapter {
                     this.log.debug('Piko-BA lifetime data updated');
                 }
                 else {
-                    this.log.error(`Error: ${response.error} by polling Piko-BA: ${KostalRequest}`);
+                    this.log.error(`Error: ${response.error} by polling Piko-BA: ${KostalRequestTotal}`);
                 }
             } catch (e) {
                 this.log.error(`Error in calling Piko API: ${e}`);
