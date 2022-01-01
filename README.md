@@ -31,7 +31,7 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 ## Changelog
 ! Note that missing version entries are typically dependency updates for security.
 ### 1.3.0 01.01.2022)
-* (HombachC) added support for analog input 1
+* (HombachC) added optional support for analog inputs
 ### 1.2.1 (24.12.2021)
 * (HombachC) introduced rounding of battery temp
 ### 1.2.0 (16.12.2021)

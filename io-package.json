@@ -44,7 +44,7 @@
     "dataSource": "poll",
     "news": {
       "1.3.0": {
-        "en": "added support for analog input 1"
+        "en": "added optional support for analog inputs"
       },
       "1.2.1": {
         "en": "introduced rounding of battery temp"
@@ -117,7 +117,8 @@
     "ipaddress": "",
     "polltimelive": 10000,
     "polltimedaily": 60000,
-    "polltimetotal": 200000
+    "polltimetotal": 200000,
+    "readanalogs": false
   },
 
   "objects": [],
@@ -612,6 +613,48 @@
       "common": {
         "role": "value.voltage",
         "name": "Analog input 1 voltage",
+        "type": "number",
+        "unit": "V",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Inputs.Analog2",
+      "type": "state",
+      "common": {
+        "role": "value.voltage",
+        "name": "Analog input 2 voltage",
+        "type": "number",
+        "unit": "V",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Inputs.Analog3",
+      "type": "state",
+      "common": {
+        "role": "value.voltage",
+        "name": "Analog input 3 voltage",
+        "type": "number",
+        "unit": "V",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Inputs.Analog4",
+      "type": "state",
+      "common": {
+        "role": "value.voltage",
+        "name": "Analog input 4 voltage",
         "type": "number",
         "unit": "V",
         "read": true,

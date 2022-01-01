@@ -148,12 +148,14 @@ class KostalPikoBA extends utils.Adapter {
                 + `&dxsEntries=${ID_Power_DC3Power       }&dxsEntries=${ID_Power_DC3Current      }`
                 + `&dxsEntries=${ID_Power_DC3Voltage     }`            
                 + `&dxsEntries=${ID_Power_SelfConsumption}&dxsEntries=${ID_Power_HouseConsumption}`
-                + `&dxsEntries=${ID_OperatingState       }&dxsEntries=${ID_BatVoltage}`
+                + `&dxsEntries=${ID_OperatingState       }&dxsEntries=${ID_BatVoltage            }`
                 + `&dxsEntries=${ID_BatTemperature       }&dxsEntries=${ID_BatStateOfCharge      }`
                 + `&dxsEntries=${ID_BatCurrent           }&dxsEntries=${ID_BatCurrentDir         }`
-                + `&dxsEntries=${ID_GridLimitation}`
-                + `&dxsEntries=${ID_InputAnalog1}`;
-
+                + `&dxsEntries=${ID_GridLimitation}`;
+            if (this.config.readanalogs) {
+                KostalRequest = KostalRequest + `&dxsEntries=${ID_InputAnalog1}` + `&dxsEntries=${ID_InputAnalog2}`
+                                              + `&dxsEntries=${ID_InputAnalog3}` + `&dxsEntries=${ID_InputAnalog4}`;
+            }
             KostalRequestDay = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_StatDay_SelfConsumption}&dxsEntries=${ID_StatDay_SelfConsumptionRate}`
                 + `&dxsEntries=${ID_StatDay_Yield          }&dxsEntries=${ID_StatDay_HouseConsumption   }`
@@ -233,7 +235,7 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Battery.Voltage', { val: Math.round(result[14].value), ack: true });
                     this.setStateAsync('Battery.Temperature', { val: (Math.round(10 * result[15].value)) / 10, ack: true });
                     this.setStateAsync('Battery.SoC', { val: result[16].value, ack: true });
-                    if (result[18].value) { // result[8] = 'Battery current direction; 1=Load; 0=Unload'
+                    if (result[18].value) { // result[18] = 'Battery current direction; 1=Load; 0=Unload'
                         this.setStateAsync('Battery.Current', { val: result[17].value, ack: true});
                     }
                     else { // discharge
@@ -241,7 +243,12 @@ class KostalPikoBA extends utils.Adapter {
                     }
                     this.setStateAsync('Power.Surplus', { val: Math.round(result[1].value - result[11].value), ack: true });
                     this.setStateAsync('GridLimitation', { val: result[19].value, ack: true });
-                    this.setStateAsync('Inputs.Analog1', { val: result[20].value, ack: true });
+                    if (this.config.readanalogs) {
+                        this.setStateAsync('Inputs.Analog1', { val: result[20].value, ack: true });
+                        this.setStateAsync('Inputs.Analog2', { val: result[21].value, ack: true });
+                        this.setStateAsync('Inputs.Analog3', { val: result[22].value, ack: true });
+                        this.setStateAsync('Inputs.Analog4', { val: result[23].value, ack: true });
+                    }
                     this.log.debug('Piko-BA live data updated');
                 }
                 else {

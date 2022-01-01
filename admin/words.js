@@ -61,5 +61,17 @@ systemDictionary = {
         "es": "Tiempo entre sondeos de datos de estadísticas de tiempo del inversor [ms]",
         "pl": "Czas między odpytywaniem danych ze statystyk całego czasu falownika [ms]",
         "zh-cn": "来自逆变器常时统计的数据轮询之间的时间[ms]"
+    },
+    'readanalogs': {
+        "en": "Read-Out all 4 analog input values in V (0-10V; 10bit)",
+        "de": "Auslesen aller 4 analogen Eingangswerte in V (0-10V; 10bit)",
+        "ru": "Считывание значений всех 4 аналоговых входов в В (0-10 В; 10 бит)",
+        "pt": "Leia todos os 4 valores de entrada analógica em V (0-10V; 10 bits)",
+        "nl": "Uitlezen van alle 4 analoge ingangswaarden in V (0-10V; 10bit)",
+        "fr": "Lecture des 4 valeurs d'entrée analogiques en V (0-10 V ; 10 bits)",
+        "it": "Lettura di tutti e 4 i valori di ingresso analogico in V (0-10V; 10bit)",
+        "es": "Leer los 4 valores de entrada analógica en V (0-10 V; 10 bits)",
+        "pl": "Odczyt wszystkich 4 analogowych wartości wejściowych w V (0-10V; 10bit)",
+        "zh-cn": "以 V 为单位读出所有 4 个模拟输入值（0-10V；10 位）"
     }
 };
