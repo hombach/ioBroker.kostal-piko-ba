@@ -249,7 +249,7 @@ class KostalPikoBA extends utils.Adapter {
                         this.setStateAsync('Inputs.Analog3', { val: result[22].value, ack: true });
                         this.setStateAsync('Inputs.Analog4', { val: result[23].value, ack: true });
                     }
-                    this.log.debug('Piko-BA live data updated');
+                    this.log.debug(`Piko-BA live data updated - Kostal raw data: ${KostalRequest}`);
                 }
                 else {
                     this.log.error(`Error: ${response.error} by polling Piko-BA: ${KostalRequest}`);
