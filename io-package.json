@@ -61,9 +61,6 @@
       "1.1.10": {
         "en": "bumped dependencies; fixed vulnerability"
       },
-      "1.1.9": {
-        "en": "bumped dependencies; fixed vulnerability"
-      },
       "1.1.7": {
         "en": "added tests for node.js 16; fixed vulnerability"
       },
