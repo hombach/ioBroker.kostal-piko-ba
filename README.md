@@ -7,7 +7,9 @@
 ![Number of Installations (latest)](http://ioBroker.live/badges/kostal-piko-ba-installed.svg)
 [![Known Vulnerabilities](https://snyk.io/test/github/hombach/ioBroker.kostal-piko-ba/badge.svg)](https://snyk.io/test/github/hombach/ioBroker.kostal-piko-ba)
 
-[![TESTS](https://github.com/hombach/ioBroker.kostal-piko-ba/workflows/Test%20and%20Release/badge.svg)](https://github.com/hombach/ioBroker.kostal-piko-ba/commits/master) 
+[![TESTS](https://github.com/hombach/ioBroker.kostal-piko-ba/.github/workflows/node.js.yml/badge.svg)](https://github.com/hombach/ioBroker.kostal-piko-ba/commits/master)
+
+ioBroker.kostal-piko-ba/.github/workflows/node.js.yml
 
 ![Node.js CI](https://github.com/hombach/ioBroker.kostal-piko-ba/workflows/Node.js%20CI/badge.svg)
 
