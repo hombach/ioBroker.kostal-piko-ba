@@ -37,25 +37,34 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 
 ### 1.2.1 (24.12.2021)
 * (HombachC) introduced rounding of battery temp
+
 ### 1.2.0 (16.12.2021)
 * (HombachC) dropped node.js 10 support; bumped dependencies; fixed vulnerability
+
 ### 1.1.13 (16.10.2021)
 * (HombachC) bumped dependencies; fixed vulnerability
+
 ### 1.1.12 (07.10.2021)
 * (GermanBlueFox) fixed icon link
 * (HombachC) bumped dependencies
+
 ### 1.1.10 (16.07.2021)
 * (HombachC) bumped dependencies; fixed vulnerability
+
 ### 1.1.7 (09.05.2021)
 * (HombachC) added tests for node.js 16; fixed vulnerability
+
 ### 1.1.3 (23.11.2020)
 * (HombachC) added battery.Voltage; added additional error handler; bumped dependencies
+
 ### 1.1.1 (09.10.2020) stable
 * (HombachC) minor documentation tweaks; DC current accuracy changed to mA
+
 ### 1.1.0 (09.10.2020)
 * (tobstare) added DC1-3 Current, Voltage and Power
 * (HombachC) added battery.ChargeCycles
 * (HombachC) bumped dependencies; added battery.temperature
+
 ### 1.0.2 (23.09.2020)
 * (HombachC) public release for stable repo
 ### 0.8.0 (18.08.2020)
