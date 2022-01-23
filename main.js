@@ -81,30 +81,6 @@ var KostalRequestDay   = ''; // IP request-string for PicoBA daily statistics
 var KostalRequestTotal = ''; // IP request-string for PicoBA total statistics
 
 
-/**
- * Checks if a a given state or part of state is existing.
- * This is a workaround, as getObject() or getState() throw warnings in the log.
- * Set strict to true if the state shall match exactly. If it is false, it will add a wildcard * to the end.
- * See: https://forum.iobroker.net/topic/11354/
- * @param {string}    strStatePath     Input string of state, like 'javascript.0.switches.Osram.Bedroom'
- * @param {boolean}   [strict=false]   Optional: if true, it will work strict, if false, it will add a wildcard * to the end of the string
- * @return {boolean}                   true if state exists, false if not
- */
-function existsState(strStatePath, strict) {
-    let mSelector;
-    if (strict) {
-        mSelector = $('state[id=' + strStatePath + '$]');
-    } else {
-        mSelector = $('state[id=' + strStatePath + ']');
-    }
-    if (mSelector.length > 0) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-
 class KostalPikoBA extends utils.Adapter {
 
     /****************************************************************************************
@@ -121,7 +97,8 @@ class KostalPikoBA extends utils.Adapter {
         // this.on('message', this.onMessage.bind(this));
         this.on('unload', this.onUnload.bind(this));
     }
-    
+
+
     /****************************************************************************************
     * Is called when databases are connected and adapter received configuration. ***********/
     async onReady() {
@@ -180,29 +157,7 @@ class KostalPikoBA extends utils.Adapter {
             if (this.config.readanalogs) {
                 KostalRequest = KostalRequest + `&dxsEntries=${ID_InputAnalog1}` + `&dxsEntries=${ID_InputAnalog2}`
                     + `&dxsEntries=${ID_InputAnalog3}` + `&dxsEntries=${ID_InputAnalog4}`;
-
-
-/*                if (!existsState('Inputs.Norm1', true)) {
-                    this.createState('Inputs.Norm1', '0',
-                        {
-                            role: 'value',
-                            name: 'Analog input 1 normalized',
-                            type: 'number',
-                            unit: 'V',
-                            read: true,
-                            write: false,
-                            def: 0
-                        }, function () { });
-                } */
             }
-            else {
-                if (existsState('Inputs.Analog1', true)) this.deleteState('Inputs.Analog1');
-                if (existsState('Inputs.Analog2', true)) this.deleteState('Inputs.Analog2');
-                if (existsState('Inputs.Analog3', true)) this.deleteState('Inputs.Analog3');
-                if (existsState('Inputs.Analog4', true)) this.deleteState('Inputs.Analog4');
-            }
-
-
             KostalRequestDay = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_StatDay_SelfConsumption}&dxsEntries=${ID_StatDay_SelfConsumptionRate}`
                 + `&dxsEntries=${ID_StatDay_Yield          }&dxsEntries=${ID_StatDay_HouseConsumption   }`

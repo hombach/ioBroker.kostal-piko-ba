@@ -30,7 +30,7 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 ! Note that missing version entries are typically dependency updates for security.
 
 ### 1.3.1 (23.01.2022)
-* (HombachC) correct rounding of analog values; added cleanup of optional analog states; bumped dependencies
+* (HombachC) correct rounding of analog values; bumped dependencies
 
 ### 1.3.0 (01.01.2022)
 * (HombachC) added optional support for analog inputs
