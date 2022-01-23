@@ -106,6 +106,10 @@ class KostalPikoBA extends utils.Adapter {
             this.log.error('Kostal Piko IP address not set');
         } else {
             this.log.info(`IP address found in config: ${this.config.ipaddress}`);
+            // Validate IP address ...
+            if (!(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(this.config.ipaddress))) {
+                this.log.error(`You have entered an invalid IP address! ${this.config.ipaddress}`)
+            }
         }
 
         if (!this.config.polltimelive) {

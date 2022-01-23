@@ -20,7 +20,7 @@ It's greatly appreciated if you verify functionality with other inverters and pl
 
 ## Settings
 To connect to the Kostal Pico BA inverter noting its IP-address into the config is mandatory.
-You could also edit the update frequencies of live, daily and livetime data.
+You could also edit the update frequencies of live data, daily and livetime statistics.
 
 ## Notes
 This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers. For more details and for informations on how to disable the error reporting see [Sentry-Plugin Documentation](https://github.com/ioBroker/plugin-sentry#plugin-sentry)! Sentry reporting is used starting with js-controller 3.0.
@@ -31,6 +31,7 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 
 ### 1.3.1 (23.01.2022)
 * (HombachC) correct rounding of analog values; bumped dependencies
+* (HombachC) added validation of configured IPv4 address
 
 ### 1.3.0 (01.01.2022)
 * (HombachC) added optional support for analog inputs
