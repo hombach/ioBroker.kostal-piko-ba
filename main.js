@@ -80,6 +80,31 @@ var KostalRequest      = ''; // IP request-string for PicoBA current data
 var KostalRequestDay   = ''; // IP request-string for PicoBA daily statistics
 var KostalRequestTotal = ''; // IP request-string for PicoBA total statistics
 
+
+/**
+ * Checks if a a given state or part of state is existing.
+ * This is a workaround, as getObject() or getState() throw warnings in the log.
+ * Set strict to true if the state shall match exactly. If it is false, it will add a wildcard * to the end.
+ * See: https://forum.iobroker.net/topic/11354/
+ * @param {string}    strStatePath     Input string of state, like 'javascript.0.switches.Osram.Bedroom'
+ * @param {boolean}   [strict=false]   Optional: if true, it will work strict, if false, it will add a wildcard * to the end of the string
+ * @return {boolean}                   true if state exists, false if not
+ */
+function existsState(strStatePath, strict) {
+    let mSelector;
+    if (strict) {
+        mSelector = $('state[id=' + strStatePath + '$]');
+    } else {
+        mSelector = $('state[id=' + strStatePath + ']');
+    }
+    if (mSelector.length > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
 class KostalPikoBA extends utils.Adapter {
 
     /****************************************************************************************
@@ -156,8 +181,9 @@ class KostalPikoBA extends utils.Adapter {
                 KostalRequest = KostalRequest + `&dxsEntries=${ID_InputAnalog1}` + `&dxsEntries=${ID_InputAnalog2}`
                     + `&dxsEntries=${ID_InputAnalog3}` + `&dxsEntries=${ID_InputAnalog4}`;
 
-/*                if (!this.existsState('Inputs.Norm1')) {
-                    this.createState('Inputs.Norm1', 0,
+
+/*                if (!existsState('Inputs.Norm1', true)) {
+                    this.createState('Inputs.Norm1', '0',
                         {
                             role: 'value',
                             name: 'Analog input 1 normalized',
@@ -167,12 +193,12 @@ class KostalPikoBA extends utils.Adapter {
                             write: false,
                             def: 0
                         }, function () { });
-                }
+                } */
             }
             else {
-                if (this.existsState('Inputs.Norm1')) {
-                    this.deleteState('Inputs.Norm1');
-                } */
+                if (existsState('Inputs.Analog1', true)) {
+                    this.deleteState('Inputs.Analog1');
+                }
             }
 
 
@@ -352,7 +378,6 @@ class KostalPikoBA extends utils.Adapter {
         } // END try catch
 
     } // END ReadPikoTotal
-
 } // END Class
 
 
