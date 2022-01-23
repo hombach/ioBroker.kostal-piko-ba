@@ -154,8 +154,28 @@ class KostalPikoBA extends utils.Adapter {
                 + `&dxsEntries=${ID_GridLimitation}`;
             if (this.config.readanalogs) {
                 KostalRequest = KostalRequest + `&dxsEntries=${ID_InputAnalog1}` + `&dxsEntries=${ID_InputAnalog2}`
-                                              + `&dxsEntries=${ID_InputAnalog3}` + `&dxsEntries=${ID_InputAnalog4}`;
+                    + `&dxsEntries=${ID_InputAnalog3}` + `&dxsEntries=${ID_InputAnalog4}`;
+
+                if (!this.existsState('Inputs.Norm1')) {
+                    this.createState('Inputs.Norm1', 0,
+                        {
+                            role: 'value',
+                            name: 'Analog input 1 normalized',
+                            type: 'number',
+                            unit: 'V',
+                            read: true,
+                            write: false,
+                            def: 0
+                        }, function () { });
+                }
             }
+            else {
+                if (this.existsState('Inputs.Norm1')) {
+                    this.deleteState('Inputs.Norm1');
+                }
+            }
+
+
             KostalRequestDay = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_StatDay_SelfConsumption}&dxsEntries=${ID_StatDay_SelfConsumptionRate}`
                 + `&dxsEntries=${ID_StatDay_Yield          }&dxsEntries=${ID_StatDay_HouseConsumption   }`
