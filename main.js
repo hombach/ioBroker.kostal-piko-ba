@@ -156,7 +156,7 @@ class KostalPikoBA extends utils.Adapter {
                 KostalRequest = KostalRequest + `&dxsEntries=${ID_InputAnalog1}` + `&dxsEntries=${ID_InputAnalog2}`
                     + `&dxsEntries=${ID_InputAnalog3}` + `&dxsEntries=${ID_InputAnalog4}`;
 
-                if (!this.existsState('Inputs.Norm1')) {
+/*                if (!this.existsState('Inputs.Norm1')) {
                     this.createState('Inputs.Norm1', 0,
                         {
                             role: 'value',
@@ -172,7 +172,7 @@ class KostalPikoBA extends utils.Adapter {
             else {
                 if (this.existsState('Inputs.Norm1')) {
                     this.deleteState('Inputs.Norm1');
-                }
+                } */
             }
 
 
