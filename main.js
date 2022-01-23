@@ -69,10 +69,10 @@ const ID_BatStateOfCharge             = 33556229;  // in %
 const ID_BatCurrentDir                = 33556230;  // 1 = discharge; 0 = charge
 const ID_BatCurrent                   = 33556238;  // in A
 // live values - inputs
-const ID_InputAnalog1                 = 167772417; // in V   - 10bit resolution
-const ID_InputAnalog2                 = 167772673; // in V   -  not implemented
-const ID_InputAnalog3                 = 167772929; // in V   -  not implemented
-const ID_InputAnalog4                 = 167773185; // in V   -  not implemented
+const ID_InputAnalog1                 = 167772417; // in V   -  10bit resolution
+const ID_InputAnalog2                 = 167772673; // in V   -  10bit resolution
+const ID_InputAnalog3                 = 167772929; // in V   -  10bit resolution
+const ID_InputAnalog4                 = 167773185; // in V   -  10bit resolution
 const ID_Input_S0_count               = 184549632; // in 1   -  not implemented
 const ID_Input_S0_seconds             = 150995968; // in sec -  not implemented
 
@@ -196,9 +196,10 @@ class KostalPikoBA extends utils.Adapter {
                 } */
             }
             else {
-                if (existsState('Inputs.Analog1', true)) {
-                    this.deleteState('Inputs.Analog1');
-                }
+                if (existsState('Inputs.Analog1', true)) this.deleteState('Inputs.Analog1');
+                if (existsState('Inputs.Analog2', true)) this.deleteState('Inputs.Analog2');
+                if (existsState('Inputs.Analog3', true)) this.deleteState('Inputs.Analog3');
+                if (existsState('Inputs.Analog4', true)) this.deleteState('Inputs.Analog4');
             }
 
 
@@ -290,18 +291,18 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Power.Surplus', { val: Math.round(result[1].value - result[11].value), ack: true });
                     this.setStateAsync('GridLimitation', { val: result[19].value, ack: true });
                     if (this.config.readanalogs) {
-                        this.setStateAsync('Inputs.Analog1', { val: result[20].value, ack: true });
-                        this.setStateAsync('Inputs.Analog2', { val: result[21].value, ack: true });
-                        this.setStateAsync('Inputs.Analog3', { val: result[22].value, ack: true });
-                        this.setStateAsync('Inputs.Analog4', { val: result[23].value, ack: true });
+                        this.setStateAsync('Inputs.Analog1', { val: (Math.round(100 * result[20].value)) / 100, ack: true });
+                        this.setStateAsync('Inputs.Analog2', { val: (Math.round(100 * result[21].value)) / 100, ack: true });
+                        this.setStateAsync('Inputs.Analog3', { val: (Math.round(100 * result[22].value)) / 100, ack: true });
+                        this.setStateAsync('Inputs.Analog4', { val: (Math.round(100 * result[23].value)) / 100, ack: true });
                     }
                     this.log.debug(`Piko-BA live data updated - Kostal response data: ${response.body}`);
                 }
                 else {
-                    this.log.error(`Error: ${response.error} by polling Piko-BA: ${KostalRequest}`);
+                    this.log.error(`Error: ${response.error} by polling Kostal Piko-BA: ${KostalRequest}`);
                 }
             } catch (e) {
-                this.log.error(`Error in calling Piko API: ${e}`);
+                this.log.error(`Error in calling Kostal Piko API: ${e}`);
                 this.log.error(`Please verify IP address: ${this.config.ipaddress} !!!`);
             } // END try catch
         }) ();
