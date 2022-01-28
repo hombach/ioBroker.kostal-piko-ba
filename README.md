@@ -5,7 +5,6 @@
 ![NPM version (stable)](http://ioBroker.live/badges/kostal-piko-ba-stable.svg)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.kostal-piko-ba.svg)](https://www.npmjs.com/package/iobroker.kostal-piko-ba)
 ![Number of Installations (latest)](http://ioBroker.live/badges/kostal-piko-ba-installed.svg)
-![Number of Installations (stable)](http://ioBroker.live/badges/kostal-piko-ba-stable.svg)
 [![Known Vulnerabilities](https://snyk.io/test/github/hombach/ioBroker.kostal-piko-ba/badge.svg)](https://snyk.io/test/github/hombach/ioBroker.kostal-piko-ba)
 
 CI-Tests:
