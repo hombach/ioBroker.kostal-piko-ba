@@ -37,30 +37,30 @@ const ID_Power_DC3Current             = 33555713;  // in A  -  DC current line 3
 const ID_Power_DC3Voltage             = 33555714;  // in V  -  DC voltage line 3 (equals to battery voltage in case of Pico BA)
 const ID_Power_DC3Power               = 33555715;  // in W  -  DC power line 3 (equals to battery power in case of Pico BA)
 // live values - home
-const ID_Power_HouseConsumptionSolar  = 83886336;  // in W  -  ActHomeConsumptionSolar - not implemented
-const ID_Power_HouseConsumptionBat    = 83886592;  // in W  -  ActHomeConsumptionBat - not implemented
-const ID_Power_HouseConsumptionGrid   = 83886848;  // in W  -  ActHomeConsumptionGrid - not implemented
-const ID_Power_HouseConsumptionPhase1 = 83887106;  // in W  -  ActHomeConsumptionPhase1 - not implemented
-const ID_Power_HouseConsumptionPhase2 = 83887362;  // in W  -  ActHomeConsumptionPhase2 - not implemented
-const ID_Power_HouseConsumptionPhase3 = 83887618;  // in W  -  ActHomeConsumptionPhase3 - not implemented
+const ID_Power_HouseConsumptionSolar  = 83886336;  // in W  -  Act Home Consumption Solar - not implemented
+const ID_Power_HouseConsumptionBat    = 83886592;  // in W  -  Act Home Consumption Bat - not implemented
+const ID_Power_HouseConsumptionGrid   = 83886848;  // in W  -  Act Home Consumption Grid - not implemented
+const ID_Power_HouseConsumptionPhase1 = 83887106;  // in W  -  Act Home Consumption Phase 1 - not implemented
+const ID_Power_HouseConsumptionPhase2 = 83887362;  // in W  -  Act Home Consumption Phase 2 - not implemented
+const ID_Power_HouseConsumptionPhase3 = 83887618;  // in W  -  Act Home Consumption Phase 3 - not implemented
 const ID_Power_HouseConsumption       = 83887872;  // in W  -  Consumption of your home, measured by PIKO sensor
-const ID_Power_SelfConsumption        = 83888128;  // in W  -  SelfConsumption
+const ID_Power_SelfConsumption        = 83888128;  // in W  -  Self Consumption
 // live values - grid parameter
-const ID_GridLimitation               = 67110144;  // in %   -  GridLimitation
-const ID_GridFrequency                = 67110400;  // in Hz  -  GridFrequency - not implemented
-const ID_GridCosPhi                   = 67110656;  //        -  GridCosPhi - not implemented
+const ID_GridLimitation               = 67110144;  // in %   -  Grid Limitation
+const ID_GridFrequency                = 67110400;  // in Hz  -  Grid Frequency - not implemented
+const ID_GridCosPhi                   = 67110656;  //        -  Grid CosPhi - not implemented
 // live values - grid phase 1
-const ID_L1GridCurrent                = 67109377;  // in A  -  not implemented
-const ID_L1GridVoltage                = 67109378;  // in V  -  not implemented
-const ID_L1GridPower                  = 67109379;  // in W  -  not implemented
+const ID_L1GridCurrent                = 67109377;  // in A  -  Grid Output Current Phase 1 
+const ID_L1GridVoltage                = 67109378;  // in V  -  Grid Output Voltage Phase 1
+const ID_L1GridPower                  = 67109379;  // in W  -  Grid Output Power Phase 1
 // live values - grid phase 2
-const ID_L2GridCurrent                = 67109633;  // in A  -  not implemented
-const ID_L2GridVoltage                = 67109634;  // in V  -  not implemented
-const ID_L2GridPower                  = 67109635;  // in W  -  not implemented
+const ID_L2GridCurrent                = 67109633;  // in A  -  Grid Output Current Phase 2
+const ID_L2GridVoltage                = 67109634;  // in V  -  Grid Output Voltage Phase 2
+const ID_L2GridPower                  = 67109635;  // in W  -  Grid Output Power Phase 2
 // live values - grid phase 3
-const ID_L3GridCurrent                = 67109889;  // in A  -  not implemented
-const ID_L3GridVoltage                = 67109890;  // in V  -  not implemented
-const ID_L3GridPower                  = 67109891;  // in W  -  not implemented
+const ID_L3GridCurrent                = 67109889;  // in A  -  Grid Output Current Phase 3
+const ID_L3GridVoltage                = 67109890;  // in V  -  Grid Output Voltage Phase 3
+const ID_L3GridPower                  = 67109891;  // in W  -  Grid Output Power Phase 3
 // live values - Battery
 const ID_BatVoltage                   = 33556226;  // in V
 const ID_BatTemperature               = 33556227;  // in °C
@@ -157,11 +157,18 @@ class KostalPikoBA extends utils.Adapter {
                 + `&dxsEntries=${ID_OperatingState       }&dxsEntries=${ID_BatVoltage            }`
                 + `&dxsEntries=${ID_BatTemperature       }&dxsEntries=${ID_BatStateOfCharge      }`
                 + `&dxsEntries=${ID_BatCurrent           }&dxsEntries=${ID_BatCurrentDir         }`
-                + `&dxsEntries=${ID_GridLimitation}`;
+                + `&dxsEntries=${ID_GridLimitation       }`
+                + `&dxsEntries=${ID_L1GridCurrent        }&dxsEntries=${ID_L1GridVoltage         }`
+                + `&dxsEntries=${ID_L1GridPower          }&dxsEntries=${ID_L2GridCurrent         }`
+                + `&dxsEntries=${ID_L2GridVoltage        }&dxsEntries=${ID_L2GridPower           }`
+                + `&dxsEntries=${ID_L3GridCurrent        }&dxsEntries=${ID_L3GridVoltage         }`
+                + `&dxsEntries=${ID_L3GridPower          }`;
+
             if (this.config.readanalogs) {
                 KostalRequest = KostalRequest + `&dxsEntries=${ID_InputAnalog1}` + `&dxsEntries=${ID_InputAnalog2}`
-                    + `&dxsEntries=${ID_InputAnalog3}` + `&dxsEntries=${ID_InputAnalog4}`;
+                                              + `&dxsEntries=${ID_InputAnalog3}` + `&dxsEntries=${ID_InputAnalog4}`;
             }
+
             KostalRequestDay = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_StatDay_SelfConsumption}&dxsEntries=${ID_StatDay_SelfConsumptionRate}`
                 + `&dxsEntries=${ID_StatDay_Yield          }&dxsEntries=${ID_StatDay_HouseConsumption   }`
@@ -249,11 +256,22 @@ class KostalPikoBA extends utils.Adapter {
                     }
                     this.setStateAsync('Power.Surplus', { val: Math.round(result[1].value - result[11].value), ack: true });
                     this.setStateAsync('GridLimitation', { val: result[19].value, ack: true });
+
+                    this.setStateAsync('Power.AC1Current', { val: (Math.round(1000 * result[20].value)) / 1000, ack: true });
+                    this.setStateAsync('Power.AC1Voltage', { val: Math.round(result[21].value), ack: true });
+                    this.setStateAsync('Power.AC1Power', { val: Math.round(result[22].value), ack: true });
+                    this.setStateAsync('Power.AC2Current', { val: (Math.round(1000 * result[23].value)) / 1000, ack: true });
+                    this.setStateAsync('Power.AC2Voltage', { val: Math.round(result[24].value), ack: true });
+                    this.setStateAsync('Power.AC2Power', { val: Math.round(result[25].value), ack: true });
+                    this.setStateAsync('Power.AC3Current', { val: (Math.round(1000 * result[26].value)) / 1000, ack: true });
+                    this.setStateAsync('Power.AC3Voltage', { val: Math.round(result[27].value), ack: true });
+                    this.setStateAsync('Power.AC3Power', { val: Math.round(result[28].value), ack: true });
+
                     if (this.config.readanalogs) {
-                        this.setStateAsync('Inputs.Analog1', { val: (Math.round(100 * result[20].value)) / 100, ack: true });
-                        this.setStateAsync('Inputs.Analog2', { val: (Math.round(100 * result[21].value)) / 100, ack: true });
-                        this.setStateAsync('Inputs.Analog3', { val: (Math.round(100 * result[22].value)) / 100, ack: true });
-                        this.setStateAsync('Inputs.Analog4', { val: (Math.round(100 * result[23].value)) / 100, ack: true });
+                        this.setStateAsync('Inputs.Analog1', { val: (Math.round(100 * result[29].value)) / 100, ack: true });
+                        this.setStateAsync('Inputs.Analog2', { val: (Math.round(100 * result[30].value)) / 100, ack: true });
+                        this.setStateAsync('Inputs.Analog3', { val: (Math.round(100 * result[31].value)) / 100, ack: true });
+                        this.setStateAsync('Inputs.Analog4', { val: (Math.round(100 * result[32].value)) / 100, ack: true });
                     }
                     this.log.debug(`Piko-BA live data updated - Kostal response data: ${response.body}`);
                 }

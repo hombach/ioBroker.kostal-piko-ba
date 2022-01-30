@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "1.3.1",
+    "version": "1.4.0",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -43,6 +43,9 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "1.4.0": {
+        "en": "added support for grid 1-3 current, voltage and power, bumped dependencies"
+      },
       "1.3.1": {
         "en": "correct rounding of analog values; added validation of configured IPv4 address; bumped dependencies"
       },
@@ -87,9 +90,6 @@
       },
       "0.6.1": {
         "en": "poll of statistics data separated"
-      },
-      "0.5.1": {
-        "en": "editable poll timer"
       },
       "0.1.0": {
         "en": "first working release"
@@ -167,7 +167,7 @@
       "type": "state",
       "common": {
         "role": "value.power",
-        "name": "Grid output power without battery charging",
+        "name": "Grid output power excluding battery charging",
         "type": "number",
         "unit": "W",
         "read": true,
@@ -352,6 +352,133 @@
         "name": "Power surplus of system",
         "type": "number",
         "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+
+    {
+      "_id": "Power.AC1Power",
+      "type": "state",
+      "common": {
+        "role": "value.power",
+        "name": "Grid output power phase 1",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Power.AC1Current",
+      "type": "state",
+      "common": {
+        "role": "value.current",
+        "name": "Grid output current phase 1",
+        "type": "number",
+        "unit": "A",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Power.AC1Voltage",
+      "type": "state",
+      "common": {
+        "role": "value.voltage",
+        "name": "Grid voltage phase 1",
+        "type": "number",
+        "unit": "V",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Power.AC2Power",
+      "type": "state",
+      "common": {
+        "role": "value.power",
+        "name": "Grid output power phase 2",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Power.AC2Current",
+      "type": "state",
+      "common": {
+        "role": "value.current",
+        "name": "Grid output current phase 2",
+        "type": "number",
+        "unit": "A",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Power.AC2Voltage",
+      "type": "state",
+      "common": {
+        "role": "value.voltage",
+        "name": "Grid voltage phase 2",
+        "type": "number",
+        "unit": "V",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Power.AC3Power",
+      "type": "state",
+      "common": {
+        "role": "value.power",
+        "name": "Grid output power phase 3",
+        "type": "number",
+        "unit": "W",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Power.AC3Current",
+      "type": "state",
+      "common": {
+        "role": "value.current",
+        "name": "Grid output current phase 3",
+        "type": "number",
+        "unit": "A",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Power.AC3Voltage",
+      "type": "state",
+      "common": {
+        "role": "value.voltage",
+        "name": "Grid voltage phase 3",
+        "type": "number",
+        "unit": "V",
         "read": true,
         "write": false,
         "def": 0
