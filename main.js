@@ -76,7 +76,8 @@ const ID_InputAnalog4                 = 167773185; // in V   -  10bit resolution
 const ID_Input_S0_count               = 184549632; // in 1   -  not implemented
 const ID_Input_S0_seconds             = 150995968; // in sec -  not implemented
 
-var KostalRequest      = ''; // IP request-string for PicoBA current data
+var KostalRequest1     = ''; // IP request-string 1 for PicoBA current data
+var KostalRequest2     = ''; // IP request-string 1 for PicoBA current data
 var KostalRequestDay   = ''; // IP request-string for PicoBA daily statistics
 var KostalRequestTotal = ''; // IP request-string for PicoBA total statistics
 
@@ -146,7 +147,7 @@ class KostalPikoBA extends utils.Adapter {
         // this.subscribeStates('*'); // all states changes inside the adapters namespace are subscribed
 
         if (this.config.ipaddress) {
-            KostalRequest = `http://${this.config.ipaddress}/api/dxs.json`
+            KostalRequest1 = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_Power_SolarDC        }&dxsEntries=${ID_Power_GridAC          }`
                 + `&dxsEntries=${ID_Power_DC1Power       }&dxsEntries=${ID_Power_DC1Current      }`
                 + `&dxsEntries=${ID_Power_DC1Voltage     }&dxsEntries=${ID_Power_DC2Power        }`
@@ -157,17 +158,19 @@ class KostalPikoBA extends utils.Adapter {
                 + `&dxsEntries=${ID_OperatingState       }&dxsEntries=${ID_BatVoltage            }`
                 + `&dxsEntries=${ID_BatTemperature       }&dxsEntries=${ID_BatStateOfCharge      }`
                 + `&dxsEntries=${ID_BatCurrent           }&dxsEntries=${ID_BatCurrentDir         }`
-                + `&dxsEntries=${ID_GridLimitation       }`
-                + `&dxsEntries=${ID_L1GridCurrent        }&dxsEntries=${ID_L1GridVoltage         }`
-                + `&dxsEntries=${ID_L1GridPower          }&dxsEntries=${ID_L2GridCurrent         }`
-                + `&dxsEntries=${ID_L2GridVoltage        }&dxsEntries=${ID_L2GridPower           }`
-                + `&dxsEntries=${ID_L3GridCurrent        }&dxsEntries=${ID_L3GridVoltage         }`
-                + `&dxsEntries=${ID_L3GridPower          }`;
+                + `&dxsEntries=${ID_GridLimitation       }`;
 
             if (this.config.readanalogs) {
-                KostalRequest = KostalRequest + `&dxsEntries=${ID_InputAnalog1}` + `&dxsEntries=${ID_InputAnalog2}`
-                                              + `&dxsEntries=${ID_InputAnalog3}` + `&dxsEntries=${ID_InputAnalog4}`;
+                KostalRequest1 = KostalRequest1 + `&dxsEntries=${ID_InputAnalog1}` + `&dxsEntries=${ID_InputAnalog2}`
+                                                + `&dxsEntries=${ID_InputAnalog3}` + `&dxsEntries=${ID_InputAnalog4}`;
             }
+
+            KostalRequest2 = `http://${this.config.ipaddress}/api/dxs.json`
+                + `?dxsEntries=${ID_L1GridCurrent}&dxsEntries=${ID_L1GridVoltage}`
+                + `&dxsEntries=${ID_L1GridPower}&dxsEntries=${ID_L2GridCurrent}`
+                + `&dxsEntries=${ID_L2GridVoltage}&dxsEntries=${ID_L2GridPower}`
+                + `&dxsEntries=${ID_L3GridCurrent}&dxsEntries=${ID_L3GridVoltage}`
+                + `&dxsEntries=${ID_L3GridPower}`;
 
             KostalRequestDay = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_StatDay_SelfConsumption}&dxsEntries=${ID_StatDay_SelfConsumptionRate}`
@@ -228,7 +231,7 @@ class KostalPikoBA extends utils.Adapter {
         (async () => {
             try {
                 // @ts-ignore got is valid
-                var response = await got(KostalRequest);
+                var response = await got(KostalRequest1);
                 if (!response.error && response.statusCode == 200) {
                     var result = await JSON.parse(response.body).dxsEntries;
                     this.setStateAsync('Power.SolarDC', { val: Math.round(result[0].value), ack: true });
@@ -257,7 +260,7 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Power.Surplus', { val: Math.round(result[1].value - result[11].value), ack: true });
                     this.setStateAsync('GridLimitation', { val: result[19].value, ack: true });
 
-                    this.setStateAsync('Power.AC1Current', { val: (Math.round(1000 * result[20].value)) / 1000, ack: true });
+/*                    this.setStateAsync('Power.AC1Current', { val: (Math.round(1000 * result[20].value)) / 1000, ack: true });
                     this.setStateAsync('Power.AC1Voltage', { val: Math.round(result[21].value), ack: true });
                     this.setStateAsync('Power.AC1Power', { val: Math.round(result[22].value), ack: true });
                     this.setStateAsync('Power.AC2Current', { val: (Math.round(1000 * result[23].value)) / 1000, ack: true });
@@ -266,17 +269,17 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Power.AC3Current', { val: (Math.round(1000 * result[26].value)) / 1000, ack: true });
                     this.setStateAsync('Power.AC3Voltage', { val: Math.round(result[27].value), ack: true });
                     this.setStateAsync('Power.AC3Power', { val: Math.round(result[28].value), ack: true });
-
+*/
                     if (this.config.readanalogs) {
-                        this.setStateAsync('Inputs.Analog1', { val: (Math.round(100 * result[29].value)) / 100, ack: true });
-                        this.setStateAsync('Inputs.Analog2', { val: (Math.round(100 * result[30].value)) / 100, ack: true });
-                        this.setStateAsync('Inputs.Analog3', { val: (Math.round(100 * result[31].value)) / 100, ack: true });
-                        this.setStateAsync('Inputs.Analog4', { val: (Math.round(100 * result[32].value)) / 100, ack: true });
+                        this.setStateAsync('Inputs.Analog1', { val: (Math.round(100 * result[20].value)) / 100, ack: true });
+                        this.setStateAsync('Inputs.Analog2', { val: (Math.round(100 * result[21].value)) / 100, ack: true });
+                        this.setStateAsync('Inputs.Analog3', { val: (Math.round(100 * result[22].value)) / 100, ack: true });
+                        this.setStateAsync('Inputs.Analog4', { val: (Math.round(100 * result[23].value)) / 100, ack: true });
                     }
                     this.log.debug(`Piko-BA live data updated - Kostal response data: ${response.body}`);
                 }
                 else {
-                    this.log.error(`Error: ${response.error} by polling Kostal Piko-BA: ${KostalRequest}`);
+                    this.log.error(`Error: ${response.error} by polling Kostal Piko-BA: ${KostalRequest1}`);
                 }
             } catch (e) {
                 this.log.error(`Error in calling Kostal Piko API: ${e}`);
