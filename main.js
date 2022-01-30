@@ -214,6 +214,7 @@ class KostalPikoBA extends utils.Adapter {
     * Scheduler ****************************************************************************/
     Scheduler() {
         this.ReadPiko();
+        this.ReadPiko2();
         try {
             clearTimeout(adapterIntervals.live);
             adapterIntervals.live = setTimeout(this.Scheduler.bind(this), this.config.polltimelive);
@@ -287,6 +288,40 @@ class KostalPikoBA extends utils.Adapter {
             } // END try catch
         }) ();
     } // END ReadPiko
+
+
+    /****************************************************************************************
+    * ReadPiko2 ****************************************************************************/
+    ReadPiko2() {
+        var got = require('got');
+        (async () => {
+            try {
+                // @ts-ignore got is valid
+                var response = await got(KostalRequest2);
+                if (!response.error && response.statusCode == 200) {
+                    var result = await JSON.parse(response.body).dxsEntries;
+                    this.setStateAsync('Power.AC1Current', { val: (Math.round(1000 * result[0].value)) / 1000, ack: true });
+                    this.setStateAsync('Power.AC1Voltage', { val: Math.round(result[1].value), ack: true });
+                    this.setStateAsync('Power.AC1Power', { val: Math.round(result[2].value), ack: true });
+                    this.setStateAsync('Power.AC2Current', { val: (Math.round(1000 * result[3].value)) / 1000, ack: true });
+                    this.setStateAsync('Power.AC2Voltage', { val: Math.round(result[4].value), ack: true });
+                    this.setStateAsync('Power.AC2Power', { val: Math.round(result[5].value), ack: true });
+                    this.setStateAsync('Power.AC3Current', { val: (Math.round(1000 * result[6].value)) / 1000, ack: true });
+                    this.setStateAsync('Power.AC3Voltage', { val: Math.round(result[7].value), ack: true });
+                    this.setStateAsync('Power.AC3Power', { val: Math.round(result[8].value), ack: true });
+
+                    this.log.debug(`Piko-BA live data 2 updated - Kostal response data: ${response.body}`);
+                }
+                else {
+                    this.log.error(`Error: ${response.error} by polling Kostal Piko-BA: ${KostalRequest2}`);
+                }
+            } catch (e) {
+                this.log.error(`Error in calling Kostal Piko API: ${e}`);
+                this.log.error(`Please verify IP address: ${this.config.ipaddress} !!!`);
+            } // END try catch
+        })();
+    } // END ReadPiko2
+
 
     /****************************************************************************************
     * ReadPikoDaily ************************************************************************/
