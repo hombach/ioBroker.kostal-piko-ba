@@ -144,7 +144,7 @@ class KostalPikoBA extends utils.Adapter {
             }
         }
 
-        // this.subscribeStates('*'); // all states changes inside the adapters namespace are subscribed
+        // this.subscribeStates('*'); // all state changes inside the adapters namespace are subscribed
 
         if (this.config.ipaddress) {
             KostalRequest1 = `http://${this.config.ipaddress}/api/dxs.json`
@@ -167,10 +167,10 @@ class KostalPikoBA extends utils.Adapter {
 
             KostalRequest2 = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_L1GridCurrent}&dxsEntries=${ID_L1GridVoltage}`
-                + `&dxsEntries=${ID_L1GridPower}&dxsEntries=${ID_L2GridCurrent}`
-                + `&dxsEntries=${ID_L2GridVoltage}&dxsEntries=${ID_L2GridPower}`
+                + `&dxsEntries=${ID_L1GridPower  }&dxsEntries=${ID_L2GridCurrent}`
+                + `&dxsEntries=${ID_L2GridVoltage}&dxsEntries=${ID_L2GridPower  }`
                 + `&dxsEntries=${ID_L3GridCurrent}&dxsEntries=${ID_L3GridVoltage}`
-                + `&dxsEntries=${ID_L3GridPower}`;
+                + `&dxsEntries=${ID_L3GridPower  }`;
 
             KostalRequestDay = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_StatDay_SelfConsumption}&dxsEntries=${ID_StatDay_SelfConsumptionRate}`
@@ -261,16 +261,6 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Power.Surplus', { val: Math.round(result[1].value - result[11].value), ack: true });
                     this.setStateAsync('GridLimitation', { val: result[19].value, ack: true });
 
-/*                    this.setStateAsync('Power.AC1Current', { val: (Math.round(1000 * result[20].value)) / 1000, ack: true });
-                    this.setStateAsync('Power.AC1Voltage', { val: Math.round(result[21].value), ack: true });
-                    this.setStateAsync('Power.AC1Power', { val: Math.round(result[22].value), ack: true });
-                    this.setStateAsync('Power.AC2Current', { val: (Math.round(1000 * result[23].value)) / 1000, ack: true });
-                    this.setStateAsync('Power.AC2Voltage', { val: Math.round(result[24].value), ack: true });
-                    this.setStateAsync('Power.AC2Power', { val: Math.round(result[25].value), ack: true });
-                    this.setStateAsync('Power.AC3Current', { val: (Math.round(1000 * result[26].value)) / 1000, ack: true });
-                    this.setStateAsync('Power.AC3Voltage', { val: Math.round(result[27].value), ack: true });
-                    this.setStateAsync('Power.AC3Power', { val: Math.round(result[28].value), ack: true });
-*/
                     if (this.config.readanalogs) {
                         this.setStateAsync('Inputs.Analog1', { val: (Math.round(100 * result[20].value)) / 100, ack: true });
                         this.setStateAsync('Inputs.Analog2', { val: (Math.round(100 * result[21].value)) / 100, ack: true });
@@ -284,7 +274,7 @@ class KostalPikoBA extends utils.Adapter {
                 }
             } catch (e) {
                 this.log.error(`Error in calling Kostal Piko API: ${e}`);
-                this.log.error(`Please verify IP address: ${this.config.ipaddress} !!!`);
+                this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e1)`);
             } // END try catch
         }) ();
     } // END ReadPiko
@@ -317,7 +307,7 @@ class KostalPikoBA extends utils.Adapter {
                 }
             } catch (e) {
                 this.log.error(`Error in calling Kostal Piko API: ${e}`);
-                this.log.error(`Please verify IP address: ${this.config.ipaddress} !!!`);
+                this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e2)`);
             } // END try catch
         })();
     } // END ReadPiko2
@@ -345,7 +335,7 @@ class KostalPikoBA extends utils.Adapter {
                 }
             } catch (e) {
                 this.log.error(`Error in calling Piko API: ${e}`);
-                this.log.error(`Please verify IP address: ${this.config.ipaddress} !!!`);
+                this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e3)`);
             } // END try catch
 
             try {
@@ -382,7 +372,7 @@ class KostalPikoBA extends utils.Adapter {
                 }
             } catch (e) {
                 this.log.error(`Error in calling Piko API: ${e}`);
-                this.log.error(`Please verify IP address: ${this.config.ipaddress} !!!`);
+                this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e4)`);
             } // END try catch
         })();
 
