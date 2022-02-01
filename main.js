@@ -88,14 +88,13 @@ var KostalRequestDay   = '';        // IP request-string for PicoBA daily statis
 var KostalRequestTotal = '';        // IP request-string for PicoBA total statistics
 
 
-function resolveAfter5Seconds(x) {
+function resolveAfterXSeconds(x) {
     return new Promise(resolve => {
         setTimeout(() => {
             resolve(x);
-        }, 5000);
+        }, (x * 1000) );
     });
 }
-
 
 
 class KostalPikoBA extends utils.Adapter {
@@ -133,10 +132,9 @@ class KostalPikoBA extends utils.Adapter {
             KostalRequestOnce = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_InverterType}&dxsEntries=${ID_InfoUIVersion}&dxsEntries=${ID_InverterName}`;
             await this.ReadPikoOnce();
-            this.log.info("Before");
-await resolveAfter5Seconds(10);
-            this.log.info("Aft");
-
+            this.log.info("before");
+            await resolveAfterXSeconds(5);
+            this.log.info("aft");
             this.log.debug('Initial Read of general info done');
         }
 
@@ -215,7 +213,9 @@ await resolveAfter5Seconds(10);
 
             this.log.debug('OnReady done');
             await this.ReadPikoTotal();
+            await resolveAfterXSeconds(3);
             await this.ReadPikoDaily();
+            await resolveAfterXSeconds(3);
             await this.Scheduler();
             this.log.debug('Initial ReadPiko done');
         } else {
