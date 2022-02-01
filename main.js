@@ -162,7 +162,7 @@ class KostalPikoBA extends utils.Adapter {
         if (this.config.ipaddress) {
             
             KostalRequestOnce = `http://${this.config.ipaddress}/api/dxs.json`
-                + `?dxsEntries=${ID_InverterType}&dxsEntries=${ID_InfoUIVersion}&dxsEntries=${ID_InverterName}`;
+                + `?dxsEntries=${ID_InverterType         }&dxsEntries=${ID_InfoUIVersion         }&dxsEntries=${ID_InverterName}`;
 
             KostalRequest1 = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_Power_SolarDC        }&dxsEntries=${ID_Power_GridAC          }`
@@ -265,7 +265,7 @@ class KostalPikoBA extends utils.Adapter {
                 }
             } catch (e) {
                 this.log.error(`Error in calling Piko API for general info: ${e}`);
-                this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e4)`);
+                this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0)`);
             } // END try catch
         })();
     } // END ReadPikoOnce
