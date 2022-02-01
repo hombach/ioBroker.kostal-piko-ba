@@ -139,6 +139,9 @@ class KostalPikoBA extends utils.Adapter {
 
 
         if (this.config.ipaddress) {
+            KostalRequestOnce = `http://${this.config.ipaddress}/api/dxs.json`
+                + `?dxsEntries=${ID_InverterType}&dxsEntries=${ID_InfoUIVersion}&dxsEntries=${ID_InverterName}`;
+
             await this.ReadPikoOnce();
             this.log.debug('Initial Read of general info done');
         }
@@ -160,10 +163,6 @@ class KostalPikoBA extends utils.Adapter {
         // this.subscribeStates('*'); // all state changes inside the adapters namespace are subscribed
 
         if (this.config.ipaddress) {
-            
-            KostalRequestOnce = `http://${this.config.ipaddress}/api/dxs.json`
-                + `?dxsEntries=${ID_InverterType         }&dxsEntries=${ID_InfoUIVersion         }&dxsEntries=${ID_InverterName}`;
-
             KostalRequest1 = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_Power_SolarDC        }&dxsEntries=${ID_Power_GridAC          }`
                 + `&dxsEntries=${ID_Power_DC1Power       }&dxsEntries=${ID_Power_DC1Current      }`
