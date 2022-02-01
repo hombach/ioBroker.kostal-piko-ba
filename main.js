@@ -257,6 +257,7 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Info.InverterName', { val: InverterType, ack: true });
  
                     this.log.debug(`Piko-BA general info updated - Kostal response data: ${response.body}`);
+                    this.log.info(`Detected inverter type: ${InverterType}`);
                 }
                 else {
                     this.log.error(`Error: ${response.error} by polling Piko-BA general info: ${KostalRequestTotal}`);
