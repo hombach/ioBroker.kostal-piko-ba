@@ -177,7 +177,7 @@
         "unit": "",
         "read": true,
         "write": false,
-        "def": ""
+        "def": "unknown"
       },
       "native": {}
     },
@@ -191,7 +191,7 @@
         "unit": "",
         "read": true,
         "write": false,
-        "def": ""
+        "def": "unknown"
       },
       "native": {}
     },
@@ -205,7 +205,7 @@
         "unit": "",
         "read": true,
         "write": false,
-        "def": ""
+        "def": "unknown"
       },
       "native": {}
     },

@@ -80,12 +80,12 @@ const ID_Input_S0_count               = 184549632; // in 1   -  not implemented
 const ID_Input_S0_seconds             = 150995968; // in sec -  not implemented
 
 
-var InverterType       = ''; // Inverter type
-var KostalRequestOnce  = ''; // IP request-string for one time request of system type etc.
-var KostalRequest1     = ''; // IP request-string 1 for PicoBA current data
-var KostalRequest2     = ''; // IP request-string 2 for PicoBA current data
-var KostalRequestDay   = ''; // IP request-string for PicoBA daily statistics
-var KostalRequestTotal = ''; // IP request-string for PicoBA total statistics
+var InverterType       = 'unknown'; // Inverter type
+var KostalRequestOnce  = '';        // IP request-string for one time request of system type etc.
+var KostalRequest1     = '';        // IP request-string 1 for PicoBA current data
+var KostalRequest2     = '';        // IP request-string 2 for PicoBA current data
+var KostalRequestDay   = '';        // IP request-string for PicoBA daily statistics
+var KostalRequestTotal = '';        // IP request-string for PicoBA total statistics
 
 
 class KostalPikoBA extends utils.Adapter {
@@ -138,10 +138,9 @@ class KostalPikoBA extends utils.Adapter {
         this.log.info(`Polltime alltime statistics set to: ${(this.config.polltimetotal / 1000)} seconds`);
 
 
-        if (this.config.ipaddress) {
+        if (this.config.ipaddress) { // get general info of connected inverter
             KostalRequestOnce = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_InverterType}&dxsEntries=${ID_InfoUIVersion}&dxsEntries=${ID_InverterName}`;
-
             await this.ReadPikoOnce();
             this.log.debug('Initial Read of general info done');
         }
@@ -176,16 +175,16 @@ class KostalPikoBA extends utils.Adapter {
                 + `&dxsEntries=${ID_BatCurrent           }&dxsEntries=${ID_BatCurrentDir         }`
                 + `&dxsEntries=${ID_GridLimitation       }`;
             if (this.config.readanalogs) {
-                KostalRequest1 = KostalRequest1 + `&dxsEntries=${ID_InputAnalog1}` + `&dxsEntries=${ID_InputAnalog2}`
-                                                + `&dxsEntries=${ID_InputAnalog3}` + `&dxsEntries=${ID_InputAnalog4}`;
+                KostalRequest1 = KostalRequest1 + `&dxsEntries=${ID_InputAnalog1 }&dxsEntries=${ID_InputAnalog2 }`
+                                                + `&dxsEntries=${ID_InputAnalog3 }&dxsEntries=${ID_InputAnalog4 }`;
             }
 
             KostalRequest2 = `http://${this.config.ipaddress}/api/dxs.json`
-                + `?dxsEntries=${ID_L1GridCurrent}&dxsEntries=${ID_L1GridVoltage}`
-                + `&dxsEntries=${ID_L1GridPower  }&dxsEntries=${ID_L2GridCurrent}`
-                + `&dxsEntries=${ID_L2GridVoltage}&dxsEntries=${ID_L2GridPower  }`
-                + `&dxsEntries=${ID_L3GridCurrent}&dxsEntries=${ID_L3GridVoltage}`
-                + `&dxsEntries=${ID_L3GridPower  }`;
+                + `?dxsEntries=${ID_L1GridCurrent }&dxsEntries=${ID_L1GridVoltage }`
+                + `&dxsEntries=${ID_L1GridPower   }&dxsEntries=${ID_L2GridCurrent }`
+                + `&dxsEntries=${ID_L2GridVoltage }&dxsEntries=${ID_L2GridPower   }`
+                + `&dxsEntries=${ID_L3GridCurrent }&dxsEntries=${ID_L3GridVoltage }`
+                + `&dxsEntries=${ID_L3GridPower   }`;
 
             KostalRequestDay = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_StatDay_SelfConsumption}&dxsEntries=${ID_StatDay_SelfConsumptionRate}`
