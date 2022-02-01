@@ -251,10 +251,10 @@ class KostalPikoBA extends utils.Adapter {
                 var response = await got(KostalRequestOnce);
                 if (!response.error && response.statusCode == 200) {
                     var result = await JSON.parse(response.body).dxsEntries;
-                    this.setStateAsync('Info.InverterType', { val: result[0].value, ack: true });
+                    InverterType = result[0].value;
+                    this.setStateAsync('Info.InverterType', { val: InverterType, ack: true });
                     this.setStateAsync('Info.InverterUIVersion', { val: result[1].value, ack: true });
-                    InverterType = result[2].value;
-                    this.setStateAsync('Info.InverterName', { val: InverterType, ack: true });
+                    this.setStateAsync('Info.InverterName', { val: result[2].value, ack: true });
  
                     this.log.debug(`Piko-BA general info updated - Kostal response data: ${response.body}`);
                     this.log.info(`Detected inverter type: ${InverterType}`);
