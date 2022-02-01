@@ -7,20 +7,21 @@ const utils = require('@iobroker/adapter-core');
 // const schedule = require('node-schedule');
 const adapterIntervals = {};
 
-// live values power output
-const ID_Power_GridAC                 = 67109120;  // in W  -  GridOutputPower excluding power for battery charging
 // state
 const ID_OperatingState               = 16780032;  // 0 = aus; 1 = Leerlauf(?); 2 = Anfahren, DC Spannung noch zu klein(?)
                                                    // 3 = Einspeisen(MPP); 4 = Einspeisen(abgeregelt)
+const ID_InverterType                 = 16780544;  // - Inverter type
+const ID_InfoUIVersion                = 16779267;  // - Info version
+const ID_InverterName                 = 16777984;  // - Inverter name
 // statistics - daily
-const ID_StatDay_Yield                = 251658754; // in Wh
+const ID_StatDay_Yield                = 251658754; // in Wh  -  Total yield this operational day
 const ID_StatDay_HouseConsumption     = 251659010; // in Wh
 const ID_StatDay_SelfConsumption      = 251659266; // in Wh
 const ID_StatDay_SelfConsumptionRate  = 251659278; // in %
 const ID_StatDay_Autarky              = 251659279; // in %
 // statistics - total
-const ID_StatTot_OperatingTime        = 251658496; // in h
-const ID_StatTot_Yield                = 251658753; // in kWh
+const ID_StatTot_OperatingTime        = 251658496; // in h   -  Total operating time of inverter
+const ID_StatTot_Yield                = 251658753; // in kWh -  Total yield in inverter life time
 const ID_StatTot_HouseConsumption     = 251659009; // in kWh
 const ID_StatTot_SelfConsumption      = 251659265; // in kWh
 const ID_StatTot_SelfConsumptionRate  = 251659280; // in %
@@ -45,6 +46,8 @@ const ID_Power_HouseConsumptionPhase2 = 83887362;  // in W  -  Act Home Consumpt
 const ID_Power_HouseConsumptionPhase3 = 83887618;  // in W  -  Act Home Consumption Phase 3 - not implemented
 const ID_Power_HouseConsumption       = 83887872;  // in W  -  Consumption of your home, measured by PIKO sensor
 const ID_Power_SelfConsumption        = 83888128;  // in W  -  Self Consumption
+// live values power output
+const ID_Power_GridAC                 = 67109120;  // in W  -  GridOutputPower excluding power for battery charging
 // live values - grid parameter
 const ID_GridLimitation               = 67110144;  // in %   -  Grid Limitation
 const ID_GridFrequency                = 67110400;  // in Hz  -  Grid Frequency - not implemented
@@ -76,8 +79,11 @@ const ID_InputAnalog4                 = 167773185; // in V   -  10bit resolution
 const ID_Input_S0_count               = 184549632; // in 1   -  not implemented
 const ID_Input_S0_seconds             = 150995968; // in sec -  not implemented
 
+
+var InverterType       = ''; // Inverter type
+var KostalRequestOnce  = ''; // IP request-string for one time request of system type etc.
 var KostalRequest1     = ''; // IP request-string 1 for PicoBA current data
-var KostalRequest2     = ''; // IP request-string 1 for PicoBA current data
+var KostalRequest2     = ''; // IP request-string 2 for PicoBA current data
 var KostalRequestDay   = ''; // IP request-string for PicoBA daily statistics
 var KostalRequestTotal = ''; // IP request-string for PicoBA total statistics
 
@@ -131,6 +137,12 @@ class KostalPikoBA extends utils.Adapter {
         }
         this.log.info(`Polltime alltime statistics set to: ${(this.config.polltimetotal / 1000)} seconds`);
 
+
+        if (this.config.ipaddress) {
+            await this.ReadPikoOnce();
+            this.log.debug('Initial Read of general info done');
+        }
+
         //sentry.io ping
         if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
             const sentryInstance = this.getPluginInstance('sentry');
@@ -139,6 +151,7 @@ class KostalPikoBA extends utils.Adapter {
                 Sentry && Sentry.withScope(scope => {
                     scope.setLevel('info');
                     scope.setTag('Inverter', this.config.ipaddress);
+                    scope.setTag('InverterType', InverterType);
                     Sentry.captureMessage('Adapter kostal-piko-ba started', 'info'); // Level "info"
                 });
             }
@@ -147,6 +160,10 @@ class KostalPikoBA extends utils.Adapter {
         // this.subscribeStates('*'); // all state changes inside the adapters namespace are subscribed
 
         if (this.config.ipaddress) {
+            
+            KostalRequestOnce = `http://${this.config.ipaddress}/api/dxs.json`
+                + `?dxsEntries=${ID_InverterType}&dxsEntries=${ID_InfoUIVersion}&dxsEntries=${ID_InverterName}`;
+
             KostalRequest1 = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_Power_SolarDC        }&dxsEntries=${ID_Power_GridAC          }`
                 + `&dxsEntries=${ID_Power_DC1Power       }&dxsEntries=${ID_Power_DC1Current      }`
@@ -159,7 +176,6 @@ class KostalPikoBA extends utils.Adapter {
                 + `&dxsEntries=${ID_BatTemperature       }&dxsEntries=${ID_BatStateOfCharge      }`
                 + `&dxsEntries=${ID_BatCurrent           }&dxsEntries=${ID_BatCurrentDir         }`
                 + `&dxsEntries=${ID_GridLimitation       }`;
-
             if (this.config.readanalogs) {
                 KostalRequest1 = KostalRequest1 + `&dxsEntries=${ID_InputAnalog1}` + `&dxsEntries=${ID_InputAnalog2}`
                                                 + `&dxsEntries=${ID_InputAnalog3}` + `&dxsEntries=${ID_InputAnalog4}`;
@@ -180,8 +196,10 @@ class KostalPikoBA extends utils.Adapter {
             KostalRequestTotal = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_StatTot_SelfConsumption}&dxsEntries=${ID_StatTot_SelfConsumptionRate}`
                 + `&dxsEntries=${ID_StatTot_Yield          }&dxsEntries=${ID_StatTot_HouseConsumption   }`
-                + `&dxsEntries=${ID_StatTot_Autarky        }&dxsEntries=${ID_StatTot_OperatingTime      }`
-                + `&dxsEntries=${ID_BatChargeCycles}`;
+                + `&dxsEntries=${ID_StatTot_Autarky        }&dxsEntries=${ID_StatTot_OperatingTime      }`;
+            if (this.config.readbattery) {
+                KostalRequestTotal = KostalRequestTotal + `&dxsEntries=${ID_BatChargeCycles}`;
+            }
 
             this.log.debug('OnReady done');
             await this.ReadPikoTotal();
@@ -223,7 +241,35 @@ class KostalPikoBA extends utils.Adapter {
             this.restart;
         } // END try catch
     }
-    
+
+
+    /****************************************************************************************
+  * ReadPikoOnce ***************************************************************************/
+    ReadPikoOnce() {
+        var got = require('got');
+        (async () => {
+            try {
+                // @ts-ignore got is valid
+                var response = await got(KostalRequestOnce);
+                if (!response.error && response.statusCode == 200) {
+                    var result = await JSON.parse(response.body).dxsEntries;
+                    this.setStateAsync('Info.InverterType', { val: result[0].value, ack: true });
+                    this.setStateAsync('Info.InverterUIVersion', { val: result[1].value, ack: true });
+                    InverterType = result[2].value;
+                    this.setStateAsync('Info.InverterName', { val: InverterType, ack: true });
+ 
+                    this.log.debug(`Piko-BA general info updated - Kostal response data: ${response.body}`);
+                }
+                else {
+                    this.log.error(`Error: ${response.error} by polling Piko-BA general info: ${KostalRequestTotal}`);
+                }
+            } catch (e) {
+                this.log.error(`Error in calling Piko API for general info: ${e}`);
+                this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e4)`);
+            } // END try catch
+        })();
+    } // END ReadPikoOnce
+
 
     /****************************************************************************************
     * ReadPiko *****************************************************************************/
@@ -365,7 +411,9 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Statistics_Total.HouseConsumption', { val: Math.round(result[3].value), ack: true });
                     this.setStateAsync('Statistics_Total.Autarky', { val: Math.round(result[4].value), ack: true });
                     this.setStateAsync('Statistics_Total.OperatingTime', { val: result[5].value, ack: true });
-                    this.setStateAsync('Battery.ChargeCycles', { val: result[6].value, ack: true });
+                    if (this.config.readbattery) {
+                        this.setStateAsync('Battery.ChargeCycles', { val: result[6].value, ack: true });
+                    }
 
                     this.log.debug(`Piko-BA lifetime statistics updated - Kostal response data: ${response.body}`);
                 }
