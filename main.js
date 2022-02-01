@@ -328,10 +328,11 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Statistics_Daily.Yield', { val: Math.round(result[2].value) / 1000, ack: true });
                     this.setStateAsync('Statistics_Daily.HouseConsumption', { val: Math.round(result[3].value) / 1000, ack: true });
                     this.setStateAsync('Statistics_Daily.Autarky', { val: Math.round(result[4].value), ack: true });
-                    this.log.debug('Piko-BA daily data updated');
+
+                    this.log.debug(`Piko-BA daily statistics updated - Kostal response data: ${response.body}`);
                 }
                 else {
-                    this.log.error(`Error: ${response.error} by polling Piko-BA: ${KostalRequestDay}`);
+                    this.log.error(`Error: ${response.error} by polling Piko-BA for daily statistics: ${KostalRequestDay}`);
                 }
             } catch (e) {
                 this.log.error(`Error in calling Piko API: ${e}`);
@@ -342,7 +343,7 @@ class KostalPikoBA extends utils.Adapter {
                 clearTimeout(adapterIntervals.daily);
                 adapterIntervals.daily = setTimeout(this.ReadPikoDaily.bind(this), this.config.polltimedaily);
             } catch (e) {
-                this.log.error(`Error in setting adapter schedule: ${e}`);
+                this.log.error(`Error in setting adapter schedule for daily statistics: ${e}`);
             } // END try catch
 
         })();
@@ -365,13 +366,14 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Statistics_Total.Autarky', { val: Math.round(result[4].value), ack: true });
                     this.setStateAsync('Statistics_Total.OperatingTime', { val: result[5].value, ack: true });
                     this.setStateAsync('Battery.ChargeCycles', { val: result[6].value, ack: true });
-                    this.log.debug('Piko-BA lifetime data updated');
+
+                    this.log.debug(`Piko-BA lifetime statistics updated - Kostal response data: ${response.body}`);
                 }
                 else {
-                    this.log.error(`Error: ${response.error} by polling Piko-BA: ${KostalRequestTotal}`);
+                    this.log.error(`Error: ${response.error} by polling Piko-BA lifetime statistics: ${KostalRequestTotal}`);
                 }
             } catch (e) {
-                this.log.error(`Error in calling Piko API: ${e}`);
+                this.log.error(`Error in calling Piko API for total statistics: ${e}`);
                 this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e4)`);
             } // END try catch
         })();
@@ -380,7 +382,7 @@ class KostalPikoBA extends utils.Adapter {
             clearTimeout(adapterIntervals.total);
             adapterIntervals.total = setTimeout(this.ReadPikoTotal.bind(this), this.config.polltimetotal);
         } catch (e) {
-            this.log.error(`Error in setting adapter schedule: ${e}`);
+            this.log.error(`Error in setting adapter schedule for total statistics: ${e}`);
         } // END try catch
 
     } // END ReadPikoTotal
