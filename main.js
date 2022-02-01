@@ -132,9 +132,7 @@ class KostalPikoBA extends utils.Adapter {
             KostalRequestOnce = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_InverterType}&dxsEntries=${ID_InfoUIVersion}&dxsEntries=${ID_InverterName}`;
             await this.ReadPikoOnce();
-            this.log.info("before");
             await resolveAfterXSeconds(5);
-            this.log.info("aft");
             this.log.debug('Initial Read of general info done');
         }
 
