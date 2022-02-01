@@ -223,6 +223,7 @@ class KostalPikoBA extends utils.Adapter {
         }
     }
 
+
     /****************************************************************************************
     * Is called when adapter shuts down - callback has to be called under any circumstances!
     * @param {() => void} callback */
@@ -242,18 +243,6 @@ class KostalPikoBA extends utils.Adapter {
 
     /****************************************************************************************
     * Scheduler ****************************************************************************/
-    async Scheduler() {
-        await this.ReadPiko();
-        await this.ReadPiko2();
-        try {
-            await clearTimeout(adapterIntervals.live);
-            adapterIntervals.live = setTimeout(this.Scheduler.bind(this), this.config.polltimelive);
-        } catch (e) {
-            this.log.error(`Error in setting adapter schedule: ${e}`);
-            this.restart;
-        } // END try catch
-    }
-/*
     Scheduler() {
         this.ReadPiko();
         this.ReadPiko2();
@@ -265,7 +254,7 @@ class KostalPikoBA extends utils.Adapter {
             this.restart;
         } // END try catch
     }
-*/
+
 
     /****************************************************************************************
   * ReadPikoOnce ***************************************************************************/
@@ -278,12 +267,12 @@ class KostalPikoBA extends utils.Adapter {
                 if (!response.error && response.statusCode == 200) {
                     var result = await JSON.parse(response.body).dxsEntries;
                     InverterType = result[0].value;
-                    await this.setStateAsync('Info.InverterType', { val: InverterType, ack: true });
-                    await this.setStateAsync('Info.InverterUIVersion', { val: result[1].value, ack: true });
-                    await this.setStateAsync('Info.InverterName', { val: result[2].value, ack: true });
+                    this.setStateAsync('Info.InverterType', { val: InverterType, ack: true });
+                    this.setStateAsync('Info.InverterUIVersion', { val: result[1].value, ack: true });
+                    this.setStateAsync('Info.InverterName', { val: result[2].value, ack: true });
  
                     this.log.debug(`Piko-BA general info updated - Kostal response data: ${response.body}`);
-                    await this.log.info(`Detected inverter type: ${InverterType}`);
+                    this.log.info(`Detected inverter type: ${InverterType}`);
                 }
                 else {
                     this.log.error(`Error: ${response.error} by polling Piko-BA general info: ${KostalRequestTotal}`);

@@ -44,7 +44,7 @@
     "dataSource": "poll",
     "news": {
       "1.4.2": {
-        "en": "added support for inverter type, version and name"
+        "en": "added support for inverter type, version and name; fixed timing error"
       },
       "1.4.1": {
         "en": "optimized logging; bumped dependencies"

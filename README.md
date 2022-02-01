@@ -29,8 +29,9 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 
 ! Note that missing version entries are typically dependency updates for security.
 
-### 1.4.2 (31.01.2022)
+### 1.4.2 (01.02.2022)
 * (HombachC) added support for inverter type, version and name
+* (HombachC) fixed timing error
 ### 1.4.1 (31.01.2022)
 * (HombachC) optimized logging; bumped dependencies
 ### 1.4.0 (30.01.2022)
