@@ -119,6 +119,13 @@ class KostalPikoBA extends utils.Adapter {
             }
         }
 
+        if (this.config.ipaddress) { // get general info of connected inverter
+            KostalRequestOnce = `http://${this.config.ipaddress}/api/dxs.json`
+                + `?dxsEntries=${ID_InverterType}&dxsEntries=${ID_InfoUIVersion}&dxsEntries=${ID_InverterName}`;
+            await this.ReadPikoOnce();
+            this.log.debug('Initial Read of general info done');
+        }
+
         if (!this.config.polltimelive) {
             this.config.polltimelive = 10000;
             this.log.warn(`Polltime not set or zero - will be set to ${(this.config.polltimelive / 1000)} seconds`);
@@ -137,13 +144,6 @@ class KostalPikoBA extends utils.Adapter {
         }
         this.log.info(`Polltime alltime statistics set to: ${(this.config.polltimetotal / 1000)} seconds`);
 
-
-        if (this.config.ipaddress) { // get general info of connected inverter
-            KostalRequestOnce = `http://${this.config.ipaddress}/api/dxs.json`
-                + `?dxsEntries=${ID_InverterType}&dxsEntries=${ID_InfoUIVersion}&dxsEntries=${ID_InverterName}`;
-            await this.ReadPikoOnce();
-            this.log.debug('Initial Read of general info done');
-        }
 
         //sentry.io ping
         if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
@@ -174,10 +174,6 @@ class KostalPikoBA extends utils.Adapter {
                 + `&dxsEntries=${ID_BatTemperature       }&dxsEntries=${ID_BatStateOfCharge      }`
                 + `&dxsEntries=${ID_BatCurrent           }&dxsEntries=${ID_BatCurrentDir         }`
                 + `&dxsEntries=${ID_GridLimitation       }`;
-/*            if (this.config.readanalogs) {
-                KostalRequest1 = KostalRequest1 + `&dxsEntries=${ID_InputAnalog1 }&dxsEntries=${ID_InputAnalog2 }`
-                                                + `&dxsEntries=${ID_InputAnalog3 }&dxsEntries=${ID_InputAnalog4 }`;
-            }*/
 
             KostalRequest2 = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_L1GridCurrent }&dxsEntries=${ID_L1GridVoltage }`
@@ -310,12 +306,6 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Power.Surplus', { val: Math.round(result[1].value - result[11].value), ack: true });
                     this.setStateAsync('GridLimitation', { val: result[19].value, ack: true });
 
- /*                   if (this.config.readanalogs) {
-                        this.setStateAsync('Inputs.Analog1', { val: (Math.round(100 * result[20].value)) / 100, ack: true });
-                        this.setStateAsync('Inputs.Analog2', { val: (Math.round(100 * result[21].value)) / 100, ack: true });
-                        this.setStateAsync('Inputs.Analog3', { val: (Math.round(100 * result[22].value)) / 100, ack: true });
-                        this.setStateAsync('Inputs.Analog4', { val: (Math.round(100 * result[23].value)) / 100, ack: true });
-                    }*/
                     this.log.debug(`Piko-BA live data 1 updated - Kostal response data: ${response.body}`);
                 }
                 else {
