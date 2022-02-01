@@ -228,6 +228,18 @@ class KostalPikoBA extends utils.Adapter {
 
     /****************************************************************************************
     * Scheduler ****************************************************************************/
+    async Scheduler() {
+        await this.ReadPiko();
+        await this.ReadPiko2();
+        try {
+            await clearTimeout(adapterIntervals.live);
+            adapterIntervals.live = setTimeout(this.Scheduler.bind(this), this.config.polltimelive);
+        } catch (e) {
+            this.log.error(`Error in setting adapter schedule: ${e}`);
+            this.restart;
+        } // END try catch
+    }
+/*
     Scheduler() {
         this.ReadPiko();
         this.ReadPiko2();
@@ -239,7 +251,7 @@ class KostalPikoBA extends utils.Adapter {
             this.restart;
         } // END try catch
     }
-
+*/
 
     /****************************************************************************************
   * ReadPikoOnce ***************************************************************************/
