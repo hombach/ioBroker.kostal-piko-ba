@@ -64,26 +64,17 @@
 
     <div class="m adapter-container">
         <div class="row">
+            <div class="col s6">
+                <img src="picoba.png" class="logo">
+            </div>
             <div class="col s12">
                 <ul class="tabs">
-                    <li class="tab col s5 m4"><a href="#tab-main" class="translate active">Storage settings</a></li>
+                    <li class="tab col s5 m4"><a href="#tab-main" class="translate active">Standard settings</a></li>
                     <li class="tab col s5 m4"><a href="#tab-analog" class="translate">Analog settings</a></li>
                 </ul>
             </div>
 
             <div id="tab-main" class="col s12 page">
-                <div class="row">
-                    <div class="col s6">
-                        <img src="picoba.png" class="logo">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12">
-                        <div class="translate" style="margin: 20px">note</div>
-                    </div>
-                </div>
-
-
                 <div class="row">
                     <div class="col s6 input-field">
                         <input type="text" class="value" id="ipaddress" />
@@ -92,19 +83,19 @@
                 </div>
                 <div class="row">
                     <div class="col s6 input-field">
-                        <input type="number" class="value" id="polltimelive" />
+                        <input type="number" class="value" id="polltimelive" min="1000" />
                         <label for="polltimelive" class="translate">polltimelive</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s6 input-field">
-                        <input type="number" class="value" id="polltimedaily" />
+                        <input type="number" class="value" id="polltimedaily" min="1000" />
                         <label for="polltimedaily" class="translate">polltimedaily</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s6 input-field">
-                        <input type="number" class="value" id="polltimetotal" />
+                        <input type="number" class="value" id="polltimetotal" min="1000" />
                         <label for="polltimetotal" class="translate">polltimetotal</label>
                     </div>
                 </div>
