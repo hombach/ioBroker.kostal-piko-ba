@@ -73,5 +73,14 @@ systemDictionary = {
         "es": "Leer los 4 valores de entrada analógica en V (0-10 V; 10 bits)",
         "pl": "Odczyt wszystkich 4 analogowych wartości wejściowych w V (0-10V; 10bit)",
         "zh-cn": "以 V 为单位读出所有 4 个模拟输入值（0-10V；10 位）"
+    },
+    'normAn1': {
+        "en": "Normalizing 0V to minimum value and 10V to maximum value"
+    },
+    'normAn1Max': {
+        "en": "Not implemented"
+    },
+    'normAn1Min': {
+        "en": "Not implemented"
     }
 };

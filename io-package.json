@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "1.4.2",
+    "version": "1.4.3",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -43,6 +43,9 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "1.4.3": {
+        "en": "normalizing of analog values added"
+      },
       "1.4.2": {
         "en": "added support for inverter type, version and name; fixed timing error"
       },
@@ -126,7 +129,9 @@
     "polltimedaily": 60000,
     "polltimetotal": 200000,
     "readanalogs": false,
-    "readbattery":  true
+    "readbattery": true,
+    "normAn1Max": 1000,
+    "normAn1Min": 0
   },
 
   "objects": [],
