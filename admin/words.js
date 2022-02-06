@@ -75,12 +75,12 @@ systemDictionary = {
         "zh-cn": "以 V 为单位读出所有 4 个模拟输入值（0-10V；10 位）"
     },
     'normAn1': {
-        "en": "Normalizing 0V to minimum value and 10V to maximum value"
-    },
-    'normAn1Max': {
-        "en": "Not implemented"
+        "en": "NOT IMPLEMENTED - Normalizing 0V to minimum value and 10V to maximum value"
     },
     'normAn1Min': {
-        "en": "Not implemented"
+        "en": "Min"
+    },
+    'normAn1Max': {
+        "en": "Max"
     }
 };
