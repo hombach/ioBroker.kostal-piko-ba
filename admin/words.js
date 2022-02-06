@@ -2,6 +2,13 @@
 'use strict';
 
 systemDictionary = {
+    'Standard settings': {
+        "en": "Standard settings"
+    },
+    'Analog settings': {
+        "en": "Analog settings"
+    },
+
     'template adapter settings': {
         'en': 'Adapter settings for Kostal Piko BA',
         'de': 'Adaptereinstellungen für Kostal Piko BA',
