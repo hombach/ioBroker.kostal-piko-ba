@@ -3,10 +3,28 @@
 
 systemDictionary = {
     'Standard settings': {
-        "en": "Standard settings"
+        "en": "Standard settings",
+        "de": "Standardeinstellungen",
+        "ru": "Стандартные настройки",
+        "pt": "Configurações padrão",
+        "nl": "Standaard instellingen",
+        "fr": "Paramètres standards",
+        "it": "Impostazioni standard",
+        "es": "Configuración estándar",
+        "pl": "Ustawienia standardowe",
+        "zh-cn": "标准设置"
     },
     'Analog settings': {
-        "en": "Analog settings"
+        "en": "Settings for analog inputs",
+        "de": "Einstellungen für analoge Eingänge",
+        "ru": "Настройки для аналоговых входов",
+        "pt": "Configurações para entradas analógicas",
+        "nl": "Instellingen voor analoge ingangen",
+        "fr": "Paramètres des entrées analogiques",
+        "it": "Impostazioni per ingressi analogici",
+        "es": "Ajustes para entradas analógicas",
+        "pl": "Ustawienia wejść analogowych",
+        "zh-cn": "模拟输入设置"
     },
 
     'template adapter settings': {
@@ -85,9 +103,9 @@ systemDictionary = {
         "en": "NOT IMPLEMENTED - Normalizing 0V to minimum value and 10V to maximum value"
     },
     'normAn1Min': {
-        "en": "Min"
+        "en": "Minimum value for analog imput 1 - equals 0V "
     },
     'normAn1Max': {
-        "en": "Max"
+        "en": "Maximum value for analog imput 1 - equals 10V"
     }
 };
