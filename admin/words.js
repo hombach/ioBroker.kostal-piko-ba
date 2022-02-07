@@ -87,6 +87,7 @@ systemDictionary = {
         "pl": "Czas między odpytywaniem danych ze statystyk całego czasu falownika [ms]",
         "zh-cn": "来自逆变器常时统计的数据轮询之间的时间[ms]"
     },
+
     'readanalogs': {
         "en": "Read-Out all 4 analog input values in V (0-10V; 10bit)",
         "de": "Auslesen aller 4 analogen Eingangswerte in V (0-10V; 10bit)",
@@ -103,9 +104,28 @@ systemDictionary = {
         "en": "NOT IMPLEMENTED - Normalizing 0V to minimum value and 10V to maximum value"
     },
     'normAn1Min': {
-        "en": "Minimum value for analog imput 1 - equals 0V "
+        "en": "Minimum value for analog input 1 - equals 0V",
+        "de": "Minimalwert für Analogeingang 1 - gleich 0V",
+        "ru": "Минимальное значение для аналогового входа 1 - равно 0 В",
+        "pt": "Valor mínimo para entrada analógica 1 - igual a 0V",
+        "nl": "Minimale waarde voor analoge ingang 1 - is gelijk aan 0V",
+        "fr": "Valeur minimale pour l'entrée analogique 1 - égale à 0 V",
+        "it": "Il valore minimo per l'ingresso analogico 1 - è uguale a 0V",
+        "es": "Valor mínimo para entrada analógica 1 - igual a 0V",
+        "pl": "Minimalna wartość dla wejścia analogowego 1 - równa się 0V",
+        "zh-cn": "模拟输入 1 的最小值 - 等于 0V"
     },
     'normAn1Max': {
-        "en": "Maximum value for analog imput 1 - equals 10V"
+        "en": "Minimum value for analog input 1 - equals 0V",
+        "de": "Minimalwert für Analogeingang 1 - gleich 0V",
+        "ru": "Минимальное значение для аналогового входа 1 - равно 0 В",
+        "pt": "Valor mínimo para entrada analógica 1 - igual a 0V",
+        "nl": "Minimale waarde voor analoge ingang 1 - is gelijk aan 0V",
+        "fr": "Valeur minimale pour l'entrée analogique 1 - égale à 0 V",
+        "it": "Valore minimo per l'ingresso analogico 1 - uguale a 0V",
+        "es": "Valor mínimo para entrada analógica 1 - igual a 0V",
+        "pl": "Minimalna wartość dla wejścia analogowego 1 - równa się 0V",
+        "zh-cn": "模拟输入 1 的最小值 - 等于 0V"
     }
+
 };
