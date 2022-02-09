@@ -114,7 +114,7 @@ systemDictionary = {
     },
     'normAn1Min': {
         "en": "Minimum value for analog input 1 - equals 0V",
-        "de": "Minimalwert für Analogeingang 1 - gleich 0V",
+        "de": "Minimalwert für Analogeingang 1 - entspricht 0V",
         "ru": "Минимальное значение для аналогового входа 1 - равно 0 В",
         "pt": "Valor mínimo para entrada analógica 1 - igual a 0V",
         "nl": "Minimale waarde voor analoge ingang 1 - is gelijk aan 0V",
