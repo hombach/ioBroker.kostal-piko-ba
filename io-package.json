@@ -44,7 +44,7 @@
     "dataSource": "poll",
     "news": {
       "1.4.3": {
-        "en": "normalizing of analog values added"
+        "en": "normalizing of analog values added, bumped dependencies"
       },
       "1.4.2": {
         "en": "added support for inverter type, version and name; fixed timing error"
