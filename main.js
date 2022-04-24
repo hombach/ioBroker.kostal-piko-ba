@@ -353,8 +353,29 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Power.AC3Power', { val: Math.round(result[8].value), ack: true });
 
                     if (this.config.readanalogs) {
-                        this.setStateAsync('Inputs.Analog1', { val: (Math.round(100 * result[9].value)) / 100, ack: true });
-                        this.setStateAsync('Inputs.Analog2', { val: (Math.round(100 * result[10].value)) / 100, ack: true });
+/*                        0 bis 10 = "normAn1Max": 1000,
+                            "normAn1Min": 10,
+                       10 / 10 * (max - min) + min = 1000
+                        0 / 10 * (max - min) + min = 10
+                        5 / 10 * (max - min) + min = 505
+                        */
+
+                        this.setStateAsync('Inputs.Analog1', {
+                            val: (Math.round(100 *
+                             (result[9].value / 10 * (this.config.normAn1Max - this.config.normAn1Min) + this.config.normAn1Min)
+                            )) / 100,
+                            ack: true
+                        });
+                        this.setStateAsync('Inputs.Analog2', {
+                            val: (Math.round(100 *
+                                (result[10].value / 10 * (this.config.normAn2Max - this.config.normAn2Min) + this.config.normAn2Min)
+                            )) / 100,
+                            ack: true
+                        });
+
+
+//                        this.setStateAsync('Inputs.Analog1', { val: (Math.round(100 * result[9].value)) / 100, ack: true });
+//                        this.setStateAsync('Inputs.Analog2', { val: (Math.round(100 * result[10].value)) / 100, ack: true });
                         this.setStateAsync('Inputs.Analog3', { val: (Math.round(100 * result[11].value)) / 100, ack: true });
                         this.setStateAsync('Inputs.Analog4', { val: (Math.round(100 * result[12].value)) / 100, ack: true });
                     }

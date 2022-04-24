@@ -135,6 +135,78 @@ systemDictionary = {
         "es": "Valor máximo para entrada analógica 1 - igual a 10V",
         "pl": "Maksymalna wartość dla wejścia analogowego 1 - równa się 10V",
         "zh-cn": "模拟输入 1 的最大值 - 等于 10V"
+    },
+    'normAn2Min': {
+        "en": "Minimum value for analog input 2 - equals 0V",
+        "de": "Minimalwert für Analogeingang 2 - entspricht 0V",
+        "ru": "Минимальное значение для аналогового входа 2 - равно 0 В",
+        "pt": "Valor mínimo para entrada analógica 2 - igual a 0V",
+        "nl": "Minimale waarde voor analoge ingang 2 - is gelijk aan 0V",
+        "fr": "Valeur minimale pour l'entrée analogique 2 - égale à 0 V",
+        "it": "Il valore minimo per l'ingresso analogico 2 - è uguale a 0V",
+        "es": "Valor mínimo para entrada analógica 2 - igual a 0V",
+        "pl": "Minimalna wartość dla wejścia analogowego 2 - równa się 0V",
+        "zh-cn": "模拟输入 2 的最小值 - 等于 0V"
+    },
+    'normAn2Max': {
+        "en": "Maximum value for analog input 2 - equals 10V",
+        "de": "Maximalwert für Analogeingang 2 - entspricht 10 V",
+        "ru": "Максимальное значение для аналогового входа 2 - равно 10 В.",
+        "pt": "Valor máximo para entrada analógica 2 - igual a 10V",
+        "nl": "Maximale waarde voor analoge ingang 2 - is gelijk aan 10V",
+        "fr": "Valeur maximale pour l'entrée analogique 2 - égale 10V",
+        "it": "Il valore massimo per l'ingresso analogico 2 - equivale a 10V",
+        "es": "Valor máximo para entrada analógica 2 - igual a 10V",
+        "pl": "Maksymalna wartość dla wejścia analogowego 2 - równa się 10V",
+        "zh-cn": "模拟输入 2 的最大值 - 等于 10V"
+    },
+    'normAn3Min': {
+        "en": "Minimum value for analog input 3 - equals 0V",
+        "de": "Minimalwert für Analogeingang 3 - entspricht 0V",
+        "ru": "Минимальное значение для аналогового входа 3 - равно 0 В",
+        "pt": "Valor mínimo para entrada analógica 3 - igual a 0V",
+        "nl": "Minimale waarde voor analoge ingang 3 - is gelijk aan 0V",
+        "fr": "Valeur minimale pour l'entrée analogique 3 - égale à 0 V",
+        "it": "Il valore minimo per l'ingresso analogico 3 - è uguale a 0V",
+        "es": "Valor mínimo para entrada analógica 3 - igual a 0V",
+        "pl": "Minimalna wartość dla wejścia analogowego 3 - równa się 0V",
+        "zh-cn": "模拟输入 3 的最小值 - 等于 0V"
+    },
+    'normAn3Max': {
+        "en": "Maximum value for analog input 3 - equals 10V",
+        "de": "Maximalwert für Analogeingang 3 - entspricht 10 V",
+        "ru": "Максимальное значение для аналогового входа 3 - равно 10 В.",
+        "pt": "Valor máximo para entrada analógica 3 - igual a 10V",
+        "nl": "Maximale waarde voor analoge ingang 3 - is gelijk aan 10V",
+        "fr": "Valeur maximale pour l'entrée analogique 3 - égale 10V",
+        "it": "Il valore massimo per l'ingresso analogico 3 - equivale a 10V",
+        "es": "Valor máximo para entrada analógica 3 - igual a 10V",
+        "pl": "Maksymalna wartość dla wejścia analogowego 3 - równa się 10V",
+        "zh-cn": "模拟输入 3 的最大值 - 等于 10V"
+    },
+    'normAn4Min': {
+        "en": "Minimum value for analog input 4 - equals 0V",
+        "de": "Minimalwert für Analogeingang 4 - entspricht 0V",
+        "ru": "Минимальное значение для аналогового входа 4 - равно 0 В",
+        "pt": "Valor mínimo para entrada analógica 4 - igual a 0V",
+        "nl": "Minimale waarde voor analoge ingang 4 - is gelijk aan 0V",
+        "fr": "Valeur minimale pour l'entrée analogique 4 - égale à 0 V",
+        "it": "Il valore minimo per l'ingresso analogico 4 - è uguale a 0V",
+        "es": "Valor mínimo para entrada analógica 4 - igual a 0V",
+        "pl": "Minimalna wartość dla wejścia analogowego 4 - równa się 0V",
+        "zh-cn": "模拟输入 4 的最小值 - 等于 0V"
+    },
+    'normAn4Max': {
+        "en": "Maximum value for analog input 4 - equals 10V",
+        "de": "Maximalwert für Analogeingang 4 - entspricht 10 V",
+        "ru": "Максимальное значение для аналогового входа 4 - равно 10 В.",
+        "pt": "Valor máximo para entrada analógica 4 - igual a 10V",
+        "nl": "Maximale waarde voor analoge ingang 4 - is gelijk aan 10V",
+        "fr": "Valeur maximale pour l'entrée analogique 4 - égale 10V",
+        "it": "Il valore massimo per l'ingresso analogico 4 - equivale a 10V",
+        "es": "Valor máximo para entrada analógica 4 - igual a 10V",
+        "pl": "Maksymalna wartość dla wejścia analogowego 4 - równa się 10V",
+        "zh-cn": "模拟输入 4 的最大值 - 等于 10V"
     }
 
 };
