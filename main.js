@@ -194,6 +194,13 @@ class KostalPikoBA extends utils.Adapter {
             if (this.config.readanalogs) {
                 KostalRequest2 = KostalRequest2 + `&dxsEntries=${ID_InputAnalog1 }&dxsEntries=${ID_InputAnalog2 }`
                                                 + `&dxsEntries=${ID_InputAnalog3 }&dxsEntries=${ID_InputAnalog4 }`;
+
+
+                this.extendObject('Inputs.Analog1', { common: { unit: 'T' } });
+
+
+
+
             }
 
             KostalRequestDay = `http://${this.config.ipaddress}/api/dxs.json`
