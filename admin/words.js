@@ -100,17 +100,18 @@ systemDictionary = {
         "pl": "Odczyt wszystkich 4 analogowych wartości wejściowych w V (0-10V; 10bit)",
         "zh-cn": "以 V 为单位读出所有 4 个模拟输入值（0-10V；10 位）"
     },
-    'normAn1': {
-        "en": "NOT IMPLEMENTED - Normalizing 0V to minimum value and 10V to maximum value",
-        "de": "NICHT IMPLEMENTIERT - Normalisierung von 0 V auf Minimalwert und 10 V auf Maximalwert",
-        "ru": "НЕ РЕАЛИЗОВАНО - Нормализация 0В к минимальному значению и 10В к максимальному значению",
-        "pt": "NÃO IMPLEMENTADO - Normalizando 0V para o valor mínimo e 10V para o valor máximo",
-        "nl": "NIET UITGEVOERD - Normaliseren van 0V naar minimumwaarde en 10V naar maximumwaarde",
-        "fr": "NON IMPLÉMENTÉ - Normalisation 0V à la valeur minimale et 10V à la valeur maximale",
-        "it": "NON IMPLEMENTATO - Normalizzazione 0V al valore minimo e 10V al valore massimo",
-        "es": "NO IMPLEMENTADO - Normalizando 0V al valor mínimo y 10V al valor máximo",
-        "pl": "NIE ZREALIZOWANO - Normalizacja 0V do wartości minimalnej i 10V do wartości maksymalnej",
-        "zh-cn": "未实现 - 将 0V 标准化为最小值，将 10V 标准化为最大值"
+
+    'normAnalogs': {
+        "en": "Normalizing 0V to minimum value and 10V to maximum value",
+        "de": "Normalisierung von 0 V auf Minimalwert und 10 V auf Maximalwert",
+        "ru": "Нормализация 0В к минимальному значению и 10В к максимальному значению",
+        "pt": "Normalizando 0V para o valor mínimo e 10V para o valor máximo",
+        "nl": "Normaliseren van 0V tot minimumwaarde en 10V tot maximumwaarde",
+        "fr": "Normalisation de 0V à la valeur minimale et de 10V à la valeur maximale",
+        "it": "Normalizzazione di 0 V al valore minimo e 10 V al valore massimo",
+        "es": "Normalizando 0V al valor mínimo y 10V al valor máximo",
+        "pl": "Normalizacja 0V do wartości minimalnej i 10V do wartości maksymalnej",
+        "zh-cn": "将 0V 归一化为最小值，将 10V 归一化为最大值"
     },
     'normAn1Min': {
         "en": "Minimum value for analog input 1 - equals 0V",
