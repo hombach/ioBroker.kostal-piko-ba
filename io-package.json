@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "1.4.3",
+    "version": "1.4.4",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -43,6 +43,9 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "1.4.4": {
+        "en": "optimized sentry feedback and documentation"
+      },
       "1.4.3": {
         "en": "normalizing of analog values added, bumped dependencies"
       },

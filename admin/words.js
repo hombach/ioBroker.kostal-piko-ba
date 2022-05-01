@@ -40,16 +40,16 @@ systemDictionary = {
         'zh-cn': 'Kostal Piko BA的适配器设置'
     },
     'ipaddress': {
-        "en": "IP address of Kostal Piko BA (like 192.168.100.33)",
-        "de": "IP-Adresse von Kostal Piko BA (zB 192.168.100.33)",
-        "ru": "IP-адрес Косталь-Пико БА (например, 192.168.100.33)",
-        "pt": "Endereço IP de Kostal Piko BA (como 192.168.100.33)",
-        "nl": "IP-adres van Kostal Piko BA (zoals 192.168.100.33)",
-        "fr": "Adresse IP de Kostal Piko BA (comme 192.168.100.33)",
-        "it": "Indirizzo IP di Kostal Piko BA (come 192.168.100.33)",
-        "es": "Dirección IP de Kostal Piko BA (como 192.168.100.33)",
-        "pl": "Adres IP Kostal Piko BA (np. 192.168.100.33)",
-        "zh-cn": "Kostal Piko BA 的 IP 地址（如 192.168.100.33"
+        "en": "IP address of Kostal Piko BA (like '192.168.100.33' no HTTP or other texts",
+        "de": "IP-Adresse von Kostal Piko BA (wie '192.168.100.33' kein HTTP oder andere Texte",
+        "ru": "IP-адрес Kostal Piko BA (например, «192.168.100.33» без HTTP или других текстов",
+        "pt": "Endereço IP de Kostal Piko BA (como '192.168.100.33' sem HTTP ou outros textos",
+        "nl": "IP-adres van Kostal Piko BA (zoals '192.168.100.33' geen HTTP of andere teksten",
+        "fr": "Adresse IP de Kostal Piko BA (comme '192.168.100.33' pas de HTTP ou d'autres textes",
+        "it": "Indirizzo IP di Kostal Piko BA (come '192.168.100.33' no HTTP o altri testi",
+        "es": "Dirección IP de Kostal Piko BA (como '192.168.100.33' sin HTTP u otros textos",
+        "pl": "Adres IP Kostal Piko BA (np. „192.168.100.33” bez HTTP lub innych tekstów)",
+        "zh-cn": "Kostal Piko BA 的 IP 地址（如 '192.168.100.33' 没有 HTTP 或其他文本"
     },
     'polltimelive': {
         "en": "Time between data polls from inverter [ms]",
