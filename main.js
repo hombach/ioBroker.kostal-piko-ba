@@ -436,7 +436,7 @@ class KostalPikoBA extends utils.Adapter {
                     this.log.error(`Error: ${response.error} by polling Piko-BA for daily statistics: ${KostalRequestDay}`);
                 }
             } catch (e) {
-                this.log.error(`Error in calling Piko API: ${e}`);
+                this.log.error(`Error in calling Kostal Piko API: ${e}`);
                 this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e3)`);
             } // END try catch
 
@@ -476,7 +476,7 @@ class KostalPikoBA extends utils.Adapter {
                     this.log.error(`Error: ${response.error} by polling Piko-BA lifetime statistics: ${KostalRequestTotal}`);
                 }
             } catch (e) {
-                this.log.error(`Error in calling Piko API for total statistics: ${e}`);
+                this.log.error(`Error in calling Kostal Piko API for total statistics: ${e}`);
                 this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e4)`);
             } // END try catch
         })();
