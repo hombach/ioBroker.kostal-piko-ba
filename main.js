@@ -81,6 +81,7 @@ const ID_Input_S0_seconds             = 150995968; // in sec -  not implemented
 
 
 var InverterType       = 'unknown'; // Inverter type
+var InverterUIVersion  = 'unknown'; // Inverter UI Version
 var KostalRequestOnce  = '';        // IP request-string for one time request of system type etc.
 var KostalRequest1     = '';        // IP request-string 1 for PicoBA current data
 var KostalRequest2     = '';        // IP request-string 2 for PicoBA current data
@@ -164,6 +165,7 @@ class KostalPikoBA extends utils.Adapter {
                     scope.setLevel('info');
                     scope.setTag('Inverter', this.config.ipaddress);
                     scope.setTag('Inverter-Type', InverterType);
+                    scope.setTag('Inverter-UI', InverterUIVersion);
                     Sentry.captureMessage('Adapter kostal-piko-ba started', 'info'); // Level "info"
                 });
             }
@@ -223,13 +225,13 @@ class KostalPikoBA extends utils.Adapter {
                 KostalRequestTotal = KostalRequestTotal + `&dxsEntries=${ID_BatChargeCycles}`;
             }
 
-            this.log.debug('OnReady done');
+            this.log.debug(`OnReady done`);
             await this.ReadPikoTotal();
             await resolveAfterXSeconds(3);
             await this.ReadPikoDaily();
             await resolveAfterXSeconds(3);
             await this.Scheduler();
-            this.log.debug('Initial ReadPiko done');
+            this.log.debug(`Initial ReadPiko done`);
         } else {
             this.stop;
         }
@@ -245,7 +247,7 @@ class KostalPikoBA extends utils.Adapter {
             clearTimeout(adapterIntervals.daily);
             clearTimeout(adapterIntervals.total);
             Object.keys(adapterIntervals).forEach(interval => clearInterval(adapterIntervals[interval]));
-            this.log.info('Adapter Kostal-Piko-BA cleaned up everything...');
+            this.log.info(`Adapter Kostal-Piko-BA cleaned up everything...`);
             callback();
         } catch (e) {
             callback();
@@ -280,7 +282,8 @@ class KostalPikoBA extends utils.Adapter {
                     var result = await JSON.parse(response.body).dxsEntries;
                     InverterType = result[0].value;
                     this.setStateAsync('Info.InverterType', { val: InverterType, ack: true });
-                    this.setStateAsync('Info.InverterUIVersion', { val: result[1].value, ack: true });
+                    InverterUIVersion = result[1].value;
+                    this.setStateAsync('Info.InverterUIVersion', { val: InverterUIVersion, ack: true });
                     this.setStateAsync('Info.InverterName', { val: result[2].value, ack: true });
                     this.log.debug(`Piko-BA general info updated - Kostal response data: ${response.body}`);
                     if (InverterType == 'unknown') {
@@ -397,9 +400,6 @@ class KostalPikoBA extends utils.Adapter {
                         });
 
 //                        this.setStateAsync('Inputs.Analog1', { val: (Math.round(100 * result[9].value)) / 100, ack: true });
-//                        this.setStateAsync('Inputs.Analog2', { val: (Math.round(100 * result[10].value)) / 100, ack: true });
-//                        this.setStateAsync('Inputs.Analog3', { val: (Math.round(100 * result[11].value)) / 100, ack: true });
-//                        this.setStateAsync('Inputs.Analog4', { val: (Math.round(100 * result[12].value)) / 100, ack: true });
                     }
                     this.log.debug(`Piko-BA live data 2 updated - Kostal response data: ${response.body}`);
                 }

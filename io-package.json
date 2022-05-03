@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "1.4.4",
+    "version": "1.4.5",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -43,6 +43,9 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "1.4.5": {
+        "en": "added UI version to sentry feedback and documentation"
+      },
       "1.4.4": {
         "en": "optimized sentry feedback and documentation"
       },
@@ -51,9 +54,6 @@
       },
       "1.4.2": {
         "en": "added support for inverter type, version and name; fixed timing error"
-      },
-      "1.4.1": {
-        "en": "optimized logging; bumped dependencies"
       },
       "1.4.0": {
         "en": "added support for grid 1-3 current, voltage and power, bumped dependencies"
