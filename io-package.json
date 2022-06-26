@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "1.4.6",
+    "version": "1.4.7",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -43,6 +43,9 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "1.4.7": {
+        "en": "bumped dependency because of security vulnerability"
+      },
       "1.4.6": {
         "en": "removed gulp, bumped dependencies, added tests for node.js 18, removed tests for node.js 12 -> it's recommended to swich to node.js 14, adapter still working with node 12"
       },

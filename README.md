@@ -31,6 +31,8 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 
 ! Note that missing version entries are typically dependency updates for security.
 
+### 1.4.7 (26.06.2022)
+* (HombachC) bumped dependency because of security vulnerability
 ### 1.4.6 (06.06.2022)
 * (HombachC) removed gulp, bumped dependencies, added tests for node.js 18
 * (HombachC) removed tests for node.js 12 -> it's recommended to swich to node.js 14, adapter still working with node 12
