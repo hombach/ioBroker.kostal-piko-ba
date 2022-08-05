@@ -52,16 +52,16 @@ systemDictionary = {
         "zh-cn": "Kostal Piko BA 的 IP 地址（如 '192.168.100.33' 没有 HTTP 或其他文本"
     },
     'polltimelive': {
-        "en": "Time between data polls from inverter [ms]",
-        "de": "Zeit zwischen Datenabfragen vom Wechselrichter [ms]",
-        "ru": "Время между опросами данных от инвертора [мс]",
-        "pt": "Tempo entre pesquisas de dados do inversor [ms]",
-        "nl": "Tijd tussen gegevenspolls van omvormer [ms]",
-        "fr": "Temps entre les interrogations de données de l'onduleur [ms]",
-        "it": "Tempo tra i polling dei dati dall'inverter [ms]",
-        "es": "Tiempo entre encuestas de datos del inversor [ms]",
-        "pl": "Czas między odpytywaniem danych z falownika [ms]",
-        "zh-cn": "逆变器进行数据轮询之间的时间[ms]"
+        "en": "Time between data polls from inverter [ms] - Minimum 5000",
+        "de": "Zeit zwischen Datenabfragen von Wechselrichter [ms] - Minimum 5000",
+        "ru": "Время между опросами данных от инвертора [ms] - минимум 5000",
+        "pt": "Tempo entre as pesquisas de dados do inversor [ms] - Mínimo 5000",
+        "nl": "Tijd tussen data peilingen van invertering",
+        "fr": "Temps entre les sondages de données de l'invertateur [ms] - Minimum 5000",
+        "it": "Tempo tra sondaggi di dati da inverter [ms] - Minimo 5000",
+        "es": "Tiempo entre las encuestas de datos de inverter [ms] - Mínimo 5000",
+        "pl": "Czas pomiędzy badaniami danych od inwergencji (ms) – Minimum 5000",
+        "zh-cn": "B. 不同[产品]的数据污染的时间-最低限度5000"
     },
     'polltimedaily': {
         "en": "Time between data polls from inverter daily statistics [ms]",

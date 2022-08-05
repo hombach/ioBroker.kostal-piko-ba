@@ -31,6 +31,9 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 
 ! Note that missing version entries are typically dependency updates for security.
 
+### 1.5.0 (05.08.2022)
+* (HombachC) added minimum values for poll times to prevent communication errors
+* (HombachC) bumped dependencies
 ### 1.4.7 (26.06.2022)
 * (HombachC) bumped dependency because of security vulnerability
 ### 1.4.6 (06.06.2022)
