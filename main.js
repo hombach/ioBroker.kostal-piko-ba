@@ -346,19 +346,19 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('State', { val: result[13].value, ack: true });
                     switch (result[13].value) {
                         case 0:
-                            this.setStateAsync('StateAsString', { val: 'Aus', ack: true });
+                            this.setStateAsync('StateAsString', { val: 'OFF', ack: true });
                             break;
                         case 1:
-                            this.setStateAsync('StateAsString', { val: 'Leerlauf', ack: true });
+                            this.setStateAsync('StateAsString', { val: 'Idling', ack: true });
                             break;
                         case 2:
-                            this.setStateAsync('StateAsString', { val: 'Anfahren, DC Spannung noch zu klein', ack: true });
+                            this.setStateAsync('StateAsString', { val: 'Start up, DC voltage still too low for feed-in', ack: true });
                             break;
                         case 3:
-                            this.setStateAsync('StateAsString', { val: 'Einspeisen(MPP)', ack: true });
+                            this.setStateAsync('StateAsString', { val: 'Feeding (MPP)', ack: true });
                             break;
                         case 4:
-                            this.setStateAsync('StateAsString', { val: 'Einspeisen(abgeregelt)', ack: true });
+                            this.setStateAsync('StateAsString', { val: 'Feeding (limited)', ack: true });
                             break;
                         default:
                             this.setStateAsync('StateAsString', { val: 'Undefined', ack: true });
