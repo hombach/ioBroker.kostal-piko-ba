@@ -124,7 +124,7 @@ class KostalPikoBA extends utils.Adapter {
     * Is called when databases are connected and adapter received configuration. ***********/
     async onReady() {
         if (!this.config.ipaddress) {
-            this.log.error('Kostal Piko IP address not set');
+            this.log.error(`Kostal Piko IP address not set`);
         } else {
             this.log.info(`IP address found in config: ${this.config.ipaddress}`);
             // Validate IP address ...
@@ -138,7 +138,7 @@ class KostalPikoBA extends utils.Adapter {
                 + `?dxsEntries=${ID_InverterType}&dxsEntries=${ID_InfoUIVersion}&dxsEntries=${ID_InverterName}`;
             await this.ReadPikoOnce();
             await resolveAfterXSeconds(5);
-            this.log.debug('Initial Read of general info done');
+            this.log.debug(`Initial read of general info for IP ${this.config.ipaddress} done`);
         }
 
         if (!this.config.polltimelive) {
@@ -344,6 +344,25 @@ class KostalPikoBA extends utils.Adapter {
                     this.setStateAsync('Power.SelfConsumption', { val: Math.round(result[11].value), ack: true });
                     this.setStateAsync('Power.HouseConsumption', { val: Math.floor(result[12].value), ack: true });
                     this.setStateAsync('State', { val: result[13].value, ack: true });
+                    switch (result[13].value) {
+                        case 0:
+                            this.setStateAsync('StateAsString', { val: 'Aus', ack: true });
+                            break;
+                        case 1:
+                            this.setStateAsync('StateAsString', { val: 'Leerlauf', ack: true });
+                            break;
+                        case 2:
+                            this.setStateAsync('StateAsString', { val: 'Anfahren, DC Spannung noch zu klein', ack: true });
+                            break;
+                        case 3:
+                            this.setStateAsync('StateAsString', { val: 'Einspeisen(MPP)', ack: true });
+                            break;
+                        case 4:
+                            this.setStateAsync('StateAsString', { val: 'Einspeisen(abgeregelt)', ack: true });
+                            break;
+                        default:
+                            this.setStateAsync('StateAsString', { val: 'Undefined', ack: true });
+                    }
                     this.setStateAsync('Battery.Voltage', { val: Math.round(result[14].value), ack: true });
                     this.setStateAsync('Battery.Temperature', { val: (Math.round(10 * result[15].value)) / 10, ack: true });
                     this.setStateAsync('Battery.SoC', { val: result[16].value, ack: true });

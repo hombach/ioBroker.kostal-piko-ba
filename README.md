@@ -34,6 +34,7 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 ### 2.0.0 (28.08.2022)
 * (HombachC) BREAKING: Dropped support for Node.js 12
 * (HombachC) changed the minimal required js-controller version to 3.2.16
+* (HombachC) added state of inverter as string
 * (HombachC) bumped dependencies
 ### 1.5.0 (05.08.2022)
 * (HombachC) added minimum values for poll times to prevent communication errors

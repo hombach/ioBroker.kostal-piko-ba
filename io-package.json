@@ -44,7 +44,7 @@
     "dataSource": "poll",
     "news": {
       "2.0.0": {
-        "en": "BREAKING: Dropped support for Node.js 12"
+        "en": "BREAKING: Dropped support for Node.js 12; added state of inverter as string"
       },
       "1.5.0": {
         "en": "added minimum values for poll times to prevent communication errors; bumped dependencies"
@@ -157,6 +157,20 @@
         "read": true,
         "write": false,
         "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "StateAsString",
+      "type": "state",
+      "common": {
+        "role": "info.status",
+        "name": "Inverter state string",
+        "type": "string",
+        "unit": "",
+        "read": true,
+        "write": false,
+        "def": "unknown"
       },
       "native": {}
     },
