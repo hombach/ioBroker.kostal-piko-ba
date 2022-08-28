@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "1.5.0",
+    "version": "2.0.0",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -43,8 +43,11 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "2.0.0": {
+        "en": "BREAKING: Dropped support for Node.js 12"
+      },
       "1.5.0": {
-        "en": "added minimum values for poll times to prevent communication errors, bumped dependencies"
+        "en": "added minimum values for poll times to prevent communication errors; bumped dependencies"
       },
       "1.4.7": {
         "en": "bumped dependency because of security vulnerability"
@@ -108,12 +111,12 @@
     "supportCustoms": false,
     "dependencies": [
       {
-        "js-controller": ">=3.1.0"
+        "js-controller": ">=3.2.16"
       }
     ],
     "globalDependencies": [
       {
-        "admin": ">=3.0.0"
+        "admin": ">=4.0.0"
       }
     ],
     "plugins": {
