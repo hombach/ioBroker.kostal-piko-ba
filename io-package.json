@@ -47,7 +47,17 @@
         "en": "optimized error logging; bumped dependencies"
       },
       "2.0.0": {
-        "en": "BREAKING: Dropped support for Node.js 12; added state of inverter as string"
+        "en": "BREAKING: Dropped support for Node.js 12; added state of inverter as string",
+        "de": "BREAKING: Dropped-Unterstützung für Node.js 12; Zusatzzustand des Wechselrichters als String",
+        "ru": "ЗАВТРАК: Dropped поддержка Node.js 12; добавленное состояние инвертора как строка",
+        "pt": "BREAKING: Suporte dropped para Node.js 12; estado adicionado do inversor como string",
+        "nl": "Gevallen ondersteuning voor Node.js 12, toegevoegd staat van inverter als touw",
+        "fr": "BREAKING: Support abandonné pour Node.js 12; état d'invertisseur ajouté comme chaîne",
+        "it": "BREAKING: Supporto goccia per Node.js 12; stato aggiunto dell'inverter come stringa",
+        "es": "BREAKING: Soporte abandonado para Node.js 12; estado añadido de inverter como cadena",
+        "pl": "BREAKING: Dropped support for Node.js 12; dodanie stanu inwerteru jako struny",
+        "uk": "BREAKING: Dropped підтримка для Node.js 12; додано стан інвертора як рядок",
+        "zh-cn": "BREAKRE:为第12js号提供支助;将多样性作为附加条件。"
       },
       "1.5.0": {
         "en": "added minimum values for poll times to prevent communication errors; bumped dependencies"
