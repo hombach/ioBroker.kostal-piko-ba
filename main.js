@@ -310,10 +310,11 @@ class KostalPikoBA extends utils.Adapter {
                     }
                 }
                 else {
-                    this.log.error(`Error: ${response.error} by polling Piko-BA general info: ${KostalRequestTotal}`);
+                    throw 'unknown error';
                 }
             } catch (e) {
-                this.log.error(`Error in calling Piko API for general info: ${e}`);
+                this.log.error(`Error when calling Piko API for general info: ${e}`);
+                this.log.error(`Response error: ${response.error} by polling Piko-BA general info with: ${KostalRequestTotal}`);
                 this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0)`);
             } // END try catch
         })();
