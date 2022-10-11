@@ -61,9 +61,6 @@
       "1.4.5": {
         "en": "added UI version to sentry feedback and documentation"
       },
-      "1.4.4": {
-        "en": "optimized sentry feedback and documentation"
-      },
       "1.4.3": {
         "en": "normalizing of analog values added, bumped dependencies"
       },
