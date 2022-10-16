@@ -31,6 +31,10 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 
 ! Note that missing version entries are typically dependency updates for security.
 
+### 2.0.2 (16.10.2022)
+* (HombachC) fixed small sentry reported error
+* (HombachC) optimized error logging
+* (HombachC) bumped dependencies
 ### 2.0.1 (11.10.2022)
 * (HombachC) optimized error logging
 * (HombachC) bumped dependencies
