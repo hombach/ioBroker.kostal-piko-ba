@@ -12,6 +12,7 @@ systemDictionary = {
         "it": "Impostazioni standard",
         "es": "Configuración estándar",
         "pl": "Ustawienia standardowe",
+        "uk": "Стандартні налаштування",
         "zh-cn": "标准设置"
     },
     'Analog settings': {
@@ -24,20 +25,22 @@ systemDictionary = {
         "it": "Impostazioni per ingressi analogici",
         "es": "Ajustes para entradas analógicas",
         "pl": "Ustawienia wejść analogowych",
+        "uk": "Налаштування аналогових входів",
         "zh-cn": "模拟输入设置"
     },
 
     'template adapter settings': {
-        'en': 'Adapter settings for Kostal Piko BA',
-        'de': 'Adaptereinstellungen für Kostal Piko BA',
-        'ru': 'Настройки адаптера для Kostal Piko BA',
-        'pt': 'Configurações do adaptador para Kostal Piko BA',
-        'nl': 'Adapterinstellingen voor Kostal Piko BA',
-        'fr': "Paramètres d'adaptateur pour Kostal Piko BA",
-        'it': "Impostazioni dell'adattatore per Kostal Piko BA",
-        'es': 'Ajustes del adaptador para Kostal Piko BA',
-        'pl': 'Ustawienia adaptera dla Kostal Piko BA',
-        'zh-cn': 'Kostal Piko BA的适配器设置'
+        "en": "Adapter settings for Kostal Piko BA",
+        "de": "Adaptereinstellungen für Kostal Piko BA",
+        "ru": "Настройки адаптера для Kostal Piko BA",
+        "pt": "Configurações do adaptador para Kostal Piko BA",
+        "nl": "Adapterinstellingen voor Kostal Piko BA",
+        "fr": "Paramètres d'adaptateur pour Kostal Piko BA",
+        "it": "Impostazioni dell'adattatore per Kostal Piko BA",
+        "es": "Ajustes del adaptador para Kostal Piko BA",
+        "pl": "Ustawienia adaptera dla Kostal Piko BA",
+        "uk": "Параметри адаптера для Kostal Piko BA",
+        "zh-cn": "Kostal Piko BA的适配器设置"
     },
     'ipaddress': {
         "en": "IP address of Kostal Piko BA (like '192.168.100.33' no HTTP or other texts",
@@ -49,6 +52,7 @@ systemDictionary = {
         "it": "Indirizzo IP di Kostal Piko BA (come '192.168.100.33' no HTTP o altri testi",
         "es": "Dirección IP de Kostal Piko BA (como '192.168.100.33' sin HTTP u otros textos",
         "pl": "Adres IP Kostal Piko BA (np. „192.168.100.33” bez HTTP lub innych tekstów)",
+        "uk": "IP-адреса Kostal Piko BA (як 192.168.100.33 не HTTP або інші тексти",
         "zh-cn": "Kostal Piko BA 的 IP 地址（如 '192.168.100.33' 没有 HTTP 或其他文本"
     },
     'polltimelive': {
@@ -61,6 +65,7 @@ systemDictionary = {
         "it": "Tempo tra sondaggi di dati da inverter [ms] - Minimo 5000",
         "es": "Tiempo entre las encuestas de datos de inverter [ms] - Mínimo 5000",
         "pl": "Czas pomiędzy badaniami danych od inwergencji (ms) – Minimum 5000",
+        "uk": "Час між опитуваннями даних з інвертора [ms] - мінімум 5000",
         "zh-cn": "B. 不同[产品]的数据污染的时间-最低限度5000"
     },
     'polltimedaily': {
@@ -73,6 +78,7 @@ systemDictionary = {
         "it": "Tempo tra i sondaggi dati dalle statistiche giornaliere dell'inverter [ms]",
         "es": "Tiempo entre sondeos de datos de las estadísticas diarias del inversor [ms]",
         "pl": "Czas między odpytaniami danych z dziennych statystyk falownika [ms]",
+        "uk": "Час між опитуваннями даних з щоденної статистики інвертора [ms]",
         "zh-cn": "逆变器每日统计数据轮询之间的时间[ms]"
     },
     'polltimetotal': {
@@ -85,6 +91,7 @@ systemDictionary = {
         "it": "Tempo tra i sondaggi di dati dalle statistiche di tutti i tempi dell'inverter [ms]",
         "es": "Tiempo entre sondeos de datos de estadísticas de tiempo del inversor [ms]",
         "pl": "Czas między odpytywaniem danych ze statystyk całego czasu falownika [ms]",
+        "uk": "Час між даними опитування з інверторної статистики часу [ms]",
         "zh-cn": "来自逆变器常时统计的数据轮询之间的时间[ms]"
     },
 
@@ -98,6 +105,7 @@ systemDictionary = {
         "it": "Lettura di tutti e 4 i valori di ingresso analogico in V (0-10V; 10bit)",
         "es": "Leer los 4 valores de entrada analógica en V (0-10 V; 10 bits)",
         "pl": "Odczyt wszystkich 4 analogowych wartości wejściowych w V (0-10V; 10bit)",
+        "uk": "Read-Out всі 4 аналогові значення введення в V (0-10V; 10bit)",
         "zh-cn": "以 V 为单位读出所有 4 个模拟输入值（0-10V；10 位）"
     },
 
@@ -111,6 +119,7 @@ systemDictionary = {
         "it": "Normalizzazione di 0 V al valore minimo e 10 V al valore massimo",
         "es": "Normalizando 0V al valor mínimo y 10V al valor máximo",
         "pl": "Normalizacja 0V do wartości minimalnej i 10V do wartości maksymalnej",
+        "uk": "Нормалізація 0В до мінімального значення та 10В до максимального значення",
         "zh-cn": "将 0V 归一化为最小值，将 10V 归一化为最大值"
     },
     'normAn1Min': {
@@ -123,6 +132,7 @@ systemDictionary = {
         "it": "Il valore minimo per l'ingresso analogico 1 - è uguale a 0V",
         "es": "Valor mínimo para entrada analógica 1 - igual a 0V",
         "pl": "Minimalna wartość dla wejścia analogowego 1 - równa się 0V",
+        "uk": "Мінімальне значення для аналогового введення 1 - дорівнює 0В",
         "zh-cn": "模拟输入 1 的最小值 - 等于 0V"
     },
     'normAn1Max': {
@@ -135,6 +145,7 @@ systemDictionary = {
         "it": "Il valore massimo per l'ingresso analogico 1 - equivale a 10V",
         "es": "Valor máximo para entrada analógica 1 - igual a 10V",
         "pl": "Maksymalna wartość dla wejścia analogowego 1 - równa się 10V",
+        "uk": "Максимальне значення для аналогового введення 1 - рівні 10В",
         "zh-cn": "模拟输入 1 的最大值 - 等于 10V"
     },
     'normAn2Min': {
@@ -147,6 +158,7 @@ systemDictionary = {
         "it": "Il valore minimo per l'ingresso analogico 2 - è uguale a 0V",
         "es": "Valor mínimo para entrada analógica 2 - igual a 0V",
         "pl": "Minimalna wartość dla wejścia analogowego 2 - równa się 0V",
+        "uk": "Мінімальне значення для аналогового введення 2 - дорівнює 0В",
         "zh-cn": "模拟输入 2 的最小值 - 等于 0V"
     },
     'normAn2Max': {
@@ -159,6 +171,7 @@ systemDictionary = {
         "it": "Il valore massimo per l'ingresso analogico 2 - equivale a 10V",
         "es": "Valor máximo para entrada analógica 2 - igual a 10V",
         "pl": "Maksymalna wartość dla wejścia analogowego 2 - równa się 10V",
+        "uk": "Максимальне значення для аналогового введення 2 - дорівнює 10В",
         "zh-cn": "模拟输入 2 的最大值 - 等于 10V"
     },
     'normAn3Min': {
@@ -171,6 +184,7 @@ systemDictionary = {
         "it": "Il valore minimo per l'ingresso analogico 3 - è uguale a 0V",
         "es": "Valor mínimo para entrada analógica 3 - igual a 0V",
         "pl": "Minimalna wartość dla wejścia analogowego 3 - równa się 0V",
+        "uk": "Мінімальне значення для аналогового введення 3 - дорівнює 0В",
         "zh-cn": "模拟输入 3 的最小值 - 等于 0V"
     },
     'normAn3Max': {
@@ -183,6 +197,7 @@ systemDictionary = {
         "it": "Il valore massimo per l'ingresso analogico 3 - equivale a 10V",
         "es": "Valor máximo para entrada analógica 3 - igual a 10V",
         "pl": "Maksymalna wartość dla wejścia analogowego 3 - równa się 10V",
+        "uk": "Максимальне значення для аналогового введення 3 - дорівнює 10В",
         "zh-cn": "模拟输入 3 的最大值 - 等于 10V"
     },
     'normAn4Min': {
@@ -195,6 +210,7 @@ systemDictionary = {
         "it": "Il valore minimo per l'ingresso analogico 4 - è uguale a 0V",
         "es": "Valor mínimo para entrada analógica 4 - igual a 0V",
         "pl": "Minimalna wartość dla wejścia analogowego 4 - równa się 0V",
+        "uk": "Мінімальне значення для аналогового введення 4 - дорівнює 0В",
         "zh-cn": "模拟输入 4 的最小值 - 等于 0V"
     },
     'normAn4Max': {
@@ -207,6 +223,7 @@ systemDictionary = {
         "it": "Il valore massimo per l'ingresso analogico 4 - equivale a 10V",
         "es": "Valor máximo para entrada analógica 4 - igual a 10V",
         "pl": "Maksymalna wartość dla wejścia analogowego 4 - równa się 10V",
+        "uk": "Максимальне значення для аналогового введення 4 - рівні 10В",
         "zh-cn": "模拟输入 4 的最大值 - 等于 10V"
     }
 

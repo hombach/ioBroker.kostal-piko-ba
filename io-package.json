@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "2.0.2",
+    "version": "2.1.0",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -13,6 +13,7 @@
       "it": "Kostal PikoBA",
       "es": "Kostal PikoBA",
       "pl": "Kostal PikoBA",
+      "uk": "Kostal PikoBA",
       "zh-cn": "科斯塔尔皮科巴"
     },
     "desc": {
@@ -25,7 +26,8 @@
       "it": "Adattatore per la lettura dei dati Kostal Piko BA",
       "es": "Adaptador para leer datos de Kostal Piko BA",
       "pl": "Adapter do odczytu danych Kostal Piko BA",
-      "zh-cn": "用于读取Kostal Piko BA数据的适配器"
+      "uk": "Адаптер для читання даних Костал Піко BA",
+      "zh-cn": "阅读Kostal Piko BA数据"
     },
     "authors": [
       "Christian Hombach"
@@ -43,6 +45,19 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "2.1.0": {
+        "en": "added ukrainian translations; bumped dependencies",
+        "de": "ukrainische übersetzungen hinzugefügt; häufige abhängigkeiten",
+        "ru": "добавлены украинские переводы; bumped зависимости",
+        "pt": "adicionado traduções ukrainian; dependências colhidas",
+        "nl": "vertaling:",
+        "fr": "traductions ukrainiennes; dépendances paressées",
+        "it": "aggiunto traduzioni ukrainian; dipendenze urtate",
+        "es": "añadido traducciones ucranianas; dependencias conyugal",
+        "pl": "dodano przekłady ukrainowe, zbliżone zależności",
+        "uk": "додано українські переклади",
+        "zh-cn": "增加地籍翻译;倾弃的依赖"
+      },
       "2.0.2": {
         "en": "fixed small sentry reported error; optimized error logging; bumped dependencies"
       },
