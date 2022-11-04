@@ -61,9 +61,6 @@
       "2.0.2": {
         "en": "fixed small sentry reported error; optimized error logging; bumped dependencies"
       },
-      "2.0.1": {
-        "en": "optimized error logging; bumped dependencies"
-      },
       "2.0.0": {
         "en": "BREAKING: Dropped support for Node.js 12; added state of inverter as string",
         "de": "BREAKING: Dropped-Unterstützung für Node.js 12; Zusatzzustand des Wechselrichters als String",
