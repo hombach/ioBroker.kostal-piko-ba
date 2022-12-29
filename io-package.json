@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -45,6 +45,9 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "2.1.1": {
+        "en": "bumped dependency, year 2023 changes"
+      },
       "2.1.0": {
         "en": "added ukrainian translations; bumped dependencies",
         "de": "ukrainische übersetzungen hinzugefügt; häufige abhängigkeiten",
@@ -57,9 +60,6 @@
         "pl": "dodano przekłady ukrainowe, zbliżone zależności",
         "uk": "додано українські переклади",
         "zh-cn": "增加地籍翻译;倾弃的依赖"
-      },
-      "2.0.2": {
-        "en": "fixed small sentry reported error; optimized error logging; bumped dependencies"
       },
       "2.0.0": {
         "en": "BREAKING: Dropped support for Node.js 12; added state of inverter as string",
