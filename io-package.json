@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "2.1.1",
+    "version": "2.1.2",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -45,8 +45,8 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
-      "2.1.1": {
-        "en": "bumped dependency, year 2023 changes"
+      "2.1.2": {
+        "en": "fixed errors with single phase inverters (Piko 3); bumped dependencies"
       },
       "2.1.0": {
         "en": "added ukrainian translations; bumped dependencies",
