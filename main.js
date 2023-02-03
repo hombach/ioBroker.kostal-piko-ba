@@ -203,14 +203,13 @@ class KostalPikoBA extends utils.Adapter {
                 + `&dxsEntries=${ID_BatCurrent           }&dxsEntries=${ID_BatCurrentDir         }`
                 + `&dxsEntries=${ID_GridLimitation       }`;
 
-            // ID_Power_HouseConsumptionPhase1; ID_Power_HouseConsumptionPhase2; ID_Power_HouseConsumptionPhase3
-
             KostalRequest2 = `http://${this.config.ipaddress}/api/dxs.json`
-                + `?dxsEntries=${ID_L1GridCurrent }&dxsEntries=${ID_L1GridVoltage }`
-                + `&dxsEntries=${ID_L1GridPower   }&dxsEntries=${ID_L2GridCurrent }`
-                + `&dxsEntries=${ID_L2GridVoltage }&dxsEntries=${ID_L2GridPower   }`
-                + `&dxsEntries=${ID_L3GridCurrent }&dxsEntries=${ID_L3GridVoltage }`
-                + `&dxsEntries=${ID_L3GridPower   }`;
+                + `?dxsEntries=${ID_L1GridCurrent                }&dxsEntries=${ID_L1GridVoltage                }`
+                + `&dxsEntries=${ID_L1GridPower                  }&dxsEntries=${ID_L2GridCurrent                }`
+                + `&dxsEntries=${ID_L2GridVoltage                }&dxsEntries=${ID_L2GridPower                  }`
+                + `&dxsEntries=${ID_L3GridCurrent                }&dxsEntries=${ID_L3GridVoltage                }`
+                + `&dxsEntries=${ID_L3GridPower                  }&dxsEntries=${ID_Power_HouseConsumptionPhase1 }`
+                + `&dxsEntries=${ID_Power_HouseConsumptionPhase2 }&dxsEntries=${ID_Power_HouseConsumptionPhase3 }`;
             if (this.config.readanalogs) {
                 KostalRequest2 = KostalRequest2 + `&dxsEntries=${ID_InputAnalog1 }&dxsEntries=${ID_InputAnalog2 }`
                                                 + `&dxsEntries=${ID_InputAnalog3 }&dxsEntries=${ID_InputAnalog4 }`;
@@ -419,28 +418,33 @@ class KostalPikoBA extends utils.Adapter {
                         this.setStateAsync('Power.AC3Voltage', { val: Math.round(result[7].value), ack: true });
                         this.setStateAsync('Power.AC3Power', { val: Math.round(result[8].value), ack: true });
                     }
+                    if (result[9].value) {
+                        this.setStateAsync('Power.HouseConsumptionPhase1', { val: Math.round(result[9].value), ack: true });
+                        this.setStateAsync('Power.HouseConsumptionPhase2', { val: Math.round(result[10].value), ack: true });
+                        this.setStateAsync('Power.HouseConsumptionPhase3', { val: Math.round(result[11].value), ack: true });
+                    }
                     if (this.config.readanalogs) {
                         this.setStateAsync('Inputs.Analog1', {
                             val: (Math.round(100 *
-                             (result[9].value / 10 * (this.config.normAn1Max - this.config.normAn1Min) + this.config.normAn1Min)
+                             (result[12].value / 10 * (this.config.normAn1Max - this.config.normAn1Min) + this.config.normAn1Min)
                             )) / 100,
                             ack: true
                         });
                         this.setStateAsync('Inputs.Analog2', {
                             val: (Math.round(100 *
-                                (result[10].value / 10 * (this.config.normAn2Max - this.config.normAn2Min) + this.config.normAn2Min)
+                                (result[13].value / 10 * (this.config.normAn2Max - this.config.normAn2Min) + this.config.normAn2Min)
                             )) / 100,
                             ack: true
                         });
                         this.setStateAsync('Inputs.Analog3', {
                             val: (Math.round(100 *
-                                (result[11].value / 10 * (this.config.normAn3Max - this.config.normAn3Min) + this.config.normAn3Min)
+                                (result[14].value / 10 * (this.config.normAn3Max - this.config.normAn3Min) + this.config.normAn3Min)
                             )) / 100,
                             ack: true
                         });
                         this.setStateAsync('Inputs.Analog4', {
                             val: (Math.round(100 *
-                                (result[12].value / 10 * (this.config.normAn4Max - this.config.normAn4Min) + this.config.normAn4Min)
+                                (result[15].value / 10 * (this.config.normAn4Max - this.config.normAn4Min) + this.config.normAn4Min)
                             )) / 100,
                             ack: true
                         });

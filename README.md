@@ -31,6 +31,8 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 
 ! Note that missing version entries are typically dependency updates for security.
 
+### 2.2.0 (03.02.2023)
+* (HombachC) added support for phase 1-3 of homeconsumption power
 ### 2.1.3 (03.02.2023)
 * (HombachC) optimized debug data
 ### 2.1.2 (29.01.2023)
