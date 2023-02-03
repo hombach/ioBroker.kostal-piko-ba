@@ -295,13 +295,13 @@ class KostalPikoBA extends utils.Adapter {
                 // @ts-ignore got is valid
                 var response = await got(KostalRequestOnce);
                 if (!response.error && response.statusCode == 200) {
+                    this.log.debug(`Piko-BA general info updated - Kostal response data: ${response.body}`);
                     var result = await JSON.parse(response.body).dxsEntries;
                     InverterType = result[0].value;
                     this.setStateAsync('Info.InverterType', { val: InverterType, ack: true });
                     InverterUIVersion = result[1].value;
                     this.setStateAsync('Info.InverterUIVersion', { val: InverterUIVersion, ack: true });
                     this.setStateAsync('Info.InverterName', { val: result[2].value, ack: true });
-                    this.log.debug(`Piko-BA general info updated - Kostal response data: ${response.body}`);
                     if (InverterType == 'unknown') {
                         this.log.error(`Error in polling Piko-BA general info.`);
                         InverterType = `Can't get InverterType - response was: ${response.body}`;
@@ -329,6 +329,7 @@ class KostalPikoBA extends utils.Adapter {
                 // @ts-ignore got is valid
                 var response = await got(KostalRequest1);
                 if (!response.error && response.statusCode == 200) {
+                    this.log.debug(`Piko-BA live data 1 update - Kostal response data: ${response.body}`);
                     var result = await JSON.parse(response.body).dxsEntries;
                     this.setStateAsync('Power.SolarDC', { val: Math.round(result[0].value), ack: true });
                     this.setStateAsync('Power.GridAC', { val: Math.round(result[1].value), ack: true });
@@ -380,8 +381,6 @@ class KostalPikoBA extends utils.Adapter {
                     }
                     this.setStateAsync('Power.Surplus', { val: Math.round(result[1].value - result[11].value), ack: true });
                     this.setStateAsync('GridLimitation', { val: result[19].value, ack: true });
-
-                    this.log.debug(`Piko-BA live data 1 updated - Kostal response data: ${response.body}`);
                 }
                 else {
                     this.log.error(`Error: ${response.error} by polling Kostal Piko-BA: ${KostalRequest1}`);
@@ -394,6 +393,21 @@ class KostalPikoBA extends utils.Adapter {
     } // END ReadPiko
 
 
+    //2023-01 - 31 08: 07: 54.166 - error: kostal - piko - ba.0(3158894)
+    //Error in calling Kostal Piko API: TypeError: Cannot read properties of undefined(reading 'value')
+
+//2023 - 01 - 31 08: 07: 54.167 - error: kostal - piko - ba.0(3158894) Please verify IP address: 192.168.193.42!!(e1)
+
+//2023 - 01 - 31 08: 07: 54.169 - debug: kostal - piko - ba.0(3158894)
+    //Piko - BA live data 2 updated - Kostal response data:
+    //{ "dxsEntries": [{ "dxsId": 67109377, "value": 0.582275 }, { "dxsId": 67109378, "value": 221.347137 },
+    //{ "dxsId": 67109379, "value": 12.820864 }, { "dxsId": 67109633, "value": null },
+    //{ "dxsId": 67109634, "value": null }, { "dxsId": 67109635, "value": null }, { "dxsId": 67109889, "value": null },
+    //{ "dxsId": 67109890, "value": null }, { "dxsId": 67109891, "value": null }],
+    //"session": { "sessionId": 0, "roleId": 0 }, "status": { "code": 0 } }
+
+
+
     /****************************************************************************************
     * ReadPiko2 ****************************************************************************/
     ReadPiko2() {
@@ -403,6 +417,7 @@ class KostalPikoBA extends utils.Adapter {
                 // @ts-ignore got is valid
                 var response = await got(KostalRequest2);
                 if (!response.error && response.statusCode == 200) {
+                    this.log.debug(`Piko-BA live data 2 update - Kostal response data: ${response.body}`);
                     var result = await JSON.parse(response.body).dxsEntries;
                     this.setStateAsync('Power.AC1Current', { val: (Math.round(1000 * result[0].value)) / 1000, ack: true });
                     this.setStateAsync('Power.AC1Voltage', { val: Math.round(result[1].value), ack: true });
@@ -443,7 +458,6 @@ class KostalPikoBA extends utils.Adapter {
                             ack: true
                         });
                     }
-                    this.log.debug(`Piko-BA live data 2 updated - Kostal response data: ${response.body}`);
                 }
                 else {
                     this.log.error(`Error: ${response.error} by polling Kostal Piko-BA: ${KostalRequest2}`);
@@ -455,7 +469,6 @@ class KostalPikoBA extends utils.Adapter {
         })();
     } // END ReadPiko2
 
-
     /****************************************************************************************
     * ReadPikoDaily ************************************************************************/
     ReadPikoDaily() {
@@ -465,14 +478,13 @@ class KostalPikoBA extends utils.Adapter {
                 // @ts-ignore got is valid
                 var response = await got(KostalRequestDay);
                 if (!response.error && response.statusCode == 200) {
+                    this.log.debug(`Piko-BA daily statistics update - Kostal response data: ${response.body}`);
                     var result = await JSON.parse(response.body).dxsEntries;
                     this.setStateAsync('Statistics_Daily.SelfConsumption', { val: Math.round(result[0].value) / 1000, ack: true });
                     this.setStateAsync('Statistics_Daily.SelfConsumptionRate', { val: Math.round(result[1].value), ack: true });
                     this.setStateAsync('Statistics_Daily.Yield', { val: Math.round(result[2].value) / 1000, ack: true });
                     this.setStateAsync('Statistics_Daily.HouseConsumption', { val: Math.round(result[3].value) / 1000, ack: true });
                     this.setStateAsync('Statistics_Daily.Autarky', { val: Math.round(result[4].value), ack: true });
-
-                    this.log.debug(`Piko-BA daily statistics updated - Kostal response data: ${response.body}`);
                 }
                 else {
                     this.log.error(`Error: ${response.error} by polling Piko-BA for daily statistics: ${KostalRequestDay}`);
@@ -501,6 +513,7 @@ class KostalPikoBA extends utils.Adapter {
                 // @ts-ignore got is valid
                 var response = await got(KostalRequestTotal);
                 if (!response.error && response.statusCode == 200) {
+                    this.log.debug(`Piko-BA lifetime statistics updated - Kostal response data: ${response.body}`);
                     var result = await JSON.parse(response.body).dxsEntries;
                     this.setStateAsync('Statistics_Total.SelfConsumption', { val: Math.round(result[0].value), ack: true });
                     this.setStateAsync('Statistics_Total.SelfConsumptionRate', { val: Math.round(result[1].value), ack: true });
@@ -511,8 +524,6 @@ class KostalPikoBA extends utils.Adapter {
                     if (this.config.readbattery) {
                         this.setStateAsync('Battery.ChargeCycles', { val: result[6].value, ack: true });
                     }
-
-                    this.log.debug(`Piko-BA lifetime statistics updated - Kostal response data: ${response.body}`);
                 }
                 else {
                     this.log.error(`Error: ${response.error} by polling Piko-BA lifetime statistics: ${KostalRequestTotal}`);
