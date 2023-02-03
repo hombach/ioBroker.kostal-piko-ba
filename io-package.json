@@ -80,9 +80,6 @@
       "1.5.0": {
         "en": "added minimum values for poll times to prevent communication errors; bumped dependencies"
       },
-      "1.4.7": {
-        "en": "bumped dependency because of security vulnerability"
-      },
       "1.4.6": {
         "en": "removed gulp, bumped dependencies, added tests for node.js 18, removed tests for node.js 12 -> it's recommended to swich to node.js 14, adapter still working with node 12"
       },
@@ -120,7 +117,17 @@
         "en": "added battery.ChargeCycles; battery.temperature; DC1-3 Current, Voltage and Power"
       },
       "1.0.2": {
-        "en": "public release for stable repo"
+        "en": "public release for stable repo",
+        "de": "öffentliche freigabe für stabile repo",
+        "ru": "публичный релиз для стабильного репо",
+        "pt": "lançamento público para repo estável",
+        "nl": "publieke vrijlating voor stabiele vergoeding",
+        "fr": "dissémination publique pour une repo stable",
+        "it": "rilascio pubblico per ripasso stabile",
+        "es": "public release for stable repo",
+        "pl": "wydanie specjalne",
+        "uk": "публічний реліз стабільної репо",
+        "zh-cn": "公开释放稳定藏匿"
       },
       "0.7.4": {
         "en": "added sentry.io support, fixed travis"

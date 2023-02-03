@@ -393,21 +393,6 @@ class KostalPikoBA extends utils.Adapter {
     } // END ReadPiko
 
 
-    //2023-01 - 31 08: 07: 54.166 - error: kostal - piko - ba.0(3158894)
-    //Error in calling Kostal Piko API: TypeError: Cannot read properties of undefined(reading 'value')
-
-//2023 - 01 - 31 08: 07: 54.167 - error: kostal - piko - ba.0(3158894) Please verify IP address: 192.168.193.42!!(e1)
-
-//2023 - 01 - 31 08: 07: 54.169 - debug: kostal - piko - ba.0(3158894)
-    //Piko - BA live data 2 updated - Kostal response data:
-    //{ "dxsEntries": [{ "dxsId": 67109377, "value": 0.582275 }, { "dxsId": 67109378, "value": 221.347137 },
-    //{ "dxsId": 67109379, "value": 12.820864 }, { "dxsId": 67109633, "value": null },
-    //{ "dxsId": 67109634, "value": null }, { "dxsId": 67109635, "value": null }, { "dxsId": 67109889, "value": null },
-    //{ "dxsId": 67109890, "value": null }, { "dxsId": 67109891, "value": null }],
-    //"session": { "sessionId": 0, "roleId": 0 }, "status": { "code": 0 } }
-
-
-
     /****************************************************************************************
     * ReadPiko2 ****************************************************************************/
     ReadPiko2() {
