@@ -203,6 +203,8 @@ class KostalPikoBA extends utils.Adapter {
                 + `&dxsEntries=${ID_BatCurrent           }&dxsEntries=${ID_BatCurrentDir         }`
                 + `&dxsEntries=${ID_GridLimitation       }`;
 
+            // ID_Power_HouseConsumptionPhase1; ID_Power_HouseConsumptionPhase2; ID_Power_HouseConsumptionPhase3
+
             KostalRequest2 = `http://${this.config.ipaddress}/api/dxs.json`
                 + `?dxsEntries=${ID_L1GridCurrent }&dxsEntries=${ID_L1GridVoltage }`
                 + `&dxsEntries=${ID_L1GridPower   }&dxsEntries=${ID_L2GridCurrent }`
