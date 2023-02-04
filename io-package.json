@@ -182,8 +182,7 @@
     "normAn3Max": 10,
     "normAn3Min": 0,
     "normAn4Max": 10,
-    "normAn4Min": 0,
-    "sentryping": 0
+    "normAn4Min": 0
   },
 
   "objects": [],
@@ -225,6 +224,20 @@
         "name": "Power limit of inverter by grid parameters",
         "type": "number",
         "unit": "%",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "LastSentryLogDay",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Last day of month for Sentry standard log",
+        "type": "number",
+        "unit": "",
         "read": true,
         "write": false,
         "def": 0

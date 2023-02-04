@@ -176,7 +176,8 @@ class KostalPikoBA extends utils.Adapter {
         if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
             const sentryInstance = this.getPluginInstance('sentry');
             const today = new Date();
-            if (this.config.sentryping != today.getDate()) {
+            var last = await this.getStateAsync('LastSentryLogDay')
+            if (last?.val != today.getDate()) {
                 if (sentryInstance) {
                     const Sentry = sentryInstance.getSentryObject();
                     Sentry && Sentry.withScope(scope => {
@@ -188,8 +189,8 @@ class KostalPikoBA extends utils.Adapter {
                         Sentry.captureMessage('Adapter kostal-piko-ba started', 'info'); // Level "info"
                     });
                 }
+                this.setStateAsync('LastSentryLogDay', { val: today.getDate(), ack: true });
             }
-            this.config.sentryping = today.getDate();
         }
 
         // this.subscribeStates('*'); // all state changes inside the adapters namespace are subscribed
