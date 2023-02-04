@@ -187,9 +187,9 @@ class KostalPikoBA extends utils.Adapter {
                         scope.setTag('Inverter-UI', InverterUIVersion);
                         Sentry.captureMessage('Adapter kostal-piko-ba started', 'info'); // Level "info"
                     });
-                    this.config.sentryping = today.getDate();
                 }
             }
+            this.config.sentryping = today.getDate();
         }
 
         // this.subscribeStates('*'); // all state changes inside the adapters namespace are subscribed
