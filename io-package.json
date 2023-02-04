@@ -182,7 +182,8 @@
     "normAn3Max": 10,
     "normAn3Min": 0,
     "normAn4Max": 10,
-    "normAn4Min": 0
+    "normAn4Min": 0,
+    "sentryping": 0
   },
 
   "objects": [],

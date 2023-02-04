@@ -45,9 +45,9 @@ const ID_Power_DC3Power               = 33555715;  // in W  -  DC power line 3 (
 const ID_Power_HouseConsumptionSolar  = 83886336;  // in W  -  Act Home Consumption Solar - not implemented
 const ID_Power_HouseConsumptionBat    = 83886592;  // in W  -  Act Home Consumption Bat - not implemented
 const ID_Power_HouseConsumptionGrid   = 83886848;  // in W  -  Act Home Consumption Grid - not implemented
-const ID_Power_HouseConsumptionPhase1 = 83887106;  // in W  -  Act Home Consumption Phase 1 - not implemented
-const ID_Power_HouseConsumptionPhase2 = 83887362;  // in W  -  Act Home Consumption Phase 2 - not implemented
-const ID_Power_HouseConsumptionPhase3 = 83887618;  // in W  -  Act Home Consumption Phase 3 - not implemented
+const ID_Power_HouseConsumptionPhase1 = 83887106;  // in W  -  Act Home Consumption Phase 1
+const ID_Power_HouseConsumptionPhase2 = 83887362;  // in W  -  Act Home Consumption Phase 2
+const ID_Power_HouseConsumptionPhase3 = 83887618;  // in W  -  Act Home Consumption Phase 3
 const ID_Power_HouseConsumption       = 83887872;  // in W  -  Consumption of your home, measured by PIKO sensor
 const ID_Power_SelfConsumption        = 83888128;  // in W  -  Self Consumption
 // live values power output
@@ -175,15 +175,20 @@ class KostalPikoBA extends utils.Adapter {
         //sentry.io ping
         if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
             const sentryInstance = this.getPluginInstance('sentry');
-            if (sentryInstance) {
-                const Sentry = sentryInstance.getSentryObject();
-                Sentry && Sentry.withScope(scope => {
-                    scope.setLevel('info');
-                    scope.setTag('Inverter', this.config.ipaddress);
-                    scope.setTag('Inverter-Type', InverterType);
-                    scope.setTag('Inverter-UI', InverterUIVersion);
-                    Sentry.captureMessage('Adapter kostal-piko-ba started', 'info'); // Level "info"
-                });
+            const today = new Date();
+            if (this.config.sentryping != today.getDate()) {
+                if (sentryInstance) {
+                    const Sentry = sentryInstance.getSentryObject();
+                    Sentry && Sentry.withScope(scope => {
+                        scope.setLevel('info');
+                        scope.setTag('SentryDay', today.getDate());
+                        scope.setTag('Inverter', this.config.ipaddress);
+                        scope.setTag('Inverter-Type', InverterType);
+                        scope.setTag('Inverter-UI', InverterUIVersion);
+                        Sentry.captureMessage('Adapter kostal-piko-ba started', 'info'); // Level "info"
+                    });
+                    this.config.sentryping = today.getDate();
+                }
             }
         }
 
@@ -316,6 +321,18 @@ class KostalPikoBA extends utils.Adapter {
             } catch (e) {
                 this.log.error(`Error when calling Piko API for general info: ${e}`);
                 this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0)`);
+                if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
+                    const sentryInstance = this.getPluginInstance('sentry');
+                    if (sentryInstance) {
+                        const Sentry = sentryInstance.getSentryObject();
+                        Sentry && Sentry.withScope(scope => {
+                            scope.setTag('Inverter', this.config.ipaddress);
+                            scope.setTag('Inverter-Type', InverterType);
+                            scope.setTag('Inverter-UI', InverterUIVersion);
+                            Sentry.captureException(e);
+                        });
+                    }
+                }
             } // END try catch
         })();
     } // END ReadPikoOnce
@@ -389,6 +406,18 @@ class KostalPikoBA extends utils.Adapter {
             } catch (e) {
                 this.log.error(`Error in calling Kostal Piko API: ${e}`);
                 this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e1)`);
+                if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
+                    const sentryInstance = this.getPluginInstance('sentry');
+                    if (sentryInstance) {
+                        const Sentry = sentryInstance.getSentryObject();
+                        Sentry && Sentry.withScope(scope => {
+                            scope.setTag('Inverter', this.config.ipaddress);
+                            scope.setTag('Inverter-Type', InverterType);
+                            scope.setTag('Inverter-UI', InverterUIVersion);
+                            Sentry.captureException(e);
+                        });
+                    }
+                }
             } // END try catch
         }) ();
     } // END ReadPiko
@@ -456,6 +485,18 @@ class KostalPikoBA extends utils.Adapter {
             } catch (e) {
                 this.log.error(`Error in calling Kostal Piko API: ${e}`);
                 this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e2)`);
+                if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
+                    const sentryInstance = this.getPluginInstance('sentry');
+                    if (sentryInstance) {
+                        const Sentry = sentryInstance.getSentryObject();
+                        Sentry && Sentry.withScope(scope => {
+                            scope.setTag('Inverter', this.config.ipaddress);
+                            scope.setTag('Inverter-Type', InverterType);
+                            scope.setTag('Inverter-UI', InverterUIVersion);
+                            Sentry.captureException(e);
+                        });
+                    }
+                }
             } // END try catch
         })();
     } // END ReadPiko2
@@ -490,6 +531,18 @@ class KostalPikoBA extends utils.Adapter {
                 adapterIntervals.daily = setTimeout(this.ReadPikoDaily.bind(this), this.config.polltimedaily);
             } catch (e) {
                 this.log.error(`Error in setting adapter schedule for daily statistics: ${e}`);
+                if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
+                    const sentryInstance = this.getPluginInstance('sentry');
+                    if (sentryInstance) {
+                        const Sentry = sentryInstance.getSentryObject();
+                        Sentry && Sentry.withScope(scope => {
+                            scope.setTag('Inverter', this.config.ipaddress);
+                            scope.setTag('Inverter-Type', InverterType);
+                            scope.setTag('Inverter-UI', InverterUIVersion);
+                            Sentry.captureException(e);
+                        });
+                    }
+                }
             } // END try catch
 
         })();
@@ -522,6 +575,18 @@ class KostalPikoBA extends utils.Adapter {
             } catch (e) {
                 this.log.error(`Error in calling Kostal Piko API for total statistics: ${e}`);
                 this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e4)`);
+                if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
+                    const sentryInstance = this.getPluginInstance('sentry');
+                    if (sentryInstance) {
+                        const Sentry = sentryInstance.getSentryObject();
+                        Sentry && Sentry.withScope(scope => {
+                            scope.setTag('Inverter', this.config.ipaddress);
+                            scope.setTag('Inverter-Type', InverterType);
+                            scope.setTag('Inverter-UI', InverterUIVersion);
+                            Sentry.captureException(e);
+                        });
+                    }
+                }
             } // END try catch
         })();
 
