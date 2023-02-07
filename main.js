@@ -296,6 +296,29 @@ class KostalPikoBA extends utils.Adapter {
     /****************************************************************************************
   * ReadPikoOnce ***************************************************************************/
     ReadPikoOnce() {
+/*/ TEST ********
+        var xml2js = require('xml2js');
+        var axios = require('axios');
+        const url = `http://${this.config.ipaddress}/versions.xml`;
+
+        axios.get(url)
+        .then((response) => {
+            xml2js.parseString(response.data, (err, result) => {
+                if (err) {
+                    //console.error(err);
+                } else {
+                    const name = result.root.Device[0].$.Name;
+                    //console.log(name);
+                }
+            });
+        })
+        .catch((error) => {
+            //console.error(error);
+        });
+*/// TEST ********
+
+
+
         var got = require('got');
         (async () => {
             try {
@@ -337,7 +360,7 @@ class KostalPikoBA extends utils.Adapter {
             } // END try catch
         })();
     } // END ReadPikoOnce
-
+   
 
     /****************************************************************************************
     * ReadPiko *****************************************************************************/
@@ -399,7 +422,11 @@ class KostalPikoBA extends utils.Adapter {
                         }
                     }
                     this.setStateAsync('Power.Surplus', { val: Math.round(result[1].value - result[11].value), ack: true });
-                    this.setStateAsync('GridLimitation', { val: result[19].value, ack: true });
+                    if (result[19].value) { // not existent for Piko3.0 or if no limitation defined!?!?!
+                        this.setStateAsync('GridLimitation', { val: result[19].value, ack: true });
+                    } else {
+                        this.setStateAsync('GridLimitation', { val: 100, ack: true });
+                    }
                 }
                 else {
                     this.log.error(`Error: ${response.error} by polling Kostal Piko-BA: ${KostalRequest1}`);
@@ -502,6 +529,7 @@ class KostalPikoBA extends utils.Adapter {
         })();
     } // END ReadPiko2
 
+
     /****************************************************************************************
     * ReadPikoDaily ************************************************************************/
     ReadPikoDaily() {
@@ -545,9 +573,9 @@ class KostalPikoBA extends utils.Adapter {
                     }
                 }
             } // END try catch
-
         })();
     } // END ReadPikoDaily
+ 
 
     /****************************************************************************************
     * ReadPikoTotal ************************************************************************/
@@ -597,8 +625,9 @@ class KostalPikoBA extends utils.Adapter {
         } catch (e) {
             this.log.error(`Error in setting adapter schedule for total statistics: ${e}`);
         } // END try catch
-
     } // END ReadPikoTotal
+
+
 } // END Class
 
 
