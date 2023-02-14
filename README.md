@@ -31,8 +31,10 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 
 ! Note that missing version entries are typically dependency updates for security.
 
+### 2.2.2 (14.02.2023)
+* (HombachC) fixed error with missing grid limitation response; bumped dependencies
 ### 2.2.1 (07.02.2023)
-* (HombachC) fixed error with missing grid limitation response
+* (HombachC) fixing error with missing grid limitation response
 ### 2.2.0 (03.02.2023)
 * (HombachC) added support for phase 1-3 of homeconsumption power
 * (HombachC) enhanced sentry support

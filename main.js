@@ -422,11 +422,19 @@ class KostalPikoBA extends utils.Adapter {
                         }
                     }
                     this.setStateAsync('Power.Surplus', { val: Math.round(result[1].value - result[11].value), ack: true });
-                    if (result[19].value) { // not existent for Piko3.0 or if no limitation defined!?!?!
+                    if (result.length >= 20) { // not existent for Piko3.0 or if no limitation defined!?!?!
                         this.setStateAsync('GridLimitation', { val: result[19].value, ack: true });
                     } else {
                         this.setStateAsync('GridLimitation', { val: 100, ack: true });
                     }
+
+                    if (result.length >= 21) { // not existent for Piko3.0 or if no limitation defined!?!?!
+                        this.setStateAsync('GridLimitation', { val: result[20].value, ack: true });
+                    } else {
+                        this.log.error(`Error in calling result call 1 lenght 21`);
+                    }
+
+
                 }
                 else {
                     this.log.error(`Error: ${response.error} by polling Kostal Piko-BA: ${KostalRequest1}`);
@@ -449,6 +457,41 @@ class KostalPikoBA extends utils.Adapter {
             } // END try catch
         }) ();
     } // END ReadPiko
+
+
+//2023-02 - 13 22: 28: 27.518 - debug: kostal - piko - ba.0(2249) Piko - BA live data 1 update - Kostal response data:
+//{ "dxsEntries": [{ "dxsId": 33556736, "value": 0.000000 }, { "dxsId": 67109120, "value": 0.000000 },
+//{ "dxsId": 33555203, "value": 0.000000 }, { "dxsId": 33555201, "value": 0.000000 },
+//{ "dxsId": 33555202, "value": 0.000000 }, { "dxsId": 33555459, "value": 0.000000 },
+//{ "dxsId": 33555457, "value": 0.000000 }, { "dxsId": 33555458, "value": 0.000000 },
+//{ "dxsId": 33555715, "value": 0.000000 }, { "dxsId": 33555713, "value": 0.000000 },
+//{ "dxsId": 33555714, "value": 0.000000 },
+//{ "dxsId": 83888128, "value": 0.000000 }, { "dxsId": 83887872, "value": 0.000000 },
+//{ "dxsId": 16780032, "value": 0 }, { "dxsId": 33556226, "value": 0.000000 },
+//{ "dxsId": 33556227, "value": 0.000000 }, { "dxsId": 33556229, "value": 0.000000 },
+//{ "dxsId": 33556238, "value": 0.000000 }, { "dxsId": 33556230, "value": 0 }],
+//"session": { "sessionId": 0, "roleId": 0 }, "status": { "code": 1 }}
+
+//    Piko-BA live data 1 update - Kostal response data:
+    //{ "dxsEntries": [{ "dxsId": 33556736, "value": 0.000000 }, { "dxsId": 67109120, "value": 0.000000 },
+    //{ "dxsId": 33555203, "value": 0.000000 }, { "dxsId": 33555201, "value": 0.000000 },
+    //{ "dxsId": 33555202, "value": 0.000000 }, { "dxsId": 33555459, "value": 0.000000 },
+    //{ "dxsId": 33555457, "value": 0.000000 }, { "dxsId": 33555458, "value": 0.000000 },
+    //{ "dxsId": 33555715, "value": 4.354215 }, { "dxsId": 33555713, "value": 0.014242 },
+    //{ "dxsId": 33555714, "value": 304.484467 },
+    //{ "dxsId": 83888128, "value": 9.118540 }, { "dxsId": 83887872, "value": 495.177795 },
+    //{ "dxsId": 16780032, "value": 2 }, { "dxsId": 33556226, "value": 306.054993 },
+    //{ "dxsId": 33556227, "value": 19.799999 }, { "dxsId": 33556229, "value": 9.000000 },
+    //{ "dxsId": 33556238, "value": 0.000000 }, { "dxsId": 33556230, "value": 0 },
+    //{ "dxsId": 67110144, "value": 100.000000 }],
+    //"session": { "sessionId": 0, "roleId": 0 }, "status": { "code": 0 }}
+
+
+//2023 - 02 - 13 22: 28: 27.519 - error: kostal - piko - ba.0(2249) Error in calling Kostal Piko API:
+//TypeError: Cannot read properties of undefined(reading 'value')
+
+//2023 - 02 - 13 22: 28: 27.519 - error: kostal - piko - ba.0(2249) Please verify IP address: 192.168.193.42!!(e1)
+
 
 
     /****************************************************************************************
