@@ -296,43 +296,29 @@ class KostalPikoBA extends utils.Adapter {
     /****************************************************************************************
   * ReadPikoOnce ***************************************************************************/
     ReadPikoOnce() {
+
 /*/ TEST ********
-        var xml2js = require('xml2js');
-        var axios = require('axios');
+        const xml2js = require('xml2js');
+        const axios = require('axios');
         const url = `http://${this.config.ipaddress}/versions.xml`;
 
+        // @ts-ignore axios.get is valid
         axios.get(url)
         .then((response) => {
             xml2js.parseString(response.data, (err, result) => {
                 if (err) {
-                    //console.error(err);
+                   this.log.error(`Error when calling Piko MP API with axios for general info: ${err}`);
                 } else {
                     const name = result.root.Device[0].$.Name;
-                    //console.log(name);
+                    this.log.info(`Discovered Piko MP API, name of inverter: ${name}`);
+                    this.log.info(`Piko MP API not supported yet!!!!`);
                 }
             });
         })
         .catch((error) => {
-            //console.error(error);
+            this.log.error(`Error when calling Piko MP API with axios for general info: ${error}`);
         });
-
 */// TEST ********
-
-
-const axios = require('axios');
-
-// @ts-ignore axios.get is valid
-axios.get(KostalRequestOnce)
-  .then(response => {
-      this.log.debug(`Piko-BA general info updated - Kostal response data: ${response.data}`);
-      var result2 = JSON.parse(response.data).dxsEntries;
-      this.log.info(result2[0]);
-  })
-  .catch(error => {
-      this.log.error(`Error when calling Piko API with axios for general info: ${error}`);
-  });
-
-
 
         var got = require('got');
         (async () => {
