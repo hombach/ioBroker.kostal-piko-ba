@@ -354,7 +354,7 @@ class KostalPikoBA extends utils.Adapter {
                 // @ts-ignore got is valid
                 var response = await got(KostalRequestOnce);
                 if (!response.error && response.statusCode == 200) {
-                    this.log.debug(`Piko-BA general info updated - Kostal response data: ${response.body}`);
+                    this.log.warn(`Piko-BA general info updated - Kostal response data: ${response.body}`);
                     var result = await JSON.parse(response.body).dxsEntries;
                     InverterType = result[0].value;
                     this.setStateAsync('Info.InverterType', { val: InverterType, ack: true });
