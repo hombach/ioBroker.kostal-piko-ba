@@ -328,7 +328,7 @@ class KostalPikoBA extends utils.Adapter {
         axios.get(KostalRequestOnce)
             .then(response => {   //.status == 200
                 // access parsed JSON response data using response.data field
-                this.log.warn(`Piko-BA general info updated by AXIOS - Kostal response data: ${response.data}`);
+                this.log.warn(`Piko-BA general info updated by AXIOS - Kostal response data: ${response}`);
                 var result = response.headers['dxsentries']
                 var result = JSON.parse(response.body).dxsEntries;
                 InverterType = result[0].value;
