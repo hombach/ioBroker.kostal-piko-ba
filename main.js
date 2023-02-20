@@ -329,11 +329,11 @@ class KostalPikoBA extends utils.Adapter {
             .then(response => {
                 // access parsed JSON response data using response.data field
                 var result = response.data
-                this.log.debug(`Piko-BA general info updated by AXIOS - Kostal response data: ${response.body}`);
-                InverterType = result[0].value;
+                this.log.warn(`Piko-BA general info updated by AXIOS - Kostal response data: ${response.body}`);
+                InverterType = result.ID_InverterType;
                 this.setStateAsync('Info.InverterType', { val: InverterType, ack: true });
-                this.log.debug(result.count)
-                this.log.debug(result.products)
+                this.log.warn(`result.count: ${result.count}`)
+                this.log.warn(`result.products: ${result.products}`)
             })
             .catch(error => {
                 if (error.response) {
