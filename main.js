@@ -296,10 +296,10 @@ class KostalPikoBA extends utils.Adapter {
     /****************************************************************************************
   * ReadPikoOnce ***************************************************************************/
     ReadPikoOnce() {
+        const axios = require('axios');
 
 /*/ TEST PIKO MP ********
         const xml2js = require('xml2js');
-        const axios = require('axios');
         const url = `http://${this.config.ipaddress}/versions.xml`;
 
         // @ts-ignore axios.get is valid
@@ -323,31 +323,47 @@ class KostalPikoBA extends utils.Adapter {
 /*/ TEST AXIOS  ********
 */// TEST ********
 
-        const axios = require('axios');
         // @ts-ignore axios is valid
-        axios.get(KostalRequestOnce)
+        axios.get(KostalRequestOnce, { transformResponse: (r) => r })
             .then(response => {   //.status == 200
                 // access parsed JSON response data using response.data field
-                this.log.warn(`Piko-BA general info updated by AXIOS - Kostal response data: ${response}`);
-                var result = response.headers['dxsentries']
+                this.log.debug(`Piko-BA general info updated - Kostal response data: ${response.data}`);
                 var result = JSON.parse(response.body).dxsEntries;
                 InverterType = result[0].value;
                 this.setStateAsync('Info.InverterType', { val: InverterType, ack: true });
-                this.log.warn(`result.count: ${result.count}`)
-                this.log.warn(`result.products: ${result.products}`)
+                InverterUIVersion = result[1].value;
+                this.setStateAsync('Info.InverterUIVersion', { val: InverterUIVersion, ack: true });
+                this.setStateAsync('Info.InverterName', { val: result[2].value, ack: true });
+                if (InverterType == 'unknown') {
+                    this.log.error(`Error in polling Piko-BA general info.`);
+                    InverterType = `Can't get InverterType - response was: ${response.body}`;
+                } else {
+                    this.log.info(`Detected inverter type: ${InverterType}`);
+                }
             })
             .catch(error => {
                 if (error.response) {
                     //get HTTP error code
-                    this.log.error(error.reponse.status)
+                    this.log.error(`HTTP error when calling Piko API for general info: ${error.response.status}`);
                 } else {
-                    this.log.error(error.message)
+                    this.log.error(`Unknown error when calling Piko API for general info: ${error.message}`);
+                    this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0)`);
+                    if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
+                        const sentryInstance = this.getPluginInstance('sentry');
+                        if (sentryInstance) {
+                            const Sentry = sentryInstance.getSentryObject();
+                            Sentry && Sentry.withScope(scope => {
+                                scope.setTag('Inverter', this.config.ipaddress);
+                                scope.setTag('Inverter-Type', InverterType);
+                                scope.setTag('Inverter-UI', InverterUIVersion);
+                                Sentry.captureException(error.message);
+                            });
+                        }
+                    }
                 }
-            })
+            }) // END catch
 
-
-
-
+        /*/ TEST AXIOS  ********
 
         var got = require('got');
         (async () => {
@@ -355,7 +371,7 @@ class KostalPikoBA extends utils.Adapter {
                 // @ts-ignore got is valid
                 var response = await got(KostalRequestOnce);
                 if (!response.error && response.statusCode == 200) {
-                    this.log.warn(`Piko-BA general info updated - Kostal response data: ${response.body}`);
+                    this.log.debug(`Piko-BA general info updated - Kostal response data: ${response.body}`);
                     var result = await JSON.parse(response.body).dxsEntries;
                     InverterType = result[0].value;
                     this.setStateAsync('Info.InverterType', { val: InverterType, ack: true });
@@ -389,6 +405,10 @@ class KostalPikoBA extends utils.Adapter {
                 }
             } // END try catch
         })();
+
+        */// TEST ********
+
+
     } // END ReadPikoOnce
    
 
