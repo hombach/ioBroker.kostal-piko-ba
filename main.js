@@ -320,8 +320,6 @@ class KostalPikoBA extends utils.Adapter {
         });
 */// TEST ********
 
-/*/ TEST AXIOS  ********
-*/// TEST ********
 
         // @ts-ignore axios is valid
         axios.get(KostalRequestOnce, { transformResponse: (r) => r })

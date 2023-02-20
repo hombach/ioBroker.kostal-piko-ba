@@ -46,7 +46,7 @@
     "dataSource": "poll",
     "news": {
       "2.3.0": {
-        "en": "replaced got by axios; bumped dependencies"
+        "en": "replaced got partially by axios; bumped dependencies"
       },
       "2.2.2": {
         "en": "fixed error with missing grid limitation response; bumped dependencies"
