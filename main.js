@@ -328,7 +328,7 @@ class KostalPikoBA extends utils.Adapter {
             .then(response => {   //.status == 200
                 // access parsed JSON response data using response.data field
                 this.log.debug(`Piko-BA general info updated - Kostal response data: ${response.data}`);
-                var result = JSON.parse(response.body).dxsEntries;
+                var result = JSON.parse(response.data).dxsEntries;
                 InverterType = result[0].value;
                 this.setStateAsync('Info.InverterType', { val: InverterType, ack: true });
                 InverterUIVersion = result[1].value;
