@@ -326,11 +326,12 @@ class KostalPikoBA extends utils.Adapter {
         const axios = require('axios');
         // @ts-ignore axios is valid
         axios.get(KostalRequestOnce)
-            .then(response => {
+            .then(response => {   //.status == 200
                 // access parsed JSON response data using response.data field
-                var result = response.data
-                this.log.warn(`Piko-BA general info updated by AXIOS - Kostal response data: ${response.body}`);
-                InverterType = result.ID_InverterType;
+                this.log.warn(`Piko-BA general info updated by AXIOS - Kostal response data: ${response.data}`);
+                var result = response.headers['dxsentries']
+                var result = JSON.parse(response.body).dxsEntries;
+                InverterType = result[0].value;
                 this.setStateAsync('Info.InverterType', { val: InverterType, ack: true });
                 this.log.warn(`result.count: ${result.count}`)
                 this.log.warn(`result.products: ${result.products}`)
