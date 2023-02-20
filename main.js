@@ -297,7 +297,7 @@ class KostalPikoBA extends utils.Adapter {
   * ReadPikoOnce ***************************************************************************/
     ReadPikoOnce() {
 
-/*/ TEST ********
+/*/ TEST PIKO MP ********
         const xml2js = require('xml2js');
         const axios = require('axios');
         const url = `http://${this.config.ipaddress}/versions.xml`;
@@ -319,6 +319,34 @@ class KostalPikoBA extends utils.Adapter {
             this.log.error(`Error when calling Piko MP API with axios for general info: ${error}`);
         });
 */// TEST ********
+
+/*/ TEST AXIOS  ********
+*/// TEST ********
+
+        const axios = require('axios');
+        // @ts-ignore axios is valid
+        axios.get(KostalRequestOnce)
+            .then(response => {
+                // access parsed JSON response data using response.data field
+                var result = response.data
+                this.log.debug(`Piko-BA general info updated by AXIOS - Kostal response data: ${response.body}`);
+                InverterType = result[0].value;
+                this.setStateAsync('Info.InverterType', { val: InverterType, ack: true });
+                this.log.debug(result.count)
+                this.log.debug(result.products)
+            })
+            .catch(error => {
+                if (error.response) {
+                    //get HTTP error code
+                    this.log.error(error.reponse.status)
+                } else {
+                    this.log.error(error.message)
+                }
+            })
+
+
+
+
 
         var got = require('got');
         (async () => {

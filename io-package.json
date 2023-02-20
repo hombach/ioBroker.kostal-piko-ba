@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "2.2.2",
+    "version": "2.3.0",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -45,6 +45,9 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "2.3.0": {
+        "en": "replaced got by axios; bumped dependencies"
+      },
       "2.2.2": {
         "en": "fixed error with missing grid limitation response; bumped dependencies"
       },

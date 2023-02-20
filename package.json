@@ -1,6 +1,6 @@
 {
   "name": "iobroker.kostal-piko-ba",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "description": "Adapter for reading Kostal Piko BA data",
   "author": "hombach <NPM@Homba.ch>",
   "homepage": "https://github.com/hombach/ioBroker.kostal-piko-ba",
@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@iobroker/adapter-core": "^2.6.7",
+    "axios": "^1.3.2",
     "got": "^11.8.5"
   },
   "devDependencies": {
