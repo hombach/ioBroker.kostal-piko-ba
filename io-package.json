@@ -51,9 +51,6 @@
       "2.2.2": {
         "en": "fixed error with missing grid limitation response; bumped dependencies"
       },
-      "2.2.1": {
-        "en": "fixing error with missing grid limitation response"
-      },
       "2.2.0": {
         "en": "added support for phase 1-3 of homeconsumption power",
         "de": "zusätzliche unterstützung für die phase 1-3 der eigenverbrauchsleistung",
