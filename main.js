@@ -141,6 +141,11 @@ class KostalPikoBA extends utils.Adapter {
             await this.ReadPikoOnce();
             await resolveAfterXSeconds(5);
             this.log.debug(`Initial read of general info for inverter IP ${this.config.ipaddress} done`);
+            if (!InverterAPIPiko && !InverterAPIPikoMP) { // no inverter type detected
+                this.log.error(`Error in in detecting Kostal inverter`);
+                this.log.info(`Stopping adapter`);
+                this.stop;
+            }
         }
 
         if (!this.config.polltimelive) {
@@ -340,14 +345,13 @@ class KostalPikoBA extends utils.Adapter {
 
         await resolveAfterXSeconds(2);
 
-        if (!InverterAPIPiko) { // no inverter type detected yet
-            this.log.error(`Error in polling Piko(-BA) general info.`);
-            this.log.warn(`Detected inverter type: ${InverterType}`);
-        } else {
+        if (InverterAPIPiko) { // no inverter type detected yet
             this.log.info(`Detected inverter type: ${InverterType}`);
+        } else {
+            this.log.warn(`Error in polling with Piko(-BA)-API: ${InverterType}`);
+            this.log.info(`Trying to find inverter with Piko-MP-API`);
         }
 
-//        /*/ TEST PIKO MP ********
         if (!InverterAPIPiko) { // no inverter type detected yet -> try to detect Piko MP Inverter
             // @ts-ignore axios.get is valid
             axios.get(`http://${this.config.ipaddress}/versions.xml`, { transformResponse: (r) => r })
@@ -372,51 +376,6 @@ class KostalPikoBA extends utils.Adapter {
                     this.log.error(`Error when calling Piko MP API with axios for general info: ${error}`);
                 });
         }
-//        */// TEST ********
-
-
-/*/ TEST AXIOS  ********
-        var got = require('got');
-        (async () => {
-            try {
-                // @ts-ignore got is valid
-                var response = await got(KostalRequestOnce);
-                if (!response.error && response.statusCode == 200) {
-                    this.log.debug(`Piko-BA general info updated - Kostal response data: ${response.body}`);
-                    var result = await JSON.parse(response.body).dxsEntries;
-                    InverterType = result[0].value;
-                    this.setStateAsync('Info.InverterType', { val: InverterType, ack: true });
-                    InverterUIVersion = result[1].value;
-                    this.setStateAsync('Info.InverterUIVersion', { val: InverterUIVersion, ack: true });
-                    this.setStateAsync('Info.InverterName', { val: result[2].value, ack: true });
-                    if (InverterType == 'unknown') {
-                        this.log.error(`Error in polling Piko-BA general info.`);
-                        InverterType = `Can't get InverterType - response was: ${response.body}`;
-                    } else {
-                        this.log.info(`Detected inverter type: ${InverterType}`);
-                    }
-                }
-                else {
-                    throw 'unknown error';
-                }
-            } catch (e) {
-                this.log.error(`Error when calling Piko API for general info: ${e}`);
-                this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0)`);
-                if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
-                    const sentryInstance = this.getPluginInstance('sentry');
-                    if (sentryInstance) {
-                        const Sentry = sentryInstance.getSentryObject();
-                        Sentry && Sentry.withScope(scope => {
-                            scope.setTag('Inverter', this.config.ipaddress);
-                            scope.setTag('Inverter-Type', InverterType);
-                            scope.setTag('Inverter-UI', InverterUIVersion);
-                            Sentry.captureException(e);
-                        });
-                    }
-                }
-            } // END try catch
-        })();
-*/// TEST ********
 
     } // END ReadPikoOnce
    
@@ -632,33 +591,6 @@ class KostalPikoBA extends utils.Adapter {
                     }
                 }) // END catch
         } // END InverterAPIPiko
-
-
-/*TEST
-        var got = require('got');
-        (async () => {
-            try {
-                // @ts-ignore got is valid
-                var response = await got(KostalRequestDay);
-                if (!response.error && response.statusCode == 200) {
-                    this.log.debug(`Piko-BA daily statistics update - Kostal response data: ${response.body}`);
-                    var result = await JSON.parse(response.data).dxsEntries;
-                    this.setStateAsync('Statistics_Daily.SelfConsumption', { val: Math.round(result[0].value) / 1000, ack: true });
-                    this.setStateAsync('Statistics_Daily.SelfConsumptionRate', { val: Math.round(result[1].value), ack: true });
-                    this.setStateAsync('Statistics_Daily.Yield', { val: Math.round(result[2].value) / 1000, ack: true });
-                    this.setStateAsync('Statistics_Daily.HouseConsumption', { val: Math.round(result[3].value) / 1000, ack: true });
-                    this.setStateAsync('Statistics_Daily.Autarky', { val: Math.round(result[4].value), ack: true });
-                }
-                else {
-                    this.log.error(`Error: ${response.error} by polling Piko-BA for daily statistics: ${KostalRequestDay}`);
-                }
-            } catch (e) {
-                this.log.error(`Error in calling Kostal Piko API: ${e}`);
-                this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e3)`);
-            } // END try catch
-
-        })();
- TEST*/
 
         if (InverterAPIPikoMP) { // code for Piko MP
             // missing code 
