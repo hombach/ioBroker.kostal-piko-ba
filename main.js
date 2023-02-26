@@ -297,12 +297,12 @@ class KostalPikoBA extends utils.Adapter {
 
     /****************************************************************************************
   * ReadPikoOnce ***************************************************************************/
-    ReadPikoOnce() {
+    async ReadPikoOnce() {
         const axios = require('axios');
         const xml2js = require('xml2js');
 
         // @ts-ignore axios.get is valid
-        axios.get(KostalRequestOnce, { transformResponse: (r) => r })
+        await axios.get(KostalRequestOnce, { transformResponse: (r) => r })
             .then(response => {   //.status == 200
                 // access parsed JSON response data using response.data field
                 this.log.debug(`Piko-BA general info updated - Kostal response data: ${response.data}`);
@@ -338,8 +338,9 @@ class KostalPikoBA extends utils.Adapter {
                 }
             }) // END catch
 
-        resolveAfterXSeconds(20);
-        if (InverterType == 'unknown') { // no inverter type detected yet
+        await resolveAfterXSeconds(2);
+
+        if (!InverterAPIPiko) { // no inverter type detected yet
             this.log.error(`Error in polling Piko(-BA) general info.`);
             this.log.warn(`Detected inverter type: ${InverterType}`);
         } else {
@@ -347,7 +348,7 @@ class KostalPikoBA extends utils.Adapter {
         }
 
 //        /*/ TEST PIKO MP ********
-        if (InverterType == 'unknown') { // no inverter type detected yet -> try to detect Piko MP Inverter
+        if (!InverterAPIPiko) { // no inverter type detected yet -> try to detect Piko MP Inverter
             // @ts-ignore axios.get is valid
             axios.get(`http://${this.config.ipaddress}/versions.xml`, { transformResponse: (r) => r })
                 .then((response) => {
