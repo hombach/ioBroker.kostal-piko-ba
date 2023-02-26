@@ -31,8 +31,9 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 
 ! Note that missing version entries are typically dependency updates for security.
 
-### 2.3.0 (20.02.2023)
+### 2.3.0 (26.02.2023)
 * (HombachC) replaced got partially by axios
+* (HombachC) removed travis
 ### 2.2.2 (14.02.2023)
 * (HombachC) fixed error with missing grid limitation response
 ### 2.2.0 (03.02.2023)

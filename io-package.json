@@ -46,17 +46,17 @@
     "dataSource": "poll",
     "news": {
       "2.3.0": {
-        "en": "replaced got partially by axios",
-        "de": "ersetzt durch axios",
-        "ru": "замененный получил частично axios",
-        "pt": "substituído foi parcialmente por axios",
-        "nl": "quality over quantity (qoq) releases vertaling:",
-        "fr": "remplacé partiellement par axios",
-        "it": "sostituito ottenuto parzialmente da assios",
-        "es": "reemplazado por axios parcialmente",
-        "pl": "zastępowany częściowo przez axios",
-        "uk": "замінено на аксіос",
-        "zh-cn": "部分由轴线取代"
+        "en": "replaced got partially by axios, removed travis",
+        "de": "ersetzt durch axios, entfernte travis",
+        "ru": "замененный получил частично axios, удаленный travis",
+        "pt": "substituído foi parcialmente por axios, travis removido",
+        "nl": "vervangen werd gedeeltelijk door axios verwijderd",
+        "fr": "remplacé partiellement par des axios, chavis enlevé",
+        "it": "sostituito ottenuto parzialmente da assios, rimosso travis",
+        "es": "sustituido fue parcialmente por axios, travis eliminado",
+        "pl": "zastąpione częściowo przez axios, usunięte travisy",
+        "uk": "заміщено частково аксіосом, видалений травіс",
+        "zh-cn": "部分由焦虑取代,删除了准备。"
       },
       "2.2.2": {
         "en": "fixed error with missing grid limitation response",
