@@ -383,7 +383,9 @@ class KostalPikoBA extends utils.Adapter {
     /****************************************************************************************
     * ReadPiko *****************************************************************************/
     ReadPiko() {
-         var got = require('got');
+        const axios = require('axios');
+
+        var got = require('got');
         (async () => {
             try {
                 // @ts-ignore got is valid
@@ -465,7 +467,15 @@ class KostalPikoBA extends utils.Adapter {
                     }
                 }
             } // END try catch
-        }) ();
+        })();
+
+        /*TEST
+         * TEST */
+
+        if (InverterAPIPikoMP) { // code for Piko MP
+            // missing code 
+        } // END InverterAPIPikoMP
+
     } // END ReadPiko
 
 
@@ -473,6 +483,10 @@ class KostalPikoBA extends utils.Adapter {
     /****************************************************************************************
     * ReadPiko2 ****************************************************************************/
     ReadPiko2() {
+        const axios = require('axios');
+
+        /*TEST
+
         var got = require('got');
         (async () => {
             try {
@@ -546,6 +560,91 @@ class KostalPikoBA extends utils.Adapter {
                 }
             } // END try catch
         })();
+
+        TEST */
+
+
+        if (InverterAPIPiko) {  // code for Piko(-BA)
+            // @ts-ignore axios.get is valid
+            axios.get(KostalRequest2, { transformResponse: (r) => r })
+                .then(response => {   //.status == 200
+                    // access parsed JSON response data using response.data field
+                    this.log.debug(`Piko-BA live data 2 update - Kostal response data: ${response.data}`);
+                    var result = JSON.parse(response.data).dxsEntries;
+                    this.setStateAsync('Power.AC1Current', { val: (Math.round(1000 * result[0].value)) / 1000, ack: true });
+                    this.setStateAsync('Power.AC1Voltage', { val: Math.round(result[1].value), ack: true });
+                    this.setStateAsync('Power.AC1Power', { val: Math.round(result[2].value), ack: true });
+                    if (result[4].value) {
+                        this.setStateAsync('Power.AC2Current', { val: (Math.round(1000 * result[3].value)) / 1000, ack: true });
+                        this.setStateAsync('Power.AC2Voltage', { val: Math.round(result[4].value), ack: true });
+                        this.setStateAsync('Power.AC2Power', { val: Math.round(result[5].value), ack: true });
+                    }
+                    if (result[7].value) {
+                        this.setStateAsync('Power.AC3Current', { val: (Math.round(1000 * result[6].value)) / 1000, ack: true });
+                        this.setStateAsync('Power.AC3Voltage', { val: Math.round(result[7].value), ack: true });
+                        this.setStateAsync('Power.AC3Power', { val: Math.round(result[8].value), ack: true });
+                    }
+                    if (result[9].value) {
+                        this.setStateAsync('Power.HouseConsumptionPhase1', { val: Math.round(result[9].value), ack: true });
+                        this.setStateAsync('Power.HouseConsumptionPhase2', { val: Math.round(result[10].value), ack: true });
+                        this.setStateAsync('Power.HouseConsumptionPhase3', { val: Math.round(result[11].value), ack: true });
+                    }
+                    if (this.config.readanalogs) {
+                        this.setStateAsync('Inputs.Analog1', {
+                            val: (Math.round(100 *
+                                (result[12].value / 10 * (this.config.normAn1Max - this.config.normAn1Min) + this.config.normAn1Min)
+                            )) / 100,
+                            ack: true
+                        });
+                        this.setStateAsync('Inputs.Analog2', {
+                            val: (Math.round(100 *
+                                (result[13].value / 10 * (this.config.normAn2Max - this.config.normAn2Min) + this.config.normAn2Min)
+                            )) / 100,
+                            ack: true
+                        });
+                        this.setStateAsync('Inputs.Analog3', {
+                            val: (Math.round(100 *
+                                (result[14].value / 10 * (this.config.normAn3Max - this.config.normAn3Min) + this.config.normAn3Min)
+                            )) / 100,
+                            ack: true
+                        });
+                        this.setStateAsync('Inputs.Analog4', {
+                            val: (Math.round(100 *
+                                (result[15].value / 10 * (this.config.normAn4Max - this.config.normAn4Min) + this.config.normAn4Min)
+                            )) / 100,
+                            ack: true
+                        });
+                    }
+                })
+                .catch(error => {
+                    if (error.response) { //get HTTP error code
+                        if (error.response == 404) {
+                            this.log.error(`HTTP error 404 when polling Piko(-BA) API: ${error.response.status}`);
+                        }
+                        this.log.error(`HTTP error when polling Piko(-BA) API: ${error.response.status}`);
+                    } else {
+                        this.log.error(`Unknown error when polling Piko(-BA) API: ${error.message}`);
+                        this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e2)`);
+                        if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
+                            const sentryInstance = this.getPluginInstance('sentry');
+                            if (sentryInstance) {
+                                const Sentry = sentryInstance.getSentryObject();
+                                Sentry && Sentry.withScope(scope => {
+                                    scope.setTag('Inverter', this.config.ipaddress);
+                                    scope.setTag('Inverter-Type', InverterType);
+                                    scope.setTag('Inverter-UI', InverterUIVersion);
+                                    Sentry.captureException(error.message);
+                                });
+                            }
+                        }
+                    }
+                }) // END catch
+        } // END InverterAPIPiko
+
+       if (InverterAPIPikoMP) { // code for Piko MP
+            // missing code 
+        } // END InverterAPIPikoMP
+
     } // END ReadPiko2
 
 
