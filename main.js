@@ -638,14 +638,16 @@ class KostalPikoBA extends utils.Adapter {
     /****************************************************************************************
     * ReadPikoTotal ************************************************************************/
     ReadPikoTotal() {
-        var got = require('got');
-        (async () => {
-            try {
-                // @ts-ignore got is valid
-                var response = await got(KostalRequestTotal);
-                if (!response.error && response.statusCode == 200) {
-                    this.log.debug(`Piko-BA lifetime statistics updated - Kostal response data: ${response.body}`);
-                    var result = await JSON.parse(response.body).dxsEntries;
+//        var got = require('got');
+        const axios = require('axios');
+
+        if (InverterAPIPiko) {
+            // @ts-ignore axios.get is valid
+            axios.get(KostalRequestTotal, { transformResponse: (r) => r })
+                .then(response => {   //.status == 200
+                    // access parsed JSON response data using response.data field
+                    this.log.debug(`Piko-BA lifetime statistics updated - Kostal response data: ${response.data}`);
+                    var result = JSON.parse(response.body).dxsEntries;
                     this.setStateAsync('Statistics_Total.SelfConsumption', { val: Math.round(result[0].value), ack: true });
                     this.setStateAsync('Statistics_Total.SelfConsumptionRate', { val: Math.round(result[1].value), ack: true });
                     this.setStateAsync('Statistics_Total.Yield', { val: Math.round(result[2].value), ack: true });
@@ -655,27 +657,72 @@ class KostalPikoBA extends utils.Adapter {
                     if (this.config.readbattery) {
                         this.setStateAsync('Battery.ChargeCycles', { val: result[6].value, ack: true });
                     }
-                }
-                else {
-                    this.log.error(`Error: ${response.error} by polling Piko-BA lifetime statistics: ${KostalRequestTotal}`);
-                }
-            } catch (e) {
-                this.log.error(`Error in calling Kostal Piko API for total statistics: ${e}`);
-                this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e4)`);
-                if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
-                    const sentryInstance = this.getPluginInstance('sentry');
-                    if (sentryInstance) {
-                        const Sentry = sentryInstance.getSentryObject();
-                        Sentry && Sentry.withScope(scope => {
-                            scope.setTag('Inverter', this.config.ipaddress);
-                            scope.setTag('Inverter-Type', InverterType);
-                            scope.setTag('Inverter-UI', InverterUIVersion);
-                            Sentry.captureException(e);
-                        });
+                })
+                .catch(error => {
+                    if (error.response) { //get HTTP error code
+                        if (error.response == 404) {
+                            this.log.error(`HTTP error 404 when calling Piko(-BA) API for total statistics: ${error.response.status}`);
+                        }
+                        this.log.error(`HTTP error when calling Piko(-BA) API for total statistics: ${error.response.status}`);
+                    } else {
+                        this.log.error(`Unknown error when calling Piko(-BA) API for total statistics: ${error.message}`);
+                        this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e4)`);
+                        if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
+                            const sentryInstance = this.getPluginInstance('sentry');
+                            if (sentryInstance) {
+                                const Sentry = sentryInstance.getSentryObject();
+                                Sentry && Sentry.withScope(scope => {
+                                    scope.setTag('Inverter', this.config.ipaddress);
+                                    scope.setTag('Inverter-Type', InverterType);
+                                    scope.setTag('Inverter-UI', InverterUIVersion);
+                                    Sentry.captureException(error.message);
+                                });
+                            }
+                        }
                     }
-                }
-            } // END try catch
-        })();
+                }) // END catch
+
+            /*/ TEST AXIOS ********
+                    (async () => {
+                        try {
+                            // @ts-ignore got is valid
+                            var response = await got(KostalRequestTotal);
+                            if (!response.error && response.statusCode == 200) {
+                                this.log.debug(`Piko-BA lifetime statistics updated - Kostal response data: ${response.body}`);
+                                var result = await JSON.parse(response.body).dxsEntries;
+                                this.setStateAsync('Statistics_Total.SelfConsumption', { val: Math.round(result[0].value), ack: true });
+                                this.setStateAsync('Statistics_Total.SelfConsumptionRate', { val: Math.round(result[1].value), ack: true });
+                                this.setStateAsync('Statistics_Total.Yield', { val: Math.round(result[2].value), ack: true });
+                                this.setStateAsync('Statistics_Total.HouseConsumption', { val: Math.round(result[3].value), ack: true });
+                                this.setStateAsync('Statistics_Total.Autarky', { val: Math.round(result[4].value), ack: true });
+                                this.setStateAsync('Statistics_Total.OperatingTime', { val: result[5].value, ack: true });
+                                if (this.config.readbattery) {
+                                    this.setStateAsync('Battery.ChargeCycles', { val: result[6].value, ack: true });
+                                }
+                            }
+                            else {
+                                this.log.error(`Error: ${response.error} by polling Piko-BA lifetime statistics: ${KostalRequestTotal}`);
+                            }
+                        } catch (e) {
+                            this.log.error(`Error in calling Kostal Piko API for total statistics: ${e}`);
+                            this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e4)`);
+                            if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
+                                const sentryInstance = this.getPluginInstance('sentry');
+                                if (sentryInstance) {
+                                    const Sentry = sentryInstance.getSentryObject();
+                                    Sentry && Sentry.withScope(scope => {
+                                        scope.setTag('Inverter', this.config.ipaddress);
+                                        scope.setTag('Inverter-Type', InverterType);
+                                        scope.setTag('Inverter-UI', InverterUIVersion);
+                                        Sentry.captureException(e);
+                                    });
+                                }
+                            }
+                        } // END try catch
+                    })();
+            */// TEST ********
+
+        } // END InverterAPIPiko
 
         try {
             clearTimeout(adapterIntervals.total);
@@ -683,6 +730,7 @@ class KostalPikoBA extends utils.Adapter {
         } catch (e) {
             this.log.error(`Error in setting adapter schedule for total statistics: ${e}`);
         } // END try catch
+
     } // END ReadPikoTotal
 
 
