@@ -46,17 +46,17 @@
     "dataSource": "poll",
     "news": {
       "2.3.0": {
-        "en": "replaced got partially by axios, removed travis",
-        "de": "ersetzt durch axios, entfernte travis",
-        "ru": "замененный получил частично axios, удаленный travis",
-        "pt": "substituído foi parcialmente por axios, travis removido",
-        "nl": "vervangen werd gedeeltelijk door axios verwijderd",
-        "fr": "remplacé partiellement par des axios, chavis enlevé",
-        "it": "sostituito ottenuto parzialmente da assios, rimosso travis",
-        "es": "sustituido fue parcialmente por axios, travis eliminado",
-        "pl": "zastąpione częściowo przez axios, usunięte travisy",
-        "uk": "заміщено частково аксіосом, видалений травіс",
-        "zh-cn": "部分由焦虑取代,删除了准备。"
+        "en": "replaced got partially by axios, added warning for not supported Piko MP inverters, removed travis",
+        "de": "got teilweise ersetzt durch axios, zusätzliche Warnung für nicht unterstützte Piko MP Wechselrichter, Travis entfernt",
+        "ru": "заменено частично axios, добавлено предупреждение для не поддерживает Piko MP инверторы, удалены travis",
+        "pt": "substituído foi parcialmente por axios, aviso adicionado para não suportado Piko MP inversores, travis removido",
+        "nl": "vervangen werd gedeeltelijk door Axios toegevoegd voor het niet ondersteunen van Piko MP inbrekers, verwijderde Travis",
+        "fr": "remplacé obtenu partiellement par axios, avertissement ajouté pour les invertisseurs Piko MP non supportés, enlevé travis",
+        "it": "sostituito ottenuto parzialmente da assios, avviso aggiunto per non supportato Piko MP inverter, rimosso travis",
+        "es": "reemplazado fue parcialmente por axios, añadiendo advertencias para invertidores Piko MP no soportados, travis eliminado",
+        "pl": "zastąpiony częściowo przez axios, dodano ostrzeżenie dla nie wspieranych przez inwerterów Piko",
+        "uk": "замінено на аксіо, додано попередження не підтримуваних інверторів Piko MP, знятих травіс",
+        "zh-cn": "部分由焦虑取代,对不支持Piko MP in Deers的警示,撤销了准备者。"
       },
       "2.2.2": {
         "en": "fixed error with missing grid limitation response",

@@ -84,7 +84,9 @@ const ID_Input_S0_count               = 184549632; // in 1   -  not implemented
 const ID_Input_S0_seconds             = 150995968; // in sec -  not implemented
 
 
-var InverterType       = 'unknown'; // Inverter type
+var InverterType = 'unknown';       // Inverter type
+var InverterAPIPiko = false;        // Inverter API of Piko or Piko BA inverters; Kostal Piko 6.0BA, 8.0BA, 10.0BA, 3.0, 5.5, 7.0, 10, 12, 15, 17, 20
+var InverterAPIPikoMP = false;      // Inverter API of Piko MP inverters; Kostal PIKO 3.0-1 MP plus
 var InverterUIVersion  = 'unknown'; // Inverter UI Version
 var KostalRequestOnce  = '';        // IP request-string for one time request of system type etc.
 var KostalRequest1     = '';        // IP request-string 1 for PicoBA current data
@@ -138,7 +140,7 @@ class KostalPikoBA extends utils.Adapter {
                 + `?dxsEntries=${ID_InverterType}&dxsEntries=${ID_InfoUIVersion}&dxsEntries=${ID_InverterName}`;
             await this.ReadPikoOnce();
             await resolveAfterXSeconds(5);
-            this.log.debug(`Initial read of general info for IP ${this.config.ipaddress} done`);
+            this.log.debug(`Initial read of general info for inverter IP ${this.config.ipaddress} done`);
         }
 
         if (!this.config.polltimelive) {
@@ -297,6 +299,8 @@ class KostalPikoBA extends utils.Adapter {
   * ReadPikoOnce ***************************************************************************/
     ReadPikoOnce() {
         const axios = require('axios');
+        const xml2js = require('xml2js');
+
         // @ts-ignore axios.get is valid
         axios.get(KostalRequestOnce, { transformResponse: (r) => r })
             .then(response => {   //.status == 200
@@ -305,6 +309,7 @@ class KostalPikoBA extends utils.Adapter {
                 var result = JSON.parse(response.data).dxsEntries;
                 InverterType = result[0].value;
                 this.setStateAsync('Info.InverterType', { val: InverterType, ack: true });
+                InverterAPIPiko = true;
                 InverterUIVersion = result[1].value;
                 this.setStateAsync('Info.InverterUIVersion', { val: InverterUIVersion, ack: true });
                 this.setStateAsync('Info.InverterName', { val: result[2].value, ack: true });
@@ -312,11 +317,11 @@ class KostalPikoBA extends utils.Adapter {
             .catch(error => {
                 if (error.response) { //get HTTP error code
                     if (error.response == 404) {
-                        this.log.error(`HTTP error 404 when calling Piko API for general info: ${error.response.status}`);
+                        this.log.error(`HTTP error 404 when calling Piko(-BA) API for general info: ${error.response.status}`);
                     }
-                this.log.error(`HTTP error when calling Piko API for general info: ${error.response.status}`);
+                this.log.error(`HTTP error when calling Piko(-BA) API for general info: ${error.response.status}`);
                 } else {
-                    this.log.error(`Unknown error when calling Piko API for general info: ${error.message}`);
+                    this.log.error(`Unknown error when calling Piko(-BA) API for general info: ${error.message}`);
                     this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0)`);
                     if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
                         const sentryInstance = this.getPluginInstance('sentry');
@@ -333,38 +338,42 @@ class KostalPikoBA extends utils.Adapter {
                 }
             }) // END catch
 
-        if (InverterType == 'unknown') {
-            this.log.error(`Error in polling Piko-BA general info.`);
-            InverterType = `Can't get InverterType - response was: ${response.data}`;
+        if (InverterType == 'unknown') { // no inverter type detected yet
+            this.log.error(`Error in polling Piko(-BA) general info.`);
+            this.log.warn(`Detected inverter type: ${InverterType}`);
         } else {
             this.log.info(`Detected inverter type: ${InverterType}`);
         }
 
-                const xml2js = require('xml2js');
-                const MPurl = `http://${this.config.ipaddress}/versions.xml`;
-        /*/ TEST PIKO MP ********
-
-                // @ts-ignore axios.get is valid
-                axios.get(MPurl, { transformResponse: (r) => r })
+//        /*/ TEST PIKO MP ********
+        if (InverterType == 'unknown') { // no inverter type detected yet -> try to detect Piko MP Inverter
+            // @ts-ignore axios.get is valid
+            axios.get(`http://${this.config.ipaddress}/versions.xml`, { transformResponse: (r) => r })
                 .then((response) => {
                     xml2js.parseString(response.data, (err, result) => {
                         if (err) {
-                           this.log.error(`Error when calling Piko MP API with axios for general info: ${err}`);
+                            this.log.error(`Error when calling Piko MP API with axios for general info: ${err}`);
                         } else {
-                            const name = result.root.Device[0].$.Name;
-                            this.log.info(`Discovered Piko MP API, name of inverter: ${name}`);
-                            this.log.info(`Piko MP API not supported yet!!!!`);
+                            const MPType = result.root.Device[0].$.Name;
+                            if (MPType) {
+                                this.log.info(`Discovered Piko MP API, type of inverter: ${MPType}`);
+                                InverterType = MPType;
+                                this.setStateAsync('Info.InverterType', { val: InverterType, ack: true });
+                                InverterAPIPikoMP = true;
+                                this.setStateAsync('Info.InverterName', { val: result.root.Device[0].$.NetBiosName, ack: true });
+                                this.log.error(`Piko MP API not supported yet!!!!`);
+                            }
                         }
                     });
                 })
                 .catch((error) => {
                     this.log.error(`Error when calling Piko MP API with axios for general info: ${error}`);
                 });
-        */// TEST ********
+        }
+//        */// TEST ********
 
 
-        /*/ TEST AXIOS  ********
-
+/*/ TEST AXIOS  ********
         var got = require('got');
         (async () => {
             try {
@@ -405,9 +414,7 @@ class KostalPikoBA extends utils.Adapter {
                 }
             } // END try catch
         })();
-
-        */// TEST ********
-
+*/// TEST ********
 
     } // END ReadPikoOnce
    
