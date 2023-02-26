@@ -560,6 +560,28 @@ class KostalPikoBA extends utils.Adapter {
 
         if (InverterAPIPikoMP) { // code for Piko MP
             // missing code 
+/*
+<root>
+    <Device Name="PIKO 3.0-1 MP plus" Type="Inverter" Platform="Net16" HmiPlatform="HMI17" NominalPower="3000" UserPowerLimit="nan" CountryPowerLimit="nan" Serial="763167EJ007034470001" OEMSerial="10351314" BusAddress="1" NetBiosName="INV007034470001" WebPortal="PIRO Solar Portal" ManufacturerURL="kostal-solar-electric.com" IpAddress="192.168.188.68" DateTime="2023-02-06T22:08:18" MilliSeconds="804">
+        <Measurements>
+            <Measurement Value="228.3" Unit="V" Type="AC_Voltage" />
+            <Measurement Unit="A" Type="AC_Current" />
+            <Measurement Unit="W" Type="AC_Power" />
+            <Measurement Unit="W" Type="AC_Power_fast" I>
+            <Measurement Value="49.991" Unit="Hz" Type="AC_Freguency" />
+            <Measurement Value="8.3" Unit="V" Type="DC_Voltage" />
+            <Measurement Unit="A" Type="DC_Current" I>
+            <Measurement Value="5.7" Unit="V" Type="LINR_Voltage" />
+            <Measurement Unit="W" Type="GridPower" />
+            <Measurement Unit="W" Type="GridConsumedPower" />
+            <Measurement Unit="W" Type="GridInjectedPower" />
+            <Measurement Unit="W" Type="OwnConsumedPower" />
+            <Measurement Value="100.0" Unit="%" Type="Derating" /> 
+        </Measurements>
+    </Device>
+</root>
+*/
+
         } // END InverterAPIPikoMP
 
     } // END ReadPiko
@@ -570,85 +592,6 @@ class KostalPikoBA extends utils.Adapter {
     * ReadPiko2 ****************************************************************************/
     ReadPiko2() {
         const axios = require('axios');
-
-        /*TEST
-
-        var got = require('got');
-        (async () => {
-            try {
-                // @ts-ignore got is valid
-                var response = await got(KostalRequest2);
-                if (!response.error && response.statusCode == 200) {
-                    this.log.debug(`Piko-BA live data 2 update - Kostal response data: ${response.body}`);
-                    var result = await JSON.parse(response.body).dxsEntries;
-                    this.setStateAsync('Power.AC1Current', { val: (Math.round(1000 * result[0].value)) / 1000, ack: true });
-                    this.setStateAsync('Power.AC1Voltage', { val: Math.round(result[1].value), ack: true });
-                    this.setStateAsync('Power.AC1Power', { val: Math.round(result[2].value), ack: true });
-                    if (result[4].value) {
-                        this.setStateAsync('Power.AC2Current', { val: (Math.round(1000 * result[3].value)) / 1000, ack: true });
-                        this.setStateAsync('Power.AC2Voltage', { val: Math.round(result[4].value), ack: true });
-                        this.setStateAsync('Power.AC2Power', { val: Math.round(result[5].value), ack: true });
-                    }
-                    if (result[7].value) {
-                        this.setStateAsync('Power.AC3Current', { val: (Math.round(1000 * result[6].value)) / 1000, ack: true });
-                        this.setStateAsync('Power.AC3Voltage', { val: Math.round(result[7].value), ack: true });
-                        this.setStateAsync('Power.AC3Power', { val: Math.round(result[8].value), ack: true });
-                    }
-                    if (result[9].value) {
-                        this.setStateAsync('Power.HouseConsumptionPhase1', { val: Math.round(result[9].value), ack: true });
-                        this.setStateAsync('Power.HouseConsumptionPhase2', { val: Math.round(result[10].value), ack: true });
-                        this.setStateAsync('Power.HouseConsumptionPhase3', { val: Math.round(result[11].value), ack: true });
-                    }
-                    if (this.config.readanalogs) {
-                        this.setStateAsync('Inputs.Analog1', {
-                            val: (Math.round(100 *
-                             (result[12].value / 10 * (this.config.normAn1Max - this.config.normAn1Min) + this.config.normAn1Min)
-                            )) / 100,
-                            ack: true
-                        });
-                        this.setStateAsync('Inputs.Analog2', {
-                            val: (Math.round(100 *
-                                (result[13].value / 10 * (this.config.normAn2Max - this.config.normAn2Min) + this.config.normAn2Min)
-                            )) / 100,
-                            ack: true
-                        });
-                        this.setStateAsync('Inputs.Analog3', {
-                            val: (Math.round(100 *
-                                (result[14].value / 10 * (this.config.normAn3Max - this.config.normAn3Min) + this.config.normAn3Min)
-                            )) / 100,
-                            ack: true
-                        });
-                        this.setStateAsync('Inputs.Analog4', {
-                            val: (Math.round(100 *
-                                (result[15].value / 10 * (this.config.normAn4Max - this.config.normAn4Min) + this.config.normAn4Min)
-                            )) / 100,
-                            ack: true
-                        });
-                    }
-                }
-                else {
-                    this.log.error(`Error: ${response.error} by polling Kostal Piko-BA: ${KostalRequest2}`);
-                }
-            } catch (e) {
-                this.log.error(`Error in calling Kostal Piko API: ${e}`);
-                this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e2)`);
-                if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
-                    const sentryInstance = this.getPluginInstance('sentry');
-                    if (sentryInstance) {
-                        const Sentry = sentryInstance.getSentryObject();
-                        Sentry && Sentry.withScope(scope => {
-                            scope.setTag('Inverter', this.config.ipaddress);
-                            scope.setTag('Inverter-Type', InverterType);
-                            scope.setTag('Inverter-UI', InverterUIVersion);
-                            Sentry.captureException(e);
-                        });
-                    }
-                }
-            } // END try catch
-        })();
-
-        TEST */
-
 
         if (InverterAPIPiko) {  // code for Piko(-BA)
             // @ts-ignore axios.get is valid
