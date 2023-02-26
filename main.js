@@ -338,6 +338,7 @@ class KostalPikoBA extends utils.Adapter {
                 }
             }) // END catch
 
+        resolveAfterXSeconds(20);
         if (InverterType == 'unknown') { // no inverter type detected yet
             this.log.error(`Error in polling Piko(-BA) general info.`);
             this.log.warn(`Detected inverter type: ${InverterType}`);
