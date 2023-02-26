@@ -599,7 +599,7 @@ class KostalPikoBA extends utils.Adapter {
                 .then(response => {   //.status == 200
                     // access parsed JSON response data using response.data field
                     this.log.debug(`Piko-BA daily statistics update - Kostal response data: ${response.data}`);
-                    var result = await JSON.parse(response.data).dxsEntries;
+                    var result = JSON.parse(response.data).dxsEntries;
                     this.setStateAsync('Statistics_Daily.SelfConsumption', { val: Math.round(result[0].value) / 1000, ack: true });
                     this.setStateAsync('Statistics_Daily.SelfConsumptionRate', { val: Math.round(result[1].value), ack: true });
                     this.setStateAsync('Statistics_Daily.Yield', { val: Math.round(result[2].value) / 1000, ack: true });
