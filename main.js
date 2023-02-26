@@ -297,31 +297,7 @@ class KostalPikoBA extends utils.Adapter {
   * ReadPikoOnce ***************************************************************************/
     ReadPikoOnce() {
         const axios = require('axios');
-
-/*/ TEST PIKO MP ********
-        const xml2js = require('xml2js');
-        const url = `http://${this.config.ipaddress}/versions.xml`;
-
         // @ts-ignore axios.get is valid
-        axios.get(url)
-        .then((response) => {
-            xml2js.parseString(response.data, (err, result) => {
-                if (err) {
-                   this.log.error(`Error when calling Piko MP API with axios for general info: ${err}`);
-                } else {
-                    const name = result.root.Device[0].$.Name;
-                    this.log.info(`Discovered Piko MP API, name of inverter: ${name}`);
-                    this.log.info(`Piko MP API not supported yet!!!!`);
-                }
-            });
-        })
-        .catch((error) => {
-            this.log.error(`Error when calling Piko MP API with axios for general info: ${error}`);
-        });
-*/// TEST ********
-
-
-        // @ts-ignore axios is valid
         axios.get(KostalRequestOnce, { transformResponse: (r) => r })
             .then(response => {   //.status == 200
                 // access parsed JSON response data using response.data field
@@ -332,17 +308,13 @@ class KostalPikoBA extends utils.Adapter {
                 InverterUIVersion = result[1].value;
                 this.setStateAsync('Info.InverterUIVersion', { val: InverterUIVersion, ack: true });
                 this.setStateAsync('Info.InverterName', { val: result[2].value, ack: true });
-                if (InverterType == 'unknown') {
-                    this.log.error(`Error in polling Piko-BA general info.`);
-                    InverterType = `Can't get InverterType - response was: ${response.body}`;
-                } else {
-                    this.log.info(`Detected inverter type: ${InverterType}`);
-                }
             })
             .catch(error => {
-                if (error.response) {
-                    //get HTTP error code
-                    this.log.error(`HTTP error when calling Piko API for general info: ${error.response.status}`);
+                if (error.response) { //get HTTP error code
+                    if (error.response == 404) {
+                        this.log.error(`HTTP error 404 when calling Piko API for general info: ${error.response.status}`);
+                    }
+                this.log.error(`HTTP error when calling Piko API for general info: ${error.response.status}`);
                 } else {
                     this.log.error(`Unknown error when calling Piko API for general info: ${error.message}`);
                     this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0)`);
@@ -360,6 +332,36 @@ class KostalPikoBA extends utils.Adapter {
                     }
                 }
             }) // END catch
+
+        if (InverterType == 'unknown') {
+            this.log.error(`Error in polling Piko-BA general info.`);
+            InverterType = `Can't get InverterType - response was: ${response.data}`;
+        } else {
+            this.log.info(`Detected inverter type: ${InverterType}`);
+        }
+
+                const xml2js = require('xml2js');
+                const MPurl = `http://${this.config.ipaddress}/versions.xml`;
+        /*/ TEST PIKO MP ********
+
+                // @ts-ignore axios.get is valid
+                axios.get(MPurl, { transformResponse: (r) => r })
+                .then((response) => {
+                    xml2js.parseString(response.data, (err, result) => {
+                        if (err) {
+                           this.log.error(`Error when calling Piko MP API with axios for general info: ${err}`);
+                        } else {
+                            const name = result.root.Device[0].$.Name;
+                            this.log.info(`Discovered Piko MP API, name of inverter: ${name}`);
+                            this.log.info(`Piko MP API not supported yet!!!!`);
+                        }
+                    });
+                })
+                .catch((error) => {
+                    this.log.error(`Error when calling Piko MP API with axios for general info: ${error}`);
+                });
+        */// TEST ********
+
 
         /*/ TEST AXIOS  ********
 

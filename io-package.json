@@ -46,10 +46,30 @@
     "dataSource": "poll",
     "news": {
       "2.3.0": {
-        "en": "replaced got partially by axios; bumped dependencies"
+        "en": "replaced got partially by axios",
+        "de": "ersetzt durch axios",
+        "ru": "замененный получил частично axios",
+        "pt": "substituído foi parcialmente por axios",
+        "nl": "quality over quantity (qoq) releases vertaling:",
+        "fr": "remplacé partiellement par axios",
+        "it": "sostituito ottenuto parzialmente da assios",
+        "es": "reemplazado por axios parcialmente",
+        "pl": "zastępowany częściowo przez axios",
+        "uk": "замінено на аксіос",
+        "zh-cn": "部分由轴线取代"
       },
       "2.2.2": {
-        "en": "fixed error with missing grid limitation response; bumped dependencies"
+        "en": "fixed error with missing grid limitation response",
+        "de": "fester fehler bei fehlender netzbeschränkung",
+        "ru": "фиксированная ошибка с отсутствующим реагированием ограничения сетки",
+        "pt": "erro fixo com resposta de limitação de grade ausente",
+        "nl": "vergissing met ontbrekende beperkingsreactie",
+        "fr": "erreur fixe avec réponse de limitation de la grille manquante",
+        "it": "errore fisso con risposta di limitazione della griglia mancante",
+        "es": "error fijo con la respuesta de limitación de la red perdida",
+        "pl": "ustalenie błędu z brakującym ograniczeniem odpowiedzi sieciowej",
+        "uk": "виправлена помилка з відповіддю про відхилення від мережі",
+        "zh-cn": "固定的电网限制反应错误"
       },
       "2.2.0": {
         "en": "added support for phase 1-3 of homeconsumption power",
@@ -65,17 +85,17 @@
         "zh-cn": "进一步支持第1-3阶段的家用电"
       },
       "2.1.0": {
-        "en": "added ukrainian translations; bumped dependencies",
-        "de": "ukrainische übersetzungen hinzugefügt; häufige abhängigkeiten",
-        "ru": "добавлены украинские переводы; bumped зависимости",
-        "pt": "adicionado traduções ukrainian; dependências colhidas",
+        "en": "added ukrainian translations",
+        "de": "ukrainische übersetzungen",
+        "ru": "добавлены украинские переводы",
+        "pt": "adicionado traduções ukrainian",
         "nl": "vertaling:",
-        "fr": "traductions ukrainiennes; dépendances paressées",
-        "it": "aggiunto traduzioni ukrainian; dipendenze urtate",
-        "es": "añadido traducciones ucranianas; dependencias conyugal",
-        "pl": "dodano przekłady ukrainowe, zbliżone zależności",
-        "uk": "додано українські переклади",
-        "zh-cn": "增加地籍翻译;倾弃的依赖"
+        "fr": "traductions ukrainiennes ajoutées",
+        "it": "aggiunto traduzioni ucraino",
+        "es": "añadido traducciones ucranianas",
+        "pl": "tłumaczenie ukrainowe",
+        "uk": "додано переклади українською мовою",
+        "zh-cn": "加 库尼亚译员"
       },
       "2.0.0": {
         "en": "BREAKING: Dropped support for Node.js 12; added state of inverter as string",
@@ -91,40 +111,147 @@
         "zh-cn": "BREAKRE:为第12js号提供支助;将多样性作为附加条件。"
       },
       "1.5.0": {
-        "en": "added minimum values for poll times to prevent communication errors; bumped dependencies"
+        "en": "added minimum values for poll times to prevent communication errors",
+        "de": "zusätzliche mindestwerte für abfragezeiten, um kommunikationsfehler zu verhindern",
+        "ru": "добавлены минимальные значения для времени опроса для предотвращения ошибок связи",
+        "pt": "valores mínimos adicionados para os tempos de votação para evitar erros de comunicação",
+        "nl": "voegde minimumwaarden toe voor pollen om communicatiefouten te voorkomen",
+        "fr": "valeurs minimales ajoutées pour les temps de vote pour prévenir les erreurs de communication",
+        "it": "valori minimi aggiunti per i tempi di sondaggio per evitare errori di comunicazione",
+        "es": "valores mínimos añadidos para tiempos de encuesta para evitar errores de comunicación",
+        "pl": "dodaje minimalne wartości dla czasu sondy, aby zapobiec błędom komunikcyjnym",
+        "uk": "додано мінімальні значення для помилок опитування",
+        "zh-cn": "防止通信错误的污染时间增加最低值"
       },
       "1.4.6": {
-        "en": "removed gulp, bumped dependencies, added tests for node.js 18, removed tests for node.js 12 -> it's recommended to swich to node.js 14, adapter still working with node 12"
-      },
-      "1.4.5": {
-        "en": "added UI version to sentry feedback and documentation"
+        "en": "removed gulp, added tests for node.js 18, removed tests for node.js 12 -> it's recommended to swich to node.js 14, adapter still working with node 12",
+        "de": "entfernen von gulp, add tests für node.js 18, entferne tests für node.js 12 -> es wird empfohlen, zu node.js 14, adapter arbeitet noch mit node 12",
+        "ru": "удалена гульптура, добавлены тесты для node.js 18, удалены тесты для node.js 12 -> порекомендовано к node.js 14, адаптер все еще работает с node 12",
+        "pt": "removeu gulp, adicionou testes para node.js 18, removeu testes para node.js 12 -> é recomendado para swich para node.js 14, adaptador ainda trabalhando com nó 12",
+        "nl": "verwijderde gulp, toegevoegde testen voor node. _ 12",
+        "fr": "gulpe enlevée, tests ajoutés pour node.js 18, tests supprimés pour node.js 12 - cancer il est recommandé de swich à node.js 14, adaptateur qui fonctionne toujours avec node 12",
+        "it": "gulp rimosso, test aggiunti per node.js 18, test rimossi per node.js 12 -> si consiglia di swich a node.js 14, adattatore ancora funzionante con nodo 12",
+        "es": "golp eliminado, pruebas agregadas para node.js 18, pruebas eliminadas para node.js 12 - se recomienda swich a node.js 14, adaptador todavía trabajando con node 12",
+        "pl": "usunięte gulp, dodane testy dla węzła.js 18, usunięte testy dla węzła.js 12->>>>. zalecana jest swich do węzła.js 14, dostosowując się do węzła. 12",
+        "uk": "remove gulp, додані тести для node.js 18, видалені тести для node.js 12 -> вона рекомендована для swich до node.js 14, адаптер все ще працює з вершиною 12 хв",
+        "zh-cn": "删除了gulp,为第18js号开除试验,取消对第12- 条的试验。 它建议使人不敢于14岁,更适应者仍然没有工作。 12"
       },
       "1.4.3": {
-        "en": "normalizing of analog values added, bumped dependencies"
+        "en": "normalizing of analog values added",
+        "de": "normalisierung der analogwerte",
+        "ru": "нормализации добавленных аналоговых значений",
+        "pt": "normalização de valores analógicos adicionados",
+        "nl": "vertaling:",
+        "fr": "normalisation des valeurs analogiques ajoutées",
+        "it": "normalizzazione dei valori analogici aggiunti",
+        "es": "normalización de los valores analógicos añadidos",
+        "pl": "normalizowanie wartości analogowych dodaje się do normalizacji",
+        "uk": "нормалізація аналогових значень",
+        "zh-cn": "类似价值的正常化"
       },
       "1.4.2": {
-        "en": "added support for inverter type, version and name; fixed timing error"
+        "en": "added support for inverter type, version and name; fixed timing error",
+        "de": "zusätzliche unterstützung für wechselrichter typ, version und name; timingfehler korrigiert",
+        "ru": "добавлена поддержка инверторного типа, версии и имени; исправлена ошибка времени",
+        "pt": "suporte adicionado para o tipo de inversor, versão e nome; erro de timing fixo",
+        "nl": "steun toegevoegd voor invertertype, versie en naam, gerepareerde timingfout",
+        "fr": "support ajouté pour le type, la version et le nom d'inverter; erreur de timing fixe",
+        "it": "supporto aggiunto per tipo di inverter, versione e nome; errore di temporizzazione fisso",
+        "es": "soporte añadido para tipo inverter, versión y nombre; error de tiempo fijo",
+        "pl": "dodano wsparcie dla inwerterów typu, wersji i nazwy; naprawione błędy",
+        "uk": "додана підтримка інверторного типу, версії та назви; виправлена помилка часу",
+        "zh-cn": "增加对不同类型、版本和名称的支持;固定时间错误"
       },
       "1.4.0": {
-        "en": "added support for grid 1-3 current, voltage and power, bumped dependencies"
+        "en": "added support for grid 1-3 current, voltage and power",
+        "de": "unterstützung für netz 1-3 strom, spannung und leistung",
+        "ru": "добавлена поддержка сети 1-3 ток, напряжение и мощность",
+        "pt": "suporte adicionado para corrente de grade 1-3, tensão e energia",
+        "nl": "steun toegevoegd voor roei 1-3 stroming, voltage en macht",
+        "fr": "support supplémentaire pour courant de grille 1-3, tension et puissance",
+        "it": "supporto aggiunto per corrente griglia 1-3, tensione e potenza",
+        "es": "soporte añadido para la red 1-3 corriente, voltaje y potencia",
+        "pl": "dodano obsługę sieci 1-3 prądu, napięcia i mocy",
+        "uk": "додана підтримка сітки 1-3 струм, напруга та живлення",
+        "zh-cn": "进一步支持电网1-3 目前、火山和电力"
       },
       "1.3.0": {
-        "en": "added optional support for analog inputs"
+        "en": "added optional support for analog inputs",
+        "de": "optionale unterstützung für analoge eingänge",
+        "ru": "добавлена дополнительная поддержка аналоговых входов",
+        "pt": "suporte opcional adicionado para entradas analógicas",
+        "nl": "voegde opties toe voor analogische inputs",
+        "fr": "support optionnel supplémentaire pour les entrées analogiques",
+        "it": "supporto opzionale aggiunto per ingressi analogici",
+        "es": "apoyo opcional añadido para entradas analógicas",
+        "pl": "dodano opcjonalne wsparcie dla sygnałów analogowych",
+        "uk": "додана додаткова підтримка аналогових входів",
+        "zh-cn": "替代投入的备选支助"
       },
       "1.2.0": {
-        "en": "BREAKING: Dropped node.js 10 support; bumped dependencies; fixed vulnerability"
+        "en": "BREAKING: Dropped node.js 10 support; fixed vulnerability",
+        "de": "BREAKING: Dropped node.js 10 support; Feste Sicherheitslücke",
+        "ru": "ЗАВТРАК: Dropped node.js 10 поддержка; фиксированная уязвимость",
+        "pt": "BREAKING: Node gota.js 10 suporte; vulnerabilidade fixa",
+        "nl": "Gedumpte node",
+        "fr": "BREAKING: Support node.js 10 abandonné; vulnérabilité fixe",
+        "it": "BREAKING: Supporto Dropped node.js 10; vulnerabilità fissa",
+        "es": "BREAKING: Nodo caído.js 10 soporte; vulnerabilidad fija",
+        "pl": "BREAKING: Dropped Węzeł.js 10 support; fixedvulnerability",
+        "uk": "BREAKING: Dropped node.js 10 підтримка; фіксована вразливість",
+        "zh-cn": "BREAKRE: Droed node.js 10 support;固定的脆弱性"
       },
       "1.1.7": {
-        "en": "added tests for node.js 16; fixed vulnerability"
+        "en": "added tests for node.js 16; fixed vulnerability",
+        "de": "zusätzliche tests für node.js 16; feste sicherheitslücke",
+        "ru": "добавлены тесты для node.js 16; исправленная уязвимость",
+        "pt": "testes adicionados para node.js 16; vulnerabilidade fixa",
+        "nl": "vertaling:",
+        "fr": "tests ajoutés pour node.js 16; vulnérabilité fixe",
+        "it": "test aggiunti per node.js 16; vulnerabilità fissa",
+        "es": "pruebas agregadas para node.js 16; vulnerabilidad fija",
+        "pl": "dodano testy węzłów 16; stabilna podatność",
+        "uk": "додані тести для node.js 16; фіксована вразливість",
+        "zh-cn": "第16条的附加试验;固定的脆弱性"
       },
       "1.1.3": {
-        "en": "added battery.Voltage; added additional error handler; bumped dependencies"
+        "en": "added battery.Voltage; added additional error handler",
+        "de": "batterie hinzugefügt. Spannung; zusätzlicher Fehlergriff",
+        "ru": "добавленная батарея. Напряжение; добавлен дополнительный обработчик ошибок",
+        "pt": "bateria adicionada. Tensão; adicionado identificador de erro adicional",
+        "nl": "voegde batterij toe. Voltage toegevoegd aanvulling",
+        "fr": "batterie ajoutée. Tension; gestionnaire d'erreur supplémentaire ajouté",
+        "it": "batteria aggiunta. Tensione; aggiunto ulteriore maniglia di errore",
+        "es": "batería añadida. Voltaje; añadido controlador de error adicional",
+        "pl": "dodać baterię. Voltage; dodano dodatkową obsługę błędów",
+        "uk": "додано акумулятор. Напруга; додано додатковий обробник помилок",
+        "zh-cn": "新增电池。 引言"
       },
       "1.1.1": {
-        "en": "minor documentation tweaks; DC current accuracy changed to mA"
+        "en": "minor documentation tweaks; DC current accuracy changed to mA",
+        "de": "kleinere Dokumentationstweaks; Gleichstromgenauigkeit geändert in mA",
+        "ru": "мелкие твики документации; точность постоянного тока изменена в mA",
+        "pt": "pequenos ajustes de documentação; A precisão da corrente DC mudou para mA",
+        "nl": "dC huidige nauwkeurigheid veranderde in MAA",
+        "fr": "tweaks de documentation mineure; précision du courant continu changée en mA",
+        "it": "tweak di documentazione minore; accuratezza corrente DC cambiata in mA",
+        "es": "tweaks de documentación menor; la precisión actual de DC cambió a mA",
+        "pl": "ciężkie poprawki dokumentacji; dokładność DC zmieniła się na mA",
+        "uk": "незначна документація твік; точність струму постійного струму постійного струму змінено до мА",
+        "zh-cn": "微小的文件库瓦克;发展中国家目前准确性已改变为AmA"
       },
       "1.1.0": {
-        "en": "added battery.ChargeCycles; battery.temperature; DC1-3 Current, Voltage and Power"
+        "en": "added battery.ChargeCycles; battery.temperature; DC1-3 Current, Voltage and Power",
+        "de": "batterie hinzugefügt. ChargeCycles; Batterie.Temperatur; DC1-3 Strom, Spannung und Leistung",
+        "ru": "добавленная батарея. ChargeCycles; Battery.temperature; DC1-3 ток, напряжение и мощность",
+        "pt": "bateria adicionada. Ciclos de carga; bateria.temperatura; corrente DC1-3, tensão e potência",
+        "nl": "voegde batterij toe. ChargeCycles, batterij",
+        "fr": "batterie ajoutée. ChargeCycles; batterie.température; DC1-3 Courant, tension et puissance",
+        "it": "batteria aggiunta. ChargeCycles; batteria.temperature; corrente DC1-3, tensione e potenza",
+        "es": "batería añadida. Carga Ciclos; batería.temperatura; DC1-3 Corriente, Voltaje y Potencia",
+        "pl": "dodać baterię. ChargeCycles; bateria temperatura; DC1-3 Current, Voltage i Power",
+        "uk": "додано акумулятор. ChargeCycles; акумулятор.температура; DC1-3 Поточний, напруга та потужність",
+        "zh-cn": "新增电池。 档案;电池组;DC1-3 目前,动产和电力"
       },
       "1.0.2": {
         "en": "public release for stable repo",
@@ -140,10 +267,17 @@
         "zh-cn": "公开释放稳定藏匿"
       },
       "0.7.4": {
-        "en": "added sentry.io support, fixed travis"
-      },
-      "0.6.1": {
-        "en": "poll of statistics data separated"
+        "en": "added sentry.io support, fixed travis",
+        "de": "ich habe eine nachricht. io-unterstützung, feste travis",
+        "ru": "добавлена отправка. io поддержка, фиксированный совет",
+        "pt": "adicionado sentinela. io apoio, travis fixo",
+        "nl": "toegevoegd sentiment. io ondersteuning, gerepareerd travis",
+        "fr": "ajout d'une sentinelle. io support, travis fixe",
+        "it": "ha aggiunto la sentinella. io supporto, travis fissa",
+        "es": "añadió centinela. io support, travis fijo",
+        "pl": "sentry. wspieranie i obsługa stałych tras",
+        "uk": "додано відправку. io підтримка, фіксована поїздка",
+        "zh-cn": "增发。 io支助、固定准备"
       }
     },
     "main": "main.js",
