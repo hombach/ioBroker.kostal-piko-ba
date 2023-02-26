@@ -46,17 +46,17 @@
     "dataSource": "poll",
     "news": {
       "2.3.0": {
-        "en": "replaced got partially by axios, added warning for not supported Piko MP inverters, removed travis",
-        "de": "got teilweise ersetzt durch axios, zusätzliche Warnung für nicht unterstützte Piko MP Wechselrichter, Travis entfernt",
-        "ru": "заменено частично axios, добавлено предупреждение для не поддерживает Piko MP инверторы, удалены travis",
-        "pt": "substituído foi parcialmente por axios, aviso adicionado para não suportado Piko MP inversores, travis removido",
-        "nl": "vervangen werd gedeeltelijk door Axios toegevoegd voor het niet ondersteunen van Piko MP inbrekers, verwijderde Travis",
-        "fr": "remplacé obtenu partiellement par axios, avertissement ajouté pour les invertisseurs Piko MP non supportés, enlevé travis",
-        "it": "sostituito ottenuto parzialmente da assios, avviso aggiunto per non supportato Piko MP inverter, rimosso travis",
-        "es": "reemplazado fue parcialmente por axios, añadiendo advertencias para invertidores Piko MP no soportados, travis eliminado",
-        "pl": "zastąpiony częściowo przez axios, dodano ostrzeżenie dla nie wspieranych przez inwerterów Piko",
-        "uk": "замінено на аксіо, додано попередження не підтримуваних інверторів Piko MP, знятих травіс",
-        "zh-cn": "部分由焦虑取代,对不支持Piko MP in Deers的警示,撤销了准备者。"
+        "en": "replaced got by axios, added warning for not supported Piko MP inverters, removed travis",
+        "de": "Got ersetzt durch Axios, zusätzliche Warnung für nicht unterstützte Piko MP Wechselrichter, Travis entfernt",
+        "ru": "замененный получил axios, добавленное предупреждение для не поддерживается Piko MP инверторы, удаленный travis",
+        "pt": "substituído por axios, adicionado aviso para não suportado Inversores Piko MP, travis removido",
+        "nl": "quality over Quantity (QoQ) Releases Vertaling: Piko MP inbrekers, verwijderde Travis",
+        "fr": "remplacé par axios, avertissement ajouté pour non supporté Invertisseurs Piko MP, travis enlevé",
+        "it": "sostituito ottenuto da assios, avviso aggiunto per non supportato Piko MP inverter, rimosso travis",
+        "es": "reemplazado por axios, añadida advertencia por no apoyado Inversionistas Piko MP, travis eliminado",
+        "pl": "zastąpiony przez axios, dodał ostrzeżenie, że nie jest wspierany. Piko MP inwerter, usunął travis",
+        "uk": "замінено на аксіос, додано попередження не підтримується Piko MP інвертори, видалені травіс",
+        "zh-cn": "被焦虑所取代,对不支持的预警 Piko MP MP inverters, 除名准备"
       },
       "2.2.2": {
         "en": "fixed error with missing grid limitation response",
