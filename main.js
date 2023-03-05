@@ -497,8 +497,11 @@ class KostalPikoBA extends utils.Adapter {
                             this.log.error(`Error when calling Piko MP API with axios for measurements info: ${err}`);
                         } else {
                             const measurements = result.root.Device[0].Measurements[0].Measurement;
-                            const acVoltageMeasurement = measurements.find(measurement => measurement.$.Type === "AC_Voltage");
-                            this.setStateAsync('Power.AC1Voltage', { val: Math.round(acVoltageMeasurement.$.Value), ack: true });
+                            const DC_Voltage = measurements.find(measurement => measurement.$.Type === "DC_Voltage");
+                            this.setStateAsync('Power.DC1Voltage', { val: Math.round(DC_Voltage.$.Value), ack: true });
+                            const DC_Current = measurements.find(measurement => measurement.$.Type === "DC_Current");
+                            this.setStateAsync('Power.DC1Current', { val: (Math.round(1000 * DC_Current.$.Value)) / 1000, ack: true });
+                            this.setStateAsync('Power.DC1Power', { val: Math.round(DC_Voltage * DC_Current), ack: true });
                         }
                     });
                 })
@@ -508,21 +511,21 @@ class KostalPikoBA extends utils.Adapter {
 
 /*  Demo XML
 <root>
-    <Device Name="PIKO 3.0-1 MP plus" Type="Inverter" Platform="Net16" HmiPlatform="HMI17" NominalPower="3000" UserPowerLimit="nan" CountryPowerLimit="nan" Serial="763167EJ007034470001" OEMSerial="10351314" BusAddress="1" NetBiosName="INV007034470001" WebPortal="PIRO Solar Portal" ManufacturerURL="kostal-solar-electric.com" IpAddress="192.168.188.68" DateTime="2023-02-06T22:08:18" MilliSeconds="804">
+    <Device Name="PIKO 3.0-1 MP plus" Type="Inverter" Platform="Net16" HmiPlatform="HMI17" NominalPower="3000" UserPowerLimit="nan" CountryPowerLimit="nan" Serial=„XXXXXXXX" OEMSerial=„XXXXXXX“ BusAddress="1" NetBiosName="INV007034470001" WebPortal="PIKO Solar Portal" ManufacturerURL="kostal-solar-electric.com" IpAddress="192.168.188.68" DateTime="2023-02-27T15:28:41" MilliSeconds="873">
         <Measurements>
-            <Measurement Value="228.3" Unit="V" Type="AC_Voltage" />
-            <Measurement Unit="A" Type="AC_Current" />
-            <Measurement Unit="W" Type="AC_Power" />
-            <Measurement Unit="W" Type="AC_Power_fast" I>
-            <Measurement Value="49.991" Unit="Hz" Type="AC_Freguency" />
-            <Measurement Value="8.3" Unit="V" Type="DC_Voltage" />
-            <Measurement Unit="A" Type="DC_Current" I>
-            <Measurement Value="5.7" Unit="V" Type="LINR_Voltage" />
-            <Measurement Unit="W" Type="GridPower" />
-            <Measurement Unit="W" Type="GridConsumedPower" />
-            <Measurement Unit="W" Type="GridInjectedPower" />
-            <Measurement Unit="W" Type="OwnConsumedPower" />
-            <Measurement Value="100.0" Unit="%" Type="Derating" /> 
+            <Measurement Value="226.2" Unit="V" Type="AC_Voltage"/>
+            <Measurement Value="1.645" Unit="A" Type="AC_Current"/>
+            <Measurement Value="381.6" Unit="W" Type="AC_Power"/>
+            <Measurement Value="374.2" Unit="W" Type="AC_Power_fast"/>
+            <Measurement Value="50.000" Unit="Hz" Type="AC_Frequency"/>
+            <Measurement Value="344.9" Unit="V" Type="DC_Voltage"/>
+            <Measurement Value="1.214" Unit="A" Type="DC_Current"/>
+            <Measurement Value="343.3" Unit="V" Type="LINK_Voltage"/>
+            <Measurement Unit="W" Type="GridPower"/>
+            <Measurement Unit="W" Type="GridConsumedPower"/>
+            <Measurement Unit="W" Type="GridInjectedPower"/>
+            <Measurement Unit="W" Type="OwnConsumedPower"/>
+            <Measurement Value="100.0" Unit="%" Type="Derating"/>
         </Measurements>
     </Device>
 </root>

@@ -46,7 +46,7 @@
     "dataSource": "poll",
     "news": {
       "2.4.0": {
-        "en": "added support of ACPower for Piko MP inverters"
+        "en": "added support of DC-values for Piko MP inverters"
       },
       "2.3.1": {
         "en": "fix error with zero values in DC & AC",
