@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "2.3.1",
+    "version": "2.4.0",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -45,6 +45,9 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "2.4.0": {
+        "en": "added support of ACPower for Piko MP inverters"
+      },
       "2.3.1": {
         "en": "fix error with zero values in DC & AC",
         "de": "fehler mit Nullwerten in DC & AC beheben",

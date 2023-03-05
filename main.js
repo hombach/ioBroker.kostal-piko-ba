@@ -384,6 +384,7 @@ class KostalPikoBA extends utils.Adapter {
     * ReadPiko *****************************************************************************/
     ReadPiko() {
         const axios = require('axios');
+        const xml2js = require('xml2js');
 
         if (InverterAPIPiko) {  // code for Piko(-BA)
             // @ts-ignore axios.get is valid
@@ -488,7 +489,24 @@ class KostalPikoBA extends utils.Adapter {
 
         if (InverterAPIPikoMP) { // code for Piko MP
             // missing code 
-/*
+            // @ts-ignore axios.get is valid
+            axios.get(`http://${this.config.ipaddress}/measurements.xml`, { transformResponse: (r) => r })
+                .then((response) => {
+                    xml2js.parseString(response.data, (err, result) => {
+                        if (err) {
+                            this.log.error(`Error when calling Piko MP API with axios for measurements info: ${err}`);
+                        } else {
+                            const measurements = result.root.Device[0].Measurements[0].Measurement;
+                            const acVoltageMeasurement = measurements.find(measurement => measurement.$.Type === "AC_Voltage");
+                            this.setStateAsync('Power.AC1Voltage', { val: Math.round(acVoltageMeasurement.$.Value), ack: true });
+                        }
+                    });
+                })
+                .catch((error) => {
+                    this.log.error(`Error when calling Piko MP API with axios for general info: ${error}`);
+                });
+
+/*  Demo XML
 <root>
     <Device Name="PIKO 3.0-1 MP plus" Type="Inverter" Platform="Net16" HmiPlatform="HMI17" NominalPower="3000" UserPowerLimit="nan" CountryPowerLimit="nan" Serial="763167EJ007034470001" OEMSerial="10351314" BusAddress="1" NetBiosName="INV007034470001" WebPortal="PIRO Solar Portal" ManufacturerURL="kostal-solar-electric.com" IpAddress="192.168.188.68" DateTime="2023-02-06T22:08:18" MilliSeconds="804">
         <Measurements>
