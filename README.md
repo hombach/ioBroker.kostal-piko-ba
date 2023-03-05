@@ -31,6 +31,8 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 
 ! Note that missing version entries are typically dependency updates for security.
 
+### 2.3.1 (05.03.2023)
+* (HombachC) fix error with zero values in DC & AC
 ### 2.3.0 (26.02.2023)
 * (HombachC) replaced got by axios
 * (HombachC) added warning for not supported Piko MP inverters

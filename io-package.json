@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "2.3.0",
+    "version": "2.3.1",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -45,6 +45,19 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "2.3.1": {
+        "en": "fix error with zero values in DC & AC",
+        "de": "fehler mit Nullwerten in DC & AC beheben",
+        "ru": "исправить ошибку с нулевыми значениями в DC & AC",
+        "pt": "corrigir erro com zero valores em DC & AC",
+        "nl": "vergissing in DC ZeC",
+        "fr": "corriger l'erreur avec des valeurs zéro en DC & AC",
+        "it": "correzione di errore con valori zero in DC & AC",
+        "es": "corregir error con valores cero en DC & AC",
+        "pl": "ustępowanie błędów z wartościami zero w DC & AC",
+        "uk": "виправити помилку з нульовими значеннями в DC & AC",
+        "zh-cn": "f 在DC和ACC中,有零价值的错误"
+      },
       "2.3.0": {
         "en": "replaced got by axios, added warning for not supported Piko MP inverters, removed travis",
         "de": "Got ersetzt durch Axios, zusätzliche Warnung für nicht unterstützte Piko MP Wechselrichter, Travis entfernt",

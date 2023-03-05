@@ -394,18 +394,32 @@ class KostalPikoBA extends utils.Adapter {
                     var result = JSON.parse(response.data).dxsEntries;
                     this.setStateAsync('Power.SolarDC', { val: Math.round(result[0].value), ack: true });
                     this.setStateAsync('Power.GridAC', { val: Math.round(result[1].value), ack: true });
-                    this.setStateAsync('Power.DC1Power', { val: Math.round(result[2].value), ack: true });
-                    this.setStateAsync('Power.DC1Current', { val: (Math.round(1000 * result[3].value)) / 1000, ack: true });
-                    this.setStateAsync('Power.DC1Voltage', { val: Math.round(result[4].value), ack: true });
+                    if (result[4].value) {
+                        this.setStateAsync('Power.DC1Power', { val: Math.round(result[2].value), ack: true });
+                        this.setStateAsync('Power.DC1Current', { val: (Math.round(1000 * result[3].value)) / 1000, ack: true });
+                        this.setStateAsync('Power.DC1Voltage', { val: Math.round(result[4].value), ack: true });
+                    } else {
+                        this.setStateAsync('Power.DC1Power', { val: 0, ack: true });
+                        this.setStateAsync('Power.DC1Current', { val: 0, ack: true });
+                        this.setStateAsync('Power.DC1Voltage', { val: 0, ack: true });
+                    }
                     if (result[7].value) {
                         this.setStateAsync('Power.DC2Power', { val: Math.round(result[5].value), ack: true });
                         this.setStateAsync('Power.DC2Current', { val: (Math.round(1000 * result[6].value)) / 1000, ack: true });
                         this.setStateAsync('Power.DC2Voltage', { val: Math.round(result[7].value), ack: true });
+                    } else {
+                        this.setStateAsync('Power.DC2Power', { val: 0, ack: true });
+                        this.setStateAsync('Power.DC2Current', { val: 0, ack: true });
+                        this.setStateAsync('Power.DC2Voltage', { val: 0, ack: true });
                     }
                     if (result[10].value) {
                         this.setStateAsync('Power.DC3Power', { val: Math.round(result[8].value), ack: true });
                         this.setStateAsync('Power.DC3Current', { val: (Math.round(1000 * result[9].value)) / 1000, ack: true });
                         this.setStateAsync('Power.DC3Voltage', { val: Math.round(result[10].value), ack: true });
+                    } else {
+                        this.setStateAsync('Power.DC3Power', { val: 0, ack: true });
+                        this.setStateAsync('Power.DC3Current', { val: 0, ack: true });
+                        this.setStateAsync('Power.DC3Voltage', { val: 0, ack: true });
                     }
                     this.setStateAsync('Power.SelfConsumption', { val: Math.round(result[11].value), ack: true });
                     this.setStateAsync('Power.HouseConsumption', { val: Math.floor(result[12].value), ack: true });
@@ -514,18 +528,32 @@ class KostalPikoBA extends utils.Adapter {
                     // access parsed JSON response data using response.data field
                     this.log.debug(`Piko-BA live data 2 update - Kostal response data: ${response.data}`);
                     var result = JSON.parse(response.data).dxsEntries;
-                    this.setStateAsync('Power.AC1Current', { val: (Math.round(1000 * result[0].value)) / 1000, ack: true });
-                    this.setStateAsync('Power.AC1Voltage', { val: Math.round(result[1].value), ack: true });
-                    this.setStateAsync('Power.AC1Power', { val: Math.round(result[2].value), ack: true });
+                    if (result[1].value) {
+                        this.setStateAsync('Power.AC1Current', { val: (Math.round(1000 * result[0].value)) / 1000, ack: true });
+                        this.setStateAsync('Power.AC1Voltage', { val: Math.round(result[1].value), ack: true });
+                        this.setStateAsync('Power.AC1Power', { val: Math.round(result[2].value), ack: true });
+                    } else {
+                        this.setStateAsync('Power.AC1Current', { val: 0, ack: true });
+                        this.setStateAsync('Power.AC1Voltage', { val: 0, ack: true });
+                        this.setStateAsync('Power.AC1Power', { val: 0, ack: true });
+                    }
                     if (result[4].value) {
                         this.setStateAsync('Power.AC2Current', { val: (Math.round(1000 * result[3].value)) / 1000, ack: true });
                         this.setStateAsync('Power.AC2Voltage', { val: Math.round(result[4].value), ack: true });
                         this.setStateAsync('Power.AC2Power', { val: Math.round(result[5].value), ack: true });
+                    } else {
+                        this.setStateAsync('Power.AC2Current', { val: 0, ack: true });
+                        this.setStateAsync('Power.AC2Voltage', { val: 0, ack: true });
+                        this.setStateAsync('Power.AC2Power', { val: 0, ack: true });
                     }
                     if (result[7].value) {
                         this.setStateAsync('Power.AC3Current', { val: (Math.round(1000 * result[6].value)) / 1000, ack: true });
                         this.setStateAsync('Power.AC3Voltage', { val: Math.round(result[7].value), ack: true });
                         this.setStateAsync('Power.AC3Power', { val: Math.round(result[8].value), ack: true });
+                    } else {
+                        this.setStateAsync('Power.AC3Current', { val: 0, ack: true });
+                        this.setStateAsync('Power.AC3Voltage', { val: 0, ack: true });
+                        this.setStateAsync('Power.AC3Power', { val: 0, ack: true });
                     }
                     if (result[9].value) {
                         this.setStateAsync('Power.HouseConsumptionPhase1', { val: Math.round(result[9].value), ack: true });
