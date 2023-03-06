@@ -17,7 +17,7 @@ CI-Tests:
 Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates some states and updates them sequentially.
 Adapter designed for Kostal Piko 6.0BA, 8.0BA, 10.0BA, BA inverters.
 Adapter also working with Kostal Piko 3.0, 4.2, 4.6, 5.5, 7.0, 8.5, 10, 12, 15, 17, 20 & 36 inverters. 
-NEW! Adapter now working with MP plus inverters - first tested: Kostal PIKO 3.0-1 MP plus
+NEW! Adapter now working with MP plus inverters - first tested: Kostal PIKO 3.0-1 MP plus.
 It's greatly appreciated if you verify functionality with other inverters and please send me a note.
 
 ## Settings
