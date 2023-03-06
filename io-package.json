@@ -46,7 +46,17 @@
     "dataSource": "poll",
     "news": {
       "2.4.0": {
-        "en": "added support of DC-values for Piko MP inverters"
+        "en": "added support of AC and DC power values for Piko MP inverters",
+        "de": "unterstützung von AC- und DC-Leistungswerten für Piko MP-Wechselrichter",
+        "ru": "добавлена поддержка силовых ценностей AC и DC для инверторов Piko MP",
+        "pt": "suporte adicional de valores de energia AC e DC para inversores Piko MP",
+        "nl": "voegde ondersteuning van AC en DC krachtwaarden toe voor Piko MP inverters",
+        "fr": "support ajouté des valeurs de puissance AC et DC pour les invertisseurs Piko MP",
+        "it": "supporto aggiunto dei valori di potenza AC e DC per inverter Piko MP",
+        "es": "apoyo adicional de los valores de potencia AC y DC para los inversores Piko MP",
+        "pl": "dodano obsługę AC i DC dla inwergencji Piko MP",
+        "uk": "додано підтримку значень живлення змінного струму та постійного струму для інверторів Piko MP",
+        "zh-cn": "防务局和发展中国家对Piko MP 防备器的电力价值增加支助"
       },
       "2.3.1": {
         "en": "fix error with zero values in DC & AC",

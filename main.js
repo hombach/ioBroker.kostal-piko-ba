@@ -501,7 +501,13 @@ class KostalPikoBA extends utils.Adapter {
                             this.setStateAsync('Power.DC1Voltage', { val: Math.round(DC_Voltage.$.Value), ack: true });
                             const DC_Current = measurements.find(measurement => measurement.$.Type === "DC_Current");
                             this.setStateAsync('Power.DC1Current', { val: (Math.round(1000 * DC_Current.$.Value)) / 1000, ack: true });
-                            this.setStateAsync('Power.DC1Power', { val: Math.round(DC_Voltage * DC_Current), ack: true });
+                            this.setStateAsync('Power.DC1Power', { val: Math.round(DC_Voltage.$.Value * DC_Current.$.Value), ack: true });
+                            const AC_Voltage = measurements.find(measurement => measurement.$.Type === "AC_Voltage");
+                            this.setStateAsync('Power.AC1Voltage', { val: Math.round(AC_Voltage.$.Value), ack: true });
+                            const AC_Current = measurements.find(measurement => measurement.$.Type === "AC_Current");
+                            this.setStateAsync('Power.AC1Current', { val: (Math.round(AC_Current.$.value)) / 1000, ack: true });
+                            const AC_Power = measurements.find(measurement => measurement.$.Type === "AC_Power");
+                            this.setStateAsync('Power.AC1Power', { val: Math.round(AC_Power.$.Value), ack: true });
                         }
                     });
                 })
@@ -513,13 +519,13 @@ class KostalPikoBA extends utils.Adapter {
 <root>
     <Device Name="PIKO 3.0-1 MP plus" Type="Inverter" Platform="Net16" HmiPlatform="HMI17" NominalPower="3000" UserPowerLimit="nan" CountryPowerLimit="nan" Serial=„XXXXXXXX" OEMSerial=„XXXXXXX“ BusAddress="1" NetBiosName="INV007034470001" WebPortal="PIKO Solar Portal" ManufacturerURL="kostal-solar-electric.com" IpAddress="192.168.188.68" DateTime="2023-02-27T15:28:41" MilliSeconds="873">
         <Measurements>
-            <Measurement Value="226.2" Unit="V" Type="AC_Voltage"/>
-            <Measurement Value="1.645" Unit="A" Type="AC_Current"/>
-            <Measurement Value="381.6" Unit="W" Type="AC_Power"/>
+OK          <Measurement Value="226.2" Unit="V" Type="AC_Voltage"/>
+OK          <Measurement Value="1.645" Unit="A" Type="AC_Current"/>
+OK          <Measurement Value="381.6" Unit="W" Type="AC_Power"/>
             <Measurement Value="374.2" Unit="W" Type="AC_Power_fast"/>
             <Measurement Value="50.000" Unit="Hz" Type="AC_Frequency"/>
-            <Measurement Value="344.9" Unit="V" Type="DC_Voltage"/>
-            <Measurement Value="1.214" Unit="A" Type="DC_Current"/>
+OK          <Measurement Value="344.9" Unit="V" Type="DC_Voltage"/>
+OK          <Measurement Value="1.214" Unit="A" Type="DC_Current"/>
             <Measurement Value="343.3" Unit="V" Type="LINK_Voltage"/>
             <Measurement Unit="W" Type="GridPower"/>
             <Measurement Unit="W" Type="GridConsumedPower"/>
