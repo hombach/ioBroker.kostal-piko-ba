@@ -33,6 +33,8 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 
 ! Note that missing version entries are typically dependency updates for security.
 
+### 2.4.1 (07.03.2023)
+* (HombachC) fixed Piko MP Plus support for two channel hardware
 ### 2.4.0 (06.03.2023)
 * (HombachC) added support of AC and DC power values for Piko MP inverters
 ### 2.3.1 (05.03.2023)

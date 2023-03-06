@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "2.4.0",
+    "version": "2.4.1",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -45,6 +45,19 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "2.4.1": {
+        "en": "added Piko MP Plus support for two channel hardware",
+        "de": "hinzugefügt Piko MP Plus Unterstützung für zwei Kanal Hardware",
+        "ru": "добавлено Piko MP Плюс поддержка двух каналов оборудования",
+        "pt": "adicionado Piko MP Além de suporte para hardware de dois canais",
+        "nl": "piko MP Plus steun voor twee kanalen hardware",
+        "fr": "ajouté Piko MP Plus de support pour deux canaux matériels",
+        "it": "aggiunto Piko MP Supporto più per due canali hardware",
+        "es": "añadido Piko MP Más soporte para hardware de dos canales",
+        "pl": "piko MP Pomoc dla dwóch kanałów",
+        "uk": "додано Піко МП Плюс підтримка двох каналів обладнання",
+        "zh-cn": "增加Piko MP 两个硬件的辅助"
+      },
       "2.4.0": {
         "en": "added support of AC and DC power values for Piko MP inverters",
         "de": "unterstützung von AC- und DC-Leistungswerten für Piko MP-Wechselrichter",

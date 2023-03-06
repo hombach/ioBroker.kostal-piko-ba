@@ -487,7 +487,7 @@ class KostalPikoBA extends utils.Adapter {
                 }) // END catch
         } // END InverterAPIPiko
 
-        if (InverterAPIPikoMP) { // code for Piko MP
+        if (InverterAPIPikoMP) { // code for Piko MP Plus
             // missing code 
             // @ts-ignore axios.get is valid
             axios.get(`http://${this.config.ipaddress}/measurements.xml`, { transformResponse: (r) => r })
@@ -498,10 +498,31 @@ class KostalPikoBA extends utils.Adapter {
                         } else {
                             const measurements = result.root.Device[0].Measurements[0].Measurement;
                             const DC_Voltage = measurements.find(measurement => measurement.$.Type === "DC_Voltage");
-                            this.setStateAsync('Power.DC1Voltage', { val: Math.round(DC_Voltage.$.Value), ack: true });
+                            if (DC_Voltage) {
+                                this.setStateAsync('Power.DC1Voltage', { val: Math.round(DC_Voltage.$.Value), ack: true });
+                            } else {
+                                const DC_Voltage1 = measurements.find(measurement => measurement.$.Type === "DC_Voltage1");
+                                const DC_Voltage2 = measurements.find(measurement => measurement.$.Type === "DC_Voltage2");
+                                this.setStateAsync('Power.DC1Voltage', { val: Math.round(DC_Voltage1.$.Value), ack: true });
+                                this.setStateAsync('Power.DC2Voltage', { val: Math.round(DC_Voltage2.$.Value), ack: true });
+                            }
                             const DC_Current = measurements.find(measurement => measurement.$.Type === "DC_Current");
-                            this.setStateAsync('Power.DC1Current', { val: (Math.round(1000 * DC_Current.$.Value)) / 1000, ack: true });
-                            this.setStateAsync('Power.DC1Power', { val: Math.round(DC_Voltage.$.Value * DC_Current.$.Value), ack: true });
+                            if (DC_Current) {
+                                this.setStateAsync('Power.DC1Current', { val: (Math.round(1000 * DC_Current.$.Value)) / 1000, ack: true });
+                            } else {
+                                const DC_Current1 = measurements.find(measurement => measurement.$.Type === "DC_Current1");
+                                const DC_Current2 = measurements.find(measurement => measurement.$.Type === "DC_Current2");
+                                this.setStateAsync('Power.DC1Current', { val: (Math.round(1000 * DC_Current1.$.Value)) / 1000, ack: true });
+                                this.setStateAsync('Power.DC2Current', { val: (Math.round(1000 * DC_Current2.$.Value)) / 1000, ack: true });
+                            }
+                            if (DC_Current && DC_Voltage) {
+                                this.setStateAsync('Power.DC1Power', { val: Math.round(DC_Voltage.$.Value * DC_Current.$.Value), ack: true });
+                            } else {
+                                const DC_Power1 = measurements.find(measurement => measurement.$.Type === "DC_Power1");
+                                const DC_Power2 = measurements.find(measurement => measurement.$.Type === "DC_Power2");
+                                this.setStateAsync('Power.DC1Power', { val: Math.round(DC_Power1.$.Value), ack: true });
+                                this.setStateAsync('Power.DC2Power', { val: Math.round(DC_Power2.$.Value), ack: true });
+                            }
                             const AC_Voltage = measurements.find(measurement => measurement.$.Type === "AC_Voltage");
                             this.setStateAsync('Power.AC1Voltage', { val: Math.round(AC_Voltage.$.Value), ack: true });
                             const AC_Current = measurements.find(measurement => measurement.$.Type === "AC_Current");
@@ -516,6 +537,10 @@ class KostalPikoBA extends utils.Adapter {
                 });
 
 /*  Demo XML
+/all.xml The complete XML structure is transferred.
+/events.xml Only the Events sub-area is transmitted; event messages are output here.
+/yields.xml Yield data are transmitted.
+
 <root>
     <Device Name="PIKO 3.0-1 MP plus" Type="Inverter" Platform="Net16" HmiPlatform="HMI17" NominalPower="3000" UserPowerLimit="nan" CountryPowerLimit="nan" Serial=„XXXXXXXX" OEMSerial=„XXXXXXX“ BusAddress="1" NetBiosName="INV007034470001" WebPortal="PIKO Solar Portal" ManufacturerURL="kostal-solar-electric.com" IpAddress="192.168.188.68" DateTime="2023-02-27T15:28:41" MilliSeconds="873">
         <Measurements>
@@ -535,6 +560,97 @@ OK          <Measurement Value="1.214" Unit="A" Type="DC_Current"/>
         </Measurements>
     </Device>
 </root>
+
+
+<root>
+	<Device Name="PIKO 1.5-1 MP plus" Type="Inverter" Platform="Net16" HmiPlatform="HMI17" NominalPower="1500" UserPowerLimit="nan" CountryPowerLimit="nan" Serial="XXXXXXX" OEMSerial="XXXXXXX" BusAddress="2" NetBiosName="XXXXXX" WebPortal="XXXXXX" ManufacturerURL="XXXXX" IpAddress="192.192.192.192" DateTime="2020-07-04T18:57:34" MilliSeconds="237">
+		<Measurements>
+			<Measurement Value="235.1" Unit="V" Type="AC_Voltage" />
+			<Measurement Value="0.607" Unit="A" Type="AC_Current" />
+			<Measurement Value="131.1" Unit="W" Type="AC_Power" />
+			<Measurement Value="130.2" Unit="W" Type="AC_Power_fast" />
+			<Measurement Value="50.015" Unit="Hz" Type="AC_Frequency" />
+			<Measurement Value="259.2" Unit="V" Type="DC_Voltage" />
+			<Measurement Value="0.541" Unit="A" Type="DC_Current" />
+			<Measurement Value="351.8" Unit="V" Type="LINK_Voltage" />
+			<Measurement Unit="W" Type="GridPower" />
+			<Measurement Unit="W" Type="GridConsumedPower" />
+			<Measurement Unit="W" Type="GridInjectedPower" />
+			<Measurement Unit="W" Type="OwnConsumedPower" />
+			<Measurement Value="100.0" Unit="%" Type="Derating" />
+		</Measurements>
+		<Events>
+			<Event Id="47" Message="Energymeter Communication timeout" Severity="Error" Type="User" Start="2022-07-02T12:26:11" End="2022-07-02T12:26:47" />
+		</Events>
+		<Yields>
+			<Yield Type="Produced" Slot="Total" Unit="Wh">
+				<YieldValue Value="20000" TimeStamp="2022-07-01T16:00:00" />
+			</Yield>
+		</Yields>
+		<Versions>
+			<Software Device="HMI" Name="BFAPI STM32F4" Version="2.8.0" />
+			<Software Device="HMI" Name="FBL" Version="1.4.0" />
+			<Software Device="HMI" Name="APP" Version="3.17.0" />
+			<Software Device="HMI" Name="OEM PIKO 1.5-1 MP p" Version="1.0.1" />
+			<Software Device="PU" Name="BFAPI SAFE STM32F4" Version="2.8.0" />
+			<Software Device="PU" Name="FBL" Version="2.0.3" />
+			<Software Device="PU" Name="APP" Version="4.6.0" />
+			<Software Device="PU" Name="PAR default" Version="23.0.18" />
+			<Software Device="PU" Name="OEM VAR_7_Kostal" Version="1.0.7" />
+			<Software Device="ENS1" Name="APP" Version="1.35.0" />
+			<Hardware Device="HMI" Version="1" />
+			<Hardware Device="PU" Version="5" />
+		</Versions>
+		<State Value="Standby" />
+	</Device>
+</root>
+
+<root>
+    <Device Name='PIKO 3.0-2 MP plus' Type='Inverter' Platform='Net16' HmiPlatform='HMI17' NominalPower='3000' UserPowerLimit='2380' CountryPowerLimit='3000' Serial='AAAAAAAAAAAAAAAAAAAA' OEMSerial='00000000' BusAddress='1' NetBiosName='INV000000000000' WebPortal='PIKO Solar Portal' ManufacturerURL='kostal-solar-electric.com' IpAddress='192.192.192.192' DateTime='2022-02-02T02:02:02' MilliSeconds='999'>
+        <Measurements>
+            <Measurement Value='236.0' Unit='V' Type='AC_Voltage'/>
+            <Measurement Unit='A' Type='AC_Current'/>
+            <Measurement Unit='W' Type='AC_Power'/>
+            <Measurement Unit='W' Type='AC_Power_fast'/>
+            <Measurement Value='50.014' Unit='Hz' Type='AC_Frequency'/>
+            <Measurement Value='118.7' Unit='V' Type='DC_Voltage1'/>
+            <Measurement Value='120.6' Unit='V' Type='DC_Voltage2'/>
+            <Measurement Unit='A' Type='DC_Current1'/>
+            <Measurement Unit='A' Type='DC_Current2'/>
+            <Measurement Unit='W' Type='DC_Power1'/>
+            <Measurement Unit='W' Type='DC_Power2'/>
+            <Measurement Value='0.0' Unit='W' Type='DC_Power Total'/>
+            <Measurement Value='38.9' Unit='°C' Type='Temp'/>
+            <Measurement Value='116.3' Unit='V' Type='LINK_Voltage'/>
+            <Measurement Unit='W' Type='GridPower'/>
+            <Measurement Unit='W' Type='GridConsumedPower'/>
+            <Measurement Unit='W' Type='GridInjectedPower'/>
+            <Measurement Unit='W' Type='OwnConsumedPower'/>
+            <Measurement Value='100.0' Unit='%' Type='Derating'/>
+        </Measurements>
+        <Yields>
+            <Yield Type='Produced' Slot='Total' Unit='Wh'>
+                <YieldValue Value='10388270' TimeStamp='2019-06-27T13:00:00'/>
+            </Yield>
+        </Yields>
+        <Versions>
+            <Software Device='HMI' Name='BFAPI STM32F4' Version='2.8.0'/>
+            <Software Device='HMI' Name='FBL' Version='1.3.0'/>
+            <Software Device='HMI' Name='APP' Version='3.4.0'/>
+            <Software Device='HMI' Name='OEM PIKO 3.0-2 MP p' Version='1.0.1'/>
+            <Software Device='PU' Name='BFAPI SAFE STM32F4' Version='2.8.0'/>
+            <Software Device='PU' Name='FBL' Version='2.0.3'/>
+            <Software Device='PU' Name='APP' Version='2.10.0'/>
+            <Software Device='PU' Name='PAR default' Version='14.0.2'/>
+            <Software Device='PU' Name='OEM VARIANT_9' Version='1.0.9'/>
+            <Software Device='ENS1' Name='APP' Version='1.19.0'/>
+            <Hardware Device='HMI' Version='0'/>
+            <Hardware Device='PU' Version='4'/>
+        </Versions>
+        <State Value='Standby'/>
+    </Device>
+</root>
+
 */
 
         } // END InverterAPIPikoMP
@@ -639,8 +755,8 @@ OK          <Measurement Value="1.214" Unit="A" Type="DC_Current"/>
                 }) // END catch
         } // END InverterAPIPiko
 
-       if (InverterAPIPikoMP) { // code for Piko MP
-            // missing code 
+       if (InverterAPIPikoMP) { // code for Piko MP Plus
+            // handled in ReadPiko() 
         } // END InverterAPIPikoMP
 
     } // END ReadPiko2
@@ -689,8 +805,8 @@ OK          <Measurement Value="1.214" Unit="A" Type="DC_Current"/>
                 }) // END catch
         } // END InverterAPIPiko
 
-        if (InverterAPIPikoMP) { // code for Piko MP
-            // missing code 
+        if (InverterAPIPikoMP) { // code for Piko MP Plus
+            // missing code - looks like there are no daily values for MP Plus inverters
         } // END InverterAPIPikoMP
 
         try {
@@ -750,7 +866,7 @@ OK          <Measurement Value="1.214" Unit="A" Type="DC_Current"/>
                 }) // END catch
         } // END InverterAPIPiko
 
-        if (InverterAPIPikoMP) { // code for Piko MP
+        if (InverterAPIPikoMP) { // code for Piko MP Plus
             // missing code 
         } // END InverterAPIPikoMP
 
