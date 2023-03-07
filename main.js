@@ -488,7 +488,6 @@ class KostalPikoBA extends utils.Adapter {
         } // END InverterAPIPiko
 
         if (InverterAPIPikoMP) { // code for Piko MP Plus
-            // missing code 
             // @ts-ignore axios.get is valid
             axios.get(`http://${this.config.ipaddress}/measurements.xml`, { transformResponse: (r) => r })
                 .then((response) => {
@@ -526,7 +525,7 @@ class KostalPikoBA extends utils.Adapter {
                             const AC_Voltage = measurements.find(measurement => measurement.$.Type === "AC_Voltage");
                             this.setStateAsync('Power.AC1Voltage', { val: Math.round(AC_Voltage.$.Value), ack: true });
                             const AC_Current = measurements.find(measurement => measurement.$.Type === "AC_Current");
-                            this.setStateAsync('Power.AC1Current', { val: (Math.round(AC_Current.$.value)) / 1000, ack: true });
+                            this.setStateAsync('Power.AC1Current', { val: (Math.round(1000 * AC_Current.$.Value)) / 1000, ack: true });
                             const AC_Power = measurements.find(measurement => measurement.$.Type === "AC_Power");
                             this.setStateAsync('Power.AC1Power', { val: Math.round(AC_Power.$.Value), ack: true });
                         }
@@ -823,6 +822,7 @@ OK          <Measurement Value="1.214" Unit="A" Type="DC_Current"/>
     * ReadPikoTotal ************************************************************************/
     ReadPikoTotal() {
         const axios = require('axios');
+        const xml2js = require('xml2js');
 
         if (InverterAPIPiko) {  // code for Piko(-BA)
             // @ts-ignore axios.get is valid
@@ -868,6 +868,31 @@ OK          <Measurement Value="1.214" Unit="A" Type="DC_Current"/>
 
         if (InverterAPIPikoMP) { // code for Piko MP Plus
             // missing code 
+            // @ts-ignore axios.get is valid
+            axios.get(`http://${this.config.ipaddress}/yields.xml`, { transformResponse: (r) => r })
+                .then((response) => {
+                    xml2js.parseString(response.data, (err, result) => {
+                        if (err) {
+                            this.log.error(`Error when calling Piko MP API with axios for measurements info: ${err}`);
+                        } else {
+                            const yields = result.root.Device[0].Yields[0].Yield;
+                            const yieldProduced = yields.find(oyield => oyield.$.Type === "Produced");
+                            if (yieldProduced) {
+                                if (yieldProduced.$.Slot == "Total") {
+                                    const yieldProducedValue = yieldProduced.YieldValue[0].$.Value;;
+                                    if (yieldProducedValue) {
+                                        this.setStateAsync('Statistics_Total.Yield', { val: Math.round(yieldProducedValue / 1000), ack: true });
+                                    }
+                                } else {
+                                    this.log.warn(`total yield produced value not found`);
+                                }
+                            }
+                        }
+                    });
+                })
+                .catch((error) => {
+                    this.log.error(`Error when calling Piko MP API with axios for general info: ${error}`);
+                });
         } // END InverterAPIPikoMP
 
         try {
