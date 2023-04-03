@@ -195,6 +195,7 @@ class KostalPikoBA extends utils.Adapter {
                         scope.setTag('Inverter-UI', InverterUIVersion);
                         Sentry.captureMessage('Adapter kostal-piko-ba started', 'info'); // Level "info"
                     });
+                    this.setStateAsync('LastSentryLoggedError', { val: 'unknown', ack: true }); // Clean last error every adapter start
                 }
                 this.setStateAsync('LastSentryLogDay', { val: today.getDate(), ack: true });
             }
