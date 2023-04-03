@@ -358,9 +358,15 @@ class KostalPikoBA extends utils.Adapter {
                         }
                     });
                 })
-                .catch((error) => {
-                    this.log.error(`Error when calling Piko MP API with axios for general info: ${error}`);
-                });
+                .catch(error => {
+                    if (error.response) { //get HTTP error code
+                        this.log.error(`HTTP error ${error.response} when calling Piko MP API for general info: ${error.response.status}`);
+                    } else {
+                        this.log.error(`Unknown error when calling Piko MP API for general info: ${error.message}`);
+                        this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0)`);
+                        this.SendSentryError(error.message);
+                    }
+                }); // END catch
         }
     } // END ReadPikoOnce
    
@@ -502,9 +508,15 @@ class KostalPikoBA extends utils.Adapter {
                         }
                     });
                 })
-                .catch((error) => {
-                    this.log.error(`Error when calling Piko MP API for general info: ${error}`);
-                });
+                .catch(error => {
+                    if (error.response) { //get HTTP error code
+                        this.log.error(`HTTP error ${error.response} when polling Piko MP API: ${error.response.status}`);
+                    } else { //log error and send by sentry
+                        this.log.error(`Unknown error when polling Piko MP API: ${error.message}`);
+                        this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e1)`);
+                        this.SendSentryError(error.message);
+                    }
+                }); // END catch
 
 /*  Demo XML
 /all.xml The complete XML structure is transferred.
@@ -799,9 +811,15 @@ class KostalPikoBA extends utils.Adapter {
                         }
                     });
                 })
-                .catch((error) => {
-                    this.log.error(`Error when calling Piko MP API for general info: ${error}`);
-                });
+                .catch(error => {
+                    if (error.response) { //get HTTP error code
+                        this.log.error(`HTTP error ${error.response} when polling Piko MP API for total statistics: ${error.response.status} !! (e4)`);
+                    } else {
+                        this.log.error(`Unknown error when calling Piko MP API for total statistics: ${error.message}`);
+                        this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e4)`);
+                        this.SendSentryError(error.message);
+                    }
+                }); // END catch
         } // END InverterAPIPikoMP
 
         try {
