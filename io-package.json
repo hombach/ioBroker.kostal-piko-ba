@@ -124,19 +124,6 @@
         "uk": "замінено на аксіос, додано попередження не підтримується Piko MP інвертори, видалені травіс",
         "zh-cn": "被焦虑所取代,对不支持的预警 Piko MP MP inverters, 除名准备"
       },
-      "2.2.2": {
-        "en": "fixed error with missing grid limitation response",
-        "de": "fester fehler bei fehlender netzbeschränkung",
-        "ru": "фиксированная ошибка с отсутствующим реагированием ограничения сетки",
-        "pt": "erro fixo com resposta de limitação de grade ausente",
-        "nl": "vergissing met ontbrekende beperkingsreactie",
-        "fr": "erreur fixe avec réponse de limitation de la grille manquante",
-        "it": "errore fisso con risposta di limitazione della griglia mancante",
-        "es": "error fijo con la respuesta de limitación de la red perdida",
-        "pl": "ustalenie błędu z brakującym ograniczeniem odpowiedzi sieciowej",
-        "uk": "виправлена помилка з відповіддю про відхилення від мережі",
-        "zh-cn": "固定的电网限制反应错误"
-      },
       "2.2.0": {
         "en": "added support for phase 1-3 of homeconsumption power",
         "de": "zusätzliche unterstützung für die phase 1-3 der eigenverbrauchsleistung",
@@ -149,19 +136,6 @@
         "pl": "wsparcie dla faz 1-3",
         "uk": "додано підтримку фази 1-3 акб",
         "zh-cn": "进一步支持第1-3阶段的家用电"
-      },
-      "2.1.0": {
-        "en": "added ukrainian translations",
-        "de": "ukrainische übersetzungen",
-        "ru": "добавлены украинские переводы",
-        "pt": "adicionado traduções ukrainian",
-        "nl": "vertaling:",
-        "fr": "traductions ukrainiennes ajoutées",
-        "it": "aggiunto traduzioni ucraino",
-        "es": "añadido traducciones ucranianas",
-        "pl": "tłumaczenie ukrainowe",
-        "uk": "додано переклади українською мовою",
-        "zh-cn": "加 库尼亚译员"
       },
       "2.0.0": {
         "en": "BREAKING: Dropped support for Node.js 12; added state of inverter as string",
