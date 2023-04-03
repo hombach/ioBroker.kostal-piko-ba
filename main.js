@@ -325,18 +325,7 @@ class KostalPikoBA extends utils.Adapter {
                 } else {
                     this.log.error(`Unknown error when calling Piko(-BA) API for general info: ${error.message}`);
                     this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0)`);
-                    if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
-                        const sentryInstance = this.getPluginInstance('sentry');
-                        if (sentryInstance) {
-                            const Sentry = sentryInstance.getSentryObject();
-                            Sentry && Sentry.withScope(scope => {
-                                scope.setTag('Inverter', this.config.ipaddress);
-                                scope.setTag('Inverter-Type', InverterType);
-                                scope.setTag('Inverter-UI', InverterUIVersion);
-                                Sentry.captureException(error.message);
-                            });
-                        }
-                    }
+                    this.SendSentryError(error.message);
                 }
             }) // END catch
 
@@ -461,21 +450,10 @@ class KostalPikoBA extends utils.Adapter {
                 .catch(error => {
                     if (error.response) { //get HTTP error code
                         this.log.error(`HTTP error ${error.response} when polling Piko(-BA) API: ${error.response.status}`);
-                    } else {
+                    } else { //log error and send by sentry
                         this.log.error(`Unknown error when polling Piko(-BA) API: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e1)`);
-                        if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
-                            const sentryInstance = this.getPluginInstance('sentry');
-                            if (sentryInstance) {
-                                const Sentry = sentryInstance.getSentryObject();
-                                Sentry && Sentry.withScope(scope => {
-                                    scope.setTag('Inverter', this.config.ipaddress);
-                                    scope.setTag('Inverter-Type', InverterType);
-                                    scope.setTag('Inverter-UI', InverterUIVersion);
-                                    Sentry.captureException(error.message);
-                                });
-                            }
-                        }
+                        this.SendSentryError(error.message);
                     }
                 }) // END catch
         } // END InverterAPIPiko
@@ -710,18 +688,7 @@ class KostalPikoBA extends utils.Adapter {
                     } else {
                         this.log.error(`Unknown error when polling Piko(-BA) API: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e2)`);
-                        if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
-                            const sentryInstance = this.getPluginInstance('sentry');
-                            if (sentryInstance) {
-                                const Sentry = sentryInstance.getSentryObject();
-                                Sentry && Sentry.withScope(scope => {
-                                    scope.setTag('Inverter', this.config.ipaddress);
-                                    scope.setTag('Inverter-Type', InverterType);
-                                    scope.setTag('Inverter-UI', InverterUIVersion);
-                                    Sentry.captureException(error.message);
-                                });
-                            }
-                        }
+                        this.SendSentryError(error.message);
                     }
                 }) // END catch
         } // END InverterAPIPiko
@@ -756,18 +723,7 @@ class KostalPikoBA extends utils.Adapter {
                     } else {
                         this.log.error(`Unknown error when calling Piko(-BA) API for daily statistics: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e3)`);
-                        if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
-                            const sentryInstance = this.getPluginInstance('sentry');
-                            if (sentryInstance) {
-                                const Sentry = sentryInstance.getSentryObject();
-                                Sentry && Sentry.withScope(scope => {
-                                    scope.setTag('Inverter', this.config.ipaddress);
-                                    scope.setTag('Inverter-Type', InverterType);
-                                    scope.setTag('Inverter-UI', InverterUIVersion);
-                                    Sentry.captureException(error.message);
-                                });
-                            }
-                        }
+                        this.SendSentryError(error.message);
                     }
                 }) // END catch
         } // END InverterAPIPiko
@@ -815,18 +771,7 @@ class KostalPikoBA extends utils.Adapter {
                     } else {
                         this.log.error(`Unknown error when calling Piko(-BA) API for total statistics: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e4)`);
-                        if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
-                            const sentryInstance = this.getPluginInstance('sentry');
-                            if (sentryInstance) {
-                                const Sentry = sentryInstance.getSentryObject();
-                                Sentry && Sentry.withScope(scope => {
-                                    scope.setTag('Inverter', this.config.ipaddress);
-                                    scope.setTag('Inverter-Type', InverterType);
-                                    scope.setTag('Inverter-UI', InverterUIVersion);
-                                    Sentry.captureException(error.message);
-                                });
-                            }
-                        }
+                        this.SendSentryError(error.message);
                     }
                 }) // END catch
         } // END InverterAPIPiko
@@ -867,6 +812,27 @@ class KostalPikoBA extends utils.Adapter {
         } // END try catch
 
     } // END ReadPikoTotal
+
+
+    /*****************************************************************************************/
+    SendSentryError(sError) {
+        if(this.supportsFeature && this.supportsFeature('PLUGINS')) {
+            const sentryInstance = this.getPluginInstance('sentry');
+            if (sentryInstance) {
+                if (this.getStateAsync('LastSentryLogError') != sError) { // if new error
+                    const Sentry = sentryInstance.getSentryObject();
+                    Sentry && Sentry.withScope(scope => {
+                        scope.setTag('Inverter', this.config.ipaddress);
+                        scope.setTag('Inverter-Type', InverterType);
+                        scope.setTag('Inverter-UI', InverterUIVersion);
+                        Sentry.captureException(sError);
+                    });
+                    this.setStateAsync('LastSentryLoggedError', { val: sError, ack: true });
+                }
+            }
+        }
+    }
+
 
 } // END Class
 

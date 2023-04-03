@@ -383,12 +383,26 @@
       "type": "state",
       "common": {
         "role": "value",
-        "name": "Last day of month for Sentry standard log",
+        "name": "Last day of month for Sentry log",
         "type": "number",
         "unit": "",
         "read": true,
         "write": false,
         "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "LastSentryLoggedError",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Last error sent by Sentry log",
+        "type": "string",
+        "unit": "",
+        "read": true,
+        "write": false,
+        "def": "unknown"
       },
       "native": {}
     },
