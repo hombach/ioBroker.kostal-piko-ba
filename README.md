@@ -24,7 +24,7 @@ It's greatly appreciated if you verify functionality with other inverters and pl
 Be aware that your Piko or Piko BA inverter has to be updated to Kostal UI >= 6.11!
 To connect to the Kostal Pico (BA / MP plus) inverter, setting its IP-address in the config is mandatory.
 You could also edit the update frequencies of live data, daily and livetime statistics.
-If needed, set the mark for read-out of the 4 analog values, too.
+If needed and supoported by your hardware, set the mark for read-out of the 4 analog values, too.
 
 ## Notes
 This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers. For more details and for informations on how to disable the error reporting see [Sentry-Plugin Documentation](https://github.com/ioBroker/plugin-sentry#plugin-sentry)! Sentry reporting is used starting with js-controller 3.0.
