@@ -321,10 +321,7 @@ class KostalPikoBA extends utils.Adapter {
             })
             .catch(error => {
                 if (error.response) { //get HTTP error code
-                    if (error.response == 404) {
-                        this.log.error(`HTTP error 404 when calling Piko(-BA) API for general info: ${error.response.status}`);
-                    }
-                this.log.error(`HTTP error when calling Piko(-BA) API for general info: ${error.response.status}`);
+                    this.log.error(`HTTP error ${error.response} when calling Piko(-BA) API for general info: ${error.response.status}`);
                 } else {
                     this.log.error(`Unknown error when calling Piko(-BA) API for general info: ${error.message}`);
                     this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0)`);
@@ -376,7 +373,6 @@ class KostalPikoBA extends utils.Adapter {
                     this.log.error(`Error when calling Piko MP API with axios for general info: ${error}`);
                 });
         }
-
     } // END ReadPikoOnce
    
 
@@ -464,10 +460,7 @@ class KostalPikoBA extends utils.Adapter {
                 })
                 .catch(error => {
                     if (error.response) { //get HTTP error code
-                        if (error.response == 404) {
-                            this.log.error(`HTTP error 404 when polling Piko(-BA) API: ${error.response.status}`);
-                        }
-                        this.log.error(`HTTP error when polling Piko(-BA) API: ${error.response.status}`);
+                        this.log.error(`HTTP error ${error.response} when polling Piko(-BA) API: ${error.response.status}`);
                     } else {
                         this.log.error(`Unknown error when polling Piko(-BA) API: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e1)`);
@@ -532,7 +525,7 @@ class KostalPikoBA extends utils.Adapter {
                     });
                 })
                 .catch((error) => {
-                    this.log.error(`Error when calling Piko MP API with axios for general info: ${error}`);
+                    this.log.error(`Error when calling Piko MP API for general info: ${error}`);
                 });
 
 /*  Demo XML
@@ -543,13 +536,13 @@ class KostalPikoBA extends utils.Adapter {
 <root>
     <Device Name="PIKO 3.0-1 MP plus" Type="Inverter" Platform="Net16" HmiPlatform="HMI17" NominalPower="3000" UserPowerLimit="nan" CountryPowerLimit="nan" Serial=„XXXXXXXX" OEMSerial=„XXXXXXX“ BusAddress="1" NetBiosName="INV007034470001" WebPortal="PIKO Solar Portal" ManufacturerURL="kostal-solar-electric.com" IpAddress="192.168.188.68" DateTime="2023-02-27T15:28:41" MilliSeconds="873">
         <Measurements>
-OK          <Measurement Value="226.2" Unit="V" Type="AC_Voltage"/>
-OK          <Measurement Value="1.645" Unit="A" Type="AC_Current"/>
-OK          <Measurement Value="381.6" Unit="W" Type="AC_Power"/>
+            <Measurement Value="226.2" Unit="V" Type="AC_Voltage"/>
+            <Measurement Value="1.645" Unit="A" Type="AC_Current"/>
+            <Measurement Value="381.6" Unit="W" Type="AC_Power"/>
             <Measurement Value="374.2" Unit="W" Type="AC_Power_fast"/>
             <Measurement Value="50.000" Unit="Hz" Type="AC_Frequency"/>
-OK          <Measurement Value="344.9" Unit="V" Type="DC_Voltage"/>
-OK          <Measurement Value="1.214" Unit="A" Type="DC_Current"/>
+            <Measurement Value="344.9" Unit="V" Type="DC_Voltage"/>
+            <Measurement Value="1.214" Unit="A" Type="DC_Current"/>
             <Measurement Value="343.3" Unit="V" Type="LINK_Voltage"/>
             <Measurement Unit="W" Type="GridPower"/>
             <Measurement Unit="W" Type="GridConsumedPower"/>
@@ -560,24 +553,8 @@ OK          <Measurement Value="1.214" Unit="A" Type="DC_Current"/>
     </Device>
 </root>
 
-
 <root>
 	<Device Name="PIKO 1.5-1 MP plus" Type="Inverter" Platform="Net16" HmiPlatform="HMI17" NominalPower="1500" UserPowerLimit="nan" CountryPowerLimit="nan" Serial="XXXXXXX" OEMSerial="XXXXXXX" BusAddress="2" NetBiosName="XXXXXX" WebPortal="XXXXXX" ManufacturerURL="XXXXX" IpAddress="192.192.192.192" DateTime="2020-07-04T18:57:34" MilliSeconds="237">
-		<Measurements>
-			<Measurement Value="235.1" Unit="V" Type="AC_Voltage" />
-			<Measurement Value="0.607" Unit="A" Type="AC_Current" />
-			<Measurement Value="131.1" Unit="W" Type="AC_Power" />
-			<Measurement Value="130.2" Unit="W" Type="AC_Power_fast" />
-			<Measurement Value="50.015" Unit="Hz" Type="AC_Frequency" />
-			<Measurement Value="259.2" Unit="V" Type="DC_Voltage" />
-			<Measurement Value="0.541" Unit="A" Type="DC_Current" />
-			<Measurement Value="351.8" Unit="V" Type="LINK_Voltage" />
-			<Measurement Unit="W" Type="GridPower" />
-			<Measurement Unit="W" Type="GridConsumedPower" />
-			<Measurement Unit="W" Type="GridInjectedPower" />
-			<Measurement Unit="W" Type="OwnConsumedPower" />
-			<Measurement Value="100.0" Unit="%" Type="Derating" />
-		</Measurements>
 		<Events>
 			<Event Id="47" Message="Energymeter Communication timeout" Severity="Error" Type="User" Start="2022-07-02T12:26:11" End="2022-07-02T12:26:47" />
 		</Events>
@@ -605,7 +582,7 @@ OK          <Measurement Value="1.214" Unit="A" Type="DC_Current"/>
 </root>
 
 <root>
-    <Device Name='PIKO 3.0-2 MP plus' Type='Inverter' Platform='Net16' HmiPlatform='HMI17' NominalPower='3000' UserPowerLimit='2380' CountryPowerLimit='3000' Serial='AAAAAAAAAAAAAAAAAAAA' OEMSerial='00000000' BusAddress='1' NetBiosName='INV000000000000' WebPortal='PIKO Solar Portal' ManufacturerURL='kostal-solar-electric.com' IpAddress='192.192.192.192' DateTime='2022-02-02T02:02:02' MilliSeconds='999'>
+    <Device Name='PIKO 3.0-2 MP plus' Type='Inverter' Platform='Net16' HmiPlatform='HMI17' NominalPower='3000' UserPowerLimit='2380' CountryPowerLimit='3000' Serial='AAA' OEMSerial='000' BusAddress='1' NetBiosName='INV00000' WebPortal='PIKO Solar Portal' ManufacturerURL='kostal-solar-electric.com' IpAddress='192.192.192.192' DateTime='2022-02-02T02:02:02' MilliSeconds='999'>
         <Measurements>
             <Measurement Value='236.0' Unit='V' Type='AC_Voltage'/>
             <Measurement Unit='A' Type='AC_Current'/>
@@ -649,13 +626,11 @@ OK          <Measurement Value="1.214" Unit="A" Type="DC_Current"/>
         <State Value='Standby'/>
     </Device>
 </root>
-
 */
 
         } // END InverterAPIPikoMP
 
     } // END ReadPiko
-
 
 
     /****************************************************************************************
@@ -731,10 +706,7 @@ OK          <Measurement Value="1.214" Unit="A" Type="DC_Current"/>
                 })
                 .catch(error => {
                     if (error.response) { //get HTTP error code
-                        if (error.response == 404) {
-                            this.log.error(`HTTP error 404 when polling Piko(-BA) API: ${error.response.status}`);
-                        }
-                        this.log.error(`HTTP error when polling Piko(-BA) API: ${error.response.status}`);
+                        this.log.error(`HTTP error ${error.response} when polling Piko(-BA) API: ${error.response.status} !! (e2)`);
                     } else {
                         this.log.error(`Unknown error when polling Piko(-BA) API: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e2)`);
@@ -754,8 +726,7 @@ OK          <Measurement Value="1.214" Unit="A" Type="DC_Current"/>
                 }) // END catch
         } // END InverterAPIPiko
 
-       if (InverterAPIPikoMP) { // code for Piko MP Plus
-            // handled in ReadPiko() 
+        if (InverterAPIPikoMP) { // currently no code for Piko MP Plus - less data to poll , so handled in ReadPiko()
         } // END InverterAPIPikoMP
 
     } // END ReadPiko2
@@ -781,10 +752,7 @@ OK          <Measurement Value="1.214" Unit="A" Type="DC_Current"/>
                 })
                 .catch(error => {
                     if (error.response) { //get HTTP error code
-                        if (error.response == 404) {
-                            this.log.error(`HTTP error 404 when calling Piko(-BA) API for daily statistics: ${error.response.status}`);
-                        }
-                        this.log.error(`HTTP error when calling Piko(-BA) API for daily statistics: ${error.response.status}`);
+                        this.log.error(`HTTP error ${error.response} when polling Piko(-BA) API for daily statistics: ${error.response.status} !! (e3)`);
                     } else {
                         this.log.error(`Unknown error when calling Piko(-BA) API for daily statistics: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e3)`);
@@ -805,14 +773,14 @@ OK          <Measurement Value="1.214" Unit="A" Type="DC_Current"/>
         } // END InverterAPIPiko
 
         if (InverterAPIPikoMP) { // code for Piko MP Plus
-            // missing code - looks like there are no daily values for MP Plus inverters
+            // looks like there are no daily values for MP Plus inverters
         } // END InverterAPIPikoMP
 
         try {
             clearTimeout(adapterIntervals.daily);
             adapterIntervals.daily = setTimeout(this.ReadPikoDaily.bind(this), this.config.polltimedaily);
-        } catch (e) {
-            this.log.error(`Error in setting adapter schedule for daily statistics: ${e}`);
+        } catch (error) {
+            this.log.error(`Error in setting adapter schedule for daily statistics: ${error}`);
         } // END try catch
 
     } // END ReadPikoDaily
@@ -843,10 +811,7 @@ OK          <Measurement Value="1.214" Unit="A" Type="DC_Current"/>
                 })
                 .catch(error => {
                     if (error.response) { //get HTTP error code
-                        if (error.response == 404) {
-                            this.log.error(`HTTP error 404 when calling Piko(-BA) API for total statistics: ${error.response.status}`);
-                        }
-                        this.log.error(`HTTP error when calling Piko(-BA) API for total statistics: ${error.response.status}`);
+                        this.log.error(`HTTP error ${error.response} when polling Piko(-BA) API for total statistics: ${error.response.status} !! (e4)`);
                     } else {
                         this.log.error(`Unknown error when calling Piko(-BA) API for total statistics: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e4)`);
@@ -867,7 +832,6 @@ OK          <Measurement Value="1.214" Unit="A" Type="DC_Current"/>
         } // END InverterAPIPiko
 
         if (InverterAPIPikoMP) { // code for Piko MP Plus
-            // missing code 
             // @ts-ignore axios.get is valid
             axios.get(`http://${this.config.ipaddress}/yields.xml`, { transformResponse: (r) => r })
                 .then((response) => {
@@ -891,7 +855,7 @@ OK          <Measurement Value="1.214" Unit="A" Type="DC_Current"/>
                     });
                 })
                 .catch((error) => {
-                    this.log.error(`Error when calling Piko MP API with axios for general info: ${error}`);
+                    this.log.error(`Error when calling Piko MP API for general info: ${error}`);
                 });
         } // END InverterAPIPikoMP
 
@@ -903,7 +867,6 @@ OK          <Measurement Value="1.214" Unit="A" Type="DC_Current"/>
         } // END try catch
 
     } // END ReadPikoTotal
-
 
 } // END Class
 

@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "2.4.2",
+    "version": "2.4.3",
     "title": "Kostal PikoBA",
     "titleLang": {
       "en": "Kostal PikoBA",
@@ -45,18 +45,32 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "2.4.3": {
+        "en": "improved error handling",
+        "de": "verbesserte fehlerbehandlung",
+        "ru": "улучшенная обработка ошибок",
+        "pt": "melhor manipulação de erros",
+        "nl": "verbeterde fouten",
+        "fr": "amélioration de la manipulation des erreurs",
+        "it": "migliore gestione degli errori",
+        "es": "mejor manejo de errores",
+        "pl": "polepszenie błędów",
+        "uk": "поліпшення обробки помилок",
+        "zh-cn": "改进错误处理"
+      },
       "2.4.2": {
-        "en": "fixxed error in Piko MP Plus AC current; added Piko MP Plus total yield",
-        "de": "fehler in Piko MP behoben Plus AC Strom; hinzugefügt Piko MP Plus Gesamtertrag",
-        "ru": "исправлена ошибка в Piko MP Плюс AC ток; добавлен Piko MP Plus полная доходность",
-        "pt": "erro corrigido em Piko MP Mais corrente AC; adicionado Piko MP Plus rendimento total",
-        "nl": "quality over Quantity (QoQ) Releases Vertaling: Plus AC stroming, toegevoegd Piko MP Plus totale opbrengst",
-        "fr": "erreur corrigée dans Piko MP Plus courant alternatif; rendement total de Piko MP Plus ajouté",
-        "it": "errore corretto in Piko MP Più corrente AC; aggiunto Piko MP Plus rendimento totale",
-        "es": "error corregido en Piko MP Más corriente AC; añadido rendimiento total de Piko MP Plus",
-        "pl": "naprawić błąd w Piko Prędkość prądu zmiennego: Piko MP Plus total yield plus",
-        "uk": "виправлено помилку в Piko MP Плюс струм змінного струму; додано Piko MP Plus загальний урожай",
-        "zh-cn": "piko MP 错误 PlusingAC 目前;Piko MP Plus的总产量"
+        "en": "fixed error in Piko MP Plus AC current; added Piko MP Plus total yield",
+        "de": "fehler behoben in Piko MP Plus AC Strom; hinzugefügt Piko MP Plus Gesamtertrag",
+        "ru": "исправленная ошибка в Piko MP Плюс AC ток; добавлен Piko MP Plus полная доходность",
+        "pt": "erro fixo em Piko MP Mais corrente AC; adicionado Piko MP Plus rendimento total",
+        "nl": "in Piko MP Plus AC stroming, toegevoegd Piko MP Plus totale opbrengst",
+        "fr": "erreur fixe dans Piko MP Plus courant alternatif; rendement total de Piko MP Plus ajouté",
+        "it": "errore fisso in Piko MP Più corrente AC; aggiunto Piko MP Plus rendimento totale",
+        "es": "error fijo en Piko MP Más corriente AC; añadido rendimiento total de Piko MP Plus",
+        "pl": "uruchomiony błąd w Piko Prędkość prądu zmiennego: Piko MP Plus total yield plus",
+        "uk": "виправлена помилка в Piko MP Плюс струм змінного струму; додано Piko MP Plus загальний урожай",
+        "zh-cn": "piko MP PlusingAC 目前;Piko MP Plus的总产量"
+
       },
       "2.4.1": {
         "en": "added Piko MP Plus support for two channel hardware",

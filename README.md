@@ -31,10 +31,12 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 
 ## Changelog
 
-! Note that missing version entries are typically dependency updates for security.
+! Note that missing version entries are typically dependency updates for improved security.
 
+### 2.4.3 (03.04.2023)
+* (HombachC) improved error handling
 ### 2.4.2 (07.03.2023)
-* (HombachC) fixxed error in Piko MP Plus AC current
+* (HombachC) fixed error in Piko MP Plus AC current
 * (HombachC) added Piko MP Plus total yield
 ### 2.4.1 (06.03.2023)
 * (HombachC) fixed Piko MP Plus support for two channel hardware
