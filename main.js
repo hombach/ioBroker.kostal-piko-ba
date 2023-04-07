@@ -144,7 +144,7 @@ class KostalPikoBA extends utils.Adapter {
             if (!InverterAPIPiko && !InverterAPIPikoMP) { // no inverter type detected
                 this.log.error(`Error in in detecting Kostal inverter`);
                 this.log.info(`Stopping adapter`);
-                this.stop;
+                await this.stop;
             }
         }
 
