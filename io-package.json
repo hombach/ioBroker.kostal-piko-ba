@@ -71,19 +71,6 @@
         "uk": "поліпшення обробки помилок",
         "zh-cn": "改进错误处理"
       },
-      "2.4.3": {
-        "en": "improved error handling",
-        "de": "verbesserte fehlerbehandlung",
-        "ru": "улучшенная обработка ошибок",
-        "pt": "melhor manipulação de erros",
-        "nl": "verbeterde fouten",
-        "fr": "amélioration de la manipulation des erreurs",
-        "it": "migliore gestione degli errori",
-        "es": "mejor manejo de errores",
-        "pl": "polepszenie błędów",
-        "uk": "поліпшення обробки помилок",
-        "zh-cn": "改进错误处理"
-      },
       "2.4.2": {
         "en": "fixed error in Piko MP Plus AC current; added Piko MP Plus total yield",
         "de": "fehler behoben in Piko MP Plus AC Strom; hinzugefügt Piko MP Plus Gesamtertrag",
