@@ -838,7 +838,7 @@ class KostalPikoBA extends utils.Adapter {
         if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
             const sentryInstance = this.getPluginInstance('sentry');
             if (sentryInstance) {
-                var oldError = await this.getStateAsync('LastSentryLoggedError')
+                const oldError = await this.getStateAsync('LastSentryLoggedError')
                 if (oldError != sError) { // if new error
                     const Sentry = sentryInstance.getSentryObject();
                     Sentry && Sentry.withScope(scope => {
@@ -846,7 +846,7 @@ class KostalPikoBA extends utils.Adapter {
                         scope.setTag('Inverter', this.config.ipaddress);
                         scope.setTag('Inverter-Type', InverterType);
                         scope.setTag('Inverter-UI', InverterUIVersion);
-                        Sentry.captureMessage(`${sError} ALT ${oldError}`, 'info');
+                        Sentry.captureMessage(`${sError} ALT ${oldError?.val}`, 'info');
                     });
                     this.setStateAsync('LastSentryLoggedError', { val: sError, ack: true });
                 }
