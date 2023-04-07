@@ -153,7 +153,7 @@ class KostalPikoBA extends utils.Adapter {
             const sentryInstance = this.getPluginInstance('sentry');
             const today = new Date();
             var last = await this.getStateAsync('LastSentryLogDay')
-            if (last?.val != today.getDate()) {
+            if (last?.val != await today.getDate()) {
                 if (sentryInstance) {
                     const Sentry = sentryInstance.getSentryObject();
                     Sentry && Sentry.withScope(scope => {
@@ -164,8 +164,8 @@ class KostalPikoBA extends utils.Adapter {
                         scope.setTag('Inverter-UI', InverterUIVersion);
                         Sentry.captureMessage('Adapter kostal-piko-ba started', 'info'); // Level "info"
                     });
-                    this.setStateAsync('LastSentryLoggedError', { val: 'unknown', ack: true }); // Clean last error every adapter start
                 }
+                this.setStateAsync('LastSentryLoggedError', { val: 'unknown', ack: true }); // Clean last error every adapter start
                 this.setStateAsync('LastSentryLogDay', { val: today.getDate(), ack: true });
             }
         }
@@ -361,11 +361,7 @@ class KostalPikoBA extends utils.Adapter {
                 .catch(error => {
                     if (error.response) { //get HTTP error code
                         this.log.error(`HTTP error ${error.response.status} when calling Piko MP API for general info`);
-
                         this.SendSentryError(error.message);
-
-
-
                     } else {
                         this.log.error(`Unknown error when calling Piko MP API for general info: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0)`);
