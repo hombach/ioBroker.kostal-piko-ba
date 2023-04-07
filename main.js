@@ -322,7 +322,7 @@ class KostalPikoBA extends utils.Adapter {
             })
             .catch(error => {
                 if (error.response) { //get HTTP error code
-                    this.log.error(`HTTP error ${error.response} when calling Piko(-BA) API for general info: ${error.response.status}`);
+                    this.log.error(`HTTP error ${error.response.status} when calling Piko(-BA) API for general info`);
                 } else {
                     this.log.error(`Unknown error when calling Piko(-BA) API for general info: ${error.message}`);
                     this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0)`);
@@ -361,7 +361,12 @@ class KostalPikoBA extends utils.Adapter {
                 })
                 .catch(error => {
                     if (error.response) { //get HTTP error code
-                        this.log.error(`HTTP error ${error.response} when calling Piko MP API for general info: ${error.response.status}`);
+                        this.log.error(`HTTP error ${error.response.status} when calling Piko MP API for general info`);
+
+                        this.SendSentryError(error.message);
+
+
+
                     } else {
                         this.log.error(`Unknown error when calling Piko MP API for general info: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0)`);
@@ -456,7 +461,7 @@ class KostalPikoBA extends utils.Adapter {
                 })
                 .catch(error => {
                     if (error.response) { //get HTTP error code
-                        this.log.error(`HTTP error ${error.response} when polling Piko(-BA) API: ${error.response.status}`);
+                        this.log.error(`HTTP error ${error.response.status} when polling Piko(-BA) API`);
                     } else { //log error and send by sentry
                         this.log.error(`Unknown error when polling Piko(-BA) API: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e1)`);
@@ -511,7 +516,7 @@ class KostalPikoBA extends utils.Adapter {
                 })
                 .catch(error => {
                     if (error.response) { //get HTTP error code
-                        this.log.error(`HTTP error ${error.response} when polling Piko MP API: ${error.response.status}`);
+                        this.log.error(`HTTP error ${error.response.status} when polling Piko MP API`);
                     } else { //log error and send by sentry
                         this.log.error(`Unknown error when polling Piko MP API: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e1)`);
@@ -697,7 +702,7 @@ class KostalPikoBA extends utils.Adapter {
                 })
                 .catch(error => {
                     if (error.response) { //get HTTP error code
-                        this.log.error(`HTTP error ${error.response} when polling Piko(-BA) API: ${error.response.status} !! (e2)`);
+                        this.log.error(`HTTP error ${error.response.status} when polling Piko(-BA) API !! (e2)`);
                     } else {
                         this.log.error(`Unknown error when polling Piko(-BA) API: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e2)`);
@@ -732,7 +737,7 @@ class KostalPikoBA extends utils.Adapter {
                 })
                 .catch(error => {
                     if (error.response) { //get HTTP error code
-                        this.log.error(`HTTP error ${error.response} when polling Piko(-BA) API for daily statistics: ${error.response.status} !! (e3)`);
+                        this.log.error(`HTTP error ${error.response.status} when polling Piko(-BA) API for daily statistics!! (e3)`);
                     } else {
                         this.log.error(`Unknown error when calling Piko(-BA) API for daily statistics: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e3)`);
@@ -780,7 +785,7 @@ class KostalPikoBA extends utils.Adapter {
                 })
                 .catch(error => {
                     if (error.response) { //get HTTP error code
-                        this.log.error(`HTTP error ${error.response} when polling Piko(-BA) API for total statistics: ${error.response.status} !! (e4)`);
+                        this.log.error(`HTTP error ${error.response.status} when polling Piko(-BA) API for total statistics!! (e4)`);
                     } else {
                         this.log.error(`Unknown error when calling Piko(-BA) API for total statistics: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e4)`);
@@ -814,7 +819,7 @@ class KostalPikoBA extends utils.Adapter {
                 })
                 .catch(error => {
                     if (error.response) { //get HTTP error code
-                        this.log.error(`HTTP error ${error.response} when polling Piko MP API for total statistics: ${error.response.status} !! (e4)`);
+                        this.log.error(`HTTP error ${error.response.status} when polling Piko MP API for total statistics!! (e4)`);
                     } else {
                         this.log.error(`Unknown error when calling Piko MP API for total statistics: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e4)`);
