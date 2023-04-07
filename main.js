@@ -838,7 +838,7 @@ class KostalPikoBA extends utils.Adapter {
         if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
             const sentryInstance = this.getPluginInstance('sentry');
             if (sentryInstance) {
-                var oldError = await this.getStateAsync('LastSentryLogError')
+                var oldError = await this.getStateAsync('LastSentryLoggedError')
                 if (oldError != sError) { // if new error
                     const Sentry = sentryInstance.getSentryObject();
                     Sentry && Sentry.withScope(scope => {
