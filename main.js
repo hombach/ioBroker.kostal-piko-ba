@@ -834,7 +834,7 @@ class KostalPikoBA extends utils.Adapter {
 
 
     /*****************************************************************************************/
-    async SendSentryError(sError) {
+    SendSentryError(sError) {
         if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
             const sentryInstance = this.getPluginInstance('sentry');
             if (sentryInstance) {
