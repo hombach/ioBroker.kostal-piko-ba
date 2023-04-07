@@ -846,7 +846,7 @@ class KostalPikoBA extends utils.Adapter {
                         scope.setTag('Inverter', this.config.ipaddress);
                         scope.setTag('Inverter-Type', InverterType);
                         scope.setTag('Inverter-UI', InverterUIVersion);
-                        Sentry.captureMessage(sError, 'info');
+                        Sentry.captureMessage(`${sError} ALT ${oldError}`, 'info');
                     });
                     this.setStateAsync('LastSentryLoggedError', { val: sError, ack: true });
                 }
