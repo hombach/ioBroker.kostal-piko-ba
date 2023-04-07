@@ -142,9 +142,31 @@ class KostalPikoBA extends utils.Adapter {
             await resolveAfterXSeconds(5);
             this.log.debug(`Initial read of general info for inverter IP ${this.config.ipaddress} done`);
             if (!InverterAPIPiko && !InverterAPIPikoMP) { // no inverter type detected
-                this.log.error(`Error in in detecting Kostal inverter`);
+                this.log.error(`Error in detecting Kostal inverter`);
                 this.log.info(`Stopping adapter`);
                 await this.stop;
+            }
+        }
+
+        //sentry.io ping
+        if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
+            const sentryInstance = this.getPluginInstance('sentry');
+            const today = new Date();
+            var last = await this.getStateAsync('LastSentryLogDay')
+            if (last?.val != today.getDate()) {
+                if (sentryInstance) {
+                    const Sentry = sentryInstance.getSentryObject();
+                    Sentry && Sentry.withScope(scope => {
+                        scope.setLevel('info');
+                        scope.setTag('SentryDay', today.getDate());
+                        scope.setTag('Inverter', this.config.ipaddress);
+                        scope.setTag('Inverter-Type', InverterType);
+                        scope.setTag('Inverter-UI', InverterUIVersion);
+                        Sentry.captureMessage('Adapter kostal-piko-ba started', 'info'); // Level "info"
+                    });
+                    this.setStateAsync('LastSentryLoggedError', { val: 'unknown', ack: true }); // Clean last error every adapter start
+                }
+                this.setStateAsync('LastSentryLogDay', { val: today.getDate(), ack: true });
             }
         }
 
@@ -177,29 +199,6 @@ class KostalPikoBA extends utils.Adapter {
             this.log.warn(`Polltime alltime statistics should be min. double of daily poll - will be set to ${(this.config.polltimetotal / 1000)} seconds`);
         }
         this.log.info(`Polltime alltime statistics set to: ${(this.config.polltimetotal / 1000)} seconds`);
-
-
-        //sentry.io ping
-        if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
-            const sentryInstance = this.getPluginInstance('sentry');
-            const today = new Date();
-            var last = await this.getStateAsync('LastSentryLogDay')
-            if (last?.val != today.getDate()) {
-                if (sentryInstance) {
-                    const Sentry = sentryInstance.getSentryObject();
-                    Sentry && Sentry.withScope(scope => {
-                        scope.setLevel('info');
-                        scope.setTag('SentryDay', today.getDate());
-                        scope.setTag('Inverter', this.config.ipaddress);
-                        scope.setTag('Inverter-Type', InverterType);
-                        scope.setTag('Inverter-UI', InverterUIVersion);
-                        Sentry.captureMessage('Adapter kostal-piko-ba started', 'info'); // Level "info"
-                    });
-                    this.setStateAsync('LastSentryLoggedError', { val: 'unknown', ack: true }); // Clean last error every adapter start
-                }
-                this.setStateAsync('LastSentryLogDay', { val: today.getDate(), ack: true });
-            }
-        }
 
         // this.subscribeStates('*'); // all state changes inside the adapters namespace are subscribed
 
