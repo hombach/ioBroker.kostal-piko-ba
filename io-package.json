@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "2.4.5",
+    "version": "2.4.6",
     "titleLang": {
       "en": "Kostal PikoBA",
       "de": "Kostal PikoBA",
@@ -44,20 +44,20 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
-      "2.4.5": {
-        "en": "improved error handling",
-        "de": "verbesserte fehlerbehandlung",
-        "ru": "улучшенная обработка ошибок",
-        "pt": "melhor manipulação de erros",
-        "nl": "verbeterde fouten",
-        "fr": "amélioration de la manipulation des erreurs",
-        "it": "migliore gestione degli errori",
-        "es": "mejor manejo de errores",
-        "pl": "polepszenie błędów",
-        "uk": "поліпшення обробки помилок",
-        "zh-cn": "改进错误处理"
+      "2.4.6": {
+        "en": "fixed vulnerability in xml2js",
+        "de": "feste sicherheitslücke in xml2js",
+        "ru": "фиксированная уязвимость в xml2js",
+        "pt": "vulnerabilidade fixa em xml2js",
+        "nl": "quality over quantity (qoq) releases vertaling:",
+        "fr": "vulnérabilité fixe en xml2js",
+        "it": "vulnerabilità fissa in xml2js",
+        "es": "vulnerabilidad fija en xml2js",
+        "pl": "stała podatność na xml2js",
+        "uk": "фіксована вразливість в xml2js",
+        "zh-cn": "×ml2j中的固定脆弱性"
       },
-      "2.4.4": {
+      "2.4.5": {
         "en": "improved error handling",
         "de": "verbesserte fehlerbehandlung",
         "ru": "улучшенная обработка ошибок",
@@ -82,7 +82,6 @@
         "pl": "uruchomiony błąd w Piko Prędkość prądu zmiennego: Piko MP Plus total yield plus",
         "uk": "виправлена помилка в Piko MP Плюс струм змінного струму; додано Piko MP Plus загальний урожай",
         "zh-cn": "piko MP PlusingAC 目前;Piko MP Plus的总产量"
-
       },
       "2.4.1": {
         "en": "added Piko MP Plus support for two channel hardware",

@@ -361,7 +361,6 @@ class KostalPikoBA extends utils.Adapter {
                 .catch(error => {
                     if (error.response) { //get HTTP error code
                         this.log.error(`HTTP error ${error.response.status} when calling Piko MP API for general info`);
-                        this.SendSentryError(error.message);
                     } else {
                         this.log.error(`Unknown error when calling Piko MP API for general info: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0)`);
@@ -846,7 +845,7 @@ class KostalPikoBA extends utils.Adapter {
                         scope.setTag('Inverter', this.config.ipaddress);
                         scope.setTag('Inverter-Type', InverterType);
                         scope.setTag('Inverter-UI', InverterUIVersion);
-                        Sentry.captureMessage(`${sError} ALT ${oldError?.val}`, 'info');
+                        Sentry.captureMessage(`Catched error: ${sError}`, 'info');
                     });
                     this.setStateAsync('LastSentryLoggedError', { val: sError, ack: true });
                 }
