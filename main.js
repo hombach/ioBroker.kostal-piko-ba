@@ -847,6 +847,10 @@ class KostalPikoBA extends utils.Adapter {
                         scope.setTag('Inverter-UI', InverterUIVersion);
                         Sentry.captureMessage(`Catched error: ${sError}`, 'info');
                     });
+                    // errors: 'Unexpected end of JSON input' 'read ECONNRESET'
+                    //         'ETIMEDOUT 192.168.178.74:80' 'read ETIMEDOUT'
+                    //         'connect ECONNREFUSED 192.168.0.120:80' 'connect ENETUNREACH 192.168.178.74:80'
+                    //         'connect ETIMEDOUT 192.168.178.40:80' 'connect EHOSTUNREACH 192.168.178.40:80'
                     this.setStateAsync('LastSentryLoggedError', { val: sError, ack: true });
                 }
             }
