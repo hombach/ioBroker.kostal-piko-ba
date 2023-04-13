@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "2.4.6",
+    "version": "2.4.7",
     "titleLang": {
       "en": "Kostal PikoBA",
       "de": "Kostal PikoBA",
@@ -44,6 +44,19 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "2.4.7": {
+        "en": "improved error handling",
+        "de": "verbesserte fehlerbehandlung",
+        "ru": "улучшенная обработка ошибок",
+        "pt": "melhor manipulação de erros",
+        "nl": "verbeterde fouten",
+        "fr": "amélioration de la manipulation des erreurs",
+        "it": "migliore gestione degli errori",
+        "es": "mejor manejo de errores",
+        "pl": "polepszenie błędów",
+        "uk": "поліпшення обробки помилок",
+        "zh-cn": "改进错误处理"
+      },
       "2.4.6": {
         "en": "fixed vulnerability in xml2js",
         "de": "feste sicherheitslücke in xml2js",
@@ -264,19 +277,6 @@
         "pl": "dodać baterię. Voltage; dodano dodatkową obsługę błędów",
         "uk": "додано акумулятор. Напруга; додано додатковий обробник помилок",
         "zh-cn": "新增电池。 引言"
-      },
-      "1.1.1": {
-        "en": "minor documentation tweaks; DC current accuracy changed to mA",
-        "de": "kleinere Dokumentationstweaks; Gleichstromgenauigkeit geändert in mA",
-        "ru": "мелкие твики документации; точность постоянного тока изменена в mA",
-        "pt": "pequenos ajustes de documentação; A precisão da corrente DC mudou para mA",
-        "nl": "dC huidige nauwkeurigheid veranderde in MAA",
-        "fr": "tweaks de documentation mineure; précision du courant continu changée en mA",
-        "it": "tweak di documentazione minore; accuratezza corrente DC cambiata in mA",
-        "es": "tweaks de documentación menor; la precisión actual de DC cambió a mA",
-        "pl": "ciężkie poprawki dokumentacji; dokładność DC zmieniła się na mA",
-        "uk": "незначна документація твік; точність струму постійного струму постійного струму змінено до мА",
-        "zh-cn": "微小的文件库瓦克;发展中国家目前准确性已改变为AmA"
       },
       "1.1.0": {
         "en": "added battery.ChargeCycles; battery.temperature; DC1-3 Current, Voltage and Power",

@@ -263,6 +263,7 @@ class KostalPikoBA extends utils.Adapter {
             await this.Scheduler();
             this.log.debug(`Initial ReadPiko done`);
         } else {
+            this.log.error(`No IP address configured, adapter is shutting down`);
             this.stop;
         }
     }
@@ -360,7 +361,19 @@ class KostalPikoBA extends utils.Adapter {
                 })
                 .catch(error => {
                     if (error.response) { //get HTTP error code
-                        this.log.error(`HTTP error ${error.response.status} when calling Piko MP API for general info`);
+                        switch (error.response.status) {
+                            case 401:
+                                this.SendSentryError(error.message);
+                                this.log.error(`The Inverter request has not been completed because it lacks valid authentication credentials.`);
+                                this.log.error(`HTTP error 401 when calling Piko MP API for general info`);
+                                this.log.error(`Authenticated access is not supported so far by Kostal Adapter`);
+                                this.log.error(`Please provide feedback in GitHub to get this done`);
+                                this.log.error(`Adapter is shutting down`);
+                                this.stop;
+                                break;
+                            default:
+                                this.log.error(`HTTP error ${error.response.status} when calling Piko MP API for general info`);
+                        }
                     } else {
                         this.log.error(`Unknown error when calling Piko MP API for general info: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0)`);
