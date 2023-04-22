@@ -454,9 +454,11 @@ class KostalPikoBA extends utils.Adapter {
                         this.setStateAsync('Battery.SoC', { val: result[16].value, ack: true });
                         if (result[18].value) { // result[18] = 'Battery current direction; 1=Load; 0=Unload'
                             this.setStateAsync('Battery.Current', { val: result[17].value, ack: true });
+                            this.setStateAsync('Battery.Power', { val: Math.round(result[14].value * result[17].value), ack: true });
                         }
                         else { // discharge
                             this.setStateAsync('Battery.Current', { val: result[17].value * -1, ack: true });
+                            this.setStateAsync('Battery.Power', { val: Math.round(result[14].value * result[17].value * -1), ack: true });
                         }
                     }
                     this.setStateAsync('Power.Surplus', { val: Math.round(result[1].value - result[11].value), ack: true });
