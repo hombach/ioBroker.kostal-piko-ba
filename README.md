@@ -33,6 +33,8 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 
 ! Note that missing version entries are typically dependency updates for improved security.
 
+### 2.5.0 (22.04.2023)
+* (HombachC) implemented battery power calculation
 ### 2.4.7 (13.04.2023)
 * (HombachC) improved error handling
 ### 2.4.6 (09.04.2023)

@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "2.4.7",
+    "version": "2.5.0",
     "titleLang": {
       "en": "Kostal PikoBA",
       "de": "Kostal PikoBA",
@@ -44,9 +44,22 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "2.5.0": {
+        "en": "implemented battery power calculation",
+        "de": "integriert Batteriestromberechnung",
+        "ru": "реализованный расчет мощности батареи",
+        "pt": "cálculo de energia da bateria implementada",
+        "nl": "vertaling:",
+        "fr": "le calcul de la puissance de batterie",
+        "it": "calcolo della potenza della batteria",
+        "es": "cálculo de batería implementado",
+        "pl": "kalkulacja",
+        "uk": "реалізований розрахунок потужності акумулятора",
+        "zh-cn": "实施电池电计算"
+      },
       "2.4.7": {
         "en": "improved error handling",
-        "de": "verbesserte fehlerbehandlung",
+        "de": "verbesserte Fehlerbehandlung",
         "ru": "улучшенная обработка ошибок",
         "pt": "melhor manipulação de erros",
         "nl": "verbeterde fouten",
@@ -59,7 +72,7 @@
       },
       "2.4.6": {
         "en": "fixed vulnerability in xml2js",
-        "de": "feste sicherheitslücke in xml2js",
+        "de": "beseitigt Sicherheitslücke in xml2js",
         "ru": "фиксированная уязвимость в xml2js",
         "pt": "vulnerabilidade fixa em xml2js",
         "nl": "quality over quantity (qoq) releases vertaling:",
@@ -72,7 +85,7 @@
       },
       "2.4.5": {
         "en": "improved error handling",
-        "de": "verbesserte fehlerbehandlung",
+        "de": "verbesserte Fehlerbehandlung",
         "ru": "улучшенная обработка ошибок",
         "pt": "melhor manipulação de erros",
         "nl": "verbeterde fouten",
@@ -111,7 +124,7 @@
       },
       "2.4.0": {
         "en": "added support of AC and DC power values for Piko MP inverters",
-        "de": "unterstützung von AC- und DC-Leistungswerten für Piko MP-Wechselrichter",
+        "de": "Unterstützung von AC- und DC-Leistungswerten für Piko MP-Wechselrichter",
         "ru": "добавлена поддержка силовых ценностей AC и DC для инверторов Piko MP",
         "pt": "suporte adicional de valores de energia AC e DC para inversores Piko MP",
         "nl": "voegde ondersteuning van AC en DC krachtwaarden toe voor Piko MP inverters",
@@ -1065,6 +1078,20 @@
         "name": "Battery voltage",
         "type": "number",
         "unit": "V",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "Battery.Power",
+      "type": "state",
+      "common": {
+        "role": "value.power",
+        "name": "Battery power",
+        "type": "number",
+        "unit": "W",
         "read": true,
         "write": false,
         "def": 0
