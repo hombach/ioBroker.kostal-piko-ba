@@ -303,19 +303,6 @@
         "pl": "dodać baterię. ChargeCycles; bateria temperatura; DC1-3 Current, Voltage i Power",
         "uk": "додано акумулятор. ChargeCycles; акумулятор.температура; DC1-3 Поточний, напруга та потужність",
         "zh-cn": "新增电池。 档案;电池组;DC1-3 目前,动产和电力"
-      },
-      "1.0.2": {
-        "en": "public release for stable repo",
-        "de": "öffentliche freigabe für stabile repo",
-        "ru": "публичный релиз для стабильного репо",
-        "pt": "lançamento público para repo estável",
-        "nl": "publieke vrijlating voor stabiele vergoeding",
-        "fr": "dissémination publique pour une repo stable",
-        "it": "rilascio pubblico per ripasso stabile",
-        "es": "public release for stable repo",
-        "pl": "wydanie specjalne",
-        "uk": "публічний реліз стабільної репо",
-        "zh-cn": "公开释放稳定藏匿"
       }
     },
     "main": "main.js",
