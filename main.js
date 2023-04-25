@@ -397,7 +397,11 @@ class KostalPikoBA extends utils.Adapter {
                     // access parsed JSON response data using response.data field
                     this.log.debug(`Piko-BA live data 1 update - Kostal response data: ${response.data}`);
                     var result = JSON.parse(response.data).dxsEntries;
-                    this.setStateAsync('Power.SolarDC', { val: Math.round(result[0].value), ack: true });
+                    if (result[0].value) {
+                        this.setStateAsync('Power.SolarDC', { val: Math.round(result[0].value), ack: true });
+                    } else {
+                        this.setStateAsync('Power.SolarDC', { val: 0, ack: true });
+                    }
                     this.setStateAsync('Power.GridAC', { val: Math.round(result[1].value), ack: true });
                     if (result[4].value) {
                         this.setStateAsync('Power.DC1Power', { val: Math.round(result[2].value), ack: true });
