@@ -859,11 +859,13 @@ class KostalPikoBA extends utils.Adapter {
                 const oldError = await this.getStateAsync('LastSentryLoggedError')
                 if (oldError?.val != sError) { // if new error
                     const Sentry = sentryInstance.getSentryObject();
-                    Sentry && Sentry.withScope(scope => {
+                    var date = new Date();
+		    Sentry && Sentry.withScope(scope => {
                         scope.setLevel('info');
                         scope.setTag('Inverter', this.config.ipaddress);
                         scope.setTag('Inverter-Type', InverterType);
                         scope.setTag('Inverter-UI', InverterUIVersion);
+			scope.setTag('Hour of event', date.getHours());
                         Sentry.captureMessage(`Catched error: ${sError}`, 'info');
                     });
                     // errors: 'Unexpected end of JSON input' 'read ECONNRESET'
