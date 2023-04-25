@@ -89,8 +89,8 @@ var InverterAPIPiko = false;        // Inverter API of Piko or Piko BA inverters
 var InverterAPIPikoMP = false;      // Inverter API of Piko MP inverters; Kostal PIKO 3.0-1 MP plus
 var InverterUIVersion  = 'unknown'; // Inverter UI Version
 var KostalRequestOnce  = '';        // IP request-string for one time request of system type etc.
-var KostalRequest1     = '';        // IP request-string 1 for PicoBA current data
-var KostalRequest2     = '';        // IP request-string 2 for PicoBA current data
+var KostalRequest1     = '';        // IP request-string 1 for Pico live data
+var KostalRequest2     = '';        // IP request-string 2 for Pico live data
 var KostalRequestDay   = '';        // IP request-string for PicoBA daily statistics
 var KostalRequestTotal = '';        // IP request-string for PicoBA total statistics
 
@@ -332,11 +332,11 @@ class KostalPikoBA extends utils.Adapter {
 
         await resolveAfterXSeconds(2);
 
-        if (InverterAPIPiko) { // no inverter type detected yet
+        if (InverterAPIPiko) { // inverter type detected yet
             this.log.info(`Detected inverter type: ${InverterType}`);
         } else {
             this.log.warn(`Error in polling with Piko(-BA)-API: ${InverterType}`);
-            this.log.info(`Trying to find inverter with Piko-MP-API`);
+            this.log.info(`Trying to detect inverter with Piko-MP-API`);
         }
 
         if (!InverterAPIPiko) { // no inverter type detected yet -> try to detect Piko MP Inverter
@@ -404,8 +404,10 @@ class KostalPikoBA extends utils.Adapter {
                     }
                     if (result[1].value) {
                     	this.setStateAsync('Power.GridAC', { val: Math.round(result[1].value), ack: true });
+	                this.setStateAsync('Power.Surplus', { val: Math.round(result[1].value - result[11].value), ack: true });
 		    } else {
                     	this.setStateAsync('Power.GridAC', { val: 0, ack: true });
+	                this.setStateAsync('Power.Surplus', { val: 0, ack: true });
 		    }
 		    if (result[4].value) {
                         this.setStateAsync('Power.DC1Power', { val: Math.round(result[2].value), ack: true });
@@ -469,8 +471,7 @@ class KostalPikoBA extends utils.Adapter {
                             this.setStateAsync('Battery.Power', { val: Math.round(result[14].value * result[17].value * -1), ack: true });
                         }
                     }
-                    this.setStateAsync('Power.Surplus', { val: Math.round(result[1].value - result[11].value), ack: true });
-                    if (result.length >= 20) { // not existent for Piko3.0 or if no limitation defined!?!?!
+                    if (result.length >= 20) { // not existent for Piko3.0 or if no limitation defined
                         this.setStateAsync('GridLimitation', { val: result[19].value, ack: true });
                     } else {
                         this.setStateAsync('GridLimitation', { val: 100, ack: true });
@@ -664,7 +665,7 @@ class KostalPikoBA extends utils.Adapter {
 
         if (InverterAPIPikoMP) { // code for Piko MP Plus
             // looks like there are no daily values for MP Plus inverters
-        } // END InverterAPIPikoMP
+        }
 
         try {
             clearTimeout(adapterIntervals.daily);
