@@ -56,8 +56,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Run local tests
-      - run: npm ci
+      - name: Local Tests
+        run: npm ci
       - run: npm run build --if-present
       - run: npm run test:integration --if-present
       - run: npm test
@@ -83,11 +83,10 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Run local tests
+      - name: Downgrade npm
         #         npm downgrade to 6 (mainly for node.js 16) is needed because else testing fails
         #         after installing additional adapters
-        run: |
-          npm install -g npm@6
+        run: npm install -g npm@6
 
       - run: npm ci
       - run: npm run build --if-present
