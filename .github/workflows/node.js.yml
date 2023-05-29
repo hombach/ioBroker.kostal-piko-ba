@@ -31,8 +31,7 @@ jobs:
 
       - name: Build
         run: npm run build --if-present
-        run: npm run test:integration --if-present
-     - name: FastTest
+      - name: FastTest
         run: npm test
 
 #      - name: Perform a type check
