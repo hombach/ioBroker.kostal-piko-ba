@@ -30,7 +30,10 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build
+        run: npm run build --if-present
+        run: npm run test:integration --if-present
+     - name: FastTest
+        run: npm test
 
 #      - name: Perform a type check
 #        run: npm run check:ts
@@ -42,7 +45,7 @@ jobs:
 #        run: npm run test:package
 
   # Runs adapter tests on all supported node versions and OSes
-  build:
+  adapter-tests:
     if: contains(github.event.head_commit.message, '[skip ci]') == false
 
     needs: [check-and-lint]
