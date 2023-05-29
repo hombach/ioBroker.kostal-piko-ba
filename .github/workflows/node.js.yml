@@ -11,7 +11,7 @@ on:
 
 jobs:
   # Performs quick checks before the expensive test runs
-  check-and-lint:
+  quicktest:
     if: contains(github.event.head_commit.message, '[skip ci]') == false
 
     runs-on: ubuntu-latest
@@ -31,28 +31,46 @@ jobs:
 
       - name: Build
         run: npm run build --if-present
-      - name: FastTest
+      - name: QuickTest
         run: npm test
 
-#      - name: Perform a type check
-#        run: npm run check:ts
-#        env:
-#          CI: true
-#      - name: Lint TypeScript code
-#        run: npm run lint
-#      - name: Test package files
-#        run: npm run test:package
 
-  # Runs adapter tests on all supported node versions and OSes
+  # Runs adapter tests on all supported new node versions and OSes
   adapter-tests:
     if: contains(github.event.head_commit.message, '[skip ci]') == false
-
-    needs: [check-and-lint]
+    needs: [quicktest]
 
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [16.x, 18.x]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3.6.0
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run local tests
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm run test:integration --if-present
+      - run: npm test
+
+  # Runs adapter tests on all supported new node versions and OSes
+  adapter-tests-legacy:
+    if: contains(github.event.head_commit.message, '[skip ci]') == false
+    needs: [quicktest]
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node-version: [14.x]
         os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
