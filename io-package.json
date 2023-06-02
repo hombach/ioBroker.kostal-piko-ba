@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "2.5.1",
+    "version": "2.5.2",
     "titleLang": {
       "en": "Kostal PikoBA",
       "de": "Kostal PikoBA",
@@ -44,6 +44,19 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "2.5.2": {
+        "en": "fixed a wording error, bumped dependencies, added tests for node.js 20",
+        "de": "verbessern eines wording-Fehlers, Abhängigkeiten aktualisiert, Tests für node.js 20 hinzugefügt",
+        "ru": "исправлена ошибка формулировки, сбитые зависимости, добавлены тесты для node.js 20",
+        "pt": "corrigiu um erro de redação, dependências colhidas, testes adicionais para node.js 20",
+        "nl": "een woordfout gerepareerd, afhankelijke, toegevoegde testen voor node",
+        "fr": "a corrigé une erreur de libellé, dépendances par bosse, tests ajoutés pour node.js 20",
+        "it": "fisso un errore di wording, dipendenze urtate, test aggiunti per node.js 20",
+        "es": "solucionó un error de redacción, dependencias con problemas, pruebas agregadas para node.js 20",
+        "pl": "uruchomiono błędy, zderzeniowe zależności, dodano testy dla węzła 20.js",
+        "uk": "виправлено помилку словосполучення, збиті залежності, додані тести для node.js 20",
+        "zh-cn": "固定的措词错误、倾销的依赖性,增加了对第20js号的试验。"
+      },
       "2.5.1": {
         "en": "fixed a sentry reported error",
         "de": "durch Sentry gemeldeten Fehler behoben",
@@ -212,19 +225,6 @@
         "pl": "usunięte gulp, dodane testy dla węzła.js 18, usunięte testy dla węzła.js 12->>>>. zalecana jest swich do węzła.js 14, dostosowując się do węzła. 12",
         "uk": "remove gulp, додані тести для node.js 18, видалені тести для node.js 12 -> вона рекомендована для swich до node.js 14, адаптер все ще працює з вершиною 12 хв",
         "zh-cn": "删除了gulp,为第18js号开除试验,取消对第12- 条的试验。 它建议使人不敢于14岁,更适应者仍然没有工作。 12"
-      },
-      "1.4.3": {
-        "en": "normalizing of analog values added",
-        "de": "normalisierung der analogwerte",
-        "ru": "нормализации добавленных аналоговых значений",
-        "pt": "normalização de valores analógicos adicionados",
-        "nl": "vertaling:",
-        "fr": "normalisation des valeurs analogiques ajoutées",
-        "it": "normalizzazione dei valori analogici aggiunti",
-        "es": "normalización de los valores analógicos añadidos",
-        "pl": "normalizowanie wartości analogowych dodaje się do normalizacji",
-        "uk": "нормалізація аналогових значень",
-        "zh-cn": "类似价值的正常化"
       },
       "1.4.2": {
         "en": "added support for inverter type, version and name; fixed timing error",

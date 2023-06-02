@@ -33,6 +33,10 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 
 ! Note that missing version entries are typically dependency updates for improved security.
 
+### 2.5.2 (25.04.2023)
+* (HombachC) fixed a wording error
+* (HombachC) bumped dependencies, added tests for node.js 20
+* (HombachC) it's recommended to switch to minimum node.js 16, adapter still working with node 14
 ### 2.5.1 (25.04.2023)
 * (HombachC) fixed a sentry reported error
 ### 2.5.0 (22.04.2023)
