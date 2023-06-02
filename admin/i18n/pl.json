@@ -1,0 +1,74 @@
+{
+    "Standard settings": "",
+    "Analog settings": "",
+    "template adapter settings": "",
+    "ipaddress": "",
+    "polltimelive": "",
+    "polltimedaily": "",
+    "polltimetotal": "",
+    "readanalogs": "",
+    "normAnalogs": "",
+    "normAn1Min": "",
+    "normAn1Max": "",
+    "normAn2Min": "",
+    "normAn2Max": "",
+    "normAn3Min": "",
+    "normAn3Max": "",
+    "normAn4Min": "",
+    "normAn4Max": ""
+}
+    'Standard settings': {
+        "es": "Configuración estándar",
+        "pl": "Ustawienia standardowe",
+        "uk": "Стандартні налаштування",
+        "zh-cn": "标准设置"
+    'Analog settings': {
+        "es": "Ajustes para entradas analógicas",
+        "pl": "Ustawienia wejść analogowych",
+        "uk": "Налаштування аналогових входів",
+        "zh-cn": "模拟输入设置"
+    'template adapter settings': {
+        "es": "Ajustes del adaptador para Kostal Piko BA",
+        "pl": "Ustawienia adaptera dla Kostal Piko BA",
+        "uk": "Параметри адаптера для Kostal Piko BA",
+        "zh-cn": "Kostal Piko BA的适配器设置"
+    'ipaddress': {
+        "es": "Dirección IP de su Kostal Piko (como 192.168.100.33 sin direcciones HTTP u otros textos)",
+        "pl": "IP adres your Kostal Piko (podobnie jak 192.168.100.33)",
+        "uk": "IP-адреса вашого Костального Піко (наприклад, 192.168.100.33 No HTTP-розсувки або інші тексти)",
+        "zh-cn": "IP地址:Yostal Piko (192.168.100.33号HTTP-adresses或其他文本)"
+    'polltimelive': {
+        "es": "Tiempo entre las encuestas de datos de inverter [ms] - Mínimo 5000",
+        "pl": "Czas pomiędzy badaniami danych od inwergencji (ms) – Minimum 5000",
+        "uk": "Час між опитуваннями даних з інвертора [ms] - мінімум 5000",
+        "zh-cn": "B. 不同[产品]的数据污染的时间-最低限度5000"
+    'polltimedaily': {
+        "es": "Tiempo entre sondeos de datos de las estadísticas diarias del inversor [ms]",
+        "pl": "Czas między odpytaniami danych z dziennych statystyk falownika [ms]",
+        "uk": "Час між опитуваннями даних з щоденної статистики інвертора [ms]",
+        "zh-cn": "逆变器每日统计数据轮询之间的时间[ms]"
+    'polltimetotal': {
+        "es": "Tiempo entre sondeos de datos de estadísticas de tiempo del inversor [ms]",
+        "pl": "Czas między odpytywaniem danych ze statystyk całego czasu falownika [ms]",
+        "uk": "Час між даними опитування з інверторної статистики часу [ms]",
+        "zh-cn": "来自逆变器常时统计的数据轮询之间的时间[ms]"
+    'readanalogs': {
+        "es": "Leer los 4 valores de entrada analógica en V (0-10 V; 10 bits)",
+        "pl": "Odczyt wszystkich 4 analogowych wartości wejściowych w V (0-10V; 10bit)",
+        "uk": "Read-Out всі 4 аналогові значення введення в V (0-10V; 10bit)",
+        "zh-cn": "以 V 为单位读出所有 4 个模拟输入值（0-10V；10 位）"
+    'normAnalogs': {
+        "es": "Normalizando 0V al valor mínimo y 10V al valor máximo",
+        "pl": "Normalizacja 0V do wartości minimalnej i 10V do wartości maksymalnej",
+        "uk": "Нормалізація 0В до мінімального значення та 10В до максимального значення",
+        "zh-cn": "将 0V 归一化为最小值，将 10V 归一化为最大值"
+    'normAn1Min': {
+        "es": "Valor mínimo para entrada analógica 1 - igual a 0V",
+        "pl": "Minimalna wartość dla wejścia analogowego 1 - równa się 0V",
+        "uk": "Мінімальне значення для аналогового введення 1 - дорівнює 0В",
+        "zh-cn": "模拟输入 1 的最小值 - 等于 0V"
+    'normAn1Max': {
+        "es": "Valor máximo para entrada analógica 1 - igual a 10V",
+        "pl": "Maksymalna wartość dla wejścia analogowego 1 - równa się 10V",
+        "uk": "Максимальне значення для аналогового введення 1 - рівні 10В",
+        "zh-cn": "模拟输入 1 的最大值 - 等于 10V"
