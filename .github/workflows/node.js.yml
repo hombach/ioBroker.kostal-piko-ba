@@ -43,7 +43,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node-version: [16.x, 18.x]
+        node-version: [16.x, 18.x, 20.x]
         os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
@@ -62,7 +62,7 @@ jobs:
       - run: npm run test:integration --if-present
       - run: npm test
 
-  # Runs adapter tests on all supported new node versions and OSes
+  # Runs adapter tests on legacy node versions and OSes
   adapter-tests-legacy:
     if: contains(github.event.head_commit.message, '[skip ci]') == false
     needs: [adapter-tests]
@@ -84,7 +84,7 @@ jobs:
         run: npm install
 
       - name: Downgrade npm
-        #         npm downgrade to 6 (mainly for node.js 16) is needed because else testing fails
+        #         npm downgrade to 6 (mainly for node.js 14) is needed because else testing fails
         #         after installing additional adapters
         run: npm install -g npm@6
 
