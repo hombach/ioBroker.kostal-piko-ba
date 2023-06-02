@@ -1,1 +1,19 @@
-
+{
+    "Standard settings": "",
+    "Analog settings": "",
+    "template adapter settings": "",
+    "ipaddress": "",
+    "polltimelive": "",
+    "polltimedaily": "",
+    "polltimetotal": "",
+    "readanalogs": "",
+    "normAnalogs": "",
+    "normAn1Min": "",
+    "normAn1Max": "",
+    "normAn2Min": "",
+    "normAn2Max": "",
+    "normAn3Min": "",
+    "normAn3Max": "",
+    "normAn4Min": "",
+    "normAn4Max": ""
+}
