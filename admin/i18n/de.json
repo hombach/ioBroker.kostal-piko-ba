@@ -1,1 +1,7 @@
-
+{
+    "Configure your OpenDTU WebUi connection": "Konfiguriere deine OpenDTU WebUi-Verbindung",
+    "Scheme": "Schema",
+    "WebUi Address": "WebUi-Adresse",
+    "WebUi Port": "WebUi-Port",
+    "WebUi Password": "WebUi-Passwort"
+}
