@@ -43,17 +43,17 @@ systemDictionary = {
         "zh-cn": "Kostal Piko BA的适配器设置"
     },
     'ipaddress': {
-        "en": "IP address of Kostal Piko BA (like '192.168.100.33' no HTTP or other texts",
-        "de": "IP-Adresse von Kostal Piko BA (wie '192.168.100.33' kein HTTP oder andere Texte",
-        "ru": "IP-адрес Kostal Piko BA (например, «192.168.100.33» без HTTP или других текстов",
-        "pt": "Endereço IP de Kostal Piko BA (como '192.168.100.33' sem HTTP ou outros textos",
-        "nl": "IP-adres van Kostal Piko BA (zoals '192.168.100.33' geen HTTP of andere teksten",
-        "fr": "Adresse IP de Kostal Piko BA (comme '192.168.100.33' pas de HTTP ou d'autres textes",
-        "it": "Indirizzo IP di Kostal Piko BA (come '192.168.100.33' no HTTP o altri testi",
-        "es": "Dirección IP de Kostal Piko BA (como '192.168.100.33' sin HTTP u otros textos",
-        "pl": "Adres IP Kostal Piko BA (np. „192.168.100.33” bez HTTP lub innych tekstów)",
-        "uk": "IP-адреса Kostal Piko BA (як 192.168.100.33 не HTTP або інші тексти",
-        "zh-cn": "Kostal Piko BA 的 IP 地址（如 '192.168.100.33' 没有 HTTP 或其他文本"
+        "en": "IP address of your Kostal Piko (like '192.168.100.33' no HTTP-adresses or other texts)",
+        "de": "IP-Adresse Ihres Kostal Piko (wie 192.168.100.33 keine HTTP-Adressen oder andere Texte)",
+        "ru": "IP адрес вашего Kostal Piko (как 192.168.100.33 без HTTP-адресов или других текстов)",
+        "pt": "Endereço IP do seu Kostal Piko (como 192.168.100.33 sem endereços HTTP ou outros textos)",
+        "nl": "IP-adres van je Kostal Piko (2.168.100.33 geen HTP-adressen of andere sms'jes)",
+        "fr": "Adresse IP de votre Kostal Piko (comme 192.168.100.33 pas d'adresses HTTP ou d'autres textes)",
+        "it": "Indirizzo IP del vostro Kostal Piko (come 192.168.100.33 nessun indirizzo HTTP o altri testi)",
+        "es": "Dirección IP de su Kostal Piko (como 192.168.100.33 sin direcciones HTTP u otros textos)",
+        "pl": "IP adres your Kostal Piko (podobnie jak 192.168.100.33)",
+        "uk": "IP-адреса вашого Костального Піко (наприклад, 192.168.100.33 No HTTP-розсувки або інші тексти)",
+        "zh-cn": "IP地址:Yostal Piko (192.168.100.33号HTTP-adresses或其他文本)"
     },
     'polltimelive': {
         "en": "Time between data polls from inverter [ms] - Minimum 5000",
