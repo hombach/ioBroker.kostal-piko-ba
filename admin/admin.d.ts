@@ -1,6 +1,3 @@
-// ORG: declare let systemDictionary: Record<string, Record<string, string>>;
-
-
 declare let systemDictionary: Record<string, Record<string, string>>;
 
 declare let load: (settings: Record<string, unknown>, onChange: (hasChanges: boolean) => void) => void;
