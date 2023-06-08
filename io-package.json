@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "2.5.2",
+    "version": "2.6.0",
     "titleLang": {
       "en": "Kostal PikoBA",
       "de": "Kostal PikoBA",
@@ -44,6 +44,9 @@
     "connectionType": "local",
     "dataSource": "poll",
     "news": {
+      "2.6.0": {
+        "en": "changed config screen to admin 5 solution"
+      },
       "2.5.2": {
         "en": "fixed a wording error, bumped dependencies, added tests for node.js 20, fixed a sentry reported error",
         "de": "verbessern eines wording-Fehlers, Abhängigkeiten aktualisiert, Tests für node.js 20 hinzugefügt, durch Sentry gemeldeten Fehler behoben",
