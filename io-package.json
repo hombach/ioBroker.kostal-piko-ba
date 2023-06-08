@@ -301,8 +301,6 @@
     },
     "main": "main.js",
     "compact": true,
-    "materialize": true,
-    "materializeTab": true,
     "supportCustoms": false,
     "dependencies": [
       {
@@ -311,7 +309,7 @@
     ],
     "globalDependencies": [
       {
-        "admin": ">=4.0.0"
+        "admin": ">=5.0.0"
       }
     ],
     "plugins": {
