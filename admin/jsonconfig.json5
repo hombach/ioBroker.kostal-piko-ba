@@ -1,0 +1,102 @@
+{
+	"i18n": true,
+	
+	"type": "tabs",	{
+		"Standard settings": {
+			"webUIHeader": {
+				"type": "header",
+				"text": "Configure your OpenDTU WebUi connection",
+				"size": 2,
+				"newLine": true
+			},
+			"ipaddress": {
+				"type": "text",
+				"label": "ipaddress",
+				"maxLength": 15,
+				"newLine": true
+			},
+			"polltimelive": {
+				"type": "number",
+				"label": "polltimelive",
+				"min": 5000,
+				"step": 100,
+				"newLine": true
+			},
+			"polltimedaily": {
+				"type": "number",
+				"label": "polltimedaily",
+				"min": 10000,
+				"step": 100,
+				"newLine": true
+			},
+			"polltimetotal": {
+				"type": "number",
+				"label": "polltimetotal",
+				"min": 20000,
+				"step": 100,
+				"newLine": true
+			}
+		},
+		"Analog settings": {
+			"readanalogs": {
+				"type": "checkbox",
+				"label": "readanalogs",
+				"newLine": true
+			},
+			"normAnalogs": {
+				"type": "header",
+				"text": "normAnalogs",
+				"size": 2,
+				"newLine": true
+			},
+			"normAn1Min": {
+				"type": "number",
+				"label": "normAn1Min",
+				"min": 0,
+				"newLine": false
+			},
+			"normAn1Max": {
+				"type": "number",
+				"label": "normAn1Max",
+				"min": 0,
+				"newLine": true
+			},
+			"normAn2Min": {
+				"type": "number",
+				"label": "normAn2Min",
+				"min": 0,
+				"newLine": false
+			},
+			"normAn2Max": {
+				"type": "number",
+				"label": "normAn2Max",
+				"min": 0,
+				"newLine": true
+			},
+			"normAn3Min": {
+				"type": "number",
+				"label": "normAn3Min",
+				"min": 0,
+				"newLine": false
+			},
+			"normAn3Max": {
+				"type": "number",
+				"label": "normAn3Max",
+				"min": 0,
+				"newLine": true
+			},
+			"normAn4Min": {
+				"type": "number",
+				"label": "normAn4Min",
+				"min": 0,
+				"newLine": false
+			},
+			"normAn4Max": {
+				"type": "number",
+				"label": "normAn4Max",
+				"min": 0,
+				"newLine": true
+			}
+		}
+	}
+}
