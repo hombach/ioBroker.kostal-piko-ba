@@ -86,19 +86,6 @@
         "uk": "реалізований розрахунок потужності акумулятора",
         "zh-cn": "实施电池电计算"
       },
-      "2.4.7": {
-        "en": "improved error handling",
-        "de": "verbesserte Fehlerbehandlung",
-        "ru": "улучшенная обработка ошибок",
-        "pt": "melhor manipulação de erros",
-        "nl": "verbeterde fouten",
-        "fr": "amélioration de la manipulation des erreurs",
-        "it": "migliore gestione degli errori",
-        "es": "mejor manejo de errores",
-        "pl": "polepszenie błędów",
-        "uk": "поліпшення обробки помилок",
-        "zh-cn": "改进错误处理"
-      },
       "2.4.6": {
         "en": "fixed vulnerability in xml2js",
         "de": "beseitigt Sicherheitslücke in xml2js",
