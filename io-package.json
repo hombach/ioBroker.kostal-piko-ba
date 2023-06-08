@@ -43,6 +43,24 @@
     "type": "energy",
     "connectionType": "local",
     "dataSource": "poll",
+    "adminUI": {
+      "config": "json",
+      "tab": "materialize"
+    },
+    "adminTab": {
+      "singleton": true,
+      "name": {
+        "en": "Kostal Piko (BA)",
+        "de": "Kostal Piko (BA)",
+        "ru": "Kostal Piko (BA)",
+        "pt": "Kostal Piko (BA)",
+        "nl": "Kostal Piko (BA)",
+        "fr": "Kostal Piko (BA)",
+        "it": "Kostal Piko (BA)",
+        "es": "Kostal Piko (BA)",
+        "pl": "Kostal Piko (BA)",
+        "zh-cn": "Kostal Piko (BA)"
+      },
     "news": {
       "2.6.0": {
         "en": "changed config screen to admin 5 solution"
