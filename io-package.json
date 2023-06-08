@@ -44,8 +44,7 @@
     "connectionType": "local",
     "dataSource": "poll",
     "adminUI": {
-      "config": "json",
-      "tab": "materialize"
+      "config": "json"
     },
     "news": {
       "2.6.0": {
