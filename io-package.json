@@ -61,6 +61,7 @@
         "pl": "Kostal Piko (BA)",
         "zh-cn": "Kostal Piko (BA)"
       },
+    },  
     "news": {
       "2.6.0": {
         "en": "changed config screen to admin 5 solution"
