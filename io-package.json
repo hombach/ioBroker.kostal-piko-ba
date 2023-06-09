@@ -2,50 +2,6 @@
   "common": {
     "name": "kostal-piko-ba",
     "version": "2.6.0",
-    "titleLang": {
-      "en": "Kostal PikoBA",
-      "de": "Kostal PikoBA",
-      "ru": "Костал ПиКОБА",
-      "pt": "Kostal PikoBA",
-      "nl": "Kostal PikoBA",
-      "fr": "Kostal PikoBA",
-      "it": "Kostal PikoBA",
-      "es": "Kostal PikoBA",
-      "pl": "Kostal PikoBA",
-      "uk": "Kostal PikoBA",
-      "zh-cn": "科斯塔尔皮科巴"
-    },
-    "desc": {
-      "en": "Adapter for reading Kostal Piko BA data",
-      "de": "Adapter zum Lesen von Kostal Piko BA Daten",
-      "ru": "Адаптер для чтения данных Kostal Piko BA",
-      "pt": "Adaptador para leitura de dados Kostal Piko BA",
-      "nl": "Adapter voor het lezen van Kostal Piko BA gegevens",
-      "fr": "Adaptateur pour la lecture des données Kostal Piko BA",
-      "it": "Adattatore per la lettura dei dati Kostal Piko BA",
-      "es": "Adaptador para leer datos de Kostal Piko BA",
-      "pl": "Adapter do odczytu danych Kostal Piko BA",
-      "uk": "Адаптер для читання даних Костал Піко BA",
-      "zh-cn": "阅读Kostal Piko BA数据"
-    },
-    "authors": [
-      "Christian Hombach"
-    ],
-    "platform": "Javascript/Node.js",
-    "mode": "daemon",
-    "enabled": true,
-    "license": "MIT",
-    "loglevel": "info",
-    "readme": "https://raw.githubusercontent.com/hombach/ioBroker.kostal-piko-ba/master/README.md",
-    "icon": "picoba.png",
-    "extIcon": "https://raw.githubusercontent.com/hombach/ioBroker.kostal-piko-ba/master/admin/picoba.png",
-    "keywords": [ "Kostal", "Piko", "Piko-BA", "Piko MP", "Piko MP plus", "inverter", "solar" ],
-    "type": "energy",
-    "connectionType": "local",
-    "dataSource": "poll",
-    "adminUI": {
-      "config": "json"
-    },
     "news": {
       "2.6.0": {
         "en": "changed config screen to admin 5 solution"
@@ -298,9 +254,53 @@
         "zh-cn": "新增电池。 档案;电池组;DC1-3 目前,动产和电力"
       }
     },
-    "main": "main.js",
+    "titleLang": {
+      "en": "Kostal PikoBA",
+      "de": "Kostal PikoBA",
+      "ru": "Костал ПиКОБА",
+      "pt": "Kostal PikoBA",
+      "nl": "Kostal PikoBA",
+      "fr": "Kostal PikoBA",
+      "it": "Kostal PikoBA",
+      "es": "Kostal PikoBA",
+      "pl": "Kostal PikoBA",
+      "uk": "Kostal PikoBA",
+      "zh-cn": "科斯塔尔皮科巴"
+    },
+    "desc": {
+      "en": "Adapter for reading Kostal Piko BA data",
+      "de": "Adapter zum Lesen von Kostal Piko BA Daten",
+      "ru": "Адаптер для чтения данных Kostal Piko BA",
+      "pt": "Adaptador para leitura de dados Kostal Piko BA",
+      "nl": "Adapter voor het lezen van Kostal Piko BA gegevens",
+      "fr": "Adaptateur pour la lecture des données Kostal Piko BA",
+      "it": "Adattatore per la lettura dei dati Kostal Piko BA",
+      "es": "Adaptador para leer datos de Kostal Piko BA",
+      "pl": "Adapter do odczytu danych Kostal Piko BA",
+      "uk": "Адаптер для читання даних Костал Піко BA",
+      "zh-cn": "阅读Kostal Piko BA数据"
+    },
+    "authors": [
+      "Christian Hombach <kostal-piko-ba@homba.ch>"
+    ],
+    "keywords": [
+      "Kostal", "Piko", "Piko-BA", "Piko MP", "Piko MP plus", "inverter", "solar"
+    ],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "icon": "picoba.png",
+    "extIcon": "https://raw.githubusercontent.com/hombach/ioBroker.kostal-piko-ba/master/admin/picoba.png",
+    "enabled": true,
+    "readme": "https://raw.githubusercontent.com/hombach/ioBroker.kostal-piko-ba/master/README.md",
+    "loglevel": "info",
+    "mode": "daemon",
+    "type": "energy",
     "compact": true,
-    "supportCustoms": false,
+    "connectionType": "local",
+    "dataSource": "poll",
+    "adminUI": {
+      "config": "json"
+    },
     "dependencies": [
       {
         "js-controller": ">=3.2.16"
@@ -315,7 +315,11 @@
       "sentry": {
         "dsn": "https://0e33dc63a0e34165850d97add3cc3684@o415875.ingest.sentry.io/5307610"
       }
-    }
+    },
+    
+    
+    "main": "main.js",
+    "supportCustoms": false
   },
 
   "native": {
