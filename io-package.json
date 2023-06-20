@@ -1,10 +1,20 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "2.6.0",
+    "version": "3.0.0",
     "news": {
-      "2.6.0": {
-        "en": "BREAKING: Dropped support for Node.js 14; changed config screen to admin 5 solution; dropped Admin <5 support"
+      "3.0.0": {
+        "en": "BREAKING: Dropped support for Node.js 14; changed config screen to admin 5 solution; dropped Admin <5 support",
+        "de": "BREAKING: Unterstützung für Node.js 14 beendet; geänderter config-Bildschirm auf Admin 5 Lösung; Admin <5 Unterstützung beendet",
+        "ru": "ЗАВТРАК: Dropped поддержка Node.js 14; изменен экран config для admin 5 решение; упал Admin <5 поддержка",
+        "pt": "BREAKING: Suporte dropped para Node.js 14; tela de configuração alterada para solução admin 5; suporte abandonado Admin <5",
+        "nl": "Gevallen ondersteuning voor Node.js 14, veranderde config screen naar administratie oplossing, liet Admin 5 steun vallen",
+        "fr": "BREAKING: Support abandonné pour Node.js 14; modification de l'écran de configuration pour gérer la solution 5; suppression du support Admin 5",
+        "it": "BREAKING: Supporto Dropped per Node.js 14; schermata di configurazione modificata per la soluzione admin 5; supporto Admin <5",
+        "es": "BREAKING: Soporte desechado para Node.js 14; pantalla de configuración modificada para la solución admin 5; soporte desmontado Admin",
+        "pl": "BREAKING: Dropped support for Node.js 14; zmienił ekran konfigurowny do rozwiązania Admin 5",
+        "uk": "BREAKING: Dropped підтримка для Node.js 14; змінений екран налаштування до рішення адміністратора 5; скидати підтримку Admin <5",
+        "zh-cn": "BREAKRE:对第14号dejs的支持;改观5个解决办法的筛选;减少Admin <5号支助"
       },
       "2.5.2": {
         "en": "fixed a wording error, bumped dependencies, added tests for node.js 20, fixed a sentry reported error",
@@ -138,7 +148,7 @@
       },
       "2.0.0": {
         "en": "BREAKING: Dropped support for Node.js 12; added state of inverter as string",
-        "de": "BREAKING: Dropped-Unterstützung für Node.js 12; Zusatzzustand des Wechselrichters als String",
+        "de": "BREAKING: Unterstützung für Node.js 12 beendet; Zustand des Wechselrichters als String",
         "ru": "ЗАВТРАК: Dropped поддержка Node.js 12; добавленное состояние инвертора как строка",
         "pt": "BREAKING: Suporte dropped para Node.js 12; estado adicionado do inversor como string",
         "nl": "Gevallen ondersteuning voor Node.js 12, toegevoegd staat van inverter als touw",
