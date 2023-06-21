@@ -20,6 +20,9 @@
 			"label": "polltimelive",
 			"min": 5000,
 			"step": 100,
+			"sm": 12,
+			"md": 6,
+			"lg": 6,
     			"newLine": true
 		    },
 		    "polltimedaily": {
@@ -27,6 +30,9 @@
 			"label": "polltimedaily",
 			"min": 10000,
 			"step": 100,
+			"sm": 12,
+			"md": 6,
+			"lg": 6,
 			"newLine": true
 		    },
 		    "polltimetotal": {
@@ -34,6 +40,9 @@
 			"label": "polltimetotal",
 			"min": 20000,
 			"step": 100,
+			"sm": 12,
+			"md": 6,
+			"lg": 6,
 			"newLine": true
 		    }
     		}
@@ -58,49 +67,73 @@
 			"type": "number",
 			"label": "normAn1Min",
 			"min": 0,
-			"newLine": false
+			"sm": 12,
+			"md": 6,
+			"lg": 6,
+			"newLine": true
 		    },
 		    "normAn1Max": {
 			"type": "number",
 			"label": "normAn1Max",
 			"min": 0,
-			"newLine": true
+			"sm": 12,
+			"md": 6,
+			"lg": 6,
+			"newLine": false
 		    },
 		    "normAn2Min": {
 			"type": "number",
 			"label": "normAn2Min",
 			"min": 0,
-			"newLine": false
+			"sm": 12,
+			"md": 6,
+			"lg": 6,
+			"newLine": true
 		    },
 		    "normAn2Max": {
 			"type": "number",
 			"label": "normAn2Max",
 			"min": 0,
-			"newLine": true
+			"sm": 12,
+			"md": 6,
+			"lg": 6,
+			"newLine": false
 		    },
 		    "normAn3Min": {
 			"type": "number",
 			"label": "normAn3Min",
 			"min": 0,
-			"newLine": false
+			"sm": 12,
+			"md": 6,
+			"lg": 6,
+			"newLine": true
 		    },
 		    "normAn3Max": {
 			"type": "number",
 			"label": "normAn3Max",
 			"min": 0,
-			"newLine": true
+			"sm": 10,
+			"md": 6,
+			"lg": 6,
+			"newLine": false
 		    },
 		    "normAn4Min": {
 			"type": "number",
 			"label": "normAn4Min",
 			"min": 0,
-			"newLine": false
+			"sm": 8,
+			"md": 6,
+			"lg": 6,
+			"newLine": true
 		    },
 		    "normAn4Max": {
 			"type": "number",
 			"label": "normAn4Max",
 			"min": 0,
-			"newLine": true
+			"sm": 6,
+			"md": 6,
+			"lg": 6,
+			"newLine": false
 		    }
 		}
 	    }
