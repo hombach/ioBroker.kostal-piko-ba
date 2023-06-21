@@ -1,49 +1,21 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "2.5.2",
-    "titleLang": {
-      "en": "Kostal PikoBA",
-      "de": "Kostal PikoBA",
-      "ru": "Костал ПиКОБА",
-      "pt": "Kostal PikoBA",
-      "nl": "Kostal PikoBA",
-      "fr": "Kostal PikoBA",
-      "it": "Kostal PikoBA",
-      "es": "Kostal PikoBA",
-      "pl": "Kostal PikoBA",
-      "uk": "Kostal PikoBA",
-      "zh-cn": "科斯塔尔皮科巴"
-    },
-    "desc": {
-      "en": "Adapter for reading Kostal Piko BA data",
-      "de": "Adapter zum Lesen von Kostal Piko BA Daten",
-      "ru": "Адаптер для чтения данных Kostal Piko BA",
-      "pt": "Adaptador para leitura de dados Kostal Piko BA",
-      "nl": "Adapter voor het lezen van Kostal Piko BA gegevens",
-      "fr": "Adaptateur pour la lecture des données Kostal Piko BA",
-      "it": "Adattatore per la lettura dei dati Kostal Piko BA",
-      "es": "Adaptador para leer datos de Kostal Piko BA",
-      "pl": "Adapter do odczytu danych Kostal Piko BA",
-      "uk": "Адаптер для читання даних Костал Піко BA",
-      "zh-cn": "阅读Kostal Piko BA数据"
-    },
-    "authors": [
-      "Christian Hombach"
-    ],
-    "platform": "Javascript/Node.js",
-    "mode": "daemon",
-    "enabled": true,
-    "license": "MIT",
-    "loglevel": "info",
-    "readme": "https://raw.githubusercontent.com/hombach/ioBroker.kostal-piko-ba/master/README.md",
-    "icon": "picoba.png",
-    "extIcon": "https://raw.githubusercontent.com/hombach/ioBroker.kostal-piko-ba/master/admin/picoba.png",
-    "keywords": [ "Kostal", "Piko", "Piko-BA", "Piko MP", "Piko MP plus", "inverter", "solar" ],
-    "type": "energy",
-    "connectionType": "local",
-    "dataSource": "poll",
+    "version": "3.0.0",
     "news": {
+      "3.0.0": {
+        "en": "BREAKING: Dropped support for Node.js 14; changed config screen to admin 5 solution; dropped Admin <5 support",
+        "de": "BREAKING: Unterstützung für Node.js 14 beendet; geänderter config-Bildschirm auf Admin 5 Lösung; Admin <5 Unterstützung beendet",
+        "ru": "ЗАВТРАК: Dropped поддержка Node.js 14; изменен экран config для admin 5 решение; упал Admin <5 поддержка",
+        "pt": "BREAKING: Suporte dropped para Node.js 14; tela de configuração alterada para solução admin 5; suporte abandonado Admin <5",
+        "nl": "Gevallen ondersteuning voor Node.js 14, veranderde config screen naar administratie oplossing, liet Admin 5 steun vallen",
+        "fr": "BREAKING: Support abandonné pour Node.js 14; modification de l'écran de configuration pour gérer la solution 5; suppression du support Admin 5",
+        "it": "BREAKING: Supporto Dropped per Node.js 14; schermata di configurazione modificata per la soluzione admin 5; supporto Admin <5",
+        "es": "BREAKING: Soporte desechado para Node.js 14; pantalla de configuración modificada para la solución admin 5; soporte desmontado Admin",
+        "pl": "BREAKING: Dropped support for Node.js 14; zmienił ekran konfigurowny do rozwiązania Admin 5",
+        "uk": "BREAKING: Dropped підтримка для Node.js 14; змінений екран налаштування до рішення адміністратора 5; скидати підтримку Admin <5",
+        "zh-cn": "BREAKRE:对第14号dejs的支持;改观5个解决办法的筛选;减少Admin <5号支助"
+      },
       "2.5.2": {
         "en": "fixed a wording error, bumped dependencies, added tests for node.js 20, fixed a sentry reported error",
         "de": "verbessern eines wording-Fehlers, Abhängigkeiten aktualisiert, Tests für node.js 20 hinzugefügt, durch Sentry gemeldeten Fehler behoben",
@@ -82,19 +54,6 @@
         "pl": "kalkulacja",
         "uk": "реалізований розрахунок потужності акумулятора",
         "zh-cn": "实施电池电计算"
-      },
-      "2.4.7": {
-        "en": "improved error handling",
-        "de": "verbesserte Fehlerbehandlung",
-        "ru": "улучшенная обработка ошибок",
-        "pt": "melhor manipulação de erros",
-        "nl": "verbeterde fouten",
-        "fr": "amélioration de la manipulation des erreurs",
-        "it": "migliore gestione degli errori",
-        "es": "mejor manejo de errores",
-        "pl": "polepszenie błędów",
-        "uk": "поліпшення обробки помилок",
-        "zh-cn": "改进错误处理"
       },
       "2.4.6": {
         "en": "fixed vulnerability in xml2js",
@@ -189,7 +148,7 @@
       },
       "2.0.0": {
         "en": "BREAKING: Dropped support for Node.js 12; added state of inverter as string",
-        "de": "BREAKING: Dropped-Unterstützung für Node.js 12; Zusatzzustand des Wechselrichters als String",
+        "de": "BREAKING: Unterstützung für Node.js 12 beendet; Zustand des Wechselrichters als String",
         "ru": "ЗАВТРАК: Dropped поддержка Node.js 12; добавленное состояние инвертора как строка",
         "pt": "BREAKING: Suporte dropped para Node.js 12; estado adicionado do inversor como string",
         "nl": "Gevallen ondersteuning voor Node.js 12, toegevoegd staat van inverter als touw",
@@ -305,11 +264,53 @@
         "zh-cn": "新增电池。 档案;电池组;DC1-3 目前,动产和电力"
       }
     },
-    "main": "main.js",
+    "titleLang": {
+      "en": "Kostal PikoBA",
+      "de": "Kostal PikoBA",
+      "ru": "Костал ПиКОБА",
+      "pt": "Kostal PikoBA",
+      "nl": "Kostal PikoBA",
+      "fr": "Kostal PikoBA",
+      "it": "Kostal PikoBA",
+      "es": "Kostal PikoBA",
+      "pl": "Kostal PikoBA",
+      "uk": "Kostal PikoBA",
+      "zh-cn": "科斯塔尔皮科巴"
+    },
+    "desc": {
+      "en": "Adapter for reading Kostal Piko BA data",
+      "de": "Adapter zum Lesen von Kostal Piko BA Daten",
+      "ru": "Адаптер для чтения данных Kostal Piko BA",
+      "pt": "Adaptador para leitura de dados Kostal Piko BA",
+      "nl": "Adapter voor het lezen van Kostal Piko BA gegevens",
+      "fr": "Adaptateur pour la lecture des données Kostal Piko BA",
+      "it": "Adattatore per la lettura dei dati Kostal Piko BA",
+      "es": "Adaptador para leer datos de Kostal Piko BA",
+      "pl": "Adapter do odczytu danych Kostal Piko BA",
+      "uk": "Адаптер для читання даних Костал Піко BA",
+      "zh-cn": "阅读Kostal Piko BA数据"
+    },
+    "authors": [
+      "Christian Hombach <kostal-piko-ba@homba.ch>"
+    ],
+    "keywords": [
+      "Kostal", "Piko", "Piko-BA", "Piko MP", "Piko MP plus", "inverter", "solar"
+    ],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "icon": "picoba.png",
+    "extIcon": "https://raw.githubusercontent.com/hombach/ioBroker.kostal-piko-ba/master/admin/picoba.png",
+    "enabled": true,
+    "readme": "https://raw.githubusercontent.com/hombach/ioBroker.kostal-piko-ba/master/README.md",
+    "loglevel": "info",
+    "mode": "daemon",
+    "type": "energy",
     "compact": true,
-    "materialize": true,
-    "materializeTab": true,
-    "supportCustoms": false,
+    "connectionType": "local",
+    "dataSource": "poll",
+    "adminUI": {
+      "config": "json"
+    },
     "dependencies": [
       {
         "js-controller": ">=3.2.16"
@@ -317,14 +318,16 @@
     ],
     "globalDependencies": [
       {
-        "admin": ">=4.0.0"
+        "admin": ">=5.0.0"
       }
     ],
     "plugins": {
       "sentry": {
         "dsn": "https://0e33dc63a0e34165850d97add3cc3684@o415875.ingest.sentry.io/5307610"
       }
-    }
+    },
+        
+    "supportCustoms": false
   },
 
   "native": {

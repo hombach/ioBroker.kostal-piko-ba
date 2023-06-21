@@ -26,7 +26,8 @@ iobroker.*.tgz
 package-lock.json
 
 # i18n intermediate files
-admin/i18n
+admin/i18n/flat.txt
+admin/i18n/*/flat.txt
 
 # maintenance scripts
 maintenance/**
