@@ -15,6 +15,14 @@
 			"lg": 6,
 			"newLine": true
 		    },
+"ip": {
+	"type": "ip",
+	"onlyIp4": true,
+			"sm": 12,
+			"md": 6,
+			"lg": 6,
+			"newLine": true
+},
     		    "polltimelive": {
 	    		"type": "number",
 			"label": "polltimelive",
