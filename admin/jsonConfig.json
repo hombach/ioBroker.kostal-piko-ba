@@ -11,8 +11,8 @@
 			"label": "ipaddress",
 	    		"maxLength": 15,
 			"sm": 12,
-			"md": 12,
-			"lg": 12
+			"md": 6,
+			"lg": 6
 		    },
     		    "polltimelive": {
 	    		"type": "number",
@@ -20,8 +20,9 @@
 			"min": 5000,
 			"step": 100,
 			"sm": 12,
-			"md": 12,
-			"lg": 6
+			"md": 6,
+			"lg": 6,
+			"newline": true
 		    },
 		    "polltimedaily": {
 			"type": "number",
@@ -29,8 +30,8 @@
 			"min": 10000,
 			"step": 100,
 			"sm": 12,
-			"md": 12,
-			"lg": 10
+			"md": 6,
+			"lg": 6
 		    },
 		    "polltimetotal": {
 			"type": "number",
@@ -38,7 +39,7 @@
 			"min": 20000,
 			"step": 100,
 			"sm": 12,
-			"md": 12,
+			"md": 6,
 			"lg": 8
 		    }
     		}
