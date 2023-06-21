@@ -105,17 +105,15 @@
 			"min": 0,
 			"sm": 12,
 			"md": 6,
-			"lg": 6,
-			"newLine": true
+			"lg": 6
 		    },
 		    "normAn3Max": {
 			"type": "number",
 			"label": "normAn3Max",
 			"min": 0,
-			"sm": 10,
+			"sm": 12,
 			"md": 6,
-			"lg": 6,
-			"newLine": false
+			"lg": 6
 		    },
 		    "normAn4Min": {
 			"type": "number",
