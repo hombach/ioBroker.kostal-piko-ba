@@ -1,0 +1,19 @@
+{
+    "Standard settings": "Configurações padrão",
+    "Analog settings": "Configurações para entradas analógicas",
+    "template adapter settings": "Configurações do adaptador para Kostal Piko (BA)",
+    "ipaddress": "Endereço IP do seu Kostal Piko (como 192.168.100.33 sem endereços HTTP ou outros textos)",
+    "polltimelive": "Tempo entre as pesquisas de dados do inversor [ms] - Mínimo 5000",
+    "polltimedaily": "Tempo entre as pesquisas de dados das estatísticas diárias do inversor [ms]",
+    "polltimetotal": "Tempo entre as pesquisas de dados das estatísticas de todos os tempos do inversor [ms]",
+    "readanalogs": "Leia todos os 4 valores de entrada analógica em V (0-10V; 10 bits)",
+    "normAnalogs": "Normalizando 0V para o valor mínimo e 10V para o valor máximo",
+    "normAn1Min": "Valor mínimo para entrada analógica 1 - igual a 0V",
+    "normAn1Max": "Valor máximo para entrada analógica 1 - igual a 10V",
+    "normAn2Min": "Valor mínimo para entrada analógica 2 - igual a 0V",
+    "normAn2Max": "Valor máximo para entrada analógica 2 - igual a 10V",
+    "normAn3Min": "Valor mínimo para entrada analógica 3 - igual a 0V",
+    "normAn3Max": "Valor máximo para entrada analógica 3 - igual a 10V",
+    "normAn4Min": "Valor mínimo para entrada analógica 4 - igual a 0V",
+    "normAn4Max": "Valor máximo para entrada analógica 4 - igual a 10V"
+}
