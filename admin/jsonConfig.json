@@ -11,9 +11,8 @@
 			"label": "ipaddress",
 	    		"maxLength": 15,
 			"sm": 12,
-			"md": 6,
-			"lg": 6,
-			"newLine": true
+			"md": 12,
+			"lg": 12
 		    },
     		    "polltimelive": {
 	    		"type": "number",
@@ -21,9 +20,8 @@
 			"min": 5000,
 			"step": 100,
 			"sm": 12,
-			"md": 6,
-			"lg": 6,
-    			"newLine": true
+			"md": 12,
+			"lg": 12
 		    },
 		    "polltimedaily": {
 			"type": "number",
@@ -31,9 +29,8 @@
 			"min": 10000,
 			"step": 100,
 			"sm": 12,
-			"md": 6,
-			"lg": 6,
-			"newLine": true
+			"md": 12,
+			"lg": 12
 		    },
 		    "polltimetotal": {
 			"type": "number",
@@ -41,9 +38,8 @@
 			"min": 20000,
 			"step": 100,
 			"sm": 12,
-			"md": 6,
-			"lg": 6,
-			"newLine": true
+			"md": 12,
+			"lg": 12
 		    }
     		}
 	    },
@@ -54,14 +50,12 @@
 		"items": {
 		    "readanalogs": {
 			"type": "checkbox",
-			"label": "readanalogs",
-			"newLine": true
+			"label": "readanalogs"
 		    },
 		    "normAnalogs": {
 			"type": "header",
 			"text": "normAnalogs",
-			"size": 2,
-			"newLine": true
+			"size": 1
 		    },
 		    "normAn1Min": {
 			"type": "number",
@@ -69,8 +63,7 @@
 			"min": 0,
 			"sm": 12,
 			"md": 6,
-			"lg": 6,
-			"newLine": true
+			"lg": 6
 		    },
 		    "normAn1Max": {
 			"type": "number",
@@ -78,8 +71,7 @@
 			"min": 0,
 			"sm": 12,
 			"md": 6,
-			"lg": 6,
-			"newLine": false
+			"lg": 6
 		    },
 		    "normAn2Min": {
 			"type": "number",
@@ -87,8 +79,7 @@
 			"min": 0,
 			"sm": 12,
 			"md": 6,
-			"lg": 6,
-			"newLine": true
+			"lg": 6
 		    },
 		    "normAn2Max": {
 			"type": "number",
@@ -96,8 +87,7 @@
 			"min": 0,
 			"sm": 12,
 			"md": 6,
-			"lg": 6,
-			"newLine": false
+			"lg": 6
 		    },
 		    "normAn3Min": {
 			"type": "number",
@@ -119,19 +109,17 @@
 			"type": "number",
 			"label": "normAn4Min",
 			"min": 0,
-			"sm": 8,
+			"sm": 12,
 			"md": 6,
-			"lg": 6,
-			"newLine": true
+			"lg": 6
 		    },
 		    "normAn4Max": {
 			"type": "number",
 			"label": "normAn4Max",
 			"min": 0,
-			"sm": 6,
+			"sm": 12,
 			"md": 6,
-			"lg": 6,
-			"newLine": false
+			"lg": 6
 		    }
 		}
 	    }
