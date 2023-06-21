@@ -12,7 +12,8 @@
 	    		"maxLength": 15,
 			"sm": 12,
 			"md": 6,
-			"lg": 6
+			"lg": 6,
+			"newLine": true
 		    },
     		    "polltimelive": {
 	    		"type": "number",
@@ -22,7 +23,7 @@
 			"sm": 12,
 			"md": 6,
 			"lg": 6,
-			"newline": true
+			"newLine": true
 		    },
 		    "polltimedaily": {
 			"type": "number",
@@ -31,7 +32,8 @@
 			"step": 100,
 			"sm": 12,
 			"md": 6,
-			"lg": 6
+			"lg": 6,
+			"newLine": true
 		    },
 		    "polltimetotal": {
 			"type": "number",
@@ -40,7 +42,8 @@
 			"step": 100,
 			"sm": 12,
 			"md": 6,
-			"lg": 8
+			"lg": 6,
+			"newLine": true
 		    }
     		}
 	    },
