@@ -21,7 +21,7 @@
 			"step": 100,
 			"sm": 12,
 			"md": 12,
-			"lg": 12
+			"lg": 6
 		    },
 		    "polltimedaily": {
 			"type": "number",
@@ -30,7 +30,7 @@
 			"step": 100,
 			"sm": 12,
 			"md": 12,
-			"lg": 12
+			"lg": 10
 		    },
 		    "polltimetotal": {
 			"type": "number",
@@ -39,7 +39,7 @@
 			"step": 100,
 			"sm": 12,
 			"md": 12,
-			"lg": 12
+			"lg": 8
 		    }
     		}
 	    },
@@ -55,7 +55,7 @@
 		    "normAnalogs": {
 			"type": "header",
 			"text": "normAnalogs",
-			"size": 1
+			"size": 3
 		    },
 		    "normAn1Min": {
 			"type": "number",
