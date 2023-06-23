@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "news": {
+      "3.0.1": {
+        "en": "corrected state description",
+        "de": "bereinigte zustandsbeschreibung",
+        "ru": "исправленное описание состояния",
+        "pt": "descrição do estado corrigido",
+        "nl": "vertaling:",
+        "fr": "description de l ' état corrigée",
+        "it": "descrizione corretta dello stato",
+        "es": "corregida descripción del estado",
+        "pl": "poprawiony opis państwa",
+        "uk": "виправлений державний опис",
+        "zh-cn": "更正的国家说明"
+      },
       "3.0.0": {
         "en": "BREAKING: Dropped support for Node.js 14; changed config screen to admin 5 solution; dropped Admin <5 support",
         "de": "BREAKING: Unterstützung für Node.js 14 beendet; geänderter config-Bildschirm auf Admin 5 Lösung; Admin <5 Unterstützung beendet",
