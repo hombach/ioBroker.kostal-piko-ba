@@ -1051,7 +1051,7 @@
       "type": "state",
       "common": {
         "role": "value.current",
-        "name": "Battery current; >0 => charge; <0 => discharge",
+        "name": "Battery current; <0 => charge; >0 => discharge",
         "type": "number",
         "unit": "A",
         "read": true,
@@ -1079,7 +1079,7 @@
       "type": "state",
       "common": {
         "role": "value.power",
-        "name": "Battery power",
+        "name": "Battery power; <0 => charge; >0 => discharge",
         "type": "number",
         "unit": "W",
         "read": true,
