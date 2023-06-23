@@ -250,19 +250,6 @@
         "uk": "BREAKING: Dropped node.js 10 підтримка; фіксована вразливість",
         "zh-cn": "BREAKRE: Droed node.js 10 support;固定的脆弱性"
       },
-      "1.1.3": {
-        "en": "added battery.Voltage; added additional error handler",
-        "de": "batterie hinzugefügt. Spannung; zusätzlicher Fehlergriff",
-        "ru": "добавленная батарея. Напряжение; добавлен дополнительный обработчик ошибок",
-        "pt": "bateria adicionada. Tensão; adicionado identificador de erro adicional",
-        "nl": "voegde batterij toe. Voltage toegevoegd aanvulling",
-        "fr": "batterie ajoutée. Tension; gestionnaire d'erreur supplémentaire ajouté",
-        "it": "batteria aggiunta. Tensione; aggiunto ulteriore maniglia di errore",
-        "es": "batería añadida. Voltaje; añadido controlador de error adicional",
-        "pl": "dodać baterię. Voltage; dodano dodatkową obsługę błędów",
-        "uk": "додано акумулятор. Напруга; додано додатковий обробник помилок",
-        "zh-cn": "新增电池。 引言"
-      },
       "1.1.0": {
         "en": "added battery.ChargeCycles; battery.temperature; DC1-3 Current, Voltage and Power",
         "de": "batterie hinzugefügt. ChargeCycles; Batterie.Temperatur; DC1-3 Strom, Spannung und Leistung",
