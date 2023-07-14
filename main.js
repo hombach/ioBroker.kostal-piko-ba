@@ -723,7 +723,7 @@ class KostalPikoBA extends utils.Adapter {
                             this.log.error(`Error when calling Piko MP API with axios for measurements info: ${err}`);
                         } else {
                             const yields = result.root.Device[0].Yields[0].Yield;
-                            const yieldProduced = yields.find(oyield => oyield.$.Type === "Produced");
+                            const yieldProduced = yields?.find(oyield => oyield.$.Type === "Produced");
                             if (yieldProduced) {
                                 if (yieldProduced.$.Slot == "Total") {
                                     const yieldProducedValue = yieldProduced.YieldValue[0].$.Value;;
@@ -733,7 +733,9 @@ class KostalPikoBA extends utils.Adapter {
                                 } else {
                                     this.log.warn(`total yield produced value not found`);
                                 }
-                            }
+                            } else {
+                                this.log.warn(`total yield produced field not found`);
+			    }
                         }
                     });
                 })
