@@ -4,17 +4,17 @@
     "version": "3.0.2",
     "news": {
       "3.0.2": {
-        "en": "fix small error in MP recognition",
-        "de": "kleine Fehler in MP-Erkennung beheben",
-        "ru": "исправить небольшую ошибку в распознавании MP",
-        "pt": "corrigir pequeno erro no reconhecimento MP",
-        "nl": "kleine fout in MP-herkenning",
-        "fr": "corriger une petite erreur dans la reconnaissance MP",
-        "it": "correggere piccolo errore nel riconoscimento MP",
-        "es": "corregir pequeño error en el reconocimiento MP",
-        "pl": "ustalanie małego błędu w MP w uznaniu zasług",
-        "uk": "виправлено невелику похибку в розпізнавання МП",
-        "zh-cn": "f 在立法承认方面的小错误"
+        "en": "fix small error in MP recognition + sentry notified error in object handling",
+        "de": "kleine Fehler bei der MP-Erkennung behoben + von Sentry gemeldeter Fehler bei der Objektbearbeitung beseitigt",
+        "ru": "исправить небольшую ошибку в распознавании МП + отправка уведомлена ошибка в обработке объектов",
+        "pt": "corrigir erro pequeno no reconhecimento de MP + erro notificado de sentinela no manuseio de objetos",
+        "nl": "kleine fout in de MP-herkenning + sentimentele fout",
+        "fr": "corriger une petite erreur dans la reconnaissance MP + erreur notifiée dans la manipulation d'objets",
+        "it": "correzione di piccolo errore nel riconoscimento MP + errore notificato inviato nella gestione degli oggetti",
+        "es": "corregir pequeño error en reconocimiento MP + error notificado centinela en manejo de objetos",
+        "pl": "ustawienie małego błędu w MP rozpoznawaniu + sentry notified error in object handling",
+        "uk": "виправлено невелику похибку в MP розпізнавання + позначену помилку в об'єкті",
+        "zh-cn": "fix MP承认+中小型错误在处理物体时通知错误"
       },
       "3.0.1": {
         "en": "corrected state description",
