@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "3.0.1",
+    "version": "3.0.2",
     "news": {
+      "3.0.2": {
+        "en": "fix small error in MP recognition",
+        "de": "kleine Fehler in MP-Erkennung beheben",
+        "ru": "исправить небольшую ошибку в распознавании MP",
+        "pt": "corrigir pequeno erro no reconhecimento MP",
+        "nl": "kleine fout in MP-herkenning",
+        "fr": "corriger une petite erreur dans la reconnaissance MP",
+        "it": "correggere piccolo errore nel riconoscimento MP",
+        "es": "corregir pequeño error en el reconocimiento MP",
+        "pl": "ustalanie małego błędu w MP w uznaniu zasług",
+        "uk": "виправлено невелику похибку в розпізнавання МП",
+        "zh-cn": "f 在立法承认方面的小错误"
+      },
       "3.0.1": {
         "en": "corrected state description",
         "de": "bereinigte zustandsbeschreibung",
@@ -249,19 +262,6 @@
         "pl": "BREAKING: Dropped Węzeł.js 10 support; fixedvulnerability",
         "uk": "BREAKING: Dropped node.js 10 підтримка; фіксована вразливість",
         "zh-cn": "BREAKRE: Droed node.js 10 support;固定的脆弱性"
-      },
-      "1.1.0": {
-        "en": "added battery.ChargeCycles; battery.temperature; DC1-3 Current, Voltage and Power",
-        "de": "batterie hinzugefügt. ChargeCycles; Batterie.Temperatur; DC1-3 Strom, Spannung und Leistung",
-        "ru": "добавленная батарея. ChargeCycles; Battery.temperature; DC1-3 ток, напряжение и мощность",
-        "pt": "bateria adicionada. Ciclos de carga; bateria.temperatura; corrente DC1-3, tensão e potência",
-        "nl": "voegde batterij toe. ChargeCycles, batterij",
-        "fr": "batterie ajoutée. ChargeCycles; batterie.température; DC1-3 Courant, tension et puissance",
-        "it": "batteria aggiunta. ChargeCycles; batteria.temperature; corrente DC1-3, tensione e potenza",
-        "es": "batería añadida. Carga Ciclos; batería.temperatura; DC1-3 Corriente, Voltaje y Potencia",
-        "pl": "dodać baterię. ChargeCycles; bateria temperatura; DC1-3 Current, Voltage i Power",
-        "uk": "додано акумулятор. ChargeCycles; акумулятор.температура; DC1-3 Поточний, напруга та потужність",
-        "zh-cn": "新增电池。 档案;电池组;DC1-3 目前,动产和电力"
       }
     },
     "titleLang": {
