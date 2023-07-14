@@ -355,8 +355,9 @@ class KostalPikoBA extends utils.Adapter {
                                 InverterType = MPType;
                                 this.setStateAsync('Info.InverterType', { val: InverterType, ack: true });
                                 InverterAPIPikoMP = true;
+		                InverterUIVersion = 'MP';
+                		this.setStateAsync('Info.InverterUIVersion', { val: InverterUIVersion, ack: true });
                                 this.setStateAsync('Info.InverterName', { val: result.root.Device[0].$.NetBiosName, ack: true });
-                                this.log.error(`Piko MP API not supported yet!!!!`);
                             }
                         }
                     });
