@@ -498,10 +498,10 @@ class KostalPikoBA extends utils.Adapter {
                     xml2js.parseString(response.data, (err, result) => {
                         if (err) {
                             this.log.error(`Error when calling Piko MP API with axios for measurements info: ${err}`);
-                        } else {
+                        } else if (result.root.Device[0].Measurements[0].Measurement) {
                             const measurements = result.root.Device[0].Measurements[0].Measurement;
                             const DC_Voltage = measurements.find(measurement => measurement.$.Type === "DC_Voltage");
-                            if (DC_Voltage) {
+                            if (DC_Voltage && DC_Voltage.$) {
                                 this.setStateAsync('Power.DC1Voltage', { val: Math.round(DC_Voltage.$.Value), ack: true });
                             } else {
                                 const DC_Voltage1 = measurements.find(measurement => measurement.$.Type === "DC_Voltage1");
@@ -510,7 +510,7 @@ class KostalPikoBA extends utils.Adapter {
                                 this.setStateAsync('Power.DC2Voltage', { val: Math.round(DC_Voltage2.$.Value), ack: true });
                             }
                             const DC_Current = measurements.find(measurement => measurement.$.Type === "DC_Current");
-                            if (DC_Current) {
+                            if (DC_Current && DC_Current.$) {
                                 this.setStateAsync('Power.DC1Current', { val: (Math.round(1000 * DC_Current.$.Value)) / 1000, ack: true });
                             } else {
                                 const DC_Current1 = measurements.find(measurement => measurement.$.Type === "DC_Current1");

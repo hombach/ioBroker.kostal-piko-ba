@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "3.0.2",
+    "version": "3.0.3",
     "news": {
+      "3.0.3": {
+        "en": "fixing sentry notified error in case of network trouble",
+        "de": "fehler bei netzstörungen behoben",
+        "ru": "исправление отправленной оповещенной ошибки в случае проблем с сетью",
+        "pt": "corrigir erro notificado de sentinela em caso de problema de rede",
+        "nl": "vertaling:",
+        "fr": "correction de l'erreur signalée en cas de problème réseau",
+        "it": "risolvere errore notificato in caso di problemi di rete",
+        "es": "fijación centry notified error en caso de problemas de red",
+        "pl": "w przypadku problemów sieciowych błąd powiadomiony został w przypadku błędu",
+        "uk": "фіксація сповіщеної помилки в разі виникнення проблем з мережею",
+        "zh-cn": "f 在网络麻烦情况下,指定发送的电报错误"
+      },
       "3.0.2": {
         "en": "fix small error in MP recognition + sentry notified error in object handling",
         "de": "kleine Fehler bei der MP-Erkennung behoben + von Sentry gemeldeter Fehler bei der Objektbearbeitung beseitigt",
@@ -197,19 +210,6 @@
         "pl": "dodaje minimalne wartości dla czasu sondy, aby zapobiec błędom komunikcyjnym",
         "uk": "додано мінімальні значення для помилок опитування",
         "zh-cn": "防止通信错误的污染时间增加最低值"
-      },
-      "1.4.6": {
-        "en": "removed gulp, added tests for node.js 18, removed tests for node.js 12 -> it's recommended to switch to node.js 14, adapter still working with node 12",
-        "de": "entfernen von gulp, add tests für node.js 18, entferne tests für node.js 12 -> es wird empfohlen, zu node.js 14, adapter arbeitet noch mit node 12",
-        "ru": "удалена гульптура, добавлены тесты для node.js 18, удалены тесты для node.js 12 -> порекомендовано к node.js 14, адаптер все еще работает с node 12",
-        "pt": "removeu gulp, adicionou testes para node.js 18, removeu testes para node.js 12 -> é recomendado para swich para node.js 14, adaptador ainda trabalhando com nó 12",
-        "nl": "verwijderde gulp, toegevoegde testen voor node. _ 12",
-        "fr": "gulpe enlevée, tests ajoutés pour node.js 18, tests supprimés pour node.js 12 - cancer il est recommandé de swich à node.js 14, adaptateur qui fonctionne toujours avec node 12",
-        "it": "gulp rimosso, test aggiunti per node.js 18, test rimossi per node.js 12 -> si consiglia di swich a node.js 14, adattatore ancora funzionante con nodo 12",
-        "es": "golp eliminado, pruebas agregadas para node.js 18, pruebas eliminadas para node.js 12 - se recomienda swich a node.js 14, adaptador todavía trabajando con node 12",
-        "pl": "usunięte gulp, dodane testy dla węzła.js 18, usunięte testy dla węzła.js 12->>>>. zalecana jest swich do węzła.js 14, dostosowując się do węzła. 12",
-        "uk": "remove gulp, додані тести для node.js 18, видалені тести для node.js 12 -> вона рекомендована для swich до node.js 14, адаптер все ще працює з вершиною 12 хв",
-        "zh-cn": "删除了gulp,为第18js号开除试验,取消对第12- 条的试验。 它建议使人不敢于14岁,更适应者仍然没有工作。 12"
       },
       "1.4.2": {
         "en": "added support for inverter type, version and name; fixed timing error",
