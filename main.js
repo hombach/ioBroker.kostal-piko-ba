@@ -498,9 +498,9 @@ class KostalPikoBA extends utils.Adapter {
                     xml2js.parseString(response.data, (err, result) => {
                         if (err) {
                             this.log.error(`Error when calling Piko MP API with axios for measurements info: ${err}`);
-                        } else if (result.root.Device[0].Measurements[0].Measurement) {
-                            const measurements = result.root.Device[0].Measurements[0].Measurement;
-                            const DC_Voltage = measurements.find(measurement => measurement.$.Type === "DC_Voltage");
+                        } else {
+                            const measurements = result?.root.Device[0].Measurements[0].Measurement;
+                            const DC_Voltage = measurements?.find(measurement => measurement.$.Type === "DC_Voltage");
                             if (DC_Voltage && DC_Voltage.$) {
                                 this.setStateAsync('Power.DC1Voltage', { val: Math.round(DC_Voltage.$.Value), ack: true });
                             } else {
