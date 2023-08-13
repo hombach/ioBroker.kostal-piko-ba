@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "3.0.3",
+    "version": "3.0.4",
     "news": {
+      "3.0.4": {
+        "en": "bumped adapter core to V3",
+        "de": "Update Adapterkern auf V3",
+        "ru": "bumped адаптер ядро для V3",
+        "pt": "núcleo do adaptador colidido para V3",
+        "nl": "quality over Quantity (QoQ) Releases Vertaling:",
+        "fr": "noyau d'adaptateur bossé à V3",
+        "it": "core adattatore urtato a V3",
+        "es": "núcleo del adaptador para golpes a V3",
+        "pl": "adapter do V3",
+        "uk": "bumped адаптер ядро до V3",
+        "zh-cn": "b 被倾销的适应能力"
+      },
       "3.0.3": {
         "en": "fixing sentry notified error in case of network trouble",
         "de": "fehler bei netzstörungen behoben",
