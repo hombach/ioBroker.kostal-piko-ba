@@ -211,19 +211,6 @@
         "uk": "додано мінімальні значення для помилок опитування",
         "zh-cn": "防止通信错误的污染时间增加最低值"
       },
-      "1.4.2": {
-        "en": "added support for inverter type, version and name; fixed timing error",
-        "de": "zusätzliche unterstützung für wechselrichter typ, version und name; timingfehler korrigiert",
-        "ru": "добавлена поддержка инверторного типа, версии и имени; исправлена ошибка времени",
-        "pt": "suporte adicionado para o tipo de inversor, versão e nome; erro de timing fixo",
-        "nl": "steun toegevoegd voor invertertype, versie en naam, gerepareerde timingfout",
-        "fr": "support ajouté pour le type, la version et le nom d'inverter; erreur de timing fixe",
-        "it": "supporto aggiunto per tipo di inverter, versione e nome; errore di temporizzazione fisso",
-        "es": "soporte añadido para tipo inverter, versión y nombre; error de tiempo fijo",
-        "pl": "dodano wsparcie dla inwerterów typu, wersji i nazwy; naprawione błędy",
-        "uk": "додана підтримка інверторного типу, версії та назви; виправлена помилка часу",
-        "zh-cn": "增加对不同类型、版本和名称的支持;固定时间错误"
-      },
       "1.4.0": {
         "en": "added support for grid 1-3 current, voltage and power",
         "de": "unterstützung für netz 1-3 strom, spannung und leistung",
