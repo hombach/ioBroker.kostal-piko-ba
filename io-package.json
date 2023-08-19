@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "3.0.4",
+    "version": "3.0.5",
     "news": {
+      "3.0.5": {
+        "en": "mitigating another sentry notified error in case of network trouble",
+        "de": "abmilderung eines anderen gemeldeten fehlers bei netzstörungen",
+        "ru": "снижение другой судоходной оповещенной ошибки в случае возникновения проблем в сети",
+        "pt": "mitigar outro erro notificado enviado em caso de problemas de rede",
+        "nl": "weer een geïnformeerde fout in geval van netwerk problemen",
+        "fr": "l'atténuation d'une autre erreur notifiée en cas de problème réseau",
+        "it": "mitigare un altro errore notificato in caso di problemi di rete",
+        "es": "mitigating another sentry notified error in case of network problem",
+        "pl": "w przypadku kłopotów sieciowych zgłaszał inny udokumentowany błąd",
+        "uk": "пом'якшення чергової похибки, що направляється в разі виникнення проблем з мережею",
+        "zh-cn": "减少因网络麻烦而发出的另一发材料的错误"
+      },
       "3.0.4": {
         "en": "bumped adapter core to V3",
         "de": "Update Adapterkern auf V3",
@@ -249,19 +262,6 @@
         "pl": "dodano opcjonalne wsparcie dla sygnałów analogowych",
         "uk": "додана додаткова підтримка аналогових входів",
         "zh-cn": "替代投入的备选支助"
-      },
-      "1.2.0": {
-        "en": "BREAKING: Dropped node.js 10 support; fixed vulnerability",
-        "de": "BREAKING: Dropped node.js 10 support; Feste Sicherheitslücke",
-        "ru": "ЗАВТРАК: Dropped node.js 10 поддержка; фиксированная уязвимость",
-        "pt": "BREAKING: Node gota.js 10 suporte; vulnerabilidade fixa",
-        "nl": "Gedumpte node",
-        "fr": "BREAKING: Support node.js 10 abandonné; vulnérabilité fixe",
-        "it": "BREAKING: Supporto Dropped node.js 10; vulnerabilità fissa",
-        "es": "BREAKING: Nodo caído.js 10 soporte; vulnerabilidad fija",
-        "pl": "BREAKING: Dropped Węzeł.js 10 support; fixedvulnerability",
-        "uk": "BREAKING: Dropped node.js 10 підтримка; фіксована вразливість",
-        "zh-cn": "BREAKRE: Droed node.js 10 support;固定的脆弱性"
       }
     },
     "titleLang": {
