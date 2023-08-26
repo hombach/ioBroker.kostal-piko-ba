@@ -563,9 +563,16 @@ class KostalPikoBA extends utils.Adapter {
                 .catch(error => {
                     if (error.response) { //get HTTP error code
                         this.log.error(`HTTP error ${error.response.status} when polling Piko MP API`);
+                    } else if (error.code) { // get error code
+                        switch (error.code) {
+                            case 'ETIMEDOUT':
+                                this.log.warn(`Connection timeout error when calling Piko MP API for general info`);
+                                this.log.warn(`Please check the IP address: ${this.config.ipaddress} !! (e1.4)`);
+                                // this.SendSentryError(error.message);
+                        }
                     } else { //log error and send by sentry
                         this.log.error(`Unknown error when polling Piko MP API: ${error.message}`);
-                        this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e1)`);
+                        this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e1.5)`);
                         this.SendSentryError(error.message);
                     }
                 }); // END catch
