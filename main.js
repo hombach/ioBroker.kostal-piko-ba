@@ -325,9 +325,16 @@ class KostalPikoBA extends utils.Adapter {
             .catch(error => {
                 if (error.response) { //get HTTP error code
                     this.log.error(`HTTP error ${error.response.status} when calling Piko(-BA) API for general info`);
+                } else if (error.code) { // get error code
+                    switch (error.code) {
+                        case 'ETIMEDOUT':
+                            this.log.warn(`Connection timeout error when calling Piko MP API for general info`);
+                            this.log.warn(`Please check the IP address: ${this.config.ipaddress} !! (e1.2)`);
+                            // this.SendSentryError(error.message);
+                    }
                 } else {
                     this.log.error(`Unknown error when calling Piko(-BA) API for general info: ${error.message}`);
-                    this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0)`);
+                    this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0.1)`);
                     this.SendSentryError(error.message);
                 }
             }) // END catch
@@ -377,9 +384,16 @@ class KostalPikoBA extends utils.Adapter {
                             default:
                                 this.log.error(`HTTP error ${error.response.status} when calling Piko MP API for general info`);
                         }
+                    } else if (error.code) { // get error code
+                        switch (error.code) {
+                            case 'ETIMEDOUT':
+                                this.log.warn(`Connection timeout error when calling Piko MP API for general info`);
+                                this.log.warn(`Please check the IP address: ${this.config.ipaddress} !! (e0.2)`);
+                                // this.SendSentryError(error.message);
+                        }
                     } else {
                         this.log.error(`Unknown error when calling Piko MP API for general info: ${error.message}`);
-                        this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0)`);
+                        this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0.3)`);
                         this.SendSentryError(error.message);
                     }
                 }); // END catch
@@ -476,7 +490,7 @@ class KostalPikoBA extends utils.Adapter {
                             }
                         }
                     } else {
-                        this.log.error(`Got no answer from inverter, please verify IP address: ${this.config.ipaddress} !! (e11)`);
+                        this.log.error(`Got no answer from inverter, please verify IP address: ${this.config.ipaddress} !! (e1.1)`);
                     }
                     if (result.length >= 20) { // not existent for Piko3.0 or if no limitation defined
                         this.setStateAsync('GridLimitation', { val: result[19].value, ack: true });
@@ -487,9 +501,16 @@ class KostalPikoBA extends utils.Adapter {
                 .catch(error => {
                     if (error.response) { //get HTTP error code
                         this.log.error(`HTTP error ${error.response.status} when polling Piko(-BA) API`);
+                    } else if (error.code) { // get error code
+                        switch (error.code) {
+                            case 'ETIMEDOUT':
+                                this.log.warn(`Connection timeout error when calling Piko MP API for general info`);
+                                this.log.warn(`Please check the IP address: ${this.config.ipaddress} !! (e1.2)`);
+                                // this.SendSentryError(error.message);
+                        }
                     } else { //log error and send by sentry
                         this.log.error(`Unknown error when polling Piko(-BA) API: ${error.message}`);
-                        this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e1)`);
+                        this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e1.3)`);
                         this.SendSentryError(error.message);
                     }
                 }) // END catch

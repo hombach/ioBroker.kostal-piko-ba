@@ -1,8 +1,11 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "3.0.5",
+    "version": "3.0.6",
     "news": {
+      "3.0.6": {
+        "en": "improved error handling in case of offline inverterse"
+      },
       "3.0.5": {
         "en": "mitigating another sentry notified error in case of network trouble",
         "de": "abmilderung eines anderen gemeldeten fehlers bei netzstörungen",
@@ -93,19 +96,6 @@
         "pl": "uruchomione błędy, zderzone zależności, dodały testy dla węzłów 20, ustalono, że uszkodzenie błędów jest błędne",
         "uk": "виправлено помилку, збиті залежності, додані тести для node.js 20, виправлено помилку відправника",
         "zh-cn": "固定的措词错误、倾销的依赖性、为第20js号的附加试验,固定的发送者报告错误。"
-      },
-      "2.5.1": {
-        "en": "fixed a sentry reported error",
-        "de": "durch Sentry gemeldeten Fehler behoben",
-        "ru": "исправлена ошибка отправки сообщения",
-        "pt": "corrigiu um erro reportado de sentinela",
-        "nl": "vertaling:",
-        "fr": "correction d'une erreur signalée",
-        "it": "risolto un errore segnalato dalla sentinella",
-        "es": "solucionó un mensaje de error reportado",
-        "pl": "stała sentry odnotowała błąd",
-        "uk": "виправлено помилку відправника",
-        "zh-cn": "固定发送的错误报告"
       },
       "2.5.0": {
         "en": "implemented battery power calculation",
