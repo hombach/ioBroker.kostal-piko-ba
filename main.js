@@ -725,10 +725,17 @@ class KostalPikoBA extends utils.Adapter {
                 case 'ETIMEDOUT':
                     this.log.warn(`Connection timeout error when calling ${sOccasion}`);
                     this.log.warn(`Please verify the IP address: ${this.config.ipaddress} !! (e${sErrorOccInt}.2)`);
+                    break;
+                case 'EHOSTUNREACH':
+                    this.log.warn(`Inverter not reachable error when calling ${sOccasion}`);
+                    this.log.warn(`Please verify the IP address: ${this.config.ipaddress} !! (e${sErrorOccInt}.2)`);
+                    break;
+                case 'ENETUNREACH':
+                    this.log.warn(`Inverter network not reachable error when calling ${sOccasion}`);
+                    this.log.warn(`Please verify the IP address: ${this.config.ipaddress} !! (e${sErrorOccInt}.2)`);
+                    break;
             }
-            // errors: 'Unexpected end of JSON input' 'read ECONNRESET'
-            //         'connect ECONNREFUSED 192.168.0.120:80' 'connect ENETUNREACH 192.168.178.74:80'
-            //         'connect EHOSTUNREACH 192.168.178.40:80'
+            // errors: 'Unexpected end of JSON input' 'read ECONNRESET' 'connect ECONNREFUSED 192.168.0.1:80'
         } else {
             this.log.error(`Unknown error when calling ${sOccasion}: ${stError.message}`);
             this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e${sErrorOccInt}.3)`);
@@ -756,32 +763,6 @@ class KostalPikoBA extends utils.Adapter {
         }
     }
 
-    /*
-    async SendSentryError(sError) {
-        if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
-            const sentryInstance = this.getPluginInstance('sentry');
-            if (sentryInstance) {
-                const oldError = await this.getStateAsync('LastSentryLoggedError')
-                if (oldError?.val != sError) { // if new error
-                    const Sentry = sentryInstance.getSentryObject();
-                    var date = new Date();
-        		    Sentry && Sentry.withScope(scope => {
-                        scope.setLevel('info');
-                        scope.setTag('Inverter', this.config.ipaddress);
-                        scope.setTag('Inverter-Type', InverterType);
-                        scope.setTag('Inverter-UI', InverterUIVersion);
-            			scope.setTag('Hour of event', date.getHours());
-                        Sentry.captureMessage(`Catched error: ${sError}`, 'info');
-                    });
-                    // errors: 'Unexpected end of JSON input' 'read ECONNRESET'
-                    //         'connect ECONNREFUSED 192.168.0.120:80' 'connect ENETUNREACH 192.168.178.74:80'
-                    //         'connect EHOSTUNREACH 192.168.178.40:80'
-                    this.setStateAsync('LastSentryLoggedError', { val: sError, ack: true });
-                }
-            }
-        }
-    }
-    */
 
 } // END Class
 
