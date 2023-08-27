@@ -324,22 +324,7 @@ class KostalPikoBA extends utils.Adapter {
             })
             .catch(error => {
                 this.HandleConnectionError(error, `Piko(-BA) API for general info`, `BA0`);
-                /*
-                if (error.response) { //get HTTP error code
-                    this.log.error(`HTTP error ${error.response.status} when calling Piko(-BA) API for general info`);
-                } else if (error.code) { // get error code
-                    switch (error.code) {
-                        case 'ETIMEDOUT':
-                            this.log.warn(`Connection timeout error when calling Piko(-BA) API for general info`);
-                            this.log.warn(`Please verify the IP address: ${this.config.ipaddress} !! (e0.1)`);
-                    }
-                } else {
-                    this.log.error(`Unknown error when calling Piko(-BA) API for general info: ${error.message}`);
-                    this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0.2)`);
-                    this.SendSentryError(error.message);
-                }
-                */
-            }) // END catch
+            })
 
         await resolveAfterXSeconds(2);
 
@@ -373,35 +358,7 @@ class KostalPikoBA extends utils.Adapter {
                 })
                 .catch(error => {
                     this.HandleConnectionError(error, `Piko MP API for general info`, `MP0`);
-                    /*
-                    if (error.response) { //get HTTP error code
-                        switch (error.response.status) {
-                            case 401:
-                                this.SendSentryError(error.Message);
-                                this.log.error(`The Inverter request has not been completed because it lacks valid authentication credentials.`);
-                                this.log.error(`HTTP error 401 when calling Piko MP API for general info`);
-                                this.log.error(`Authenticated access is not supported so far by Kostal Adapter`);
-                                this.log.error(`Please provide feedback in GitHub to get this done`);
-                                this.log.error(`Adapter is shutting down`);
-                                this.stop;
-                                break;
-                            // WIP!! default:
-                                // WIP!! this.log.error(`HTTP error ${error.response.status} when calling Piko MP API for general info`);
-                        }
-                    /*
-                    } else if (error.code) { //get error code
-                        switch (error.code) {
-                            case 'ETIMEDOUT':
-                                this.log.warn(`Connection timeout error when calling Piko MP API for general info`);
-                                this.log.warn(`Please verify the IP address: ${this.config.ipaddress} !! (e0.3)`);
-                        }
-                    } else {
-                        this.log.error(`Unknown error when calling Piko MP API for general info: ${error.message}`);
-                        this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0.4)`);
-                        this.SendSentryError(error.Message);
-                    }
-                    */
-                }); // END catch
+                });
         }
     } // END ReadPikoOnce
    
@@ -505,22 +462,7 @@ class KostalPikoBA extends utils.Adapter {
                 })
                 .catch(error => {
                     this.HandleConnectionError(error, `Piko(-BA) API for live data`, `BA1`);
-                    /*
-                    if (error.response) { //get HTTP error code
-                        this.log.error(`HTTP error ${error.response.status} when polling Piko(-BA) API`);
-                    } else if (error.code) { // get error code
-                        switch (error.code) {
-                            case 'ETIMEDOUT':
-                                this.log.warn(`Connection timeout error when calling Piko(-BA) API for live data`);
-                                this.log.warn(`Please verify the IP address: ${this.config.ipaddress} !! (e1.2)`);
-                        }
-                    } else { //log error and send by sentry
-                        this.log.error(`Unknown error when polling Piko(-BA) API: ${error.message}`);
-                        this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e1.3)`);
-                        this.SendSentryError(error.Message);
-                    }
-                    */
-                }) // END catch
+                })
         } // END InverterAPIPiko
 
         if (InverterAPIPikoMP) { // code for Piko MP Plus
@@ -569,22 +511,7 @@ class KostalPikoBA extends utils.Adapter {
                 })
                 .catch(error => {
                     this.HandleConnectionError(error, `Piko MP API for live data`, `MP1`);
-                    /*
-                    if (error.response) { //get HTTP error code
-                        this.log.error(`HTTP error ${error.response.status} when polling Piko MP API`);
-                    } else if (error.code) { // get error code
-                        switch (error.code) {
-                            case 'ETIMEDOUT':
-                                this.log.warn(`Connection timeout error when calling Piko MP API for general info`);
-                                this.log.warn(`Please verify the IP address: ${this.config.ipaddress} !! (e1.4)`);
-                        }
-                    } else { //log error and send by sentry
-                        this.log.error(`Unknown error when polling Piko MP API: ${error.message}`);
-                        this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e1.5)`);
-                        this.SendSentryError(error.Message);
-                    }
-                    */
-                }); // END catch
+                });
         } // END InverterAPIPikoMP
 
     } // END ReadPiko
@@ -663,22 +590,7 @@ class KostalPikoBA extends utils.Adapter {
                 })
                 .catch(error => {
                     this.HandleConnectionError(error, `Piko(-BA) API for live data`, `BA2`);
-                    /*
-                    if (error.response) { //get HTTP error code
-                        this.log.error(`HTTP error ${error.response.status} when polling Piko(-BA) API !! (e2.1)`);
-                    } else if (error.code) { // get error code
-                        switch (error.code) {
-                            case 'ETIMEDOUT':
-                                this.log.warn(`Connection timeout error when calling Piko(-BA) API for live data`);
-                                this.log.warn(`Please verify the IP address: ${this.config.ipaddress} !! (e2.2)`);
-                        }
-                    } else {
-                        this.log.error(`Unknown error when polling Piko(-BA) API: ${error.message}`);
-                        this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e2.3)`);
-                        this.SendSentryError(error.Message);
-                    }
-                    */
-                }) // END catch
+                })
         } // END InverterAPIPiko
 
         if (InverterAPIPikoMP) { // currently no code for Piko MP Plus - less data to poll , so handled in ReadPiko()
@@ -707,22 +619,7 @@ class KostalPikoBA extends utils.Adapter {
                 })
                 .catch(error => {
                     this.HandleConnectionError(error, `Piko(-BA) API for daily statistics`, `BA3`);
-                    /*
-                    if (error.response) { //get HTTP error code
-                        this.log.error(`HTTP error ${error.response.status} when polling Piko(-BA) API for daily statistics!! (e3.1)`);
-                    } else if (error.code) { //get error code
-                        switch (error.code) {
-                            case 'ETIMEDOUT':
-                                this.log.warn(`Connection timeout error when calling Piko(-BA) API for daily statistics`);
-                                this.log.warn(`Please verify the IP address: ${this.config.ipaddress} !! (e3.2)`);
-                        }
-                    } else {
-                        this.log.error(`Unknown error when calling Piko(-BA) API for daily statistics: ${error.message}`);
-                        this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e3.3)`);
-                        this.SendSentryError(error.Message);
-                    }
-                    */
-                }) // END catch
+                })
         } // END InverterAPIPiko
 
         if (InverterAPIPikoMP) { // code for Piko MP Plus
@@ -764,22 +661,7 @@ class KostalPikoBA extends utils.Adapter {
                 })
                 .catch(error => {
                     this.HandleConnectionError(error, `Piko-(BA) API for total statistics`, `BA4`);
-                    /*
-                    if (error.response) { //get HTTP error code
-                        this.log.error(`HTTP error ${error.response.status} when polling Piko(-BA) API for total statistics!! (e4.1)`);
-                    } else if (error.code) { //get error code
-                        switch (error.code) {
-                            case 'ETIMEDOUT':
-                                this.log.warn(`Connection timeout error when calling Piko(-BA) API for total statistics`);
-                                this.log.warn(`Please verify the IP address: ${this.config.ipaddress} !! (e4.2)`);
-                        }
-                    } else {
-                        this.log.error(`Unknown error when calling Piko(-BA) API for total statistics: ${error.message}`);
-                        this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e4.3)`);
-                        this.SendSentryError(error.Message);
-                    }
-                    */
-                }) // END catch
+                })
         } // END InverterAPIPiko
 
         if (InverterAPIPikoMP) { // code for Piko MP Plus
@@ -809,22 +691,7 @@ class KostalPikoBA extends utils.Adapter {
                 })
                 .catch(error => {
                     this.HandleConnectionError(error, `Piko MP API for total statistics`, `MP4`);
-                    /*
-                    if (error.response) { //get HTTP error code
-                        this.log.error(`HTTP error ${error.response.status} when polling Piko MP API for total statistics!! (e4.4)`);
-                    } else if (error.code) { //get error code
-                        switch (error.code) {
-                            case 'ETIMEDOUT':
-                                this.log.warn(`Connection timeout error when calling Piko MP API for total statistics`);
-                                this.log.warn(`Please verify the IP address: ${this.config.ipaddress} !! (e4.5)`);
-                        }
-                    } else {
-                        this.log.error(`Unknown error when calling Piko MP API for total statistics: ${error.message}`);
-                        this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e4.6)`);
-                        this.SendSentryError(error.Message);
-                    }
-                    */
-                }); // END catch
+                });
         } // END InverterAPIPikoMP
 
         try {
@@ -859,6 +726,9 @@ class KostalPikoBA extends utils.Adapter {
                     this.log.warn(`Connection timeout error when calling ${sOccasion}`);
                     this.log.warn(`Please verify the IP address: ${this.config.ipaddress} !! (e${sErrorOccInt}.2)`);
             }
+            // errors: 'Unexpected end of JSON input' 'read ECONNRESET'
+            //         'connect ECONNREFUSED 192.168.0.120:80' 'connect ENETUNREACH 192.168.178.74:80'
+            //         'connect EHOSTUNREACH 192.168.178.40:80'
         } else {
             this.log.error(`Unknown error when calling ${sOccasion}: ${stError.message}`);
             this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e${sErrorOccInt}.3)`);
@@ -878,9 +748,6 @@ class KostalPikoBA extends utils.Adapter {
                             scope.setTag('Hour of event', date.getHours());
                             Sentry.captureMessage(`Catched error: ${stError.Message}`, 'info');
                         });
-                        // errors: 'Unexpected end of JSON input' 'read ECONNRESET'
-                        //         'connect ECONNREFUSED 192.168.0.120:80' 'connect ENETUNREACH 192.168.178.74:80'
-                        //         'connect EHOSTUNREACH 192.168.178.40:80'
                         this.setStateAsync('LastSentryLoggedError', { val: stError.Message, ack: true });
                     }
                 }
@@ -889,6 +756,7 @@ class KostalPikoBA extends utils.Adapter {
         }
     }
 
+    /*
     async SendSentryError(sError) {
         if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
             const sentryInstance = this.getPluginInstance('sentry');
@@ -913,6 +781,7 @@ class KostalPikoBA extends utils.Adapter {
             }
         }
     }
+    */
 
 } // END Class
 

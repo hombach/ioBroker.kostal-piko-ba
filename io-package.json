@@ -4,7 +4,17 @@
     "version": "3.0.6",
     "news": {
       "3.0.6": {
-        "en": "improved error handling in case of offline inverterse"
+        "en": "improved error handling in case of offline inverterse",
+        "de": "verbesserte Fehlerbehandlung bei offline Wechselrichtern",
+        "ru": "улучшенная обработка ошибок в случае оффлайн-инвертора",
+        "pt": "manipulação de erro melhorada em caso de inversor offline",
+        "nl": "verbeterde fouten in geval van offline inverter",
+        "fr": "amélioration de la manipulation des erreurs en cas d'inverterse hors ligne",
+        "it": "migliore gestione degli errori in caso di inverterse offline",
+        "es": "mejor manejo de errores en caso de inverterse offline",
+        "pl": "ulepszona obsługa błędów w przypadku inwergencji offline",
+        "uk": "поліпшена обробка помилок у разі офлайн інверторів",
+        "zh-cn": "在喷雾器上处理错误的改善"
       },
       "3.0.5": {
         "en": "mitigating another sentry notified error in case of network trouble",
