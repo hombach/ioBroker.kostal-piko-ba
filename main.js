@@ -373,7 +373,7 @@ class KostalPikoBA extends utils.Adapter {
                 })
                 .catch(error => {
                     this.HandleConnectionError(error, `Piko MP API for general info`, `MP0`);
-                    // WIP!!
+                    /*
                     if (error.response) { //get HTTP error code
                         switch (error.response.status) {
                             case 401:
@@ -399,9 +399,8 @@ class KostalPikoBA extends utils.Adapter {
                         this.log.error(`Unknown error when calling Piko MP API for general info: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0.4)`);
                         this.SendSentryError(error.Message);
-                    */
                     }
-                    // WIP!!
+                    */
                 }); // END catch
         }
     } // END ReadPikoOnce
@@ -841,7 +840,19 @@ class KostalPikoBA extends utils.Adapter {
     /*****************************************************************************************/
     async HandleConnectionError(stError, sOccasion, sErrorOccInt) {
         if (stError.response) { //get HTTP error code
-            this.log.error(`HTTP error ${stError.response.status} when polling ${sOccasion}!! (e${sErrorOccInt}.1)`);
+            switch (stError.response.status) {
+                case 401:
+                    //this.SendSentryError(stError.Message);
+                    this.log.error(`The Inverter request has not been completed because it lacks valid authentication credentials.`);
+                    this.log.error(`HTTP error 401 when calling ${sOccasion}!! (e${sErrorOccInt}.0)`);
+                    this.log.warn(`Authenticated access is not supported so far by Kostal Adapter`);
+                    this.log.warn(`Please provide feedback in GitHub to get this done`);
+                    this.log.error(`Adapter is shutting down`);
+                    this.stop;
+                    break;
+                default:
+                    this.log.error(`HTTP error ${stError.response.status} when polling ${sOccasion}!! (e${sErrorOccInt}.1)`);
+            }
         } else if (stError.code) { //get error code
             switch (stError.code) {
                 case 'ETIMEDOUT':
@@ -874,6 +885,7 @@ class KostalPikoBA extends utils.Adapter {
                     }
                 }
             }
+
         }
     }
 
