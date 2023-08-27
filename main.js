@@ -372,7 +372,7 @@ class KostalPikoBA extends utils.Adapter {
                     if (error.response) { //get HTTP error code
                         switch (error.response.status) {
                             case 401:
-                                this.SendSentryError(error.message);
+                                this.SendSentryError(error.Message);
                                 this.log.error(`The Inverter request has not been completed because it lacks valid authentication credentials.`);
                                 this.log.error(`HTTP error 401 when calling Piko MP API for general info`);
                                 this.log.error(`Authenticated access is not supported so far by Kostal Adapter`);
@@ -392,7 +392,7 @@ class KostalPikoBA extends utils.Adapter {
                     } else {
                         this.log.error(`Unknown error when calling Piko MP API for general info: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e0.4)`);
-                        this.SendSentryError(error.message);
+                        this.SendSentryError(error.Message);
                     }
                 }); // END catch
         }
@@ -508,7 +508,7 @@ class KostalPikoBA extends utils.Adapter {
                     } else { //log error and send by sentry
                         this.log.error(`Unknown error when polling Piko(-BA) API: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e1.3)`);
-                        this.SendSentryError(error.message);
+                        this.SendSentryError(error.Message);
                     }
                 }) // END catch
         } // END InverterAPIPiko
@@ -569,7 +569,7 @@ class KostalPikoBA extends utils.Adapter {
                     } else { //log error and send by sentry
                         this.log.error(`Unknown error when polling Piko MP API: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e1.5)`);
-                        this.SendSentryError(error.message);
+                        this.SendSentryError(error.Message);
                     }
                 }); // END catch
         } // END InverterAPIPikoMP
@@ -660,7 +660,7 @@ class KostalPikoBA extends utils.Adapter {
                     } else {
                         this.log.error(`Unknown error when polling Piko(-BA) API: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e2.3)`);
-                        this.SendSentryError(error.message);
+                        this.SendSentryError(error.Message);
                     }
                 }) // END catch
         } // END InverterAPIPiko
@@ -701,7 +701,7 @@ class KostalPikoBA extends utils.Adapter {
                     } else {
                         this.log.error(`Unknown error when calling Piko(-BA) API for daily statistics: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e3.3)`);
-                        this.SendSentryError(error.message);
+                        this.SendSentryError(error.Message);
                     }
                 }) // END catch
         } // END InverterAPIPiko
@@ -755,7 +755,7 @@ class KostalPikoBA extends utils.Adapter {
                     } else {
                         this.log.error(`Unknown error when calling Piko(-BA) API for total statistics: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e4.3)`);
-                        this.SendSentryError(error.message);
+                        this.SendSentryError(error.Message);
                     }
                 }) // END catch
         } // END InverterAPIPiko
@@ -786,6 +786,8 @@ class KostalPikoBA extends utils.Adapter {
                     });
                 })
                 .catch(error => {
+                    this.HandleConnectionError(error, `Piko MP API for total statistics`, `MP4`);
+                    /*
                     if (error.response) { //get HTTP error code
                         this.log.error(`HTTP error ${error.response.status} when polling Piko MP API for total statistics!! (e4.4)`);
                     } else if (error.code) { //get error code
@@ -797,8 +799,9 @@ class KostalPikoBA extends utils.Adapter {
                     } else {
                         this.log.error(`Unknown error when calling Piko MP API for total statistics: ${error.message}`);
                         this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e4.6)`);
-                        this.SendSentryError(error.message);
+                        this.SendSentryError(error.Message);
                     }
+                    */
                 }); // END catch
         } // END InverterAPIPikoMP
 
@@ -813,6 +816,44 @@ class KostalPikoBA extends utils.Adapter {
 
 
     /*****************************************************************************************/
+    async HandleConnectionError(stError, sOccasion, sErrorOccInt) {
+        if (stError.response) { //get HTTP error code
+            this.log.error(`HTTP error ${stError.response.status} when polling ${sOccasion}!! (e${sErrorOccInt}.1)`);
+        } else if (stError.code) { //get error code
+            switch (stError.code) {
+                case 'ETIMEDOUT':
+                    this.log.warn(`Connection timeout error when calling ${sOccasion}`);
+                    this.log.warn(`Please verify the IP address: ${this.config.ipaddress} !! (e${sErrorOccInt}.2)`);
+            }
+        } else {
+            this.log.error(`Unknown error when calling ${sOccasion}: ${stError.message}`);
+            this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e${sErrorOccInt}.3)`);
+
+            if (this.supportsFeature && this.supportsFeature('PLUGINS')) { // send Sentry error
+                const sentryInstance = this.getPluginInstance('sentry');
+                if (sentryInstance) {
+                    const oldError = await this.getStateAsync('LastSentryLoggedError')
+                    if (oldError?.val != stError.Message) { // if new error
+                        const Sentry = sentryInstance.getSentryObject();
+                        var date = new Date();
+                        Sentry && Sentry.withScope(scope => {
+                            scope.setLevel('info');
+                            scope.setTag('Inverter', this.config.ipaddress);
+                            scope.setTag('Inverter-Type', InverterType);
+                            scope.setTag('Inverter-UI', InverterUIVersion);
+                            scope.setTag('Hour of event', date.getHours());
+                            Sentry.captureMessage(`Catched error: ${stError.Message}`, 'info');
+                        });
+                        // errors: 'Unexpected end of JSON input' 'read ECONNRESET'
+                        //         'connect ECONNREFUSED 192.168.0.120:80' 'connect ENETUNREACH 192.168.178.74:80'
+                        //         'connect EHOSTUNREACH 192.168.178.40:80'
+                        this.setStateAsync('LastSentryLoggedError', { val: stError.Message, ack: true });
+                    }
+                }
+            }
+        }
+    }
+
     async SendSentryError(sError) {
         if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
             const sentryInstance = this.getPluginInstance('sentry');
@@ -837,7 +878,6 @@ class KostalPikoBA extends utils.Adapter {
             }
         }
     }
-
 
 } // END Class
 
