@@ -4,13 +4,11 @@
 
 // The adapter-core module gives you access to the core ioBroker functions you need to create an adapter
 import * as utils from "@iobroker/adapter-core";
-// HIER WEITER !!!!!
 import { Axios } from 'axios';
-
+import { XML2JS } from 'xml2js';
 
 
 // Load your modules here, e.g.:
-// const schedule = require('node-schedule');
 
 // state
 const ID_OperatingState               = 16780032;  // 0 = aus; 1 = Leerlauf(?); 2 = Anfahren, DC Spannung noch zu klein(?)
@@ -107,7 +105,8 @@ function resolveAfterXSeconds(x: number) {
 
 class KostalPikoBA extends utils.Adapter {
     adapterIntervals: any[]; // intervallList: ioBroker.Interval[]; - - ERROR not working with adapter-core 3.x; has to be any
-
+    axios: Axios;
+    xml2js: XML2JS;
     /*****************************************************************************************/
     public constructor(options: Partial<utils.AdapterOptions> = {}) {
         super({
@@ -120,6 +119,8 @@ class KostalPikoBA extends utils.Adapter {
         // this.on('message', this.onMessage.bind(this));
         this.on('unload', this.onUnload.bind(this));
         this.adapterIntervals = [];
+        this.axios = new Axios();
+        this.xml2js = new XML2JS();
     }
 
 
@@ -260,6 +261,7 @@ class KostalPikoBA extends utils.Adapter {
             }
 
             this.log.debug(`OnReady done`);
+
             await this.ReadPikoTotal();
             const totalIntervall = this.setInterval(() => {
                 try {
@@ -271,7 +273,6 @@ class KostalPikoBA extends utils.Adapter {
             this.adapterIntervals.push(totalIntervall);
           
             await resolveAfterXSeconds(3);
-
 
             await this.ReadPikoDaily();
             const dailyIntervall = this.setInterval(() => {
@@ -285,8 +286,18 @@ class KostalPikoBA extends utils.Adapter {
 
             await resolveAfterXSeconds(3);
 
+            await this.ReadPiko();
+            await this.ReadPiko2();
+            const liveIntervall = this.setInterval(() => {
+                try {
+                    this.ReadPiko();
+                    this.ReadPiko2();
+                } catch (error: any) {
+                    this.log.warn(`Error while pulling live data from inverter: ${error}`);
+                }
+            }, this.config.polltimelive);
+            this.adapterIntervals.push(liveIntervall);
 
-            await this.Scheduler();
             this.log.debug(`Initial ReadPiko done`);
         } else {
             this.log.error(`No IP address configured, adapter is shutting down`);
@@ -314,28 +325,11 @@ class KostalPikoBA extends utils.Adapter {
 
 
     /****************************************************************************************
-    * Scheduler ****************************************************************************/
-    Scheduler(): void {
-        const liveIntervall = this.setInterval(() => {
-            try {
-                this.ReadPiko();
-                this.ReadPiko2();
-            } catch (error: any) {
-                this.log.warn(`Error while pulling live data from inverter: ${error}`);
-            }
-        }, this.config.polltimelive);
-        this.adapterIntervals.push(liveIntervall);
-    }
-    
-
-    /****************************************************************************************
     * ReadPikoOnce *************************************************************************/
     private async ReadPikoOnce(): Promise<void> {
-        const axios = require('axios');
         const xml2js = require('xml2js');
 
-        // @ts-ignore axios.get is valid
-        await axios.get(KostalRequestOnce, { transformResponse: (r) => r })
+        await this.axios.get(KostalRequestOnce, { transformResponse: (r) => r })
             .then(response => {   //.status == 200
                 // access parsed JSON response data using response.data field
                 this.log.debug(`Piko-BA general info updated - Kostal response data: ${response.data}`);
@@ -361,8 +355,7 @@ class KostalPikoBA extends utils.Adapter {
         }
 
         if (!InverterAPIPiko) { // no inverter type detected yet -> try to detect Piko MP Inverter
-            // @ts-ignore axios.get is valid
-            axios.get(`http://${this.config.ipaddress}/versions.xml`, { transformResponse: (r) => r })
+            await this.axios.get(`http://${this.config.ipaddress}/versions.xml`, { transformResponse: (r) => r })
                 .then((response) => {
                     xml2js.parseString(response.data, (err, result) => {
                         if (err) {
@@ -391,12 +384,10 @@ class KostalPikoBA extends utils.Adapter {
     /****************************************************************************************
     * ReadPiko *****************************************************************************/
     private async ReadPiko(): Promise<void> {
-        const axios = require('axios');
         const xml2js = require('xml2js');
 
         if (InverterAPIPiko) {  // code for Piko(-BA)
-            // @ts-ignore axios.get is valid
-            axios.get(KostalRequest1, { transformResponse: (r) => r })
+            await this.axios.get(KostalRequest1, { transformResponse: (r) => r })
                 .then(response => {   //.status == 200
                     // access parsed JSON response data using response.data field
                     this.log.debug(`Piko-BA live data 1 update - Kostal response data: ${response.data}`);
@@ -491,8 +482,7 @@ class KostalPikoBA extends utils.Adapter {
         } // END InverterAPIPiko
 
         if (InverterAPIPikoMP) { // code for Piko MP Plus
-            // @ts-ignore axios.get is valid
-            axios.get(`http://${this.config.ipaddress}/measurements.xml`, { transformResponse: (r) => r })
+            await this.axios.get(`http://${this.config.ipaddress}/measurements.xml`, { transformResponse: (r) => r })
                 .then((response) => {
                     xml2js.parseString(response.data, (err, result) => {
                         if (err) {
@@ -545,11 +535,9 @@ class KostalPikoBA extends utils.Adapter {
     /****************************************************************************************
     * ReadPiko2 ****************************************************************************/
     private async ReadPiko2(): Promise<void> {
-        const axios = require('axios');
 
         if (InverterAPIPiko) {  // code for Piko(-BA)
-            // @ts-ignore axios.get is valid
-            axios.get(KostalRequest2, { transformResponse: (r) => r })
+            await this.axios.get(KostalRequest2, { transformResponse: (r) => r })
                 .then(response => {   //.status == 200
                     // access parsed JSON response data using response.data field
                     this.log.debug(`Piko-BA live data 2 update - Kostal response data: ${response.data}`);
@@ -627,11 +615,9 @@ class KostalPikoBA extends utils.Adapter {
     /****************************************************************************************
     * ReadPikoDaily ************************************************************************/
     private async ReadPikoDaily(): Promise<void> {
-        const axios = require('axios');
 
         if (InverterAPIPiko) {  // code for Piko(-BA)
-            // @ts-ignore axios.get is valid
-            axios.get(KostalRequestDay, { transformResponse: (r) => r })
+            await this.axios.get(KostalRequestDay, { transformResponse: (r) => r })
                 .then(response => {   //.status == 200
                     // access parsed JSON response data using response.data field
                     this.log.debug(`Piko-BA daily statistics update - Kostal response data: ${response.data}`);
@@ -656,12 +642,10 @@ class KostalPikoBA extends utils.Adapter {
     /****************************************************************************************
     * ReadPikoTotal ************************************************************************/
     private async ReadPikoTotal(): Promise<void> {
-        const axios = require('axios');
         const xml2js = require('xml2js');
 
         if (InverterAPIPiko) {  // code for Piko(-BA)
-            // @ts-ignore axios.get is valid
-            axios.get(KostalRequestTotal, { transformResponse: (r) => r })
+            await this.axios.get(KostalRequestTotal, { transformResponse: (r) => r })
                 .then(response => {   //.status == 200
                     // access parsed JSON response data using response.data field
                     this.log.debug(`Piko-BA lifetime statistics updated - Kostal response data: ${response.data}`);
@@ -682,8 +666,7 @@ class KostalPikoBA extends utils.Adapter {
         } // END InverterAPIPiko
 
         if (InverterAPIPikoMP) { // code for Piko MP Plus
-            // @ts-ignore axios.get is valid
-            axios.get(`http://${this.config.ipaddress}/yields.xml`, { transformResponse: (r) => r })
+            await this.axios.get(`http://${this.config.ipaddress}/yields.xml`, { transformResponse: (r) => r })
                 .then((response) => {
                     xml2js.parseString(response.data, (err, result) => {
                         if (err) {
@@ -713,7 +696,7 @@ class KostalPikoBA extends utils.Adapter {
     } // END ReadPikoTotal
 
 
-    /*****************************************************************************************/
+    /***************************************************************************************/
     private async HandleConnectionError(stError: any, sOccasion: string, sErrorOccInt: string): Promise<void> {
         if (stError.response) { //get HTTP error code
             switch (stError.response.status) {
