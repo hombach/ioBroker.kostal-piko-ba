@@ -330,22 +330,7 @@
     "supportCustoms": false
   },
 
-  "native": {
-    "ipaddress": "",
-    "polltimelive": 10000,
-    "polltimedaily": 60000,
-    "polltimetotal": 200000,
-    "readanalogs": false,
-    "readbattery": true,
-    "normAn1Max": 10,
-    "normAn1Min": 0,
-    "normAn2Max": 10,
-    "normAn2Min": 0,
-    "normAn3Max": 10,
-    "normAn3Min": 0,
-    "normAn4Max": 10,
-    "normAn4Min": 0
-  },
+  "native": {},
 
   "objects": [],
 
