@@ -35,6 +35,8 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 
 ! Note that missing version entries are typically dependency updates for improved security.
 
+### 4.0.0 (WORK in PROGRESS)
+* (HombachC) change adapter code to TypeScript 
 ### 3.0.6 (27.08.2023)
 * (HombachC) improved error handling in case of offline inverters - centralized error handling 
 ### 3.0.5 (19.08.2023)
