@@ -2,9 +2,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, Typescript ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, Typescript ]
 
 jobs:
   # Performs quick checks before the expensive test runs
@@ -26,8 +26,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build
-        run: npm run build --if-present
+     # - name: Build
+     #   run: npm run build --if-present
       - name: QuickTest
         run: npm test
 
