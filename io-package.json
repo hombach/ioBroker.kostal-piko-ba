@@ -1,20 +1,33 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "3.0.6",
+    "version": "3.0.7",
     "news": {
+      "3.0.7": {
+        "en": "Several dependency updates",
+        "de": "Mehrere Aktualisierungen von Abhängigkeiten",
+        "ru": "Несколько обновлений зависимостей",
+        "pt": "Várias atualizações de dependências",
+        "nl": "Diverse afhankelijkheidsupdates",
+        "fr": "Plusieurs mises à jour de dépendances",
+        "it": "Diverse aggiornamenti delle dipendenze",
+        "es": "Varias actualizaciones de dependencias",
+        "pl": "Kilka aktualizacji zależności",
+        "uk": "Декілька оновлень залежностей",
+        "zh-cn": "多个依赖项更新"
+      },
       "3.0.6": {
-        "en": "improved error handling in case of offline inverterse",
-        "de": "verbesserte Fehlerbehandlung bei offline Wechselrichtern",
-        "ru": "улучшенная обработка ошибок в случае оффлайн-инвертора",
-        "pt": "manipulação de erro melhorada em caso de inversor offline",
-        "nl": "verbeterde fouten in geval van offline inverter",
-        "fr": "amélioration de la manipulation des erreurs en cas d'inverterse hors ligne",
-        "it": "migliore gestione degli errori in caso di inverterse offline",
-        "es": "mejor manejo de errores en caso de inverterse offline",
-        "pl": "ulepszona obsługa błędów w przypadku inwergencji offline",
-        "uk": "поліпшена обробка помилок у разі офлайн інверторів",
-        "zh-cn": "在喷雾器上处理错误的改善"
+        "en": "Improved error handling in case of offline inverters",
+        "de": "Verbesserte Fehlerbehandlung bei Offline-Wechselrichtern",
+        "ru": "Улучшено обработку ошибок в случае отключения инверторов",
+        "pt": "Melhorou o tratamento de erros em caso de inversores offline",
+        "nl": "Verbeterde foutafhandeling in geval van offline omvormers",
+        "fr": "Amélioration de la gestion des erreurs en cas d'onduleurs hors ligne",
+        "it": "Miglioramento della gestione degli errori in caso di inverter offline",
+        "es": "Mejora en el manejo de errores en caso de inversores fuera de línea",
+        "pl": "Poprawiono obsługę błędów w przypadku odłączonych inwerterów",
+        "uk": "Покращено обробку помилок у випадку відключення інверторів",
+        "zh-cn": "在离线逆变器情况下改进了错误处理"
       },
       "3.0.5": {
         "en": "mitigating another sentry notified error in case of network trouble",
@@ -223,19 +236,6 @@
         "pl": "BREAKING: Dropped support for Node.js 12; dodanie stanu inwerteru jako struny",
         "uk": "BREAKING: Dropped підтримка для Node.js 12; додано стан інвертора як рядок",
         "zh-cn": "BREAKRE:为第12js号提供支助;将多样性作为附加条件。"
-      },
-      "1.5.0": {
-        "en": "added minimum values for poll times to prevent communication errors",
-        "de": "zusätzliche mindestwerte für abfragezeiten, um kommunikationsfehler zu verhindern",
-        "ru": "добавлены минимальные значения для времени опроса для предотвращения ошибок связи",
-        "pt": "valores mínimos adicionados para os tempos de votação para evitar erros de comunicação",
-        "nl": "voegde minimumwaarden toe voor pollen om communicatiefouten te voorkomen",
-        "fr": "valeurs minimales ajoutées pour les temps de vote pour prévenir les erreurs de communication",
-        "it": "valori minimi aggiunti per i tempi di sondaggio per evitare errori di comunicazione",
-        "es": "valores mínimos añadidos para tiempos de encuesta para evitar errores de comunicación",
-        "pl": "dodaje minimalne wartości dla czasu sondy, aby zapobiec błędom komunikcyjnym",
-        "uk": "додано мінімальні значення для помилок опитування",
-        "zh-cn": "防止通信错误的污染时间增加最低值"
       },
       "1.4.0": {
         "en": "added support for grid 1-3 current, voltage and power",
