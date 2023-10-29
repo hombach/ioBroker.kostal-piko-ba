@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "3.0.7",
+    "version": "3.0.8",
     "news": {
+      "3.0.8": {
+      	"en": "Bump axios to 1.6.0 because of vulnerability",
+      	"de": "Aktualisiere axios auf 1.6.0 aufgrund von Sicherheitslücken",
+      	"ru": "Поднять версию axios до 1.6.0 из-за уязвимости",
+      	"pt": "Atualize o axios para 1.6.0 devido a uma vulnerabilidade",
+      	"nl": "Werk axios bij naar 1.6.0 vanwege een beveiligingsprobleem",
+      	"fr": "Mettez à jour axios en version 1.6.0 en raison d'une vulnérabilité",
+      	"it": "Aggiorna axios a 1.6.0 a causa di una vulnerabilità",
+      	"es": "Actualiza axios a la versión 1.6.0 debido a una vulnerabilidad",
+      	"pl": "Zaktualizuj axios do wersji 1.6.0 z powodu podatności",
+      	"uk": "Підняти версію axios до 1.6.0 через уразливість",
+      	"zh-cn": "由于漏洞，升级axios到1.6.0"
+      },
       "3.0.7": {
         "en": "Several dependency updates",
         "de": "Mehrere Aktualisierungen von Abhängigkeiten",
@@ -184,19 +197,6 @@
         "pl": "dodano obsługę AC i DC dla inwergencji Piko MP",
         "uk": "додано підтримку значень живлення змінного струму та постійного струму для інверторів Piko MP",
         "zh-cn": "防务局和发展中国家对Piko MP 防备器的电力价值增加支助"
-      },
-      "2.3.1": {
-        "en": "fix error with zero values in DC & AC",
-        "de": "fehler mit Nullwerten in DC & AC beheben",
-        "ru": "исправить ошибку с нулевыми значениями в DC & AC",
-        "pt": "corrigir erro com zero valores em DC & AC",
-        "nl": "vergissing in DC ZeC",
-        "fr": "corriger l'erreur avec des valeurs zéro en DC & AC",
-        "it": "correzione di errore con valori zero in DC & AC",
-        "es": "corregir error con valores cero en DC & AC",
-        "pl": "ustępowanie błędów z wartościami zero w DC & AC",
-        "uk": "виправити помилку з нульовими значеннями в DC & AC",
-        "zh-cn": "f 在DC和ACC中,有零价值的错误"
       },
       "2.3.0": {
         "en": "replaced got by axios, added warning for not supported Piko MP inverters, removed travis",
