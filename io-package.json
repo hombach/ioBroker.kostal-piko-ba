@@ -3,9 +3,19 @@
     "name": "kostal-piko-ba",
     "version": "3.0.9",
     "news": {
-       "3.0.9": {
-      	"en": "3.0.9"
-      },
+    "3.0.9": {
+      	"en": "year 2024 changes\nseveral dependency updates",
+      	"de": "Änderungen im Jahr 2024\nmehrere Aktualisierungen von Abhängigkeiten",
+      	"ru": "Изменения на 2024 год\nнесколько обновлений зависимостей",
+      	"pt": "mudanças para o ano de 2024\nvárias atualizações de dependências",
+      	"nl": "wijzigingen voor het jaar 2024\nverschillende afhankelijkheidsupdates",
+      	"fr": "changements pour l'année 2024\nplusieurs mises à jour de dépendances",
+      	"it": "cambiamenti per l'anno 2024\ndiverse aggiornamenti delle dipendenze",
+      	"es": "cambios para el año 2024\nvarias actualizaciones de dependencias",
+      	"pl": "zmiany na rok 2024\nkilka aktualizacji zależności",
+      	"uk": "зміни на 2024 рік\nкілька оновлень залежностей",
+      	"zh-cn": "2024年变更\n多个依赖项更新"
+     },
      "3.0.8": {
       	"en": "Bump axios to 1.6.0 because of vulnerability",
       	"de": "Aktualisiere axios auf 1.6.0 aufgrund von Sicherheitslücken",
