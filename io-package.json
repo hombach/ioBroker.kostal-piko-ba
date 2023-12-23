@@ -1,9 +1,12 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "3.0.8",
+    "version": "3.0.9",
     "news": {
-      "3.0.8": {
+       "3.0.9": {
+      	"en": "3.0.9"
+      },
+     "3.0.8": {
       	"en": "Bump axios to 1.6.0 because of vulnerability",
       	"de": "Aktualisiere axios auf 1.6.0 aufgrund von Sicherheitslücken",
       	"ru": "Поднять версию axios до 1.6.0 из-за уязвимости",
@@ -158,19 +161,6 @@
         "pl": "stała podatność na xml2js",
         "uk": "фіксована вразливість в xml2js",
         "zh-cn": "×ml2j中的固定脆弱性"
-      },
-      "2.4.2": {
-        "en": "fixed error in Piko MP Plus AC current\nadded Piko MP Plus total yield",
-        "de": "fehler behoben in Piko MP Plus AC Strom\nhinzugefügt Piko MP Plus Gesamtertrag",
-        "ru": "исправленная ошибка в Piko MP Плюс AC ток\nдобавлен Piko MP Plus полная доходность",
-        "pt": "erro fixo em Piko MP Mais corrente AC\nadicionado Piko MP Plus rendimento total",
-        "nl": "in Piko MP Plus AC stroming\ntoegevoegd Piko MP Plus totale opbrengst",
-        "fr": "erreur fixe dans Piko MP Plus courant alternatif\nrendement total de Piko MP Plus ajouté",
-        "it": "errore fisso in Piko MP Più corrente AC\naggiunto Piko MP Plus rendimento totale",
-        "es": "error fijo en Piko MP Más corriente AC\nañadido rendimiento total de Piko MP Plus",
-        "pl": "uruchomiony błąd w Piko Prędkość prądu zmiennego: Piko MP Plus total yield plus",
-        "uk": "виправлена помилка в Piko MP Плюс струм змінного струму\nдодано Piko MP Plus загальний урожай",
-        "zh-cn": "piko MP PlusingAC 目前\nPiko MP Plus的总产量"
       },
       "2.4.1": {
         "en": "added Piko MP Plus support for two channel hardware",
