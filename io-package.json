@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "3.0.9",
+    "version": "3.0.10",
     "news": {
+      "3.0.10": {
+        "en": "fixed vulnerability",
+        "de": "Sicherheitslücke behoben",
+        "ru": "устранена уязвимость",
+        "pt": "vulnerabilidade corrigida",
+        "nl": "kwetsbaarheid verholpen",
+        "fr": "vulnérabilité corrigée",
+        "it": "vulnerabilità corretta",
+        "es": "vulnerabilidad corregida",
+        "pl": "usunięto podatność",
+        "uk": "виправлена вразливість",
+        "zh-cn": "修复了漏洞"
+      },
     "3.0.9": {
       	"en": "year 2024 changes\nseveral dependency updates",
       	"de": "Änderungen im Jahr 2024\nmehrere Aktualisierungen von Abhängigkeiten",
@@ -249,19 +262,6 @@
         "pl": "dodano obsługę sieci 1-3 prądu, napięcia i mocy",
         "uk": "додана підтримка сітки 1-3 струм, напруга та живлення",
         "zh-cn": "进一步支持电网1-3 目前、火山和电力"
-      },
-      "1.3.0": {
-        "en": "added optional support for analog inputs",
-        "de": "optionale unterstützung für analoge eingänge",
-        "ru": "добавлена дополнительная поддержка аналоговых входов",
-        "pt": "suporte opcional adicionado para entradas analógicas",
-        "nl": "voegde opties toe voor analogische inputs",
-        "fr": "support optionnel supplémentaire pour les entrées analogiques",
-        "it": "supporto opzionale aggiunto per ingressi analogici",
-        "es": "apoyo opcional añadido para entradas analógicas",
-        "pl": "dodano opcjonalne wsparcie dla sygnałów analogowych",
-        "uk": "додана додаткова підтримка аналогових входів",
-        "zh-cn": "替代投入的备选支助"
       }
     },
     "titleLang": {
