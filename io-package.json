@@ -1,20 +1,72 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "3.0.6",
+    "version": "3.0.10",
     "news": {
+      "3.0.10": {
+        "en": "fixed vulnerability",
+        "de": "Sicherheitslücke behoben",
+        "ru": "устранена уязвимость",
+        "pt": "vulnerabilidade corrigida",
+        "nl": "kwetsbaarheid verholpen",
+        "fr": "vulnérabilité corrigée",
+        "it": "vulnerabilità corretta",
+        "es": "vulnerabilidad corregida",
+        "pl": "usunięto podatność",
+        "uk": "виправлена вразливість",
+        "zh-cn": "修复了漏洞"
+      },
+    "3.0.9": {
+      	"en": "year 2024 changes\nseveral dependency updates",
+      	"de": "Änderungen im Jahr 2024\nmehrere Aktualisierungen von Abhängigkeiten",
+      	"ru": "Изменения на 2024 год\nнесколько обновлений зависимостей",
+      	"pt": "mudanças para o ano de 2024\nvárias atualizações de dependências",
+      	"nl": "wijzigingen voor het jaar 2024\nverschillende afhankelijkheidsupdates",
+      	"fr": "changements pour l'année 2024\nplusieurs mises à jour de dépendances",
+      	"it": "cambiamenti per l'anno 2024\ndiverse aggiornamenti delle dipendenze",
+      	"es": "cambios para el año 2024\nvarias actualizaciones de dependencias",
+      	"pl": "zmiany na rok 2024\nkilka aktualizacji zależności",
+      	"uk": "зміни на 2024 рік\nкілька оновлень залежностей",
+      	"zh-cn": "2024年变更\n多个依赖项更新"
+     },
+     "3.0.8": {
+      	"en": "Bump axios to 1.6.0 because of vulnerability",
+      	"de": "Aktualisiere axios auf 1.6.0 aufgrund von Sicherheitslücken",
+      	"ru": "Поднять версию axios до 1.6.0 из-за уязвимости",
+      	"pt": "Atualize o axios para 1.6.0 devido a uma vulnerabilidade",
+      	"nl": "Werk axios bij naar 1.6.0 vanwege een beveiligingsprobleem",
+      	"fr": "Mettez à jour axios en version 1.6.0 en raison d'une vulnérabilité",
+      	"it": "Aggiorna axios a 1.6.0 a causa di una vulnerabilità",
+      	"es": "Actualiza axios a la versión 1.6.0 debido a una vulnerabilidad",
+      	"pl": "Zaktualizuj axios do wersji 1.6.0 z powodu podatności",
+      	"uk": "Підняти версію axios до 1.6.0 через уразливість",
+      	"zh-cn": "由于漏洞，升级axios到1.6.0"
+      },
+      "3.0.7": {
+        "en": "Several dependency updates",
+        "de": "Mehrere Aktualisierungen von Abhängigkeiten",
+        "ru": "Несколько обновлений зависимостей",
+        "pt": "Várias atualizações de dependências",
+        "nl": "Diverse afhankelijkheidsupdates",
+        "fr": "Plusieurs mises à jour de dépendances",
+        "it": "Diverse aggiornamenti delle dipendenze",
+        "es": "Varias actualizaciones de dependencias",
+        "pl": "Kilka aktualizacji zależności",
+        "uk": "Декілька оновлень залежностей",
+        "zh-cn": "多个依赖项更新"
+      },
       "3.0.6": {
-        "en": "improved error handling in case of offline inverterse",
-        "de": "verbesserte Fehlerbehandlung bei offline Wechselrichtern",
-        "ru": "улучшенная обработка ошибок в случае оффлайн-инвертора",
-        "pt": "manipulação de erro melhorada em caso de inversor offline",
-        "nl": "verbeterde fouten in geval van offline inverter",
-        "fr": "amélioration de la manipulation des erreurs en cas d'inverterse hors ligne",
-        "it": "migliore gestione degli errori in caso di inverterse offline",
-        "es": "mejor manejo de errores en caso de inverterse offline",
-        "pl": "ulepszona obsługa błędów w przypadku inwergencji offline",
-        "uk": "поліпшена обробка помилок у разі офлайн інверторів",
-        "zh-cn": "在喷雾器上处理错误的改善"
+        "en": "Improved error handling in case of offline inverters",
+        "de": "Verbesserte Fehlerbehandlung bei Offline-Wechselrichtern",
+        "ru": "Улучшено обработку ошибок в случае отключения инверторов",
+        "pt": "Melhorou o tratamento de erros em caso de inversores offline",
+        "nl": "Verbeterde foutafhandeling in geval van offline omvormers",
+        "fr": "Amélioration de la gestion des erreurs en cas d'onduleurs hors ligne",
+        "it": "Miglioramento della gestione degli errori in caso di inverter offline",
+        "es": "Mejora en el manejo de errores en caso de inversores fuera de línea",
+        "pl": "Poprawiono obsługę błędów w przypadku odłączonych inwerterów",
+        "uk": "Покращено обробку помилок у випадку відключення інверторів",
+        "zh-cn": "在离线逆变器情况下改进了错误处理"
       },
       "3.0.5": {
         "en": "mitigating another sentry notified error in case of network trouble",
@@ -82,17 +134,17 @@
         "zh-cn": "更正的国家说明"
       },
       "3.0.0": {
-        "en": "BREAKING: Dropped support for Node.js 14; changed config screen to admin 5 solution; dropped Admin <5 support",
-        "de": "BREAKING: Unterstützung für Node.js 14 beendet; geänderter config-Bildschirm auf Admin 5 Lösung; Admin <5 Unterstützung beendet",
-        "ru": "ЗАВТРАК: Dropped поддержка Node.js 14; изменен экран config для admin 5 решение; упал Admin <5 поддержка",
-        "pt": "BREAKING: Suporte dropped para Node.js 14; tela de configuração alterada para solução admin 5; suporte abandonado Admin <5",
-        "nl": "Gevallen ondersteuning voor Node.js 14, veranderde config screen naar administratie oplossing, liet Admin 5 steun vallen",
-        "fr": "BREAKING: Support abandonné pour Node.js 14; modification de l'écran de configuration pour gérer la solution 5; suppression du support Admin 5",
-        "it": "BREAKING: Supporto Dropped per Node.js 14; schermata di configurazione modificata per la soluzione admin 5; supporto Admin <5",
-        "es": "BREAKING: Soporte desechado para Node.js 14; pantalla de configuración modificada para la solución admin 5; soporte desmontado Admin",
-        "pl": "BREAKING: Dropped support for Node.js 14; zmienił ekran konfigurowny do rozwiązania Admin 5",
-        "uk": "BREAKING: Dropped підтримка для Node.js 14; змінений екран налаштування до рішення адміністратора 5; скидати підтримку Admin <5",
-        "zh-cn": "BREAKRE:对第14号dejs的支持;改观5个解决办法的筛选;减少Admin <5号支助"
+        "en": "BREAKING: Dropped support for Node.js 14\nchanged config screen to admin 5 solution\ndropped Admin <5 support",
+        "de": "BREAKING: Unterstützung für Node.js 14 beendet\ngeänderter config-Bildschirm auf Admin 5 Lösung\nAdmin <5 Unterstützung beendet",
+        "ru": "ЗАВТРАК: Dropped поддержка Node.js 14\nизменен экран config для admin 5 решение\nупал Admin <5 поддержка",
+        "pt": "BREAKING: Suporte dropped para Node.js 14\ntela de configuração alterada para solução admin 5\nsuporte abandonado Admin <5",
+        "nl": "Gevallen ondersteuning voor Node.js 14\nveranderde config screen naar administratie oplossing\nliet Admin 5 steun vallen",
+        "fr": "BREAKING: Support abandonné pour Node.js 14\nmodification de l'écran de configuration pour gérer la solution 5\nsuppression du support Admin 5",
+        "it": "BREAKING: Supporto Dropped per Node.js 14\nschermata di configurazione modificata per la soluzione admin 5\nsupporto Admin <5",
+        "es": "BREAKING: Soporte desechado para Node.js 14\npantalla de configuración modificada para la solución admin 5\nsoporte desmontado Admin",
+        "pl": "BREAKING: Dropped support for Node.js 14\nzmienił ekran konfigurowny do rozwiązania Admin 5",
+        "uk": "BREAKING: Dropped підтримка для Node.js 14\nзмінений екран налаштування до рішення адміністратора 5\nскидати підтримку Admin <5",
+        "zh-cn": "BREAKRE:对第14号dejs的支持\n改观5个解决办法的筛选\n减少Admin <5号支助"
       },
       "2.5.2": {
         "en": "fixed a wording error, bumped dependencies, added tests for node.js 20, fixed a sentry reported error",
@@ -133,19 +185,6 @@
         "uk": "фіксована вразливість в xml2js",
         "zh-cn": "×ml2j中的固定脆弱性"
       },
-      "2.4.2": {
-        "en": "fixed error in Piko MP Plus AC current; added Piko MP Plus total yield",
-        "de": "fehler behoben in Piko MP Plus AC Strom; hinzugefügt Piko MP Plus Gesamtertrag",
-        "ru": "исправленная ошибка в Piko MP Плюс AC ток; добавлен Piko MP Plus полная доходность",
-        "pt": "erro fixo em Piko MP Mais corrente AC; adicionado Piko MP Plus rendimento total",
-        "nl": "in Piko MP Plus AC stroming, toegevoegd Piko MP Plus totale opbrengst",
-        "fr": "erreur fixe dans Piko MP Plus courant alternatif; rendement total de Piko MP Plus ajouté",
-        "it": "errore fisso in Piko MP Più corrente AC; aggiunto Piko MP Plus rendimento totale",
-        "es": "error fijo en Piko MP Más corriente AC; añadido rendimiento total de Piko MP Plus",
-        "pl": "uruchomiony błąd w Piko Prędkość prądu zmiennego: Piko MP Plus total yield plus",
-        "uk": "виправлена помилка в Piko MP Плюс струм змінного струму; додано Piko MP Plus загальний урожай",
-        "zh-cn": "piko MP PlusingAC 目前;Piko MP Plus的总产量"
-      },
       "2.4.1": {
         "en": "added Piko MP Plus support for two channel hardware",
         "de": "hinzugefügt Piko MP Plus Unterstützung für zwei Kanal Hardware",
@@ -172,30 +211,17 @@
         "uk": "додано підтримку значень живлення змінного струму та постійного струму для інверторів Piko MP",
         "zh-cn": "防务局和发展中国家对Piko MP 防备器的电力价值增加支助"
       },
-      "2.3.1": {
-        "en": "fix error with zero values in DC & AC",
-        "de": "fehler mit Nullwerten in DC & AC beheben",
-        "ru": "исправить ошибку с нулевыми значениями в DC & AC",
-        "pt": "corrigir erro com zero valores em DC & AC",
-        "nl": "vergissing in DC ZeC",
-        "fr": "corriger l'erreur avec des valeurs zéro en DC & AC",
-        "it": "correzione di errore con valori zero in DC & AC",
-        "es": "corregir error con valores cero en DC & AC",
-        "pl": "ustępowanie błędów z wartościami zero w DC & AC",
-        "uk": "виправити помилку з нульовими значеннями в DC & AC",
-        "zh-cn": "f 在DC和ACC中,有零价值的错误"
-      },
       "2.3.0": {
-        "en": "replaced got by axios, added warning for not supported Piko MP inverters, removed travis",
-        "de": "Got ersetzt durch Axios, zusätzliche Warnung für nicht unterstützte Piko MP Wechselrichter, Travis entfernt",
-        "ru": "замененный получил axios, добавленное предупреждение для не поддерживается Piko MP инверторы, удаленный travis",
-        "pt": "substituído por axios, adicionado aviso para não suportado Inversores Piko MP, travis removido",
+        "en": "replaced got by axios\nadded warning for not supported Piko MP inverters, removed travis",
+        "de": "Got ersetzt durch Axios\nzusätzliche Warnung für nicht unterstützte Piko MP Wechselrichter, Travis entfernt",
+        "ru": "замененный получил axios\nдобавленное предупреждение для не поддерживается Piko MP инверторы, удаленный travis",
+        "pt": "substituído por axios\nadicionado aviso para não suportado Inversores Piko MP, travis removido",
         "nl": "quality over Quantity (QoQ) Releases Vertaling: Piko MP inbrekers, verwijderde Travis",
-        "fr": "remplacé par axios, avertissement ajouté pour non supporté Invertisseurs Piko MP, travis enlevé",
-        "it": "sostituito ottenuto da assios, avviso aggiunto per non supportato Piko MP inverter, rimosso travis",
-        "es": "reemplazado por axios, añadida advertencia por no apoyado Inversionistas Piko MP, travis eliminado",
-        "pl": "zastąpiony przez axios, dodał ostrzeżenie, że nie jest wspierany. Piko MP inwerter, usunął travis",
-        "uk": "замінено на аксіос, додано попередження не підтримується Piko MP інвертори, видалені травіс",
+        "fr": "remplacé par axios\navertissement ajouté pour non supporté Invertisseurs Piko MP, travis enlevé",
+        "it": "sostituito ottenuto da assios\navviso aggiunto per non supportato Piko MP inverter, rimosso travis",
+        "es": "reemplazado por axios\nañadida advertencia por no apoyado Inversionistas Piko MP, travis eliminado",
+        "pl": "zastąpiony przez axios\ndodał ostrzeżenie, że nie jest wspierany. Piko MP inwerter, usunął travis",
+        "uk": "замінено на аксіос\nдодано попередження не підтримується Piko MP інвертори, видалені травіс",
         "zh-cn": "被焦虑所取代,对不支持的预警 Piko MP MP inverters, 除名准备"
       },
       "2.2.0": {
@@ -212,30 +238,17 @@
         "zh-cn": "进一步支持第1-3阶段的家用电"
       },
       "2.0.0": {
-        "en": "BREAKING: Dropped support for Node.js 12; added state of inverter as string",
-        "de": "BREAKING: Unterstützung für Node.js 12 beendet; Zustand des Wechselrichters als String",
-        "ru": "ЗАВТРАК: Dropped поддержка Node.js 12; добавленное состояние инвертора как строка",
-        "pt": "BREAKING: Suporte dropped para Node.js 12; estado adicionado do inversor como string",
-        "nl": "Gevallen ondersteuning voor Node.js 12, toegevoegd staat van inverter als touw",
-        "fr": "BREAKING: Support abandonné pour Node.js 12; état d'invertisseur ajouté comme chaîne",
-        "it": "BREAKING: Supporto goccia per Node.js 12; stato aggiunto dell'inverter come stringa",
-        "es": "BREAKING: Soporte abandonado para Node.js 12; estado añadido de inverter como cadena",
-        "pl": "BREAKING: Dropped support for Node.js 12; dodanie stanu inwerteru jako struny",
-        "uk": "BREAKING: Dropped підтримка для Node.js 12; додано стан інвертора як рядок",
+        "en": "BREAKING: Dropped support for Node.js 12\nadded state of inverter as string",
+        "de": "BREAKING: Unterstützung für Node.js 12 beendet\nZustand des Wechselrichters als String",
+        "ru": "ЗАВТРАК: Dropped поддержка Node.js 12\nдобавленное состояние инвертора как строка",
+        "pt": "BREAKING: Suporte dropped para Node.js 12\nestado adicionado do inversor como string",
+        "nl": "Gevallen ondersteuning voor Node.js 12\ntoegevoegd staat van inverter als touw",
+        "fr": "BREAKING: Support abandonné pour Node.js 12\nétat d'invertisseur ajouté comme chaîne",
+        "it": "BREAKING: Supporto goccia per Node.js 12\nstato aggiunto dell'inverter come stringa",
+        "es": "BREAKING: Soporte abandonado para Node.js 12\nestado añadido de inverter como cadena",
+        "pl": "BREAKING: Dropped support for Node.js 12\ndodanie stanu inwerteru jako struny",
+        "uk": "BREAKING: Dropped підтримка для Node.js 12\nдодано стан інвертора як рядок",
         "zh-cn": "BREAKRE:为第12js号提供支助;将多样性作为附加条件。"
-      },
-      "1.5.0": {
-        "en": "added minimum values for poll times to prevent communication errors",
-        "de": "zusätzliche mindestwerte für abfragezeiten, um kommunikationsfehler zu verhindern",
-        "ru": "добавлены минимальные значения для времени опроса для предотвращения ошибок связи",
-        "pt": "valores mínimos adicionados para os tempos de votação para evitar erros de comunicação",
-        "nl": "voegde minimumwaarden toe voor pollen om communicatiefouten te voorkomen",
-        "fr": "valeurs minimales ajoutées pour les temps de vote pour prévenir les erreurs de communication",
-        "it": "valori minimi aggiunti per i tempi di sondaggio per evitare errori di comunicazione",
-        "es": "valores mínimos añadidos para tiempos de encuesta para evitar errores de comunicación",
-        "pl": "dodaje minimalne wartości dla czasu sondy, aby zapobiec błędom komunikcyjnym",
-        "uk": "додано мінімальні значення для помилок опитування",
-        "zh-cn": "防止通信错误的污染时间增加最低值"
       },
       "1.4.0": {
         "en": "added support for grid 1-3 current, voltage and power",
@@ -249,19 +262,6 @@
         "pl": "dodano obsługę sieci 1-3 prądu, napięcia i mocy",
         "uk": "додана підтримка сітки 1-3 струм, напруга та живлення",
         "zh-cn": "进一步支持电网1-3 目前、火山和电力"
-      },
-      "1.3.0": {
-        "en": "added optional support for analog inputs",
-        "de": "optionale unterstützung für analoge eingänge",
-        "ru": "добавлена дополнительная поддержка аналоговых входов",
-        "pt": "suporte opcional adicionado para entradas analógicas",
-        "nl": "voegde opties toe voor analogische inputs",
-        "fr": "support optionnel supplémentaire pour les entrées analogiques",
-        "it": "supporto opzionale aggiunto per ingressi analogici",
-        "es": "apoyo opcional añadido para entradas analógicas",
-        "pl": "dodano opcjonalne wsparcie dla sygnałów analogowych",
-        "uk": "додана додаткова підтримка аналогових входів",
-        "zh-cn": "替代投入的备选支助"
       }
     },
     "titleLang": {
