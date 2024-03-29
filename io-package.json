@@ -1,10 +1,33 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "3.0.11",
+    "version": "3.1.0",
     "news": {
+      "3.1.0":{
+        "en": "changed to tier 2 as data provider",
+        "de": "Als Datenanbieter auf Tier 2 geändert",
+        "ru": "изменено на уровень 2 как поставщик данных",
+        "pt": "alterado para o nível 2 como provedor de dados",
+        "nl": "gewijzigd naar niveau 2 als gegevensleverancier",
+        "fr": "passé en tier 2 en tant que fournisseur de données",
+        "it": "cambiato a tier 2 come fornitore di dati",
+        "es": "cambiado a nivel 2 como proveedor de datos",
+        "pl": "zmieniono na poziom 2 jako dostawca danych",
+        "uk": "змінено на рівень 2 як постачальник даних",
+        "zh-cn": "更改为二级作为数据提供者"
+      },
       "3.0.11": {
-        "en": "corrected io-package.json according to new schema"
+        "en": "corrected io-package.json according to the new schema\nbump adapter-core to 3.0.6",
+        "de": "io-package.json entsprechend dem neuen Schema korrigiert\nadapter-core auf 3.0.6 aktualisiert",
+        "ru": "исправлен файл io-package.json в соответствии с новой схемой\nповышение версии adapter-core до 3.0.6",
+        "pt": "corrigido io-package.json de acordo com o novo esquema\natualizado adapter-core para 3.0.6",
+        "nl": "correctie van io-package.json volgens het nieuwe schema\nadapter-core verhoogd naar 3.0.6",
+        "fr": "corrigé io-package.json selon le nouveau schéma\nmise à niveau de adapter-core vers 3.0.6",
+        "it": "corretto io-package.json secondo il nuovo schema\naggiornato adapter-core a 3.0.6",
+        "es": "corregido io-package.json según el nuevo esquema\nactualizado adapter-core a 3.0.6",
+        "pl": "poprawiono plik io-package.json zgodnie z nowym schematem\naktualizacja adapter-core do wersji 3.0.6",
+        "uk": "виправлено файл io-package.json відповідно до нової схеми\nпідвищення версії adapter-core до 3.0.6",
+        "zh-cn": "根据新模式更正了 io-package.json\n将 adapter-core 升级到 3.0.6"
       },
       "3.0.10": {
         "en": "fixed vulnerability",
@@ -122,19 +145,6 @@
         "pl": "ustawienie małego błędu w MP rozpoznawaniu + sentry notified error in object handling",
         "uk": "виправлено невелику похибку в MP розпізнавання + позначену помилку в об'єкті",
         "zh-cn": "fix MP承认+中小型错误在处理物体时通知错误"
-      },
-      "3.0.1": {
-        "en": "corrected state description",
-        "de": "bereinigte zustandsbeschreibung",
-        "ru": "исправленное описание состояния",
-        "pt": "descrição do estado corrigido",
-        "nl": "vertaling:",
-        "fr": "description de l ' état corrigée",
-        "it": "descrizione corretta dello stato",
-        "es": "corregida descripción del estado",
-        "pl": "poprawiony opis państwa",
-        "uk": "виправлений державний опис",
-        "zh-cn": "更正的国家说明"
       },
       "3.0.0": {
         "en": "BREAKING: Dropped support for Node.js 14\nchanged config screen to admin 5 solution\ndropped Admin <5 support",
@@ -286,7 +296,7 @@
     "keywords": [
       "Kostal", "Piko", "Piko-BA", "Piko MP", "Piko MP plus", "inverter", "solar"
     ],
-    "tier": 3,
+    "tier": 2,
     "licenseInformation": {
       "license": "MIT",
       "type": "free"
