@@ -1,8 +1,11 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "3.0.10",
+    "version": "3.0.11",
     "news": {
+      "3.0.11": {
+        "en": "corrected io-package.json according to new schema"
+      },
       "3.0.10": {
         "en": "fixed vulnerability",
         "de": "Sicherheitslücke behoben",
@@ -296,7 +299,11 @@
     "keywords": [
       "Kostal", "Piko", "Piko-BA", "Piko MP", "Piko MP plus", "inverter", "solar"
     ],
-    "license": "MIT",
+    "tier": 3,
+    "licenseInformation": {
+      "license": "MIT",
+      "type": "free"
+    },
     "platform": "Javascript/Node.js",
     "icon": "picoba.png",
     "extIcon": "https://raw.githubusercontent.com/hombach/ioBroker.kostal-piko-ba/master/admin/picoba.png",
