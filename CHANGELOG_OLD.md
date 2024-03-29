@@ -2,7 +2,7 @@
 
 # ioBroker.kostal-piko-ba
 
-##Versions
+## Versions
 
 ![Beta](https://img.shields.io/npm/v/iobroker.kostal-piko-ba.svg?color=red&label=beta)
 ![Stable](https://iobroker.live/badges/kostal-piko-ba-stable.svg)
