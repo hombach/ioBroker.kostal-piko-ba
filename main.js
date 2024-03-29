@@ -186,8 +186,8 @@ class KostalPikoBA extends utils.Adapter {
             this.config.polltimedaily = 60000;
             this.log.warn(`Polltime daily statistics data not set or zero - will be set to ${(this.config.polltimedaily / 1000)} seconds`);
         }
-        if (this.config.polltimedaily < (this.config.polltimelive * 2) ) {
-            this.config.polltimedaily = (this.config.polltimelive * 2);
+        if (this.config.polltimedaily < this.config.polltimelive * 2) {
+            this.config.polltimedaily = this.config.polltimelive * 2;
             this.log.warn(`Polltime daily statistics should be min. double of standard poll - will be set to ${(this.config.polltimedaily / 1000)} seconds`);
         }
         this.log.info(`Polltime daily statistics set to: ${(this.config.polltimedaily / 1000)} seconds`);
@@ -196,11 +196,12 @@ class KostalPikoBA extends utils.Adapter {
             this.config.polltimetotal = 200000;
             this.log.warn(`Polltime alltime statistics not set or zero - will be set to ${(this.config.polltimetotal / 1000)} seconds`);
         }
-        if (this.config.polltimetotal < (this.config.polltimedaily * 2) ) {
-            this.config.polltimetotal = (this.config.polltimedaily * 2);
-            this.log.warn(`Polltime alltime statistics should be min. double of daily poll - will be set to ${(this.config.polltimetotal / 1000)} seconds`);
+        if (this.config.polltimetotal < this.config.polltimedaily * 2) {
+            this.config.polltimetotal = this.config.polltimedaily * 2;
+            this.log.warn(`Polltime for all-time statistics should be at least double the daily statistics poll time - it will be set to ${(this.config.polltimetotal / 1000)} seconds`);
         }
-        this.log.info(`Polltime alltime statistics set to: ${(this.config.polltimetotal / 1000)} seconds`);
+
+        this.log.info(`Polltime for alltime statistics set to: ${(this.config.polltimetotal / 1000)} seconds`);
 
         // this.subscribeStates('*'); // all state changes inside the adapters namespace are subscribed
 
