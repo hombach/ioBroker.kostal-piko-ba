@@ -1,16 +1,12 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
 name: Test and Release
 
-# Run this job on all pushes and pull requests
-# as well as tags with a semantic version
 on:
     push:
         branches:
-            - 'master'
-        tags:
-            # normal versions
-            - 'v[0-9]+.[0-9]+.[0-9]+'
-            # pre-releases
-            - 'v[0-9]+.[0-9]+.[0-9]+-**'
+            - "*"
     pull_request: {}
 
 # Cancel previous PR/branch runs when a new commit is pushed
@@ -28,7 +24,7 @@ jobs:
         steps:
             - uses: ioBroker/testing-action-check@v1
               with:
-                  node-version: '20.x'
+                  node-version: 20
                   # Uncomment the following line if your adapter cannot be installed using 'npm ci'
                   # install-command: 'npm install'
                   lint: true
@@ -36,11 +32,12 @@ jobs:
     # Runs adapter tests on all supported node versions and OSes
     adapter-tests:
         if: contains(github.event.head_commit.message, '[skip ci]') == false
+        needs: [check-and-lint]
 
         runs-on: ${{ matrix.os }}
         strategy:
             matrix:
-                node-version: [16.x, 18.x, 20.x]
+                node-version: [18.x, 20.x, 16.x]
                 os: [ubuntu-latest, windows-latest, macos-latest]
 
         steps:
@@ -49,7 +46,7 @@ jobs:
                   node-version: ${{ matrix.node-version }}
                   os: ${{ matrix.os }}
                   # Uncomment the following line if your adapter cannot be installed using 'npm ci'
-                  # install-command: 'npm install'
+                  install-command: 'npm install --legacy-peer-deps'
 
     # TODO: To enable automatic npm releases, create a token on npmjs.org
     # Enter this token as a GitHub secret (with name NPM_TOKEN) in the repository options
@@ -74,7 +71,7 @@ jobs:
         steps:
             - uses: ioBroker/testing-action-deploy@v1
               with:
-                  node-version: '18.x'
+                  node-version: 20
                   # Uncomment the following line if your adapter cannot be installed using 'npm ci'
                   # install-command: 'npm install'
                   npm-token: ${{ secrets.NPM_TOKEN }}

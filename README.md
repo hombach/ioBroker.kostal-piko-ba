@@ -38,6 +38,7 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 ### 3.0.11 (xx.03.2024)
 
 * (HombachC) corrected io-package.json according to new schema
+* (HombachC) bump adapter-core to 3.0.6
 
 ### 3.0.10 (03.03.2024)
 
