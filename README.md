@@ -35,7 +35,7 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 
 ! Note that missing version entries are typically dependency updates for improved security.
 
-### 3.0.11 (xx.03.2024)
+### 3.0.11 (29.03.2024)
 
 * (HombachC) corrected io-package.json according to new schema
 * (HombachC) bump adapter-core to 3.0.6
