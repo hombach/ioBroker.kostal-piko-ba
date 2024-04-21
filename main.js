@@ -1,5 +1,7 @@
 'use strict';
 
+// import axios from 'axios';
+
 // doc links:
 // https://www.msxfaq.de/sonst/iot/kostal15.htm
 // https://github.com/sla89/hassio-kostal-piko/blob/main/docs/api.yaml
@@ -134,7 +136,7 @@ class KostalPikoBA extends utils.Adapter {
                 this.log.error(`You have entered an invalid IP address! ${this.config.ipaddress}`)
                 this.log.info(`Stopping adapter`);
                 await this.stop;
-             }
+            }
         }
 
         if (this.config.ipaddress) { // get general info of connected inverter
@@ -150,7 +152,7 @@ class KostalPikoBA extends utils.Adapter {
             }
         }
 
-        //sentry.io ping
+        //#region *** sentry.io ping ***
         if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
             const sentryInstance = this.getPluginInstance('sentry');
             const today = new Date();
@@ -171,7 +173,9 @@ class KostalPikoBA extends utils.Adapter {
                 this.setStateAsync('LastSentryLogDay', { val: today.getDate(), ack: true });
             }
         }
+		//#endregion
 
+    	//#region *** setup polltimes ***
         if (!this.config.polltimelive) {
             this.config.polltimelive = 10000;
             this.log.warn(`Polltime not set or zero - will be set to ${(this.config.polltimelive / 1000)} seconds`);
@@ -186,9 +190,9 @@ class KostalPikoBA extends utils.Adapter {
             this.config.polltimedaily = 60000;
             this.log.warn(`Polltime daily statistics data not set or zero - will be set to ${(this.config.polltimedaily / 1000)} seconds`);
         }
-        if (this.config.polltimedaily < this.config.polltimelive * 2) {
-            this.config.polltimedaily = this.config.polltimelive * 2;
-            this.log.warn(`Polltime daily statistics should be min. double of standard poll - will be set to ${(this.config.polltimedaily / 1000)} seconds`);
+        if (this.config.polltimedaily < this.config.polltimelive * 5) {
+            this.config.polltimedaily = this.config.polltimelive * 5;
+            this.log.warn(`Polltime daily statistics should be min. 5 times the standard poll - will be set to ${(this.config.polltimedaily / 1000)} seconds`);
         }
         this.log.info(`Polltime daily statistics set to: ${(this.config.polltimedaily / 1000)} seconds`);
 
@@ -200,8 +204,8 @@ class KostalPikoBA extends utils.Adapter {
             this.config.polltimetotal = this.config.polltimedaily * 2;
             this.log.warn(`Polltime for all-time statistics should be at least double the daily statistics poll time - it will be set to ${(this.config.polltimetotal / 1000)} seconds`);
         }
-
         this.log.info(`Polltime for alltime statistics set to: ${(this.config.polltimetotal / 1000)} seconds`);
+		//#endregion
 
         // this.subscribeStates('*'); // all state changes inside the adapters namespace are subscribed
 
@@ -319,6 +323,7 @@ class KostalPikoBA extends utils.Adapter {
                 InverterType = result[0].value;
                 this.setStateAsync('Info.InverterType', { val: InverterType, ack: true });
                 InverterAPIPiko = true;
+                this.setStateAsync('Info.connection', { val: true, ack: true });
                 InverterUIVersion = result[1].value;
                 this.setStateAsync('Info.InverterUIVersion', { val: InverterUIVersion, ack: true });
                 this.setStateAsync('Info.InverterName', { val: result[2].value, ack: true });
@@ -350,6 +355,7 @@ class KostalPikoBA extends utils.Adapter {
                                 InverterType = MPType;
                                 this.setStateAsync('Info.InverterType', { val: InverterType, ack: true });
                                 InverterAPIPikoMP = true;
+                                this.setStateAsync('Info.connection', { val: true, ack: true });
 		                InverterUIVersion = 'MP';
                 		this.setStateAsync('Info.InverterUIVersion', { val: InverterUIVersion, ack: true });
                                 this.setStateAsync('Info.InverterName', { val: result.root.Device[0].$.NetBiosName, ack: true });
@@ -369,10 +375,10 @@ class KostalPikoBA extends utils.Adapter {
     ReadPiko() {
         const axios = require('axios');
         const xml2js = require('xml2js');
-
+    
         if (InverterAPIPiko) {  // code for Piko(-BA)
             // @ts-ignore axios.get is valid
-            axios.get(KostalRequest1, { transformResponse: (r) => r })
+            axios.get(KostalRequest1, {timeout: 3500}, { transformResponse: (r) => r })
                 .then(response => {   //.status == 200
                     // access parsed JSON response data using response.data field
                     this.log.debug(`Piko-BA live data 1 update - Kostal response data: ${response.data}`);
