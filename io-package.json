@@ -434,6 +434,13 @@
       },
       "native": {}
     },
+
+    {
+      "_id": "Info",
+      "type": "channel",
+      "common": { "name": "general inverter information" },
+      "native": {}
+    },
     {
       "_id": "Info.InverterName",
       "type": "state",
