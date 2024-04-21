@@ -1,8 +1,11 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "3.1.0",
+    "version": "4.0.0",
     "news": {
+      "4.0.0":{
+        "en": "BREAKING: Dropped support for Node.js 16 (#591)\nBREAKING: Minimum needed js-controller bumped to 5 (#592)\ndependency updateschanged to tier 2 as data provider"
+      },
       "3.1.0":{
         "en": "changed to tier 2 as data provider",
         "de": "Als Datenanbieter auf Tier 2 geändert",
@@ -224,19 +227,6 @@
         "uk": "додано підтримку значень живлення змінного струму та постійного струму для інверторів Piko MP",
         "zh-cn": "防务局和发展中国家对Piko MP 防备器的电力价值增加支助"
       },
-      "2.3.0": {
-        "en": "replaced got by axios\nadded warning for not supported Piko MP inverters, removed travis",
-        "de": "Got ersetzt durch Axios\nzusätzliche Warnung für nicht unterstützte Piko MP Wechselrichter, Travis entfernt",
-        "ru": "замененный получил axios\nдобавленное предупреждение для не поддерживается Piko MP инверторы, удаленный travis",
-        "pt": "substituído por axios\nadicionado aviso para não suportado Inversores Piko MP, travis removido",
-        "nl": "quality over Quantity (QoQ) Releases Vertaling: Piko MP inbrekers, verwijderde Travis",
-        "fr": "remplacé par axios\navertissement ajouté pour non supporté Invertisseurs Piko MP, travis enlevé",
-        "it": "sostituito ottenuto da assios\navviso aggiunto per non supportato Piko MP inverter, rimosso travis",
-        "es": "reemplazado por axios\nañadida advertencia por no apoyado Inversionistas Piko MP, travis eliminado",
-        "pl": "zastąpiony przez axios\ndodał ostrzeżenie, że nie jest wspierany. Piko MP inwerter, usunął travis",
-        "uk": "замінено на аксіос\nдодано попередження не підтримується Piko MP інвертори, видалені травіс",
-        "zh-cn": "被焦虑所取代,对不支持的预警 Piko MP MP inverters, 除名准备"
-      },
       "2.2.0": {
         "en": "added support for phase 1-3 of homeconsumption power",
         "de": "zusätzliche unterstützung für die phase 1-3 der eigenverbrauchsleistung",
@@ -317,12 +307,12 @@
     },
     "dependencies": [
       {
-        "js-controller": ">=3.2.16"
+        "js-controller": ">=5.0.0"
       }
     ],
     "globalDependencies": [
       {
-        "admin": ">=5.0.0"
+        "admin": ">=5.1.28"
       }
     ],
     "plugins": {
