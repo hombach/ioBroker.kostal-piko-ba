@@ -378,6 +378,7 @@ class KostalPikoBA extends utils.Adapter {
     
         if (InverterAPIPiko) {  // code for Piko(-BA)
             // @ts-ignore axios.get is valid
+            // WiP old: axios.get(KostalRequest1, { transformResponse: (r) => r })
             axios.get(KostalRequest1, {timeout: 3500}, { transformResponse: (r) => r })
                 .then(response => {   //.status == 200
                     // access parsed JSON response data using response.data field

@@ -416,9 +416,9 @@
     },
 
     {
-      "_id": "Info",
+      "_id": "info",
       "type": "channel",
-      "common": { "name": "general inverter information" },
+      "common": { "name": "Information" },
       "native": {}
     },
     {
