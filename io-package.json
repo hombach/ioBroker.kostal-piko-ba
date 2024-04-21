@@ -422,7 +422,7 @@
       "native": {}
     },
     {
-      "_id": "Info.connection",
+      "_id": "info.connection",
       "type": "state",
       "common": {
         "role": "indicator.connected",
