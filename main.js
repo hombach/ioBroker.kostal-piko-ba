@@ -285,6 +285,7 @@ class KostalPikoBA extends utils.Adapter {
             clearTimeout(adapterIntervals.daily);
             clearTimeout(adapterIntervals.total);
             Object.keys(adapterIntervals).forEach(interval => clearInterval(adapterIntervals[interval]));
+            this.setStateAsync('Info.connection', { val: false, ack: true });
             this.log.info(`Adapter Kostal-Piko-BA cleaned up everything...`);
             callback();
         } catch (e) {
@@ -379,7 +380,7 @@ class KostalPikoBA extends utils.Adapter {
         if (InverterAPIPiko) {  // code for Piko(-BA)
             // @ts-ignore axios.get is valid
             // WiP old: axios.get(KostalRequest1, { transformResponse: (r) => r })
-            axios.get(KostalRequest1, {timeout: 3500}, { transformResponse: (r) => r })
+            axios.get(KostalRequest1, {timeout: 3500, transformResponse: (r) => r })
                 .then(response => {   //.status == 200
                     // access parsed JSON response data using response.data field
                     this.log.debug(`Piko-BA live data 1 update - Kostal response data: ${response.data}`);
