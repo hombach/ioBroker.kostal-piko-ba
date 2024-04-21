@@ -285,7 +285,7 @@ class KostalPikoBA extends utils.Adapter {
             clearTimeout(adapterIntervals.daily);
             clearTimeout(adapterIntervals.total);
             Object.keys(adapterIntervals).forEach(interval => clearInterval(adapterIntervals[interval]));
-            this.setStateAsync('Info.connection', { val: false, ack: true });
+            this.setStateAsync('info.connection', { val: false, ack: true });
             this.log.info(`Adapter Kostal-Piko-BA cleaned up everything...`);
             callback();
         } catch (e) {
@@ -324,7 +324,7 @@ class KostalPikoBA extends utils.Adapter {
                 InverterType = result[0].value;
                 this.setStateAsync('Info.InverterType', { val: InverterType, ack: true });
                 InverterAPIPiko = true;
-                this.setStateAsync('Info.connection', { val: true, ack: true });
+                this.setStateAsync('info.connection', { val: true, ack: true });
                 InverterUIVersion = result[1].value;
                 this.setStateAsync('Info.InverterUIVersion', { val: InverterUIVersion, ack: true });
                 this.setStateAsync('Info.InverterName', { val: result[2].value, ack: true });
@@ -356,7 +356,7 @@ class KostalPikoBA extends utils.Adapter {
                                 InverterType = MPType;
                                 this.setStateAsync('Info.InverterType', { val: InverterType, ack: true });
                                 InverterAPIPikoMP = true;
-                                this.setStateAsync('Info.connection', { val: true, ack: true });
+                                this.setStateAsync('info.connection', { val: true, ack: true });
 		                InverterUIVersion = 'MP';
                 		this.setStateAsync('Info.InverterUIVersion', { val: InverterUIVersion, ack: true });
                                 this.setStateAsync('Info.InverterName', { val: result.root.Device[0].$.NetBiosName, ack: true });
