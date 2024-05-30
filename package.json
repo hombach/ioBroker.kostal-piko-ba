@@ -2,7 +2,10 @@
   "name": "iobroker.kostal-piko-ba",
   "version": "4.0.0",
   "description": "Adapter for reading Kostal Piko BA data",
-  "author": "hombach <NPM@Homba.ch>",
+  "author": {
+    "name": "Hombach",
+    "email": "kostal-piko@homba.ch"
+  },
   "homepage": "https://github.com/hombach/ioBroker.kostal-piko-ba",
   "license": "MIT",
   "keywords": [
