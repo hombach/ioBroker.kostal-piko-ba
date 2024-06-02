@@ -31,10 +31,6 @@ If needed and supoported by your hardware, set the mark for read-out of the 4 an
 ## Notes
 This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers. For more details and for informations on how to disable the error reporting see [Sentry-Plugin Documentation](https://github.com/ioBroker/plugin-sentry#plugin-sentry)! Sentry reporting is used starting with js-controller 3.0.
 
-## Donate
-<a href="https://www.paypal.com/donate/?hosted_button_id=F7NM9R2E2DUYS"><img src="https://raw.githubusercontent.com/Hombach/ioBroker.kostal-piko-ba/main/docu/bluePayPal.svg" height="40"></a>  
-If you enjoyed this project — or just feeling generous, consider buying me a beer. Cheers! :beers:
-
 ## Changelog
 
 ! Note that missing version entries are typically dependency updates for improved security.
