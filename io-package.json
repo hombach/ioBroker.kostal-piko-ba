@@ -1,8 +1,11 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "4.0.0",
+    "version": "4.0.1",
     "news": {
+      "4.0.1":{
+        "en": "WIP"
+      },
       "4.0.0":{
         "en": "BREAKING: Dropped support for Node.js 16 (#591)\nBREAKING: Minimum required js-controller version bumped to 5 (#592)\nChanged timeout settings for older Kostal inverters (#589)\nDependency updates\nAdded tests for Node.js 21\nRaised minimum poll time for daily statistics\nCode optimizations",
         "de": "WICHTIG: Unterstützung für Node.js 16 eingestellt (#591)\nWICHTIG: Mindestens benötigte js-controller-Version auf 5 erhöht (#592)\nTimeout-Einstellungen für ältere Kostal-Wechselrichter geändert (#589)\nAbhängigkeitsaktualisierungen\nTests für Node.js 21 hinzugefügt\nMindestabfragezeit für tägliche Statistiken erhöht\nCode-Optimierungen",
@@ -197,19 +200,6 @@
         "pl": "kalkulacja",
         "uk": "реалізований розрахунок потужності акумулятора",
         "zh-cn": "实施电池电计算"
-      },
-      "2.4.6": {
-        "en": "fixed vulnerability in xml2js",
-        "de": "beseitigt Sicherheitslücke in xml2js",
-        "ru": "фиксированная уязвимость в xml2js",
-        "pt": "vulnerabilidade fixa em xml2js",
-        "nl": "quality over quantity (qoq) releases vertaling:",
-        "fr": "vulnérabilité fixe en xml2js",
-        "it": "vulnerabilità fissa in xml2js",
-        "es": "vulnerabilidad fija en xml2js",
-        "pl": "stała podatność na xml2js",
-        "uk": "фіксована вразливість в xml2js",
-        "zh-cn": "×ml2j中的固定脆弱性"
       },
       "2.4.1": {
         "en": "added Piko MP Plus support for two channel hardware",
