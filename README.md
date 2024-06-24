@@ -34,7 +34,7 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 
 ! Note that missing version entries are typically dependency updates for improved security.
 
-### 4.0.1 (xx.06.2024) WORK in PROGRESS
+### 4.0.1 (24.06.2024)
 
 * (HombachC) dependency updates, removed unfunctional snyk tests
 
