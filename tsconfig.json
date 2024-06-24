@@ -30,7 +30,7 @@
     "include": [
         "**/*.js",
         "**/*.d.ts"
-    ],
+, "test/package.js"    ],
     "exclude": [
         "node_modules/**",
         "admin/**"
