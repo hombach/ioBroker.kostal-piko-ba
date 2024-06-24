@@ -4,7 +4,17 @@
     "version": "4.0.1",
     "news": {
       "4.0.1":{
-        "en": "WIP"
+        "en": "dependency updates, removed non-functional Snyk tests",
+        "de": "Abhängigkeitsaktualisierungen, nicht funktionale Snyk-Tests entfernt",
+        "ru": "обновления зависимостей, удалены нефункциональные тесты Snyk",
+        "pt": "atualizações de dependências, testes Snyk não funcionais removidos",
+        "nl": "afhankelijkheidsupdates, niet-functionele Snyk-tests verwijderd",
+        "fr": "mises à jour des dépendances, tests Snyk non fonctionnels supprimés",
+        "it": "aggiornamenti delle dipendenze, rimosso i test Snyk non funzionali",
+        "es": "actualizaciones de dependencias, se eliminaron pruebas no funcionales de Snyk",
+        "pl": "aktualizacje zależności, usunięto niefunkcjonalne testy Snyk",
+        "uk": "оновлення залежностей, видалено нефункціональні тести Snyk",
+        "zh-cn": "依赖项更新，移除无功能的 Snyk 测试"
       },
       "4.0.0":{
         "en": "BREAKING: Dropped support for Node.js 16 (#591)\nBREAKING: Minimum required js-controller version bumped to 5 (#592)\nChanged timeout settings for older Kostal inverters (#589)\nDependency updates\nAdded tests for Node.js 21\nRaised minimum poll time for daily statistics\nCode optimizations",

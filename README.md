@@ -36,7 +36,7 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 
 ### 4.0.1 (xx.06.2024) WORK in PROGRESS
 
-* (HombachC) dependency updates
+* (HombachC) dependency updates, removed unfunctional snyk tests
 
 ### 4.0.0 (21.04.2024)
 
