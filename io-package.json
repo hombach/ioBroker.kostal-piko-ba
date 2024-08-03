@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "4.0.1",
+    "version": "4.0.2",
     "news": {
+      "4.0.2":{
+        "en": "added Node.js 22 tests\ndependency updates",
+        "de": "Node.js 22-Tests hinzugefügt\nAbhängigkeits-Updates",
+        "ru": "добавлены тесты Node.js 22\nобновления зависимостей",
+        "pt": "adicionados testes Node.js 22\natualizações de dependências",
+        "nl": "Node.js 22-tests toegevoegd\nbijgewerkte afhankelijkheden",
+        "fr": "ajout de tests Node.js 22\nmises à jour des dépendances",
+        "it": "aggiunti test Node.js 22\naggiornamenti delle dipendenze",
+        "es": "agregados pruebas de Node.js 22\nactualizaciones de dependencias",
+        "pl": "dodano testy Node.js 22\naktualizacje zależności",
+        "uk": "додано тести Node.js 22\nоновлення залежностей",
+        "zh-cn": "添加了 Node.js 22 测试\n依赖项更新"
+      },
       "4.0.1":{
         "en": "dependency updates, removed non-functional Snyk tests",
         "de": "Abhängigkeitsaktualisierungen, nicht funktionale Snyk-Tests entfernt",
@@ -184,19 +197,6 @@
         "pl": "BREAKING: Dropped support for Node.js 14\nzmienił ekran konfigurowny do rozwiązania Admin 5",
         "uk": "BREAKING: Dropped підтримка для Node.js 14\nзмінений екран налаштування до рішення адміністратора 5\nскидати підтримку Admin <5",
         "zh-cn": "BREAKRE:对第14号dejs的支持\n改观5个解决办法的筛选\n减少Admin <5号支助"
-      },
-      "2.5.2": {
-        "en": "fixed a wording error, bumped dependencies, added tests for node.js 20, fixed a sentry reported error",
-        "de": "verbessern eines wording-Fehlers, Abhängigkeiten aktualisiert, Tests für node.js 20 hinzugefügt, durch Sentry gemeldeten Fehler behoben",
-        "ru": "исправлена ошибка формулировки, сбитые зависимости, добавлены тесты для node.js 20, исправлена ошибка отправки",
-        "pt": "corrigiu um erro de redação, dependências colhidas, testes adicionais para node.js 20, corrigiu um erro reportado de sentinela",
-        "nl": "een woordfout gerepareerd, afhankelijke, toegevoegde testen voor node",
-        "fr": "a corrigé une erreur de libellé, les dépendances par bosse, les tests ajoutés pour node.js 20, a corrigé une erreur signalée",
-        "it": "fisso un errore di wording, dipendenze urtate, test aggiunti per node.js 20, risolto un errore segnalato della sentinella",
-        "es": "solucionó un error de redacción, dependencias tropezadas, pruebas agregadas para node.js 20, solucionó un error reportado de un centinela",
-        "pl": "uruchomione błędy, zderzone zależności, dodały testy dla węzłów 20, ustalono, że uszkodzenie błędów jest błędne",
-        "uk": "виправлено помилку, збиті залежності, додані тести для node.js 20, виправлено помилку відправника",
-        "zh-cn": "固定的措词错误、倾销的依赖性、为第20js号的附加试验,固定的发送者报告错误。"
       },
       "2.5.0": {
         "en": "implemented battery power calculation",
