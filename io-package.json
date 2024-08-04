@@ -4,7 +4,17 @@
     "version": "4.1.0",
     "news": {
       "4.1.0":{
-        "en": "WIP"
+        "en": "replaced deprecated ioBroker state calls\n*doku cleanup",
+        "de": "veraltete ioBroker-Zustandsaufrufe ersetzt\n*Dokumentationsbereinigung",
+        "ru": "заменены устаревшие вызовы состояний ioBroker\n*очистка документации",
+        "pt": "substituiu chamadas de estado obsoletas do ioBroker\n*limpeza de documentação",
+        "nl": "verouderde ioBroker-statusaanroepen vervangen\n*doku-opruiming",
+        "fr": "remplacement des appels d'état obsolètes de ioBroker\n*nettoyage de la documentation",
+        "it": "sostituito le chiamate di stato deprecate di ioBroker\n*pulizia della documentazione",
+        "es": "reemplazadas las llamadas de estado obsoletas de ioBroker\n*limpieza de documentación",
+        "pl": "zastąpiono przestarzałe wywołania stanów ioBroker\n*oczyszczenie dokumentacji",
+        "uk": "замінили застарілі виклики стану ioBroker\n*очищення документації",
+        "zh-cn": "替换了弃用的 ioBroker 状态调用\n*文档清理"
       },
       "4.0.2":{
         "en": "added Node.js 22 tests\ndependency updates",

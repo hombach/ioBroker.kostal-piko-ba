@@ -54,7 +54,7 @@ Note: Missing version entries typically indicate dependency updates for improved
 
 ### 4.1.0 (xx.08.2024)
 
-* (HombachC) replace deprecated ioBroker state calls
+* (HombachC) replaced deprecated ioBroker state calls
 * (HombachC) doku cleanup
 
 ### 4.0.2 (04.08.2024)
