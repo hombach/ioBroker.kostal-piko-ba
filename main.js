@@ -386,86 +386,86 @@ class KostalPikoBA extends utils.Adapter {
                     var result = JSON.parse(response.data).dxsEntries;
                     if (result && result.length > 0) {
                         if (result[0].value) {
-                            this.setStateAsync('Power.SolarDC', { val: Math.round(result[0].value), ack: true });
+                            this.setState('Power.SolarDC', { val: Math.round(result[0].value), ack: true });
                         } else {
-                            this.setStateAsync('Power.SolarDC', { val: 0, ack: true });
+                            this.setState('Power.SolarDC', { val: 0, ack: true });
                         }
                         if (result[1].value) {
-                            this.setStateAsync('Power.GridAC', { val: Math.round(result[1].value), ack: true });
-                            this.setStateAsync('Power.Surplus', { val: Math.round(result[1].value - result[11].value), ack: true });
+                            this.setState('Power.GridAC', { val: Math.round(result[1].value), ack: true });
+                            this.setState('Power.Surplus', { val: Math.round(result[1].value - result[11].value), ack: true });
                         } else {
-                            this.setStateAsync('Power.GridAC', { val: 0, ack: true });
-                            this.setStateAsync('Power.Surplus', { val: 0, ack: true });
+                            this.setState('Power.GridAC', { val: 0, ack: true });
+                            this.setState('Power.Surplus', { val: 0, ack: true });
                         }
                         if (result[4].value) {
-                            this.setStateAsync('Power.DC1Power', { val: Math.round(result[2].value), ack: true });
-                            this.setStateAsync('Power.DC1Current', { val: (Math.round(1000 * result[3].value)) / 1000, ack: true });
-                            this.setStateAsync('Power.DC1Voltage', { val: Math.round(result[4].value), ack: true });
+                            this.setState('Power.DC1Power', { val: Math.round(result[2].value), ack: true });
+                            this.setState('Power.DC1Current', { val: (Math.round(1000 * result[3].value)) / 1000, ack: true });
+                            this.setState('Power.DC1Voltage', { val: Math.round(result[4].value), ack: true });
                         } else {
-                            this.setStateAsync('Power.DC1Power', { val: 0, ack: true });
-                            this.setStateAsync('Power.DC1Current', { val: 0, ack: true });
-                            this.setStateAsync('Power.DC1Voltage', { val: 0, ack: true });
+                            this.setState('Power.DC1Power', { val: 0, ack: true });
+                            this.setState('Power.DC1Current', { val: 0, ack: true });
+                            this.setState('Power.DC1Voltage', { val: 0, ack: true });
                         }
                         if (result[7].value) {
-                            this.setStateAsync('Power.DC2Power', { val: Math.round(result[5].value), ack: true });
-                            this.setStateAsync('Power.DC2Current', { val: (Math.round(1000 * result[6].value)) / 1000, ack: true });
-                            this.setStateAsync('Power.DC2Voltage', { val: Math.round(result[7].value), ack: true });
+                            this.setState('Power.DC2Power', { val: Math.round(result[5].value), ack: true });
+                            this.setState('Power.DC2Current', { val: (Math.round(1000 * result[6].value)) / 1000, ack: true });
+                            this.setState('Power.DC2Voltage', { val: Math.round(result[7].value), ack: true });
                         } else {
-                            this.setStateAsync('Power.DC2Power', { val: 0, ack: true });
-                            this.setStateAsync('Power.DC2Current', { val: 0, ack: true });
-                            this.setStateAsync('Power.DC2Voltage', { val: 0, ack: true });
+                            this.setState('Power.DC2Power', { val: 0, ack: true });
+                            this.setState('Power.DC2Current', { val: 0, ack: true });
+                            this.setState('Power.DC2Voltage', { val: 0, ack: true });
                         }
                         if (result[10].value) {
-                            this.setStateAsync('Power.DC3Power', { val: Math.round(result[8].value), ack: true });
-                            this.setStateAsync('Power.DC3Current', { val: (Math.round(1000 * result[9].value)) / 1000, ack: true });
-                            this.setStateAsync('Power.DC3Voltage', { val: Math.round(result[10].value), ack: true });
+                            this.setState('Power.DC3Power', { val: Math.round(result[8].value), ack: true });
+                            this.setState('Power.DC3Current', { val: (Math.round(1000 * result[9].value)) / 1000, ack: true });
+                            this.setState('Power.DC3Voltage', { val: Math.round(result[10].value), ack: true });
                         } else {
-                            this.setStateAsync('Power.DC3Power', { val: 0, ack: true });
-                            this.setStateAsync('Power.DC3Current', { val: 0, ack: true });
-                            this.setStateAsync('Power.DC3Voltage', { val: 0, ack: true });
+                            this.setState('Power.DC3Power', { val: 0, ack: true });
+                            this.setState('Power.DC3Current', { val: 0, ack: true });
+                            this.setState('Power.DC3Voltage', { val: 0, ack: true });
                         }
-                        this.setStateAsync('Power.SelfConsumption', { val: Math.round(result[11].value), ack: true });
-                        this.setStateAsync('Power.HouseConsumption', { val: Math.floor(result[12].value), ack: true });
-                        this.setStateAsync('State', { val: result[13].value, ack: true });
+                        this.setState('Power.SelfConsumption', { val: Math.round(result[11].value), ack: true });
+                        this.setState('Power.HouseConsumption', { val: Math.floor(result[12].value), ack: true });
+                        this.setState('State', { val: result[13].value, ack: true });
                         switch (result[13].value) {
                             case 0:
-                                this.setStateAsync('StateAsString', { val: 'OFF', ack: true });
+                                this.setState('StateAsString', { val: 'OFF', ack: true });
                                 break;
                             case 1:
-                                this.setStateAsync('StateAsString', { val: 'Idling', ack: true });
+                                this.setState('StateAsString', { val: 'Idling', ack: true });
                                 break;
                             case 2:
-                                this.setStateAsync('StateAsString', { val: 'Start up, DC voltage still too low for feed-in', ack: true });
+                                this.setState('StateAsString', { val: 'Start up, DC voltage still too low for feed-in', ack: true });
                                 break;
                             case 3:
-                                this.setStateAsync('StateAsString', { val: 'Feeding (MPP)', ack: true });
+                                this.setState('StateAsString', { val: 'Feeding (MPP)', ack: true });
                                 break;
                             case 4:
-                                this.setStateAsync('StateAsString', { val: 'Feeding (limited)', ack: true });
+                                this.setState('StateAsString', { val: 'Feeding (limited)', ack: true });
                                 break;
                             default:
-                                this.setStateAsync('StateAsString', { val: 'Undefined', ack: true });
+                                this.setState('StateAsString', { val: 'Undefined', ack: true });
                         }
                         if (result[14].value) {
-                            this.setStateAsync('Battery.Voltage', { val: Math.round(result[14].value), ack: true });
-                            this.setStateAsync('Battery.Temperature', { val: (Math.round(10 * result[15].value)) / 10, ack: true });
-                            this.setStateAsync('Battery.SoC', { val: result[16].value, ack: true });
+                            this.setState('Battery.Voltage', { val: Math.round(result[14].value), ack: true });
+                            this.setState('Battery.Temperature', { val: (Math.round(10 * result[15].value)) / 10, ack: true });
+                            this.setState('Battery.SoC', { val: result[16].value, ack: true });
                             if (result[18].value) { // result[18] = 'Battery current direction; 1=Load; 0=Unload'
-                                this.setStateAsync('Battery.Current', { val: result[17].value, ack: true });
-                                this.setStateAsync('Battery.Power', { val: Math.round(result[14].value * result[17].value), ack: true });
+                                this.setState('Battery.Current', { val: result[17].value, ack: true });
+                                this.setState('Battery.Power', { val: Math.round(result[14].value * result[17].value), ack: true });
                             }
                             else { // discharge
-                                this.setStateAsync('Battery.Current', { val: result[17].value * -1, ack: true });
-                                this.setStateAsync('Battery.Power', { val: Math.round(result[14].value * result[17].value * -1), ack: true });
+                                this.setState('Battery.Current', { val: result[17].value * -1, ack: true });
+                                this.setState('Battery.Power', { val: Math.round(result[14].value * result[17].value * -1), ack: true });
                             }
                         }
                     } else {
                         this.log.error(`Got no answer from inverter, please verify IP address: ${this.config.ipaddress} !! (e1.1)`);
                     }
                     if (result.length >= 20) { // not existent for Piko3.0 or if no limitation defined
-                        this.setStateAsync('GridLimitation', { val: result[19].value, ack: true });
+                        this.setState('GridLimitation', { val: result[19].value, ack: true });
                     } else {
-                        this.setStateAsync('GridLimitation', { val: 100, ack: true });
+                        this.setState('GridLimitation', { val: 100, ack: true });
                     }
                 })
                 .catch(error => {

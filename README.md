@@ -1,18 +1,29 @@
 ![Logo](admin/picoba.png)
+
 # ioBroker.kostal-piko-ba
 
 [![NPM version](https://img.shields.io/npm/v/iobroker.kostal-piko-ba.svg)](https://www.npmjs.com/package/iobroker.kostal-piko-ba)
-![NPM version (stable)](https://ioBroker.live/badges/kostal-piko-ba-stable.svg)
-[![Downloads](https://img.shields.io/npm/dm/iobroker.kostal-piko-ba.svg)](https://www.npmjs.com/package/iobroker.kostal-piko-ba)
-![Number of Installations (latest)](https://ioBroker.live/badges/kostal-piko-ba-installed.svg)
+[![Downloads](https://img.shields.io/npm/dm/iobroker.kostal-piko-ba?label=npm%20downloads&style=flat-square)](https://www.npmjs.com/package/iobroker.kostal-piko-ba)
+![node-lts](https://img.shields.io/node/v-lts/iobroker.kostal-piko-ba?style=flat-square)
+![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/npm/iobroker.kostal-piko-ba?label=npm%20dependencies&style=flat-square)
 
-**CI-Tests:**
-![Node.js CI](https://github.com/hombach/ioBroker.kostal-piko-ba/workflows/Node.js%20CI/badge.svg)
+![GitHub](https://img.shields.io/github/license/hombach/iobroker.kostal-piko-ba?style=flat-square)	
+![GitHub repo size](https://img.shields.io/github/repo-size/hombach/iobroker.kostal-piko-ba?logo=github&style=flat-square)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/hombach/iobroker.kostal-piko-ba?logo=github&style=flat-square)
+![GitHub last commit](https://img.shields.io/github/last-commit/hombach/iobroker.kostal-piko-ba?logo=github&style=flat-square)
+![GitHub issues](https://img.shields.io/github/issues/hombach/iobroker.kostal-piko-ba?logo=github&style=flat-square)
+
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/hombach/iobroker.kostal-piko-ba/test-and-release.yml?branch=main&logo=github&style=flat-square)
 [![CodeQL](https://github.com/hombach/ioBroker.kostal-piko-ba/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/hombach/ioBroker.kostal-piko-ba/actions/workflows/codeql-analysis.yml)
 [![Appveyor-CI](https://ci.appveyor.com/api/projects/status/github/hombach/ioBroker.kostal-piko-ba?branch=master&svg=true)](https://ci.appveyor.com/project/hombach/iobroker-kostal-piko-ba)
 
-[![NPM](https://nodei.co/npm/iobroker.kostal-piko-ba.png?downloads=true)](https://nodei.co/npm/iobroker.kostal-piko-ba/)
+## Versions
 
+![Beta](https://img.shields.io/npm/v/iobroker.kostal-piko-ba.svg?color=red&label=beta)
+![Stable](https://iobroker.live/badges/kostal-piko-ba-stable.svg)
+![Installed](https://iobroker.live/badges/kostal-piko-ba-installed.svg)
+
+[![NPM](https://nodei.co/npm/iobroker.kostal-piko-ba.png?downloads=true)](https://nodei.co/npm/iobroker.kostal-piko-ba/)
 
 ## Adapter for reading Kostal Piko & Piko BA data for iOBroker
 Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates some states and updates them sequentially.
@@ -33,6 +44,10 @@ This adapter uses Sentry libraries to automatically report exceptions and code e
 ## Changelog
 
 ! Note that missing version entries are typically dependency updates for improved security.
+
+### 4.1.0 (xx.08.2024)
+
+* (HombachC) replace deprecated ioBroker state calls
 
 ### 4.0.2 (04.08.2024)
 

@@ -1,8 +1,11 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "4.0.2",
+    "version": "4.1.0",
     "news": {
+      "4.1.0":{
+        "en": "WIP"
+      },
       "4.0.2":{
         "en": "added Node.js 22 tests\ndependency updates",
         "de": "Node.js 22-Tests hinzugefügt\nAbhängigkeits-Updates",
