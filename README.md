@@ -53,7 +53,7 @@ For more information and instructions on how to disable error reporting, see the
 
 Note: Missing version entries typically indicate dependency updates for improved security.
 
-### 4.1.0 (xx.08.2024)
+### 4.1.0 (05.08.2024)
 
 * (HombachC) replaced deprecated ioBroker state calls
 * (HombachC) doku cleanup
@@ -141,7 +141,7 @@ Note: Missing version entries typically indicate dependency updates for improved
 ## License
 MIT License
 
-Copyright (c) 2020 - 2024 HombachC
+Copyright (c) 2020-2024 HombachC
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

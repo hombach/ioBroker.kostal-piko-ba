@@ -146,19 +146,6 @@
         "uk": "Покращено обробку помилок у випадку відключення інверторів",
         "zh-cn": "在离线逆变器情况下改进了错误处理"
       },
-      "3.0.5": {
-        "en": "mitigating another sentry notified error in case of network trouble",
-        "de": "abmilderung eines anderen gemeldeten fehlers bei netzstörungen",
-        "ru": "снижение другой судоходной оповещенной ошибки в случае возникновения проблем в сети",
-        "pt": "mitigar outro erro notificado enviado em caso de problemas de rede",
-        "nl": "weer een geïnformeerde fout in geval van netwerk problemen",
-        "fr": "l'atténuation d'une autre erreur notifiée en cas de problème réseau",
-        "it": "mitigare un altro errore notificato in caso di problemi di rete",
-        "es": "mitigating another sentry notified error in case of network problem",
-        "pl": "w przypadku kłopotów sieciowych zgłaszał inny udokumentowany błąd",
-        "uk": "пом'якшення чергової похибки, що направляється в разі виникнення проблем з мережею",
-        "zh-cn": "减少因网络麻烦而发出的另一发材料的错误"
-      },
       "3.0.4": {
         "en": "bumped adapter core to V3",
         "de": "Update Adapterkern auf V3",
@@ -197,58 +184,6 @@
         "pl": "BREAKING: Dropped support for Node.js 14\nzmienił ekran konfigurowny do rozwiązania Admin 5",
         "uk": "BREAKING: Dropped підтримка для Node.js 14\nзмінений екран налаштування до рішення адміністратора 5\nскидати підтримку Admin <5",
         "zh-cn": "BREAKRE:对第14号dejs的支持\n改观5个解决办法的筛选\n减少Admin <5号支助"
-      },
-      "2.5.0": {
-        "en": "implemented battery power calculation",
-        "de": "integriert Batteriestromberechnung",
-        "ru": "реализованный расчет мощности батареи",
-        "pt": "cálculo de energia da bateria implementada",
-        "nl": "vertaling:",
-        "fr": "le calcul de la puissance de batterie",
-        "it": "calcolo della potenza della batteria",
-        "es": "cálculo de batería implementado",
-        "pl": "kalkulacja",
-        "uk": "реалізований розрахунок потужності акумулятора",
-        "zh-cn": "实施电池电计算"
-      },
-      "2.4.0": {
-        "en": "added support of AC and DC power values for Piko MP inverters",
-        "de": "Unterstützung von AC- und DC-Leistungswerten für Piko MP-Wechselrichter",
-        "ru": "добавлена поддержка силовых ценностей AC и DC для инверторов Piko MP",
-        "pt": "suporte adicional de valores de energia AC e DC para inversores Piko MP",
-        "nl": "voegde ondersteuning van AC en DC krachtwaarden toe voor Piko MP inverters",
-        "fr": "support ajouté des valeurs de puissance AC et DC pour les invertisseurs Piko MP",
-        "it": "supporto aggiunto dei valori di potenza AC e DC per inverter Piko MP",
-        "es": "apoyo adicional de los valores de potencia AC y DC para los inversores Piko MP",
-        "pl": "dodano obsługę AC i DC dla inwergencji Piko MP",
-        "uk": "додано підтримку значень живлення змінного струму та постійного струму для інверторів Piko MP",
-        "zh-cn": "防务局和发展中国家对Piko MP 防备器的电力价值增加支助"
-      },
-      "2.2.0": {
-        "en": "added support for phase 1-3 of homeconsumption power",
-        "de": "zusätzliche unterstützung für die phase 1-3 der eigenverbrauchsleistung",
-        "ru": "добавлена поддержка фазы 1-3 из мощности homeconsumption",
-        "pt": "suporte adicional para a fase 1-3 do poder de consumo doméstico",
-        "nl": "vertaling:",
-        "fr": "appui supplémentaire à la phase 1-3 du pouvoir de consommation",
-        "it": "sostegno aggiunto alla fase 1-3 del potere di consumo domestico",
-        "es": "apoyo añadido a la fase 1-3 de la potencia de consumo",
-        "pl": "wsparcie dla faz 1-3",
-        "uk": "додано підтримку фази 1-3 акб",
-        "zh-cn": "进一步支持第1-3阶段的家用电"
-      },
-      "2.0.0": {
-        "en": "BREAKING: Dropped support for Node.js 12\nadded state of inverter as string",
-        "de": "BREAKING: Unterstützung für Node.js 12 beendet\nZustand des Wechselrichters als String",
-        "ru": "ЗАВТРАК: Dropped поддержка Node.js 12\nдобавленное состояние инвертора как строка",
-        "pt": "BREAKING: Suporte dropped para Node.js 12\nestado adicionado do inversor como string",
-        "nl": "Gevallen ondersteuning voor Node.js 12\ntoegevoegd staat van inverter als touw",
-        "fr": "BREAKING: Support abandonné pour Node.js 12\nétat d'invertisseur ajouté comme chaîne",
-        "it": "BREAKING: Supporto goccia per Node.js 12\nstato aggiunto dell'inverter come stringa",
-        "es": "BREAKING: Soporte abandonado para Node.js 12\nestado añadido de inverter como cadena",
-        "pl": "BREAKING: Dropped support for Node.js 12\ndodanie stanu inwerteru jako struny",
-        "uk": "BREAKING: Dropped підтримка для Node.js 12\nдодано стан інвертора як рядок",
-        "zh-cn": "BREAKRE:为第12js号提供支助;将多样性作为附加条件。"
       }
     },
     "titleLang": {
@@ -304,7 +239,7 @@
     },
     "dependencies": [
       {
-        "js-controller": ">=5.0.0"
+        "js-controller": ">=5.0.19"
       }
     ],
     "globalDependencies": [
