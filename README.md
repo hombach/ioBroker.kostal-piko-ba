@@ -53,7 +53,7 @@ For more information and instructions on how to disable error reporting, see the
 
 Note: Missing version entries typically indicate dependency updates for improved security.
 
-### 4.1.1 (xx.08.2024)
+### 4.1.1 (09.08.2024)
 
 * (HombachC) adapter checker detected optimizations (#643)
 
