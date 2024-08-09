@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "4.1.0",
+    "version": "4.1.1",
     "news": {
+      "4.1.1":{
+        "en": "adapter checker detected optimizations (#643)",
+        "de": "Adapter-Checker erkannte Optimierungen (#643)",
+        "ru": "оптимизации, обнаруженные проверяющим адаптера (#643)",
+        "pt": "otimizações detectadas pelo verificador de adaptadores (#643)",
+        "nl": "door adapter checker gedetecteerde optimalisaties (#643)",
+        "fr": "optimisations détectées par le vérificateur d'adaptateurs (#643)",
+        "it": "ottimizzazioni rilevate dal controllo dell'adattatore (#643)",
+        "es": "optimizaciones detectadas por el verificador de adaptadores (#643)",
+        "pl": "optymalizacje wykryte przez sprawdzanie adaptera (#643)",
+        "uk": "оптимізації, виявлені перевіряючим адаптера (#643)",
+        "zh-cn": "适配器检查器检测到的优化 (#643)"
+      },
       "4.1.0":{
         "en": "replaced deprecated ioBroker state calls\n*doku cleanup",
         "de": "veraltete ioBroker-Zustandsaufrufe ersetzt\n*Dokumentationsbereinigung",

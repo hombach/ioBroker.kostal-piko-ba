@@ -1,6 +1,6 @@
 {
   "name": "iobroker.kostal-piko-ba",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Adapter for reading Kostal Piko BA data",
   "author": {
     "name": "Hombach",
@@ -53,6 +53,20 @@
     "set-value": "^4.0.1"
   },
   "main": "main.js",
+  "files": [
+    ".github/",
+    "admin/",
+    "build/",
+    "docu/",
+    "lib/",
+    "CODE_OF_CONDUCT.md",
+    "io-package.json",
+    "LICENSE",
+    "main.js",
+    "main.test.js",
+    "package.json",
+    "README.md"
+  ],
   "scripts": {
     "test:js": "mocha --config test/mocharc.custom.json \"{!(node_modules|test)/**/*.test.js,*.test.js,test/**/test!(PackageFiles|Startup).js}\"",
     "test:package": "mocha test/package --exit",
@@ -62,10 +76,6 @@
   },
   "bugs": {
     "url": "https://github.com/hombach/ioBroker.kostal-piko-ba/issues"
-  },
-  "directories": {
-    "lib": "lib",
-    "test": "test"
   },
   "readmeFilename": "README.md"
 }
