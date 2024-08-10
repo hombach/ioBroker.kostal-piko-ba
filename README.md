@@ -56,6 +56,7 @@ Note: Missing version entries typically indicate dependency updates for improved
 ### 4.1.2 (xx.08.2024)
 
 * (HombachC) optimized translation handling
+* (HombachC) hide not used configuration inputs
 
 ### 4.1.1 (09.08.2024)
 
