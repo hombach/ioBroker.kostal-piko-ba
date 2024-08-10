@@ -1,10 +1,5 @@
 {
-    "Standard settings": "Configuración estándar",
-    "Analog settings": "Ajustes para entradas analógicas",
     "template adapter settings": "Ajustes del adaptador para Kostal Piko (BA)",
-    "polltimelive": "Tiempo entre las encuestas de datos de inverter [ms] - Mínimo 5000",
-    "polltimedaily": "Tiempo entre sondeos de datos de las estadísticas diarias del inversor [ms]",
-    "polltimetotal": "Tiempo entre sondeos de datos de estadísticas de tiempo del inversor [ms]",
     "readanalogs": "Leer los 4 valores de entrada analógica en V (0-10 V; 10 bits)",
     "normAnalogs": "Normalizando 0V al valor mínimo y 10V al valor máximo",
     "normAn1Min": "Valor mínimo para entrada analógica 1 - igual a 0V",

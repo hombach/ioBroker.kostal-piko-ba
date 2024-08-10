@@ -1,10 +1,5 @@
 {
-    "Standard settings": "Standardeinstellungen",
-    "Analog settings": "Einstellungen für analoge Eingänge",
     "template adapter settings": "Adaptereinstellungen für Kostal Piko (BA)",
-    "polltimelive": "Zeit zwischen Datenabfragen von Wechselrichter [ms] - Minimum 5000",
-    "polltimedaily": "Zeit zwischen Datenabfragen aus der täglichen Statistik des Wechselrichters [ms]",
-    "polltimetotal": "Zeit zwischen Datenabfragen aus der Wechselrichter-Allzeitstatistik [ms]",
     "readanalogs": "Auslesen aller 4 analogen Eingangswerte in V (0-10V; 10bit)",
     "normAnalogs": "Normalisierung von 0 V auf Minimalwert und 10 V auf Maximalwert",
     "normAn1Min": "Minimalwert für Analogeingang 1 - entspricht 0V",

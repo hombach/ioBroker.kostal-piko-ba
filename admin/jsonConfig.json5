@@ -4,7 +4,19 @@
 	items: {
 		_StandardTab: {
 			type: "panel",
-			label: "Standard settings",
+			label: {
+				"en": "Standard settings",
+				"de": "Standardeinstellungen",
+				"ru": "Стандартные настройки",
+				"pt": "Configurações padrão",
+				"nl": "Standaard instellingen",
+				"fr": "Paramètres standards",
+				"it": "Impostazioni standard",
+				"es": "Configuraciones estándar",
+				"pl": "Ustawienia standardowe",
+				"uk": "Стандартні налаштування",
+				"zh-cn": "标准设置",
+			},
 			items: {
 				ipaddress: {
 					type: "text",
@@ -29,7 +41,19 @@
 				},
 				polltimelive: {
 					type: "number",
-					label: "polltimelive",
+					label: {
+						"en": "Time between data polls from inverter [ms] - Minimum 5000",
+						"de": "Zeit zwischen den Datenabfragen vom Wechselrichter [ms] - Minimum 5000",
+						"ru": "Время между опросами данных от инвертора [мс] - минимум 5000",
+						"pt": "Tempo entre as pesquisas de dados do inversor [ms] - Mínimo 5000",
+						"nl": "Tijd tussen gegevenspolls van omvormer [ms] - Minimaal 5000",
+						"fr": "Temps entre les sondages de données de l'onduleur [ms] - Minimum 5000",
+						"it": "Tempo tra i sondaggi dei dati dall'inverter [ms] - Minimo 5000",
+						"es": "Tiempo entre sondeos de datos del inversor [ms] - Mínimo 5000",
+						"pl": "Czas między zapytaniami o dane z falownika [ms] - Minimum 5000",
+						"uk": "Час між опитуваннями даних від інвертора [мс] - мінімум 5000",
+						"zh-cn": "逆变器数据轮询间隔时间 [毫秒] - 最低 5000",
+					},
 					min: 5000,
 					step: 100,
 					sm: 12,
@@ -39,7 +63,19 @@
 				},
 				polltimedaily: {
 					type: "number",
-					label: "polltimedaily",
+					label: {
+						"en": "Time between data polls from inverter daily statistics [ms]",
+						"de": "Zeit zwischen den Datenabfragen von täglichen Wechselrichter-Statistiken [ms]",
+						"ru": "Время между опросами данных от инвертора по ежедневной статистике [мс]",
+						"pt": "Tempo entre pesquisas de dados das estatísticas diárias do inversor [ms]",
+						"nl": "Tijd tussen gegevenspolls van omvormer dagelijkse statistieken [ms]",
+						"fr": "Temps entre les sondages de données des statistiques quotidiennes de l'onduleur [ms]",
+						"it": "Tempo tra i sondaggi dei dati delle statistiche giornaliere dall'inverter [ms]",
+						"es": "Tiempo entre sondeos de datos de estadísticas diarias del inversor [ms]",
+						"pl": "Czas między zapytaniami o dane z falownika - statystyki dzienne [ms]",
+						"uk": "Час між опитуваннями даних від інвертора за щоденною статистикою [мс]",
+						"zh-cn": "逆变器每日统计数据轮询间隔时间 [毫秒]",
+					},
 					min: 10000,
 					step: 100,
 					sm: 12,
@@ -49,7 +85,19 @@
 				},
 				polltimetotal: {
 					type: "number",
-					label: "polltimetotal",
+					label: {
+						"en": "Time between data polls from inverter alltime statistics [ms]",
+						"de": "Zeit zwischen den Datenabfragen von Wechselrichter-Gesamtstatistiken [ms]",
+						"ru": "Время между опросами данных от инвертора за всё время [мс]",
+						"pt": "Tempo entre as pesquisas de dados das estatísticas totais do inversor [ms]",
+						"nl": "Tijd tussen gegevenspolls van omvormer voor alle tijdsstatistieken [ms]",
+						"fr": "Temps entre les sondages de données des statistiques totales de l'onduleur [ms]",
+						"it": "Tempo tra i sondaggi dei dati delle statistiche totali dall'inverter [ms]",
+						"es": "Tiempo entre sondeos de datos de estadísticas totales del inversor [ms]",
+						"pl": "Czas między zapytaniami o dane z falownika - statystyki całkowite [ms]",
+						"uk": "Час між опитуваннями даних від інвертора за всіма статистиками [мс]",
+						"zh-cn": "逆变器总统计数据轮询间隔时间 [毫秒]",
+					},
 					min: 20000,
 					step: 100,
 					sm: 12,
@@ -62,7 +110,19 @@
 
 		_AnalogTab: {
 			type: "panel",
-			label: "Analog settings",
+			label: {
+				"en": "Settings for analog inputs",
+				"de": "Einstellungen für analoge Eingänge",
+				"ru": "Настройки для аналоговых входов",
+				"pt": "Configurações para entradas analógicas",
+				"nl": "Instellingen voor analoge ingangen",
+				"fr": "Paramètres pour les entrées analogiques",
+				"it": "Impostazioni per ingressi analogici",
+				"es": "Configuraciones para entradas analógicas",
+				"pl": "Ustawienia dla wejść analogowych",
+				"uk": "Налаштування для аналогових входів",
+				"zh-cn": "模拟输入设置",
+			},
 			items: {
 				readanalogs: {
 					type: "checkbox",
