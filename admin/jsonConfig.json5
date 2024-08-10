@@ -189,7 +189,7 @@
 						es: "Valor máximo para la entrada analógica 1 - igual a 10V",
 						pl: "Wartość maksymalna dla wejścia analogowego 1 - równa 10V",
 						uk: "Максимальне значення для аналогового входу 1 - дорівнює 10В",
-						zh-cn: "模拟输入 1 的最大值 - 等于 10V",
+						"zh-cn": "模拟输入 1 的最大值 - 等于 10V",
 					},
 					min: 0,
 					sm: 12,
