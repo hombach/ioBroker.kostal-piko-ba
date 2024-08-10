@@ -1,13 +1,3 @@
 {
     "template adapter settings": "Adapter settings for Kostal Piko (BA)",
-    "readanalogs": "Read-Out all 4 analog input values in V (0-10V; 10bit)",
-    "normAnalogs": "Normalizing 0V to minimum value and 10V to maximum value",
-    "normAn1Min": "Minimum value for analog input 1 - equals 0V",
-    "normAn1Max": "Maximum value for analog input 1 - equals 10V",
-    "normAn2Min": "Minimum value for analog input 2 - equals 0V",
-    "normAn2Max": "Maximum value for analog input 2 - equals 10V",
-    "normAn3Min": "Minimum value for analog input 3 - equals 0V",
-    "normAn3Max": "Maximum value for analog input 3 - equals 10V",
-    "normAn4Min": "Minimum value for analog input 4 - equals 0V",
-    "normAn4Max": "Maximum value for analog input 4 - equals 10V"
 }
