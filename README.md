@@ -57,6 +57,7 @@ Note: Missing version entries typically indicate dependency updates for improved
 
 * (HombachC) optimized translation handling
 * (HombachC) converted config to JSON5
+* (HombachC) ATTENTION: Admin 6 is needed as minimum
 
 ### 4.1.1 (09.08.2024)
 
