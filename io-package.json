@@ -4,7 +4,17 @@
     "version": "4.1.2",
     "news": {
       "4.1.2":{
-        "en": "WiP"
+        "en": "optimized translation handling",
+        "de": "optimierte Übersetzungsverarbeitung",
+        "ru": "оптимизированная обработка перевода",
+        "pt": "manipulação otimizada de traduções",
+        "nl": "geoptimaliseerde vertalingsverwerking",
+        "fr": "gestion optimisée des traductions",
+        "it": "gestione ottimizzata delle traduzioni",
+        "es": "gestión optimizada de traducciones",
+        "pl": "optymalizacja obsługi tłumaczeń",
+        "uk": "оптимізована обробка перекладів",
+        "zh-cn": "优化的翻译处理"
       },
       "4.1.1":{
         "en": "adapter checker detected optimizations (#643)",
