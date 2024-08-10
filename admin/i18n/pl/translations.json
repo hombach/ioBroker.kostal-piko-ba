@@ -2,7 +2,6 @@
     "Standard settings": "Ustawienia standardowe",
     "Analog settings": "Ustawienia wejść analogowych",
     "template adapter settings": "Ustawienia adaptera dla Kostal Piko (BA)",
-    "ipaddress": "IP adres your Kostal Piko (podobnie jak 192.168.100.33)",
     "polltimelive": "Czas pomiędzy badaniami danych od inwergencji (ms) – Minimum 5000",
     "polltimedaily": "Czas między odpytaniami danych z dziennych statystyk falownika [ms]",
     "polltimetotal": "Czas między odpytywaniem danych ze statystyk całego czasu falownika [ms]",

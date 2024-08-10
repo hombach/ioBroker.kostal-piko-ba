@@ -2,7 +2,6 @@
     "Standard settings": "Standaard instellingen",
     "Analog settings": "Instellingen voor analoge ingangen",
     "template adapter settings": "Adapterinstellingen voor Kostal Piko (BA)",
-    "ipaddress": "IP-adres van je Kostal Piko (2.168.100.33 geen HTP-adressen of andere sms'jes)",
     "polltimelive": "Tijd tussen data peilingen van invertering",
     "polltimedaily": "Tijd tussen datapolls van de dagelijkse statistieken van de omvormer [ms]",
     "polltimetotal": "Tijd tussen datapolls van omvormer alltime statistieken [ms]",

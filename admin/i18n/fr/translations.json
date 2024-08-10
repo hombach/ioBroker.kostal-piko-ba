@@ -2,7 +2,6 @@
     "Standard settings": "Paramètres standards",
     "Analog settings": "Paramètres des entrées analogiques",
     "template adapter settings": "Paramètres d'adaptateur pour Kostal Piko (BA)",
-    "ipaddress": "Adresse IP de votre Kostal Piko (comme 192.168.100.33 pas d'adresses HTTP ou d'autres textes)",
     "polltimelive": "Temps entre les sondages de données de l'invertateur [ms] - Minimum 5000",
     "polltimedaily": "Temps entre les interrogations de données à partir des statistiques quotidiennes de l'onduleur [ms]",
     "polltimetotal": "Temps entre les interrogations de données à partir des statistiques permanentes de l'onduleur [ms]",

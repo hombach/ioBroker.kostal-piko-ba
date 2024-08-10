@@ -2,7 +2,6 @@
     "Standard settings": "Standard settings",
     "Analog settings": "Settings for analog inputs",
     "template adapter settings": "Adapter settings for Kostal Piko (BA)",
-    "ipaddress": "IP address of your Kostal Piko (like '192.168.100.33' no HTTP-adresses or other texts)",
     "polltimelive": "Time between data polls from inverter [ms] - Minimum 5000",
     "polltimedaily": "Time between data polls from inverter daily statistics [ms]",
     "polltimetotal": "Time between data polls from inverter alltime statistics [ms]",

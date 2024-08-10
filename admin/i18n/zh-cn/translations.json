@@ -2,7 +2,6 @@
     "Standard settings": "标准设置",
     "Analog settings": "模拟输入设置",
     "template adapter settings": "Kostal Piko BA的适配器设置",
-    "ipaddress": "IP地址:Yostal Piko (192.168.100.33号HTTP-adresses或其他文本)",
     "polltimelive": "B. 不同[产品]的数据污染的时间-最低限度5000",
     "polltimedaily": "逆变器每日统计数据轮询之间的时间[ms]",
     "polltimetotal": "来自逆变器常时统计的数据轮询之间的时间[ms]",
