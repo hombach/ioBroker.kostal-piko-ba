@@ -4,17 +4,17 @@
     "version": "4.1.2",
     "news": {
       "4.1.2":{
-        "en": "optimized translation handling\nconverted config to JSON5\nATTENTION: Admin 6 is needed as minimum",
-        "de": "optimierte Übersetzungsverarbeitung\nKonfiguration zu JSON5 konvertiert\nACHTUNG: Mindestens Admin 6 erforderlich",
-        "ru": "оптимизированная обработка перевода\nконфигурация преобразована в JSON5\nВНИМАНИЕ: требуется минимум Admin 6",
-        "pt": "manipulação otimizada de traduções\nconfiguração convertida para JSON5\nATENÇÃO: Admin 6 é necessário como mínimo",
-        "nl": "geoptimaliseerde vertalingsverwerking\nconfiguratie omgezet naar JSON5\nLET OP: Admin 6 is minimaal vereist",
-        "fr": "gestion optimisée des traductions\nconfiguration convertie en JSON5\nATTENTION : Admin 6 est nécessaire comme minimum",
-        "it": "gestione ottimizzata delle traduzioni\nconfigurazione convertita in JSON5\nATTENZIONE: è necessario almeno Admin 6",
-        "es": "gestión optimizada de traducciones\nconfiguración convertida a JSON5\nATENCIÓN: Se necesita al menos Admin 6",
-        "pl": "optymalizacja obsługi tłumaczeń\nkonfiguracja przekonwertowana na JSON5\nUWAGA: Wymagana jest wersja Admin 6 lub wyższa",
-        "uk": "оптимізована обробка перекладів\nконфігурацію перетворено на JSON5\nУВАГА: необхідна версія Admin 6 або новіша",
-        "zh-cn": "优化的翻译处理\n将配置转换为 JSON5\n注意：至少需要 Admin 6"
+        "en": "optimized translation handling",
+        "de": "optimierte Übersetzungsverarbeitung",
+        "ru": "оптимизированная обработка перевода",
+        "pt": "manipulação otimizada de traduções",
+        "nl": "geoptimaliseerde vertalingsverwerking",
+        "fr": "gestion optimisée des traductions",
+        "it": "gestione ottimizzata delle traduzioni",
+        "es": "gestión optimizada de traducciones",
+        "pl": "optymalizacja obsługi tłumaczeń",
+        "uk": "оптимізована обробка перекладів",
+        "zh-cn": "优化的翻译处理"
       },
       "4.1.1":{
         "en": "adapter checker detected optimizations (#643)",
