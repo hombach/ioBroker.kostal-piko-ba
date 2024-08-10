@@ -1,0 +1,321 @@
+{
+    "type": "tabs",
+    "items": {
+        "_StandardTab": {
+            "type": "panel",
+            "label": {
+                "en": "Standard settings",
+                "de": "Standardeinstellungen",
+                "ru": "Стандартные настройки",
+                "pt": "Configurações padrão",
+                "nl": "Standaard instellingen",
+                "fr": "Paramètres standards",
+                "it": "Impostazioni standard",
+                "es": "Configuraciones estándar",
+                "pl": "Ustawienia standardowe",
+                "uk": "Стандартні налаштування",
+                "zh-cn": "标准设置"
+            },
+            "items": {
+                "ipaddress": {
+                    "type": "text",
+                    "label": {
+                        "en": "IP address of your Kostal Piko (like '192.168.100.33', no HTTP addresses or other texts)",
+                        "de": "IP-Adresse Ihres Kostal Piko (z.B. '192.168.100.33', keine HTTP-Adressen oder andere Texte)",
+                        "ru": "IP-адрес вашего Kostal Piko (например, '192.168.100.33', никаких HTTP-адресов или других текстов)",
+                        "pt": "Endereço IP do seu Kostal Piko (como '192.168.100.33', sem endereços HTTP ou outros textos)",
+                        "nl": "IP-adres van uw Kostal Piko (zoals '192.168.100.33', geen HTTP-adressen of andere teksten)",
+                        "fr": "Adresse IP de votre Kostal Piko (comme '192.168.100.33', sans adresses HTTP ni autres textes)",
+                        "it": "Indirizzo IP del tuo Kostal Piko (ad esempio '192.168.100.33', nessun indirizzo HTTP o altri testi)",
+                        "es": "Dirección IP de su Kostal Piko (como '192.168.100.33', sin direcciones HTTP ni otros textos)",
+                        "pl": "Adres IP twojego Kostal Piko (np. '192.168.100.33', bez adresów HTTP ani innych tekstów)",
+                        "uk": "IP-адреса вашого Kostal Piko (наприклад, '192.168.100.33', без HTTP-адрес або інших текстів)",
+                        "zh-cn": "您的 Kostal Piko 的 IP 地址（如“192.168.100.33”，无 HTTP 地址或其他文本）"
+                    },
+                    "maxLength": 15,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "newLine": true
+                },
+                "polltimelive": {
+                    "type": "number",
+                    "label": {
+                        "en": "Time between data polls from inverter [ms] - Minimum 5000",
+                        "de": "Zeit zwischen den Datenabfragen vom Wechselrichter [ms] - Minimum 5000",
+                        "ru": "Время между опросами данных от инвертора [мс] - минимум 5000",
+                        "pt": "Tempo entre as pesquisas de dados do inversor [ms] - Mínimo 5000",
+                        "nl": "Tijd tussen gegevenspolls van omvormer [ms] - Minimaal 5000",
+                        "fr": "Temps entre les sondages de données de l'onduleur [ms] - Minimum 5000",
+                        "it": "Tempo tra i sondaggi dei dati dall'inverter [ms] - Minimo 5000",
+                        "es": "Tiempo entre sondeos de datos del inversor [ms] - Mínimo 5000",
+                        "pl": "Czas między zapytaniami o dane z falownika [ms] - Minimum 5000",
+                        "uk": "Час між опитуваннями даних від інвертора [мс] - мінімум 5000",
+                        "zh-cn": "逆变器数据轮询间隔时间 [毫秒] - 最低 5000"
+                    },
+                    "min": 5000,
+                    "step": 100,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "newLine": true
+                },
+                "polltimedaily": {
+                    "type": "number",
+                    "label": {
+                        "en": "Time between data polls from inverter daily statistics [ms]",
+                        "de": "Zeit zwischen den Datenabfragen von täglichen Wechselrichter-Statistiken [ms]",
+                        "ru": "Время между опросами данных от инвертора по ежедневной статистике [мс]",
+                        "pt": "Tempo entre pesquisas de dados das estatísticas diárias do inversor [ms]",
+                        "nl": "Tijd tussen gegevenspolls van omvormer dagelijkse statistieken [ms]",
+                        "fr": "Temps entre les sondages de données des statistiques quotidiennes de l'onduleur [ms]",
+                        "it": "Tempo tra i sondaggi dei dati delle statistiche giornaliere dall'inverter [ms]",
+                        "es": "Tiempo entre sondeos de datos de estadísticas diarias del inversor [ms]",
+                        "pl": "Czas między zapytaniami o dane z falownika - statystyki dzienne [ms]",
+                        "uk": "Час між опитуваннями даних від інвертора за щоденною статистикою [мс]",
+                        "zh-cn": "逆变器每日统计数据轮询间隔时间 [毫秒]"
+                    },
+                    "min": 10000,
+                    "step": 100,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "newLine": true
+                },
+                "polltimetotal": {
+                    "type": "number",
+                    "label": {
+                        "en": "Time between data polls from inverter alltime statistics [ms]",
+                        "de": "Zeit zwischen den Datenabfragen von Wechselrichter-Gesamtstatistiken [ms]",
+                        "ru": "Время между опросами данных от инвертора за всё время [мс]",
+                        "pt": "Tempo entre as pesquisas de dados das estatísticas totais do inversor [ms]",
+                        "nl": "Tijd tussen gegevenspolls van omvormer voor alle tijdsstatistieken [ms]",
+                        "fr": "Temps entre les sondages de données des statistiques totales de l'onduleur [ms]",
+                        "it": "Tempo tra i sondaggi dei dati delle statistiche totali dall'inverter [ms]",
+                        "es": "Tiempo entre sondeos de dados de estatísticas totais do inversor [ms]",
+                        "pl": "Czas między zapytaniami o dane z falownika - statystyki całkowite [ms]",
+                        "uk": "Час між опитуваннями даних від інвертора за всіма статистиками [мс]",
+                        "zh-cn": "逆变器总统计数据轮询间隔时间 [毫秒]"
+                    },
+                    "min": 20000,
+                    "step": 100,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "newLine": true
+                }
+            }
+        },
+		"_AnalogTab": {
+			"type": "panel",
+            "label": {
+                "en": "Settings for analog inputs",
+                "de": "Einstellungen für analoge Eingänge",
+                "ru": "Настройки для аналоговых входов",
+                "pt": "Configurações para entradas analógicas",
+                "nl": "Instellingen voor analoge ingangen",
+                "fr": "Paramètres pour les entrées analogiques",
+                "it": "Impostazioni per ingressi analogici",
+                "es": "Configuraciones para entradas analógicas",
+                "pl": "Ustawienia dla wejść analogowych",
+                "uk": "Налаштування для аналогових входів",
+                "zh-cn": "模拟输入设置"
+            },
+			"items": {
+				"readanalogs": {
+					"type": "checkbox",
+					"label": {
+						"en": "Read-Out all 4 analog input values in V (0-10V; 10bit)",
+						"de": "Auslesen aller 4 analogen Eingangswerte in V (0-10V; 10bit)",
+						"ru": "Считывание всех 4 аналоговых входных значений в В (0-10В; 10 бит)",
+						"pt": "Leitura de todos os 4 valores de entrada analógicos em V (0-10V; 10 bits)",
+						"nl": "Lees alle 4 analoge invoerwaarden uit in V (0-10V; 10bit)",
+						"fr": "Lecture de toutes les 4 valeurs d'entrée analogiques en V (0-10V ; 10 bits)",
+						"it": "Lettura di tutti i 4 valori di ingresso analogici in V (0-10V; 10 bit)",
+						"es": "Lectura de los 4 valores de entrada analógicos en V (0-10V; 10 bits)",
+						"pl": "Odczyt wszystkich 4 wartości wejść analogowych w V (0-10V; 10 bitów)",
+						"uk": "Зчитування всіх 4 аналогових вхідних значень у В (0-10В; 10 біт)",
+						"zh-cn": "以 V (0-10V; 10 位) 读取所有 4 个模拟输入值"
+					}
+				},
+				"normAnalogs": {
+					"type": "header",
+					"text": {
+						"en": "Normalizing 0V to minimum value and 10V to maximum value",
+						"de": "Normalisierung von 0V auf den Mindestwert und 10V auf den Höchstwert",
+						"ru": "Нормализация 0В к минимальному значению и 10В к максимальному значению",
+						"pt": "Normalizando 0V para o valor mínimo e 10V para o valor máximo",
+						"nl": "Normaliseren van 0V naar minimale waarde en 10V naar maximale waarde",
+						"fr": "Normalisation de 0V à la valeur minimale et de 10V à la valeur maximale",
+						"it": "Normalizzazione di 0V al valore minimo e 10V al valore massimo",
+						"es": "Normalizando 0V al valor mínimo y 10V al valor máximo",
+						"pl": "Normalizacja 0V na wartość minimalną i 10V na wartość maksymalną",
+						"uk": "Нормалізація 0В до мінімального значення і 10В до максимального значення",
+						"zh-cn": "将 0V 归一化为最小值，将 10V 归一化为最大值"
+					},
+					"size": 3
+				},
+				"normAn1Min": {
+					"type": "number",
+					"label": {
+						"en": "Minimum value for analog input 1 - equals 0V",
+						"de": "Mindestwert für analogen Eingang 1 - entspricht 0V",
+						"ru": "Минимальное значение для аналогового входа 1 - соответствует 0В",
+						"pt": "Valor mínimo para entrada analógica 1 - igual a 0V",
+						"nl": "Minimale waarde voor analoge ingang 1 - gelijk aan 0V",
+						"fr": "Valeur minimale pour l'entrée analogique 1 - équivaut à 0V",
+						"it": "Valore minimo per ingresso analogico 1 - corrisponde a 0V",
+						"es": "Valor mínimo para la entrada analógica 1 - igual a 0V",
+						"pl": "Wartość minimalna dla wejścia analogowego 1 - równa 0V",
+						"uk": "Мінімальне значення для аналогового входу 1 - дорівнює 0В",
+						"zh-cn": "模拟输入 1 的最小值 - 等于 0V"
+					},
+					"min": 0,
+					"sm": 12,
+					"md": 6,
+					"lg": 6
+				},
+				"normAn1Max": {
+					"type": "number",
+					"label": {
+						"en": "Maximum value for analog input 1 - equals 10V",
+						"de": "Höchstwert für analogen Eingang 1 - entspricht 10V",
+						"ru": "Максимальное значение для аналогового входа 1 - соответствует 10В",
+						"pt": "Valor máximo para entrada analógica 1 - igual a 10V",
+						"nl": "Maximale waarde voor analoge ingang 1 - gelijk aan 10V",
+						"fr": "Valeur maximale pour l'entrée analogique 1 - équivaut à 10V",
+						"it": "Valore massimo per ingresso analogico 1 - corrisponde a 10V",
+						"es": "Valor máximo para la entrada analógica 1 - igual a 10V",
+						"pl": "Wartość maksymalna dla wejścia analogowego 1 - równa 10V",
+						"uk": "Максимальне значення для аналогового входу 1 - дорівнює 10В",
+						"zh-cn": "模拟输入 1 的最大值 - 等于 10V"
+					},
+					"min": 0,
+					"sm": 12,
+					"md": 6,
+					"lg": 6
+				},
+				"normAn2Min": {
+					"type": "number",
+					"label": {
+						"en": "Minimum value for analog input 2 - equals 0V",
+						"de": "Mindestwert für analogen Eingang 2 - entspricht 0V",
+						"ru": "Минимальное значение для аналогового входа 2 - соответствует 0В",
+						"pt": "Valor mínimo para entrada analógica 2 - igual a 0V",
+						"nl": "Minimale waarde voor analoge ingang 2 - gelijk aan 0V",
+						"fr": "Valeur minimale pour l'entrée analogique 2 - équivaut à 0V",
+						"it": "Valore minimo per ingresso analogico 2 - corrisponde a 0V",
+						"es": "Valor mínimo para la entrada analógica 2 - igual a 0V",
+						"pl": "Wartość minimalna dla wejścia analogowego 2 - równa 0V",
+						"uk": "Мінімальне значення для аналогового входу 2 - дорівнює 0В",
+						"zh-cn": "模拟输入 2 的最小值 - 等于 0V"
+					},
+					"min": 0,
+					"sm": 12,
+					"md": 6,
+					"lg": 6
+				},
+				"normAn2Max": {
+					"type": "number",
+					"label": {
+						"en": "Maximum value for analog input 2 - equals 10V",
+						"de": "Höchstwert für analogen Eingang 2 - entspricht 10V",
+						"ru": "Максимальное значение для аналогового входа 2 - соответствует 10В",
+						"pt": "Valor máximo para entrada analógica 2 - igual a 10V",
+						"nl": "Maximale waarde voor analoge ingang 2 - gelijk aan 10V",
+						"fr": "Valeur maximale pour l'entrée analogique 2 - équivaut à 10V",
+						"it": "Valore massimo per ingresso analogico 2 - corrisponde a 10V",
+						"es": "Valor máximo para la entrada analógica 2 - igual a 10V",
+						"pl": "Wartość maksymalna dla wejścia analogowego 2 - równa 10V",
+						"uk": "Максимальне значення для аналогового входу 2 - дорівнює 10В",
+						"zh-cn": "模拟输入 2 的最大值 - 等于 10V"
+					},
+					"min": 0,
+					"sm": 12,
+					"md": 6,
+					"lg": 6
+				},
+				"normAn3Min": {
+					"type": "number",
+					"label": {
+						"en": "Minimum value for analog input 3 - equals 0V",
+						"de": "Mindestwert für analogen Eingang 3 - entspricht 0V",
+						"ru": "Минимальное значение для аналогового входа 3 - соответствует 0В",
+						"pt": "Valor mínimo para entrada analógica 3 - igual a 0V",
+						"nl": "Minimale waarde voor analoge ingang 3 - gelijk aan 0V",
+						"fr": "Valeur minimale pour l'entrée analogique 3 - équivaut à 0V",
+						"it": "Valore minimo per ingresso analogico 3 - corrisponde a 0V",
+						"es": "Valor mínimo para la entrada analógica 3 - igual a 0V",
+						"pl": "Wartość minimalna dla wejścia analogowego 3 - równa 0V",
+						"uk": "Мінімальне значення для аналогового входу 3 - дорівнює 0В",
+						"zh-cn": "模拟输入 3 的最小值 - 等于 0V"
+					},
+					"min": 0,
+					"sm": 12,
+					"md": 6,
+					"lg": 6
+				},
+				"normAn3Max": {
+					"type": "number",
+					"label": {
+						"en": "Maximum value for analog input 3 - equals 10V",
+						"de": "Höchstwert für analogen Eingang 3 - entspricht 10V",
+						"ru": "Максимальное значение для аналогового входа 3 - соответствует 10В",
+						"pt": "Valor máximo para entrada analógica 3 - igual a 10V",
+						"nl": "Maximale waarde voor analoge ingang 3 - gelijk aan 10V",
+						"fr": "Valeur maximale pour l'entrée analogique 3 - équivaut à 10V",
+						"it": "Valore massimo per ingresso analogico 3 - corrisponde a 10V",
+						"es": "Valor máximo para la entrada analógica 3 - igual a 10V",
+						"pl": "Wartość maksymalna dla wejścia analogowego 3 - równa 10V",
+						"uk": "Максимальне значення для аналогового входу 3 - дорівнює 10В",
+						"zh-cn": "模拟输入 3 的最大值 - 等于 10V"
+					},
+					"min": 0,
+					"sm": 12,
+					"md": 6,
+					"lg": 6
+				},
+				"normAn4Min": {
+					"type": "number",
+					"label": {
+						"en": "Minimum value for analog input 4 - equals 0V",
+						"de": "Mindestwert für analogen Eingang 4 - entspricht 0V",
+						"ru": "Минимальное значение для аналогового входа 4 - соответствует 0В",
+						"pt": "Valor mínimo para entrada analógica 4 - igual a 0V",
+						"nl": "Minimale waarde voor analoge ingang 4 - gelijk aan 0V",
+						"fr": "Valeur minimale pour l'entrée analogique 4 - équivaut à 0V",
+						"it": "Valore minimo per ingresso analogico 4 - corrisponde a 0V",
+						"es": "Valor mínimo para la entrada analógica 4 - igual a 0V",
+						"pl": "Wartość minimalna dla wejścia analogowego 4 - równa 0V",
+						"uk": "Мінімальне значення для аналогового входу 4 - дорівнює 0В",
+						"zh-cn": "模拟输入 4 的最小值 - 等于 0V"
+					},
+					"min": 0,
+					"sm": 12,
+					"md": 6,
+					"lg": 6
+				},
+				"normAn4Max": {
+					"type": "number",
+					"label": {
+						"en": "Maximum value for analog input 4 - equals 10V",
+						"de": "Höchstwert für analogen Eingang 4 - entspricht 10V",
+						"ru": "Максимальное значение для аналогового входа 4 - соответствует 10В",
+						"pt": "Valor máximo para entrada analógica 4 - igual a 10V",
+						"nl": "Maximale waarde voor analoge ingang 4 - gelijk aan 10V",
+						"fr": "Valeur maximale pour l'entrée analogique 4 - équivaut à 10V",
+						"it": "Valore massimo per ingresso analogico 4 - corrisponde a 10V",
+						"es": "Valor máximo para la entrada analógica 4 - igual a 10V",
+						"pl": "Wartość maksymalna dla wejścia analogowego 4 - równa 10V",
+						"uk": "Максимальне значення для аналогового входу 4 - дорівнює 10В",
+						"zh-cn": "模拟输入 4 的最大值 - 等于 10V"
+					},
+					"min": 0,
+					"sm": 12,
+					"md": 6,
+					"lg": 6
+				}
+			}
+		}
+	}
+}
