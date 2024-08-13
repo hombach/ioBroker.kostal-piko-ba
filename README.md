@@ -53,6 +53,10 @@ For more information and instructions on how to disable error reporting, see the
 
 Note: Missing version entries typically indicate dependency updates for improved security.
 
+### 4.1.3 (13.08.2024)
+
+* (HombachC) fixed vulnerability in dependency
+
 ### 4.1.2 (10.08.2024)
 
 * (HombachC) optimized translation handling

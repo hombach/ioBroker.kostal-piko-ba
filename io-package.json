@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "4.1.2",
+    "version": "4.1.3",
     "news": {
+      "4.1.3":{
+        "en": "fixed vulnerability in dependency",
+        "de": "Schwachstelle in Abhängigkeit behoben",
+        "ru": "устранена уязвимость в зависимости",
+        "pt": "vulnerabilidade corrigida na dependência",
+        "nl": "kwetsbaarheid in afhankelijkheid opgelost",
+        "fr": "vulnérabilité corrigée dans la dépendance",
+        "it": "corretta vulnerabilità nella dipendenza",
+        "es": "vulnerabilidad solucionada en la dependencia",
+        "pl": "usunięto lukę w zależności",
+        "uk": "виправлено уразливість у залежності",
+        "zh-cn": "修复了依赖项中的漏洞"
+      },
       "4.1.2":{
         "en": "optimized translation handling\nhide not used configuration inputs",
         "de": "optimierte Übersetzungsverarbeitung\nnicht verwendete Konfigurations-Eingaben ausblenden",
