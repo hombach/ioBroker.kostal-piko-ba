@@ -33,6 +33,6 @@
 		"target": "ES2022"
 
 	},
-	"include": ["**/*.js", "**/*.d.ts", "test/package.js", "eslint.config.cjs"],
+	"include": ["**/*.js", "**/*.d.ts", "test/package.js", "eslint.config.cjs", ".eslintrc.js"],
 	"exclude": ["build/**", "node_modules/**", "admin/**"]
 }
