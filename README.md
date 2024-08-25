@@ -55,8 +55,9 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ## Changelog
 
-### 4.1.4 (2024-08-xx)
+### 4.2.0 (2024-08-xx)
 
+-   (HombachC) convert adapter to TypeScript
 -   (HombachC) switch to ES2022 code
 -   (HombachC) migrate eslint to >9.x
 -   (HombachC) repository cleanup

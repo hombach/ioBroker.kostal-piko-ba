@@ -1,20 +1,20 @@
 {
 	"common": {
 		"name": "kostal-piko-ba",
-		"version": "4.1.4",
+		"version": "4.2.0",
 		"news": {
-			"4.1.4":{
-				"en": "switch to ES2022 code\nrepository cleanup\ndependency updates\ncode optimizations",
-				"de": "Wechsel zu ES2022-Code\nRepository-Bereinigung\nAbhängigkeits-Updates\nCode-Optimierungen",
-				"ru": "переход на код ES2022\nочистка репозитория\nобновление зависимостей\nоптимизация кода",
-				"pt": "mudar para o código ES2022\nlimpeza do repositório\natualizações de dependências\notimizações de código",
-				"nl": "overschakelen naar ES2022-code\nopruiming van repository\nafhankelijkheidsupdates\ncodeoptimalisaties",
-				"fr": "passage au code ES2022\nnettoyage du dépôt\nmises à jour des dépendances\noptimisations du code",
-				"it": "passaggio al codice ES2022\npulizia del repository\naggiornamenti delle dipendenze\nottimizzazioni del codice",
-				"es": "cambio al código ES2022\nlimpieza del repositorio\nactualizaciones de dependencias\noptimizaciones de código",
-				"pl": "przejście na kod ES2022\nczyszczenie repozytorium\naktualizacje zależności\noptymalizacje kodu",
-				"uk": "перехід на код ES2022\nочищення репозиторію\nоновлення залежностей\nоптимізація коду",
-				"zh-cn": "切换到 ES2022 代码\n存储库清理\n依赖项更新\n代码优化"
+			"4.2.0":{
+				"en": "convert adapter to TypeScript\nswitch to ES2022 code\nrepository cleanup\ndependency updates\ncode optimizations",
+				"de": "Adapter auf TypeScript umstellen\nWechsel zu ES2022-Code\nRepository-Bereinigung\nAbhängigkeits-Updates\nCode-Optimierungen",
+				"ru": "перевести адаптер на TypeScript\nпереход на код ES2022\nочистка репозитория\nобновление зависимостей\nоптимизация кода",
+				"pt": "converter adaptador para TypeScript\nmudar para o código ES2022\nlimpeza do repositório\natualizações de dependências\notimizações de código",
+				"nl": "adapter omzetten naar TypeScript\noverschakelen naar ES2022-code\nopruiming van repository\nafhankelijkheidsupdates\ncodeoptimalisaties",
+				"fr": "convertir l'adaptateur en TypeScript\npassage au code ES2022\nnettoyage du dépôt\nmises à jour des dépendances\noptimisations du code",
+				"it": "convertire l'adattatore a TypeScript\npassaggio al codice ES2022\npulizia del repository\naggiornamenti delle dipendenze\nottimizzazioni del codice",
+				"es": "convertir el adaptador a TypeScript\ncambio al código ES2022\nlimpieza del repositorio\nactualizaciones de dependencias\noptimizaciones de código",
+				"pl": "konwersja adaptera na TypeScript\nprzejście na kod ES2022\nczyszczenie repozytorium\naktualizacje zależności\noptymalizacje kodu",
+				"uk": "переведення адаптера на TypeScript\nперехід на код ES2022\nочищення репозиторію\nоновлення залежностей\nоптимізація коду",
+				"zh-cn": "将适配器转换为 TypeScript\n切换到 ES2022 代码\n存储库清理\n依赖项更新\n代码优化"
 			},
 			"4.1.3":{
 				"en": "fixed vulnerability in dependency",
@@ -135,6 +135,8 @@
 		"readme": "https://github.com/Hombach/ioBroker.kostal-piko-ba/blob/master/README.md",
 		"loglevel": "info",
 		"mode": "daemon",
+		"messagebox": true,
+		"allowInit": true,
 		"type": "energy",
 		"compact": true,
 		"connectionType": "local",
@@ -154,7 +156,7 @@
 		],
 		"plugins": {
 			"sentry": {
-			  "dsn": "https://8d5efc328e36ebb90292e20d5e1be95b@o415875.ingest.sentry.io/4505778454134784"
+				"dsn": "https://8d5efc328e36ebb90292e20d5e1be95b@o415875.ingest.sentry.io/4505778454134784"
 			}
 		},
 		"supportCustoms": false

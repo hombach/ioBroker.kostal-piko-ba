@@ -1,14 +1,11 @@
-"use strict";
-
+// The adapter-core module gives you access to the core ioBroker functions you need to create an adapter
+import * as utils from "@iobroker/adapter-core";
 import axios from "axios";
-import * as xml2js from "xml2js";
+import xml2js from "xml2js";
 
 // doc links:
 // https://www.msxfaq.de/sonst/iot/kostal15.htm
 // https://github.com/sla89/hassio-kostal-piko/blob/main/docs/api.yaml
-
-// The adapter-core module gives you access to the core ioBroker functions, you need to create an adapter
-const utils = require("@iobroker/adapter-core");
 
 // Load your modules here, e.g.:
 // const schedule = require('node-schedule');
@@ -797,16 +794,12 @@ class KostalPikoBA extends utils.Adapter {
 			}
 		}
 	}
-} // END Class
+}
 
-// @ts-ignore parent is a valid property on module
-if (module.parent) {
+if (require.main !== module) {
 	// Export the constructor in compact mode
-	/**
-	 * @param {Partial<utils.AdapterOptions>} [options={}]
-	 */
-	module.exports = (options) => new KostalPikoBA(options);
+	module.exports = (options: Partial<utils.AdapterOptions> | undefined) => new KostalPikoBA(options);
 } else {
 	// otherwise start the instance directly
-	new KostalPikoBA();
+	(() => new KostalPikoBA())();
 }
