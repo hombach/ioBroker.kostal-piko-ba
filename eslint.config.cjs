@@ -24,7 +24,7 @@ module.exports = [
 				...globals.node,
 				...globals.mocha,
 			},
-			parser: "@typescript-eslint/parser",
+			// parser: "@typescript-eslint/parser",
 			ecmaVersion: 2022,
 			sourceType: "module",
 		},
