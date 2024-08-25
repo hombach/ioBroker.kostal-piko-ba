@@ -4,17 +4,17 @@
 		"version": "4.1.4",
 		"news": {
 			"4.1.4":{
-				"en": "switch to ES2022 code\nrepository cleanup\ndependency updates",
-				"de": "Wechsel zu ES2022-Code\nRepository-Bereinigung\nAbhängigkeits-Updates",
-				"ru": "переход на код ES2022\nочистка репозитория\nобновление зависимостей",
-				"pt": "mudar para o código ES2022\nlimpeza do repositório\natualizações de dependências",
-				"nl": "overschakelen naar ES2022-code\nopruiming van repository\nafhankelijkheidsupdates",
-				"fr": "passage au code ES2022\nnettoyage du dépôt\nmises à jour des dépendances",
-				"it": "passaggio al codice ES2022\npulizia del repository\naggiornamenti delle dipendenze",
-				"es": "cambio al código ES2022\nlimpieza del repositorio\nactualizaciones de dependencias",
-				"pl": "przejście na kod ES2022\nczyszczenie repozytorium\naktualizacje zależności",
-				"uk": "перехід на код ES2022\nочищення репозиторію\nоновлення залежностей",
-				"zh-cn": "切换到 ES2022 代码\n存储库清理\n依赖项更新"
+				"en": "switch to ES2022 code\nrepository cleanup\ndependency updates\ncode optimizations",
+				"de": "Wechsel zu ES2022-Code\nRepository-Bereinigung\nAbhängigkeits-Updates\nCode-Optimierungen",
+				"ru": "переход на код ES2022\nочистка репозитория\nобновление зависимостей\nоптимизация кода",
+				"pt": "mudar para o código ES2022\nlimpeza do repositório\natualizações de dependências\notimizações de código",
+				"nl": "overschakelen naar ES2022-code\nopruiming van repository\nafhankelijkheidsupdates\ncodeoptimalisaties",
+				"fr": "passage au code ES2022\nnettoyage du dépôt\nmises à jour des dépendances\noptimisations du code",
+				"it": "passaggio al codice ES2022\npulizia del repository\naggiornamenti delle dipendenze\nottimizzazioni del codice",
+				"es": "cambio al código ES2022\nlimpieza del repositorio\nactualizaciones de dependencias\noptimizaciones de código",
+				"pl": "przejście na kod ES2022\nczyszczenie repozytorium\naktualizacje zależności\noptymalizacje kodu",
+				"uk": "перехід на код ES2022\nочищення репозиторію\nоновлення залежностей\nоптимізація коду",
+				"zh-cn": "切换到 ES2022 代码\n存储库清理\n依赖项更新\n代码优化"
 			},
 			"4.1.3":{
 				"en": "fixed vulnerability in dependency",

@@ -61,6 +61,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 -   (HombachC) migrate eslint to >9.x
 -   (HombachC) repository cleanup
 -   (HombachC) dependency updates
+-   (HombachC) code optimizations
 
 ### 4.1.3 (2024-08-13)
 

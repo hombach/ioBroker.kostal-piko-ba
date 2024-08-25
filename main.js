@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 // import axios from 'axios';
 
@@ -7,7 +7,7 @@
 // https://github.com/sla89/hassio-kostal-piko/blob/main/docs/api.yaml
 
 // The adapter-core module gives you access to the core ioBroker functions, you need to create an adapter
-const utils = require('@iobroker/adapter-core');
+const utils = require("@iobroker/adapter-core");
 
 // Load your modules here, e.g.:
 // const schedule = require('node-schedule');
@@ -96,382 +96,395 @@ var KostalRequest2     = '';        // IP request-string 2 for Pico live data
 var KostalRequestDay   = '';        // IP request-string for PicoBA daily statistics
 var KostalRequestTotal = '';        // IP request-string for PicoBA total statistics
 
-
 function resolveAfterXSeconds(x) {
     return new Promise(resolve => {
         setTimeout(() => {
             resolve(x);
         }, (x * 1000) );
-    });
+	});
 }
 
 
 class KostalPikoBA extends utils.Adapter {
+	/****************************************************************************************
+	 * @param {Partial<utils.AdapterOptions>} [options={}]
+	 */
+	constructor(options) {
+		super({
+			...options,
+			name: "kostal-piko-ba",
+		});
+		this.on("ready", this.onReady.bind(this));
+		// this.on('objectChange', this.onObjectChange.bind(this));
+		// this.on('stateChange', this.onStateChange.bind(this));
+		// this.on('message', this.onMessage.bind(this));
+		this.on("unload", this.onUnload.bind(this));
+	}
 
-    /****************************************************************************************
-    * @param {Partial<utils.AdapterOptions>} [options={}]
-    */
-    constructor(options) {
-        super({
-            ...options,
-            name: 'kostal-piko-ba'
-        });
-        this.on('ready', this.onReady.bind(this));
-        // this.on('objectChange', this.onObjectChange.bind(this));
-        // this.on('stateChange', this.onStateChange.bind(this));
-        // this.on('message', this.onMessage.bind(this));
-        this.on('unload', this.onUnload.bind(this));
-    }
+	/****************************************************************************************
+	 * Is called when databases are connected and adapter received configuration. ***********/
+	async onReady() {
+		if (!this.config.ipaddress) {
+			this.log.error(`Kostal Piko IP address not set`);
+		} else {
+			this.log.info(`IP address found in config: ${this.config.ipaddress}`);
+			// Validate IP address ...
+			if (
+				!/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(
+					this.config.ipaddress,
+				)
+			) {
+				this.log.error(`You have entered an invalid IP address! ${this.config.ipaddress}`);
+				this.log.info(`Stopping adapter`);
+				await this.stop;
+			}
+		}
 
+		if (this.config.ipaddress) {
+			// get general info of connected inverter
+			KostalRequestOnce =
+				`http://${this.config.ipaddress}/api/dxs.json` + `?dxsEntries=${ID_InverterType}&dxsEntries=${ID_InfoUIVersion}&dxsEntries=${ID_InverterName}`;
+			await this.ReadPikoOnce();
+			await resolveAfterXSeconds(5);
+			this.log.debug(`Initial read of general info for inverter IP ${this.config.ipaddress} done`);
+			if (!InverterAPIPiko && !InverterAPIPikoMP) {
+				// no inverter type detected
+				this.log.error(`Error in detecting Kostal inverter`);
+				this.log.info(`Stopping adapter`);
+				await this.stop;
+			}
+		}
 
-    /****************************************************************************************
-    * Is called when databases are connected and adapter received configuration. ***********/
-    async onReady() {
-        if (!this.config.ipaddress) {
-            this.log.error(`Kostal Piko IP address not set`);
-        } else {
-            this.log.info(`IP address found in config: ${this.config.ipaddress}`);
-            // Validate IP address ...
-            if (!(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(this.config.ipaddress))) {
-                this.log.error(`You have entered an invalid IP address! ${this.config.ipaddress}`)
-                this.log.info(`Stopping adapter`);
-                await this.stop;
-            }
-        }
-
-        if (this.config.ipaddress) { // get general info of connected inverter
-            KostalRequestOnce = `http://${this.config.ipaddress}/api/dxs.json`
-                + `?dxsEntries=${ID_InverterType}&dxsEntries=${ID_InfoUIVersion}&dxsEntries=${ID_InverterName}`;
-            await this.ReadPikoOnce();
-            await resolveAfterXSeconds(5);
-            this.log.debug(`Initial read of general info for inverter IP ${this.config.ipaddress} done`);
-            if (!InverterAPIPiko && !InverterAPIPikoMP) { // no inverter type detected
-                this.log.error(`Error in detecting Kostal inverter`);
-                this.log.info(`Stopping adapter`);
-                await this.stop;
-            }
-        }
-
-        //#region *** sentry.io ping ***
-        if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
-            const sentryInstance = this.getPluginInstance('sentry');
-            const today = new Date();
-            var last = await this.getStateAsync('LastSentryLogDay')
-            if (last?.val != await today.getDate()) {
-                if (sentryInstance) {
-                    const Sentry = sentryInstance.getSentryObject();
-                    Sentry && Sentry.withScope(scope => {
-                        scope.setLevel('info');
-                        scope.setTag('SentryDay', today.getDate());
-                        scope.setTag('Inverter', this.config.ipaddress);
-                        scope.setTag('Inverter-Type', InverterType);
-                        scope.setTag('Inverter-UI', InverterUIVersion);
-                        Sentry.captureMessage('Adapter kostal-piko-ba started', 'info'); // Level "info"
-                    });
-                }
-                this.setState('LastSentryLoggedError', { val: 'unknown', ack: true }); // Clean last error every adapter start
-                this.setState('LastSentryLogDay', { val: today.getDate(), ack: true });
-            }
-        }
+		//#region *** sentry.io ping ***
+		if (this.supportsFeature && this.supportsFeature("PLUGINS")) {
+			const sentryInstance = this.getPluginInstance("sentry");
+			const today = new Date();
+			const last = await this.getStateAsync("LastSentryLogDay");
+			if (last?.val != (await today.getDate())) {
+				if (sentryInstance) {
+					const Sentry = sentryInstance.getSentryObject();
+					Sentry &&
+						Sentry.withScope((scope) => {
+							scope.setLevel("info");
+							scope.setTag("SentryDay", today.getDate());
+							scope.setTag("Inverter", this.config.ipaddress);
+							scope.setTag("Inverter-Type", InverterType);
+							scope.setTag("Inverter-UI", InverterUIVersion);
+							Sentry.captureMessage("Adapter kostal-piko-ba started", "info"); // Level "info"
+						});
+				}
+				this.setState("LastSentryLoggedError", { val: "unknown", ack: true }); // Clean last error every adapter start
+				this.setState("LastSentryLogDay", { val: today.getDate(), ack: true });
+			}
+		}
 		//#endregion
 
-    	//#region *** setup polltimes ***
-        if (!this.config.polltimelive) {
-            this.config.polltimelive = 10000;
-            this.log.warn(`Polltime not set or zero - will be set to ${(this.config.polltimelive / 1000)} seconds`);
-        } 
-        if (this.config.polltimelive < 5000) {
-            this.config.polltimelive = 5000;
-            this.log.warn(`Polltime has to be minimum 5000 will be set to ${(this.config.polltimelive / 1000)} seconds`);
-        }
-        this.log.info(`Polltime set to: ${(this.config.polltimelive / 1000)} seconds`);
+		//#region *** setup polltimes ***
+		if (!this.config.polltimelive) {
+			this.config.polltimelive = 10000;
+			this.log.warn(`Polltime not set or zero - will be set to ${this.config.polltimelive / 1000} seconds`);
+		}
+		if (this.config.polltimelive < 5000) {
+			this.config.polltimelive = 5000;
+			this.log.warn(`Polltime has to be minimum 5000 will be set to ${this.config.polltimelive / 1000} seconds`);
+		}
+		this.log.info(`Polltime set to: ${this.config.polltimelive / 1000} seconds`);
 
-        if (!this.config.polltimedaily) {
-            this.config.polltimedaily = 60000;
-            this.log.warn(`Polltime daily statistics data not set or zero - will be set to ${(this.config.polltimedaily / 1000)} seconds`);
-        }
-        if (this.config.polltimedaily < this.config.polltimelive * 5) {
-            this.config.polltimedaily = this.config.polltimelive * 5;
-            this.log.warn(`Polltime daily statistics should be min. 5 times the standard poll - will be set to ${(this.config.polltimedaily / 1000)} seconds`);
-        }
-        this.log.info(`Polltime daily statistics set to: ${(this.config.polltimedaily / 1000)} seconds`);
+		if (!this.config.polltimedaily) {
+			this.config.polltimedaily = 60000;
+			this.log.warn(`Polltime daily statistics data not set or zero - will be set to ${this.config.polltimedaily / 1000} seconds`);
+		}
+		if (this.config.polltimedaily < this.config.polltimelive * 5) {
+			this.config.polltimedaily = this.config.polltimelive * 5;
+			this.log.warn(`Polltime daily statistics should be min. 5 times the standard poll - will be set to ${this.config.polltimedaily / 1000} seconds`);
+		}
+		this.log.info(`Polltime daily statistics set to: ${this.config.polltimedaily / 1000} seconds`);
 
-        if (!this.config.polltimetotal) {
-            this.config.polltimetotal = 200000;
-            this.log.warn(`Polltime alltime statistics not set or zero - will be set to ${(this.config.polltimetotal / 1000)} seconds`);
-        }
-        if (this.config.polltimetotal < this.config.polltimedaily * 2) {
-            this.config.polltimetotal = this.config.polltimedaily * 2;
-            this.log.warn(`Polltime for all-time statistics should be at least double the daily statistics poll time - it will be set to ${(this.config.polltimetotal / 1000)} seconds`);
-        }
-        this.log.info(`Polltime for alltime statistics set to: ${(this.config.polltimetotal / 1000)} seconds`);
+		if (!this.config.polltimetotal) {
+			this.config.polltimetotal = 200000;
+			this.log.warn(`Polltime alltime statistics not set or zero - will be set to ${this.config.polltimetotal / 1000} seconds`);
+		}
+		if (this.config.polltimetotal < this.config.polltimedaily * 2) {
+			this.config.polltimetotal = this.config.polltimedaily * 2;
+			this.log.warn(
+				`Polltime for all-time statistics should be at least double the daily statistics poll time - it will be set to ${this.config.polltimetotal / 1000} seconds`,
+			);
+		}
+		this.log.info(`Polltime for alltime statistics set to: ${this.config.polltimetotal / 1000} seconds`);
 		//#endregion
 
-        // this.subscribeStates('*'); // all state changes inside the adapters namespace are subscribed
+		// this.subscribeStates('*'); // all state changes inside the adapters namespace are subscribed
 
-        if (this.config.ipaddress) {
-            KostalRequest1 = `http://${this.config.ipaddress}/api/dxs.json`
-                + `?dxsEntries=${ID_Power_SolarDC        }&dxsEntries=${ID_Power_GridAC          }`
-                + `&dxsEntries=${ID_Power_DC1Power       }&dxsEntries=${ID_Power_DC1Current      }`
-                + `&dxsEntries=${ID_Power_DC1Voltage     }&dxsEntries=${ID_Power_DC2Power        }`
-                + `&dxsEntries=${ID_Power_DC2Current     }&dxsEntries=${ID_Power_DC2Voltage      }`
-                + `&dxsEntries=${ID_Power_DC3Power       }&dxsEntries=${ID_Power_DC3Current      }`
-                + `&dxsEntries=${ID_Power_DC3Voltage     }`            
-                + `&dxsEntries=${ID_Power_SelfConsumption}&dxsEntries=${ID_Power_HouseConsumption}`
-                + `&dxsEntries=${ID_OperatingState       }&dxsEntries=${ID_BatVoltage            }`
-                + `&dxsEntries=${ID_BatTemperature       }&dxsEntries=${ID_BatStateOfCharge      }`
-                + `&dxsEntries=${ID_BatCurrent           }&dxsEntries=${ID_BatCurrentDir         }`
-                + `&dxsEntries=${ID_GridLimitation       }`;
+		if (this.config.ipaddress) {
+			KostalRequest1 =
+				`http://${this.config.ipaddress}/api/dxs.json` +
+				`?dxsEntries=${ID_Power_SolarDC}&dxsEntries=${ID_Power_GridAC}` +
+				`&dxsEntries=${ID_Power_DC1Power}&dxsEntries=${ID_Power_DC1Current}` +
+				`&dxsEntries=${ID_Power_DC1Voltage}&dxsEntries=${ID_Power_DC2Power}` +
+				`&dxsEntries=${ID_Power_DC2Current}&dxsEntries=${ID_Power_DC2Voltage}` +
+				`&dxsEntries=${ID_Power_DC3Power}&dxsEntries=${ID_Power_DC3Current}` +
+				`&dxsEntries=${ID_Power_DC3Voltage}` +
+				`&dxsEntries=${ID_Power_SelfConsumption}&dxsEntries=${ID_Power_HouseConsumption}` +
+				`&dxsEntries=${ID_OperatingState}&dxsEntries=${ID_BatVoltage}` +
+				`&dxsEntries=${ID_BatTemperature}&dxsEntries=${ID_BatStateOfCharge}` +
+				`&dxsEntries=${ID_BatCurrent}&dxsEntries=${ID_BatCurrentDir}` +
+				`&dxsEntries=${ID_GridLimitation}`;
 
-            KostalRequest2 = `http://${this.config.ipaddress}/api/dxs.json`
-                + `?dxsEntries=${ID_L1GridCurrent                }&dxsEntries=${ID_L1GridVoltage                }`
-                + `&dxsEntries=${ID_L1GridPower                  }&dxsEntries=${ID_L2GridCurrent                }`
-                + `&dxsEntries=${ID_L2GridVoltage                }&dxsEntries=${ID_L2GridPower                  }`
-                + `&dxsEntries=${ID_L3GridCurrent                }&dxsEntries=${ID_L3GridVoltage                }`
-                + `&dxsEntries=${ID_L3GridPower                  }&dxsEntries=${ID_Power_HouseConsumptionPhase1 }`
-                + `&dxsEntries=${ID_Power_HouseConsumptionPhase2 }&dxsEntries=${ID_Power_HouseConsumptionPhase3 }`;
-            if (this.config.readanalogs) {
-                KostalRequest2 = KostalRequest2 + `&dxsEntries=${ID_InputAnalog1 }&dxsEntries=${ID_InputAnalog2 }`
-                                                + `&dxsEntries=${ID_InputAnalog3 }&dxsEntries=${ID_InputAnalog4 }`;
+			KostalRequest2 =
+				`http://${this.config.ipaddress}/api/dxs.json` +
+				`?dxsEntries=${ID_L1GridCurrent}&dxsEntries=${ID_L1GridVoltage}` +
+				`&dxsEntries=${ID_L1GridPower}&dxsEntries=${ID_L2GridCurrent}` +
+				`&dxsEntries=${ID_L2GridVoltage}&dxsEntries=${ID_L2GridPower}` +
+				`&dxsEntries=${ID_L3GridCurrent}&dxsEntries=${ID_L3GridVoltage}` +
+				`&dxsEntries=${ID_L3GridPower}&dxsEntries=${ID_Power_HouseConsumptionPhase1}` +
+				`&dxsEntries=${ID_Power_HouseConsumptionPhase2}&dxsEntries=${ID_Power_HouseConsumptionPhase3}`;
+			if (this.config.readanalogs) {
+				KostalRequest2 =
+					KostalRequest2 + `&dxsEntries=${ID_InputAnalog1}&dxsEntries=${ID_InputAnalog2}&dxsEntries=${ID_InputAnalog3}&dxsEntries=${ID_InputAnalog4}`;
+				if (this.config.normAn1Max != 10 || this.config.normAn1Min != 0) {
+					this.extendObject("Inputs.Analog1", { common: { unit: "" } });
+				}
+				if (this.config.normAn2Max != 10 || this.config.normAn2Min != 0) {
+					this.extendObject("Inputs.Analog2", { common: { unit: "" } });
+				}
+				if (this.config.normAn3Max != 10 || this.config.normAn3Min != 0) {
+					this.extendObject("Inputs.Analog3", { common: { unit: "" } });
+				}
+				if (this.config.normAn4Max != 10 || this.config.normAn4Min != 0) {
+					this.extendObject("Inputs.Analog4", { common: { unit: "" } });
+				}
+			}
 
-                if ((this.config.normAn1Max != 10) || (this.config.normAn1Min != 0)) {
-                    this.extendObject('Inputs.Analog1', { common: { unit: '' } });
-                }
-                if ((this.config.normAn2Max != 10) || (this.config.normAn2Min != 0)) {
-                    this.extendObject('Inputs.Analog2', { common: { unit: '' } });
-                }
-                if ((this.config.normAn3Max != 10) || (this.config.normAn3Min != 0)) {
-                    this.extendObject('Inputs.Analog3', { common: { unit: '' } });
-                }
-                if ((this.config.normAn4Max != 10) || (this.config.normAn4Min != 0)) {
-                    this.extendObject('Inputs.Analog4', { common: { unit: '' } });
-                }
+			KostalRequestDay =
+				`http://${this.config.ipaddress}/api/dxs.json` +
+				`?dxsEntries=${ID_StatDay_SelfConsumption}&dxsEntries=${ID_StatDay_SelfConsumptionRate}` +
+				`&dxsEntries=${ID_StatDay_Yield}&dxsEntries=${ID_StatDay_HouseConsumption}` +
+				`&dxsEntries=${ID_StatDay_Autarky}`;
 
-            }
+			KostalRequestTotal =
+				`http://${this.config.ipaddress}/api/dxs.json` +
+				`?dxsEntries=${ID_StatTot_SelfConsumption}&dxsEntries=${ID_StatTot_SelfConsumptionRate}` +
+				`&dxsEntries=${ID_StatTot_Yield}&dxsEntries=${ID_StatTot_HouseConsumption}` +
+				`&dxsEntries=${ID_StatTot_Autarky}&dxsEntries=${ID_StatTot_OperatingTime}`;
+			if (this.config.readbattery) {
+				KostalRequestTotal = KostalRequestTotal + `&dxsEntries=${ID_BatChargeCycles}`;
+			}
 
-            KostalRequestDay = `http://${this.config.ipaddress}/api/dxs.json`
-                + `?dxsEntries=${ID_StatDay_SelfConsumption}&dxsEntries=${ID_StatDay_SelfConsumptionRate}`
-                + `&dxsEntries=${ID_StatDay_Yield          }&dxsEntries=${ID_StatDay_HouseConsumption   }`
-                + `&dxsEntries=${ID_StatDay_Autarky        }`;
+			this.log.debug(`OnReady done`);
+			await this.ReadPikoTotal();
+			await resolveAfterXSeconds(3);
+			await this.ReadPikoDaily();
+			await resolveAfterXSeconds(3);
+			await this.Scheduler();
+			this.log.debug(`Initial ReadPiko done`);
+		} else {
+			this.log.error(`No IP address configured, adapter is shutting down`);
+			this.stop;
+		}
+	}
 
-            KostalRequestTotal = `http://${this.config.ipaddress}/api/dxs.json`
-                + `?dxsEntries=${ID_StatTot_SelfConsumption}&dxsEntries=${ID_StatTot_SelfConsumptionRate}`
-                + `&dxsEntries=${ID_StatTot_Yield          }&dxsEntries=${ID_StatTot_HouseConsumption   }`
-                + `&dxsEntries=${ID_StatTot_Autarky        }&dxsEntries=${ID_StatTot_OperatingTime      }`;
-            if (this.config.readbattery) {
-                KostalRequestTotal = KostalRequestTotal + `&dxsEntries=${ID_BatChargeCycles}`;
-            }
+	/****************************************************************************************
+	 * Is called when adapter shuts down - callback has to be called under any circumstances!
+	 * @param {() => void} callback */
+	onUnload(callback) {
+		try {
+			clearTimeout(adapterIntervals.live);
+			clearTimeout(adapterIntervals.daily);
+			clearTimeout(adapterIntervals.total);
+			Object.keys(adapterIntervals).forEach((interval) => clearInterval(adapterIntervals[interval]));
+			this.setState("info.connection", { val: false, ack: true });
+			this.log.info(`Adapter Kostal-Piko-BA cleaned up everything...`);
+			callback();
+		} catch (e) {
+			callback();
+		} // END try catch
+	}
 
-            this.log.debug(`OnReady done`);
-            await this.ReadPikoTotal();
-            await resolveAfterXSeconds(3);
-            await this.ReadPikoDaily();
-            await resolveAfterXSeconds(3);
-            await this.Scheduler();
-            this.log.debug(`Initial ReadPiko done`);
-        } else {
-            this.log.error(`No IP address configured, adapter is shutting down`);
-            this.stop;
-        }
-    }
+	/****************************************************************************************
+	 * Scheduler ****************************************************************************/
+	Scheduler() {
+		this.ReadPiko();
+		this.ReadPiko2();
+		try {
+			clearTimeout(adapterIntervals.live);
+			adapterIntervals.live = setTimeout(this.Scheduler.bind(this), this.config.polltimelive);
+		} catch (e) {
+			this.log.error(`Error in setting adapter schedule: ${e}`);
+			this.restart;
+		} // END try catch
+	}
 
+	/****************************************************************************************
+	 * ReadPikoOnce ***************************************************************************/
+	async ReadPikoOnce() {
+		const axios = require("axios");
+		const xml2js = require("xml2js");
 
-    /****************************************************************************************
-    * Is called when adapter shuts down - callback has to be called under any circumstances!
-    * @param {() => void} callback */
-    onUnload(callback) {
-        try {
-            clearTimeout(adapterIntervals.live);
-            clearTimeout(adapterIntervals.daily);
-            clearTimeout(adapterIntervals.total);
-            Object.keys(adapterIntervals).forEach(interval => clearInterval(adapterIntervals[interval]));
-            this.setState('info.connection', { val: false, ack: true });
-            this.log.info(`Adapter Kostal-Piko-BA cleaned up everything...`);
-            callback();
-        } catch (e) {
-            callback();
-        } // END try catch
-    }
+		// @ts-ignore axios.get is valid
+		await axios
+			.get(KostalRequestOnce, { transformResponse: (r) => r })
+			.then((response) => {
+				//.status == 200
+				// access parsed JSON response data using response.data field
+				this.log.debug(`Piko-BA general info updated - Kostal response data: ${response.data}`);
+				var result = JSON.parse(response.data).dxsEntries;
+				InverterType = result[0].value;
+				this.setState("Info.InverterType", { val: InverterType, ack: true });
+				InverterAPIPiko = true;
+				this.setState("info.connection", { val: true, ack: true });
+				InverterUIVersion = result[1].value;
+				this.setState("Info.InverterUIVersion", { val: InverterUIVersion, ack: true });
+				this.setState("Info.InverterName", { val: result[2].value, ack: true });
+			})
+			.catch((error) => {
+				this.HandleConnectionError(error, `Piko(-BA) API for general info`, `BA0`);
+			});
 
+		await resolveAfterXSeconds(2);
 
-    /****************************************************************************************
-    * Scheduler ****************************************************************************/
-    Scheduler() {
-        this.ReadPiko();
-        this.ReadPiko2();
-        try {
-            clearTimeout(adapterIntervals.live);
-            adapterIntervals.live = setTimeout(this.Scheduler.bind(this), this.config.polltimelive);
-        } catch (e) {
-            this.log.error(`Error in setting adapter schedule: ${e}`);
-            this.restart;
-        } // END try catch
-    }
+		if (InverterAPIPiko) {
+			// inverter type detected yet
+			this.log.info(`Detected inverter type: ${InverterType}`);
+		} else {
+			this.log.warn(`Error in polling with Piko(-BA)-API: ${InverterType}`);
+			this.log.info(`Trying to detect inverter with Piko-MP-API`);
+		}
 
+		if (!InverterAPIPiko) {
+			// no inverter type detected yet -> try to detect Piko MP Inverter
+			// @ts-ignore axios.get is valid
+			axios
+				.get(`http://${this.config.ipaddress}/versions.xml`, { transformResponse: (r) => r })
+				.then((response) => {
+					xml2js.parseString(response.data, (err, result) => {
+						if (err) {
+							this.log.error(`Error when calling Piko MP API with axios for general info: ${err}`);
+						} else {
+							const MPType = result.root.Device[0].$.Name;
+							if (MPType) {
+								this.log.info(`Discovered Piko MP API, type of inverter: ${MPType}`);
+								InverterType = MPType;
+								this.setState("Info.InverterType", { val: InverterType, ack: true });
+								InverterAPIPikoMP = true;
+								this.setState("info.connection", { val: true, ack: true });
+								InverterUIVersion = "MP";
+								this.setState("Info.InverterUIVersion", { val: InverterUIVersion, ack: true });
+								this.setState("Info.InverterName", { val: result.root.Device[0].$.NetBiosName, ack: true });
+							}
+						}
+					});
+				})
+				.catch((error) => {
+					this.HandleConnectionError(error, `Piko MP API for general info`, `MP0`);
+				});
+		}
+	} // END ReadPikoOnce
 
-    /****************************************************************************************
-  * ReadPikoOnce ***************************************************************************/
-    async ReadPikoOnce() {
-        const axios = require('axios');
-        const xml2js = require('xml2js');
+	/****************************************************************************************
+	 * ReadPiko *****************************************************************************/
+	ReadPiko() {
+		const axios = require("axios");
+		const xml2js = require("xml2js");
 
-        // @ts-ignore axios.get is valid
-        await axios.get(KostalRequestOnce, { transformResponse: (r) => r })
-            .then(response => {   //.status == 200
-                // access parsed JSON response data using response.data field
-                this.log.debug(`Piko-BA general info updated - Kostal response data: ${response.data}`);
-                var result = JSON.parse(response.data).dxsEntries;
-                InverterType = result[0].value;
-                this.setState('Info.InverterType', { val: InverterType, ack: true });
-                InverterAPIPiko = true;
-                this.setState('info.connection', { val: true, ack: true });
-                InverterUIVersion = result[1].value;
-                this.setState('Info.InverterUIVersion', { val: InverterUIVersion, ack: true });
-                this.setState('Info.InverterName', { val: result[2].value, ack: true });
-            })
-            .catch(error => {
-                this.HandleConnectionError(error, `Piko(-BA) API for general info`, `BA0`);
-            })
-
-        await resolveAfterXSeconds(2);
-
-        if (InverterAPIPiko) { // inverter type detected yet
-            this.log.info(`Detected inverter type: ${InverterType}`);
-        } else {
-            this.log.warn(`Error in polling with Piko(-BA)-API: ${InverterType}`);
-            this.log.info(`Trying to detect inverter with Piko-MP-API`);
-        }
-
-        if (!InverterAPIPiko) { // no inverter type detected yet -> try to detect Piko MP Inverter
-            // @ts-ignore axios.get is valid
-            axios.get(`http://${this.config.ipaddress}/versions.xml`, { transformResponse: (r) => r })
-                .then((response) => {
-                    xml2js.parseString(response.data, (err, result) => {
-                        if (err) {
-                            this.log.error(`Error when calling Piko MP API with axios for general info: ${err}`);
-                        } else {
-                            const MPType = result.root.Device[0].$.Name;
-                            if (MPType) {
-                                this.log.info(`Discovered Piko MP API, type of inverter: ${MPType}`);
-                                InverterType = MPType;
-                                this.setState('Info.InverterType', { val: InverterType, ack: true });
-                                InverterAPIPikoMP = true;
-                                this.setState('info.connection', { val: true, ack: true });
-		                InverterUIVersion = 'MP';
-                		this.setState('Info.InverterUIVersion', { val: InverterUIVersion, ack: true });
-                                this.setState('Info.InverterName', { val: result.root.Device[0].$.NetBiosName, ack: true });
-                            }
-                        }
-                    });
-                })
-                .catch(error => {
-                    this.HandleConnectionError(error, `Piko MP API for general info`, `MP0`);
-                });
-        }
-    } // END ReadPikoOnce
-   
-
-    /****************************************************************************************
-    * ReadPiko *****************************************************************************/
-    ReadPiko() {
-        const axios = require('axios');
-        const xml2js = require('xml2js');
-    
-        if (InverterAPIPiko) {  // code for Piko(-BA)
-            // @ts-ignore axios.get is valid
-            axios.get(KostalRequest1, {timeout: 3500, transformResponse: (r) => r })
+		if (InverterAPIPiko) {
+			// code for Piko(-BA)
+			// @ts-ignore axios.get is valid
+			axios
+				.get(KostalRequest1, { timeout: 3500, transformResponse: (r) => r })
                 .then(response => {   //.status == 200
                     // access parsed JSON response data using response.data field
-                    this.log.debug(`Piko-BA live data 1 update - Kostal response data: ${response.data}`);
-                    var result = JSON.parse(response.data).dxsEntries;
-                    if (result && result.length > 0) {
-                        if (result[0].value) {
-                            this.setState('Power.SolarDC', { val: Math.round(result[0].value), ack: true });
-                        } else {
-                            this.setState('Power.SolarDC', { val: 0, ack: true });
-                        }
-                        if (result[1].value) {
-                            this.setState('Power.GridAC', { val: Math.round(result[1].value), ack: true });
-                            this.setState('Power.Surplus', { val: Math.round(result[1].value - result[11].value), ack: true });
-                        } else {
-                            this.setState('Power.GridAC', { val: 0, ack: true });
-                            this.setState('Power.Surplus', { val: 0, ack: true });
-                        }
-                        if (result[4].value) {
-                            this.setState('Power.DC1Power', { val: Math.round(result[2].value), ack: true });
-                            this.setState('Power.DC1Current', { val: (Math.round(1000 * result[3].value)) / 1000, ack: true });
-                            this.setState('Power.DC1Voltage', { val: Math.round(result[4].value), ack: true });
-                        } else {
-                            this.setState('Power.DC1Power', { val: 0, ack: true });
-                            this.setState('Power.DC1Current', { val: 0, ack: true });
-                            this.setState('Power.DC1Voltage', { val: 0, ack: true });
-                        }
-                        if (result[7].value) {
-                            this.setState('Power.DC2Power', { val: Math.round(result[5].value), ack: true });
-                            this.setState('Power.DC2Current', { val: (Math.round(1000 * result[6].value)) / 1000, ack: true });
-                            this.setState('Power.DC2Voltage', { val: Math.round(result[7].value), ack: true });
-                        } else {
-                            this.setState('Power.DC2Power', { val: 0, ack: true });
-                            this.setState('Power.DC2Current', { val: 0, ack: true });
-                            this.setState('Power.DC2Voltage', { val: 0, ack: true });
-                        }
-                        if (result[10].value) {
-                            this.setState('Power.DC3Power', { val: Math.round(result[8].value), ack: true });
-                            this.setState('Power.DC3Current', { val: (Math.round(1000 * result[9].value)) / 1000, ack: true });
-                            this.setState('Power.DC3Voltage', { val: Math.round(result[10].value), ack: true });
-                        } else {
-                            this.setState('Power.DC3Power', { val: 0, ack: true });
-                            this.setState('Power.DC3Current', { val: 0, ack: true });
-                            this.setState('Power.DC3Voltage', { val: 0, ack: true });
-                        }
-                        this.setState('Power.SelfConsumption', { val: Math.round(result[11].value), ack: true });
-                        this.setState('Power.HouseConsumption', { val: Math.floor(result[12].value), ack: true });
-                        this.setState('State', { val: result[13].value, ack: true });
-                        switch (result[13].value) {
-                            case 0:
-                                this.setState('StateAsString', { val: 'OFF', ack: true });
-                                break;
-                            case 1:
-                                this.setState('StateAsString', { val: 'Idling', ack: true });
-                                break;
-                            case 2:
-                                this.setState('StateAsString', { val: 'Start up, DC voltage still too low for feed-in', ack: true });
-                                break;
-                            case 3:
-                                this.setState('StateAsString', { val: 'Feeding (MPP)', ack: true });
-                                break;
-                            case 4:
-                                this.setState('StateAsString', { val: 'Feeding (limited)', ack: true });
-                                break;
-                            default:
-                                this.setState('StateAsString', { val: 'Undefined', ack: true });
-                        }
-                        if (result[14].value) {
-                            this.setState('Battery.Voltage', { val: Math.round(result[14].value), ack: true });
-                            this.setState('Battery.Temperature', { val: (Math.round(10 * result[15].value)) / 10, ack: true });
-                            this.setState('Battery.SoC', { val: result[16].value, ack: true });
-                            if (result[18].value) { // result[18] = 'Battery current direction; 1=Load; 0=Unload'
-                                this.setState('Battery.Current', { val: result[17].value, ack: true });
-                                this.setState('Battery.Power', { val: Math.round(result[14].value * result[17].value), ack: true });
-                            }
-                            else { // discharge
-                                this.setState('Battery.Current', { val: result[17].value * -1, ack: true });
-                                this.setState('Battery.Power', { val: Math.round(result[14].value * result[17].value * -1), ack: true });
-                            }
-                        }
-                    } else {
-                        this.log.error(`Got no answer from inverter, please verify IP address: ${this.config.ipaddress} !! (e1.1)`);
-                    }
-                    if (result.length >= 20) { // not existent for Piko3.0 or if no limitation defined
-                        this.setState('GridLimitation', { val: result[19].value, ack: true });
-                    } else {
-                        this.setState('GridLimitation', { val: 100, ack: true });
-                    }
-                })
-                .catch(error => {
-                    this.HandleConnectionError(error, `Piko(-BA) API for live data`, `BA1`);
-                })
-        } // END InverterAPIPiko
+					this.log.debug(`Piko-BA live data 1 update - Kostal response data: ${response.data}`);
+					var result = JSON.parse(response.data).dxsEntries;
+					if (result && result.length > 0) {
+						if (result[0].value) {
+							this.setState("Power.SolarDC", { val: Math.round(result[0].value), ack: true });
+						} else {
+							this.setState("Power.SolarDC", { val: 0, ack: true });
+						}
+						if (result[1].value) {
+							this.setState("Power.GridAC", { val: Math.round(result[1].value), ack: true });
+							this.setState("Power.Surplus", { val: Math.round(result[1].value - result[11].value), ack: true });
+						} else {
+							this.setState("Power.GridAC", { val: 0, ack: true });
+							this.setState("Power.Surplus", { val: 0, ack: true });
+						}
+						if (result[4].value) {
+							this.setState("Power.DC1Power", { val: Math.round(result[2].value), ack: true });
+							this.setState("Power.DC1Current", { val: Math.round(1000 * result[3].value) / 1000, ack: true });
+							this.setState("Power.DC1Voltage", { val: Math.round(result[4].value), ack: true });
+						} else {
+							this.setState("Power.DC1Power", { val: 0, ack: true });
+							this.setState("Power.DC1Current", { val: 0, ack: true });
+							this.setState("Power.DC1Voltage", { val: 0, ack: true });
+						}
+						if (result[7].value) {
+							this.setState("Power.DC2Power", { val: Math.round(result[5].value), ack: true });
+							this.setState("Power.DC2Current", { val: Math.round(1000 * result[6].value) / 1000, ack: true });
+							this.setState("Power.DC2Voltage", { val: Math.round(result[7].value), ack: true });
+						} else {
+							this.setState("Power.DC2Power", { val: 0, ack: true });
+							this.setState("Power.DC2Current", { val: 0, ack: true });
+							this.setState("Power.DC2Voltage", { val: 0, ack: true });
+						}
+						if (result[10].value) {
+							this.setState("Power.DC3Power", { val: Math.round(result[8].value), ack: true });
+							this.setState("Power.DC3Current", { val: Math.round(1000 * result[9].value) / 1000, ack: true });
+							this.setState("Power.DC3Voltage", { val: Math.round(result[10].value), ack: true });
+						} else {
+							this.setState("Power.DC3Power", { val: 0, ack: true });
+							this.setState("Power.DC3Current", { val: 0, ack: true });
+							this.setState("Power.DC3Voltage", { val: 0, ack: true });
+						}
+						this.setState("Power.SelfConsumption", { val: Math.round(result[11].value), ack: true });
+						this.setState("Power.HouseConsumption", { val: Math.floor(result[12].value), ack: true });
+						this.setState("State", { val: result[13].value, ack: true });
+						switch (result[13].value) {
+							case 0:
+								this.setState("StateAsString", { val: "OFF", ack: true });
+								break;
+							case 1:
+								this.setState("StateAsString", { val: "Idling", ack: true });
+								break;
+							case 2:
+								this.setState("StateAsString", { val: "Start up, DC voltage still too low for feed-in", ack: true });
+								break;
+							case 3:
+								this.setState("StateAsString", { val: "Feeding (MPP)", ack: true });
+								break;
+							case 4:
+								this.setState("StateAsString", { val: "Feeding (limited)", ack: true });
+								break;
+							default:
+								this.setState("StateAsString", { val: "Undefined", ack: true });
+						}
+						if (result[14].value) {
+							this.setState("Battery.Voltage", { val: Math.round(result[14].value), ack: true });
+							this.setState("Battery.Temperature", { val: Math.round(10 * result[15].value) / 10, ack: true });
+							this.setState("Battery.SoC", { val: result[16].value, ack: true });
+							if (result[18].value) {
+								// result[18] = 'Battery current direction; 1=Load; 0=Unload'
+								this.setState("Battery.Current", { val: result[17].value, ack: true });
+								this.setState("Battery.Power", { val: Math.round(result[14].value * result[17].value), ack: true });
+							} else {
+								// discharge
+								this.setState("Battery.Current", { val: result[17].value * -1, ack: true });
+								this.setState("Battery.Power", { val: Math.round(result[14].value * result[17].value * -1), ack: true });
+							}
+						}
+					} else {
+						this.log.error(`Got no answer from inverter, please verify IP address: ${this.config.ipaddress} !! (e1.1)`);
+					}
+					if (result.length >= 20) {
+						// not existent for Piko3.0 or if no limitation defined
+						this.setState("GridLimitation", { val: result[19].value, ack: true });
+					} else {
+						this.setState("GridLimitation", { val: 100, ack: true });
+					}
+				})
+				.catch((error) => {
+					this.HandleConnectionError(error, `Piko(-BA) API for live data`, `BA1`);
+				});
+		} // END InverterAPIPiko
 
         if (InverterAPIPikoMP) { // code for Piko MP Plus
             // @ts-ignore axios.get is valid
