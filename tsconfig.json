@@ -29,8 +29,8 @@
 		// Uncomment this if you want the old behavior of catch variables being `any`
 		// "useUnknownInCatchVariables": false,
 
-		// Consider targetting es2022 or higher if you only support Node.js 18+
-		"target": "es2020"
+		// Consider targetting ES2022 or higher if you only support Node.js 18+
+		"target": "ES2022"
 
 	},
 	"include": ["**/*.js", "**/*.d.ts", "test/package.js"],

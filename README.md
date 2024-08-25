@@ -57,6 +57,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ### 4.1.4 (2024-08-xx)
 
+-   (HombachC) switch to ES2022 code
 -   (HombachC) repository cleanup
 -   (HombachC) dependency updates
 
