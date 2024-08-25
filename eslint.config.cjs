@@ -21,7 +21,6 @@ module.exports = [{
             ...globals.node,
             ...globals.mocha,
         },
-
         ecmaVersion: 2022,
         sourceType: "commonjs",
     },
@@ -30,20 +29,15 @@ module.exports = [{
         indent: ["error", 4, {
             SwitchCase: 1,
         }],
-
         "no-console": "off",
-
         quotes: ["error", "single", {
             avoidEscape: true,
             allowTemplateLiterals: true,
         }],
-
         semi: ["error", "always"],
-
         "prettier/prettier": ["error", {
             endOfLine: "auto",
         }],
-
         "no-var": "error",
         "prefer-const": "error",
         "no-trailing-spaces": "error",
