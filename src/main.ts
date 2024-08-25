@@ -3,13 +3,31 @@ import * as utils from "@iobroker/adapter-core";
 import axios from "axios";
 import xml2js from "xml2js";
 
+interface Measurement {
+	$: {
+		Type: string;
+		Value: number;
+	};
+}
+
+interface MeasurementsResponse {
+	root: {
+		Device: {
+			Measurements: {
+				Measurement: Measurement[];
+			}[];
+		}[];
+	};
+}
+
 // doc links:
 // https://www.msxfaq.de/sonst/iot/kostal15.htm
 // https://github.com/sla89/hassio-kostal-piko/blob/main/docs/api.yaml
 
 // Load your modules here, e.g.:
 // const schedule = require('node-schedule');
-const adapterIntervals = {};
+//const adapterTimeouts = {};
+let adapterTimeouts: { [key: string]: NodeJS.Timeout | undefined } = {};
 
 // state
 const ID_OperatingState = 16780032; // 0 = aus; 1 = Leerlauf(?); 2 = Anfahren, DC Spannung noch zu klein(?); 3 = Einspeisen(MPP); 4 = Einspeisen(abgeregelt)
@@ -92,7 +110,7 @@ let KostalRequest2 = ""; // IP request-string 2 for Pico live data
 let KostalRequestDay = ""; // IP request-string for PicoBA daily statistics
 let KostalRequestTotal = ""; // IP request-string for PicoBA total statistics
 
-function resolveAfterXSeconds(x) {
+function resolveAfterXSeconds(x: number) {
 	return new Promise((resolve) => {
 		setTimeout(() => {
 			resolve(x);
@@ -104,7 +122,7 @@ class KostalPikoBA extends utils.Adapter {
 	/****************************************************************************************
 	 * @param {Partial<utils.AdapterOptions>} [options={}]
 	 */
-	constructor(options) {
+	public constructor(options: Partial<utils.AdapterOptions> = {}) {
 		super({
 			...options,
 			name: "kostal-piko-ba",
@@ -159,13 +177,13 @@ class KostalPikoBA extends utils.Adapter {
 				if (sentryInstance) {
 					const Sentry = sentryInstance.getSentryObject();
 					Sentry &&
-						Sentry.withScope((scope) => {
+						Sentry.withScope((scope: { setLevel: (arg0: string) => void; setTag: (arg0: string, arg1: number | string) => void }) => {
 							scope.setLevel("info");
 							scope.setTag("SentryDay", today.getDate());
 							scope.setTag("Inverter", this.config.ipaddress);
 							scope.setTag("Inverter-Type", InverterType);
 							scope.setTag("Inverter-UI", InverterUIVersion);
-							Sentry.captureMessage("Adapter kostal-piko-ba started", "info"); // Level "info"
+							Sentry.captureMessage("Adapter kostal-piko-ba started", "info");
 						});
 				}
 				this.setState("LastSentryLoggedError", { val: "unknown", ack: true }); // Clean last error every adapter start
@@ -281,12 +299,13 @@ class KostalPikoBA extends utils.Adapter {
 	/****************************************************************************************
 	 * Is called when adapter shuts down - callback has to be called under any circumstances!
 	 * @param {() => void} callback */
-	onUnload(callback) {
+	private onUnload(callback: () => void): void {
 		try {
-			clearTimeout(adapterIntervals.live);
-			clearTimeout(adapterIntervals.daily);
-			clearTimeout(adapterIntervals.total);
-			Object.keys(adapterIntervals).forEach((interval) => clearInterval(adapterIntervals[interval]));
+			Object.keys(adapterTimeouts).forEach((timeout) => {
+				if (adapterTimeouts[timeout]) {
+					clearTimeout(adapterTimeouts[timeout]);
+				}
+			});
 			this.setState("info.connection", { val: false, ack: true });
 			this.log.info(`Adapter Kostal-Piko-BA cleaned up everything...`);
 			callback();
@@ -302,8 +321,8 @@ class KostalPikoBA extends utils.Adapter {
 		this.ReadPiko();
 		this.ReadPiko2();
 		try {
-			clearTimeout(adapterIntervals.live);
-			adapterIntervals.live = setTimeout(this.Scheduler.bind(this), this.config.polltimelive);
+			clearTimeout(adapterTimeouts.live);
+			adapterTimeouts.live = setTimeout(this.Scheduler.bind(this), this.config.polltimelive);
 		} catch (error) {
 			this.log.error(`Error in setting adapter schedule: ${error}`);
 			this.restart;
@@ -313,10 +332,6 @@ class KostalPikoBA extends utils.Adapter {
 	/****************************************************************************************
 	 * ReadPikoOnce ***************************************************************************/
 	async ReadPikoOnce() {
-		//const axios = require("axios");
-		//const xml2js = require("xml2js");
-
-		// @ts-ignore axios.get is valid
 		await axios
 			.get(KostalRequestOnce, { transformResponse: (r) => r })
 			.then((response) => {
@@ -348,7 +363,6 @@ class KostalPikoBA extends utils.Adapter {
 
 		if (!InverterAPIPiko) {
 			// no inverter type detected yet -> try to detect Piko MP Inverter
-			// @ts-ignore axios.get is valid
 			axios
 				.get(`http://${this.config.ipaddress}/versions.xml`, { transformResponse: (r) => r })
 				.then((response) => {
@@ -379,12 +393,8 @@ class KostalPikoBA extends utils.Adapter {
 	/****************************************************************************************
 	 * ReadPiko *****************************************************************************/
 	ReadPiko() {
-		//const axios = require("axios");
-		//const xml2js = require("xml2js");
-
 		if (InverterAPIPiko) {
 			// code for Piko(-BA)
-			// @ts-ignore axios.get is valid
 			axios
 				.get(KostalRequest1, { timeout: 3500, transformResponse: (r) => r })
 				.then((response) => {
@@ -485,11 +495,10 @@ class KostalPikoBA extends utils.Adapter {
 
 		if (InverterAPIPikoMP) {
 			// code for Piko MP Plus
-			// @ts-ignore axios.get is valid
 			axios
 				.get(`http://${this.config.ipaddress}/measurements.xml`, { transformResponse: (r) => r })
 				.then((response) => {
-					xml2js.parseString(response.data, (err, result) => {
+					xml2js.parseString(response.data, (err: Error | null, result: MeasurementsResponse) => {
 						if (err) {
 							this.log.error(`Error when calling Piko MP API with axios for measurements info: ${err}`);
 						} else {
@@ -538,11 +547,8 @@ class KostalPikoBA extends utils.Adapter {
 	/****************************************************************************************
 	 * ReadPiko2 ****************************************************************************/
 	ReadPiko2() {
-		//const axios = require("axios");
-
 		if (InverterAPIPiko) {
 			// code for Piko(-BA)
-			// @ts-ignore axios.get is valid
 			axios
 				.get(KostalRequest2, { timeout: 3500, transformResponse: (r) => r })
 				.then((response) => {
@@ -608,7 +614,7 @@ class KostalPikoBA extends utils.Adapter {
 
 		if (InverterAPIPikoMP) {
 			// currently no code for Piko MP Plus - less data to poll , so handled in ReadPiko()
-		} // END InverterAPIPikoMP
+		}
 	} // END ReadPiko2
 
 	/** ReadPikoDaily
@@ -626,11 +632,8 @@ class KostalPikoBA extends utils.Adapter {
 	 * @method ReadPikoDaily
 	 */
 	ReadPikoDaily() {
-		//const axios = require("axios");
-
 		if (InverterAPIPiko) {
 			// code for Piko(-BA)
-			// @ts-ignore axios.get is valid
 			axios
 				.get(KostalRequestDay, { transformResponse: (r) => r })
 				.then((response) => {
@@ -651,11 +654,11 @@ class KostalPikoBA extends utils.Adapter {
 
 		if (InverterAPIPikoMP) {
 			/* empty */
-		} // code for Piko MP Plus
+		}
 
 		try {
-			clearTimeout(adapterIntervals.daily);
-			adapterIntervals.daily = setTimeout(this.ReadPikoDaily.bind(this), this.config.polltimedaily);
+			clearTimeout(adapterTimeouts.daily);
+			adapterTimeouts.daily = setTimeout(this.ReadPikoDaily.bind(this), this.config.polltimedaily);
 		} catch (error) {
 			this.log.error(`Error in setting adapter schedule for daily statistics: ${error}`);
 		} // END try catch
@@ -664,12 +667,8 @@ class KostalPikoBA extends utils.Adapter {
 	/****************************************************************************************
 	 * ReadPikoTotal ************************************************************************/
 	ReadPikoTotal() {
-		//const axios = require("axios");
-		//const xml2js = require("xml2js");
-
 		if (InverterAPIPiko) {
 			// code for Piko(-BA)
-			// @ts-ignore axios.get is valid
 			axios
 				.get(KostalRequestTotal, { transformResponse: (r) => r })
 				.then((response) => {
@@ -694,7 +693,6 @@ class KostalPikoBA extends utils.Adapter {
 
 		if (InverterAPIPikoMP) {
 			// code for Piko MP Plus
-			// @ts-ignore axios.get is valid
 			axios
 				.get(`http://${this.config.ipaddress}/yields.xml`, { transformResponse: (r) => r })
 				.then((response) => {
@@ -725,8 +723,8 @@ class KostalPikoBA extends utils.Adapter {
 		} // END InverterAPIPikoMP
 
 		try {
-			clearTimeout(adapterIntervals.total);
-			adapterIntervals.total = setTimeout(this.ReadPikoTotal.bind(this), this.config.polltimetotal);
+			clearTimeout(adapterTimeouts.total);
+			adapterTimeouts.total = setTimeout(this.ReadPikoTotal.bind(this), this.config.polltimetotal);
 		} catch (e) {
 			this.log.error(`Error in setting adapter schedule for total statistics: ${e}`);
 		} // END try catch
@@ -780,7 +778,7 @@ class KostalPikoBA extends utils.Adapter {
 						const Sentry = sentryInstance.getSentryObject();
 						const date = new Date();
 						Sentry &&
-							Sentry.withScope((scope) => {
+							Sentry.withScope((scope: { setLevel: (arg0: string) => void; setTag: (arg0: string, arg1: number | string) => void }) => {
 								scope.setLevel("info");
 								scope.setTag("Inverter", this.config.ipaddress);
 								scope.setTag("Inverter-Type", InverterType);
