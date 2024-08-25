@@ -1,9 +1,7 @@
 "use strict";
 
 import axios from "axios";
-import xml2js from "xml2js";
-
-// import axios from 'axios';
+import * as xml2js from "xml2js";
 
 // doc links:
 // https://www.msxfaq.de/sonst/iot/kostal15.htm
