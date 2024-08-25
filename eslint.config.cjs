@@ -1,9 +1,7 @@
-const globals = require("globals");
-const js = require("@eslint/js");
+const globals = require('globals');
+const js = require('@eslint/js');
 
-const {
-    FlatCompat,
-} = require("@eslint/eslintrc");
+const {FlatCompat} = require('@eslint/eslintrc');
 
 const compat = new FlatCompat({
     baseDirectory: __dirname,
@@ -12,8 +10,8 @@ const compat = new FlatCompat({
 });
 
 module.exports = [{
-    ignores: ["**/build/", "**/.prettierrc.js", "**/.eslintrc.js"],
-}, ...compat.extends("eslint:recommended", "plugin:prettier/recommended"), {
+    ignores: ['**/build/', '**/.prettierrc.js', '**/.eslintrc.js'],
+}, ...compat.extends('eslint:recommended', 'plugin:prettier/recommended'), {
     plugins: {},
 
     languageOptions: {
@@ -22,24 +20,24 @@ module.exports = [{
             ...globals.mocha,
         },
         ecmaVersion: 2022,
-        sourceType: "commonjs",
+        sourceType: 'commonjs',
     },
 
     rules: {
-        indent: ["error", 4, {
+        indent: ['error', 4, {
             SwitchCase: 1,
         }],
-        "no-console": "off",
-        quotes: ["error", "single", {
+        'no-console': 'off',
+        quotes: ['error', 'single', {
             avoidEscape: true,
             allowTemplateLiterals: true,
         }],
-        semi: ["error", "always"],
-        "prettier/prettier": ["error", {
-            endOfLine: "auto",
+        semi: ['error', 'always'],
+        'prettier/prettier': ['error', {
+            endOfLine: 'auto',
         }],
-        "no-var": "error",
-        "prefer-const": "error",
-        "no-trailing-spaces": "error",
+        'no-var': 'error',
+        'prefer-const': 'error',
+        'no-trailing-spaces': 'error',
     },
 }];
