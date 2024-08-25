@@ -22,7 +22,7 @@ module.exports = [
 				...globals.mocha,
 			},
 			ecmaVersion: 2022,
-			sourceType: "commonjs",
+			sourceType: "module",
 		},
 
 		rules: {
