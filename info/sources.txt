@@ -1,0 +1,3 @@
+doc links:
+https://www.msxfaq.de/sonst/iot/kostal15.htm
+https://github.com/sla89/hassio-kostal-piko/blob/main/docs/api.yaml
