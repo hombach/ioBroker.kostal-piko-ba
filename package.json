@@ -1,12 +1,12 @@
 {
   "name": "iobroker.kostal-piko-ba",
-  "version": "4.1.3",
+  "version": "4.1.4",
   "description": "Adapter for reading Kostal Piko BA data",
   "author": {
     "name": "Hombach",
     "email": "kostal-piko@homba.ch"
   },
-  "homepage": "https://github.com/hombach/ioBroker.kostal-piko-ba",
+  "homepage": "https://github.com/Hombach/ioBroker.kostal-piko-ba",
   "license": "MIT",
   "keywords": [
     "ioBroker",
@@ -23,7 +23,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "engines": {
-    "node": ">= 18.0.0"
+    "node": ">= 18"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^3.1.6",
@@ -59,12 +59,10 @@
     "build/",
     "docu/",
     "lib/",
-    "CODE_OF_CONDUCT.md",
     "io-package.json",
     "LICENSE",
     "main.js",
     "main.test.js",
-    "package.json",
     "README.md"
   ],
   "scripts": {
@@ -75,7 +73,7 @@
     "lint": "eslint"
   },
   "bugs": {
-    "url": "https://github.com/hombach/ioBroker.kostal-piko-ba/issues"
+    "url": "https://github.com/Hombach/ioBroker.kostal-piko-ba/issues"
   },
   "readmeFilename": "README.md"
 }
