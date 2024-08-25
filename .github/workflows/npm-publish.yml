@@ -25,8 +25,8 @@ jobs:
                   node-version: ${{ matrix.node_version }}
             - name: npm install, build and test
               run: |
-                  npm install
-                  # npm install --legacy-peer-deps
+                  # npm install
+                  npm install --legacy-peer-deps
                   npm run build --if-present
                   npm run test:integration --if-present
                   npm test
@@ -42,8 +42,8 @@ jobs:
                   registry-url: https://registry.npmjs.org/
 
             - name: Install Dependencies
-              run: npm ci
-              # run: npm ci --legacy-peer-deps
+              # run: npm ci
+              run: npm ci --legacy-peer-deps
 
             - name: Publish package to npm
               run: |
