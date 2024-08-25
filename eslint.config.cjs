@@ -11,7 +11,10 @@ const compat = new FlatCompat({
 
 module.exports = [
 	{
-		ignores: ["**/build/", "**/.prettierrc.js", "**/.eslintrc.js"],
+		files: ["**/*.ts", "**/*.tsx"],
+	},
+	{
+		ignores: ["**/build/", "**/.prettierrc.js"],
 	},
 	...compat.extends("eslint:recommended", "plugin:prettier/recommended"),
 	{
