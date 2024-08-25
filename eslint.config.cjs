@@ -26,8 +26,7 @@ module.exports = [
 			},
 			// parser: "@typescript-eslint/parser",
 			ecmaVersion: 2022,
-			sourceType: "commonjs",
-			//sourceType: "module",
+			sourceType: "module",
 		},
 
 		rules: {
