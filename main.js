@@ -1,5 +1,8 @@
 "use strict";
 
+import axios from "axios";
+import xml2js from "xml2js";
+
 // import axios from 'axios';
 
 // doc links:
@@ -315,8 +318,8 @@ class KostalPikoBA extends utils.Adapter {
 	/****************************************************************************************
 	 * ReadPikoOnce ***************************************************************************/
 	async ReadPikoOnce() {
-		const axios = require("axios");
-		const xml2js = require("xml2js");
+		//const axios = require("axios");
+		//const xml2js = require("xml2js");
 
 		// @ts-ignore axios.get is valid
 		await axios
@@ -381,8 +384,8 @@ class KostalPikoBA extends utils.Adapter {
 	/****************************************************************************************
 	 * ReadPiko *****************************************************************************/
 	ReadPiko() {
-		const axios = require("axios");
-		const xml2js = require("xml2js");
+		//const axios = require("axios");
+		//const xml2js = require("xml2js");
 
 		if (InverterAPIPiko) {
 			// code for Piko(-BA)
@@ -540,7 +543,7 @@ class KostalPikoBA extends utils.Adapter {
 	/****************************************************************************************
 	 * ReadPiko2 ****************************************************************************/
 	ReadPiko2() {
-		const axios = require("axios");
+		//const axios = require("axios");
 
 		if (InverterAPIPiko) {
 			// code for Piko(-BA)
@@ -628,7 +631,7 @@ class KostalPikoBA extends utils.Adapter {
 	 * @method ReadPikoDaily
 	 */
 	ReadPikoDaily() {
-		const axios = require("axios");
+		//const axios = require("axios");
 
 		if (InverterAPIPiko) {
 			// code for Piko(-BA)
@@ -666,8 +669,8 @@ class KostalPikoBA extends utils.Adapter {
 	/****************************************************************************************
 	 * ReadPikoTotal ************************************************************************/
 	ReadPikoTotal() {
-		const axios = require("axios");
-		const xml2js = require("xml2js");
+		//const axios = require("axios");
+		//const xml2js = require("xml2js");
 
 		if (InverterAPIPiko) {
 			// code for Piko(-BA)
