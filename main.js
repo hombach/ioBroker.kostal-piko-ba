@@ -292,7 +292,8 @@ class KostalPikoBA extends utils.Adapter {
 			this.setState("info.connection", { val: false, ack: true });
 			this.log.info(`Adapter Kostal-Piko-BA cleaned up everything...`);
 			callback();
-		} catch (e) {
+		} catch (error) {
+			this.log.error(`Error in onUnload adapter: ${error}`);
 			callback();
 		} // END try catch
 	}
@@ -305,8 +306,8 @@ class KostalPikoBA extends utils.Adapter {
 		try {
 			clearTimeout(adapterIntervals.live);
 			adapterIntervals.live = setTimeout(this.Scheduler.bind(this), this.config.polltimelive);
-		} catch (e) {
-			this.log.error(`Error in setting adapter schedule: ${e}`);
+		} catch (error) {
+			this.log.error(`Error in setting adapter schedule: ${error}`);
 			this.restart;
 		} // END try catch
 	}
