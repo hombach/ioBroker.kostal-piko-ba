@@ -324,7 +324,7 @@ class KostalPikoBA extends utils.Adapter {
 				//.status == 200
 				// access parsed JSON response data using response.data field
 				this.log.debug(`Piko-BA general info updated - Kostal response data: ${response.data}`);
-				var result = JSON.parse(response.data).dxsEntries;
+				const result = JSON.parse(response.data).dxsEntries;
 				InverterType = result[0].value;
 				this.setState("Info.InverterType", { val: InverterType, ack: true });
 				InverterAPIPiko = true;
@@ -388,10 +388,11 @@ class KostalPikoBA extends utils.Adapter {
 			// @ts-ignore axios.get is valid
 			axios
 				.get(KostalRequest1, { timeout: 3500, transformResponse: (r) => r })
-                .then(response => {   //.status == 200
-                    // access parsed JSON response data using response.data field
+				.then((response) => {
+					//.status == 200
+					// access parsed JSON response data using response.data field
 					this.log.debug(`Piko-BA live data 1 update - Kostal response data: ${response.data}`);
-					var result = JSON.parse(response.data).dxsEntries;
+					const result = JSON.parse(response.data).dxsEntries;
 					if (result && result.length > 0) {
 						if (result[0].value) {
 							this.setState("Power.SolarDC", { val: Math.round(result[0].value), ack: true });
