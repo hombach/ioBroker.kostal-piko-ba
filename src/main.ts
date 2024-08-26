@@ -316,11 +316,13 @@ class KostalPikoBA extends utils.Adapter {
 	 * @param {() => void} callback */
 	private onUnload(callback: () => void): void {
 		try {
-			Object.keys(adapterTimeouts).forEach((timeout) => {
-				if (adapterTimeouts[timeout]) {
-					clearTimeout(adapterTimeouts[timeout]);
-				}
-			});
+			if (adapterTimeouts) {
+				Object.keys(adapterTimeouts).forEach((timeout) => {
+					if (adapterTimeouts[timeout]) {
+						clearTimeout(adapterTimeouts[timeout]);
+					}
+				});
+			}
 			this.setState("info.connection", { val: false, ack: true });
 			this.log.info(`Adapter Kostal-Piko-BA cleaned up everything...`);
 			callback();
