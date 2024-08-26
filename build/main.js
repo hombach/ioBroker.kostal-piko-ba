@@ -30,7 +30,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const utils = __importStar(require("@iobroker/adapter-core"));
 const axios_1 = __importDefault(require("axios"));
 const xml2js_1 = __importDefault(require("xml2js"));
-let adapterTimeouts = {};
+const adapterTimeouts = {};
 // state
 const ID_OperatingState = 16780032; // 0 = aus; 1 = Leerlauf(?); 2 = Anfahren, DC Spannung noch zu klein(?); 3 = Einspeisen(MPP); 4 = Einspeisen(abgeregelt)
 const ID_InverterType = 16780544; // - Inverter type
@@ -158,7 +158,7 @@ class KostalPikoBA extends utils.Adapter {
                 // no inverter type detected
                 this.log.error(`Error in detecting Kostal inverter`);
                 this.log.info(`Stopping adapter`);
-                await this.stop;
+                void this.stop;
             }
         }
         //#region *** sentry.io ping ***
@@ -169,6 +169,7 @@ class KostalPikoBA extends utils.Adapter {
             if (last?.val != (await today.getDate())) {
                 if (sentryInstance) {
                     const Sentry = sentryInstance.getSentryObject();
+                    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
                     Sentry &&
                         Sentry.withScope((scope) => {
                             scope.setLevel("info");
@@ -275,7 +276,7 @@ class KostalPikoBA extends utils.Adapter {
         }
         else {
             this.log.error(`No IP address configured, adapter is shutting down`);
-            this.stop;
+            void this.stop;
         }
     }
     /****************************************************************************************
@@ -308,7 +309,7 @@ class KostalPikoBA extends utils.Adapter {
         }
         catch (error) {
             this.log.error(`Error in setting adapter schedule: ${error}`);
-            this.restart;
+            void this.restart;
         } // END try catch
     }
     /****************************************************************************************
@@ -742,7 +743,7 @@ class KostalPikoBA extends utils.Adapter {
                     this.log.warn(`Authenticated access is not supported so far by Kostal Adapter`);
                     this.log.warn(`Please provide feedback in GitHub to get this done`);
                     this.log.error(`Adapter is shutting down`);
-                    this.stop;
+                    void this.stop;
                     break;
                 default:
                     this.log.error(`HTTP error ${stError.response.status} when polling ${sOccasion}!! (e${sErrorOccInt}.1)`);
@@ -778,6 +779,7 @@ class KostalPikoBA extends utils.Adapter {
                         // if new error
                         const Sentry = sentryInstance.getSentryObject();
                         const date = new Date();
+                        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
                         Sentry &&
                             Sentry.withScope((scope) => {
                                 scope.setLevel("info");
