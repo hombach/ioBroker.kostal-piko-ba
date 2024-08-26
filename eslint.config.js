@@ -1,5 +1,6 @@
 const globals = require("globals");
 const js = require("@eslint/js");
+const typescript = require("@typescript-eslint/eslint-plugin");
 
 const { FlatCompat } = require("@eslint/eslintrc");
 
@@ -16,7 +17,7 @@ module.exports = [
 	{
 		ignores: ["**/build/", "**/.prettierrc.js"],
 	},
-	...compat.extends("eslint:recommended", "plugin:prettier/recommended"),
+	...compat.extends("eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"),
 	{
 		plugins: {},
 		languageOptions: {
@@ -24,7 +25,6 @@ module.exports = [
 				...globals.node,
 				...globals.mocha,
 			},
-			// parser: "@typescript-eslint/parser",
 			ecmaVersion: 2022,
 			sourceType: "module",
 		},

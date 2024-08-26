@@ -39,6 +39,6 @@
 		"inlineSourceMap": false,
 		// "watch": false
 	},
-	"include": ["src/**/*.ts", "admin/**/*.ts", "admin/**/*.tsx", "eslint.config.cjs"],
+	"include": ["src/**/*.ts", "admin/**/*.ts", "admin/**/*.tsx", "eslint.config.js"],
 	"exclude": ["build/**", "node_modules/**"]
 }

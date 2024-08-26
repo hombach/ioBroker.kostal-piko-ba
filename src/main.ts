@@ -41,7 +41,7 @@ interface YieldsResponse {
 	};
 }
 
-let adapterTimeouts: { [key: string]: NodeJS.Timeout | undefined } = {};
+const adapterTimeouts: { [key: string]: NodeJS.Timeout | undefined } = {};
 
 // state
 const ID_OperatingState = 16780032; // 0 = aus; 1 = Leerlauf(?); 2 = Anfahren, DC Spannung noch zu klein(?); 3 = Einspeisen(MPP); 4 = Einspeisen(abgeregelt)
@@ -178,7 +178,7 @@ class KostalPikoBA extends utils.Adapter {
 				// no inverter type detected
 				this.log.error(`Error in detecting Kostal inverter`);
 				this.log.info(`Stopping adapter`);
-				await this.stop;
+				void this.stop;
 			}
 		}
 
@@ -190,6 +190,7 @@ class KostalPikoBA extends utils.Adapter {
 			if (last?.val != (await today.getDate())) {
 				if (sentryInstance) {
 					const Sentry = sentryInstance.getSentryObject();
+					// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 					Sentry &&
 						Sentry.withScope((scope: { setLevel: (arg0: string) => void; setTag: (arg0: string, arg1: number | string) => void }) => {
 							scope.setLevel("info");
@@ -306,7 +307,7 @@ class KostalPikoBA extends utils.Adapter {
 			this.log.debug(`Initial ReadPiko done`);
 		} else {
 			this.log.error(`No IP address configured, adapter is shutting down`);
-			this.stop;
+			void this.stop;
 		}
 	}
 
@@ -339,7 +340,7 @@ class KostalPikoBA extends utils.Adapter {
 			adapterTimeouts.live = setTimeout(this.Scheduler.bind(this), this.config.polltimelive);
 		} catch (error) {
 			this.log.error(`Error in setting adapter schedule: ${error}`);
-			this.restart;
+			void this.restart;
 		} // END try catch
 	}
 
@@ -532,8 +533,10 @@ class KostalPikoBA extends utils.Adapter {
 							} else {
 								const DC_Current1 = measurements.find((measurement) => measurement.$.Type === "DC_Current1");
 								const DC_Current2 = measurements.find((measurement) => measurement.$.Type === "DC_Current2");
-								if (DC_Current1 && DC_Current1.$) this.setState("Power.DC1Current", { val: Math.round(1000 * DC_Current1.$.Value) / 1000, ack: true });
-								if (DC_Current2 && DC_Current2.$) this.setState("Power.DC2Current", { val: Math.round(1000 * DC_Current2.$.Value) / 1000, ack: true });
+								if (DC_Current1 && DC_Current1.$)
+									this.setState("Power.DC1Current", { val: Math.round(1000 * DC_Current1.$.Value) / 1000, ack: true });
+								if (DC_Current2 && DC_Current2.$)
+									this.setState("Power.DC2Current", { val: Math.round(1000 * DC_Current2.$.Value) / 1000, ack: true });
 							}
 							if (DC_Current && DC_Voltage) {
 								this.setState("Power.DC1Power", { val: Math.round(DC_Voltage.$.Value * DC_Current.$.Value), ack: true });
@@ -711,7 +714,7 @@ class KostalPikoBA extends utils.Adapter {
 				.get(`http://${this.config.ipaddress}/yields.xml`, { transformResponse: (r) => r })
 				.then((response) => {
 					xml2js.parseString(response.data, (err: Error | null, result: YieldsResponse) => {
-					//xml2js.parseString(response.data, (err, result) => {
+						//xml2js.parseString(response.data, (err, result) => {
 						if (err) {
 							this.log.error(`Error when calling Piko MP API with axios for measurements info: ${err}`);
 						} else {
@@ -757,7 +760,7 @@ class KostalPikoBA extends utils.Adapter {
 					this.log.warn(`Authenticated access is not supported so far by Kostal Adapter`);
 					this.log.warn(`Please provide feedback in GitHub to get this done`);
 					this.log.error(`Adapter is shutting down`);
-					this.stop;
+					void this.stop;
 					break;
 				default:
 					this.log.error(`HTTP error ${stError.response.status} when polling ${sOccasion}!! (e${sErrorOccInt}.1)`);
@@ -792,6 +795,7 @@ class KostalPikoBA extends utils.Adapter {
 						// if new error
 						const Sentry = sentryInstance.getSentryObject();
 						const date = new Date();
+						// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 						Sentry &&
 							Sentry.withScope((scope: { setLevel: (arg0: string) => void; setTag: (arg0: string, arg1: number | string) => void }) => {
 								scope.setLevel("info");
