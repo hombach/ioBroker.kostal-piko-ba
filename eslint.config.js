@@ -18,6 +18,11 @@ module.exports = [
 		ignores: ["**/build/", "**/.prettierrc.js"],
 	},
 	...compat.extends("eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"),
+
+	{
+		parser: "@typescript-eslint/parser",
+	},
+
 	{
 		plugins: {},
 		languageOptions: {

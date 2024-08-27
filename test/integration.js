@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
 const path = require("path");
 const { tests } = require("@iobroker/testing");
-//		            ~~~~~~~~~~~~~~~~~~~~~~~~~
-// This should be the adapter's root directory
 
 // Run integration tests - See https://github.com/ioBroker/testing for a detailed explanation and further options
 tests.integration(path.join(__dirname, ".."), {
+	//		      ~~~~~~~~~~~~~~~~~~~~~~~~~
+	// This should be the adapter's root directory
 	allowedExitCodes: [11],
 });
