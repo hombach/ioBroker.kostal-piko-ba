@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 "use strict";
 
 // Makes ts-node ignore warnings, so mocha --watch does work
