@@ -79,14 +79,12 @@ async function translateYandex(text, targetLang, apiKey) {
     try {
         // prettier-ignore
         const url = `http://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}&ie=UTF-8&oe=UTF-8`;
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const response = await axios.request<any>({ url, timeout: 15000 });
         if (isArray(response.data)) {
             // we got a valid response
-            return response.data?[0][0][0];
+            return response.data[0][0][0];
         }
         throw new Error(`Invalid response for translate request`);
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
         if (e.response?.status === 429) {
             throw new Error(`Could not translate to "${targetLang}": Rate-limited by Google Translate`);

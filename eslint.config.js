@@ -20,12 +20,9 @@ module.exports = [
 	...compat.extends("eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"),
 
 	{
-		parser: "@typescript-eslint/parser",
-	},
-
-	{
 		plugins: {},
 		languageOptions: {
+			parser: "@typescript-eslint/parser",
 			globals: {
 				...globals.node,
 				...globals.mocha,
