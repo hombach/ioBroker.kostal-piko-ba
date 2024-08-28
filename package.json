@@ -61,7 +61,7 @@
     "typescript": "~5.5.4",
     "typescript-eslint": "^8.3.0"
   },
-  "main": "main.js",
+  "main": "build/main.js",
   "files": [
     ".github/",
     "admin/",
@@ -82,8 +82,7 @@
     "test:integration": "mocha test/integration --exit",
     "test": "npm run test:ts && npm run test:package",
     "check": "tsc --noEmit",
-    "lint": "eslint src/",
-    "linteslint": "eslint eslint.config.mjs"
+    "lint": "eslint src/"
   },
   "bugs": {
     "url": "https://github.com/Hombach/ioBroker.kostal-piko-ba/issues"
