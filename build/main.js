@@ -132,8 +132,9 @@ class KostalPikoBA extends utils.Adapter {
         // this.on('message', this.onMessage.bind(this));
         this.on("unload", this.onUnload.bind(this));
     }
-    /****************************************************************************************
-     * Is called when databases are connected and adapter received configuration. ***********/
+    /**
+     * Is called when databases are connected and adapter received configuration.
+     */
     async onReady() {
         if (!this.config.ipaddress) {
             this.log.error(`Kostal Piko IP address not set`);
@@ -279,9 +280,9 @@ class KostalPikoBA extends utils.Adapter {
             void this.stop;
         }
     }
-    /****************************************************************************************
+    /**
      * Is called when adapter shuts down - callback has to be called under any circumstances!
-     * @param {() => void} callback */
+     */
     onUnload(callback) {
         try {
             if (adapterTimeouts) {
@@ -298,7 +299,7 @@ class KostalPikoBA extends utils.Adapter {
         catch (error) {
             this.log.error(`Error in onUnload adapter: ${error}`);
             callback();
-        } // END try catch
+        }
     }
     /****************************************************************************************
      * Scheduler ****************************************************************************/

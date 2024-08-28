@@ -148,9 +148,10 @@ class KostalPikoBA extends utils.Adapter {
 		this.on("unload", this.onUnload.bind(this));
 	}
 
-	/****************************************************************************************
-	 * Is called when databases are connected and adapter received configuration. ***********/
-	async onReady() {
+	/**
+	 * Is called when databases are connected and adapter received configuration.
+	 */
+	private async onReady(): Promise<void> {
 		if (!this.config.ipaddress) {
 			this.log.error(`Kostal Piko IP address not set`);
 		} else {
@@ -311,9 +312,9 @@ class KostalPikoBA extends utils.Adapter {
 		}
 	}
 
-	/****************************************************************************************
+	/**
 	 * Is called when adapter shuts down - callback has to be called under any circumstances!
-	 * @param {() => void} callback */
+	 */
 	private onUnload(callback: () => void): void {
 		try {
 			if (adapterTimeouts) {
@@ -329,12 +330,12 @@ class KostalPikoBA extends utils.Adapter {
 		} catch (error) {
 			this.log.error(`Error in onUnload adapter: ${error}`);
 			callback();
-		} // END try catch
+		}
 	}
 
 	/****************************************************************************************
 	 * Scheduler ****************************************************************************/
-	Scheduler() {
+	private Scheduler() {
 		this.ReadPiko();
 		this.ReadPiko2();
 		try {
@@ -348,7 +349,7 @@ class KostalPikoBA extends utils.Adapter {
 
 	/****************************************************************************************
 	 * ReadPikoOnce ***************************************************************************/
-	async ReadPikoOnce() {
+	private async ReadPikoOnce() {
 		await axios
 			.get(KostalRequestOnce, { transformResponse: (r) => r })
 			.then((response) => {
@@ -409,7 +410,7 @@ class KostalPikoBA extends utils.Adapter {
 
 	/****************************************************************************************
 	 * ReadPiko *****************************************************************************/
-	ReadPiko() {
+	private ReadPiko() {
 		if (InverterAPIPiko) {
 			// code for Piko(-BA)
 			axios
@@ -565,7 +566,7 @@ class KostalPikoBA extends utils.Adapter {
 
 	/****************************************************************************************
 	 * ReadPiko2 ****************************************************************************/
-	ReadPiko2() {
+	private ReadPiko2() {
 		if (InverterAPIPiko) {
 			// code for Piko(-BA)
 			axios
@@ -650,7 +651,7 @@ class KostalPikoBA extends utils.Adapter {
 	 *
 	 * @method ReadPikoDaily
 	 */
-	ReadPikoDaily() {
+	private ReadPikoDaily() {
 		if (InverterAPIPiko) {
 			// code for Piko(-BA)
 			axios
@@ -685,7 +686,7 @@ class KostalPikoBA extends utils.Adapter {
 
 	/****************************************************************************************
 	 * ReadPikoTotal ************************************************************************/
-	ReadPikoTotal() {
+	private ReadPikoTotal() {
 		if (InverterAPIPiko) {
 			// code for Piko(-BA)
 			axios
@@ -751,7 +752,7 @@ class KostalPikoBA extends utils.Adapter {
 	} // END ReadPikoTotal
 
 	/*****************************************************************************************/
-	async HandleConnectionError(stError: AxiosError, sOccasion: string, sErrorOccInt: string): Promise<void> {
+	private async HandleConnectionError(stError: AxiosError, sOccasion: string, sErrorOccInt: string): Promise<void> {
 		if (stError.response) {
 			//get HTTP error code
 			switch (stError.response.status) {

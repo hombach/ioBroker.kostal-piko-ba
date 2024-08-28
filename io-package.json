@@ -121,9 +121,18 @@
 			"uk": "Адаптер для читання даних Костал Піко (BA)",
 			"zh-cn": "阅读Kostal Piko BA数据"
 		},
-		"authors": ["Hombach <kostal-piko-ba@homba.ch>"],
-		"keywords": ["Kostal", "Piko", "Piko-BA", "Piko MP", "Piko MP plus", "inverter", "solar"],
-		"tier": 2,
+		"authors": [
+			"Hombach <kostal-piko-ba@homba.ch>"
+		],
+		"keywords": [
+			"Kostal",
+			"Piko",
+			"Piko-BA",
+			"Piko MP",
+			"Piko MP plus",
+			"inverter",
+			"solar"
+		],
 		"licenseInformation": {
 			"license": "MIT",
 			"type": "free"
@@ -134,6 +143,7 @@
 		"extIcon": "https://raw.githubusercontent.com/Hombach/ioBroker.kostal-piko-ba/master/admin/picoba.png",
 		"readme": "https://github.com/Hombach/ioBroker.kostal-piko-ba/blob/master/README.md",
 		"loglevel": "info",
+		"tier": 2,
 		"mode": "daemon",
 		"messagebox": true,
 		"allowInit": true,

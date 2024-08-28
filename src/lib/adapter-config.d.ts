@@ -1,5 +1,4 @@
 // This file extends the AdapterConfig type from "@types/iobroker"
-// import { native } from "../io-package.json";
 
 // Augment the globally declared type ioBroker.AdapterConfig
 declare global {
