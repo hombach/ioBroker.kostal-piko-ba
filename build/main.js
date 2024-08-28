@@ -144,7 +144,7 @@ class KostalPikoBA extends utils.Adapter {
             if (!/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(this.config.ipaddress)) {
                 this.log.error(`You have entered an invalid IP address! ${this.config.ipaddress}`);
                 this.log.info(`Stopping adapter`);
-                await this.stop;
+                await this.stop?.({ exitCode: 11, reason: `invalid config` });
             }
         }
         if (this.config.ipaddress) {

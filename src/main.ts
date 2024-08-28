@@ -41,7 +41,7 @@ interface YieldsResponse {
 	};
 }
 
-const adapterTimeouts: { [key: string]: NodeJS.Timeout | undefined } = {};
+const adapterTimeouts: Record<string, NodeJS.Timeout | undefined> = {};
 
 // state
 const ID_OperatingState = 16780032; // 0 = aus; 1 = Leerlauf(?); 2 = Anfahren, DC Spannung noch zu klein(?); 3 = Einspeisen(MPP); 4 = Einspeisen(abgeregelt)
@@ -163,7 +163,7 @@ class KostalPikoBA extends utils.Adapter {
 			) {
 				this.log.error(`You have entered an invalid IP address! ${this.config.ipaddress}`);
 				this.log.info(`Stopping adapter`);
-				await this.stop;
+				await this.stop?.({ exitCode: 11, reason: `invalid config`});
 			}
 		}
 
