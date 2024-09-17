@@ -1,8 +1,21 @@
 {
 	"common": {
 		"name": "kostal-piko-ba",
-		"version": "4.2.0",
+		"version": "4.2.1",
 		"news": {
+			"4.2.1":{
+				"en": "add node.js 22 to the adapter testing (#666)\nupdate ioBroker testing\ndependency updates",
+				"de": "Node.js 22 zur Adapter-Testumgebung hinzufügen (#666)\nioBroker-Tests aktualisieren\nAbhängigkeitsaktualisierungen",
+				"ru": "добавить node.js 22 в тестирование адаптера (#666)\nобновить тестирование ioBroker\nобновление зависимостей",
+				"pt": "adicionar node.js 22 aos testes do adaptador (#666)\natualizar testes ioBroker\natualizações de dependências",
+				"nl": "node.js 22 toevoegen aan de adaptertests (#666)\nioBroker-testen bijwerken\nbijwerken van afhankelijkheden",
+				"fr": "ajouter node.js 22 aux tests de l'adaptateur (#666)\nmettre à jour les tests ioBroker\nmises à jour des dépendances",
+				"it": "aggiungi node.js 22 ai test dell'adattatore (#666)\naggiorna i test ioBroker\naggiornamenti delle dipendenze",
+				"es": "añadir node.js 22 a las pruebas del adaptador (#666)\nactualizar pruebas de ioBroker\nactualizaciones de dependencias",
+				"pl": "dodaj node.js 22 do testowania adaptera (#666)\naktualizuj testy ioBroker\naktualizacje zależności",
+				"uk": "додати node.js 22 до тестування адаптера (#666)\nоновити тестування ioBroker\nоновлення залежностей",
+				"zh-cn": "将 node.js 22 添加到适配器测试中 (#666)\n更新 ioBroker 测试\n更新依赖项"
+			},
 			"4.2.0":{
 				"en": "convert adapter to TypeScript\nswitch to ES2022 code\nrepository cleanup\ndependency updates\ncode optimizations",
 				"de": "Adapter auf TypeScript umstellen\nWechsel zu ES2022-Code\nRepository-Bereinigung\nAbhängigkeits-Updates\nCode-Optimierungen",
@@ -67,19 +80,6 @@
 				"pl": "zastąpiono przestarzałe wywołania stanów ioBroker\n*oczyszczenie dokumentacji",
 				"uk": "замінили застарілі виклики стану ioBroker\n*очищення документації",
 				"zh-cn": "替换了弃用的 ioBroker 状态调用\n*文档清理"
-			},
-			"4.0.2":{
-				"en": "added Node.js 22 tests\ndependency updates",
-				"de": "Node.js 22-Tests hinzugefügt\nAbhängigkeits-Updates",
-				"ru": "добавлены тесты Node.js 22\nобновления зависимостей",
-				"pt": "adicionados testes Node.js 22\natualizações de dependências",
-				"nl": "Node.js 22-tests toegevoegd\nbijgewerkte afhankelijkheden",
-				"fr": "ajout de tests Node.js 22\nmises à jour des dépendances",
-				"it": "aggiunti test Node.js 22\naggiornamenti delle dipendenze",
-				"es": "agregados pruebas de Node.js 22\nactualizaciones de dependencias",
-				"pl": "dodano testy Node.js 22\naktualizacje zależności",
-				"uk": "додано тести Node.js 22\nоновлення залежностей",
-				"zh-cn": "添加了 Node.js 22 测试\n依赖项更新"
 			},
 			"4.0.0":{
 				"en": "BREAKING: Dropped support for Node.js 16 (#591)\nBREAKING: Minimum required js-controller version bumped to 5 (#592)\nChanged timeout settings for older Kostal inverters (#589)\nDependency updates\nAdded tests for Node.js 21\nRaised minimum poll time for daily statistics\nCode optimizations",
