@@ -242,8 +242,6 @@ class KostalPikoBA extends utils.Adapter {
 		this.log.info(`Polltime for alltime statistics set to: ${this.config.polltimetotal / 1000} seconds`);
 		//#endregion
 
-		// this.subscribeStates('*'); // all state changes inside the adapters namespace are subscribed
-
 		if (this.config.ipaddress) {
 			KostalRequest1 =
 				`http://${this.config.ipaddress}/api/dxs.json` +
@@ -427,45 +425,22 @@ class KostalPikoBA extends utils.Adapter {
 					}
 					const result = JSON.parse(response.data).dxsEntries;
 					if (result && result.length > 0) {
-						if (result[0].value) {
-							this.setState("Power.SolarDC", { val: Math.round(result[0].value), ack: true });
-						} else {
-							this.setState("Power.SolarDC", { val: 0, ack: true });
-						}
-						if (result[1].value) {
-							this.setState("Power.GridAC", { val: Math.round(result[1].value), ack: true });
-							this.setState("Power.Surplus", { val: Math.round(result[1].value - result[11].value), ack: true });
-						} else {
-							this.setState("Power.GridAC", { val: 0, ack: true });
-							this.setState("Power.Surplus", { val: 0, ack: true });
-						}
-						if (result[4].value) {
-							this.setState("Power.DC1Power", { val: Math.round(result[2].value), ack: true });
-							this.setState("Power.DC1Current", { val: Math.round(1000 * result[3].value) / 1000, ack: true });
-							this.setState("Power.DC1Voltage", { val: Math.round(result[4].value), ack: true });
-						} else {
-							this.setState("Power.DC1Power", { val: 0, ack: true });
-							this.setState("Power.DC1Current", { val: 0, ack: true });
-							this.setState("Power.DC1Voltage", { val: 0, ack: true });
-						}
-						if (result[7].value) {
-							this.setState("Power.DC2Power", { val: Math.round(result[5].value), ack: true });
-							this.setState("Power.DC2Current", { val: Math.round(1000 * result[6].value) / 1000, ack: true });
-							this.setState("Power.DC2Voltage", { val: Math.round(result[7].value), ack: true });
-						} else {
-							this.setState("Power.DC2Power", { val: 0, ack: true });
-							this.setState("Power.DC2Current", { val: 0, ack: true });
-							this.setState("Power.DC2Voltage", { val: 0, ack: true });
-						}
-						if (result[10].value) {
-							this.setState("Power.DC3Power", { val: Math.round(result[8].value), ack: true });
-							this.setState("Power.DC3Current", { val: Math.round(1000 * result[9].value) / 1000, ack: true });
-							this.setState("Power.DC3Voltage", { val: Math.round(result[10].value), ack: true });
-						} else {
-							this.setState("Power.DC3Power", { val: 0, ack: true });
-							this.setState("Power.DC3Current", { val: 0, ack: true });
-							this.setState("Power.DC3Voltage", { val: 0, ack: true });
-						}
+						this.setState("Power.SolarDC", { val: result[0].value ? Math.round(result[0].value) : 0, ack: true });
+						this.setState("Power.GridAC", { val: result[1].value ? Math.round(result[1].value) : 0, ack: true });
+						this.setState("Power.Surplus", { val: result[1].value ? Math.round(result[1].value - result[11].value) : 0, ack: true });
+
+						this.setState("Power.DC1Power", { val: result[4].value ? Math.round(result[2].value) : 0, ack: true });
+						this.setState("Power.DC1Current", { val: result[4].value ? Math.round(1000 * result[3].value) / 1000 : 0, ack: true });
+						this.setState("Power.DC1Voltage", { val: result[4].value ? Math.round(result[4].value) : 0, ack: true });
+
+						this.setState("Power.DC2Power", { val: result[7].value ? Math.round(result[5].value) : 0, ack: true });
+						this.setState("Power.DC2Current", { val: result[7].value ? Math.round(1000 * result[6].value) / 1000 : 0, ack: true });
+						this.setState("Power.DC2Voltage", { val: result[7].value ? Math.round(result[7].value) : 0, ack: true });
+
+						this.setState("Power.DC3Power", { val: result[10].value ? Math.round(result[8].value) : 0, ack: true });
+						this.setState("Power.DC3Current", { val: result[10].value ? Math.round(1000 * result[9].value) / 1000 : 0, ack: true });
+						this.setState("Power.DC3Voltage", { val: result[10].value ? Math.round(result[10].value) : 0, ack: true });
+
 						this.setState("Power.SelfConsumption", { val: Math.round(result[11].value), ack: true });
 						this.setState("Power.HouseConsumption", { val: Math.floor(result[12].value), ack: true });
 						this.setState("State", { val: result[13].value, ack: true });
@@ -505,12 +480,8 @@ class KostalPikoBA extends utils.Adapter {
 					} else {
 						this.log.error(`Got no answer from inverter, please verify IP address: ${this.config.ipaddress} !! (e1.1)`);
 					}
-					if (result.length >= 20) {
-						// not existent for Piko3.0 or if no limitation defined
-						this.setState("GridLimitation", { val: result[19].value, ack: true });
-					} else {
-						this.setState("GridLimitation", { val: 100, ack: true });
-					}
+					this.setState("GridLimitation", { val: result.length >= 20 ? result[19].value : 100, ack: true }); // not existent for Piko3.0 or if no limitation defined
+
 				})
 				.catch((error) => {
 					this.HandleConnectionError(error, `Piko(-BA) API for live data`, `BA1`);
@@ -585,33 +556,18 @@ class KostalPikoBA extends utils.Adapter {
 						throw new Error(`Empty answear from Piko.`);
 					}
 					const result = JSON.parse(response.data).dxsEntries;
-					if (result[1].value) {
-						this.setState("Power.AC1Current", { val: Math.round(1000 * result[0].value) / 1000, ack: true });
-						this.setState("Power.AC1Voltage", { val: Math.round(result[1].value), ack: true });
-						this.setState("Power.AC1Power", { val: Math.round(result[2].value), ack: true });
-					} else {
-						this.setState("Power.AC1Current", { val: 0, ack: true });
-						this.setState("Power.AC1Voltage", { val: 0, ack: true });
-						this.setState("Power.AC1Power", { val: 0, ack: true });
-					}
-					if (result[4].value) {
-						this.setState("Power.AC2Current", { val: Math.round(1000 * result[3].value) / 1000, ack: true });
-						this.setState("Power.AC2Voltage", { val: Math.round(result[4].value), ack: true });
-						this.setState("Power.AC2Power", { val: Math.round(result[5].value), ack: true });
-					} else {
-						this.setState("Power.AC2Current", { val: 0, ack: true });
-						this.setState("Power.AC2Voltage", { val: 0, ack: true });
-						this.setState("Power.AC2Power", { val: 0, ack: true });
-					}
-					if (result[7].value) {
-						this.setState("Power.AC3Current", { val: Math.round(1000 * result[6].value) / 1000, ack: true });
-						this.setState("Power.AC3Voltage", { val: Math.round(result[7].value), ack: true });
-						this.setState("Power.AC3Power", { val: Math.round(result[8].value), ack: true });
-					} else {
-						this.setState("Power.AC3Current", { val: 0, ack: true });
-						this.setState("Power.AC3Voltage", { val: 0, ack: true });
-						this.setState("Power.AC3Power", { val: 0, ack: true });
-					}
+					this.setState("Power.AC1Current", { val: result[1].value ? Math.round(1000 * result[0].value) / 1000 : 0, ack: true });
+					this.setState("Power.AC1Voltage", { val: result[1].value ? Math.round(result[1].value) : 0, ack: true });
+					this.setState("Power.AC1Power", { val: result[1].value ? Math.round(result[2].value) : 0, ack: true });
+
+					this.setState("Power.AC2Current", { val: result[4].value ? Math.round(1000 * result[3].value) / 1000 : 0, ack: true });
+					this.setState("Power.AC2Voltage", { val: result[4].value ? Math.round(result[4].value) : 0, ack: true });
+					this.setState("Power.AC2Power", { val: result[4].value ? Math.round(result[5].value) : 0, ack: true });
+
+					this.setState("Power.AC3Current", { val: result[7].value ? Math.round(1000 * result[6].value) / 1000 : 0, ack: true });
+					this.setState("Power.AC3Voltage", { val: result[7].value ? Math.round(result[7].value) : 0, ack: true });
+					this.setState("Power.AC3Power", { val: result[7].value ? Math.round(result[8].value) :0, ack: true });
+
 					if (result[9].value) {
 						this.setState("Power.HouseConsumptionPhase1", { val: Math.round(result[9].value), ack: true });
 						this.setState("Power.HouseConsumptionPhase2", { val: Math.round(result[10].value), ack: true });

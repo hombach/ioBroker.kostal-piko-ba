@@ -57,7 +57,9 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ### 4.2.2 (2024-09-xx)
 
--   (HombachC) update ioBroker testing
+-   (HombachC) add more Sentry triggered error handling
+-   (HombachC) code optimization
+-   (HombachC) update adapter core
 -   (HombachC) dependency updates
 
 ### 4.2.1 (2024-09-17)

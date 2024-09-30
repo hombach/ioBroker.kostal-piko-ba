@@ -4,7 +4,17 @@
 		"version": "4.2.2",
 		"news": {
 			"4.2.2":{
-				"en": "dependency updates"
+				"en": "add more Sentry triggered error handling\ncode optimization\nupdate adapter core\ndependency updates",
+				"de": "weitere Sentry-Fehlerbehandlungsroutinen hinzufügen\nCode-Optimierung\nAdapter-Core aktualisieren\nAbhängigkeitsaktualisierungen",
+				"ru": "добавить больше обработки ошибок, инициированных Sentry\nоптимизация кода\nобновить ядро адаптера\nобновление зависимостей",
+				"pt": "adicionar mais manipulação de erros acionados pelo Sentry\notimização de código\natualizar núcleo do adaptador\natualizações de dependências",
+				"nl": "meer door Sentry getriggerde foutafhandeling toevoegen\ncode-optimalisatie\nadapterkern bijwerken\nafhankelijkheidsupdates",
+				"fr": "ajouter plus de gestion des erreurs déclenchées par Sentry\noptimisation du code\nmettre à jour le noyau de l'adaptateur\nmises à jour des dépendances",
+				"it": "aggiungi più gestione degli errori attivati da Sentry\nottimizzazione del codice\naggiorna il core dell'adattatore\naggiornamenti delle dipendenze",
+				"es": "añadir más manejo de errores activados por Sentry\noptimización de código\nactualizar el núcleo del adaptador\nactualizaciones de dependencias",
+				"pl": "dodaj więcej obsługi błędów wywoływanych przez Sentry\noptymalizacja kodu\nzaktualizuj rdzeń adaptera\naktualizacje zależności",
+				"uk": "додати більше обробки помилок, спричинених Sentry\nоптимізація коду\nоновити ядро адаптера\nоновлення залежностей",
+				"zh-cn": "添加更多 Sentry 触发的错误处理\n代码优化\n更新适配器核心\n更新依赖项"
 			},
 			"4.2.1":{
 				"en": "add node.js 22 to the adapter testing (#666)\nupdate ioBroker testing\ndependency updates",
