@@ -1,8 +1,11 @@
 {
 	"common": {
 		"name": "kostal-piko-ba",
-		"version": "4.2.1",
+		"version": "4.2.2",
 		"news": {
+			"4.2.2":{
+				"en": "dependency updates"
+			},
 			"4.2.1":{
 				"en": "add node.js 22 to the adapter testing (#666)\nupdate ioBroker testing\ndependency updates",
 				"de": "Node.js 22 zur Adapter-Testumgebung hinzufügen (#666)\nioBroker-Tests aktualisieren\nAbhängigkeitsaktualisierungen",

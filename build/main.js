@@ -323,6 +323,9 @@ class KostalPikoBA extends utils.Adapter {
             .then((response) => {
             //.status == 200
             // access parsed JSON response data using response.data field
+            if (!response.data) {
+                throw new Error(`Empty answear from Piko.`);
+            }
             this.log.debug(`Piko-BA general info updated - Kostal response data: ${response.data}`);
             const result = JSON.parse(response.data).dxsEntries;
             InverterType = result[0].value;
@@ -385,6 +388,9 @@ class KostalPikoBA extends utils.Adapter {
                 //.status == 200
                 // access parsed JSON response data using response.data field
                 this.log.debug(`Piko-BA live data 1 update - Kostal response data: ${response.data}`);
+                if (!response.data) {
+                    throw new Error(`Empty answear from Piko.`);
+                }
                 const result = JSON.parse(response.data).dxsEntries;
                 if (result && result.length > 0) {
                     if (result[0].value) {
@@ -558,6 +564,9 @@ class KostalPikoBA extends utils.Adapter {
                 //.status == 200
                 // access parsed JSON response data using response.data field
                 this.log.debug(`Piko-BA live data 2 update - Kostal response data: ${response.data}`);
+                if (!response.data) {
+                    throw new Error(`Empty answear from Piko.`);
+                }
                 const result = JSON.parse(response.data).dxsEntries;
                 if (result[1].value) {
                     this.setState("Power.AC1Current", { val: Math.round(1000 * result[0].value) / 1000, ack: true });
@@ -644,6 +653,9 @@ class KostalPikoBA extends utils.Adapter {
                 //.status == 200
                 // access parsed JSON response data using response.data field
                 this.log.debug(`Piko-BA daily statistics update - Kostal response data: ${response.data}`);
+                if (!response.data) {
+                    throw new Error(`Empty answear from Piko.`);
+                }
                 const result = JSON.parse(response.data).dxsEntries;
                 this.setState("Statistics_Daily.SelfConsumption", { val: Math.round(result[0].value) / 1000, ack: true });
                 this.setState("Statistics_Daily.SelfConsumptionRate", { val: Math.round(result[1].value), ack: true });
@@ -677,6 +689,9 @@ class KostalPikoBA extends utils.Adapter {
                 //.status == 200
                 // access parsed JSON response data using response.data field
                 this.log.debug(`Piko-BA lifetime statistics updated - Kostal response data: ${response.data}`);
+                if (!response.data) {
+                    throw new Error(`Empty answear from Piko.`);
+                }
                 const result = JSON.parse(response.data).dxsEntries;
                 this.setState("Statistics_Total.SelfConsumption", { val: Math.round(result[0].value), ack: true });
                 this.setState("Statistics_Total.SelfConsumptionRate", { val: Math.round(result[1].value), ack: true });
