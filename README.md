@@ -55,7 +55,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ## Changelog
 
-### 4.2.3 (2024-10-xx)
+### 4.2.3 (2024-10-20)
 
 -   (HombachC) optimize responsive desing (#699)
 -   (HombachC) dependency updates
