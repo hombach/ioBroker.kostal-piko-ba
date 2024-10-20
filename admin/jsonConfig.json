@@ -33,12 +33,15 @@
                         "zh-cn": "您的 Kostal Piko 的 IP 地址（如“192.168.100.33”，无 HTTP 地址或其他文本）"
                     },
                     "maxLength": 15,
-                    "sm": 12,
-                    "md": 6,
-                    "lg": 6,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 4,
+					"xl": 4,
                     "newLine": true
                 },
-                "polltimelive": {
+
+				"polltimelive": {
                     "type": "number",
                     "label": {
                         "en": "Time between data polls from inverter [ms] - Minimum 5000",
@@ -55,12 +58,15 @@
                     },
                     "min": 5000,
                     "step": 100,
-                    "sm": 12,
-                    "md": 6,
-                    "lg": 6,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 4,
+					"xl": 4,
                     "newLine": true
                 },
-                "polltimedaily": {
+
+				"polltimedaily": {
                     "type": "number",
                     "label": {
                         "en": "Time between data polls from inverter daily statistics [ms]",
@@ -77,12 +83,15 @@
                     },
                     "min": 10000,
                     "step": 100,
-                    "sm": 12,
-                    "md": 6,
-                    "lg": 6,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 4,
+					"xl": 4,
                     "newLine": true
                 },
-                "polltimetotal": {
+
+				"polltimetotal": {
                     "type": "number",
                     "label": {
                         "en": "Time between data polls from inverter alltime statistics [ms]",
@@ -99,13 +108,16 @@
                     },
                     "min": 20000,
                     "step": 100,
-                    "sm": 12,
-                    "md": 6,
-                    "lg": 6,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 4,
+					"xl": 4,
                     "newLine": true
                 }
             }
         },
+
 		"_AnalogTab": {
 			"type": "panel",
             "label": {
@@ -138,6 +150,7 @@
 						"zh-cn": "以 V (0-10V; 10 位) 读取所有 4 个模拟输入值"
 					}
 				},
+
 				"_normAnalogs": {
 					"type": "header",
 					"text": {
@@ -156,6 +169,7 @@
 					"hidden": "!data.readanalogs",
 					"size": 3
 				},
+
 				"normAn1Min": {
 					"type": "number",
 					"label": {
@@ -173,9 +187,12 @@
 					},
 					"hidden": "!data.readanalogs",
 					"min": 0,
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 6
+					"lg": 4,
+					"xl": 4,
+                    "newLine": true
 				},
 				"normAn1Max": {
 					"type": "number",
@@ -194,10 +211,13 @@
 					},
 					"hidden": "!data.readanalogs",
 					"min": 0,
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 6
+					"lg": 4,
+					"xl": 4
 				},
+
 				"normAn2Min": {
 					"type": "number",
 					"label": {
@@ -215,9 +235,12 @@
 					},
 					"hidden": "!data.readanalogs",
 					"min": 0,
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 6
+					"lg": 4,
+					"xl": 4,
+                    "newLine": true
 				},
 				"normAn2Max": {
 					"type": "number",
@@ -236,10 +259,13 @@
 					},
 					"hidden": "!data.readanalogs",
 					"min": 0,
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 6
+					"lg": 4,
+					"xl": 4
 				},
+
 				"normAn3Min": {
 					"type": "number",
 					"label": {
@@ -257,9 +283,12 @@
 					},
 					"hidden": "!data.readanalogs",
 					"min": 0,
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 6
+					"lg": 4,
+					"xl": 4,
+                    "newLine": true
 				},
 				"normAn3Max": {
 					"type": "number",
@@ -278,10 +307,13 @@
 					},
 					"hidden": "!data.readanalogs",
 					"min": 0,
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 6
+					"lg": 4,
+					"xl": 4
 				},
+
 				"normAn4Min": {
 					"type": "number",
 					"label": {
@@ -299,9 +331,12 @@
 					},
 					"hidden": "!data.readanalogs",
 					"min": 0,
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 6
+					"lg": 4,
+					"xl": 4,
+                    "newLine": true
 				},
 				"normAn4Max": {
 					"type": "number",
@@ -320,9 +355,11 @@
 					},
 					"hidden": "!data.readanalogs",
 					"min": 0,
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 6
+					"lg": 4,
+					"xl": 4
 				}
 			}
 		}

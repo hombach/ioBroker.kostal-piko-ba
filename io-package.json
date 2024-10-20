@@ -1,8 +1,21 @@
 {
 	"common": {
 		"name": "kostal-piko-ba",
-		"version": "4.2.2",
+		"version": "4.2.3",
 		"news": {
+			"4.2.3":{
+				"en": "optimize responsive design (#699)\ndependency updates",
+				"de": "responsives Design optimiert (#699)\nAbhängigkeitsupdates",
+				"ru": "оптимизация адаптивного дизайна (#699)\nобновления зависимостей",
+				"pt": "otimização do design responsivo (#699)\natualizações de dependências",
+				"nl": "responsive design geoptimaliseerd (#699)\nbijwerken van afhankelijkheden",
+				"fr": "optimisation du design réactif (#699)\nmises à jour des dépendances",
+				"it": "ottimizzazione del design reattivo (#699)\naggiornamenti delle dipendenze",
+				"es": "optimización del diseño responsivo (#699)\nactualizaciones de dependencias",
+				"pl": "optymalizacja responsywnego projektu (#699)\naktualizacje zależności",
+				"uk": "оптимізація адаптивного дизайну (#699)\nоновлення залежностей",
+				"zh-cn": "优化响应式设计 (#699)\n依赖项更新"
+			},
 			"4.2.2":{
 				"en": "add more Sentry triggered error handling\ncode optimization\nupdate adapter core\ndependency updates",
 				"de": "weitere Sentry-Fehlerbehandlungsroutinen hinzufügen\nCode-Optimierung\nAdapter-Core aktualisieren\nAbhängigkeitsaktualisierungen",
@@ -54,19 +67,6 @@
 				"pl": "usunięto lukę w zależności",
 				"uk": "виправлено уразливість у залежності",
 				"zh-cn": "修复了依赖项中的漏洞"
-			},
-			"4.1.2":{
-				"en": "optimized translation handling\nhide not used configuration inputs",
-				"de": "optimierte Übersetzungsverarbeitung\nnicht verwendete Konfigurations-Eingaben ausblenden",
-				"ru": "оптимизированная обработка перевода\nскрыть не используемые входные параметры конфигурации",
-				"pt": "manipulação otimizada de traduções\nocultar entradas de configuração não utilizadas",
-				"nl": "geoptimaliseerde vertalingsverwerking\nniet gebruikte configuratie-invoeren verbergen",
-				"fr": "gestion optimisée des traductions\nmasquer les entrées de configuration non utilisées",
-				"it": "gestione ottimizzata delle traduzioni\nnascondi le voci di configurazione non utilizzate",
-				"es": "gestión optimizada de traducciones\nocultar entradas de configuración no utilizadas",
-				"pl": "optymalizacja obsługi tłumaczeń\nukryj nieużywane wpisy konfiguracji",
-				"uk": "оптимізована обробка перекладів\nсховати невикористані параметри конфігурації",
-				"zh-cn": "优化的翻译处理\n隐藏未使用的配置输入"
 			},
 			"4.1.0":{
 				"en": "replaced deprecated ioBroker state calls\n*doku cleanup",
