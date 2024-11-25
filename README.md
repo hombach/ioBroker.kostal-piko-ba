@@ -31,9 +31,9 @@ This adapter allows for reading data from Kostal Piko, Piko BA, and PIKO MP plus
 It creates and sequentially updates several states, ensuring that the latest information is always available.
 The adapter is specifically designed for Kostal Piko BA, 6.0BA, 8.0BA, and 10BA inverters, but it also supports a wide range of other models, including:
 
-- Kostal Piko: 3.0, 4.2, 4.6, 5.5, 7.0, 8.5, 10, 12, 15, 17, 20, and 36.
-- Kostal PIKO MP: 1.5, 3.0, 3.6.
-- Kostal PIKO MP plus: 1.5-1, 2.0-1, 2.5-1, 3.0-1, 3.0-2, 3.6-1, 3.6-2 and 5.0-2.
+-   Kostal Piko: 3.0, 4.2, 4.6, 5.5, 7.0, 8.5, 10, 12, 15, 17, 20, and 36.
+-   Kostal PIKO MP: 1.5, 3.0, 3.6.
+-   Kostal PIKO MP plus: 1.5-1, 2.0-1, 2.5-1, 3.0-1, 3.0-2, 3.6-1, 3.6-2 and 5.0-2.
 
 We appreciate any feedback on functionality with other inverters. Please send us a note if you test it with additional models.
 
@@ -54,6 +54,11 @@ This adapter employs Sentry libraries to automatically report exceptions and cod
 If you enjoyed this project — or just feeling generous, consider buying me a beer. Cheers! :beers:
 
 ## Changelog
+
+### 4.2.4 (2024-11-xx)
+
+-   (HombachC) optimize responsive design
+-   (HombachC) dependency updates
 
 ### 4.2.3 (2024-10-20)
 
@@ -122,6 +127,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 ### Old Changes see [CHANGELOG OLD](CHANGELOG_OLD.md)
 
 ## License
+
 MIT License
 
 Copyright (c) 2020-2024 C.Hombach <Kostal-Piko-BA@homba.ch>
