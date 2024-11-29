@@ -1,5 +1,8 @@
 {
 	"type": "tabs",
+	"tabsStyle": {
+		"width": "calc(100% - 100px)"
+	},
 	"items": {
 		"_StandardTab": {
 			"type": "panel",
