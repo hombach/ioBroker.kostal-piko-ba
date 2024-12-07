@@ -1,0 +1,18 @@
+{
+    "LBL_StandardTab": "Standardeinstellungen",
+    "LBL_ipaddress": "IP-Adresse Ihres Kostal Piko (z. B. „192.168.100.33“). Verwenden Sie keine HTTP-Adressen oder anderen Text.",
+    "LBL_polltimelive": "Zeit zwischen Datenabfragen vom Wechselrichter [ms]. Mindestwert: 5000.",
+    "LBL_polltimedaily": "Zeit zwischen Datenabfragen aus der Wechselrichter-Tagesstatistik [ms]",
+    "LBL_polltimetotal": "Zeit zwischen Datenabfragen aus der Wechselrichter-Allzeitstatistik [ms].",
+    "LBL_AnalogTab": "Einstellungen für analoge Eingänge",
+    "LBL_readanalogs": "Alle 4 analogen Eingangswerte in Volt auslesen (0-10V; 10-Bit-Auflösung)",
+    "TXT_normAnalogs": "Normalisierung von 0 V auf den Minimalwert und 10 V auf den Maximalwert.",
+    "LBL_normAn1Min": "Minimalwert für Analogeingang 1 – entspricht 0V",
+    "LBL_normAn1Max": "Maximalwert für Analogeingang 1 – entspricht 10 V",
+    "LBL_normAn2Min": "Minimalwert für Analogeingang 2 – entspricht 0V",
+    "LBL_normAn2Max": "Maximalwert für Analogeingang 2 – entspricht 10 V",
+    "LBL_normAn3Min": "Minimalwert für Analogeingang 3 – entspricht 0V",
+    "LBL_normAn3Max": "Maximalwert für Analogeingang 3 – entspricht 10 V",
+    "LBL_normAn4Min": "Minimalwert für Analogeingang 4 – entspricht 0V",
+    "LBL_normAn4Max": "Maximalwert für Analogeingang 4 – entspricht 10 V"
+}

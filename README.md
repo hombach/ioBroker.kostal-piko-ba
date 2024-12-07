@@ -55,8 +55,10 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ## Changelog
 
-### 4.2.4 (2024-12-xx)
+### 5.0.0 (2024-12-xx)
 
+-   (HombachC) BREAKING: dropped support for ioBroker.admin < 7.0.0 because of ioBroker Responsive Design Initiative (#699)
+-   (HombachC) switch to i18n translation (#736)
 -   (HombachC) optimize responsive design (#699)
 -   (HombachC) dependency updates
 

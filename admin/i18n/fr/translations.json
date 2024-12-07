@@ -1,0 +1,18 @@
+{
+    "LBL_StandardTab": "Paramètres standards",
+    "LBL_ipaddress": "Adresse IP de votre Kostal Piko (par exemple, « 192.168.100.33 »). N'utilisez pas d'adresses HTTP ou tout autre texte.",
+    "LBL_polltimelive": "Temps entre les interrogations de données de l'onduleur [ms]. Valeur minimale : 5000.",
+    "LBL_polltimedaily": "Temps entre les interrogations de données des statistiques quotidiennes de l'onduleur [ms]",
+    "LBL_polltimetotal": "Temps entre les interrogations de données provenant des statistiques de tous les temps de l'onduleur [ms].",
+    "LBL_AnalogTab": "Paramètres pour les entrées analogiques",
+    "LBL_readanalogs": "Lisez les 4 valeurs d'entrée analogiques en volts (0-10 V ; résolution 10 bits)",
+    "TXT_normAnalogs": "Normalisation de 0 V à la valeur minimale et de 10 V à la valeur maximale.",
+    "LBL_normAn1Min": "Valeur minimale pour l'entrée analogique 1 - égale 0 V",
+    "LBL_normAn1Max": "Valeur maximale pour l'entrée analogique 1 - égale 10 V",
+    "LBL_normAn2Min": "Valeur minimale pour l'entrée analogique 2 - égale 0 V",
+    "LBL_normAn2Max": "Valeur maximale pour l'entrée analogique 2 - égale 10 V",
+    "LBL_normAn3Min": "Valeur minimale pour l'entrée analogique 3 - égale 0 V",
+    "LBL_normAn3Max": "Valeur maximale pour l'entrée analogique 3 - égale 10 V",
+    "LBL_normAn4Min": "Valeur minimale pour l'entrée analogique 4 - égale 0 V",
+    "LBL_normAn4Max": "Valeur maximale pour l'entrée analogique 4 - égale 10 V"
+}

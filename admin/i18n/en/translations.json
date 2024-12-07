@@ -1,0 +1,19 @@
+{
+	"LBL_StandardTab": "Standard Settings",
+	"LBL_ipaddress": "IP address of your Kostal Piko (e.g., '192.168.100.33'). Do not use HTTP addresses or any other text.",
+	"LBL_polltimelive": "Time between data polls from the inverter [ms]. Minimum value: 5000.",
+	"LBL_polltimedaily": "Time between data polls from inverter daily statistics [ms]",
+	"LBL_polltimetotal": "Time between data polls from inverter all-time statistics [ms]",
+
+	"LBL_AnalogTab": "Settings for analog inputs",
+	"LBL_readanalogs": "Read out all 4 analog input values in volts (0-10V; 10-bit resolution)",
+	"TXT_normAnalogs": "Normalizing 0V to the minimum value and 10V to the maximum value.",
+	"LBL_normAn1Min": "Minimum value for analog input 1 - equals 0V",
+	"LBL_normAn1Max": "Maximum value for analog input 1 - equals 10V",
+	"LBL_normAn2Min": "Minimum value for analog input 2 - equals 0V",
+	"LBL_normAn2Max": "Maximum value for analog input 2 - equals 10V",
+	"LBL_normAn3Min": "Minimum value for analog input 3 - equals 0V",
+	"LBL_normAn3Max": "Maximum value for analog input 3 - equals 10V",
+	"LBL_normAn4Min": "Minimum value for analog input 4 - equals 0V",
+	"LBL_normAn4Max": "Maximum value for analog input 4 - equals 10V"
+}
