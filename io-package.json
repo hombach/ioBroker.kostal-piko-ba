@@ -1,1032 +1,1022 @@
 {
-    "common": {
-        "name": "kostal-piko-ba",
-        "version": "5.0.0",
-        "news": {
-            "5.0.0": {
-                "en": "BREAKING: dropped support for ioBroker.admin < 7.0.0 because of ioBroker Responsive Design Initiative (#699)\nswitch to i18n translation (#736)\noptimize responsive design (#699)\ndependency updates",
-                "de": "BREAKING: Die Unterstützung für ioBroker.admin < 7.0.0 wurde aufgrund der ioBroker Responsive Design Initiative eingestellt (#699)\nZur i18n-Übersetzung wechseln (#736)\nResponsive Design optimieren (#699)\nAbhängigkeitsaktualisierungen",
-                "ru": "СРОЧНО: прекращена поддержка ioBroker.admin < 7.0.0 из-за инициативы адаптивного дизайна ioBroker (#699).\nпереключиться на перевод i18n (#736)\nоптимизировать адаптивный дизайн (#699)\nобновления зависимостей",
-                "pt": "QUEBRANDO: abandonou o suporte para ioBroker.admin <7.0.0 por causa da ioBroker Responsive Design Initiative (#699)\nmudar para tradução i18n (#736)\notimizar design responsivo (#699)\natualizações de dependência",
-                "nl": "BREAKING: ondersteuning voor ioBroker.admin < 7.0.0 verwijderd vanwege ioBroker Responsive Design Initiative (#699)\nschakel over naar i18n-vertaling (#736)\noptimaliseer responsief ontwerp (#699)\nafhankelijkheidsupdates",
-                "fr": "RUPTURE : suppression du support pour ioBroker.admin < 7.0.0 en raison de l'initiative de conception réactive ioBroker (#699)\npasser à la traduction i18n (#736)\noptimiser le responsive design (#699)\nmises à jour des dépendances",
-                "it": "BREAKING: supporto interrotto per ioBroker.admin < 7.0.0 a causa della ioBroker Responsive Design Initiative (#699)\npassa alla traduzione i18n (#736)\nottimizzare il design reattivo (#699)\naggiornamenti delle dipendenze",
-                "es": "ÚLTIMA HORA: se abandonó el soporte para ioBroker.admin < 7.0.0 debido a la Iniciativa de Diseño Responsivo de ioBroker (#699)\ncambiar a traducción i18n (#736)\noptimizar el diseño responsivo (#699)\nactualizaciones de dependencia",
-                "pl": "ŁAMANIE: porzucono obsługę ioBroker.admin < 7.0.0 z powodu inicjatywy ioBroker Responsive Design Initiative (#699)\nprzejdź na tłumaczenie i18n (#736)\nzoptymalizuj responsywny projekt (#699)\naktualizacje zależności",
-                "uk": "ПОРУШЕННЯ: припинено підтримку ioBroker.admin < 7.0.0 через ioBroker Responsive Design Initiative (#699)\nперейти до перекладу i18n (#736)\nоптимізувати адаптивний дизайн (#699)\nоновлення залежностей",
-                "zh-cn": "重大事件：由于 ioBroker 响应式设计计划，放弃了对 ioBroker.admin < 7.0.0 的支持 (#699)\n切换到 i18n 翻译 (#736)\n优化响应式设计 (#699)\n依赖更新"
-            },
-            "4.2.3": {
-                "en": "optimize responsive design (#699)\ndependency updates",
-                "de": "responsives Design optimiert (#699)\nAbhängigkeitsupdates",
-                "ru": "оптимизация адаптивного дизайна (#699)\nобновления зависимостей",
-                "pt": "otimização do design responsivo (#699)\natualizações de dependências",
-                "nl": "responsive design geoptimaliseerd (#699)\nbijwerken van afhankelijkheden",
-                "fr": "optimisation du design réactif (#699)\nmises à jour des dépendances",
-                "it": "ottimizzazione del design reattivo (#699)\naggiornamenti delle dipendenze",
-                "es": "optimización del diseño responsivo (#699)\nactualizaciones de dependencias",
-                "pl": "optymalizacja responsywnego projektu (#699)\naktualizacje zależności",
-                "uk": "оптимізація адаптивного дизайну (#699)\nоновлення залежностей",
-                "zh-cn": "优化响应式设计 (#699)\n依赖项更新"
-            },
-            "4.2.2": {
-                "en": "add more Sentry triggered error handling\ncode optimization\nupdate adapter core\ndependency updates",
-                "de": "weitere Sentry-Fehlerbehandlungsroutinen hinzufügen\nCode-Optimierung\nAdapter-Core aktualisieren\nAbhängigkeitsaktualisierungen",
-                "ru": "добавить больше обработки ошибок, инициированных Sentry\nоптимизация кода\nобновить ядро адаптера\nобновление зависимостей",
-                "pt": "adicionar mais manipulação de erros acionados pelo Sentry\notimização de código\natualizar núcleo do adaptador\natualizações de dependências",
-                "nl": "meer door Sentry getriggerde foutafhandeling toevoegen\ncode-optimalisatie\nadapterkern bijwerken\nafhankelijkheidsupdates",
-                "fr": "ajouter plus de gestion des erreurs déclenchées par Sentry\noptimisation du code\nmettre à jour le noyau de l'adaptateur\nmises à jour des dépendances",
-                "it": "aggiungi più gestione degli errori attivati da Sentry\nottimizzazione del codice\naggiorna il core dell'adattatore\naggiornamenti delle dipendenze",
-                "es": "añadir más manejo de errores activados por Sentry\noptimización de código\nactualizar el núcleo del adaptador\nactualizaciones de dependencias",
-                "pl": "dodaj więcej obsługi błędów wywoływanych przez Sentry\noptymalizacja kodu\nzaktualizuj rdzeń adaptera\naktualizacje zależności",
-                "uk": "додати більше обробки помилок, спричинених Sentry\nоптимізація коду\nоновити ядро адаптера\nоновлення залежностей",
-                "zh-cn": "添加更多 Sentry 触发的错误处理\n代码优化\n更新适配器核心\n更新依赖项"
-            },
-            "4.2.1": {
-                "en": "add node.js 22 to the adapter testing (#666)\nupdate ioBroker testing\ndependency updates",
-                "de": "Node.js 22 zur Adapter-Testumgebung hinzufügen (#666)\nioBroker-Tests aktualisieren\nAbhängigkeitsaktualisierungen",
-                "ru": "добавить node.js 22 в тестирование адаптера (#666)\nобновить тестирование ioBroker\nобновление зависимостей",
-                "pt": "adicionar node.js 22 aos testes do adaptador (#666)\natualizar testes ioBroker\natualizações de dependências",
-                "nl": "node.js 22 toevoegen aan de adaptertests (#666)\nioBroker-testen bijwerken\nbijwerken van afhankelijkheden",
-                "fr": "ajouter node.js 22 aux tests de l'adaptateur (#666)\nmettre à jour les tests ioBroker\nmises à jour des dépendances",
-                "it": "aggiungi node.js 22 ai test dell'adattatore (#666)\naggiorna i test ioBroker\naggiornamenti delle dipendenze",
-                "es": "añadir node.js 22 a las pruebas del adaptador (#666)\nactualizar pruebas de ioBroker\nactualizaciones de dependencias",
-                "pl": "dodaj node.js 22 do testowania adaptera (#666)\naktualizuj testy ioBroker\naktualizacje zależności",
-                "uk": "додати node.js 22 до тестування адаптера (#666)\nоновити тестування ioBroker\nоновлення залежностей",
-                "zh-cn": "将 node.js 22 添加到适配器测试中 (#666)\n更新 ioBroker 测试\n更新依赖项"
-            },
-            "4.2.0": {
-                "en": "convert adapter to TypeScript\nswitch to ES2022 code\nrepository cleanup\ndependency updates\ncode optimizations",
-                "de": "Adapter auf TypeScript umstellen\nWechsel zu ES2022-Code\nRepository-Bereinigung\nAbhängigkeits-Updates\nCode-Optimierungen",
-                "ru": "перевести адаптер на TypeScript\nпереход на код ES2022\nочистка репозитория\nобновление зависимостей\nоптимизация кода",
-                "pt": "converter adaptador para TypeScript\nmudar para o código ES2022\nlimpeza do repositório\natualizações de dependências\notimizações de código",
-                "nl": "adapter omzetten naar TypeScript\noverschakelen naar ES2022-code\nopruiming van repository\nafhankelijkheidsupdates\ncodeoptimalisaties",
-                "fr": "convertir l'adaptateur en TypeScript\npassage au code ES2022\nnettoyage du dépôt\nmises à jour des dépendances\noptimisations du code",
-                "it": "convertire l'adattatore a TypeScript\npassaggio al codice ES2022\npulizia del repository\naggiornamenti delle dipendenze\nottimizzazioni del codice",
-                "es": "convertir el adaptador a TypeScript\ncambio al código ES2022\nlimpieza del repositorio\nactualizaciones de dependencias\noptimizaciones de código",
-                "pl": "konwersja adaptera na TypeScript\nprzejście na kod ES2022\nczyszczenie repozytorium\naktualizacje zależności\noptymalizacje kodu",
-                "uk": "переведення адаптера на TypeScript\nперехід на код ES2022\nочищення репозиторію\nоновлення залежностей\nоптимізація коду",
-                "zh-cn": "将适配器转换为 TypeScript\n切换到 ES2022 代码\n存储库清理\n依赖项更新\n代码优化"
-            },
-            "4.1.0": {
-                "en": "replaced deprecated ioBroker state calls\n*doku cleanup",
-                "de": "veraltete ioBroker-Zustandsaufrufe ersetzt\n*Dokumentationsbereinigung",
-                "ru": "заменены устаревшие вызовы состояний ioBroker\n*очистка документации",
-                "pt": "substituiu chamadas de estado obsoletas do ioBroker\n*limpeza de documentação",
-                "nl": "verouderde ioBroker-statusaanroepen vervangen\n*doku-opruiming",
-                "fr": "remplacement des appels d'état obsolètes de ioBroker\n*nettoyage de la documentation",
-                "it": "sostituito le chiamate di stato deprecate di ioBroker\n*pulizia della documentazione",
-                "es": "reemplazadas las llamadas de estado obsoletas de ioBroker\n*limpieza de documentación",
-                "pl": "zastąpiono przestarzałe wywołania stanów ioBroker\n*oczyszczenie dokumentacji",
-                "uk": "замінили застарілі виклики стану ioBroker\n*очищення документації",
-                "zh-cn": "替换了弃用的 ioBroker 状态调用\n*文档清理"
-            },
-            "4.0.0": {
-                "en": "BREAKING: Dropped support for Node.js 16 (#591)\nBREAKING: Minimum required js-controller version bumped to 5 (#592)\nChanged timeout settings for older Kostal inverters (#589)\nDependency updates\nAdded tests for Node.js 21\nRaised minimum poll time for daily statistics\nCode optimizations",
-                "de": "WICHTIG: Unterstützung für Node.js 16 eingestellt (#591)\nWICHTIG: Mindestens benötigte js-controller-Version auf 5 erhöht (#592)\nTimeout-Einstellungen für ältere Kostal-Wechselrichter geändert (#589)\nAbhängigkeitsaktualisierungen\nTests für Node.js 21 hinzugefügt\nMindestabfragezeit für tägliche Statistiken erhöht\nCode-Optimierungen",
-                "ru": "ВАЖНО: Прекращена поддержка Node.js 16 (#591)\nВАЖНО: Минимально требуемая версия js-controller повышена до 5 (#592)\nИзменены настройки тайм-аута для старых инверторов Kostal (#589)\nОбновления зависимостей\nДобавлены тесты для Node.js 21\nУвеличено минимальное время опроса для ежедневной статистики\nОптимизация кода",
-                "pt": "IMPORTANTE: Suporte para Node.js 16 removido (#591)\nIMPORTANTE: Versão mínima necessária do js-controller atualizada para 5 (#592)\nAlteradas as configurações de timeout para inversores Kostal mais antigos (#589)\nAtualizações de dependência\nAdicionados testes para o Node.js 21\nTempo mínimo de consulta aumentado para estatísticas diárias\nOtimizações de código",
-                "nl": "BELANGRIJK: Ondersteuning voor Node.js 16 verwijderd (#591)\nBELANGRIJK: Minimum vereiste js-controller versie verhoogd naar 5 (#592)\nTimeout-instellingen voor oudere Kostal omvormers gewijzigd (#589)\nAfhankelijkheidsupdates\nTests toegevoegd voor Node.js 21\nMinimale polltijd verhoogd voor dagelijkse statistieken\nCode-optimalisaties",
-                "fr": "IMPORTANT : Prise en charge de Node.js 16 abandonnée (#591)\nIMPORTANT : Version minimale requise de js-controller augmentée à 5 (#592)\nModification des paramètres de délai d'attente pour les anciens onduleurs Kostal (#589)\nMises à jour des dépendances\nAjout de tests pour Node.js 21\nAugmentation du temps minimum de sondage pour les statistiques quotidiennes\nOptimisations de code",
-                "it": "IMPORTANTE: Supporto per Node.js 16 eliminato (#591)\nIMPORTANTE: Versione minima richiesta di js-controller incrementata a 5 (#592)\nModificate le impostazioni di timeout per gli inverter Kostal più vecchi (#589)\nAggiornamenti delle dipendenze\nAggiunti test per Node.js 21\nAumentato il tempo minimo di interrogazione per le statistiche giornaliere\nOttimizzazioni del codice",
-                "es": "IMPORTANTE: Se eliminó el soporte para Node.js 16 (#591)\nIMPORTANTE: La versión mínima requerida de js-controller se elevó a 5 (#592)\nSe cambiaron las configuraciones de tiempo de espera para inversores Kostal más antiguos (#589)\nActualizaciones de dependencias\nSe agregaron pruebas para Node.js 21\nSe aumentó el tiempo mínimo de encuesta para estadísticas diarias\nOptimizaciones de código",
-                "pl": "WAŻNE: Wsparcie dla Node.js 16 zostało usunięte (#591)\nWAŻNE: Minimalna wymagana wersja js-controller została podniesiona do 5 (#592)\nZmienione ustawienia limitu czasu dla starszych inwerterów Kostal (#589)\nAktualizacje zależności\nDodano testy dla Node.js 21\nPodniesiono minimalny czas odpytywania dla codziennych statystyk\nOptymalizacje kodu",
-                "uk": "ВАЖЛИВО: Підтримка Node.js 16 припинена (#591)\nВАЖЛИВО: Мінімально потрібна версія js-controller підвищена до 5 (#592)\nЗмінено налаштування тайм-ауту для старших інверторів Kostal (#589)\nОновлення залежностей\nДодано тести для Node.js 21\nПідвищено мінімальний час опитування для щоденної статистики\nОптимізації коду",
-                "zh-cn": "重要: 放弃对 Node.js 16 的支持 (#591)\n重要: 最低需要的 js-controller 版本已提升至 5 (#592)\n更改了老款 Kostal 逆变器的超时设置 (#589)\n依赖项更新\n添加了对 Node.js 21 的测试\n提高了每日统计的最小轮询时间\n代码优化"
-            }
-        },
-        "titleLang": {
-            "en": "Kostal PikoBA",
-            "de": "Kostal PikoBA",
-            "ru": "Костал ПиКОБА",
-            "pt": "Kostal PikoBA",
-            "nl": "Kostal PikoBA",
-            "fr": "Kostal PikoBA",
-            "it": "Kostal PikoBA",
-            "es": "Kostal PikoBA",
-            "pl": "Kostal PikoBA",
-            "uk": "Kostal PikoBA",
-            "zh-cn": "科斯塔尔皮科巴"
-        },
-        "desc": {
-            "en": "Adapter for reading Kostal Piko (BA) data",
-            "de": "Adapter zum Lesen von Kostal Piko (BA) Daten",
-            "ru": "Адаптер для чтения данных Kostal Piko (BA)",
-            "pt": "Adaptador para leitura de dados Kostal Piko (BA)",
-            "nl": "Adapter voor het lezen van Kostal Piko (BA) gegevens",
-            "fr": "Adaptateur pour la lecture des données Kostal Piko (BA)",
-            "it": "Adattatore per la lettura dei dati Kostal Piko (BA)",
-            "es": "Adaptador para leer datos de Kostal Piko (BA)",
-            "pl": "Adapter do odczytu danych Kostal Piko (BA)",
-            "uk": "Адаптер для читання даних Костал Піко (BA)",
-            "zh-cn": "阅读Kostal Piko BA数据"
-        },
-        "authors": [
-            "Hombach <kostal-piko-ba@homba.ch>"
-        ],
-        "keywords": [
-            "Kostal",
-            "Piko",
-            "Piko-BA",
-            "Piko MP",
-            "Piko MP plus",
-            "inverter",
-            "solar"
-        ],
-        "licenseInformation": {
-            "license": "MIT",
-            "type": "free"
-        },
-        "platform": "Javascript/Node.js",
-        "icon": "picoba.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/Hombach/ioBroker.kostal-piko-ba/master/admin/picoba.png",
-        "readme": "https://github.com/Hombach/ioBroker.kostal-piko-ba/blob/master/README.md",
-        "loglevel": "info",
-        "tier": 2,
-        "mode": "daemon",
-        "messagebox": true,
-        "allowInit": true,
-        "type": "energy",
-        "compact": true,
-        "connectionType": "local",
-        "dataSource": "poll",
-        "adminUI": {
-            "config": "json"
-        },
-        "dependencies": [
-            {
-                "js-controller": ">=5.0.19"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=7.0.0"
-            }
-        ],
-        "plugins": {
-            "sentry": {
-                "dsn": "https://8d5efc328e36ebb90292e20d5e1be95b@o415875.ingest.sentry.io/4505778454134784"
-            }
-        },
-        "supportCustoms": false
-    },
-    "native": {
-        "ipaddress": "",
-        "polltimelive": 10000,
-        "polltimedaily": 60000,
-        "polltimetotal": 200000,
-        "readanalogs": false,
-        "readbattery": true,
-        "normAn1Max": 10,
-        "normAn1Min": 0,
-        "normAn2Max": 10,
-        "normAn2Min": 0,
-        "normAn3Max": 10,
-        "normAn3Min": 0,
-        "normAn4Max": 10,
-        "normAn4Min": 0
-    },
-    "objects": [],
-    "instanceObjects": [
-        {
-            "_id": "info",
-            "type": "channel",
-            "common": {
-                "name": "Information"
-            },
-            "native": {}
-        },
-        {
-            "_id": "info.connection",
-            "type": "state",
-            "common": {
-                "role": "indicator.connected",
-                "name": "Device or service connected",
-                "type": "boolean",
-                "read": true,
-                "write": false,
-                "def": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "State",
-            "type": "state",
-            "common": {
-                "role": "value.state",
-                "name": "Inverter state; 0:off; 3:feed grid(MPP)",
-                "type": "number",
-                "unit": "",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "StateAsString",
-            "type": "state",
-            "common": {
-                "role": "info.status",
-                "name": "Inverter state string",
-                "type": "string",
-                "unit": "",
-                "read": true,
-                "write": false,
-                "def": "unknown"
-            },
-            "native": {}
-        },
-        {
-            "_id": "GridLimitation",
-            "type": "state",
-            "common": {
-                "role": "value",
-                "name": "Power limit of inverter by grid parameters",
-                "type": "number",
-                "unit": "%",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "LastSentryLogDay",
-            "type": "state",
-            "common": {
-                "role": "value",
-                "name": "Last day of month for Sentry log",
-                "type": "number",
-                "unit": "",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "LastSentryLoggedError",
-            "type": "state",
-            "common": {
-                "role": "value",
-                "name": "Last error sent by Sentry log",
-                "type": "string",
-                "unit": "",
-                "read": true,
-                "write": false,
-                "def": "unknown"
-            },
-            "native": {}
-        },
-        {
-            "_id": "Info",
-            "type": "channel",
-            "common": {
-                "name": "general inverter information"
-            },
-            "native": {}
-        },
-        {
-            "_id": "Info.InverterName",
-            "type": "state",
-            "common": {
-                "role": "value",
-                "name": "Inverter name",
-                "type": "string",
-                "unit": "",
-                "read": true,
-                "write": false,
-                "def": "unknown"
-            },
-            "native": {}
-        },
-        {
-            "_id": "Info.InverterType",
-            "type": "state",
-            "common": {
-                "role": "value",
-                "name": "Inverter type",
-                "type": "string",
-                "unit": "",
-                "read": true,
-                "write": false,
-                "def": "unknown"
-            },
-            "native": {}
-        },
-        {
-            "_id": "Info.InverterUIVersion",
-            "type": "state",
-            "common": {
-                "role": "value",
-                "name": "Inverter UI version",
-                "type": "string",
-                "unit": "",
-                "read": true,
-                "write": false,
-                "def": "unknown"
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power",
-            "type": "channel",
-            "common": {
-                "name": "current inverter power data"
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.GridAC",
-            "type": "state",
-            "common": {
-                "role": "value.power",
-                "name": "Grid output power excluding battery charging",
-                "type": "number",
-                "unit": "W",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.SolarDC",
-            "type": "state",
-            "common": {
-                "role": "value.power",
-                "name": "Total solar input power",
-                "type": "number",
-                "unit": "W",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.DC1Power",
-            "type": "state",
-            "common": {
-                "role": "value.power",
-                "name": "Solar input power 1",
-                "type": "number",
-                "unit": "W",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.DC1Current",
-            "type": "state",
-            "common": {
-                "role": "value.current",
-                "name": "Solar input current 1",
-                "type": "number",
-                "unit": "A",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.DC1Voltage",
-            "type": "state",
-            "common": {
-                "role": "value.voltage",
-                "name": "Solar input voltage 1",
-                "type": "number",
-                "unit": "V",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.DC2Power",
-            "type": "state",
-            "common": {
-                "role": "value.power",
-                "name": "Solar input power 2",
-                "type": "number",
-                "unit": "W",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.DC2Current",
-            "type": "state",
-            "common": {
-                "role": "value.current",
-                "name": "Solar input current 2",
-                "type": "number",
-                "unit": "A",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.DC2Voltage",
-            "type": "state",
-            "common": {
-                "role": "value.voltage",
-                "name": "Solar input voltage 2",
-                "type": "number",
-                "unit": "V",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.DC3Power",
-            "type": "state",
-            "common": {
-                "role": "value.power",
-                "name": "Solar input power 3",
-                "type": "number",
-                "unit": "W",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.DC3Current",
-            "type": "state",
-            "common": {
-                "role": "value.current",
-                "name": "Solar input current 3",
-                "type": "number",
-                "unit": "A",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.DC3Voltage",
-            "type": "state",
-            "common": {
-                "role": "value.voltage",
-                "name": "Solar input voltage 3",
-                "type": "number",
-                "unit": "V",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.SelfConsumption",
-            "type": "state",
-            "common": {
-                "role": "value.power.consumption",
-                "name": "Selfconsumption Power",
-                "type": "number",
-                "unit": "W",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.HouseConsumption",
-            "type": "state",
-            "common": {
-                "role": "value.power.consumption",
-                "name": "Powerconsumption of house",
-                "type": "number",
-                "unit": "W",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.HouseConsumptionPhase1",
-            "type": "state",
-            "common": {
-                "role": "value.power.consumption",
-                "name": "Powerconsumption of house on phase 1",
-                "type": "number",
-                "unit": "W",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.HouseConsumptionPhase2",
-            "type": "state",
-            "common": {
-                "role": "value.power.consumption",
-                "name": "Powerconsumption of house on phase 2",
-                "type": "number",
-                "unit": "W",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.HouseConsumptionPhase3",
-            "type": "state",
-            "common": {
-                "role": "value.power.consumption",
-                "name": "Powerconsumption of house on phase 3",
-                "type": "number",
-                "unit": "W",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.Surplus",
-            "type": "state",
-            "common": {
-                "role": "value.power",
-                "name": "Power surplus of system",
-                "type": "number",
-                "unit": "W",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.AC1Power",
-            "type": "state",
-            "common": {
-                "role": "value.power",
-                "name": "Grid output power phase 1",
-                "type": "number",
-                "unit": "W",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.AC1Current",
-            "type": "state",
-            "common": {
-                "role": "value.current",
-                "name": "Grid output current phase 1",
-                "type": "number",
-                "unit": "A",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.AC1Voltage",
-            "type": "state",
-            "common": {
-                "role": "value.voltage",
-                "name": "Grid voltage phase 1",
-                "type": "number",
-                "unit": "V",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.AC2Power",
-            "type": "state",
-            "common": {
-                "role": "value.power",
-                "name": "Grid output power phase 2",
-                "type": "number",
-                "unit": "W",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.AC2Current",
-            "type": "state",
-            "common": {
-                "role": "value.current",
-                "name": "Grid output current phase 2",
-                "type": "number",
-                "unit": "A",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.AC2Voltage",
-            "type": "state",
-            "common": {
-                "role": "value.voltage",
-                "name": "Grid voltage phase 2",
-                "type": "number",
-                "unit": "V",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.AC3Power",
-            "type": "state",
-            "common": {
-                "role": "value.power",
-                "name": "Grid output power phase 3",
-                "type": "number",
-                "unit": "W",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.AC3Current",
-            "type": "state",
-            "common": {
-                "role": "value.current",
-                "name": "Grid output current phase 3",
-                "type": "number",
-                "unit": "A",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Power.AC3Voltage",
-            "type": "state",
-            "common": {
-                "role": "value.voltage",
-                "name": "Grid voltage phase 3",
-                "type": "number",
-                "unit": "V",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Statistics_Daily",
-            "type": "channel",
-            "common": {
-                "name": "statistical data daily"
-            },
-            "native": {}
-        },
-        {
-            "_id": "Statistics_Daily.Yield",
-            "type": "state",
-            "common": {
-                "role": "value",
-                "name": "Total yield today",
-                "type": "number",
-                "unit": "kWh",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Statistics_Daily.HouseConsumption",
-            "type": "state",
-            "common": {
-                "role": "value.power.consumption",
-                "name": "Total consumption house today",
-                "type": "number",
-                "unit": "kWh",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Statistics_Daily.SelfConsumption",
-            "type": "state",
-            "common": {
-                "role": "value.power.consumption",
-                "name": "Total selfconsumption today",
-                "type": "number",
-                "unit": "kWh",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Statistics_Daily.SelfConsumptionRate",
-            "type": "state",
-            "common": {
-                "role": "value",
-                "name": "Rate of selfconsumption today",
-                "type": "number",
-                "unit": "%",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Statistics_Daily.Autarky",
-            "type": "state",
-            "common": {
-                "role": "value",
-                "name": "Degree of autarky today",
-                "type": "number",
-                "unit": "%",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Statistics_Total",
-            "type": "channel",
-            "common": {
-                "name": "statistical data total lifetime"
-            },
-            "native": {}
-        },
-        {
-            "_id": "Statistics_Total.OperatingTime",
-            "type": "state",
-            "common": {
-                "role": "value.time",
-                "name": "Total time of inverter operation",
-                "type": "number",
-                "unit": "h",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Statistics_Total.Yield",
-            "type": "state",
-            "common": {
-                "role": "value",
-                "name": "Total yield of inverter lifetime",
-                "type": "number",
-                "unit": "kWh",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Statistics_Total.HouseConsumption",
-            "type": "state",
-            "common": {
-                "role": "value.power.consumption",
-                "name": "Total consumption of house in inverter lifetime",
-                "type": "number",
-                "unit": "kWh",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Statistics_Total.SelfConsumption",
-            "type": "state",
-            "common": {
-                "role": "value.power.consumption",
-                "name": "Total selfconsumption in inverter lifetime",
-                "type": "number",
-                "unit": "kWh",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Statistics_Total.SelfConsumptionRate",
-            "type": "state",
-            "common": {
-                "role": "value",
-                "name": "Rate of selfconsumption in inverter lifetime",
-                "type": "number",
-                "unit": "%",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Statistics_Total.Autarky",
-            "type": "state",
-            "common": {
-                "role": "value",
-                "name": "Degree of autarky in inverter lifetime",
-                "type": "number",
-                "unit": "%",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Battery",
-            "type": "channel",
-            "common": {
-                "name": "Battery data"
-            },
-            "native": {}
-        },
-        {
-            "_id": "Battery.Temperature",
-            "type": "state",
-            "common": {
-                "role": "value.temperature",
-                "name": "Battery Temperature",
-                "type": "number",
-                "unit": "°C",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Battery.SoC",
-            "type": "state",
-            "common": {
-                "role": "value.battery",
-                "name": "Battery State of Charge",
-                "type": "number",
-                "unit": "%",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Battery.Current",
-            "type": "state",
-            "common": {
-                "role": "value.current",
-                "name": "Battery current; <0 => charge; >0 => discharge",
-                "type": "number",
-                "unit": "A",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Battery.Voltage",
-            "type": "state",
-            "common": {
-                "role": "value.voltage",
-                "name": "Battery voltage",
-                "type": "number",
-                "unit": "V",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Battery.Power",
-            "type": "state",
-            "common": {
-                "role": "value.power",
-                "name": "Battery power; <0 => charge; >0 => discharge",
-                "type": "number",
-                "unit": "W",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Battery.ChargeCycles",
-            "type": "state",
-            "common": {
-                "role": "value.count",
-                "name": "Battery Full Charge Cycles",
-                "type": "number",
-                "unit": "",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Inputs",
-            "type": "channel",
-            "common": {
-                "name": "Input values"
-            },
-            "native": {}
-        },
-        {
-            "_id": "Inputs.Analog1",
-            "type": "state",
-            "common": {
-                "role": "value.voltage",
-                "name": "Analog input 1 voltage",
-                "type": "number",
-                "unit": "V",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Inputs.Analog2",
-            "type": "state",
-            "common": {
-                "role": "value.voltage",
-                "name": "Analog input 2 voltage",
-                "type": "number",
-                "unit": "V",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Inputs.Analog3",
-            "type": "state",
-            "common": {
-                "role": "value.voltage",
-                "name": "Analog input 3 voltage",
-                "type": "number",
-                "unit": "V",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        },
-        {
-            "_id": "Inputs.Analog4",
-            "type": "state",
-            "common": {
-                "role": "value.voltage",
-                "name": "Analog input 4 voltage",
-                "type": "number",
-                "unit": "V",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {}
-        }
-    ]
+	"common": {
+		"name": "kostal-piko-ba",
+		"version": "5.0.1",
+		"news": {
+			"5.0.1": {
+				"en": "intruduce 'iobroker/eslint-config' (#737)",
+				"de": "'iobroker/eslint-config' einführen (#737)",
+				"ru": "ввести 'iobroker/eslint-config' (#737)",
+				"pt": "introduzir 'iobroker/eslint-config' (#737)",
+				"nl": "intruduceer 'iobroker/eslint-config' (#737)",
+				"fr": "introduire 'iobroker/eslint-config' (#737)",
+				"it": "introdurre 'iobroker/eslint-config' (#737)",
+				"es": "introducir 'iobroker/eslint-config' (#737)",
+				"pl": "wprowadź „iobroker/eslint-config” (#737)",
+				"uk": "intruduce 'iobroker/eslint-config' (#737)",
+				"zh-cn": "引入“iobroker/eslint-config”（#737）"
+			},
+			"5.0.0": {
+				"en": "BREAKING: dropped support for ioBroker.admin < 7.0.0 because of ioBroker Responsive Design Initiative (#699)\nswitch to i18n translation (#736)\noptimize responsive design (#699)\ndependency updates",
+				"de": "BREAKING: Die Unterstützung für ioBroker.admin < 7.0.0 wurde aufgrund der ioBroker Responsive Design Initiative eingestellt (#699)\nZur i18n-Übersetzung wechseln (#736)\nResponsive Design optimieren (#699)\nAbhängigkeitsaktualisierungen",
+				"ru": "СРОЧНО: прекращена поддержка ioBroker.admin < 7.0.0 из-за инициативы адаптивного дизайна ioBroker (#699).\nпереключиться на перевод i18n (#736)\nоптимизировать адаптивный дизайн (#699)\nобновления зависимостей",
+				"pt": "QUEBRANDO: abandonou o suporte para ioBroker.admin <7.0.0 por causa da ioBroker Responsive Design Initiative (#699)\nmudar para tradução i18n (#736)\notimizar design responsivo (#699)\natualizações de dependência",
+				"nl": "BREAKING: ondersteuning voor ioBroker.admin < 7.0.0 verwijderd vanwege ioBroker Responsive Design Initiative (#699)\nschakel over naar i18n-vertaling (#736)\noptimaliseer responsief ontwerp (#699)\nafhankelijkheidsupdates",
+				"fr": "RUPTURE : suppression du support pour ioBroker.admin < 7.0.0 en raison de l'initiative de conception réactive ioBroker (#699)\npasser à la traduction i18n (#736)\noptimiser le responsive design (#699)\nmises à jour des dépendances",
+				"it": "BREAKING: supporto interrotto per ioBroker.admin < 7.0.0 a causa della ioBroker Responsive Design Initiative (#699)\npassa alla traduzione i18n (#736)\nottimizzare il design reattivo (#699)\naggiornamenti delle dipendenze",
+				"es": "ÚLTIMA HORA: se abandonó el soporte para ioBroker.admin < 7.0.0 debido a la Iniciativa de Diseño Responsivo de ioBroker (#699)\ncambiar a traducción i18n (#736)\noptimizar el diseño responsivo (#699)\nactualizaciones de dependencia",
+				"pl": "ŁAMANIE: porzucono obsługę ioBroker.admin < 7.0.0 z powodu inicjatywy ioBroker Responsive Design Initiative (#699)\nprzejdź na tłumaczenie i18n (#736)\nzoptymalizuj responsywny projekt (#699)\naktualizacje zależności",
+				"uk": "ПОРУШЕННЯ: припинено підтримку ioBroker.admin < 7.0.0 через ioBroker Responsive Design Initiative (#699)\nперейти до перекладу i18n (#736)\nоптимізувати адаптивний дизайн (#699)\nоновлення залежностей",
+				"zh-cn": "重大事件：由于 ioBroker 响应式设计计划，放弃了对 ioBroker.admin < 7.0.0 的支持 (#699)\n切换到 i18n 翻译 (#736)\n优化响应式设计 (#699)\n依赖更新"
+			},
+			"4.2.3": {
+				"en": "optimize responsive design (#699)\ndependency updates",
+				"de": "responsives Design optimiert (#699)\nAbhängigkeitsupdates",
+				"ru": "оптимизация адаптивного дизайна (#699)\nобновления зависимостей",
+				"pt": "otimização do design responsivo (#699)\natualizações de dependências",
+				"nl": "responsive design geoptimaliseerd (#699)\nbijwerken van afhankelijkheden",
+				"fr": "optimisation du design réactif (#699)\nmises à jour des dépendances",
+				"it": "ottimizzazione del design reattivo (#699)\naggiornamenti delle dipendenze",
+				"es": "optimización del diseño responsivo (#699)\nactualizaciones de dependencias",
+				"pl": "optymalizacja responsywnego projektu (#699)\naktualizacje zależności",
+				"uk": "оптимізація адаптивного дизайну (#699)\nоновлення залежностей",
+				"zh-cn": "优化响应式设计 (#699)\n依赖项更新"
+			},
+			"4.2.2": {
+				"en": "add more Sentry triggered error handling\ncode optimization\nupdate adapter core\ndependency updates",
+				"de": "weitere Sentry-Fehlerbehandlungsroutinen hinzufügen\nCode-Optimierung\nAdapter-Core aktualisieren\nAbhängigkeitsaktualisierungen",
+				"ru": "добавить больше обработки ошибок, инициированных Sentry\nоптимизация кода\nобновить ядро адаптера\nобновление зависимостей",
+				"pt": "adicionar mais manipulação de erros acionados pelo Sentry\notimização de código\natualizar núcleo do adaptador\natualizações de dependências",
+				"nl": "meer door Sentry getriggerde foutafhandeling toevoegen\ncode-optimalisatie\nadapterkern bijwerken\nafhankelijkheidsupdates",
+				"fr": "ajouter plus de gestion des erreurs déclenchées par Sentry\noptimisation du code\nmettre à jour le noyau de l'adaptateur\nmises à jour des dépendances",
+				"it": "aggiungi più gestione degli errori attivati da Sentry\nottimizzazione del codice\naggiorna il core dell'adattatore\naggiornamenti delle dipendenze",
+				"es": "añadir más manejo de errores activados por Sentry\noptimización de código\nactualizar el núcleo del adaptador\nactualizaciones de dependencias",
+				"pl": "dodaj więcej obsługi błędów wywoływanych przez Sentry\noptymalizacja kodu\nzaktualizuj rdzeń adaptera\naktualizacje zależności",
+				"uk": "додати більше обробки помилок, спричинених Sentry\nоптимізація коду\nоновити ядро адаптера\nоновлення залежностей",
+				"zh-cn": "添加更多 Sentry 触发的错误处理\n代码优化\n更新适配器核心\n更新依赖项"
+			},
+			"4.2.0": {
+				"en": "convert adapter to TypeScript\nswitch to ES2022 code\nrepository cleanup\ndependency updates\ncode optimizations",
+				"de": "Adapter auf TypeScript umstellen\nWechsel zu ES2022-Code\nRepository-Bereinigung\nAbhängigkeits-Updates\nCode-Optimierungen",
+				"ru": "перевести адаптер на TypeScript\nпереход на код ES2022\nочистка репозитория\nобновление зависимостей\nоптимизация кода",
+				"pt": "converter adaptador para TypeScript\nmudar para o código ES2022\nlimpeza do repositório\natualizações de dependências\notimizações de código",
+				"nl": "adapter omzetten naar TypeScript\noverschakelen naar ES2022-code\nopruiming van repository\nafhankelijkheidsupdates\ncodeoptimalisaties",
+				"fr": "convertir l'adaptateur en TypeScript\npassage au code ES2022\nnettoyage du dépôt\nmises à jour des dépendances\noptimisations du code",
+				"it": "convertire l'adattatore a TypeScript\npassaggio al codice ES2022\npulizia del repository\naggiornamenti delle dipendenze\nottimizzazioni del codice",
+				"es": "convertir el adaptador a TypeScript\ncambio al código ES2022\nlimpieza del repositorio\nactualizaciones de dependencias\noptimizaciones de código",
+				"pl": "konwersja adaptera na TypeScript\nprzejście na kod ES2022\nczyszczenie repozytorium\naktualizacje zależności\noptymalizacje kodu",
+				"uk": "переведення адаптера на TypeScript\nперехід на код ES2022\nочищення репозиторію\nоновлення залежностей\nоптимізація коду",
+				"zh-cn": "将适配器转换为 TypeScript\n切换到 ES2022 代码\n存储库清理\n依赖项更新\n代码优化"
+			},
+			"4.1.0": {
+				"en": "replaced deprecated ioBroker state calls\n*doku cleanup",
+				"de": "veraltete ioBroker-Zustandsaufrufe ersetzt\n*Dokumentationsbereinigung",
+				"ru": "заменены устаревшие вызовы состояний ioBroker\n*очистка документации",
+				"pt": "substituiu chamadas de estado obsoletas do ioBroker\n*limpeza de documentação",
+				"nl": "verouderde ioBroker-statusaanroepen vervangen\n*doku-opruiming",
+				"fr": "remplacement des appels d'état obsolètes de ioBroker\n*nettoyage de la documentation",
+				"it": "sostituito le chiamate di stato deprecate di ioBroker\n*pulizia della documentazione",
+				"es": "reemplazadas las llamadas de estado obsoletas de ioBroker\n*limpieza de documentación",
+				"pl": "zastąpiono przestarzałe wywołania stanów ioBroker\n*oczyszczenie dokumentacji",
+				"uk": "замінили застарілі виклики стану ioBroker\n*очищення документації",
+				"zh-cn": "替换了弃用的 ioBroker 状态调用\n*文档清理"
+			},
+			"4.0.0": {
+				"en": "BREAKING: Dropped support for Node.js 16 (#591)\nBREAKING: Minimum required js-controller version bumped to 5 (#592)\nChanged timeout settings for older Kostal inverters (#589)\nDependency updates\nAdded tests for Node.js 21\nRaised minimum poll time for daily statistics\nCode optimizations",
+				"de": "WICHTIG: Unterstützung für Node.js 16 eingestellt (#591)\nWICHTIG: Mindestens benötigte js-controller-Version auf 5 erhöht (#592)\nTimeout-Einstellungen für ältere Kostal-Wechselrichter geändert (#589)\nAbhängigkeitsaktualisierungen\nTests für Node.js 21 hinzugefügt\nMindestabfragezeit für tägliche Statistiken erhöht\nCode-Optimierungen",
+				"ru": "ВАЖНО: Прекращена поддержка Node.js 16 (#591)\nВАЖНО: Минимально требуемая версия js-controller повышена до 5 (#592)\nИзменены настройки тайм-аута для старых инверторов Kostal (#589)\nОбновления зависимостей\nДобавлены тесты для Node.js 21\nУвеличено минимальное время опроса для ежедневной статистики\nОптимизация кода",
+				"pt": "IMPORTANTE: Suporte para Node.js 16 removido (#591)\nIMPORTANTE: Versão mínima necessária do js-controller atualizada para 5 (#592)\nAlteradas as configurações de timeout para inversores Kostal mais antigos (#589)\nAtualizações de dependência\nAdicionados testes para o Node.js 21\nTempo mínimo de consulta aumentado para estatísticas diárias\nOtimizações de código",
+				"nl": "BELANGRIJK: Ondersteuning voor Node.js 16 verwijderd (#591)\nBELANGRIJK: Minimum vereiste js-controller versie verhoogd naar 5 (#592)\nTimeout-instellingen voor oudere Kostal omvormers gewijzigd (#589)\nAfhankelijkheidsupdates\nTests toegevoegd voor Node.js 21\nMinimale polltijd verhoogd voor dagelijkse statistieken\nCode-optimalisaties",
+				"fr": "IMPORTANT : Prise en charge de Node.js 16 abandonnée (#591)\nIMPORTANT : Version minimale requise de js-controller augmentée à 5 (#592)\nModification des paramètres de délai d'attente pour les anciens onduleurs Kostal (#589)\nMises à jour des dépendances\nAjout de tests pour Node.js 21\nAugmentation du temps minimum de sondage pour les statistiques quotidiennes\nOptimisations de code",
+				"it": "IMPORTANTE: Supporto per Node.js 16 eliminato (#591)\nIMPORTANTE: Versione minima richiesta di js-controller incrementata a 5 (#592)\nModificate le impostazioni di timeout per gli inverter Kostal più vecchi (#589)\nAggiornamenti delle dipendenze\nAggiunti test per Node.js 21\nAumentato il tempo minimo di interrogazione per le statistiche giornaliere\nOttimizzazioni del codice",
+				"es": "IMPORTANTE: Se eliminó el soporte para Node.js 16 (#591)\nIMPORTANTE: La versión mínima requerida de js-controller se elevó a 5 (#592)\nSe cambiaron las configuraciones de tiempo de espera para inversores Kostal más antiguos (#589)\nActualizaciones de dependencias\nSe agregaron pruebas para Node.js 21\nSe aumentó el tiempo mínimo de encuesta para estadísticas diarias\nOptimizaciones de código",
+				"pl": "WAŻNE: Wsparcie dla Node.js 16 zostało usunięte (#591)\nWAŻNE: Minimalna wymagana wersja js-controller została podniesiona do 5 (#592)\nZmienione ustawienia limitu czasu dla starszych inwerterów Kostal (#589)\nAktualizacje zależności\nDodano testy dla Node.js 21\nPodniesiono minimalny czas odpytywania dla codziennych statystyk\nOptymalizacje kodu",
+				"uk": "ВАЖЛИВО: Підтримка Node.js 16 припинена (#591)\nВАЖЛИВО: Мінімально потрібна версія js-controller підвищена до 5 (#592)\nЗмінено налаштування тайм-ауту для старших інверторів Kostal (#589)\nОновлення залежностей\nДодано тести для Node.js 21\nПідвищено мінімальний час опитування для щоденної статистики\nОптимізації коду",
+				"zh-cn": "重要: 放弃对 Node.js 16 的支持 (#591)\n重要: 最低需要的 js-controller 版本已提升至 5 (#592)\n更改了老款 Kostal 逆变器的超时设置 (#589)\n依赖项更新\n添加了对 Node.js 21 的测试\n提高了每日统计的最小轮询时间\n代码优化"
+			}
+		},
+		"titleLang": {
+			"en": "Kostal PikoBA",
+			"de": "Kostal PikoBA",
+			"ru": "Костал ПиКОБА",
+			"pt": "Kostal PikoBA",
+			"nl": "Kostal PikoBA",
+			"fr": "Kostal PikoBA",
+			"it": "Kostal PikoBA",
+			"es": "Kostal PikoBA",
+			"pl": "Kostal PikoBA",
+			"uk": "Kostal PikoBA",
+			"zh-cn": "科斯塔尔皮科巴"
+		},
+		"desc": {
+			"en": "Adapter for reading Kostal Piko (BA) data",
+			"de": "Adapter zum Lesen von Kostal Piko (BA) Daten",
+			"ru": "Адаптер для чтения данных Kostal Piko (BA)",
+			"pt": "Adaptador para leitura de dados Kostal Piko (BA)",
+			"nl": "Adapter voor het lezen van Kostal Piko (BA) gegevens",
+			"fr": "Adaptateur pour la lecture des données Kostal Piko (BA)",
+			"it": "Adattatore per la lettura dei dati Kostal Piko (BA)",
+			"es": "Adaptador para leer datos de Kostal Piko (BA)",
+			"pl": "Adapter do odczytu danych Kostal Piko (BA)",
+			"uk": "Адаптер для читання даних Костал Піко (BA)",
+			"zh-cn": "阅读Kostal Piko BA数据"
+		},
+		"authors": ["Hombach <kostal-piko-ba@homba.ch>"],
+		"keywords": ["Kostal", "Piko", "Piko-BA", "Piko MP", "Piko MP plus", "inverter", "solar"],
+		"licenseInformation": {
+			"license": "MIT",
+			"type": "free"
+		},
+		"platform": "Javascript/Node.js",
+		"icon": "picoba.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/Hombach/ioBroker.kostal-piko-ba/master/admin/picoba.png",
+		"readme": "https://github.com/Hombach/ioBroker.kostal-piko-ba/blob/master/README.md",
+		"loglevel": "info",
+		"tier": 2,
+		"mode": "daemon",
+		"messagebox": true,
+		"allowInit": true,
+		"type": "energy",
+		"compact": true,
+		"connectionType": "local",
+		"dataSource": "poll",
+		"adminUI": {
+			"config": "json"
+		},
+		"dependencies": [
+			{
+				"js-controller": ">=5.0.19"
+			}
+		],
+		"globalDependencies": [
+			{
+				"admin": ">=7.0.0"
+			}
+		],
+		"plugins": {
+			"sentry": {
+				"dsn": "https://8d5efc328e36ebb90292e20d5e1be95b@o415875.ingest.sentry.io/4505778454134784"
+			}
+		},
+		"supportCustoms": false
+	},
+	"native": {
+		"ipaddress": "",
+		"polltimelive": 10000,
+		"polltimedaily": 60000,
+		"polltimetotal": 200000,
+		"readanalogs": false,
+		"readbattery": true,
+		"normAn1Max": 10,
+		"normAn1Min": 0,
+		"normAn2Max": 10,
+		"normAn2Min": 0,
+		"normAn3Max": 10,
+		"normAn3Min": 0,
+		"normAn4Max": 10,
+		"normAn4Min": 0
+	},
+	"objects": [],
+	"instanceObjects": [
+		{
+			"_id": "info",
+			"type": "channel",
+			"common": {
+				"name": "Information"
+			},
+			"native": {}
+		},
+		{
+			"_id": "info.connection",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "Device or service connected",
+				"type": "boolean",
+				"read": true,
+				"write": false,
+				"def": false
+			},
+			"native": {}
+		},
+		{
+			"_id": "State",
+			"type": "state",
+			"common": {
+				"role": "value.state",
+				"name": "Inverter state; 0:off; 3:feed grid(MPP)",
+				"type": "number",
+				"unit": "",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "StateAsString",
+			"type": "state",
+			"common": {
+				"role": "info.status",
+				"name": "Inverter state string",
+				"type": "string",
+				"unit": "",
+				"read": true,
+				"write": false,
+				"def": "unknown"
+			},
+			"native": {}
+		},
+		{
+			"_id": "GridLimitation",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Power limit of inverter by grid parameters",
+				"type": "number",
+				"unit": "%",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "LastSentryLogDay",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Last day of month for Sentry log",
+				"type": "number",
+				"unit": "",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "LastSentryLoggedError",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Last error sent by Sentry log",
+				"type": "string",
+				"unit": "",
+				"read": true,
+				"write": false,
+				"def": "unknown"
+			},
+			"native": {}
+		},
+		{
+			"_id": "Info",
+			"type": "channel",
+			"common": {
+				"name": "general inverter information"
+			},
+			"native": {}
+		},
+		{
+			"_id": "Info.InverterName",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Inverter name",
+				"type": "string",
+				"unit": "",
+				"read": true,
+				"write": false,
+				"def": "unknown"
+			},
+			"native": {}
+		},
+		{
+			"_id": "Info.InverterType",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Inverter type",
+				"type": "string",
+				"unit": "",
+				"read": true,
+				"write": false,
+				"def": "unknown"
+			},
+			"native": {}
+		},
+		{
+			"_id": "Info.InverterUIVersion",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Inverter UI version",
+				"type": "string",
+				"unit": "",
+				"read": true,
+				"write": false,
+				"def": "unknown"
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power",
+			"type": "channel",
+			"common": {
+				"name": "current inverter power data"
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.GridAC",
+			"type": "state",
+			"common": {
+				"role": "value.power",
+				"name": "Grid output power excluding battery charging",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.SolarDC",
+			"type": "state",
+			"common": {
+				"role": "value.power",
+				"name": "Total solar input power",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.DC1Power",
+			"type": "state",
+			"common": {
+				"role": "value.power",
+				"name": "Solar input power 1",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.DC1Current",
+			"type": "state",
+			"common": {
+				"role": "value.current",
+				"name": "Solar input current 1",
+				"type": "number",
+				"unit": "A",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.DC1Voltage",
+			"type": "state",
+			"common": {
+				"role": "value.voltage",
+				"name": "Solar input voltage 1",
+				"type": "number",
+				"unit": "V",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.DC2Power",
+			"type": "state",
+			"common": {
+				"role": "value.power",
+				"name": "Solar input power 2",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.DC2Current",
+			"type": "state",
+			"common": {
+				"role": "value.current",
+				"name": "Solar input current 2",
+				"type": "number",
+				"unit": "A",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.DC2Voltage",
+			"type": "state",
+			"common": {
+				"role": "value.voltage",
+				"name": "Solar input voltage 2",
+				"type": "number",
+				"unit": "V",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.DC3Power",
+			"type": "state",
+			"common": {
+				"role": "value.power",
+				"name": "Solar input power 3",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.DC3Current",
+			"type": "state",
+			"common": {
+				"role": "value.current",
+				"name": "Solar input current 3",
+				"type": "number",
+				"unit": "A",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.DC3Voltage",
+			"type": "state",
+			"common": {
+				"role": "value.voltage",
+				"name": "Solar input voltage 3",
+				"type": "number",
+				"unit": "V",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.SelfConsumption",
+			"type": "state",
+			"common": {
+				"role": "value.power.consumption",
+				"name": "Selfconsumption Power",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.HouseConsumption",
+			"type": "state",
+			"common": {
+				"role": "value.power.consumption",
+				"name": "Powerconsumption of house",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.HouseConsumptionPhase1",
+			"type": "state",
+			"common": {
+				"role": "value.power.consumption",
+				"name": "Powerconsumption of house on phase 1",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.HouseConsumptionPhase2",
+			"type": "state",
+			"common": {
+				"role": "value.power.consumption",
+				"name": "Powerconsumption of house on phase 2",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.HouseConsumptionPhase3",
+			"type": "state",
+			"common": {
+				"role": "value.power.consumption",
+				"name": "Powerconsumption of house on phase 3",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.Surplus",
+			"type": "state",
+			"common": {
+				"role": "value.power",
+				"name": "Power surplus of system",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.AC1Power",
+			"type": "state",
+			"common": {
+				"role": "value.power",
+				"name": "Grid output power phase 1",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.AC1Current",
+			"type": "state",
+			"common": {
+				"role": "value.current",
+				"name": "Grid output current phase 1",
+				"type": "number",
+				"unit": "A",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.AC1Voltage",
+			"type": "state",
+			"common": {
+				"role": "value.voltage",
+				"name": "Grid voltage phase 1",
+				"type": "number",
+				"unit": "V",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.AC2Power",
+			"type": "state",
+			"common": {
+				"role": "value.power",
+				"name": "Grid output power phase 2",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.AC2Current",
+			"type": "state",
+			"common": {
+				"role": "value.current",
+				"name": "Grid output current phase 2",
+				"type": "number",
+				"unit": "A",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.AC2Voltage",
+			"type": "state",
+			"common": {
+				"role": "value.voltage",
+				"name": "Grid voltage phase 2",
+				"type": "number",
+				"unit": "V",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.AC3Power",
+			"type": "state",
+			"common": {
+				"role": "value.power",
+				"name": "Grid output power phase 3",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.AC3Current",
+			"type": "state",
+			"common": {
+				"role": "value.current",
+				"name": "Grid output current phase 3",
+				"type": "number",
+				"unit": "A",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.AC3Voltage",
+			"type": "state",
+			"common": {
+				"role": "value.voltage",
+				"name": "Grid voltage phase 3",
+				"type": "number",
+				"unit": "V",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Daily",
+			"type": "channel",
+			"common": {
+				"name": "statistical data daily"
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Daily.Yield",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Total yield today",
+				"type": "number",
+				"unit": "kWh",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Daily.HouseConsumption",
+			"type": "state",
+			"common": {
+				"role": "value.power.consumption",
+				"name": "Total consumption house today",
+				"type": "number",
+				"unit": "kWh",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Daily.SelfConsumption",
+			"type": "state",
+			"common": {
+				"role": "value.power.consumption",
+				"name": "Total selfconsumption today",
+				"type": "number",
+				"unit": "kWh",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Daily.SelfConsumptionRate",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Rate of selfconsumption today",
+				"type": "number",
+				"unit": "%",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Daily.Autarky",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Degree of autarky today",
+				"type": "number",
+				"unit": "%",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Total",
+			"type": "channel",
+			"common": {
+				"name": "statistical data total lifetime"
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Total.OperatingTime",
+			"type": "state",
+			"common": {
+				"role": "value.time",
+				"name": "Total time of inverter operation",
+				"type": "number",
+				"unit": "h",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Total.Yield",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Total yield of inverter lifetime",
+				"type": "number",
+				"unit": "kWh",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Total.HouseConsumption",
+			"type": "state",
+			"common": {
+				"role": "value.power.consumption",
+				"name": "Total consumption of house in inverter lifetime",
+				"type": "number",
+				"unit": "kWh",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Total.SelfConsumption",
+			"type": "state",
+			"common": {
+				"role": "value.power.consumption",
+				"name": "Total selfconsumption in inverter lifetime",
+				"type": "number",
+				"unit": "kWh",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Total.SelfConsumptionRate",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Rate of selfconsumption in inverter lifetime",
+				"type": "number",
+				"unit": "%",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Total.Autarky",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Degree of autarky in inverter lifetime",
+				"type": "number",
+				"unit": "%",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Battery",
+			"type": "channel",
+			"common": {
+				"name": "Battery data"
+			},
+			"native": {}
+		},
+		{
+			"_id": "Battery.Temperature",
+			"type": "state",
+			"common": {
+				"role": "value.temperature",
+				"name": "Battery Temperature",
+				"type": "number",
+				"unit": "°C",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Battery.SoC",
+			"type": "state",
+			"common": {
+				"role": "value.battery",
+				"name": "Battery State of Charge",
+				"type": "number",
+				"unit": "%",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Battery.Current",
+			"type": "state",
+			"common": {
+				"role": "value.current",
+				"name": "Battery current; <0 => charge; >0 => discharge",
+				"type": "number",
+				"unit": "A",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Battery.Voltage",
+			"type": "state",
+			"common": {
+				"role": "value.voltage",
+				"name": "Battery voltage",
+				"type": "number",
+				"unit": "V",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Battery.Power",
+			"type": "state",
+			"common": {
+				"role": "value.power",
+				"name": "Battery power; <0 => charge; >0 => discharge",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Battery.ChargeCycles",
+			"type": "state",
+			"common": {
+				"role": "value.count",
+				"name": "Battery Full Charge Cycles",
+				"type": "number",
+				"unit": "",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Inputs",
+			"type": "channel",
+			"common": {
+				"name": "Input values"
+			},
+			"native": {}
+		},
+		{
+			"_id": "Inputs.Analog1",
+			"type": "state",
+			"common": {
+				"role": "value.voltage",
+				"name": "Analog input 1 voltage",
+				"type": "number",
+				"unit": "V",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Inputs.Analog2",
+			"type": "state",
+			"common": {
+				"role": "value.voltage",
+				"name": "Analog input 2 voltage",
+				"type": "number",
+				"unit": "V",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Inputs.Analog3",
+			"type": "state",
+			"common": {
+				"role": "value.voltage",
+				"name": "Analog input 3 voltage",
+				"type": "number",
+				"unit": "V",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Inputs.Analog4",
+			"type": "state",
+			"common": {
+				"role": "value.voltage",
+				"name": "Analog input 4 voltage",
+				"type": "number",
+				"unit": "V",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		}
+	]
 }

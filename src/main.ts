@@ -1,6 +1,6 @@
 // The adapter-core module gives you access to the core ioBroker functions you need to create an adapter
 import * as utils from "@iobroker/adapter-core";
-import axios, { AxiosError } from "axios";
+import axios, { type AxiosError } from "axios";
 import xml2js from "xml2js";
 
 interface Measurement {
@@ -9,6 +9,7 @@ interface Measurement {
 		Value: number;
 	};
 }
+
 interface MeasurementsResponse {
 	root: {
 		Device: {
@@ -124,8 +125,8 @@ let KostalRequest2 = ""; // IP request-string 2 for Pico live data
 let KostalRequestDay = ""; // IP request-string for PicoBA daily statistics
 let KostalRequestTotal = ""; // IP request-string for PicoBA total statistics
 
-function resolveAfterXSeconds(x: number) {
-	return new Promise((resolve) => {
+function resolveAfterXSeconds(x: number): Promise<number> {
+	return new Promise(resolve => {
 		setTimeout(() => {
 			resolve(x);
 		}, x * 1000);
@@ -164,7 +165,7 @@ class KostalPikoBA extends utils.Adapter {
 			) {
 				this.log.error(`You have entered an invalid IP address! ${this.config.ipaddress}`);
 				this.log.info(`Stopping adapter`);
-				await this.stop?.({ exitCode: 11, reason: `invalid config`});
+				await this.stop?.({ exitCode: 11, reason: `invalid config` });
 			}
 		}
 
@@ -188,10 +189,9 @@ class KostalPikoBA extends utils.Adapter {
 			const sentryInstance = this.getPluginInstance("sentry");
 			const today = new Date();
 			const last = await this.getStateAsync("LastSentryLogDay");
-			if (last?.val != (await today.getDate())) {
+			if (last?.val != today.getDate()) {
 				if (sentryInstance) {
 					const Sentry = sentryInstance.getSentryObject();
-					// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 					Sentry &&
 						Sentry.withScope((scope: { setLevel: (arg0: string) => void; setTag: (arg0: string, arg1: number | string) => void }) => {
 							scope.setLevel("info");
@@ -202,8 +202,8 @@ class KostalPikoBA extends utils.Adapter {
 							Sentry.captureMessage("Adapter kostal-piko-ba started", "info");
 						});
 				}
-				this.setState("LastSentryLoggedError", { val: "unknown", ack: true }); // Clean last error every adapter start
-				this.setState("LastSentryLogDay", { val: today.getDate(), ack: true });
+				await this.setState("LastSentryLoggedError", { val: "unknown", ack: true }); // Clean last error every adapter start
+				await this.setState("LastSentryLogDay", { val: today.getDate(), ack: true });
 			}
 		}
 		//#endregion
@@ -267,18 +267,20 @@ class KostalPikoBA extends utils.Adapter {
 				`&dxsEntries=${ID_Power_HouseConsumptionPhase2}&dxsEntries=${ID_Power_HouseConsumptionPhase3}`;
 			if (this.config.readanalogs) {
 				KostalRequest2 =
-					KostalRequest2 + `&dxsEntries=${ID_InputAnalog1}&dxsEntries=${ID_InputAnalog2}&dxsEntries=${ID_InputAnalog3}&dxsEntries=${ID_InputAnalog4}`;
+					`${KostalRequest2}` +
+					`&dxsEntries=${ID_InputAnalog1}&dxsEntries=${ID_InputAnalog2}` +
+					`&dxsEntries=${ID_InputAnalog3}&dxsEntries=${ID_InputAnalog4}`;
 				if (this.config.normAn1Max != 10 || this.config.normAn1Min != 0) {
-					this.extendObject("Inputs.Analog1", { common: { unit: "" } });
+					await this.extendObject("Inputs.Analog1", { common: { unit: "" } });
 				}
 				if (this.config.normAn2Max != 10 || this.config.normAn2Min != 0) {
-					this.extendObject("Inputs.Analog2", { common: { unit: "" } });
+					await this.extendObject("Inputs.Analog2", { common: { unit: "" } });
 				}
 				if (this.config.normAn3Max != 10 || this.config.normAn3Min != 0) {
-					this.extendObject("Inputs.Analog3", { common: { unit: "" } });
+					await this.extendObject("Inputs.Analog3", { common: { unit: "" } });
 				}
 				if (this.config.normAn4Max != 10 || this.config.normAn4Min != 0) {
-					this.extendObject("Inputs.Analog4", { common: { unit: "" } });
+					await this.extendObject("Inputs.Analog4", { common: { unit: "" } });
 				}
 			}
 
@@ -294,15 +296,15 @@ class KostalPikoBA extends utils.Adapter {
 				`&dxsEntries=${ID_StatTot_Yield}&dxsEntries=${ID_StatTot_HouseConsumption}` +
 				`&dxsEntries=${ID_StatTot_Autarky}&dxsEntries=${ID_StatTot_OperatingTime}`;
 			if (this.config.readbattery) {
-				KostalRequestTotal = KostalRequestTotal + `&dxsEntries=${ID_BatChargeCycles}`;
+				KostalRequestTotal = `${KostalRequestTotal}&dxsEntries=${ID_BatChargeCycles}`;
 			}
 
 			this.log.debug(`OnReady done`);
-			await this.ReadPikoTotal();
+			this.ReadPikoTotal();
 			await resolveAfterXSeconds(3);
-			await this.ReadPikoDaily();
+			this.ReadPikoDaily();
 			await resolveAfterXSeconds(3);
-			await this.Scheduler();
+			this.Scheduler();
 			this.log.debug(`Initial ReadPiko done`);
 		} else {
 			this.log.error(`No IP address configured, adapter is shutting down`);
@@ -312,17 +314,19 @@ class KostalPikoBA extends utils.Adapter {
 
 	/**
 	 * Is called when adapter shuts down - callback has to be called under any circumstances!
+	 *
+	 * @param callback - void
 	 */
 	private onUnload(callback: () => void): void {
 		try {
 			if (adapterTimeouts) {
-				Object.keys(adapterTimeouts).forEach((timeout) => {
+				Object.keys(adapterTimeouts).forEach(timeout => {
 					if (adapterTimeouts[timeout]) {
 						clearTimeout(adapterTimeouts[timeout]);
 					}
 				});
 			}
-			this.setState("info.connection", { val: false, ack: true });
+			void this.setState("info.connection", { val: false, ack: true });
 			this.log.info(`Adapter Kostal-Piko-BA cleaned up everything...`);
 			callback();
 		} catch (error) {
@@ -333,7 +337,7 @@ class KostalPikoBA extends utils.Adapter {
 
 	/****************************************************************************************
 	 * Scheduler ****************************************************************************/
-	private Scheduler() {
+	private Scheduler(): void {
 		this.ReadPiko();
 		this.ReadPiko2();
 		try {
@@ -347,10 +351,10 @@ class KostalPikoBA extends utils.Adapter {
 
 	/****************************************************************************************
 	 * ReadPikoOnce ***************************************************************************/
-	private async ReadPikoOnce() {
+	private async ReadPikoOnce(): Promise<void> {
 		await axios
-			.get(KostalRequestOnce, { transformResponse: (r) => r })
-			.then((response) => {
+			.get(KostalRequestOnce, { transformResponse: r => r })
+			.then(response => {
 				//.status == 200
 				// access parsed JSON response data using response.data field
 				if (!response.data) {
@@ -359,15 +363,18 @@ class KostalPikoBA extends utils.Adapter {
 				this.log.debug(`Piko-BA general info updated - Kostal response data: ${response.data}`);
 				const result = JSON.parse(response.data).dxsEntries;
 				InverterType = result[0].value;
-				this.setState("Info.InverterType", { val: InverterType, ack: true });
+				void this.setState("Info.InverterType", { val: InverterType, ack: true });
 				InverterAPIPiko = true;
-				this.setState("info.connection", { val: true, ack: true });
+				void this.setState("info.connection", { val: true, ack: true });
 				InverterUIVersion = result[1].value;
-				this.setState("Info.InverterUIVersion", { val: InverterUIVersion, ack: true });
-				this.setState("Info.InverterName", { val: result[2].value, ack: true });
+				void this.setState("Info.InverterUIVersion", {
+					val: InverterUIVersion,
+					ack: true,
+				});
+				void this.setState("Info.InverterName", { val: result[2].value, ack: true });
 			})
-			.catch((error) => {
-				this.HandleConnectionError(error, `Piko(-BA) API for general info`, `BA0`);
+			.catch(error => {
+				void this.HandleConnectionError(error, `Piko(-BA) API for general info`, `BA0`);
 			});
 
 		await resolveAfterXSeconds(2);
@@ -383,8 +390,10 @@ class KostalPikoBA extends utils.Adapter {
 		if (!InverterAPIPiko) {
 			// no inverter type detected yet -> try to detect Piko MP Inverter
 			axios
-				.get(`http://${this.config.ipaddress}/versions.xml`, { transformResponse: (r) => r })
-				.then((response) => {
+				.get(`http://${this.config.ipaddress}/versions.xml`, {
+					transformResponse: r => r,
+				})
+				.then(response => {
 					xml2js.parseString(response.data, (err, result) => {
 						if (err) {
 							this.log.error(`Error when calling Piko MP API with axios for general info: ${err}`);
@@ -393,30 +402,39 @@ class KostalPikoBA extends utils.Adapter {
 							if (MPType) {
 								this.log.info(`Discovered Piko MP API, type of inverter: ${MPType}`);
 								InverterType = MPType;
-								this.setState("Info.InverterType", { val: InverterType, ack: true });
+								void this.setState("Info.InverterType", {
+									val: InverterType,
+									ack: true,
+								});
 								InverterAPIPikoMP = true;
-								this.setState("info.connection", { val: true, ack: true });
+								void this.setState("info.connection", { val: true, ack: true });
 								InverterUIVersion = "MP";
-								this.setState("Info.InverterUIVersion", { val: InverterUIVersion, ack: true });
-								this.setState("Info.InverterName", { val: result.root.Device[0].$.NetBiosName, ack: true });
+								void this.setState("Info.InverterUIVersion", {
+									val: InverterUIVersion,
+									ack: true,
+								});
+								void this.setState("Info.InverterName", {
+									val: result.root.Device[0].$.NetBiosName,
+									ack: true,
+								});
 							}
 						}
 					});
 				})
-				.catch((error) => {
-					this.HandleConnectionError(error, `Piko MP API for general info`, `MP0`);
+				.catch(error => {
+					void this.HandleConnectionError(error, `Piko MP API for general info`, `MP0`);
 				});
 		}
 	} // END ReadPikoOnce
 
 	/****************************************************************************************
 	 * ReadPiko *****************************************************************************/
-	private ReadPiko() {
+	private ReadPiko(): void {
 		if (InverterAPIPiko) {
 			// code for Piko(-BA)
 			axios
-				.get(KostalRequest1, { timeout: 3500, transformResponse: (r) => r })
-				.then((response) => {
+				.get(KostalRequest1, { timeout: 3500, transformResponse: r => r })
+				.then(response => {
 					//.status == 200
 					// access parsed JSON response data using response.data field
 					this.log.debug(`Piko-BA live data 1 update - Kostal response data: ${response.data}`);
@@ -425,130 +443,258 @@ class KostalPikoBA extends utils.Adapter {
 					}
 					const result = JSON.parse(response.data).dxsEntries;
 					if (result && result.length > 0) {
-						this.setState("Power.SolarDC", { val: result[0].value ? Math.round(result[0].value) : 0, ack: true });
-						this.setState("Power.GridAC", { val: result[1].value ? Math.round(result[1].value) : 0, ack: true });
-						this.setState("Power.Surplus", { val: result[1].value ? Math.round(result[1].value - result[11].value) : 0, ack: true });
+						void this.setState("Power.SolarDC", {
+							val: result[0].value ? Math.round(result[0].value) : 0,
+							ack: true,
+						});
+						void this.setState("Power.GridAC", {
+							val: result[1].value ? Math.round(result[1].value) : 0,
+							ack: true,
+						});
+						void this.setState("Power.Surplus", {
+							val: result[1].value ? Math.round(result[1].value - result[11].value) : 0,
+							ack: true,
+						});
 
-						this.setState("Power.DC1Power", { val: result[4].value ? Math.round(result[2].value) : 0, ack: true });
-						this.setState("Power.DC1Current", { val: result[4].value ? Math.round(1000 * result[3].value) / 1000 : 0, ack: true });
-						this.setState("Power.DC1Voltage", { val: result[4].value ? Math.round(result[4].value) : 0, ack: true });
+						void this.setState("Power.DC1Power", {
+							val: result[4].value ? Math.round(result[2].value) : 0,
+							ack: true,
+						});
+						void this.setState("Power.DC1Current", {
+							val: result[4].value ? Math.round(1000 * result[3].value) / 1000 : 0,
+							ack: true,
+						});
+						void this.setState("Power.DC1Voltage", {
+							val: result[4].value ? Math.round(result[4].value) : 0,
+							ack: true,
+						});
 
-						this.setState("Power.DC2Power", { val: result[7].value ? Math.round(result[5].value) : 0, ack: true });
-						this.setState("Power.DC2Current", { val: result[7].value ? Math.round(1000 * result[6].value) / 1000 : 0, ack: true });
-						this.setState("Power.DC2Voltage", { val: result[7].value ? Math.round(result[7].value) : 0, ack: true });
+						void this.setState("Power.DC2Power", {
+							val: result[7].value ? Math.round(result[5].value) : 0,
+							ack: true,
+						});
+						void this.setState("Power.DC2Current", {
+							val: result[7].value ? Math.round(1000 * result[6].value) / 1000 : 0,
+							ack: true,
+						});
+						void this.setState("Power.DC2Voltage", {
+							val: result[7].value ? Math.round(result[7].value) : 0,
+							ack: true,
+						});
 
-						this.setState("Power.DC3Power", { val: result[10].value ? Math.round(result[8].value) : 0, ack: true });
-						this.setState("Power.DC3Current", { val: result[10].value ? Math.round(1000 * result[9].value) / 1000 : 0, ack: true });
-						this.setState("Power.DC3Voltage", { val: result[10].value ? Math.round(result[10].value) : 0, ack: true });
+						void this.setState("Power.DC3Power", {
+							val: result[10].value ? Math.round(result[8].value) : 0,
+							ack: true,
+						});
+						void this.setState("Power.DC3Current", {
+							val: result[10].value ? Math.round(1000 * result[9].value) / 1000 : 0,
+							ack: true,
+						});
+						void this.setState("Power.DC3Voltage", {
+							val: result[10].value ? Math.round(result[10].value) : 0,
+							ack: true,
+						});
 
-						this.setState("Power.SelfConsumption", { val: Math.round(result[11].value), ack: true });
-						this.setState("Power.HouseConsumption", { val: Math.floor(result[12].value), ack: true });
-						this.setState("State", { val: result[13].value, ack: true });
+						void this.setState("Power.SelfConsumption", {
+							val: Math.round(result[11].value),
+							ack: true,
+						});
+						void this.setState("Power.HouseConsumption", {
+							val: Math.floor(result[12].value),
+							ack: true,
+						});
+						void this.setState("State", { val: result[13].value, ack: true });
 						switch (result[13].value) {
 							case 0:
-								this.setState("StateAsString", { val: "OFF", ack: true });
+								void this.setState("StateAsString", { val: "OFF", ack: true });
 								break;
 							case 1:
-								this.setState("StateAsString", { val: "Idling", ack: true });
+								void this.setState("StateAsString", { val: "Idling", ack: true });
 								break;
 							case 2:
-								this.setState("StateAsString", { val: "Start up, DC voltage still too low for feed-in", ack: true });
+								void this.setState("StateAsString", {
+									val: "Start up, DC voltage still too low for feed-in",
+									ack: true,
+								});
 								break;
 							case 3:
-								this.setState("StateAsString", { val: "Feeding (MPP)", ack: true });
+								void this.setState("StateAsString", {
+									val: "Feeding (MPP)",
+									ack: true,
+								});
 								break;
 							case 4:
-								this.setState("StateAsString", { val: "Feeding (limited)", ack: true });
+								void this.setState("StateAsString", {
+									val: "Feeding (limited)",
+									ack: true,
+								});
 								break;
 							default:
-								this.setState("StateAsString", { val: "Undefined", ack: true });
+								void this.setState("StateAsString", { val: "Undefined", ack: true });
 						}
 						if (result[14].value) {
-							this.setState("Battery.Voltage", { val: Math.round(result[14].value), ack: true });
-							this.setState("Battery.Temperature", { val: Math.round(10 * result[15].value) / 10, ack: true });
-							this.setState("Battery.SoC", { val: result[16].value, ack: true });
+							void this.setState("Battery.Voltage", {
+								val: Math.round(result[14].value),
+								ack: true,
+							});
+							void this.setState("Battery.Temperature", {
+								val: Math.round(10 * result[15].value) / 10,
+								ack: true,
+							});
+							void this.setState("Battery.SoC", {
+								val: result[16].value,
+								ack: true,
+							});
 							if (result[18].value) {
 								// result[18] = 'Battery current direction; 1=Load; 0=Unload'
-								this.setState("Battery.Current", { val: result[17].value, ack: true });
-								this.setState("Battery.Power", { val: Math.round(result[14].value * result[17].value), ack: true });
+								void this.setState("Battery.Current", {
+									val: result[17].value,
+									ack: true,
+								});
+								void this.setState("Battery.Power", {
+									val: Math.round(result[14].value * result[17].value),
+									ack: true,
+								});
 							} else {
 								// discharge
-								this.setState("Battery.Current", { val: result[17].value * -1, ack: true });
-								this.setState("Battery.Power", { val: Math.round(result[14].value * result[17].value * -1), ack: true });
+								void this.setState("Battery.Current", {
+									val: result[17].value * -1,
+									ack: true,
+								});
+								void this.setState("Battery.Power", {
+									val: Math.round(result[14].value * result[17].value * -1),
+									ack: true,
+								});
 							}
 						}
 					} else {
 						this.log.error(`Got no answer from inverter, please verify IP address: ${this.config.ipaddress} !! (e1.1)`);
 					}
-					this.setState("GridLimitation", { val: result.length >= 20 ? result[19].value : 100, ack: true }); // not existent for Piko3.0 or if no limitation defined
-
+					void this.setState("GridLimitation", {
+						val: result.length >= 20 ? result[19].value : 100,
+						ack: true,
+					}); // not existent for Piko3.0 or if no limitation defined
 				})
-				.catch((error) => {
-					this.HandleConnectionError(error, `Piko(-BA) API for live data`, `BA1`);
+				.catch(error => {
+					void this.HandleConnectionError(error, `Piko(-BA) API for live data`, `BA1`);
 				});
 		} // END InverterAPIPiko
 
 		if (InverterAPIPikoMP) {
 			// code for Piko MP Plus
 			axios
-				.get(`http://${this.config.ipaddress}/measurements.xml`, { transformResponse: (r) => r })
-				.then((response) => {
+				.get(`http://${this.config.ipaddress}/measurements.xml`, {
+					transformResponse: r => r,
+				})
+				.then(response => {
 					xml2js.parseString(response.data, (err: Error | null, result: MeasurementsResponse) => {
 						if (err) {
 							this.log.error(`Error when calling Piko MP API with axios for measurements info: ${err}`);
 						} else {
 							const measurements = result?.root.Device[0].Measurements[0].Measurement;
-							const DC_Voltage = measurements?.find((measurement) => measurement.$.Type === "DC_Voltage");
+							const DC_Voltage = measurements?.find(measurement => measurement.$.Type === "DC_Voltage");
 							if (DC_Voltage && DC_Voltage.$) {
-								this.setState("Power.DC1Voltage", { val: Math.round(DC_Voltage.$.Value), ack: true });
+								void this.setState("Power.DC1Voltage", {
+									val: Math.round(DC_Voltage.$.Value),
+									ack: true,
+								});
 							} else {
-								const DC_Voltage1 = measurements.find((measurement) => measurement.$.Type === "DC_Voltage1");
-								const DC_Voltage2 = measurements.find((measurement) => measurement.$.Type === "DC_Voltage2");
-								if (DC_Voltage1 && DC_Voltage1.$) this.setState("Power.DC1Voltage", { val: Math.round(DC_Voltage1.$.Value), ack: true });
-								if (DC_Voltage2 && DC_Voltage2.$) this.setState("Power.DC2Voltage", { val: Math.round(DC_Voltage2.$.Value), ack: true });
+								const DC_Voltage1 = measurements.find(measurement => measurement.$.Type === "DC_Voltage1");
+								const DC_Voltage2 = measurements.find(measurement => measurement.$.Type === "DC_Voltage2");
+								if (DC_Voltage1 && DC_Voltage1.$) {
+									void this.setState("Power.DC1Voltage", {
+										val: Math.round(DC_Voltage1.$.Value),
+										ack: true,
+									});
+								}
+								if (DC_Voltage2 && DC_Voltage2.$) {
+									void this.setState("Power.DC2Voltage", {
+										val: Math.round(DC_Voltage2.$.Value),
+										ack: true,
+									});
+								}
 							}
-							const DC_Current = measurements.find((measurement) => measurement.$.Type === "DC_Current");
+							const DC_Current = measurements.find(measurement => measurement.$.Type === "DC_Current");
 							if (DC_Current && DC_Current.$) {
-								this.setState("Power.DC1Current", { val: Math.round(1000 * DC_Current.$.Value) / 1000, ack: true });
+								void this.setState("Power.DC1Current", {
+									val: Math.round(1000 * DC_Current.$.Value) / 1000,
+									ack: true,
+								});
 							} else {
-								const DC_Current1 = measurements.find((measurement) => measurement.$.Type === "DC_Current1");
-								const DC_Current2 = measurements.find((measurement) => measurement.$.Type === "DC_Current2");
-								if (DC_Current1 && DC_Current1.$)
-									this.setState("Power.DC1Current", { val: Math.round(1000 * DC_Current1.$.Value) / 1000, ack: true });
-								if (DC_Current2 && DC_Current2.$)
-									this.setState("Power.DC2Current", { val: Math.round(1000 * DC_Current2.$.Value) / 1000, ack: true });
+								const DC_Current1 = measurements.find(measurement => measurement.$.Type === "DC_Current1");
+								const DC_Current2 = measurements.find(measurement => measurement.$.Type === "DC_Current2");
+								if (DC_Current1 && DC_Current1.$) {
+									void this.setState("Power.DC1Current", {
+										val: Math.round(1000 * DC_Current1.$.Value) / 1000,
+										ack: true,
+									});
+								}
+								if (DC_Current2 && DC_Current2.$) {
+									void this.setState("Power.DC2Current", {
+										val: Math.round(1000 * DC_Current2.$.Value) / 1000,
+										ack: true,
+									});
+								}
 							}
 							if (DC_Current && DC_Voltage) {
-								this.setState("Power.DC1Power", { val: Math.round(DC_Voltage.$.Value * DC_Current.$.Value), ack: true });
+								void this.setState("Power.DC1Power", {
+									val: Math.round(DC_Voltage.$.Value * DC_Current.$.Value),
+									ack: true,
+								});
 							} else {
-								const DC_Power1 = measurements.find((measurement) => measurement.$.Type === "DC_Power1");
-								const DC_Power2 = measurements.find((measurement) => measurement.$.Type === "DC_Power2");
-								if (DC_Power1 && DC_Power1.$) this.setState("Power.DC1Power", { val: Math.round(DC_Power1.$.Value), ack: true });
-								if (DC_Power2 && DC_Power2.$) this.setState("Power.DC2Power", { val: Math.round(DC_Power2.$.Value), ack: true });
+								const DC_Power1 = measurements.find(measurement => measurement.$.Type === "DC_Power1");
+								const DC_Power2 = measurements.find(measurement => measurement.$.Type === "DC_Power2");
+								if (DC_Power1 && DC_Power1.$) {
+									void this.setState("Power.DC1Power", {
+										val: Math.round(DC_Power1.$.Value),
+										ack: true,
+									});
+								}
+								if (DC_Power2 && DC_Power2.$) {
+									void this.setState("Power.DC2Power", {
+										val: Math.round(DC_Power2.$.Value),
+										ack: true,
+									});
+								}
 							}
-							const AC_Voltage = measurements.find((measurement) => measurement.$.Type === "AC_Voltage");
-							if (AC_Voltage && AC_Voltage.$) this.setState("Power.AC1Voltage", { val: Math.round(AC_Voltage.$.Value), ack: true });
-							const AC_Current = measurements.find((measurement) => measurement.$.Type === "AC_Current");
-							if (AC_Current && AC_Current.$) this.setState("Power.AC1Current", { val: Math.round(1000 * AC_Current.$.Value) / 1000, ack: true });
-							const AC_Power = measurements.find((measurement) => measurement.$.Type === "AC_Power");
-							if (AC_Power && AC_Power.$) this.setState("Power.AC1Power", { val: Math.round(AC_Power.$.Value), ack: true });
+							const AC_Voltage = measurements.find(measurement => measurement.$.Type === "AC_Voltage");
+							if (AC_Voltage && AC_Voltage.$) {
+								void this.setState("Power.AC1Voltage", {
+									val: Math.round(AC_Voltage.$.Value),
+									ack: true,
+								});
+							}
+							const AC_Current = measurements.find(measurement => measurement.$.Type === "AC_Current");
+							if (AC_Current && AC_Current.$) {
+								void this.setState("Power.AC1Current", {
+									val: Math.round(1000 * AC_Current.$.Value) / 1000,
+									ack: true,
+								});
+							}
+							const AC_Power = measurements.find(measurement => measurement.$.Type === "AC_Power");
+							if (AC_Power && AC_Power.$) {
+								void this.setState("Power.AC1Power", {
+									val: Math.round(AC_Power.$.Value),
+									ack: true,
+								});
+							}
 						}
 					});
 				})
-				.catch((error) => {
-					this.HandleConnectionError(error, `Piko MP API for live data`, `MP1`);
+				.catch(error => {
+					void this.HandleConnectionError(error, `Piko MP API for live data`, `MP1`);
 				});
 		} // END InverterAPIPikoMP
 	} // END ReadPiko
 
 	/****************************************************************************************
 	 * ReadPiko2 ****************************************************************************/
-	private ReadPiko2() {
+	private ReadPiko2(): void {
 		if (InverterAPIPiko) {
 			// code for Piko(-BA)
 			axios
-				.get(KostalRequest2, { timeout: 3500, transformResponse: (r) => r })
-				.then((response) => {
+				.get(KostalRequest2, { timeout: 3500, transformResponse: r => r })
+				.then(response => {
 					//.status == 200
 					// access parsed JSON response data using response.data field
 					this.log.debug(`Piko-BA live data 2 update - Kostal response data: ${response.data}`);
@@ -556,44 +702,80 @@ class KostalPikoBA extends utils.Adapter {
 						throw new Error(`Empty answear from Piko.`);
 					}
 					const result = JSON.parse(response.data).dxsEntries;
-					this.setState("Power.AC1Current", { val: result[1].value ? Math.round(1000 * result[0].value) / 1000 : 0, ack: true });
-					this.setState("Power.AC1Voltage", { val: result[1].value ? Math.round(result[1].value) : 0, ack: true });
-					this.setState("Power.AC1Power", { val: result[1].value ? Math.round(result[2].value) : 0, ack: true });
+					void this.setState("Power.AC1Current", {
+						val: result[1].value ? Math.round(1000 * result[0].value) / 1000 : 0,
+						ack: true,
+					});
+					void this.setState("Power.AC1Voltage", {
+						val: result[1].value ? Math.round(result[1].value) : 0,
+						ack: true,
+					});
+					void this.setState("Power.AC1Power", {
+						val: result[1].value ? Math.round(result[2].value) : 0,
+						ack: true,
+					});
 
-					this.setState("Power.AC2Current", { val: result[4].value ? Math.round(1000 * result[3].value) / 1000 : 0, ack: true });
-					this.setState("Power.AC2Voltage", { val: result[4].value ? Math.round(result[4].value) : 0, ack: true });
-					this.setState("Power.AC2Power", { val: result[4].value ? Math.round(result[5].value) : 0, ack: true });
+					void this.setState("Power.AC2Current", {
+						val: result[4].value ? Math.round(1000 * result[3].value) / 1000 : 0,
+						ack: true,
+					});
+					void this.setState("Power.AC2Voltage", {
+						val: result[4].value ? Math.round(result[4].value) : 0,
+						ack: true,
+					});
+					void this.setState("Power.AC2Power", {
+						val: result[4].value ? Math.round(result[5].value) : 0,
+						ack: true,
+					});
 
-					this.setState("Power.AC3Current", { val: result[7].value ? Math.round(1000 * result[6].value) / 1000 : 0, ack: true });
-					this.setState("Power.AC3Voltage", { val: result[7].value ? Math.round(result[7].value) : 0, ack: true });
-					this.setState("Power.AC3Power", { val: result[7].value ? Math.round(result[8].value) :0, ack: true });
+					void this.setState("Power.AC3Current", {
+						val: result[7].value ? Math.round(1000 * result[6].value) / 1000 : 0,
+						ack: true,
+					});
+					void this.setState("Power.AC3Voltage", {
+						val: result[7].value ? Math.round(result[7].value) : 0,
+						ack: true,
+					});
+					void this.setState("Power.AC3Power", {
+						val: result[7].value ? Math.round(result[8].value) : 0,
+						ack: true,
+					});
 
 					if (result[9].value) {
-						this.setState("Power.HouseConsumptionPhase1", { val: Math.round(result[9].value), ack: true });
-						this.setState("Power.HouseConsumptionPhase2", { val: Math.round(result[10].value), ack: true });
-						this.setState("Power.HouseConsumptionPhase3", { val: Math.round(result[11].value), ack: true });
+						void this.setState("Power.HouseConsumptionPhase1", {
+							val: Math.round(result[9].value),
+							ack: true,
+						});
+						void this.setState("Power.HouseConsumptionPhase2", {
+							val: Math.round(result[10].value),
+							ack: true,
+						});
+						void this.setState("Power.HouseConsumptionPhase3", {
+							val: Math.round(result[11].value),
+							ack: true,
+						});
 					}
 					if (this.config.readanalogs) {
-						this.setState("Inputs.Analog1", {
+						void this.setState("Inputs.Analog1", {
 							val: Math.round(100 * ((result[12].value / 10) * (this.config.normAn1Max - this.config.normAn1Min) + this.config.normAn1Min)) / 100,
 							ack: true,
 						});
-						this.setState("Inputs.Analog2", {
+						void this.setState("Inputs.Analog2", {
 							val: Math.round(100 * ((result[13].value / 10) * (this.config.normAn2Max - this.config.normAn2Min) + this.config.normAn2Min)) / 100,
 							ack: true,
 						});
-						this.setState("Inputs.Analog3", {
+						void this.setState("Inputs.Analog3", {
 							val: Math.round(100 * ((result[14].value / 10) * (this.config.normAn3Max - this.config.normAn3Min) + this.config.normAn3Min)) / 100,
 							ack: true,
 						});
-						this.setState("Inputs.Analog4", {
+						void this.setState("Inputs.Analog4", {
 							val: Math.round(100 * ((result[15].value / 10) * (this.config.normAn4Max - this.config.normAn4Min) + this.config.normAn4Min)) / 100,
 							ack: true,
 						});
 					}
 				})
-				.catch((error) => {
-					this.HandleConnectionError(error, `Piko(-BA) API for live data`, `BA2`);
+				.catch(error => {
+					void this.HandleConnectionError(error, `Piko(-BA) API for live data`, `BA2`);
 				});
 		} // END InverterAPIPiko
 
@@ -602,7 +784,8 @@ class KostalPikoBA extends utils.Adapter {
 		}
 	} // END ReadPiko2
 
-	/** ReadPikoDaily
+	/**
+	 * ReadPikoDaily
 	 * Reads daily statistics from Piko inverters and updates the corresponding states.
 	 *
 	 * This method uses the Axios library to fetch daily data from Piko inverters. It supports two types of inverters:
@@ -613,15 +796,13 @@ class KostalPikoBA extends utils.Adapter {
 	 * In case of errors, it calls `HandleConnectionError` with the appropriate parameters.
 	 *
 	 * After fetching the data, the method sets a timeout to call itself again based on the `polltimedaily` configuration.
-	 *
-	 * @method ReadPikoDaily
 	 */
-	private ReadPikoDaily() {
+	private ReadPikoDaily(): void {
 		if (InverterAPIPiko) {
 			// code for Piko(-BA)
 			axios
-				.get(KostalRequestDay, { transformResponse: (r) => r })
-				.then((response) => {
+				.get(KostalRequestDay, { transformResponse: r => r })
+				.then(response => {
 					//.status == 200
 					// access parsed JSON response data using response.data field
 					this.log.debug(`Piko-BA daily statistics update - Kostal response data: ${response.data}`);
@@ -629,14 +810,29 @@ class KostalPikoBA extends utils.Adapter {
 						throw new Error(`Empty answear from Piko.`);
 					}
 					const result = JSON.parse(response.data).dxsEntries;
-					this.setState("Statistics_Daily.SelfConsumption", { val: Math.round(result[0].value) / 1000, ack: true });
-					this.setState("Statistics_Daily.SelfConsumptionRate", { val: Math.round(result[1].value), ack: true });
-					this.setState("Statistics_Daily.Yield", { val: Math.round(result[2].value) / 1000, ack: true });
-					this.setState("Statistics_Daily.HouseConsumption", { val: Math.round(result[3].value) / 1000, ack: true });
-					this.setState("Statistics_Daily.Autarky", { val: Math.round(result[4].value), ack: true });
+					void this.setState("Statistics_Daily.SelfConsumption", {
+						val: Math.round(result[0].value) / 1000,
+						ack: true,
+					});
+					void this.setState("Statistics_Daily.SelfConsumptionRate", {
+						val: Math.round(result[1].value),
+						ack: true,
+					});
+					void this.setState("Statistics_Daily.Yield", {
+						val: Math.round(result[2].value) / 1000,
+						ack: true,
+					});
+					void this.setState("Statistics_Daily.HouseConsumption", {
+						val: Math.round(result[3].value) / 1000,
+						ack: true,
+					});
+					void this.setState("Statistics_Daily.Autarky", {
+						val: Math.round(result[4].value),
+						ack: true,
+					});
 				})
-				.catch((error) => {
-					this.HandleConnectionError(error, `Piko(-BA) API for daily statistics`, `BA3`);
+				.catch(error => {
+					void this.HandleConnectionError(error, `Piko(-BA) API for daily statistics`, `BA3`);
 				});
 		} // END InverterAPIPiko
 
@@ -654,12 +850,12 @@ class KostalPikoBA extends utils.Adapter {
 
 	/****************************************************************************************
 	 * ReadPikoTotal ************************************************************************/
-	private ReadPikoTotal() {
+	private ReadPikoTotal(): void {
 		if (InverterAPIPiko) {
 			// code for Piko(-BA)
 			axios
-				.get(KostalRequestTotal, { transformResponse: (r) => r })
-				.then((response) => {
+				.get(KostalRequestTotal, { transformResponse: r => r })
+				.then(response => {
 					//.status == 200
 					// access parsed JSON response data using response.data field
 					this.log.debug(`Piko-BA lifetime statistics updated - Kostal response data: ${response.data}`);
@@ -667,38 +863,64 @@ class KostalPikoBA extends utils.Adapter {
 						throw new Error(`Empty answear from Piko.`);
 					}
 					const result = JSON.parse(response.data).dxsEntries;
-					this.setState("Statistics_Total.SelfConsumption", { val: Math.round(result[0].value), ack: true });
-					this.setState("Statistics_Total.SelfConsumptionRate", { val: Math.round(result[1].value), ack: true });
-					this.setState("Statistics_Total.Yield", { val: Math.round(result[2].value), ack: true });
-					this.setState("Statistics_Total.HouseConsumption", { val: Math.round(result[3].value), ack: true });
-					this.setState("Statistics_Total.Autarky", { val: Math.round(result[4].value), ack: true });
-					this.setState("Statistics_Total.OperatingTime", { val: result[5].value, ack: true });
+					void this.setState("Statistics_Total.SelfConsumption", {
+						val: Math.round(result[0].value),
+						ack: true,
+					});
+					void this.setState("Statistics_Total.SelfConsumptionRate", {
+						val: Math.round(result[1].value),
+						ack: true,
+					});
+					void this.setState("Statistics_Total.Yield", {
+						val: Math.round(result[2].value),
+						ack: true,
+					});
+					void this.setState("Statistics_Total.HouseConsumption", {
+						val: Math.round(result[3].value),
+						ack: true,
+					});
+					void this.setState("Statistics_Total.Autarky", {
+						val: Math.round(result[4].value),
+						ack: true,
+					});
+					void this.setState("Statistics_Total.OperatingTime", {
+						val: result[5].value,
+						ack: true,
+					});
 					if (this.config.readbattery) {
-						this.setState("Battery.ChargeCycles", { val: result[6].value, ack: true });
+						void this.setState("Battery.ChargeCycles", {
+							val: result[6].value,
+							ack: true,
+						});
 					}
 				})
-				.catch((error) => {
-					this.HandleConnectionError(error, `Piko-(BA) API for total statistics`, `BA4`);
+				.catch(error => {
+					void this.HandleConnectionError(error, `Piko-(BA) API for total statistics`, `BA4`);
 				});
 		} // END InverterAPIPiko
 
 		if (InverterAPIPikoMP) {
 			// code for Piko MP Plus
 			axios
-				.get(`http://${this.config.ipaddress}/yields.xml`, { transformResponse: (r) => r })
-				.then((response) => {
+				.get(`http://${this.config.ipaddress}/yields.xml`, {
+					transformResponse: r => r,
+				})
+				.then(response => {
 					xml2js.parseString(response.data, (err: Error | null, result: YieldsResponse) => {
 						//xml2js.parseString(response.data, (err, result) => {
 						if (err) {
 							this.log.error(`Error when calling Piko MP API with axios for measurements info: ${err}`);
 						} else {
 							const yields = result.root.Device[0].Yields[0].Yield;
-							const yieldProduced = yields?.find((oyield) => oyield.$.Type === "Produced");
+							const yieldProduced = yields?.find(oyield => oyield.$.Type === "Produced");
 							if (yieldProduced && yieldProduced.$) {
 								if (yieldProduced.$.Slot === "Total") {
 									const yieldProducedValue = yieldProduced.YieldValue?.[0]?.$?.Value;
 									if (yieldProducedValue !== undefined) {
-										this.setState("Statistics_Total.Yield", { val: Math.round(yieldProducedValue / 1000), ack: true });
+										void this.setState("Statistics_Total.Yield", {
+											val: Math.round(yieldProducedValue / 1000),
+											ack: true,
+										});
 									}
 								} else {
 									this.log.warn(`total yield produced value not found`);
@@ -709,8 +931,8 @@ class KostalPikoBA extends utils.Adapter {
 						}
 					});
 				})
-				.catch((error) => {
-					this.HandleConnectionError(error, `Piko MP API for total statistics`, `MP4`);
+				.catch(error => {
+					void this.HandleConnectionError(error, `Piko MP API for total statistics`, `MP4`);
 				});
 		} // END InverterAPIPikoMP
 
@@ -769,7 +991,6 @@ class KostalPikoBA extends utils.Adapter {
 						// if new error
 						const Sentry = sentryInstance.getSentryObject();
 						const date = new Date();
-						// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 						Sentry &&
 							Sentry.withScope((scope: { setLevel: (arg0: string) => void; setTag: (arg0: string, arg1: number | string) => void }) => {
 								scope.setLevel("info");
@@ -779,7 +1000,10 @@ class KostalPikoBA extends utils.Adapter {
 								scope.setTag("Hour of event", date.getHours());
 								Sentry.captureMessage(`Catched error: ${stError.message}`, "info");
 							});
-						this.setState("LastSentryLoggedError", { val: stError.message, ack: true });
+						void this.setState("LastSentryLoggedError", {
+							val: stError.message,
+							ack: true,
+						});
 					}
 				}
 			}
