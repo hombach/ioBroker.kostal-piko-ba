@@ -1,8 +1,21 @@
 {
 	"common": {
 		"name": "kostal-piko-ba",
-		"version": "5.0.1",
+		"version": "5.0.2",
 		"news": {
+			"5.0.2": {
+				"en": "fix chai-as-promised\nyear 2025 changes",
+				"de": "chai-as-promised repariert\nJahr 2025 Änderungen",
+				"ru": "исправь чай, как и обещал\nизменения 2025 года",
+				"pt": "consertar chai conforme prometido\nmudanças no ano de 2025",
+				"nl": "repareer chai zoals beloofd\njaar 2025 verandert",
+				"fr": "réparer le chai comme promis\nchangements en 2025",
+				"it": "aggiusta chai-come-promesso\nanno 2025 cambia",
+				"es": "arreglar chai como prometió\ncambios del año 2025",
+				"pl": "napraw chai-tak jak obiecałem\nzmiany roku 2025",
+				"uk": "виправити чай, як обіцяно\n2025 рік зміни",
+				"zh-cn": "按承诺修复 chai\n2025年的变化"
+			},
 			"5.0.1": {
 				"en": "intruduce 'iobroker/eslint-config' (#737)",
 				"de": "'iobroker/eslint-config' einführen (#737)",
@@ -67,19 +80,6 @@
 				"pl": "konwersja adaptera na TypeScript\nprzejście na kod ES2022\nczyszczenie repozytorium\naktualizacje zależności\noptymalizacje kodu",
 				"uk": "переведення адаптера на TypeScript\nперехід на код ES2022\nочищення репозиторію\nоновлення залежностей\nоптимізація коду",
 				"zh-cn": "将适配器转换为 TypeScript\n切换到 ES2022 代码\n存储库清理\n依赖项更新\n代码优化"
-			},
-			"4.1.0": {
-				"en": "replaced deprecated ioBroker state calls\n*doku cleanup",
-				"de": "veraltete ioBroker-Zustandsaufrufe ersetzt\n*Dokumentationsbereinigung",
-				"ru": "заменены устаревшие вызовы состояний ioBroker\n*очистка документации",
-				"pt": "substituiu chamadas de estado obsoletas do ioBroker\n*limpeza de documentação",
-				"nl": "verouderde ioBroker-statusaanroepen vervangen\n*doku-opruiming",
-				"fr": "remplacement des appels d'état obsolètes de ioBroker\n*nettoyage de la documentation",
-				"it": "sostituito le chiamate di stato deprecate di ioBroker\n*pulizia della documentazione",
-				"es": "reemplazadas las llamadas de estado obsoletas de ioBroker\n*limpieza de documentación",
-				"pl": "zastąpiono przestarzałe wywołania stanów ioBroker\n*oczyszczenie dokumentacji",
-				"uk": "замінили застарілі виклики стану ioBroker\n*очищення документації",
-				"zh-cn": "替换了弃用的 ioBroker 状态调用\n*文档清理"
 			},
 			"4.0.0": {
 				"en": "BREAKING: Dropped support for Node.js 16 (#591)\nBREAKING: Minimum required js-controller version bumped to 5 (#592)\nChanged timeout settings for older Kostal inverters (#589)\nDependency updates\nAdded tests for Node.js 21\nRaised minimum poll time for daily statistics\nCode optimizations",
