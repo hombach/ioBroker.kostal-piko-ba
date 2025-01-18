@@ -11,14 +11,14 @@ updates:
     directory: "/"
     open-pull-requests-limit: 10
     schedule:
-      interval: "weekly"
+      interval: "monthly"
 
   # Maintain dependencies for npm
   - package-ecosystem: "npm"
     directory: "/"
     open-pull-requests-limit: 10
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     assignees:
       - hombach
     versioning-strategy: increase
