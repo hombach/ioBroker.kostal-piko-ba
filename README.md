@@ -55,6 +55,11 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ## Changelog
 
+### 5.0.3 (2025-02-xx) - Work in Progress
+
+- (HombachC) fix typos (#770)
+- (HombachC) bump dependencies
+
 ### 5.0.2 (2025-01-01)
 
 - (HombachC) fix chai-as-promised

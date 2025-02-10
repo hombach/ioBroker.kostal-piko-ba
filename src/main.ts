@@ -358,7 +358,7 @@ class KostalPikoBA extends utils.Adapter {
 				//.status == 200
 				// access parsed JSON response data using response.data field
 				if (!response.data) {
-					throw new Error(`Empty answear from Piko.`);
+					throw new Error(`Empty answer from Piko.`);
 				}
 				this.log.debug(`Piko-BA general info updated - Kostal response data: ${response.data}`);
 				const result = JSON.parse(response.data).dxsEntries;
@@ -439,7 +439,7 @@ class KostalPikoBA extends utils.Adapter {
 					// access parsed JSON response data using response.data field
 					this.log.debug(`Piko-BA live data 1 update - Kostal response data: ${response.data}`);
 					if (!response.data) {
-						throw new Error(`Empty answear from Piko.`);
+						throw new Error(`Empty answer from Piko.`);
 					}
 					const result = JSON.parse(response.data).dxsEntries;
 					if (result && result.length > 0) {
@@ -699,7 +699,7 @@ class KostalPikoBA extends utils.Adapter {
 					// access parsed JSON response data using response.data field
 					this.log.debug(`Piko-BA live data 2 update - Kostal response data: ${response.data}`);
 					if (!response.data) {
-						throw new Error(`Empty answear from Piko.`);
+						throw new Error(`Empty answer from Piko.`);
 					}
 					const result = JSON.parse(response.data).dxsEntries;
 					void this.setState("Power.AC1Current", {
@@ -807,7 +807,7 @@ class KostalPikoBA extends utils.Adapter {
 					// access parsed JSON response data using response.data field
 					this.log.debug(`Piko-BA daily statistics update - Kostal response data: ${response.data}`);
 					if (!response.data) {
-						throw new Error(`Empty answear from Piko.`);
+						throw new Error(`Empty answer from Piko.`);
 					}
 					const result = JSON.parse(response.data).dxsEntries;
 					void this.setState("Statistics_Daily.SelfConsumption", {
@@ -860,7 +860,7 @@ class KostalPikoBA extends utils.Adapter {
 					// access parsed JSON response data using response.data field
 					this.log.debug(`Piko-BA lifetime statistics updated - Kostal response data: ${response.data}`);
 					if (!response.data) {
-						throw new Error(`Empty answear from Piko.`);
+						throw new Error(`Empty answer from Piko.`);
 					}
 					const result = JSON.parse(response.data).dxsEntries;
 					void this.setState("Statistics_Total.SelfConsumption", {
