@@ -55,8 +55,10 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ## Changelog
 
-### 5.0.3 (2025-02-xx) - Work in Progress
+### **WORK IN PROGRESS**
 
+- (HombachC) bump @iobroker/adapter-dev to 1.4.0 (#774)
+- (HombachC) using "@alcalzone/release-script" (#772)
 - (HombachC) fix typos (#770)
 - (HombachC) bump dependencies
 
