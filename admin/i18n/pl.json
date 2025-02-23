@@ -1,0 +1,18 @@
+{
+    "LBL_AnalogTab": "Ustawienia wejść analogowych",
+    "LBL_StandardTab": "Ustawienia standardowe",
+    "LBL_ipaddress": "Adres IP Twojego Kostal Piko (np. „192.168.100.33”). Nie używaj adresów HTTP ani żadnego innego tekstu.",
+    "LBL_normAn1Max": "Maksymalna wartość dla wejścia analogowego 1 wynosi 10V",
+    "LBL_normAn1Min": "Minimalna wartość dla wejścia analogowego 1 wynosi 0V",
+    "LBL_normAn2Max": "Maksymalna wartość dla wejścia analogowego 2 wynosi 10V",
+    "LBL_normAn2Min": "Minimalna wartość dla wejścia analogowego 2 - równa 0V",
+    "LBL_normAn3Max": "Maksymalna wartość dla wejścia analogowego 3 wynosi 10V",
+    "LBL_normAn3Min": "Minimalna wartość dla wejścia analogowego 3 wynosi 0V",
+    "LBL_normAn4Max": "Maksymalna wartość dla wejścia analogowego 4 wynosi 10V",
+    "LBL_normAn4Min": "Minimalna wartość dla wejścia analogowego 4 - równa 0V",
+    "LBL_polltimedaily": "Czas pomiędzy przeglądami danych z dziennych statystyk falownika [ms]",
+    "LBL_polltimelive": "Czas pomiędzy odpytywaniem danych z falownika [ms]. Wartość minimalna: 5000.",
+    "LBL_polltimetotal": "Czas pomiędzy odpytywaniem danych ze statystyk wszechczasów falownika [ms].",
+    "LBL_readanalogs": "Odczytaj wszystkie 4 wartości wejść analogowych w woltach (0-10 V; rozdzielczość 10 bitów)",
+    "TXT_normAnalogs": "Normalizacja 0 V do wartości minimalnej i 10 V do wartości maksymalnej."
+}

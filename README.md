@@ -54,8 +54,7 @@ This adapter employs Sentry libraries to automatically report exceptions and cod
 If you enjoyed this project — or just feeling generous, consider buying me a beer. Cheers! :beers:
 
 ## Changelog
-
-### **WORK IN PROGRESS**
+### 5.0.3 (2025-02-23)
 
 - (HombachC) bump @iobroker/adapter-dev to 1.4.0 (#774)
 - (HombachC) using "@alcalzone/release-script" (#772)
@@ -82,65 +81,6 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 - (HombachC) optimize responsive design (#699)
 - (HombachC) dependency updates
-
-### 4.2.2 (2024-09-30)
-
-- (HombachC) add more Sentry triggered error handling
-- (HombachC) code optimization
-- (HombachC) update adapter core
-- (HombachC) dependency updates
-
-### 4.2.1 (2024-09-17)
-
-- (HombachC) add node.js 22 to the adapter testing (#666)
-- (HombachC) update ioBroker testing
-- (HombachC) dependency updates
-
-### 4.2.0 (2024-08-29)
-
-- (HombachC) convert adapter to TypeScript
-- (HombachC) switch to ES2022 code
-- (HombachC) migrate eslint to >9.x
-- (HombachC) repository cleanup
-- (HombachC) dependency updates
-- (HombachC) code optimizations
-
-### 4.1.3 (2024-08-13)
-
-- (HombachC) fixed vulnerability in dependency
-
-### 4.1.2 (2024-08-10)
-
-- (HombachC) optimized translation handling
-- (HombachC) hide not used configuration inputs
-
-### 4.1.1 (2024-08-09)
-
-- (HombachC) adapter checker detected optimizations (#643)
-
-### 4.1.0 (2024-08-05)
-
-- (HombachC) replaced deprecated ioBroker state calls
-- (HombachC) doku cleanup
-
-### 4.0.2 (2024-08-04)
-
-- (HombachC) added node.js 22 tests
-- (HombachC) dependency updates
-
-### 4.0.1 (2024-06-24)
-
-- (HombachC) dependency updates, removed unfunctional snyk tests
-
-### 4.0.0 (2024-04-21)
-
-- (HombachC) BREAKING: Dropped support for Node.js 16 (#591)
-- (HombachC) BREAKING: Minimum needed js-controller bumped to 5 (#592)
-- (HombachC) changed timeout settings for older Kostal inverters (#589)
-- (HombachC) dependency updates
-- (HombachC) added tests for node.js 21
-- (HombachC) raised minimum poll time for daily statistics
-- (HombachC) code optimizations
 
 ### Old Changes see [CHANGELOG OLD](CHANGELOG_OLD.md)
 

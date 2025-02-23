@@ -1,0 +1,18 @@
+{
+    "LBL_AnalogTab": "Configurações para entradas analógicas",
+    "LBL_StandardTab": "Configurações padrão",
+    "LBL_ipaddress": "Endereço IP do seu Kostal Piko (por exemplo, '192.168.100.33'). Não use endereços HTTP ou qualquer outro texto.",
+    "LBL_normAn1Max": "Valor máximo para entrada analógica 1 - igual a 10V",
+    "LBL_normAn1Min": "Valor mínimo para entrada analógica 1 - igual a 0V",
+    "LBL_normAn2Max": "Valor máximo para entrada analógica 2 - igual a 10V",
+    "LBL_normAn2Min": "Valor mínimo para entrada analógica 2 - igual a 0V",
+    "LBL_normAn3Max": "Valor máximo para entrada analógica 3 - igual a 10V",
+    "LBL_normAn3Min": "Valor mínimo para entrada analógica 3 - igual a 0V",
+    "LBL_normAn4Max": "Valor máximo para entrada analógica 4 - igual a 10V",
+    "LBL_normAn4Min": "Valor mínimo para entrada analógica 4 - igual a 0V",
+    "LBL_polltimedaily": "Tempo entre pesquisas de dados das estatísticas diárias do inversor [ms]",
+    "LBL_polltimelive": "Tempo entre pesquisas de dados do inversor [ms]. Valor mínimo: 5000.",
+    "LBL_polltimetotal": "Tempo entre pesquisas de dados das estatísticas de todos os tempos do inversor [ms].",
+    "LBL_readanalogs": "Leia todos os 4 valores de entrada analógica em volts (0-10V; resolução de 10 bits)",
+    "TXT_normAnalogs": "Normalizando 0V para o valor mínimo e 10V para o valor máximo."
+}
