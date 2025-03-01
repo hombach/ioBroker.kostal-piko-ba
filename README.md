@@ -54,6 +54,12 @@ This adapter employs Sentry libraries to automatically report exceptions and cod
 If you enjoyed this project — or just feeling generous, consider buying me a beer. Cheers! :beers:
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+
+- (HombachC) raise support for ioBroker.admin to min 7.4.10 as recommended by ioBroker (#773)
+- (HombachC) bump axios to 1.8.1 (#778)
+
 ### 5.0.3 (2025-02-23)
 
 - (HombachC) bump @iobroker/adapter-dev to 1.4.0 (#774)
