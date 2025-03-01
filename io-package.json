@@ -1,8 +1,21 @@
 {
 	"common": {
 		"name": "kostal-piko-ba",
-		"version": "5.0.3",
+		"version": "5.1.0",
 		"news": {
+			"5.1.0": {
+				"en": "raise support for ioBroker.admin to min 7.4.10 as recommended by ioBroker (#773)\nbump axios to 1.8.1 (#778)",
+				"de": "unterstützung für ioBroker.admin min 7.4.10 wie von ioBroker empfohlen (#773)\nbump axios auf 1.8.1 (#778)",
+				"ru": "поддержка ioBroker.admin tomin 7.4.10 as recommended by ioBroker (#773)\nаксиос удара до 1,8.1 (#778)",
+				"pt": "aumentar o apoio para ioBroker.admin to min 7.4.10 como recomendado por ioBroker (#773)\naxios de choque para 1.8.1 (#778)",
+				"nl": "steun voor ioBroker verhogen. ioBroker (#773)\nbump axios tot 1.8.1 (#778)",
+				"fr": "augmenter le soutien à ioBroker.admin to min 7.4.10 tel que recommandé par ioBroker (#773)\naxios de bosse à 1.8.1 (#778)",
+				"it": "aumentare il supporto per ioBroker.admin a min 7.4.10 come raccomandato da ioBroker (#773)\nurto assio a 1.8.1 (#778)",
+				"es": "aumentar el apoyo para ioBroker.admin to min 7.4.10 as recommended by ioBroker (#773)\ntope axios a 1.8.1 (#778)",
+				"pl": "zwiększenie wsparcia dla jOBroker.admin do min. 7.4.10 zgodnie z zaleceniami joBrokera (# 773)\naxios bump do 1.8.1 (# 778)",
+				"uk": "підняти підтримку ioBroker.admin до min 7.4.10 як рекомендується ioBroker (#773)\nbump axios до 1.8.1 (#778)",
+				"zh-cn": "提高对ioBroker的支持。 根据ioBroker的建议(# 773)从行政到min 7.4.10\n凸至1.8.1(# 778)"
+			},
 			"5.0.3": {
 				"en": "bump @iobroker/adapter-dev to 1.4.0 (#774)\nusing \"@alcalzone/release-script\" (#772)\nfix typos (#770)\nbump dependencies",
 				"de": "stoß @iobroker/adapter-dev zu 1.4.0 (#774)\nmit \"@alcalzone/release-script\" (#772)\nfehlerbehebung (#770)\nbumpabhängigkeiten",
@@ -80,19 +93,6 @@
 				"pl": "dodaj więcej obsługi błędów wywoływanych przez Sentry\noptymalizacja kodu\nzaktualizuj rdzeń adaptera\naktualizacje zależności",
 				"uk": "додати більше обробки помилок, спричинених Sentry\nоптимізація коду\nоновити ядро адаптера\nоновлення залежностей",
 				"zh-cn": "添加更多 Sentry 触发的错误处理\n代码优化\n更新适配器核心\n更新依赖项"
-			},
-			"4.2.0": {
-				"en": "convert adapter to TypeScript\nswitch to ES2022 code\nrepository cleanup\ndependency updates\ncode optimizations",
-				"de": "Adapter auf TypeScript umstellen\nWechsel zu ES2022-Code\nRepository-Bereinigung\nAbhängigkeits-Updates\nCode-Optimierungen",
-				"ru": "перевести адаптер на TypeScript\nпереход на код ES2022\nочистка репозитория\nобновление зависимостей\nоптимизация кода",
-				"pt": "converter adaptador para TypeScript\nmudar para o código ES2022\nlimpeza do repositório\natualizações de dependências\notimizações de código",
-				"nl": "adapter omzetten naar TypeScript\noverschakelen naar ES2022-code\nopruiming van repository\nafhankelijkheidsupdates\ncodeoptimalisaties",
-				"fr": "convertir l'adaptateur en TypeScript\npassage au code ES2022\nnettoyage du dépôt\nmises à jour des dépendances\noptimisations du code",
-				"it": "convertire l'adattatore a TypeScript\npassaggio al codice ES2022\npulizia del repository\naggiornamenti delle dipendenze\nottimizzazioni del codice",
-				"es": "convertir el adaptador a TypeScript\ncambio al código ES2022\nlimpieza del repositorio\nactualizaciones de dependencias\noptimizaciones de código",
-				"pl": "konwersja adaptera na TypeScript\nprzejście na kod ES2022\nczyszczenie repozytorium\naktualizacje zależności\noptymalizacje kodu",
-				"uk": "переведення адаптера на TypeScript\nперехід на код ES2022\nочищення репозиторію\nоновлення залежностей\nоптимізація коду",
-				"zh-cn": "将适配器转换为 TypeScript\n切换到 ES2022 代码\n存储库清理\n依赖项更新\n代码优化"
 			}
 		},
 		"titleLang": {

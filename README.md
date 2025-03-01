@@ -55,7 +55,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ## Changelog
 
-### **WORK IN PROGRESS**
+### 5.1.0 (2025-03-01)
 
 - (HombachC) raise support for ioBroker.admin to min 7.4.10 as recommended by ioBroker (#773)
 - (HombachC) bump axios to 1.8.1 (#778)
@@ -80,11 +80,6 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 - (HombachC) BREAKING: dropped support for ioBroker.admin < 7.0.0 because of ioBroker Responsive Design Initiative (#699)
 - (HombachC) switch to i18n translation (#736)
-- (HombachC) optimize responsive design (#699)
-- (HombachC) dependency updates
-
-### 4.2.3 (2024-10-20)
-
 - (HombachC) optimize responsive design (#699)
 - (HombachC) dependency updates
 

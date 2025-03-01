@@ -335,3 +335,7 @@ Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates 
 ### 0.1.0 (2020-05-15)
 
 - (HombachC) initial version
+## 4.2.3 (2024-10-20)
+
+- (HombachC) optimize responsive design (#699)
+- (HombachC) dependency updates
