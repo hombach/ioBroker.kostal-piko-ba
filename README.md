@@ -55,7 +55,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ## Changelog
 
-### **WORK IN PROGRESS**
+### 5.1.2 (2025-03-22)
 
 - (HombachC) fix vulnerability in axios (#786)
 - (HombachC) bump dependencies
@@ -80,10 +80,6 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 - (HombachC) fix chai-as-promised
 - (HombachC) year 2025 changes
-
-### 5.0.1 (2024-12-09)
-
-- (HombachC) intruduce 'iobroker/eslint-config' (#737)
 
 ### Old Changes see [CHANGELOG OLD](CHANGELOG_OLD.md)
 
