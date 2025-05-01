@@ -55,6 +55,10 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ## Changelog
 
+### **WORK IN PROGRESS**
+
+- (HombachC) bump dependencies
+
 ### 5.1.2 (2025-03-22)
 
 - (HombachC) fix vulnerability in axios (#786)
