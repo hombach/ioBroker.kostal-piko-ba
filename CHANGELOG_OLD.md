@@ -16,6 +16,11 @@ Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates 
 
 ## Changelog - OLD CHANGES
 
+### 5.0.2 (2025-01-01)
+
+- (HombachC) fix chai-as-promised
+- (HombachC) year 2025 changes
+
 ### 5.0.1 (2024-12-09)
 
 - (HombachC) intruduce 'iobroker/eslint-config' (#737)

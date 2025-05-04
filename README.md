@@ -55,7 +55,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ## Changelog
 
-### **WORK IN PROGRESS**
+### 6.0.0 (2025-05-04)
 
 - (HombachC) BREAKING: Dropped support for Node.js 18 (#797)
 - (HombachC) BREAKING: Dropped support for js-controller 5 (#797)
@@ -81,11 +81,6 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 - (HombachC) using "@alcalzone/release-script" (#772)
 - (HombachC) fix typos (#770)
 - (HombachC) bump dependencies
-
-### 5.0.2 (2025-01-01)
-
-- (HombachC) fix chai-as-promised
-- (HombachC) year 2025 changes
 
 ### Old Changes see [CHANGELOG OLD](CHANGELOG_OLD.md)
 
