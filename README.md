@@ -57,6 +57,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ### **WORK IN PROGRESS**
 
+- (HombachC) BREAKING: Dropped support for Node.js 18 (#797)
 - (HombachC) bump dependencies
 
 ### 5.1.2 (2025-03-22)
