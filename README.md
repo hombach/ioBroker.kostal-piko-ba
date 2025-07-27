@@ -58,7 +58,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 ### **WORK IN PROGRESS**
 
 - (HombachC) add test for node.js 24 (#801)
-- (HombachC) bump dependencies
+- (HombachC) bump dependency with security vulnerability
 
 ### 6.0.0 (2025-05-04)
 
