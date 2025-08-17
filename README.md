@@ -55,8 +55,14 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ## Changelog
 
+<!--
+  Placeholder for the next version (at the beginning of the line):
+  ### **WORK IN PROGRESS**
+-->
+
 ### **WORK IN PROGRESS**
 
+- (HombachC) bump TypeScript to 5.9
 - (HombachC) add test for node.js 24 (#801)
 - (HombachC) bump dependency with security vulnerability
 
