@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "6.0.0",
+    "version": "6.0.1",
     "news": {
+      "6.0.1": {
+        "en": "bump TypeScript to 5.9\nadd test for node.js 24 (#801)\nbump dependency with security vulnerability",
+        "de": "stoßartScript auf 5.9\ntest hinzufügen für node.js 24 (#801)\nstoßabhängigkeit mit sicherheitslücke",
+        "ru": "скриншоты из TypeScript 5.9\nдобавить тест для node.js 24 (#801)\nзависимость от уязвимости безопасности",
+        "pt": "tipo de colisãoScript to 5.9\nadd test for node.js 24 (# 801)\ndependência de colisão com vulnerabilidade de segurança",
+        "nl": "bump TypeScript to 5.9\ntest toevoegen voor node.js 24 (#801)\nbump afhankelijkheid met beveiligingslek",
+        "fr": "block TypeScript à 5,9\najouter l'essai pour node.js 24 (#801)\ndépendance aux chocs avec vulnérabilité à la sécurité",
+        "it": "urto TypeScript a 5.9\naggiungere test per node.js 24 (#801)\nurto dipendenza con vulnerabilità di sicurezza",
+        "es": "clip TipoScript a 5.9\nañadir prueba para node.js 24 (#801)\ndependencia de problemas con la vulnerabilidad de la seguridad",
+        "pl": "bump TypeScript do 5.9\ndodać test dla node.js 24 (# 801)\nwzrost zależności od podatności na zagrożenia",
+        "uk": "bump TypeScript до 5.9\njavascript licenses api веб-сайт go1.13.8\nдвомічна залежність з вразливістю безпеки",
+        "zh-cn": "缓冲类型脚本到 5.9\n为节点24(# 801) 添加测试\n安全脆弱性的依赖性"
+      },
       "6.0.0": {
         "en": "BREAKING: Dropped support for Node.js 18 (#797)\nBREAKING: Dropped support for js-controller 5 (#797)\nbump dependencies",
         "de": "BREAKING: Unterlassene Unterstützung für Node.js 18 (#797)\nBREAKING: Dropped-Unterstützung für js-controller 5 (#797)\nbumpabhängigkeiten",
@@ -80,19 +93,6 @@
         "pl": "napraw chai-tak jak obiecałem\nzmiany roku 2025",
         "uk": "виправити чай, як обіцяно\n2025 рік зміни",
         "zh-cn": "按承诺修复 chai\n2025年的变化"
-      },
-      "5.0.1": {
-        "en": "intruduce 'iobroker/eslint-config' (#737)",
-        "de": "'iobroker/eslint-config' einführen (#737)",
-        "ru": "ввести 'iobroker/eslint-config' (#737)",
-        "pt": "introduzir 'iobroker/eslint-config' (#737)",
-        "nl": "intruduceer 'iobroker/eslint-config' (#737)",
-        "fr": "introduire 'iobroker/eslint-config' (#737)",
-        "it": "introdurre 'iobroker/eslint-config' (#737)",
-        "es": "introducir 'iobroker/eslint-config' (#737)",
-        "pl": "wprowadź „iobroker/eslint-config” (#737)",
-        "uk": "intruduce 'iobroker/eslint-config' (#737)",
-        "zh-cn": "引入“iobroker/eslint-config”（#737）"
       }
     },
     "titleLang": {

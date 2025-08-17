@@ -16,6 +16,13 @@ Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates 
 
 ## Changelog - OLD CHANGES
 
+### 5.0.3 (2025-02-23)
+
+- (HombachC) bump @iobroker/adapter-dev to 1.4.0 (#774)
+- (HombachC) using "@alcalzone/release-script" (#772)
+- (HombachC) fix typos (#770)
+- (HombachC) bump dependencies
+
 ### 5.0.2 (2025-01-01)
 
 - (HombachC) fix chai-as-promised
@@ -30,25 +37,21 @@ Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates 
 - (HombachC) BREAKING: dropped support for ioBroker.admin < 7.0.0 because of ioBroker Responsive Design Initiative (#699)
 - (HombachC) switch to i18n translation (#736)
 - (HombachC) optimize responsive design (#699)
-- (HombachC) dependency updates
 
 ### 4.2.3 (2024-10-20)
 
 - (HombachC) optimize responsive design (#699)
-- (HombachC) dependency updates
 
 ### 4.2.2 (2024-09-30)
 
 - (HombachC) add more Sentry triggered error handling
 - (HombachC) code optimization
 - (HombachC) update adapter core
-- (HombachC) dependency updates
 
 ### 4.2.1 (2024-09-17)
 
 - (HombachC) add node.js 22 to the adapter testing (#666)
 - (HombachC) update ioBroker testing
-- (HombachC) dependency updates
 
 ### 4.2.0 (2024-08-29)
 
@@ -56,7 +59,6 @@ Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates 
 - (HombachC) switch to ES2022 code
 - (HombachC) migrate eslint to >9.x
 - (HombachC) repository cleanup
-- (HombachC) dependency updates
 - (HombachC) code optimizations
 
 ### 4.1.3 (2024-08-13)
@@ -80,7 +82,6 @@ Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates 
 ### 4.0.2 (2024-08-04)
 
 - (HombachC) added node.js 22 tests
-- (HombachC) dependency updates
 
 ### 4.0.1 (2024-06-24)
 
@@ -91,7 +92,6 @@ Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates 
 - (HombachC) BREAKING: Dropped support for Node.js 16 (#591)
 - (HombachC) BREAKING: Minimum needed js-controller bumped to 5 (#592)
 - (HombachC) changed timeout settings for older Kostal inverters (#589)
-- (HombachC) dependency updates
 - (HombachC) added tests for node.js 21
 - (HombachC) raised minimum poll time for daily statistics
 - (HombachC) code optimizations
