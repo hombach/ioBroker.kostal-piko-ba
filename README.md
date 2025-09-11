@@ -59,6 +59,12 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+- (HombachC) min admin 7.6.17 as recommended (#817)
+- (HombachC) bump dependencies
+
 ### 6.0.1 (2025-08-17)
 
 - (HombachC) bump TypeScript to 5.9
