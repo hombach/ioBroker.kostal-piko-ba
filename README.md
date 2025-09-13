@@ -62,6 +62,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ### **WORK IN PROGRESS**
 
+- (HombachC) update axios (#829)
 - (HombachC) min admin 7.6.17 as recommended (#817)
 - (HombachC) bump dependencies
 
