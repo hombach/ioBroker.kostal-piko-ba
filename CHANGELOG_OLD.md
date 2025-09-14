@@ -16,12 +16,16 @@ Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates 
 
 ## Changelog - OLD CHANGES
 
+### 5.1.0 (2025-03-01)
+
+- (HombachC) raise support for ioBroker.admin to min 7.4.10 as recommended by ioBroker (#773)
+- (HombachC) bump axios to 1.8.1 (#778)
+
 ### 5.0.3 (2025-02-23)
 
 - (HombachC) bump @iobroker/adapter-dev to 1.4.0 (#774)
 - (HombachC) using "@alcalzone/release-script" (#772)
 - (HombachC) fix typos (#770)
-- (HombachC) bump dependencies
 
 ### 5.0.2 (2025-01-01)
 
@@ -112,12 +116,10 @@ Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates 
 ### 3.0.9 (2023-12-23)
 
 - (HombachC) year 2024 changes
-- (HombachC) several dependency updates
 
 ### 3.0.8 (2023-10-29)
 
 - (HombachC) bump axios to 1.6.0 because of vulnerability
-- (HombachC) several dependency updates
 
 ### 3.0.7 (2023-10-01)
 
