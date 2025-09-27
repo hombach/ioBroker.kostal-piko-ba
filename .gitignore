@@ -120,7 +120,6 @@ dist
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
-.vscode
 .idea
 
 # yarn v2
@@ -135,3 +134,5 @@ dist
 
 # Visual Studio cache/options directory
 .vs/
+
+.commitinfo 

@@ -1,1032 +1,1021 @@
 {
-  "common": {
-    "name": "kostal-piko-ba",
-    "version": "6.0.2",
-    "news": {
-      "6.0.2": {
-        "en": "update axios (#829)\nmin admin 7.6.17 as recommended (#817)\nbump dependencies",
-        "de": "Aktualisierung von axios (#829)\nMindestens Admin 7.6.17 wird empfohlen (#817)\nAbhängigkeiten aktualisieren",
-        "ru": "обновление axios (#829)\nМинимальная версия админки 7.6.17, как рекомендовано (#817)\nобновить зависимости",
-        "pt": "atualização do axios (#829)\nmin admin 7.6.17 conforme recomendado (#817)\nAtualizar dependências",
-        "nl": "update axios (#829)\nInsteltool minimaal 7.6.17 zoals aanbevolen (#817)\nafhankelijkheden bijwerken",
-        "fr": "Mettre à jour axios (#829)\nMettre à jour Admin en version 7.6.17 recommandé (#817)\nmettre à jour les dépendances",
-        "it": "aggiornamento axios (#829)\nmin admin 7.6.17 come raccomandato (#817)\naggiornare le dipendenze",
-        "es": "actualizar axios (#829)\nSe recomienda min admin 7.6.17 (#817)\nactualizar dependencias",
-        "pl": "zaktualizuj axios (#829)\nMin admin 7.6.17 zalecane (#817)\nzwiększenie zależności",
-        "uk": "оновлення axios (#829)\nВстановлення min версії адміністратора 7.6.17 рекомендовано (#817)\nпідвищення залежностей",
-        "zh-cn": "更新axios (#829)\n按照推荐，最小版本升级为7.6.17 (#817)\n提升依赖版本"
-      },
-      "6.0.1": {
-        "en": "bump TypeScript to 5.9\nadd test for node.js 24 (#801)\nbump dependency with security vulnerability",
-        "de": "stoßartScript auf 5.9\ntest hinzufügen für node.js 24 (#801)\nstoßabhängigkeit mit sicherheitslücke",
-        "ru": "скриншоты из TypeScript 5.9\nдобавить тест для node.js 24 (#801)\nзависимость от уязвимости безопасности",
-        "pt": "tipo de colisãoScript to 5.9\nadd test for node.js 24 (# 801)\ndependência de colisão com vulnerabilidade de segurança",
-        "nl": "bump TypeScript to 5.9\ntest toevoegen voor node.js 24 (#801)\nbump afhankelijkheid met beveiligingslek",
-        "fr": "block TypeScript à 5,9\najouter l'essai pour node.js 24 (#801)\ndépendance aux chocs avec vulnérabilité à la sécurité",
-        "it": "urto TypeScript a 5.9\naggiungere test per node.js 24 (#801)\nurto dipendenza con vulnerabilità di sicurezza",
-        "es": "clip TipoScript a 5.9\nañadir prueba para node.js 24 (#801)\ndependencia de problemas con la vulnerabilidad de la seguridad",
-        "pl": "bump TypeScript do 5.9\ndodać test dla node.js 24 (# 801)\nwzrost zależności od podatności na zagrożenia",
-        "uk": "bump TypeScript до 5.9\njavascript licenses api веб-сайт go1.13.8\nдвомічна залежність з вразливістю безпеки",
-        "zh-cn": "缓冲类型脚本到 5.9\n为节点24(# 801) 添加测试\n安全脆弱性的依赖性"
-      },
-      "6.0.0": {
-        "en": "BREAKING: Dropped support for Node.js 18 (#797)\nBREAKING: Dropped support for js-controller 5 (#797)\nbump dependencies",
-        "de": "BREAKING: Unterlassene Unterstützung für Node.js 18 (#797)\nBREAKING: Dropped-Unterstützung für js-controller 5 (#797)\nbumpabhängigkeiten",
-        "ru": "Отказ от поддержки Node.js 18 (#797)\nОтказ от поддержки js-контроллера 5 (#797)\nбамп зависимости",
-        "pt": "BREAKING: Suporte para o Node.js 18 (#797)\nBREAKING: Suporte para o controlador js 5 (#797)\ndependências de choque",
-        "nl": "BREAKING: Gestopte ondersteuning voor Node.js 18 (#797)\nBREAKING: Dropped support for js-controller 5 (#797)\nbump afhankelijkheden",
-        "fr": "Soutien abandonné pour Node.js 18 (#797)\nSupport abandonné pour le contrôleur de js 5 (#797)\ndépendances des bosses",
-        "it": "BREAKING: Supporto a goccia per Node.js 18 (#797)\nBREAKING: Supporto a goccia per js-controller 5 (#797)\nindipendenza urto",
-        "es": "BREAKING: Soporte abandonado para Node.js 18 (#797)\nBREAKING: Soporte desechado para js-controller 5 (#797)\ndependencia de los gastos",
-        "pl": "BREAKING: Upuszczone wsparcie dla Node.js 18 (# 797)\nBREAKING: Utracone wsparcie dla sterownika js- 5 (# 797)\nuzależnienia od guza",
-        "uk": "BREAKING: Dropped підтримка для Node.js 18 (#797)\nBREAKING: Dropped підтримка для js-controller 5 (#797)\nbump залежності",
-        "zh-cn": "对节点18(# 797) 已放弃支持\n中断: Js 控制器 5 已放弃支持(# 797)\n意外依赖"
-      },
-      "5.1.2": {
-        "en": "fix vulnerability in axios (#786)\nbump dependencies",
-        "de": "schwachstelle in axios beheben (#786)\nbumpabhängigkeiten",
-        "ru": "исправление уязвимости в axios (#786)\nбамп зависимости",
-        "pt": "corrigir a vulnerabilidade no axios (#786)\ndependências de choque",
-        "nl": "fix kwetsbaarheid in axio's (#786)\nbump afhankelijkheden",
-        "fr": "corriger la vulnérabilité dans axios (#786)\ndépendances des bosses",
-        "it": "correzione della vulnerabilità in assios (#786)\nindipendenza urto",
-        "es": "fijar vulnerabilidad en axios (#786)\ndependencia de los gastos",
-        "pl": "naprawić wrażliwość w aksjozach (# 786)\nuzależnienia od guza",
-        "uk": "виправити вразливість в axios (#786)\nbump залежності",
-        "zh-cn": "固定轴中的脆弱性(# 786)\n意外依赖"
-      },
-      "5.1.1": {
-        "en": "bump dependencies",
-        "de": "bump Abhängigkeiten",
-        "ru": "бамп зависимости",
-        "pt": "dependências de choque",
-        "nl": "bump afhankelijkheden",
-        "fr": "dépendances des bosses",
-        "it": "indipendenza urto",
-        "es": "dependencia de los gastos",
-        "pl": "uzależnienia od guza",
-        "uk": "bump залежності",
-        "zh-cn": "意外依赖"
-      },
-      "5.1.0": {
-        "en": "raise support for ioBroker.admin to min 7.4.10 as recommended by ioBroker (#773)\nbump axios to 1.8.1 (#778)",
-        "de": "unterstützung für ioBroker.admin min 7.4.10 wie von ioBroker empfohlen (#773)\nbump axios auf 1.8.1 (#778)",
-        "ru": "поддержка ioBroker.admin tomin 7.4.10 as recommended by ioBroker (#773)\nаксиос удара до 1,8.1 (#778)",
-        "pt": "aumentar o apoio para ioBroker.admin to min 7.4.10 como recomendado por ioBroker (#773)\naxios de choque para 1.8.1 (#778)",
-        "nl": "steun voor ioBroker verhogen. ioBroker (#773)\nbump axios tot 1.8.1 (#778)",
-        "fr": "augmenter le soutien à ioBroker.admin to min 7.4.10 tel que recommandé par ioBroker (#773)\naxios de bosse à 1.8.1 (#778)",
-        "it": "aumentare il supporto per ioBroker.admin a min 7.4.10 come raccomandato da ioBroker (#773)\nurto assio a 1.8.1 (#778)",
-        "es": "aumentar el apoyo para ioBroker.admin to min 7.4.10 as recommended by ioBroker (#773)\ntope axios a 1.8.1 (#778)",
-        "pl": "zwiększenie wsparcia dla jOBroker.admin do min. 7.4.10 zgodnie z zaleceniami joBrokera (# 773)\naxios bump do 1.8.1 (# 778)",
-        "uk": "підняти підтримку ioBroker.admin до min 7.4.10 як рекомендується ioBroker (#773)\nbump axios до 1.8.1 (#778)",
-        "zh-cn": "提高对ioBroker的支持。 根据ioBroker的建议(# 773)从行政到min 7.4.10\n凸至1.8.1(# 778)"
-      },
-      "5.0.3": {
-        "en": "bump @iobroker/adapter-dev to 1.4.0 (#774)\nusing \"@alcalzone/release-script\" (#772)\nfix typos (#770)\nbump dependencies",
-        "de": "stoß @iobroker/adapter-dev zu 1.4.0 (#774)\nmit \"@alcalzone/release-script\" (#772)\nfehlerbehebung (#770)\nbumpabhängigkeiten",
-        "ru": "bump @iobroker/adapter-dev to 1.4.0 (#774)\nиспользование \"@alcalzone/releasescript\" (#772)\nфиксация опечаток (#770)\nбамп зависимости",
-        "pt": "solavanco @iobroker/adapter-dev para 1.4.0 (#774)\nusando \"@alcalzone/release-script\" (#772)\ncorrigir erros de digitação (#770)\ndependências de choque",
-        "nl": "bump @iobroker/adapter-dev naar 1.4.0 (#774)\ngebruik van \"@alcalzone/release-script\" (#772)\nfix typefouten (#770)\nbump afhankelijkheden",
-        "fr": "bosse @iobroker/adaptateur-dev à 1.4.0 (#774)\nutilisant \"@alcalzone/release-script\" (#772)\ncorriger les typos (#770)\ndépendances des bosses",
-        "it": "urto @iobroker/adapter-dev a 1.4.0 (#774)\nusando \"@alcalzone/release-script\" (#772)\ncorrezione degli errori (#770)\nindipendenza urto",
-        "es": "tope @iobroker/adapter-dev a 1.4.0 (#774)\nusando \"@alcalzone/release-script\" (#772)\ntipos de fijación (#770)\ndependencia de los gastos",
-        "pl": "bump @ iobroker / adapter- dev do 1.4.0 (# 774)\nprzy użyciu \"@ alcalzone / release- script\" (# 772)\nfix typos (# 770)\nuzależnienia od guza",
-        "uk": "bump @iobroker/adapter-dev до 1.4.0 (#774)\nвикористання \"alcalzone/видання\" (#772)\nfix typeos (#770)\nbump залежності",
-        "zh-cn": "@ iobroduc/ adapter- dev 到 1. 4. 0 (# 774)\n使用“@alcalzone/release-script”(# 772)\n固定字号( # 770)\n意外依赖"
-      }
-    },
-    "titleLang": {
-      "en": "Kostal PikoBA",
-      "de": "Kostal PikoBA",
-      "ru": "Костал ПиКОБА",
-      "pt": "Kostal PikoBA",
-      "nl": "Kostal PikoBA",
-      "fr": "Kostal PikoBA",
-      "it": "Kostal PikoBA",
-      "es": "Kostal PikoBA",
-      "pl": "Kostal PikoBA",
-      "uk": "Kostal PikoBA",
-      "zh-cn": "科斯塔尔皮科巴"
-    },
-    "desc": {
-      "en": "Adapter for reading Kostal Piko (BA) data",
-      "de": "Adapter zum Lesen von Kostal Piko (BA) Daten",
-      "ru": "Адаптер для чтения данных Kostal Piko (BA)",
-      "pt": "Adaptador para leitura de dados Kostal Piko (BA)",
-      "nl": "Adapter voor het lezen van Kostal Piko (BA) gegevens",
-      "fr": "Adaptateur pour la lecture des données Kostal Piko (BA)",
-      "it": "Adattatore per la lettura dei dati Kostal Piko (BA)",
-      "es": "Adaptador para leer datos de Kostal Piko (BA)",
-      "pl": "Adapter do odczytu danych Kostal Piko (BA)",
-      "uk": "Адаптер для читання даних Костал Піко (BA)",
-      "zh-cn": "阅读Kostal Piko BA数据"
-    },
-    "authors": [
-      "Hombach <kostal-piko-ba@homba.ch>"
-    ],
-    "keywords": [
-      "Kostal",
-      "Piko",
-      "Piko-BA",
-      "Piko MP",
-      "Piko MP plus",
-      "inverter",
-      "solar"
-    ],
-    "licenseInformation": {
-      "license": "MIT",
-      "type": "free"
-    },
-    "platform": "Javascript/Node.js",
-    "icon": "picoba.png",
-    "enabled": true,
-    "extIcon": "https://raw.githubusercontent.com/Hombach/ioBroker.kostal-piko-ba/master/admin/picoba.png",
-    "readme": "https://github.com/Hombach/ioBroker.kostal-piko-ba/blob/master/README.md",
-    "loglevel": "info",
-    "tier": 2,
-    "mode": "daemon",
-    "messagebox": true,
-    "allowInit": true,
-    "type": "energy",
-    "compact": true,
-    "connectionType": "local",
-    "dataSource": "poll",
-    "adminUI": {
-      "config": "json"
-    },
-    "dependencies": [
-      {
-        "js-controller": ">=6.0.11"
-      }
-    ],
-    "globalDependencies": [
-      {
-        "admin": ">=7.6.17"
-      }
-    ],
-    "plugins": {
-      "sentry": {
-        "dsn": "https://8d5efc328e36ebb90292e20d5e1be95b@o415875.ingest.sentry.io/4505778454134784"
-      }
-    },
-    "supportCustoms": false
-  },
-  "native": {
-    "ipaddress": "",
-    "polltimelive": 10000,
-    "polltimedaily": 60000,
-    "polltimetotal": 200000,
-    "readanalogs": false,
-    "readbattery": true,
-    "normAn1Max": 10,
-    "normAn1Min": 0,
-    "normAn2Max": 10,
-    "normAn2Min": 0,
-    "normAn3Max": 10,
-    "normAn3Min": 0,
-    "normAn4Max": 10,
-    "normAn4Min": 0
-  },
-  "objects": [],
-  "instanceObjects": [
-    {
-      "_id": "info",
-      "type": "channel",
-      "common": {
-        "name": "Information"
-      },
-      "native": {}
-    },
-    {
-      "_id": "info.connection",
-      "type": "state",
-      "common": {
-        "role": "indicator.connected",
-        "name": "Device or service connected",
-        "type": "boolean",
-        "read": true,
-        "write": false,
-        "def": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "State",
-      "type": "state",
-      "common": {
-        "role": "value.state",
-        "name": "Inverter state; 0:off; 3:feed grid(MPP)",
-        "type": "number",
-        "unit": "",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "StateAsString",
-      "type": "state",
-      "common": {
-        "role": "info.status",
-        "name": "Inverter state string",
-        "type": "string",
-        "unit": "",
-        "read": true,
-        "write": false,
-        "def": "unknown"
-      },
-      "native": {}
-    },
-    {
-      "_id": "GridLimitation",
-      "type": "state",
-      "common": {
-        "role": "value",
-        "name": "Power limit of inverter by grid parameters",
-        "type": "number",
-        "unit": "%",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "LastSentryLogDay",
-      "type": "state",
-      "common": {
-        "role": "value",
-        "name": "Last day of month for Sentry log",
-        "type": "number",
-        "unit": "",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "LastSentryLoggedError",
-      "type": "state",
-      "common": {
-        "role": "value",
-        "name": "Last error sent by Sentry log",
-        "type": "string",
-        "unit": "",
-        "read": true,
-        "write": false,
-        "def": "unknown"
-      },
-      "native": {}
-    },
-    {
-      "_id": "Info",
-      "type": "channel",
-      "common": {
-        "name": "general inverter information"
-      },
-      "native": {}
-    },
-    {
-      "_id": "Info.InverterName",
-      "type": "state",
-      "common": {
-        "role": "value",
-        "name": "Inverter name",
-        "type": "string",
-        "unit": "",
-        "read": true,
-        "write": false,
-        "def": "unknown"
-      },
-      "native": {}
-    },
-    {
-      "_id": "Info.InverterType",
-      "type": "state",
-      "common": {
-        "role": "value",
-        "name": "Inverter type",
-        "type": "string",
-        "unit": "",
-        "read": true,
-        "write": false,
-        "def": "unknown"
-      },
-      "native": {}
-    },
-    {
-      "_id": "Info.InverterUIVersion",
-      "type": "state",
-      "common": {
-        "role": "value",
-        "name": "Inverter UI version",
-        "type": "string",
-        "unit": "",
-        "read": true,
-        "write": false,
-        "def": "unknown"
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power",
-      "type": "channel",
-      "common": {
-        "name": "current inverter power data"
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.GridAC",
-      "type": "state",
-      "common": {
-        "role": "value.power",
-        "name": "Grid output power excluding battery charging",
-        "type": "number",
-        "unit": "W",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.SolarDC",
-      "type": "state",
-      "common": {
-        "role": "value.power",
-        "name": "Total solar input power",
-        "type": "number",
-        "unit": "W",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.DC1Power",
-      "type": "state",
-      "common": {
-        "role": "value.power",
-        "name": "Solar input power 1",
-        "type": "number",
-        "unit": "W",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.DC1Current",
-      "type": "state",
-      "common": {
-        "role": "value.current",
-        "name": "Solar input current 1",
-        "type": "number",
-        "unit": "A",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.DC1Voltage",
-      "type": "state",
-      "common": {
-        "role": "value.voltage",
-        "name": "Solar input voltage 1",
-        "type": "number",
-        "unit": "V",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.DC2Power",
-      "type": "state",
-      "common": {
-        "role": "value.power",
-        "name": "Solar input power 2",
-        "type": "number",
-        "unit": "W",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.DC2Current",
-      "type": "state",
-      "common": {
-        "role": "value.current",
-        "name": "Solar input current 2",
-        "type": "number",
-        "unit": "A",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.DC2Voltage",
-      "type": "state",
-      "common": {
-        "role": "value.voltage",
-        "name": "Solar input voltage 2",
-        "type": "number",
-        "unit": "V",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.DC3Power",
-      "type": "state",
-      "common": {
-        "role": "value.power",
-        "name": "Solar input power 3",
-        "type": "number",
-        "unit": "W",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.DC3Current",
-      "type": "state",
-      "common": {
-        "role": "value.current",
-        "name": "Solar input current 3",
-        "type": "number",
-        "unit": "A",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.DC3Voltage",
-      "type": "state",
-      "common": {
-        "role": "value.voltage",
-        "name": "Solar input voltage 3",
-        "type": "number",
-        "unit": "V",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.SelfConsumption",
-      "type": "state",
-      "common": {
-        "role": "value.power.consumption",
-        "name": "Selfconsumption Power",
-        "type": "number",
-        "unit": "W",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.HouseConsumption",
-      "type": "state",
-      "common": {
-        "role": "value.power.consumption",
-        "name": "Powerconsumption of house",
-        "type": "number",
-        "unit": "W",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.HouseConsumptionPhase1",
-      "type": "state",
-      "common": {
-        "role": "value.power.consumption",
-        "name": "Powerconsumption of house on phase 1",
-        "type": "number",
-        "unit": "W",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.HouseConsumptionPhase2",
-      "type": "state",
-      "common": {
-        "role": "value.power.consumption",
-        "name": "Powerconsumption of house on phase 2",
-        "type": "number",
-        "unit": "W",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.HouseConsumptionPhase3",
-      "type": "state",
-      "common": {
-        "role": "value.power.consumption",
-        "name": "Powerconsumption of house on phase 3",
-        "type": "number",
-        "unit": "W",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.Surplus",
-      "type": "state",
-      "common": {
-        "role": "value.power",
-        "name": "Power surplus of system",
-        "type": "number",
-        "unit": "W",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.AC1Power",
-      "type": "state",
-      "common": {
-        "role": "value.power",
-        "name": "Grid output power phase 1",
-        "type": "number",
-        "unit": "W",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.AC1Current",
-      "type": "state",
-      "common": {
-        "role": "value.current",
-        "name": "Grid output current phase 1",
-        "type": "number",
-        "unit": "A",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.AC1Voltage",
-      "type": "state",
-      "common": {
-        "role": "value.voltage",
-        "name": "Grid voltage phase 1",
-        "type": "number",
-        "unit": "V",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.AC2Power",
-      "type": "state",
-      "common": {
-        "role": "value.power",
-        "name": "Grid output power phase 2",
-        "type": "number",
-        "unit": "W",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.AC2Current",
-      "type": "state",
-      "common": {
-        "role": "value.current",
-        "name": "Grid output current phase 2",
-        "type": "number",
-        "unit": "A",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.AC2Voltage",
-      "type": "state",
-      "common": {
-        "role": "value.voltage",
-        "name": "Grid voltage phase 2",
-        "type": "number",
-        "unit": "V",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.AC3Power",
-      "type": "state",
-      "common": {
-        "role": "value.power",
-        "name": "Grid output power phase 3",
-        "type": "number",
-        "unit": "W",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.AC3Current",
-      "type": "state",
-      "common": {
-        "role": "value.current",
-        "name": "Grid output current phase 3",
-        "type": "number",
-        "unit": "A",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Power.AC3Voltage",
-      "type": "state",
-      "common": {
-        "role": "value.voltage",
-        "name": "Grid voltage phase 3",
-        "type": "number",
-        "unit": "V",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Statistics_Daily",
-      "type": "channel",
-      "common": {
-        "name": "statistical data daily"
-      },
-      "native": {}
-    },
-    {
-      "_id": "Statistics_Daily.Yield",
-      "type": "state",
-      "common": {
-        "role": "value",
-        "name": "Total yield today",
-        "type": "number",
-        "unit": "kWh",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Statistics_Daily.HouseConsumption",
-      "type": "state",
-      "common": {
-        "role": "value.power.consumption",
-        "name": "Total consumption house today",
-        "type": "number",
-        "unit": "kWh",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Statistics_Daily.SelfConsumption",
-      "type": "state",
-      "common": {
-        "role": "value.power.consumption",
-        "name": "Total selfconsumption today",
-        "type": "number",
-        "unit": "kWh",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Statistics_Daily.SelfConsumptionRate",
-      "type": "state",
-      "common": {
-        "role": "value",
-        "name": "Rate of selfconsumption today",
-        "type": "number",
-        "unit": "%",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Statistics_Daily.Autarky",
-      "type": "state",
-      "common": {
-        "role": "value",
-        "name": "Degree of autarky today",
-        "type": "number",
-        "unit": "%",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Statistics_Total",
-      "type": "channel",
-      "common": {
-        "name": "statistical data total lifetime"
-      },
-      "native": {}
-    },
-    {
-      "_id": "Statistics_Total.OperatingTime",
-      "type": "state",
-      "common": {
-        "role": "value.time",
-        "name": "Total time of inverter operation",
-        "type": "number",
-        "unit": "h",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Statistics_Total.Yield",
-      "type": "state",
-      "common": {
-        "role": "value",
-        "name": "Total yield of inverter lifetime",
-        "type": "number",
-        "unit": "kWh",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Statistics_Total.HouseConsumption",
-      "type": "state",
-      "common": {
-        "role": "value.power.consumption",
-        "name": "Total consumption of house in inverter lifetime",
-        "type": "number",
-        "unit": "kWh",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Statistics_Total.SelfConsumption",
-      "type": "state",
-      "common": {
-        "role": "value.power.consumption",
-        "name": "Total selfconsumption in inverter lifetime",
-        "type": "number",
-        "unit": "kWh",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Statistics_Total.SelfConsumptionRate",
-      "type": "state",
-      "common": {
-        "role": "value",
-        "name": "Rate of selfconsumption in inverter lifetime",
-        "type": "number",
-        "unit": "%",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Statistics_Total.Autarky",
-      "type": "state",
-      "common": {
-        "role": "value",
-        "name": "Degree of autarky in inverter lifetime",
-        "type": "number",
-        "unit": "%",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Battery",
-      "type": "channel",
-      "common": {
-        "name": "Battery data"
-      },
-      "native": {}
-    },
-    {
-      "_id": "Battery.Temperature",
-      "type": "state",
-      "common": {
-        "role": "value.temperature",
-        "name": "Battery Temperature",
-        "type": "number",
-        "unit": "°C",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Battery.SoC",
-      "type": "state",
-      "common": {
-        "role": "value.battery",
-        "name": "Battery State of Charge",
-        "type": "number",
-        "unit": "%",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Battery.Current",
-      "type": "state",
-      "common": {
-        "role": "value.current",
-        "name": "Battery current; <0 => charge; >0 => discharge",
-        "type": "number",
-        "unit": "A",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Battery.Voltage",
-      "type": "state",
-      "common": {
-        "role": "value.voltage",
-        "name": "Battery voltage",
-        "type": "number",
-        "unit": "V",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Battery.Power",
-      "type": "state",
-      "common": {
-        "role": "value.power",
-        "name": "Battery power; <0 => charge; >0 => discharge",
-        "type": "number",
-        "unit": "W",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Battery.ChargeCycles",
-      "type": "state",
-      "common": {
-        "role": "value.count",
-        "name": "Battery Full Charge Cycles",
-        "type": "number",
-        "unit": "",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Inputs",
-      "type": "channel",
-      "common": {
-        "name": "Input values"
-      },
-      "native": {}
-    },
-    {
-      "_id": "Inputs.Analog1",
-      "type": "state",
-      "common": {
-        "role": "value.voltage",
-        "name": "Analog input 1 voltage",
-        "type": "number",
-        "unit": "V",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Inputs.Analog2",
-      "type": "state",
-      "common": {
-        "role": "value.voltage",
-        "name": "Analog input 2 voltage",
-        "type": "number",
-        "unit": "V",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Inputs.Analog3",
-      "type": "state",
-      "common": {
-        "role": "value.voltage",
-        "name": "Analog input 3 voltage",
-        "type": "number",
-        "unit": "V",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "Inputs.Analog4",
-      "type": "state",
-      "common": {
-        "role": "value.voltage",
-        "name": "Analog input 4 voltage",
-        "type": "number",
-        "unit": "V",
-        "read": true,
-        "write": false,
-        "def": 0
-      },
-      "native": {}
-    }
-  ]
+	"common": {
+		"name": "kostal-piko-ba",
+		"version": "6.0.2",
+		"news": {
+			"6.0.2": {
+				"en": "update axios (#829)\nmin admin 7.6.17 as recommended (#817)\nbump dependencies",
+				"de": "Aktualisierung von axios (#829)\nMindestens Admin 7.6.17 wird empfohlen (#817)\nAbhängigkeiten aktualisieren",
+				"ru": "обновление axios (#829)\nМинимальная версия админки 7.6.17, как рекомендовано (#817)\nобновить зависимости",
+				"pt": "atualização do axios (#829)\nmin admin 7.6.17 conforme recomendado (#817)\nAtualizar dependências",
+				"nl": "update axios (#829)\nInsteltool minimaal 7.6.17 zoals aanbevolen (#817)\nafhankelijkheden bijwerken",
+				"fr": "Mettre à jour axios (#829)\nMettre à jour Admin en version 7.6.17 recommandé (#817)\nmettre à jour les dépendances",
+				"it": "aggiornamento axios (#829)\nmin admin 7.6.17 come raccomandato (#817)\naggiornare le dipendenze",
+				"es": "actualizar axios (#829)\nSe recomienda min admin 7.6.17 (#817)\nactualizar dependencias",
+				"pl": "zaktualizuj axios (#829)\nMin admin 7.6.17 zalecane (#817)\nzwiększenie zależności",
+				"uk": "оновлення axios (#829)\nВстановлення min версії адміністратора 7.6.17 рекомендовано (#817)\nпідвищення залежностей",
+				"zh-cn": "更新axios (#829)\n按照推荐，最小版本升级为7.6.17 (#817)\n提升依赖版本"
+			},
+			"6.0.1": {
+				"en": "bump TypeScript to 5.9\nadd test for node.js 24 (#801)\nbump dependency with security vulnerability",
+				"de": "stoßartScript auf 5.9\ntest hinzufügen für node.js 24 (#801)\nstoßabhängigkeit mit sicherheitslücke",
+				"ru": "скриншоты из TypeScript 5.9\nдобавить тест для node.js 24 (#801)\nзависимость от уязвимости безопасности",
+				"pt": "tipo de colisãoScript to 5.9\nadd test for node.js 24 (# 801)\ndependência de colisão com vulnerabilidade de segurança",
+				"nl": "bump TypeScript to 5.9\ntest toevoegen voor node.js 24 (#801)\nbump afhankelijkheid met beveiligingslek",
+				"fr": "block TypeScript à 5,9\najouter l'essai pour node.js 24 (#801)\ndépendance aux chocs avec vulnérabilité à la sécurité",
+				"it": "urto TypeScript a 5.9\naggiungere test per node.js 24 (#801)\nurto dipendenza con vulnerabilità di sicurezza",
+				"es": "clip TipoScript a 5.9\nañadir prueba para node.js 24 (#801)\ndependencia de problemas con la vulnerabilidad de la seguridad",
+				"pl": "bump TypeScript do 5.9\ndodać test dla node.js 24 (# 801)\nwzrost zależności od podatności na zagrożenia",
+				"uk": "bump TypeScript до 5.9\njavascript licenses api веб-сайт go1.13.8\nдвомічна залежність з вразливістю безпеки",
+				"zh-cn": "缓冲类型脚本到 5.9\n为节点24(# 801) 添加测试\n安全脆弱性的依赖性"
+			},
+			"6.0.0": {
+				"en": "BREAKING: Dropped support for Node.js 18 (#797)\nBREAKING: Dropped support for js-controller 5 (#797)\nbump dependencies",
+				"de": "BREAKING: Unterlassene Unterstützung für Node.js 18 (#797)\nBREAKING: Dropped-Unterstützung für js-controller 5 (#797)\nbumpabhängigkeiten",
+				"ru": "Отказ от поддержки Node.js 18 (#797)\nОтказ от поддержки js-контроллера 5 (#797)\nбамп зависимости",
+				"pt": "BREAKING: Suporte para o Node.js 18 (#797)\nBREAKING: Suporte para o controlador js 5 (#797)\ndependências de choque",
+				"nl": "BREAKING: Gestopte ondersteuning voor Node.js 18 (#797)\nBREAKING: Dropped support for js-controller 5 (#797)\nbump afhankelijkheden",
+				"fr": "Soutien abandonné pour Node.js 18 (#797)\nSupport abandonné pour le contrôleur de js 5 (#797)\ndépendances des bosses",
+				"it": "BREAKING: Supporto a goccia per Node.js 18 (#797)\nBREAKING: Supporto a goccia per js-controller 5 (#797)\nindipendenza urto",
+				"es": "BREAKING: Soporte abandonado para Node.js 18 (#797)\nBREAKING: Soporte desechado para js-controller 5 (#797)\ndependencia de los gastos",
+				"pl": "BREAKING: Upuszczone wsparcie dla Node.js 18 (# 797)\nBREAKING: Utracone wsparcie dla sterownika js- 5 (# 797)\nuzależnienia od guza",
+				"uk": "BREAKING: Dropped підтримка для Node.js 18 (#797)\nBREAKING: Dropped підтримка для js-controller 5 (#797)\nbump залежності",
+				"zh-cn": "对节点18(# 797) 已放弃支持\n中断: Js 控制器 5 已放弃支持(# 797)\n意外依赖"
+			},
+			"5.1.2": {
+				"en": "fix vulnerability in axios (#786)\nbump dependencies",
+				"de": "schwachstelle in axios beheben (#786)\nbumpabhängigkeiten",
+				"ru": "исправление уязвимости в axios (#786)\nбамп зависимости",
+				"pt": "corrigir a vulnerabilidade no axios (#786)\ndependências de choque",
+				"nl": "fix kwetsbaarheid in axio's (#786)\nbump afhankelijkheden",
+				"fr": "corriger la vulnérabilité dans axios (#786)\ndépendances des bosses",
+				"it": "correzione della vulnerabilità in assios (#786)\nindipendenza urto",
+				"es": "fijar vulnerabilidad en axios (#786)\ndependencia de los gastos",
+				"pl": "naprawić wrażliwość w aksjozach (# 786)\nuzależnienia od guza",
+				"uk": "виправити вразливість в axios (#786)\nbump залежності",
+				"zh-cn": "固定轴中的脆弱性(# 786)\n意外依赖"
+			},
+			"5.1.1": {
+				"en": "bump dependencies",
+				"de": "bump Abhängigkeiten",
+				"ru": "бамп зависимости",
+				"pt": "dependências de choque",
+				"nl": "bump afhankelijkheden",
+				"fr": "dépendances des bosses",
+				"it": "indipendenza urto",
+				"es": "dependencia de los gastos",
+				"pl": "uzależnienia od guza",
+				"uk": "bump залежності",
+				"zh-cn": "意外依赖"
+			},
+			"5.1.0": {
+				"en": "raise support for ioBroker.admin to min 7.4.10 as recommended by ioBroker (#773)\nbump axios to 1.8.1 (#778)",
+				"de": "unterstützung für ioBroker.admin min 7.4.10 wie von ioBroker empfohlen (#773)\nbump axios auf 1.8.1 (#778)",
+				"ru": "поддержка ioBroker.admin tomin 7.4.10 as recommended by ioBroker (#773)\nаксиос удара до 1,8.1 (#778)",
+				"pt": "aumentar o apoio para ioBroker.admin to min 7.4.10 como recomendado por ioBroker (#773)\naxios de choque para 1.8.1 (#778)",
+				"nl": "steun voor ioBroker verhogen. ioBroker (#773)\nbump axios tot 1.8.1 (#778)",
+				"fr": "augmenter le soutien à ioBroker.admin to min 7.4.10 tel que recommandé par ioBroker (#773)\naxios de bosse à 1.8.1 (#778)",
+				"it": "aumentare il supporto per ioBroker.admin a min 7.4.10 come raccomandato da ioBroker (#773)\nurto assio a 1.8.1 (#778)",
+				"es": "aumentar el apoyo para ioBroker.admin to min 7.4.10 as recommended by ioBroker (#773)\ntope axios a 1.8.1 (#778)",
+				"pl": "zwiększenie wsparcia dla jOBroker.admin do min. 7.4.10 zgodnie z zaleceniami joBrokera (# 773)\naxios bump do 1.8.1 (# 778)",
+				"uk": "підняти підтримку ioBroker.admin до min 7.4.10 як рекомендується ioBroker (#773)\nbump axios до 1.8.1 (#778)",
+				"zh-cn": "提高对ioBroker的支持。 根据ioBroker的建议(# 773)从行政到min 7.4.10\n凸至1.8.1(# 778)"
+			},
+			"5.0.3": {
+				"en": "bump @iobroker/adapter-dev to 1.4.0 (#774)\nusing \"@alcalzone/release-script\" (#772)\nfix typos (#770)\nbump dependencies",
+				"de": "stoß @iobroker/adapter-dev zu 1.4.0 (#774)\nmit \"@alcalzone/release-script\" (#772)\nfehlerbehebung (#770)\nbumpabhängigkeiten",
+				"ru": "bump @iobroker/adapter-dev to 1.4.0 (#774)\nиспользование \"@alcalzone/releasescript\" (#772)\nфиксация опечаток (#770)\nбамп зависимости",
+				"pt": "solavanco @iobroker/adapter-dev para 1.4.0 (#774)\nusando \"@alcalzone/release-script\" (#772)\ncorrigir erros de digitação (#770)\ndependências de choque",
+				"nl": "bump @iobroker/adapter-dev naar 1.4.0 (#774)\ngebruik van \"@alcalzone/release-script\" (#772)\nfix typefouten (#770)\nbump afhankelijkheden",
+				"fr": "bosse @iobroker/adaptateur-dev à 1.4.0 (#774)\nutilisant \"@alcalzone/release-script\" (#772)\ncorriger les typos (#770)\ndépendances des bosses",
+				"it": "urto @iobroker/adapter-dev a 1.4.0 (#774)\nusando \"@alcalzone/release-script\" (#772)\ncorrezione degli errori (#770)\nindipendenza urto",
+				"es": "tope @iobroker/adapter-dev a 1.4.0 (#774)\nusando \"@alcalzone/release-script\" (#772)\ntipos de fijación (#770)\ndependencia de los gastos",
+				"pl": "bump @ iobroker / adapter- dev do 1.4.0 (# 774)\nprzy użyciu \"@ alcalzone / release- script\" (# 772)\nfix typos (# 770)\nuzależnienia od guza",
+				"uk": "bump @iobroker/adapter-dev до 1.4.0 (#774)\nвикористання \"alcalzone/видання\" (#772)\nfix typeos (#770)\nbump залежності",
+				"zh-cn": "@ iobroduc/ adapter- dev 到 1. 4. 0 (# 774)\n使用“@alcalzone/release-script”(# 772)\n固定字号( # 770)\n意外依赖"
+			}
+		},
+		"titleLang": {
+			"en": "Kostal PikoBA",
+			"de": "Kostal PikoBA",
+			"ru": "Костал ПиКОБА",
+			"pt": "Kostal PikoBA",
+			"nl": "Kostal PikoBA",
+			"fr": "Kostal PikoBA",
+			"it": "Kostal PikoBA",
+			"es": "Kostal PikoBA",
+			"pl": "Kostal PikoBA",
+			"uk": "Kostal PikoBA",
+			"zh-cn": "科斯塔尔皮科巴"
+		},
+		"desc": {
+			"en": "Adapter for reading Kostal Piko (BA) data",
+			"de": "Adapter zum Lesen von Kostal Piko (BA) Daten",
+			"ru": "Адаптер для чтения данных Kostal Piko (BA)",
+			"pt": "Adaptador para leitura de dados Kostal Piko (BA)",
+			"nl": "Adapter voor het lezen van Kostal Piko (BA) gegevens",
+			"fr": "Adaptateur pour la lecture des données Kostal Piko (BA)",
+			"it": "Adattatore per la lettura dei dati Kostal Piko (BA)",
+			"es": "Adaptador para leer datos de Kostal Piko (BA)",
+			"pl": "Adapter do odczytu danych Kostal Piko (BA)",
+			"uk": "Адаптер для читання даних Костал Піко (BA)",
+			"zh-cn": "阅读Kostal Piko BA数据"
+		},
+		"authors": ["Hombach <kostal-piko-ba@homba.ch>"],
+		"keywords": ["Kostal", "Piko", "Piko-BA", "Piko MP", "Piko MP plus", "inverter", "solar"],
+		"licenseInformation": {
+			"license": "MIT",
+			"type": "free"
+		},
+		"platform": "Javascript/Node.js",
+		"icon": "picoba.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/Hombach/ioBroker.kostal-piko-ba/master/admin/picoba.png",
+		"readme": "https://github.com/Hombach/ioBroker.kostal-piko-ba/blob/master/README.md",
+		"loglevel": "info",
+		"tier": 2,
+		"mode": "daemon",
+		"messagebox": true,
+		"type": "energy",
+		"compact": true,
+		"connectionType": "local",
+		"dataSource": "poll",
+		"adminUI": {
+			"config": "json"
+		},
+		"dependencies": [
+			{
+				"js-controller": ">=6.0.11"
+			}
+		],
+		"globalDependencies": [
+			{
+				"admin": ">=7.6.17"
+			}
+		],
+		"plugins": {
+			"sentry": {
+				"dsn": "https://8d5efc328e36ebb90292e20d5e1be95b@o415875.ingest.sentry.io/4505778454134784"
+			}
+		},
+		"supportCustoms": false
+	},
+	"native": {
+		"ipaddress": "",
+		"polltimelive": 10000,
+		"polltimedaily": 60000,
+		"polltimetotal": 200000,
+		"readanalogs": false,
+		"readbattery": true,
+		"normAn1Max": 10,
+		"normAn1Min": 0,
+		"normAn2Max": 10,
+		"normAn2Min": 0,
+		"normAn3Max": 10,
+		"normAn3Min": 0,
+		"normAn4Max": 10,
+		"normAn4Min": 0
+	},
+	"objects": [],
+	"instanceObjects": [
+		{
+			"_id": "info",
+			"type": "channel",
+			"common": {
+				"name": "Information"
+			},
+			"native": {}
+		},
+		{
+			"_id": "info.connection",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "Device or service connected",
+				"type": "boolean",
+				"read": true,
+				"write": false,
+				"def": false
+			},
+			"native": {}
+		},
+		{
+			"_id": "State",
+			"type": "state",
+			"common": {
+				"role": "value.state",
+				"name": "Inverter state; 0:off; 3:feed grid(MPP)",
+				"type": "number",
+				"unit": "",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "StateAsString",
+			"type": "state",
+			"common": {
+				"role": "info.status",
+				"name": "Inverter state string",
+				"type": "string",
+				"unit": "",
+				"read": true,
+				"write": false,
+				"def": "unknown"
+			},
+			"native": {}
+		},
+		{
+			"_id": "GridLimitation",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Power limit of inverter by grid parameters",
+				"type": "number",
+				"unit": "%",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "LastSentryLogDay",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Last day of month for Sentry log",
+				"type": "number",
+				"unit": "",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "LastSentryLoggedError",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Last error sent by Sentry log",
+				"type": "string",
+				"unit": "",
+				"read": true,
+				"write": false,
+				"def": "unknown"
+			},
+			"native": {}
+		},
+		{
+			"_id": "Info",
+			"type": "channel",
+			"common": {
+				"name": "general inverter information"
+			},
+			"native": {}
+		},
+		{
+			"_id": "Info.InverterName",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Inverter name",
+				"type": "string",
+				"unit": "",
+				"read": true,
+				"write": false,
+				"def": "unknown"
+			},
+			"native": {}
+		},
+		{
+			"_id": "Info.InverterType",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Inverter type",
+				"type": "string",
+				"unit": "",
+				"read": true,
+				"write": false,
+				"def": "unknown"
+			},
+			"native": {}
+		},
+		{
+			"_id": "Info.InverterUIVersion",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Inverter UI version",
+				"type": "string",
+				"unit": "",
+				"read": true,
+				"write": false,
+				"def": "unknown"
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power",
+			"type": "channel",
+			"common": {
+				"name": "current inverter power data"
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.GridAC",
+			"type": "state",
+			"common": {
+				"role": "value.power",
+				"name": "Grid output power excluding battery charging",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.SolarDC",
+			"type": "state",
+			"common": {
+				"role": "value.power",
+				"name": "Total solar input power",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.DC1Power",
+			"type": "state",
+			"common": {
+				"role": "value.power",
+				"name": "Solar input power 1",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.DC1Current",
+			"type": "state",
+			"common": {
+				"role": "value.current",
+				"name": "Solar input current 1",
+				"type": "number",
+				"unit": "A",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.DC1Voltage",
+			"type": "state",
+			"common": {
+				"role": "value.voltage",
+				"name": "Solar input voltage 1",
+				"type": "number",
+				"unit": "V",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.DC2Power",
+			"type": "state",
+			"common": {
+				"role": "value.power",
+				"name": "Solar input power 2",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.DC2Current",
+			"type": "state",
+			"common": {
+				"role": "value.current",
+				"name": "Solar input current 2",
+				"type": "number",
+				"unit": "A",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.DC2Voltage",
+			"type": "state",
+			"common": {
+				"role": "value.voltage",
+				"name": "Solar input voltage 2",
+				"type": "number",
+				"unit": "V",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.DC3Power",
+			"type": "state",
+			"common": {
+				"role": "value.power",
+				"name": "Solar input power 3",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.DC3Current",
+			"type": "state",
+			"common": {
+				"role": "value.current",
+				"name": "Solar input current 3",
+				"type": "number",
+				"unit": "A",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.DC3Voltage",
+			"type": "state",
+			"common": {
+				"role": "value.voltage",
+				"name": "Solar input voltage 3",
+				"type": "number",
+				"unit": "V",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.SelfConsumption",
+			"type": "state",
+			"common": {
+				"role": "value.power.consumption",
+				"name": "Selfconsumption Power",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.HouseConsumption",
+			"type": "state",
+			"common": {
+				"role": "value.power.consumption",
+				"name": "Powerconsumption of house",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.HouseConsumptionPhase1",
+			"type": "state",
+			"common": {
+				"role": "value.power.consumption",
+				"name": "Powerconsumption of house on phase 1",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.HouseConsumptionPhase2",
+			"type": "state",
+			"common": {
+				"role": "value.power.consumption",
+				"name": "Powerconsumption of house on phase 2",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.HouseConsumptionPhase3",
+			"type": "state",
+			"common": {
+				"role": "value.power.consumption",
+				"name": "Powerconsumption of house on phase 3",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.Surplus",
+			"type": "state",
+			"common": {
+				"role": "value.power",
+				"name": "Power surplus of system",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.AC1Power",
+			"type": "state",
+			"common": {
+				"role": "value.power",
+				"name": "Grid output power phase 1",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.AC1Current",
+			"type": "state",
+			"common": {
+				"role": "value.current",
+				"name": "Grid output current phase 1",
+				"type": "number",
+				"unit": "A",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.AC1Voltage",
+			"type": "state",
+			"common": {
+				"role": "value.voltage",
+				"name": "Grid voltage phase 1",
+				"type": "number",
+				"unit": "V",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.AC2Power",
+			"type": "state",
+			"common": {
+				"role": "value.power",
+				"name": "Grid output power phase 2",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.AC2Current",
+			"type": "state",
+			"common": {
+				"role": "value.current",
+				"name": "Grid output current phase 2",
+				"type": "number",
+				"unit": "A",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.AC2Voltage",
+			"type": "state",
+			"common": {
+				"role": "value.voltage",
+				"name": "Grid voltage phase 2",
+				"type": "number",
+				"unit": "V",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.AC3Power",
+			"type": "state",
+			"common": {
+				"role": "value.power",
+				"name": "Grid output power phase 3",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.AC3Current",
+			"type": "state",
+			"common": {
+				"role": "value.current",
+				"name": "Grid output current phase 3",
+				"type": "number",
+				"unit": "A",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Power.AC3Voltage",
+			"type": "state",
+			"common": {
+				"role": "value.voltage",
+				"name": "Grid voltage phase 3",
+				"type": "number",
+				"unit": "V",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Daily",
+			"type": "channel",
+			"common": {
+				"name": "statistical data daily"
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Daily.Yield",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Total yield today",
+				"type": "number",
+				"unit": "kWh",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Daily.HouseConsumption",
+			"type": "state",
+			"common": {
+				"role": "value.power.consumption",
+				"name": "Total consumption house today",
+				"type": "number",
+				"unit": "kWh",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Daily.SelfConsumption",
+			"type": "state",
+			"common": {
+				"role": "value.power.consumption",
+				"name": "Total selfconsumption today",
+				"type": "number",
+				"unit": "kWh",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Daily.SelfConsumptionRate",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Rate of selfconsumption today",
+				"type": "number",
+				"unit": "%",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Daily.Autarky",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Degree of autarky today",
+				"type": "number",
+				"unit": "%",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Total",
+			"type": "channel",
+			"common": {
+				"name": "statistical data total lifetime"
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Total.OperatingTime",
+			"type": "state",
+			"common": {
+				"role": "value.time",
+				"name": "Total time of inverter operation",
+				"type": "number",
+				"unit": "h",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Total.Yield",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Total yield of inverter lifetime",
+				"type": "number",
+				"unit": "kWh",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Total.HouseConsumption",
+			"type": "state",
+			"common": {
+				"role": "value.power.consumption",
+				"name": "Total consumption of house in inverter lifetime",
+				"type": "number",
+				"unit": "kWh",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Total.SelfConsumption",
+			"type": "state",
+			"common": {
+				"role": "value.power.consumption",
+				"name": "Total selfconsumption in inverter lifetime",
+				"type": "number",
+				"unit": "kWh",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Total.SelfConsumptionRate",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Rate of selfconsumption in inverter lifetime",
+				"type": "number",
+				"unit": "%",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Statistics_Total.Autarky",
+			"type": "state",
+			"common": {
+				"role": "value",
+				"name": "Degree of autarky in inverter lifetime",
+				"type": "number",
+				"unit": "%",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Battery",
+			"type": "channel",
+			"common": {
+				"name": "Battery data"
+			},
+			"native": {}
+		},
+		{
+			"_id": "Battery.Temperature",
+			"type": "state",
+			"common": {
+				"role": "value.temperature",
+				"name": "Battery Temperature",
+				"type": "number",
+				"unit": "°C",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Battery.SoC",
+			"type": "state",
+			"common": {
+				"role": "value.battery",
+				"name": "Battery State of Charge",
+				"type": "number",
+				"unit": "%",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Battery.Current",
+			"type": "state",
+			"common": {
+				"role": "value.current",
+				"name": "Battery current; <0 => charge; >0 => discharge",
+				"type": "number",
+				"unit": "A",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Battery.Voltage",
+			"type": "state",
+			"common": {
+				"role": "value.voltage",
+				"name": "Battery voltage",
+				"type": "number",
+				"unit": "V",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Battery.Power",
+			"type": "state",
+			"common": {
+				"role": "value.power",
+				"name": "Battery power; <0 => charge; >0 => discharge",
+				"type": "number",
+				"unit": "W",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Battery.ChargeCycles",
+			"type": "state",
+			"common": {
+				"role": "value.count",
+				"name": "Battery Full Charge Cycles",
+				"type": "number",
+				"unit": "",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Inputs",
+			"type": "channel",
+			"common": {
+				"name": "Input values"
+			},
+			"native": {}
+		},
+		{
+			"_id": "Inputs.Analog1",
+			"type": "state",
+			"common": {
+				"role": "value.voltage",
+				"name": "Analog input 1 voltage",
+				"type": "number",
+				"unit": "V",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Inputs.Analog2",
+			"type": "state",
+			"common": {
+				"role": "value.voltage",
+				"name": "Analog input 2 voltage",
+				"type": "number",
+				"unit": "V",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Inputs.Analog3",
+			"type": "state",
+			"common": {
+				"role": "value.voltage",
+				"name": "Analog input 3 voltage",
+				"type": "number",
+				"unit": "V",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		},
+		{
+			"_id": "Inputs.Analog4",
+			"type": "state",
+			"common": {
+				"role": "value.voltage",
+				"name": "Analog input 4 voltage",
+				"type": "number",
+				"unit": "V",
+				"read": true,
+				"write": false,
+				"def": 0
+			},
+			"native": {}
+		}
+	]
 }
