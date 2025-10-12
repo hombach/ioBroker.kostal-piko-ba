@@ -62,7 +62,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ### **WORK IN PROGRESS**
 
-- (HombachC) fixing issues detected by repository checker (#830)
+- (HombachC) fixing issues detected by repository checker (#839)
 - (HombachC) update chai system
 
 ### 6.0.2 (2025-09-14)
