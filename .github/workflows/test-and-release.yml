@@ -13,10 +13,6 @@ on:
             # pre-releases
             - "v[0-9]+.[0-9]+.[0-9]+-**"
 
-    # Trigger vor GitHub releases
-    release:
-        types: [created]
-
     # Trigger vor pull requests
     pull_request: {}
 
@@ -66,9 +62,7 @@ jobs:
         needs: [check-and-lint, adapter-tests]
 
         # Trigger this step only when a commit on any branch is tagged with a version number
-        if: |
-            contains(github.event.head_commit.message, '[skip ci]') == false &&
-                (github.event_name == 'release')
+        if: github.event_name == 'release'
         #if: |
         #contains(github.event.head_commit.message, '[skip ci]') == false &&
         #(
