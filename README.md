@@ -62,8 +62,10 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ### **WORK IN PROGRESS**
 
+- (HombachC) update NPM deployment
 - (HombachC) fixing issues detected by repository checker (#839)
 - (HombachC) update chai system
+- (HombachC) bump dependencies
 
 ### 6.0.2 (2025-09-14)
 
