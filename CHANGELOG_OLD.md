@@ -16,6 +16,10 @@ Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates 
 
 ## Changelog - OLD CHANGES
 
+### 5.1.1 (2025-03-05)
+
+- (HombachC) bump dependencies
+
 ### 5.1.0 (2025-03-01)
 
 - (HombachC) raise support for ioBroker.admin to min 7.4.10 as recommended by ioBroker (#773)
