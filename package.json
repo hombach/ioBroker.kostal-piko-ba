@@ -38,7 +38,7 @@
     "@iobroker/types": "^7.0.7",
     "@types/chai": "^5.2.2",
     "@types/chai-as-promised": "^8.0.2",
-    "@types/node": "^24.8.1",
+    "@types/node": "^24.9.2",
     "@types/sinon": "^17.0.4",
     "@types/sinon-chai": "^4.0.0",
     "@types/xml2js": "^0.4.14",
