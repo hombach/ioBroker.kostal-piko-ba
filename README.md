@@ -62,7 +62,9 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ### **WORK IN PROGRESS**
 
+- (HombachC) optimize dependabot config (#856)
 - (HombachC) update axios
+- (HombachC) update dependencies
 
 ### 6.0.3 (2025-10-19)
 
