@@ -64,7 +64,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 - (HombachC) optimize dependabot config (#856)
 - (HombachC) update axios
-- (HombachC) update dependencies
+- (HombachC) update dependencies, fix vulnerability
 
 ### 6.0.3 (2025-10-19)
 
