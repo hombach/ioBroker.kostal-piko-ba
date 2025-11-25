@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "6.0.3",
+    "version": "6.0.4",
     "news": {
+      "6.0.4": {
+        "en": "optimize dependabot config (#856)\nupdate axios\nupdate dependencies, fix vulnerability",
+        "de": "optimieren abhängigabot config (#856)\naxios\naktualisieren abhängigkeiten, beheben schwachstelle",
+        "ru": "оптимизация конфигурации dependabot (#856)\nобновление axios\nобновление зависимостей, исправление уязвимостей",
+        "pt": "otimizar a configuração do dependebot (# 856)\natualizar axios\natualizar dependências, corrigir vulnerabilidade",
+        "nl": "dependabot config optimaliseren (#856)\naxios bijwerken\nafhankelijkheden bijwerken, kwetsbaarheid herstellen",
+        "fr": "optimiser la configuration de divabot (#856)\nmettre à jour axios\nmettre à jour les dépendances, corriger la vulnérabilité",
+        "it": "ottimizzare la configurazione dipendeabot (#856)\naggiornamento assio\naggiornamento dipendenze, correzione vulnerabilità",
+        "es": "optimización config dependabot (#856)\nactualización axios\nactualizar las dependencias, corregir la vulnerabilidad",
+        "pl": "optymalizacja konfiguracji zależnej (# 856)\naktualizacja axios\naktualizować zależności, naprawić wrażliwość",
+        "uk": "оптимізація налаштування залежностей (#856)\nоновлення axios\nоновлення залежності, виправити вразливість",
+        "zh-cn": "优化依赖配置 (# 856)\n更新轴线\n更新依赖性,固定脆弱性"
+      },
       "6.0.3": {
         "en": "update NPM deployment\nfixing issues detected by repository checker (#839)\nupdate chai system\nbump dependencies",
         "de": "nPM-Einsatz aktualisieren\nproblembehebung durch repository checker (#839)\nchai system\nbumpabhängigkeiten",
@@ -80,19 +93,6 @@
         "pl": "uzależnienia od guza",
         "uk": "bump залежності",
         "zh-cn": "意外依赖"
-      },
-      "5.1.0": {
-        "en": "raise support for ioBroker.admin to min 7.4.10 as recommended by ioBroker (#773)\nbump axios to 1.8.1 (#778)",
-        "de": "unterstützung für ioBroker.admin min 7.4.10 wie von ioBroker empfohlen (#773)\nbump axios auf 1.8.1 (#778)",
-        "ru": "поддержка ioBroker.admin tomin 7.4.10 as recommended by ioBroker (#773)\nаксиос удара до 1,8.1 (#778)",
-        "pt": "aumentar o apoio para ioBroker.admin to min 7.4.10 como recomendado por ioBroker (#773)\naxios de choque para 1.8.1 (#778)",
-        "nl": "steun voor ioBroker verhogen. ioBroker (#773)\nbump axios tot 1.8.1 (#778)",
-        "fr": "augmenter le soutien à ioBroker.admin to min 7.4.10 tel que recommandé par ioBroker (#773)\naxios de bosse à 1.8.1 (#778)",
-        "it": "aumentare il supporto per ioBroker.admin a min 7.4.10 come raccomandato da ioBroker (#773)\nurto assio a 1.8.1 (#778)",
-        "es": "aumentar el apoyo para ioBroker.admin to min 7.4.10 as recommended by ioBroker (#773)\ntope axios a 1.8.1 (#778)",
-        "pl": "zwiększenie wsparcia dla jOBroker.admin do min. 7.4.10 zgodnie z zaleceniami joBrokera (# 773)\naxios bump do 1.8.1 (# 778)",
-        "uk": "підняти підтримку ioBroker.admin до min 7.4.10 як рекомендується ioBroker (#773)\nbump axios до 1.8.1 (#778)",
-        "zh-cn": "提高对ioBroker的支持。 根据ioBroker的建议(# 773)从行政到min 7.4.10\n凸至1.8.1(# 778)"
       }
     },
     "titleLang": {

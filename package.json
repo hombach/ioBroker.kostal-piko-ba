@@ -1,81 +1,81 @@
 {
-	"name": "iobroker.kostal-piko-ba",
-	"version": "6.0.3",
-	"description": "Adapter for reading Kostal Piko BA data",
-	"author": {
-		"name": "Hombach",
-		"email": "kostal-piko@homba.ch"
-	},
-	"homepage": "https://github.com/Hombach/ioBroker.kostal-piko-ba",
-	"license": "MIT",
-	"keywords": [
-		"ioBroker",
-		"Kostal",
-		"Piko BA",
-		"Piko MP Plus",
-		"Piko"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/hombach/ioBroker.kostal-piko-ba.git"
-	},
-	"engines": {
-		"node": ">= 20.9.0"
-	},
-	"dependencies": {
-		"@iobroker/adapter-core": "^3.3.2",
-		"axios": "^1.13.2",
-		"xml2js": "^0.6.2"
-	},
-	"devDependencies": {
-		"@alcalzone/release-script": "^5.0.0",
-		"@alcalzone/release-script-plugin-iobroker": "^4.0.0",
-		"@alcalzone/release-script-plugin-license": "^4.0.0",
-		"@alcalzone/release-script-plugin-manual-review": "^4.0.0",
-		"@iobroker/adapter-dev": "^1.5.0",
-		"@iobroker/eslint-config": "^2.2.0",
-		"@iobroker/testing": "^5.2.2",
-		"@iobroker/types": "^7.0.7",
-		"@types/chai": "^5.2.3",
-		"@types/chai-as-promised": "^8.0.2",
-		"@types/node": "^24.10.1",
-		"@types/sinon": "^21.0.0",
-		"@types/sinon-chai": "^4.0.0",
-		"@types/xml2js": "^0.4.14",
-		"chai": "^6.2.1",
-		"chai-as-promised": "^8.0.2",
-		"sinon": "^21.0.0",
-		"sinon-chai": "^4.0.1",
-		"ts-node": "^10.9.2",
-		"typescript": "^5.9.3"
-	},
-	"main": "build/main.js",
-	"files": [
-		"admin/",
-		"build/",
-		"docu/",
-		"lib/",
-		"io-package.json",
-		"LICENSE"
-	],
-	"scripts": {
-		"build:ts": "tsc -p tsconfig.build.json",
-		"build": "npm run build:ts",
-		"watch:ts": "tsc -p tsconfig.build.json --watch",
-		"watch": "npm run watch:ts",
-		"test:ts": "mocha --config test/mocharc.custom.json src/**/*.test.ts",
-		"test:package": "mocha test/package --exit",
-		"test:integration": "mocha test/integration --exit",
-		"test": "npm run test:ts && npm run test:package && npm run test:integration",
-		"check": "tsc --noEmit",
-		"lint": "eslint -c eslint.config.mjs .",
-		"lintdebug": "eslint --debug -c eslint.config.mjs . | more",
-		"translate": "translate-adapter",
-		"make": "npm run lint && npm run build && npm run test",
-		"release": "release-script"
-	},
-	"bugs": {
-		"url": "https://github.com/Hombach/ioBroker.kostal-piko-ba/issues"
-	},
-	"readmeFilename": "README.md"
+  "name": "iobroker.kostal-piko-ba",
+  "version": "6.0.4",
+  "description": "Adapter for reading Kostal Piko BA data",
+  "author": {
+    "name": "Hombach",
+    "email": "kostal-piko@homba.ch"
+  },
+  "homepage": "https://github.com/Hombach/ioBroker.kostal-piko-ba",
+  "license": "MIT",
+  "keywords": [
+    "ioBroker",
+    "Kostal",
+    "Piko BA",
+    "Piko MP Plus",
+    "Piko"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hombach/ioBroker.kostal-piko-ba.git"
+  },
+  "engines": {
+    "node": ">= 20.9.0"
+  },
+  "dependencies": {
+    "@iobroker/adapter-core": "^3.3.2",
+    "axios": "^1.13.2",
+    "xml2js": "^0.6.2"
+  },
+  "devDependencies": {
+    "@alcalzone/release-script": "^5.0.0",
+    "@alcalzone/release-script-plugin-iobroker": "^4.0.0",
+    "@alcalzone/release-script-plugin-license": "^4.0.0",
+    "@alcalzone/release-script-plugin-manual-review": "^4.0.0",
+    "@iobroker/adapter-dev": "^1.5.0",
+    "@iobroker/eslint-config": "^2.2.0",
+    "@iobroker/testing": "^5.2.2",
+    "@iobroker/types": "^7.0.7",
+    "@types/chai": "^5.2.3",
+    "@types/chai-as-promised": "^8.0.2",
+    "@types/node": "^24.10.1",
+    "@types/sinon": "^21.0.0",
+    "@types/sinon-chai": "^4.0.0",
+    "@types/xml2js": "^0.4.14",
+    "chai": "^6.2.1",
+    "chai-as-promised": "^8.0.2",
+    "sinon": "^21.0.0",
+    "sinon-chai": "^4.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "main": "build/main.js",
+  "files": [
+    "admin/",
+    "build/",
+    "docu/",
+    "lib/",
+    "io-package.json",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build:ts": "tsc -p tsconfig.build.json",
+    "build": "npm run build:ts",
+    "watch:ts": "tsc -p tsconfig.build.json --watch",
+    "watch": "npm run watch:ts",
+    "test:ts": "mocha --config test/mocharc.custom.json src/**/*.test.ts",
+    "test:package": "mocha test/package --exit",
+    "test:integration": "mocha test/integration --exit",
+    "test": "npm run test:ts && npm run test:package && npm run test:integration",
+    "check": "tsc --noEmit",
+    "lint": "eslint -c eslint.config.mjs .",
+    "lintdebug": "eslint --debug -c eslint.config.mjs . | more",
+    "translate": "translate-adapter",
+    "make": "npm run lint && npm run build && npm run test",
+    "release": "release-script"
+  },
+  "bugs": {
+    "url": "https://github.com/Hombach/ioBroker.kostal-piko-ba/issues"
+  },
+  "readmeFilename": "README.md"
 }

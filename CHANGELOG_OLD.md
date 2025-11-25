@@ -16,9 +16,9 @@ Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates 
 
 ## Changelog - OLD CHANGES
 
-### 5.1.1 (2025-03-05)
+### 5.1.2 (2025-03-22)
 
-- (HombachC) bump dependencies
+- (HombachC) fix vulnerability in axios (#786)
 
 ### 5.1.0 (2025-03-01)
 
