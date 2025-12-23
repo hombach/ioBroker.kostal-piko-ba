@@ -44,7 +44,7 @@
     "@types/xml2js": "^0.4.14",
     "chai": "^6.2.1",
     "chai-as-promised": "^8.0.2",
-    "sinon": "^21.0.0",
+    "sinon": "^21.0.1",
     "sinon-chai": "^4.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
