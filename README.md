@@ -59,6 +59,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+
 ### 6.0.5 (2026-01-01)
 
 - (HombachC) Fix schema links (#868)
