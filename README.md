@@ -59,8 +59,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 6.0.5 (2026-01-01)
 
 - (HombachC) Fix schema links (#868)
 - (HombachC) year 2026 changes
@@ -90,12 +89,6 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 - (HombachC) bump TypeScript to 5.9
 - (HombachC) add test for node.js 24 (#801)
 - (HombachC) bump dependency with security vulnerability
-
-### 6.0.0 (2025-05-04)
-
-- (HombachC) BREAKING: Dropped support for Node.js 18 (#797)
-- (HombachC) BREAKING: Dropped support for js-controller 5 (#797)
-- (HombachC) bump dependencies
 
 ### Old Changes see [CHANGELOG OLD](CHANGELOG_OLD.md)
 

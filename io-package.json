@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "6.0.4",
+    "version": "6.0.5",
     "news": {
+      "6.0.5": {
+        "en": "Fix schema links (#868)\nyear 2026 changes\nupdate dependencies",
+        "de": "Schemalinks festlegen (#868)\njahr 2026 änderungen\naktualisierung der abhängigkeiten",
+        "ru": "Исправить схемы ссылок (#868)\n2026 год изменения\nобновление зависимостей",
+        "pt": "Corrigir links de esquema (# 868)\nvariações do ano de 2026\natualizar dependências",
+        "nl": "Schema links herstellen (#868)\njaar 2026 veranderingen\nafhankelijkheden bijwerken",
+        "fr": "Correction des liens de schéma (#868)\nannée 2026 changements\nmettre à jour les dépendances",
+        "it": "Fissare i collegamenti dello schema (#868)\nanno 2026 modifiche\naggiornamento dipendenze",
+        "es": "Enlaces de esquema fijo (#868)\naño 2026 cambios\ndependencias de actualización",
+        "pl": "Popraw linki schematów (# 868)\nrok 2026 zmiany\naktualizacji zależności",
+        "uk": "Фіксація schema посилань (#868)\nрік 2026 змін\nоновлення залежності",
+        "zh-cn": "修补计划链接 (# 868)\n2026年的变化\n更新依赖关系"
+      },
       "6.0.4": {
         "en": "optimize dependabot config (#856)\nupdate axios\nupdate dependencies, fix vulnerability",
         "de": "optimieren abhängigabot config (#856)\naxios\naktualisieren abhängigkeiten, beheben schwachstelle",
@@ -80,19 +93,6 @@
         "pl": "naprawić wrażliwość w aksjozach (# 786)\nuzależnienia od guza",
         "uk": "виправити вразливість в axios (#786)\nbump залежності",
         "zh-cn": "固定轴中的脆弱性(# 786)\n意外依赖"
-      },
-      "5.1.1": {
-        "en": "bump dependencies",
-        "de": "bump Abhängigkeiten",
-        "ru": "бамп зависимости",
-        "pt": "dependências de choque",
-        "nl": "bump afhankelijkheden",
-        "fr": "dépendances des bosses",
-        "it": "indipendenza urto",
-        "es": "dependencia de los gastos",
-        "pl": "uzależnienia od guza",
-        "uk": "bump залежності",
-        "zh-cn": "意外依赖"
       }
     },
     "titleLang": {

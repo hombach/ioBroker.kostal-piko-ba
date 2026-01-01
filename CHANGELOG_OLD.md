@@ -16,6 +16,12 @@ Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates 
 
 ## Changelog - OLD CHANGES
 
+### 6.0.0 (2025-05-04)
+
+- (HombachC) BREAKING: Dropped support for Node.js 18 (#797)
+- (HombachC) BREAKING: Dropped support for js-controller 5 (#797)
+- (HombachC) bump dependencies
+
 ### 5.1.2 (2025-03-22)
 
 - (HombachC) fix vulnerability in axios (#786)
