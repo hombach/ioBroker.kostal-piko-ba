@@ -60,6 +60,10 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
   ### **WORK IN PROGRESS**
 -->
 
+### **WORK IN PROGRESS**
+
+- (HombachC) fix vulnerability
+
 ### 6.0.5 (2026-01-01)
 
 - (HombachC) Fix schema links (#868)
