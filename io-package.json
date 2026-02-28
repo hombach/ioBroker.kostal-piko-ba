@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "6.0.5",
+    "version": "6.0.6",
     "news": {
+      "6.0.6": {
+        "en": "fix vulnerability\nupdate dependencies",
+        "de": "fehlerbehebung\naktualisierung der abhängigkeiten",
+        "ru": "исправить уязвимость\nобновление зависимостей",
+        "pt": "corrigir vulnerabilidade\natualizar dependências",
+        "nl": "kwetsbaarheid herstellen\nafhankelijkheden bijwerken",
+        "fr": "fixer la vulnérabilité\nmettre à jour les dépendances",
+        "it": "correzione della vulnerabilità\naggiornamento dipendenze",
+        "es": "corrección de vulnerabilidad\ndependencias de actualización",
+        "pl": "naprawić podatność\naktualizacji zależności",
+        "uk": "виправити вразливість\nоновлення залежності",
+        "zh-cn": "消除脆弱性\n更新依赖关系"
+      },
       "6.0.5": {
         "en": "Fix schema links (#868)\nyear 2026 changes\nupdate dependencies",
         "de": "Schemalinks festlegen (#868)\njahr 2026 änderungen\naktualisierung der abhängigkeiten",
@@ -80,19 +93,6 @@
         "pl": "BREAKING: Upuszczone wsparcie dla Node.js 18 (# 797)\nBREAKING: Utracone wsparcie dla sterownika js- 5 (# 797)\nuzależnienia od guza",
         "uk": "BREAKING: Dropped підтримка для Node.js 18 (#797)\nBREAKING: Dropped підтримка для js-controller 5 (#797)\nbump залежності",
         "zh-cn": "对节点18(# 797) 已放弃支持\n中断: Js 控制器 5 已放弃支持(# 797)\n意外依赖"
-      },
-      "5.1.2": {
-        "en": "fix vulnerability in axios (#786)\nbump dependencies",
-        "de": "schwachstelle in axios beheben (#786)\nbumpabhängigkeiten",
-        "ru": "исправление уязвимости в axios (#786)\nбамп зависимости",
-        "pt": "corrigir a vulnerabilidade no axios (#786)\ndependências de choque",
-        "nl": "fix kwetsbaarheid in axio's (#786)\nbump afhankelijkheden",
-        "fr": "corriger la vulnérabilité dans axios (#786)\ndépendances des bosses",
-        "it": "correzione della vulnerabilità in assios (#786)\nindipendenza urto",
-        "es": "fijar vulnerabilidad en axios (#786)\ndependencia de los gastos",
-        "pl": "naprawić wrażliwość w aksjozach (# 786)\nuzależnienia od guza",
-        "uk": "виправити вразливість в axios (#786)\nbump залежності",
-        "zh-cn": "固定轴中的脆弱性(# 786)\n意外依赖"
       }
     },
     "titleLang": {

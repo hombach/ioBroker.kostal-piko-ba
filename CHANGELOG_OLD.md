@@ -368,3 +368,8 @@ Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates 
 ### 0.1.0 (2020-05-15)
 
 - (HombachC) initial version
+## 6.0.1 (2025-08-17)
+
+- (HombachC) bump TypeScript to 5.9
+- (HombachC) add test for node.js 24 (#801)
+- (HombachC) bump dependency with security vulnerability
