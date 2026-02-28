@@ -59,6 +59,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+
 ### 6.0.6 (2026-02-28)
 
 - (HombachC) fix vulnerability
