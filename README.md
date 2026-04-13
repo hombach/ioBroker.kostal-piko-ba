@@ -63,6 +63,9 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 ### **WORK IN PROGRESS**
 
 - (HombachC) switch to ES2023 code
+- (HombachC) fix vulnerability in axios
+- (HombachC) min admin 7.6.20 as recommended (#893)
+- (HombachC) update dependencies
 
 ### 6.0.6 (2026-02-28)
 
