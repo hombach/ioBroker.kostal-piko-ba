@@ -59,8 +59,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 6.0.7 (2026-04-13)
 
 - (HombachC) switch to ES2023 code
 - (HombachC) fix vulnerability in axios
@@ -89,12 +88,6 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 - (HombachC) update NPM deployment
 - (HombachC) fixing issues detected by repository checker (#839)
 - (HombachC) update chai system
-- (HombachC) bump dependencies
-
-### 6.0.2 (2025-09-14)
-
-- (HombachC) update axios (#829)
-- (HombachC) min admin 7.6.17 as recommended (#817)
 - (HombachC) bump dependencies
 
 ### Old Changes see [CHANGELOG OLD](CHANGELOG_OLD.md)
