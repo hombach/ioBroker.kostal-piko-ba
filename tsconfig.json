@@ -15,13 +15,10 @@
 		"outDir": "./build/",
 		"removeComments": false,
 		"module": "node20",
-		// WiP "module": "commonjs",
-		// WiP "moduleResolution": "node",
 		"moduleResolution": "node16",
 		"esModuleInterop": true,
 		// this is necessary for the automatic typing of the adapter config
 		"resolveJsonModule": true,
-		// WiP 6.0.7
 		"types": ["node", "mocha"],
 
 		// If you want to disable the stricter type checks (not recommended), uncomment the following line
