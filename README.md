@@ -59,8 +59,11 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+
 ### **WORK IN PROGRESS**
-- (copilot) Adapter requires node.js >= 22 now
+
+- (copilot) BREAKING: adapter requires node.js >= 22 now
+- (HombachC) update dependencies
 
 ### 6.0.7 (2026-04-13)
 
