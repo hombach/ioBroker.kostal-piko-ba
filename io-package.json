@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "6.0.7",
+    "version": "7.0.0",
     "news": {
+      "7.0.0": {
+        "en": "BREAKING: adapter requires node.js >= 22 now\nupdate dependencies",
+        "de": "BREAKING: Adapter erfordert jetzt node.js >= 22\naktualisierung der abhängigkeiten",
+        "ru": "Адаптер требует node.js >= 22 сейчас\nобновление зависимостей",
+        "pt": "BREAKING: adaptador requer nod.js >= 22 agora\natualizar dependências",
+        "nl": "BREAKING: adapter vereist node.js < 22 nu\nafhankelijkheden bijwerken",
+        "fr": "BREAKING: adaptateur nécessite node.js >= 22 maintenant\nmettre à jour les dépendances",
+        "it": "BREAKING: l'adattatore richiede node.js >= 22 ora\naggiornamento dipendenze",
+        "es": "BREAKING: adaptador requiere node.js >= 22 ahora\ndependencias de actualización",
+        "pl": "BREAKING: adapter wymaga node.js > = 22\naktualizacji zależności",
+        "uk": "BREAKING: адаптер вимагає node.js >= 22 тепер\nоновлення залежності",
+        "zh-cn": "适配器需要节点 Js 22 现在\n更新依赖关系"
+      },
       "6.0.7": {
         "en": "switch to ES2023 code\nfix vulnerability in axios\nmin admin 7.6.20 as recommended (#893)\nupdate dependencies",
         "de": "eS2023-Code wechseln\nschwachstelle in axios beheben\nmin admin 7.6.20 wie empfohlen (#893)\naktualisierung der abhängigkeiten",
@@ -80,19 +93,6 @@
         "pl": "zaktualizuj axios (#829)\nMin admin 7.6.17 zalecane (#817)\nzwiększenie zależności",
         "uk": "оновлення axios (#829)\nВстановлення min версії адміністратора 7.6.17 рекомендовано (#817)\nпідвищення залежностей",
         "zh-cn": "更新axios (#829)\n按照推荐，最小版本升级为7.6.17 (#817)\n提升依赖版本"
-      },
-      "6.0.1": {
-        "en": "bump TypeScript to 5.9\nadd test for node.js 24 (#801)\nbump dependency with security vulnerability",
-        "de": "stoßartScript auf 5.9\ntest hinzufügen für node.js 24 (#801)\nstoßabhängigkeit mit sicherheitslücke",
-        "ru": "скриншоты из TypeScript 5.9\nдобавить тест для node.js 24 (#801)\nзависимость от уязвимости безопасности",
-        "pt": "tipo de colisãoScript to 5.9\nadd test for node.js 24 (# 801)\ndependência de colisão com vulnerabilidade de segurança",
-        "nl": "bump TypeScript to 5.9\ntest toevoegen voor node.js 24 (#801)\nbump afhankelijkheid met beveiligingslek",
-        "fr": "block TypeScript à 5,9\najouter l'essai pour node.js 24 (#801)\ndépendance aux chocs avec vulnérabilité à la sécurité",
-        "it": "urto TypeScript a 5.9\naggiungere test per node.js 24 (#801)\nurto dipendenza con vulnerabilità di sicurezza",
-        "es": "clip TipoScript a 5.9\nañadir prueba para node.js 24 (#801)\ndependencia de problemas con la vulnerabilidad de la seguridad",
-        "pl": "bump TypeScript do 5.9\ndodać test dla node.js 24 (# 801)\nwzrost zależności od podatności na zagrożenia",
-        "uk": "bump TypeScript до 5.9\njavascript licenses api веб-сайт go1.13.8\nдвомічна залежність з вразливістю безпеки",
-        "zh-cn": "缓冲类型脚本到 5.9\n为节点24(# 801) 添加测试\n安全脆弱性的依赖性"
       }
     },
     "titleLang": {
