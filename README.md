@@ -62,6 +62,8 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ### **WORK IN PROGRESS**
 
+- (HombachC) update typescript from 5.9.3 to 6.0.3
+- (HombachC) fix vulnerability in axios
 - (HombachC) update dependencies
 
 ### 7.0.0 (2026-05-09)

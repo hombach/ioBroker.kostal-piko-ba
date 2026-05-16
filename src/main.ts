@@ -330,7 +330,7 @@ class KostalPikoBA extends utils.Adapter {
 			this.log.info(`Adapter Kostal-Piko-BA cleaned up everything...`);
 			callback();
 		} catch (error) {
-			this.log.error(`Error in onUnload adapter: ${error}`);
+			this.log.error(`Error in onUnload adapter: ${String(error)}`);
 			callback();
 		}
 	}
@@ -344,7 +344,7 @@ class KostalPikoBA extends utils.Adapter {
 			clearTimeout(adapterTimeouts.live);
 			adapterTimeouts.live = setTimeout(this.Scheduler.bind(this), this.config.polltimelive);
 		} catch (error) {
-			this.log.error(`Error in setting adapter schedule: ${error}`);
+			this.log.error(`Error in setting adapter schedule: ${String(error)}`);
 			void this.restart;
 		} // END try catch
 	}
@@ -844,7 +844,7 @@ class KostalPikoBA extends utils.Adapter {
 			clearTimeout(adapterTimeouts.daily);
 			adapterTimeouts.daily = setTimeout(this.ReadPikoDaily.bind(this), this.config.polltimedaily);
 		} catch (error) {
-			this.log.error(`Error in setting adapter schedule for daily statistics: ${error}`);
+			this.log.error(`Error in setting adapter schedule for daily statistics: ${String(error)}`);
 		} // END try catch
 	} // END ReadPikoDaily
 
@@ -939,8 +939,8 @@ class KostalPikoBA extends utils.Adapter {
 		try {
 			clearTimeout(adapterTimeouts.total);
 			adapterTimeouts.total = setTimeout(this.ReadPikoTotal.bind(this), this.config.polltimetotal);
-		} catch (e) {
-			this.log.error(`Error in setting adapter schedule for total statistics: ${e}`);
+		} catch (error) {
+			this.log.error(`Error in setting adapter schedule for total statistics: ${String(error)}`);
 		}
 	} // END ReadPikoTotal
 
