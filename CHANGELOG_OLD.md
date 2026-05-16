@@ -16,6 +16,12 @@ Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates 
 
 ## Changelog - OLD CHANGES
 
+### 6.0.4 (2025-11-25)
+
+- (HombachC) optimize dependabot config (#856)
+- (HombachC) update axios
+- (HombachC) update dependencies, fix vulnerability
+
 ### 6.0.3 (2025-10-19)
 
 - (HombachC) update NPM deployment

@@ -60,7 +60,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
   ### **WORK IN PROGRESS**
 -->
 
-### **WORK IN PROGRESS**
+### 7.0.1 (2026-05-16)
 
 - (HombachC) update typescript from 5.9.3 to 6.0.3
 - (HombachC) fix vulnerability in axios
@@ -88,12 +88,6 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 - (HombachC) Fix schema links (#868)
 - (HombachC) year 2026 changes
 - (HombachC) update dependencies
-
-### 6.0.4 (2025-11-25)
-
-- (HombachC) optimize dependabot config (#856)
-- (HombachC) update axios
-- (HombachC) update dependencies, fix vulnerability
 
 ### Old Changes see [CHANGELOG OLD](CHANGELOG_OLD.md)
 
