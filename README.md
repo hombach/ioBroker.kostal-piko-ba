@@ -60,7 +60,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
   ### **WORK IN PROGRESS**
 -->
 
-### **WORK IN PROGRESS**
+### 7.0.2 (2026-05-17)
 
 - (HombachC) fix tsconfig
 
@@ -85,12 +85,6 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 ### 6.0.6 (2026-02-28)
 
 - (HombachC) fix vulnerability
-- (HombachC) update dependencies
-
-### 6.0.5 (2026-01-01)
-
-- (HombachC) Fix schema links (#868)
-- (HombachC) year 2026 changes
 - (HombachC) update dependencies
 
 ### Old Changes see [CHANGELOG OLD](CHANGELOG_OLD.md)

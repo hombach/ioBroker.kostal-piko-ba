@@ -1,8 +1,21 @@
 {
 	"common": {
 		"name": "kostal-piko-ba",
-		"version": "7.0.1",
+		"version": "7.0.2",
 		"news": {
+			"7.0.2": {
+				"en": "fix tsconfig",
+				"de": "tsconfig reparieren",
+				"ru": "исправить цконфиг",
+				"pt": "corrigir tsconfig",
+				"nl": "tsconfig repareren",
+				"fr": "réparer tsconfig",
+				"it": "corretto tsconfig",
+				"es": "arreglar tsconfig",
+				"pl": "napraw tsconfig",
+				"uk": "виправити tsconfig",
+				"zh-cn": "修复 tsconfig"
+			},
 			"7.0.1": {
 				"en": "update typescript from 5.9.3 to 6.0.3\nfix vulnerability in axios\nupdate dependencies",
 				"de": "Typescript von 5.9.3 auf 6.0.3upgedated\nSchwachstelle in Axios behoben\nAbhängigkeiten aktualisiert",
@@ -121,8 +134,18 @@
 			"uk": "Адаптер для читання даних Костал Піко (BA)",
 			"zh-cn": "阅读Kostal Piko BA数据"
 		},
-		"authors": ["Hombach <kostal-piko-ba@homba.ch>"],
-		"keywords": ["Kostal", "Piko", "Piko-BA", "Piko MP", "Piko MP plus", "inverter", "solar"],
+		"authors": [
+			"Hombach <kostal-piko-ba@homba.ch>"
+		],
+		"keywords": [
+			"Kostal",
+			"Piko",
+			"Piko-BA",
+			"Piko MP",
+			"Piko MP plus",
+			"inverter",
+			"solar"
+		],
 		"licenseInformation": {
 			"license": "MIT",
 			"type": "free"
