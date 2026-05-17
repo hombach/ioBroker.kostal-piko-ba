@@ -60,6 +60,10 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
   ### **WORK IN PROGRESS**
 -->
 
+### **WORK IN PROGRESS**
+
+- (HombachC) fix tsconfig
+
 ### 7.0.1 (2026-05-16)
 
 - (HombachC) update typescript from 5.9.3 to 6.0.3
