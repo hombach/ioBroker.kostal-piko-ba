@@ -36,90 +36,70 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// The adapter-core module gives you access to the core ioBroker functions you need to create an adapter
 const utils = __importStar(require("@iobroker/adapter-core"));
 const axios_1 = __importDefault(require("axios"));
 const xml2js_1 = __importDefault(require("xml2js"));
 const adapterTimeouts = {};
-// state
-const ID_OperatingState = 16780032; // 0 = aus; 1 = Leerlauf(?); 2 = Anfahren, DC Spannung noch zu klein(?); 3 = Einspeisen(MPP); 4 = Einspeisen(abgeregelt)
-const ID_InverterType = 16780544; // - Inverter type
-const ID_InfoUIVersion = 16779267; // - Info version
-const ID_InverterName = 16777984; // - Inverter name
-// statistics - daily
-const ID_StatDay_Yield = 251658754; // in Wh  -  Total yield this operational day
-const ID_StatDay_HouseConsumption = 251659010; // in Wh
-const ID_StatDay_SelfConsumption = 251659266; // in Wh
-const ID_StatDay_SelfConsumptionRate = 251659278; // in %
-const ID_StatDay_Autarky = 251659279; // in %
-// statistics - total
-const ID_StatTot_OperatingTime = 251658496; // in h   -  Total operating time of inverter
-const ID_StatTot_Yield = 251658753; // in kWh -  Total yield in inverter life time
-const ID_StatTot_HouseConsumption = 251659009; // in kWh
-const ID_StatTot_SelfConsumption = 251659265; // in kWh
-const ID_StatTot_SelfConsumptionRate = 251659280; // in %
-const ID_StatTot_Autarky = 251659281; // in %
-// live values - PV generator power
-const ID_Power_SolarDC = 33556736; // in W  -  DC Power PV generator in total
-const ID_Power_DC1Current = 33555201; // in A  -  DC current line 1
-const ID_Power_DC1Voltage = 33555202; // in V  -  DC voltage line 1
-const ID_Power_DC1Power = 33555203; // in W  -  DC power line 1
-const ID_Power_DC2Current = 33555457; // in A  -  DC current line 2
-const ID_Power_DC2Voltage = 33555458; // in V  -  DC voltage line 2
-const ID_Power_DC2Power = 33555459; // in W  -  DC power line 2
-const ID_Power_DC3Current = 33555713; // in A  -  DC current line 3 (equals to battery current in case of Pico BA)
-const ID_Power_DC3Voltage = 33555714; // in V  -  DC voltage line 3 (equals to battery voltage in case of Pico BA)
-const ID_Power_DC3Power = 33555715; // in W  -  DC power line 3 (equals to battery power in case of Pico BA)
-// live values - home
-//const ID_Power_HouseConsumptionSolar = 83886336; // in W  -  Act Home Consumption Solar - not implemented
-//const ID_Power_HouseConsumptionBat = 83886592; // in W  -  Act Home Consumption Bat - not implemented
-//const ID_Power_HouseConsumptionGrid = 83886848; // in W  -  Act Home Consumption Grid - not implemented
-const ID_Power_HouseConsumptionPhase1 = 83887106; // in W  -  Act Home Consumption Phase 1
-const ID_Power_HouseConsumptionPhase2 = 83887362; // in W  -  Act Home Consumption Phase 2
-const ID_Power_HouseConsumptionPhase3 = 83887618; // in W  -  Act Home Consumption Phase 3
-const ID_Power_HouseConsumption = 83887872; // in W  -  Consumption of your home, measured by PIKO sensor
-const ID_Power_SelfConsumption = 83888128; // in W  -  Self Consumption
-// live values power output
-const ID_Power_GridAC = 67109120; // in W  -  GridOutputPower excluding power for battery charging
-// live values - grid parameter
-const ID_GridLimitation = 67110144; // in %   -  Grid Limitation
-//const ID_GridFrequency = 67110400; // in Hz  -  Grid Frequency - not implemented
-//const ID_GridCosPhi = 67110656; //        -  Grid CosPhi - not implemented
-// live values - grid phase 1
-const ID_L1GridCurrent = 67109377; // in A  -  Grid Output Current Phase 1
-const ID_L1GridVoltage = 67109378; // in V  -  Grid Output Voltage Phase 1
-const ID_L1GridPower = 67109379; // in W  -  Grid Output Power Phase 1
-// live values - grid phase 2
-const ID_L2GridCurrent = 67109633; // in A  -  Grid Output Current Phase 2
-const ID_L2GridVoltage = 67109634; // in V  -  Grid Output Voltage Phase 2
-const ID_L2GridPower = 67109635; // in W  -  Grid Output Power Phase 2
-// live values - grid phase 3
-const ID_L3GridCurrent = 67109889; // in A  -  Grid Output Current Phase 3
-const ID_L3GridVoltage = 67109890; // in V  -  Grid Output Voltage Phase 3
-const ID_L3GridPower = 67109891; // in W  -  Grid Output Power Phase 3
-// live values - Battery
-const ID_BatVoltage = 33556226; // in V
-const ID_BatTemperature = 33556227; // in °C
-const ID_BatChargeCycles = 33556228; // in 1
-const ID_BatStateOfCharge = 33556229; // in %
-const ID_BatCurrentDir = 33556230; // 1 = discharge; 0 = charge
-const ID_BatCurrent = 33556238; // in A
-// live values - inputs
-const ID_InputAnalog1 = 167772417; // in V   -  10bit resolution
-const ID_InputAnalog2 = 167772673; // in V   -  10bit resolution
-const ID_InputAnalog3 = 167772929; // in V   -  10bit resolution
-const ID_InputAnalog4 = 167773185; // in V   -  10bit resolution
-//const ID_Input_S0_count = 184549632; // in 1   -  not implemented
-//const ID_Input_S0_seconds = 150995968; // in sec -  not implemented
-let InverterType = "unknown"; // Inverter type
-let InverterAPIPiko = false; // Inverter API of Piko or Piko BA inverters; Kostal Piko 6.0BA, 8.0BA, 10.0BA, 3.0, 5.5, 7.0, 10, 12, 15, 17, 20
-let InverterAPIPikoMP = false; // Inverter API of Piko MP inverters; Kostal PIKO 3.0-1 MP plus
-let InverterUIVersion = "unknown"; // Inverter UI Version
-let KostalRequestOnce = ""; // IP request-string for one time request of system type etc.
-let KostalRequest1 = ""; // IP request-string 1 for Pico live data
-let KostalRequest2 = ""; // IP request-string 2 for Pico live data
-let KostalRequestDay = ""; // IP request-string for PicoBA daily statistics
-let KostalRequestTotal = ""; // IP request-string for PicoBA total statistics
+const ID_OperatingState = 16780032;
+const ID_InverterType = 16780544;
+const ID_InfoUIVersion = 16779267;
+const ID_InverterName = 16777984;
+const ID_StatDay_Yield = 251658754;
+const ID_StatDay_HouseConsumption = 251659010;
+const ID_StatDay_SelfConsumption = 251659266;
+const ID_StatDay_SelfConsumptionRate = 251659278;
+const ID_StatDay_Autarky = 251659279;
+const ID_StatTot_OperatingTime = 251658496;
+const ID_StatTot_Yield = 251658753;
+const ID_StatTot_HouseConsumption = 251659009;
+const ID_StatTot_SelfConsumption = 251659265;
+const ID_StatTot_SelfConsumptionRate = 251659280;
+const ID_StatTot_Autarky = 251659281;
+const ID_Power_SolarDC = 33556736;
+const ID_Power_DC1Current = 33555201;
+const ID_Power_DC1Voltage = 33555202;
+const ID_Power_DC1Power = 33555203;
+const ID_Power_DC2Current = 33555457;
+const ID_Power_DC2Voltage = 33555458;
+const ID_Power_DC2Power = 33555459;
+const ID_Power_DC3Current = 33555713;
+const ID_Power_DC3Voltage = 33555714;
+const ID_Power_DC3Power = 33555715;
+const ID_Power_HouseConsumptionPhase1 = 83887106;
+const ID_Power_HouseConsumptionPhase2 = 83887362;
+const ID_Power_HouseConsumptionPhase3 = 83887618;
+const ID_Power_HouseConsumption = 83887872;
+const ID_Power_SelfConsumption = 83888128;
+const ID_Power_GridAC = 67109120;
+const ID_GridLimitation = 67110144;
+const ID_L1GridCurrent = 67109377;
+const ID_L1GridVoltage = 67109378;
+const ID_L1GridPower = 67109379;
+const ID_L2GridCurrent = 67109633;
+const ID_L2GridVoltage = 67109634;
+const ID_L2GridPower = 67109635;
+const ID_L3GridCurrent = 67109889;
+const ID_L3GridVoltage = 67109890;
+const ID_L3GridPower = 67109891;
+const ID_BatVoltage = 33556226;
+const ID_BatTemperature = 33556227;
+const ID_BatChargeCycles = 33556228;
+const ID_BatStateOfCharge = 33556229;
+const ID_BatCurrentDir = 33556230;
+const ID_BatCurrent = 33556238;
+const ID_InputAnalog1 = 167772417;
+const ID_InputAnalog2 = 167772673;
+const ID_InputAnalog3 = 167772929;
+const ID_InputAnalog4 = 167773185;
+let InverterType = "unknown";
+let InverterAPIPiko = false;
+let InverterAPIPikoMP = false;
+let InverterUIVersion = "unknown";
+let KostalRequestOnce = "";
+let KostalRequest1 = "";
+let KostalRequest2 = "";
+let KostalRequestDay = "";
+let KostalRequestTotal = "";
 function resolveAfterXSeconds(x) {
     return new Promise(resolve => {
         setTimeout(() => {
@@ -128,30 +108,20 @@ function resolveAfterXSeconds(x) {
     });
 }
 class KostalPikoBA extends utils.Adapter {
-    /****************************************************************************************
-     * @param {Partial<utils.AdapterOptions>} [options={}]
-     */
     constructor(options = {}) {
         super({
             ...options,
             name: "kostal-piko-ba",
         });
         this.on("ready", this.onReady.bind(this));
-        // this.on('objectChange', this.onObjectChange.bind(this));
-        // this.on('stateChange', this.onStateChange.bind(this));
-        // this.on('message', this.onMessage.bind(this));
         this.on("unload", this.onUnload.bind(this));
     }
-    /**
-     * Is called when databases are connected and adapter received configuration.
-     */
     async onReady() {
         if (!this.config.ipaddress) {
             this.log.error(`Kostal Piko IP address not set`);
         }
         else {
             this.log.info(`IP address found in config: ${this.config.ipaddress}`);
-            // Validate IP address ...
             if (!/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(this.config.ipaddress)) {
                 this.log.error(`You have entered an invalid IP address! ${this.config.ipaddress}`);
                 this.log.info(`Stopping adapter`);
@@ -159,20 +129,17 @@ class KostalPikoBA extends utils.Adapter {
             }
         }
         if (this.config.ipaddress) {
-            // get general info of connected inverter
             KostalRequestOnce =
                 `http://${this.config.ipaddress}/api/dxs.json` + `?dxsEntries=${ID_InverterType}&dxsEntries=${ID_InfoUIVersion}&dxsEntries=${ID_InverterName}`;
             await this.ReadPikoOnce();
             await resolveAfterXSeconds(5);
             this.log.debug(`Initial read of general info for inverter IP ${this.config.ipaddress} done`);
             if (!InverterAPIPiko && !InverterAPIPikoMP) {
-                // no inverter type detected
                 this.log.error(`Error in detecting Kostal inverter`);
                 this.log.info(`Stopping adapter`);
                 void this.stop;
             }
         }
-        //#region *** sentry.io ping ***
         if (this.supportsFeature && this.supportsFeature("PLUGINS")) {
             const sentryInstance = this.getPluginInstance("sentry");
             const today = new Date();
@@ -190,12 +157,10 @@ class KostalPikoBA extends utils.Adapter {
                             Sentry.captureMessage("Adapter kostal-piko-ba started", "info");
                         });
                 }
-                await this.setState("LastSentryLoggedError", { val: "unknown", ack: true }); // Clean last error every adapter start
+                await this.setState("LastSentryLoggedError", { val: "unknown", ack: true });
                 await this.setState("LastSentryLogDay", { val: today.getDate(), ack: true });
             }
         }
-        //#endregion
-        //#region *** setup polltimes ***
         if (!this.config.polltimelive) {
             this.config.polltimelive = 10000;
             this.log.warn(`Polltime not set or zero - will be set to ${this.config.polltimelive / 1000} seconds`);
@@ -223,7 +188,6 @@ class KostalPikoBA extends utils.Adapter {
             this.log.warn(`Polltime for all-time statistics should be at least double the daily statistics poll time - it will be set to ${this.config.polltimetotal / 1000} seconds`);
         }
         this.log.info(`Polltime for alltime statistics set to: ${this.config.polltimetotal / 1000} seconds`);
-        //#endregion
         if (this.config.ipaddress) {
             KostalRequest1 =
                 `http://${this.config.ipaddress}/api/dxs.json` +
@@ -290,11 +254,6 @@ class KostalPikoBA extends utils.Adapter {
             void this.stop;
         }
     }
-    /**
-     * Is called when adapter shuts down - callback has to be called under any circumstances!
-     *
-     * @param callback - void
-     */
     onUnload(callback) {
         try {
             if (adapterTimeouts) {
@@ -309,12 +268,10 @@ class KostalPikoBA extends utils.Adapter {
             callback();
         }
         catch (error) {
-            this.log.error(`Error in onUnload adapter: ${error}`);
+            this.log.error(`Error in onUnload adapter: ${String(error)}`);
             callback();
         }
     }
-    /****************************************************************************************
-     * Scheduler ****************************************************************************/
     Scheduler() {
         this.ReadPiko();
         this.ReadPiko2();
@@ -323,18 +280,14 @@ class KostalPikoBA extends utils.Adapter {
             adapterTimeouts.live = setTimeout(this.Scheduler.bind(this), this.config.polltimelive);
         }
         catch (error) {
-            this.log.error(`Error in setting adapter schedule: ${error}`);
+            this.log.error(`Error in setting adapter schedule: ${String(error)}`);
             void this.restart;
-        } // END try catch
+        }
     }
-    /****************************************************************************************
-     * ReadPikoOnce ***************************************************************************/
     async ReadPikoOnce() {
         await axios_1.default
             .get(KostalRequestOnce, { transformResponse: r => r })
             .then(response => {
-            //.status == 200
-            // access parsed JSON response data using response.data field
             if (!response.data) {
                 throw new Error(`Empty answer from Piko.`);
             }
@@ -356,7 +309,6 @@ class KostalPikoBA extends utils.Adapter {
         });
         await resolveAfterXSeconds(2);
         if (InverterAPIPiko) {
-            // inverter type detected yet
             this.log.info(`Detected inverter type: ${InverterType}`);
         }
         else {
@@ -364,7 +316,6 @@ class KostalPikoBA extends utils.Adapter {
             this.log.info(`Trying to detect inverter with Piko-MP-API`);
         }
         if (!InverterAPIPiko) {
-            // no inverter type detected yet -> try to detect Piko MP Inverter
             axios_1.default
                 .get(`http://${this.config.ipaddress}/versions.xml`, {
                 transformResponse: r => r,
@@ -402,17 +353,12 @@ class KostalPikoBA extends utils.Adapter {
                 void this.HandleConnectionError(error, `Piko MP API for general info`, `MP0`);
             });
         }
-    } // END ReadPikoOnce
-    /****************************************************************************************
-     * ReadPiko *****************************************************************************/
+    }
     ReadPiko() {
         if (InverterAPIPiko) {
-            // code for Piko(-BA)
             axios_1.default
                 .get(KostalRequest1, { timeout: 3500, transformResponse: r => r })
                 .then(response => {
-                //.status == 200
-                // access parsed JSON response data using response.data field
                 this.log.debug(`Piko-BA live data 1 update - Kostal response data: ${response.data}`);
                 if (!response.data) {
                     throw new Error(`Empty answer from Piko.`);
@@ -518,7 +464,6 @@ class KostalPikoBA extends utils.Adapter {
                             ack: true,
                         });
                         if (result[18].value) {
-                            // result[18] = 'Battery current direction; 1=Load; 0=Unload'
                             void this.setState("Battery.Current", {
                                 val: result[17].value,
                                 ack: true,
@@ -529,7 +474,6 @@ class KostalPikoBA extends utils.Adapter {
                             });
                         }
                         else {
-                            // discharge
                             void this.setState("Battery.Current", {
                                 val: result[17].value * -1,
                                 ack: true,
@@ -547,14 +491,13 @@ class KostalPikoBA extends utils.Adapter {
                 void this.setState("GridLimitation", {
                     val: result.length >= 20 ? result[19].value : 100,
                     ack: true,
-                }); // not existent for Piko3.0 or if no limitation defined
+                });
             })
                 .catch(error => {
                 void this.HandleConnectionError(error, `Piko(-BA) API for live data`, `BA1`);
             });
-        } // END InverterAPIPiko
+        }
         if (InverterAPIPikoMP) {
-            // code for Piko MP Plus
             axios_1.default
                 .get(`http://${this.config.ipaddress}/measurements.xml`, {
                 transformResponse: r => r,
@@ -661,18 +604,13 @@ class KostalPikoBA extends utils.Adapter {
                 .catch(error => {
                 void this.HandleConnectionError(error, `Piko MP API for live data`, `MP1`);
             });
-        } // END InverterAPIPikoMP
-    } // END ReadPiko
-    /****************************************************************************************
-     * ReadPiko2 ****************************************************************************/
+        }
+    }
     ReadPiko2() {
         if (InverterAPIPiko) {
-            // code for Piko(-BA)
             axios_1.default
                 .get(KostalRequest2, { timeout: 3500, transformResponse: r => r })
                 .then(response => {
-                //.status == 200
-                // access parsed JSON response data using response.data field
                 this.log.debug(`Piko-BA live data 2 update - Kostal response data: ${response.data}`);
                 if (!response.data) {
                     throw new Error(`Empty answer from Piko.`);
@@ -750,32 +688,15 @@ class KostalPikoBA extends utils.Adapter {
                 .catch(error => {
                 void this.HandleConnectionError(error, `Piko(-BA) API for live data`, `BA2`);
             });
-        } // END InverterAPIPiko
-        if (InverterAPIPikoMP) {
-            // currently no code for Piko MP Plus - less data to poll , so handled in ReadPiko()
         }
-    } // END ReadPiko2
-    /**
-     * ReadPikoDaily
-     * Reads daily statistics from Piko inverters and updates the corresponding states.
-     *
-     * This method uses the Axios library to fetch daily data from Piko inverters. It supports two types of inverters:
-     * - Piko(-BA): If the `InverterAPIPiko` flag is set, it fetches the data from the `KostalRequestDay` URL and updates the statistics for self-consumption, self-consumption rate, yield, house consumption, and autarky.
-     * - Piko MP Plus: Currently, no daily values are fetched or handled for this inverter type (`InverterAPIPikoMP`), cause it looks like there are no daily values for MP Plus inverters available.
-     *
-     * The method handles successful responses by logging the data and updating states with the retrieved values.
-     * In case of errors, it calls `HandleConnectionError` with the appropriate parameters.
-     *
-     * After fetching the data, the method sets a timeout to call itself again based on the `polltimedaily` configuration.
-     */
+        if (InverterAPIPikoMP) {
+        }
+    }
     ReadPikoDaily() {
         if (InverterAPIPiko) {
-            // code for Piko(-BA)
             axios_1.default
                 .get(KostalRequestDay, { transformResponse: r => r })
                 .then(response => {
-                //.status == 200
-                // access parsed JSON response data using response.data field
                 this.log.debug(`Piko-BA daily statistics update - Kostal response data: ${response.data}`);
                 if (!response.data) {
                     throw new Error(`Empty answer from Piko.`);
@@ -805,28 +726,22 @@ class KostalPikoBA extends utils.Adapter {
                 .catch(error => {
                 void this.HandleConnectionError(error, `Piko(-BA) API for daily statistics`, `BA3`);
             });
-        } // END InverterAPIPiko
+        }
         if (InverterAPIPikoMP) {
-            /* empty */
         }
         try {
             clearTimeout(adapterTimeouts.daily);
             adapterTimeouts.daily = setTimeout(this.ReadPikoDaily.bind(this), this.config.polltimedaily);
         }
         catch (error) {
-            this.log.error(`Error in setting adapter schedule for daily statistics: ${error}`);
-        } // END try catch
-    } // END ReadPikoDaily
-    /****************************************************************************************
-     * ReadPikoTotal ************************************************************************/
+            this.log.error(`Error in setting adapter schedule for daily statistics: ${String(error)}`);
+        }
+    }
     ReadPikoTotal() {
         if (InverterAPIPiko) {
-            // code for Piko(-BA)
             axios_1.default
                 .get(KostalRequestTotal, { transformResponse: r => r })
                 .then(response => {
-                //.status == 200
-                // access parsed JSON response data using response.data field
                 this.log.debug(`Piko-BA lifetime statistics updated - Kostal response data: ${response.data}`);
                 if (!response.data) {
                     throw new Error(`Empty answer from Piko.`);
@@ -866,16 +781,14 @@ class KostalPikoBA extends utils.Adapter {
                 .catch(error => {
                 void this.HandleConnectionError(error, `Piko-(BA) API for total statistics`, `BA4`);
             });
-        } // END InverterAPIPiko
+        }
         if (InverterAPIPikoMP) {
-            // code for Piko MP Plus
             axios_1.default
                 .get(`http://${this.config.ipaddress}/yields.xml`, {
                 transformResponse: r => r,
             })
                 .then(response => {
                 xml2js_1.default.parseString(response.data, (err, result) => {
-                    //xml2js.parseString(response.data, (err, result) => {
                     if (err) {
                         this.log.error(`Error when calling Piko MP API with axios for measurements info: ${err}`);
                     }
@@ -905,22 +818,19 @@ class KostalPikoBA extends utils.Adapter {
                 .catch(error => {
                 void this.HandleConnectionError(error, `Piko MP API for total statistics`, `MP4`);
             });
-        } // END InverterAPIPikoMP
+        }
         try {
             clearTimeout(adapterTimeouts.total);
             adapterTimeouts.total = setTimeout(this.ReadPikoTotal.bind(this), this.config.polltimetotal);
         }
-        catch (e) {
-            this.log.error(`Error in setting adapter schedule for total statistics: ${e}`);
+        catch (error) {
+            this.log.error(`Error in setting adapter schedule for total statistics: ${String(error)}`);
         }
-    } // END ReadPikoTotal
-    /*****************************************************************************************/
+    }
     async HandleConnectionError(stError, sOccasion, sErrorOccInt) {
         if (stError.response) {
-            //get HTTP error code
             switch (stError.response.status) {
                 case 401:
-                    //this.SendSentryError(stError.Message);
                     this.log.error(`The Inverter request has not been completed because it lacks valid authentication credentials.`);
                     this.log.error(`HTTP error 401 when calling ${sOccasion}!! (e${sErrorOccInt}.0)`);
                     this.log.warn(`Authenticated access is not supported so far by Kostal Adapter`);
@@ -933,7 +843,6 @@ class KostalPikoBA extends utils.Adapter {
             }
         }
         else if (stError.code) {
-            //get error code
             switch (stError.code) {
                 case "ETIMEDOUT":
                     this.log.warn(`Connection timeout error when calling ${sOccasion}`);
@@ -948,18 +857,15 @@ class KostalPikoBA extends utils.Adapter {
                     this.log.warn(`Please verify the IP address: ${this.config.ipaddress} !! (e${sErrorOccInt}.2)`);
                     break;
             }
-            // errors: 'Unexpected end of JSON input' 'read ECONNRESET' 'connect ECONNREFUSED 192.168.0.1:80'
         }
         else {
             this.log.error(`Unknown error when calling ${sOccasion}: ${stError.message}`);
             this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e${sErrorOccInt}.3)`);
             if (this.supportsFeature && this.supportsFeature("PLUGINS")) {
-                // send Sentry error
                 const sentryInstance = this.getPluginInstance("sentry");
                 if (sentryInstance) {
                     const oldError = await this.getStateAsync("LastSentryLoggedError");
                     if (oldError?.val != stError.message) {
-                        // if new error
                         const Sentry = sentryInstance.getSentryObject();
                         const date = new Date();
                         Sentry &&
@@ -982,11 +888,9 @@ class KostalPikoBA extends utils.Adapter {
     }
 }
 if (require.main !== module) {
-    // Export the constructor in compact mode
     module.exports = (options) => new KostalPikoBA(options);
 }
 else {
-    // otherwise start the instance directly
     (() => new KostalPikoBA())();
 }
 //# sourceMappingURL=main.js.map
