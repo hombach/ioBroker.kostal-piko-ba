@@ -93,19 +93,6 @@
 				"pl": "optymalizacja konfiguracji zależnej (# 856)\naktualizacja axios\naktualizować zależności, naprawić wrażliwość",
 				"uk": "оптимізація налаштування залежностей (#856)\nоновлення axios\nоновлення залежності, виправити вразливість",
 				"zh-cn": "优化依赖配置 (# 856)\n更新轴线\n更新依赖性,固定脆弱性"
-			},
-			"6.0.3": {
-				"en": "update NPM deployment\nfixing issues detected by repository checker (#839)\nupdate chai system\nbump dependencies",
-				"de": "nPM-Einsatz aktualisieren\nproblembehebung durch repository checker (#839)\nchai system\nbumpabhängigkeiten",
-				"ru": "обновление NPM развертывания\nисправление проблем, обнаруженных с помощью проверки репозитория (#839)\nобновление системы chai\nбамп зависимости",
-				"pt": "atualizar a implantação do NPM\ncorrigir problemas detectados pelo verificador de repositórios (# 839)\natualizar sistema chai\ndependências de colisão",
-				"nl": "nPM-implementatie bijwerken\nvastleggen van problemen gedetecteerd door repository checker (#839)\nchai-systeem bijwerken\nbump afhankelijkheden",
-				"fr": "mettre à jour le déploiement des NPM\ncorrection des problèmes détectés par le contrôleur du dépôt (#839)\nmettre à jour le système chai\ndépendances des bosses",
-				"it": "aggiornamento Distribuzione NPM\nrisolvere i problemi rilevati da repository checker (#839)\naggiornamento sistema chai\nindipendenza urto",
-				"es": "actualización del despliegue del mecanismo nacional de prevención\nproblemas de fijación detectados por repositorio (#839)\nactualización del sistema chai\ndependencia de los gastos",
-				"pl": "aktualizacja rozmieszczenia NPM\nproblemy z ustawianiem wykrywane przez sprawdzacz repozytorium (# 839)\naktualizacja systemu chai\nuzależnienia od guza",
-				"uk": "оновлення розгортання NPM\nвиправлення питань, виявлених репозиторійною перевіркою (#839)\nоновлення системи chai\nbump залежності",
-				"zh-cn": "更新国家预防机制的部署情况\n修复仓库检查器发现的问题(# 839)\n更新 chai 系统\n意外依赖"
 			}
 		},
 		"titleLang": {
