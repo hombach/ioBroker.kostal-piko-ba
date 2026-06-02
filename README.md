@@ -60,6 +60,10 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
   ### **WORK IN PROGRESS**
 -->
 
+### **WORK IN PROGRESS**
+
+- (HombachC) update dependencies
+
 ### 7.0.2 (2026-05-17)
 
 - (HombachC) fix tsconfig
