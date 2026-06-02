@@ -121,18 +121,8 @@
 			"uk": "Адаптер для читання даних Костал Піко (BA)",
 			"zh-cn": "阅读Kostal Piko BA数据"
 		},
-		"authors": [
-			"Hombach <kostal-piko-ba@homba.ch>"
-		],
-		"keywords": [
-			"Kostal",
-			"Piko",
-			"Piko-BA",
-			"Piko MP",
-			"Piko MP plus",
-			"inverter",
-			"solar"
-		],
+		"authors": ["Hombach <kostal-piko-ba@homba.ch>"],
+		"keywords": ["Kostal", "Piko", "Piko-BA", "Piko MP", "Piko MP plus", "inverter", "solar"],
 		"licenseInformation": {
 			"license": "MIT",
 			"type": "free"
@@ -269,7 +259,7 @@
 			"_id": "LastSentryLoggedError",
 			"type": "state",
 			"common": {
-				"role": "value",
+				"role": "text",
 				"name": "Last error sent by Sentry log",
 				"type": "string",
 				"unit": "",
@@ -291,7 +281,7 @@
 			"_id": "Info.InverterName",
 			"type": "state",
 			"common": {
-				"role": "value",
+				"role": "info.name",
 				"name": "Inverter name",
 				"type": "string",
 				"unit": "",
@@ -305,7 +295,7 @@
 			"_id": "Info.InverterType",
 			"type": "state",
 			"common": {
-				"role": "value",
+				"role": "info.model",
 				"name": "Inverter type",
 				"type": "string",
 				"unit": "",
@@ -319,7 +309,7 @@
 			"_id": "Info.InverterUIVersion",
 			"type": "state",
 			"common": {
-				"role": "value",
+				"role": "info.firmware",
 				"name": "Inverter UI version",
 				"type": "string",
 				"unit": "",
@@ -953,7 +943,7 @@
 			"_id": "Battery.ChargeCycles",
 			"type": "state",
 			"common": {
-				"role": "value.count",
+				"role": "value",
 				"name": "Battery Full Charge Cycles",
 				"type": "number",
 				"unit": "",
