@@ -60,7 +60,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
   ### **WORK IN PROGRESS**
 -->
 
-### **WORK IN PROGRESS**
+### 7.0.3 (2026-06-03)
 
 - (HombachC) fixed instanceObject roles
 - (HombachC) fixed warnings of adapter checker

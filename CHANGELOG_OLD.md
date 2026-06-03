@@ -20,7 +20,6 @@ Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates 
 
 - (HombachC) Fix schema links (#868)
 - (HombachC) year 2026 changes
-- (HombachC) update dependencies
 
 ### 6.0.4 (2025-11-25)
 
@@ -158,10 +157,6 @@ Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates 
 ### 3.0.8 (2023-10-29)
 
 - (HombachC) bump axios to 1.6.0 because of vulnerability
-
-### 3.0.7 (2023-10-01)
-
-- (HombachC) several dependency updates
 
 ### 3.0.6 (2023-08-27)
 
