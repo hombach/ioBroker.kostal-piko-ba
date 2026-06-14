@@ -42,7 +42,7 @@ interface YieldsResponse {
 	};
 }
 
-const adapterTimeouts: Record<string, NodeJS.Timeout | undefined> = {};
+const adapterTimeouts: Record<string, ioBroker.Timeout | undefined> = {};
 
 // state
 const ID_OperatingState = 16780032; // 0 = aus; 1 = Leerlauf(?); 2 = Anfahren, DC Spannung noch zu klein(?); 3 = Einspeisen(MPP); 4 = Einspeisen(abgeregelt)
@@ -125,14 +125,6 @@ let KostalRequest2 = ""; // IP request-string 2 for Pico live data
 let KostalRequestDay = ""; // IP request-string for PicoBA daily statistics
 let KostalRequestTotal = ""; // IP request-string for PicoBA total statistics
 
-function resolveAfterXSeconds(x: number): Promise<number> {
-	return new Promise(resolve => {
-		setTimeout(() => {
-			resolve(x);
-		}, x * 1000);
-	});
-}
-
 class KostalPikoBA extends utils.Adapter {
 	/****************************************************************************************
 	 * @param {Partial<utils.AdapterOptions>} [options={}]
@@ -147,6 +139,14 @@ class KostalPikoBA extends utils.Adapter {
 		// this.on('stateChange', this.onStateChange.bind(this));
 		// this.on('message', this.onMessage.bind(this));
 		this.on("unload", this.onUnload.bind(this));
+	}
+
+	private resolveAfterXSeconds(x: number): Promise<number> {
+		return new Promise(resolve => {
+			this.setTimeout(() => {
+				resolve(x);
+			}, x * 1000);
+		});
 	}
 
 	/**
@@ -174,7 +174,7 @@ class KostalPikoBA extends utils.Adapter {
 			KostalRequestOnce =
 				`http://${this.config.ipaddress}/api/dxs.json` + `?dxsEntries=${ID_InverterType}&dxsEntries=${ID_InfoUIVersion}&dxsEntries=${ID_InverterName}`;
 			await this.ReadPikoOnce();
-			await resolveAfterXSeconds(5);
+			await this.resolveAfterXSeconds(5);
 			this.log.debug(`Initial read of general info for inverter IP ${this.config.ipaddress} done`);
 			if (!InverterAPIPiko && !InverterAPIPikoMP) {
 				// no inverter type detected
@@ -301,9 +301,9 @@ class KostalPikoBA extends utils.Adapter {
 
 			this.log.debug(`OnReady done`);
 			this.ReadPikoTotal();
-			await resolveAfterXSeconds(3);
+			await this.resolveAfterXSeconds(3);
 			this.ReadPikoDaily();
-			await resolveAfterXSeconds(3);
+			await this.resolveAfterXSeconds(3);
 			this.Scheduler();
 			this.log.debug(`Initial ReadPiko done`);
 		} else {
@@ -341,8 +341,8 @@ class KostalPikoBA extends utils.Adapter {
 		this.ReadPiko();
 		this.ReadPiko2();
 		try {
-			clearTimeout(adapterTimeouts.live);
-			adapterTimeouts.live = setTimeout(this.Scheduler.bind(this), this.config.polltimelive);
+			this.clearTimeout(adapterTimeouts.live);
+			adapterTimeouts.live = this.setTimeout(this.Scheduler.bind(this), this.config.polltimelive);
 		} catch (error) {
 			this.log.error(`Error in setting adapter schedule: ${String(error)}`);
 			void this.restart;
@@ -377,7 +377,7 @@ class KostalPikoBA extends utils.Adapter {
 				void this.HandleConnectionError(error, `Piko(-BA) API for general info`, `BA0`);
 			});
 
-		await resolveAfterXSeconds(2);
+		await this.resolveAfterXSeconds(2);
 
 		if (InverterAPIPiko) {
 			// inverter type detected yet
@@ -841,8 +841,8 @@ class KostalPikoBA extends utils.Adapter {
 		}
 
 		try {
-			clearTimeout(adapterTimeouts.daily);
-			adapterTimeouts.daily = setTimeout(this.ReadPikoDaily.bind(this), this.config.polltimedaily);
+			this.clearTimeout(adapterTimeouts.daily);
+			adapterTimeouts.daily = this.setTimeout(this.ReadPikoDaily.bind(this), this.config.polltimedaily);
 		} catch (error) {
 			this.log.error(`Error in setting adapter schedule for daily statistics: ${String(error)}`);
 		} // END try catch
@@ -937,8 +937,8 @@ class KostalPikoBA extends utils.Adapter {
 		} // END InverterAPIPikoMP
 
 		try {
-			clearTimeout(adapterTimeouts.total);
-			adapterTimeouts.total = setTimeout(this.ReadPikoTotal.bind(this), this.config.polltimetotal);
+			this.clearTimeout(adapterTimeouts.total);
+			adapterTimeouts.total = this.setTimeout(this.ReadPikoTotal.bind(this), this.config.polltimetotal);
 		} catch (error) {
 			this.log.error(`Error in setting adapter schedule for total statistics: ${String(error)}`);
 		}
