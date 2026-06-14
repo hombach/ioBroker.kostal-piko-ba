@@ -46,7 +46,7 @@ If your hardware supports it, you can also enable the read-out of the four analo
 
 ## Sentry
 
-This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers. For more details and for information on how to disable error reporting, see [Sentry-Plugin Documentation](https://github.com/ioBroker/plugin-sentry#plugin-sentry)! Sentry reporting is used starting with js-controller 3.0.
+**This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers.** For more details and for information on how to disable error reporting, see [Sentry-Plugin Documentation](https://github.com/ioBroker/plugin-sentry#plugin-sentry)! Sentry reporting is used starting with js-controller 3.0.
 
 ## Donate
 
