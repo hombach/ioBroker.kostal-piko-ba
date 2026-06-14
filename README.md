@@ -63,6 +63,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 ### **WORK IN PROGRESS**
 
 - (HombachC) fixed adapterchecker warnings
+- (HombachC) updated dependencies
 
 ### 7.0.3 (2026-06-03)
 
