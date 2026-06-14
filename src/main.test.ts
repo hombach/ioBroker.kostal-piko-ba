@@ -6,7 +6,7 @@
  */
 
 import { expect } from "chai";
-import "chai/register-should"; // Extends Object.prototype with 'should'
+import "chai/register-should.js"; // Extends Object.prototype with 'should'
 // import { functionToTest } from "./moduleToTest";
 
 describe("module to test => function to test", () => {

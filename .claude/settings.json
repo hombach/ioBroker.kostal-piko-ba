@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "PowerShell(npm install 2>&1)",
+      "PowerShell(npm run make 2>&1)"
     ]
   }
 }
