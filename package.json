@@ -46,8 +46,7 @@
 		"chai-as-promised": "^8.0.2",
 		"sinon-chai": "^4.0.1",
 		"ts-node": "^10.9.2",
-		"typescript": "^6.0.3",
-		"yarn": "^1.22.19"
+		"typescript": "^6.0.3"
 	},
 	"main": "build/main.js",
 	"files": [
