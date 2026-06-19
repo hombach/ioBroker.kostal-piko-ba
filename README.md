@@ -59,8 +59,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 7.0.4 (2026-06-19)
 
 - (HombachC) fixed adapterchecker warnings
 - (HombachC) updated dependencies
@@ -84,18 +83,6 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 ### 7.0.0 (2026-05-09)
 
 - (copilot) BREAKING: adapter requires node.js >= 22 now
-- (HombachC) update dependencies
-
-### 6.0.7 (2026-04-13)
-
-- (HombachC) switch to ES2023 code
-- (HombachC) fix vulnerability in axios
-- (HombachC) min admin 7.6.20 as recommended (#893)
-- (HombachC) update dependencies
-
-### 6.0.6 (2026-02-28)
-
-- (HombachC) fix vulnerability
 - (HombachC) update dependencies
 
 ### Old Changes see [CHANGELOG OLD](CHANGELOG_OLD.md)

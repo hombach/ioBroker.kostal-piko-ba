@@ -16,6 +16,16 @@ Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates 
 
 ## Changelog - OLD CHANGES
 
+### 6.0.7 (2026-04-13)
+
+- (HombachC) switch to ES2023 code
+- (HombachC) fix vulnerability in axios
+- (HombachC) min admin 7.6.20 as recommended (#893)
+
+### 6.0.6 (2026-02-28)
+
+- (HombachC) fix vulnerability
+
 ### 6.0.5 (2026-01-01)
 
 - (HombachC) Fix schema links (#868)
