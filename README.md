@@ -62,6 +62,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ### **WORK IN PROGRESS**
 
+- (ioBroker-Bot) Adapter requires admin >= 7.8.23 now
 - (HombachC) removed chai-based unit test dependencies; modernized test harness to Node.js assert
 - (HombachC) updated dependencies
 
