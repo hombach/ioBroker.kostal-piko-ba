@@ -11,17 +11,3 @@ process.env.TS_NODE_FILES = "TRUE";
 process.on("unhandledRejection", e => {
 	throw e;
 });
-
-// enable the should interface with sinon
-// and load chai-as-promised and sinon-chai by default
-import sinonChai from "sinon-chai";
-import { should, use } from "chai";
-
-should();
-use(sinonChai);
-
-// Dynamischer Import für ES-Module
-(async () => {
-	const chaiAsPromised = await import("chai-as-promised");
-	use(chaiAsPromised.default);
-})();

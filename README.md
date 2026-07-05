@@ -62,6 +62,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ### **WORK IN PROGRESS**
 
+- (HombachC) removed chai-based unit test dependencies; modernized test harness to Node.js assert
 - (HombachC) updated dependencies
 
 ### 7.0.4 (2026-06-19)
