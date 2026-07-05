@@ -59,8 +59,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 7.0.5 (2026-07-05)
 
 - (ioBroker-Bot) Adapter requires admin >= 7.8.23 now
 - (HombachC) removed chai-based unit test dependencies; modernized test harness to Node.js assert
@@ -85,11 +84,6 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 - (HombachC) update typescript from 5.9.3 to 6.0.3
 - (HombachC) fix vulnerability in axios
-- (HombachC) update dependencies
-
-### 7.0.0 (2026-05-09)
-
-- (copilot) BREAKING: adapter requires node.js >= 22 now
 - (HombachC) update dependencies
 
 ### Old Changes see [CHANGELOG OLD](CHANGELOG_OLD.md)

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "7.0.4",
+    "version": "7.0.5",
     "news": {
+      "7.0.5": {
+        "en": "Adapter requires admin >= 7.8.23 now\nremoved chai-based unit test dependencies; modernized test harness to Node.js assert\nupdated dependencies",
+        "de": "Der Adapter benötigt jetzt Administratorrechte ab Version 7.8.23.\nChai-basierte Unit-Test-Abhängigkeiten entfernt; Test-Framework auf Node.js-Assertions modernisiert\naktualisierte Abhängigkeiten",
+        "ru": "Для работы адаптера требуется версия admin >= 7.8.23.\nУдалены зависимости модульных тестов на основе Chai; модернизирована тестовая среда для использования утверждений Node.js.\nобновленные зависимости",
+        "pt": "O adaptador agora requer o administrador na versão 7.8.23 ou superior.\nRemovi as dependências de testes unitários baseados em Chai; modernizei a estrutura de testes para assert em Node.js.\ndependências atualizadas",
+        "nl": "Adapter vereist nu beheerdersrechten >= 7.8.23.\nVerwijderde afhankelijkheden van op Chai gebaseerde unit tests; moderniseerde testharness naar Node.js assert\nbijgewerkte afhankelijkheden",
+        "fr": "L'adaptateur nécessite désormais une version d'administrateur supérieure ou égale à 7.8.23.\nSuppression des dépendances des tests unitaires basés sur Chai ; modernisation du framework de test avec Node.js assert\ndépendances mises à jour",
+        "it": "L'adattatore richiede ora l'amministratore >= 7.8.23\nRimossi i test unitari basati su Chai; modernizzato il framework di test per l'asserzione Node.js\ndipendenze aggiornate",
+        "es": "El adaptador ahora requiere administrador >= 7.8.23\nSe eliminaron las dependencias de pruebas unitarias basadas en chai; se modernizó el entorno de pruebas para Node.js assert\ndependencias actualizadas",
+        "pl": "Adapter wymaga teraz administratora >= 7.8.23\nusunięto zależności testów jednostkowych oparte na chai; zmodernizowano zestaw testów do Node.js assert\nzaktualizowane zależności",
+        "uk": "Адаптер тепер вимагає адміністратора >= 7.8.23\nвидалено залежності модульних тестів на основі chai; модернізовано об'єднання тестів до Node.js assert\nоновлені залежності",
+        "zh-cn": "适配器现在需要管理员版本 >= 7.8.23。\n移除了基于 Chai 的单元测试依赖；将测试框架现代化为 Node.js assert\n更新依赖项"
+      },
       "7.0.4": {
         "en": "fixed adapterchecker warnings\nupdated dependencies",
         "de": "Adapterprüfungswarnungen behoben\naktualisierte Abhängigkeiten",
@@ -80,19 +93,6 @@
         "pl": "przełączanie na kod ES2023\nnaprawić wrażliwość w aksjozach\nmin admin 7.6.20 zgodnie z zaleceniami (# 893)\naktualizacji zależności",
         "uk": "перемкніть код ES2023\nзафіксувати вразливість в осях\nmin admin 7.6.20 як рекомендується (#893)\nоновлення залежності",
         "zh-cn": "切换到 ES2023 代码\n在轴线中固定脆弱性\n建议(第893号)\n更新依赖关系"
-      },
-      "6.0.6": {
-        "en": "fix vulnerability\nupdate dependencies",
-        "de": "fehlerbehebung\naktualisierung der abhängigkeiten",
-        "ru": "исправить уязвимость\nобновление зависимостей",
-        "pt": "corrigir vulnerabilidade\natualizar dependências",
-        "nl": "kwetsbaarheid herstellen\nafhankelijkheden bijwerken",
-        "fr": "fixer la vulnérabilité\nmettre à jour les dépendances",
-        "it": "correzione della vulnerabilità\naggiornamento dipendenze",
-        "es": "corrección de vulnerabilidad\ndependencias de actualización",
-        "pl": "naprawić podatność\naktualizacji zależności",
-        "uk": "виправити вразливість\nоновлення залежності",
-        "zh-cn": "消除脆弱性\n更新依赖关系"
       }
     },
     "titleLang": {
