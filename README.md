@@ -63,7 +63,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 ### **WORK IN PROGRESS**
 
 - (HombachC) fixed misleading "HTTP error 200" log message caused by network interruption during response body reading
-- (HombachC) improved connection error handling: added ECONNRESET/ECONNABORTED cases and default fallback for unknown error codes
+- (HombachC) improved connection error handling: added ECONNRESET + ECONNABORTED cases and default fallback for unknown error codes
 - (HombachC) updated dependencies
 
 ### 7.0.5 (2026-07-05)
