@@ -958,6 +958,10 @@ class KostalPikoBA extends utils.Adapter {
 					this.log.error(`Adapter is shutting down`);
 					void this.stop;
 					break;
+				case 200:
+					// HTTP 200 headers received but connection was interrupted before body was fully transmitted
+					this.log.warn(`Connection interrupted while reading response from ${sOccasion}!! Network may be unstable. (e${sErrorOccInt}.1)`);
+					break;
 				default:
 					this.log.error(`HTTP error ${stError.response.status} when polling ${sOccasion}!! (e${sErrorOccInt}.1)`);
 			}
@@ -976,8 +980,15 @@ class KostalPikoBA extends utils.Adapter {
 					this.log.warn(`Inverter network not reachable error when calling ${sOccasion}`);
 					this.log.warn(`Please verify the IP address: ${this.config.ipaddress} !! (e${sErrorOccInt}.2)`);
 					break;
+				case "ECONNRESET":
+				case "ECONNABORTED":
+					this.log.warn(`Connection reset when calling ${sOccasion}`);
+					this.log.warn(`Please verify network stability !! (e${sErrorOccInt}.2)`);
+					break;
+				default:
+					this.log.warn(`Connection error (${stError.code}) when calling ${sOccasion} !! (e${sErrorOccInt}.2)`);
 			}
-			// errors: 'Unexpected end of JSON input' 'read ECONNRESET' 'connect ECONNREFUSED 192.168.0.1:80'
+			// errors: 'Unexpected end of JSON input' 'connect ECONNREFUSED 192.168.0.1:80'
 		} else {
 			this.log.error(`Unknown error when calling ${sOccasion}: ${stError.message}`);
 			this.log.error(`Please verify IP address: ${this.config.ipaddress} !! (e${sErrorOccInt}.3)`);
