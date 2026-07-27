@@ -64,6 +64,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 - (HombachC) fixed misleading "HTTP error 200" log message: recover data silently if TCP connection drops after body is received, only warn if data is unusable
 - (HombachC) improved connection error handling: added ECONNRESET/ECONNABORTED cases and default fallback for unknown error codes
+- (HombachC) use correct ioBroker exit codes: INVALID_ADAPTER_CONFIG for missing/invalid configuration, ADAPTER_REQUESTED_TERMINATION for runtime shutdown
 - (HombachC) updated dependencies
 
 ### 7.0.5 (2026-07-05)

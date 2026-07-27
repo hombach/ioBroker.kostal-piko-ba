@@ -136,8 +136,7 @@ class KostalPikoBA extends utils.Adapter {
             this.log.debug(`Initial read of general info for inverter IP ${this.config.ipaddress} done`);
             if (!InverterAPIPiko && !InverterAPIPikoMP) {
                 this.log.error(`Error in detecting Kostal inverter`);
-                this.log.info(`Stopping adapter`);
-                void this.stop;
+                this.terminate(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG);
             }
         }
         if (this.supportsFeature && this.supportsFeature("PLUGINS")) {
@@ -251,7 +250,7 @@ class KostalPikoBA extends utils.Adapter {
         }
         else {
             this.log.error(`No IP address configured, adapter is shutting down`);
-            void this.stop;
+            this.terminate(utils.EXIT_CODES.INVALID_ADAPTER_CONFIG);
         }
     }
     onUnload(callback) {
@@ -862,7 +861,7 @@ class KostalPikoBA extends utils.Adapter {
                     this.log.warn(`Authenticated access is not supported so far by Kostal Adapter`);
                     this.log.warn(`Please provide feedback in GitHub to get this done`);
                     this.log.error(`Adapter is shutting down`);
-                    void this.stop;
+                    this.terminate(utils.EXIT_CODES.ADAPTER_REQUESTED_TERMINATION);
                     break;
                 case 200:
                     this.log.warn(`Connection interrupted while reading response from ${sOccasion}!! Network may be unstable. (e${sErrorOccInt}.1)`);
