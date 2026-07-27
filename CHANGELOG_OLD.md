@@ -19,7 +19,6 @@ Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates 
 ## 7.0.0 (2026-05-09)
 
 - (copilot) BREAKING: adapter requires node.js >= 22 now
-- (HombachC) update dependencies
 
 ## 6.0.7 (2026-04-13)
 
