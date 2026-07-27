@@ -62,7 +62,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ### **WORK IN PROGRESS**
 
-- (HombachC) fixed misleading "HTTP error 200" log message caused by network interruption during response body reading
+- (HombachC) fixed misleading "HTTP error 200" log message: recover data silently if TCP connection drops after body is received, only warn if data is unusable
 - (HombachC) improved connection error handling: added ECONNRESET/ECONNABORTED cases and default fallback for unknown error codes
 - (HombachC) updated dependencies
 
