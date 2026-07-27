@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "7.0.5",
+    "version": "7.0.6",
     "news": {
+      "7.0.6": {
+        "en": "fixed misleading HTTP error 200 log message caused by network interruption during response body reading\nimproved connection error handling: added ECONNRESET + ECONNABORTED cases and default fallback for unknown error codes\nupdated dependencies",
+        "de": "fixe irreführende HTTP-Fehler 200 Lognachricht verursacht durch Netzwerkunterbrechung während des Lesens des Response Body\nverbesserte Handhabung von Verbindungsfehlern: hinzugefügte ECONNRESET + ECONNABORTED-Fälle und Standard-Fallback für unbekannte Fehlercodes\naktualisierte abhängigkeiten",
+        "ru": "фиксированная вводящая в заблуждение ошибка HTTP 200 log message, вызванная прерыванием работы сети во время считывания тела ответа\nулучшенная обработка ошибок подключения: добавлены случаи ECONNRESET + ECONNABORTED и резервный вариант по умолчанию для неизвестных кодов ошибок\nобновленные зависимости",
+        "pt": "erro HTTP errado fixo 200 mensagem de log causada pela interrupção da rede durante a leitura do corpo de resposta\nmelhor manuseio de erro de conexão: adicionado ECONNRESET + ECONNABORTED casos e fallback padrão para códigos de erro desconhecidos\ndependências atualizadas",
+        "nl": "vaste misleidende HTTP-fout 200 logbericht veroorzaakt door netwerkonderbreking tijdens het lezen van het antwoordlichaam\nverbeterde verbinding fout behandeling: toegevoegd ECONNRESET + ECONNABORTED gevallen en standaard terugval voor onbekende foutcodes\nbijgewerkte afhankelijkheden",
+        "fr": "erreur HTTP fixe trompeuse 200 message de journal causé par l'interruption du réseau pendant la lecture du corps de réponse\namélioration de la gestion des erreurs de connexion: ajout de cas ECONNRESET + ECONNABORTED et de retours par défaut pour des codes d'erreur inconnus\ndépendances actualisées",
+        "it": "200 messaggi di registro causati dall'interruzione della rete durante la lettura del corpo di risposta\nmigliorata gestione degli errori di connessione: aggiunto ECONNRESET + ECONNABORTED casi e fallback predefinito per codici di errore sconosciuti\ndipendenze aggiornate",
+        "es": "error de HTTP fijo error 200 mensaje de registro causado por la interrupción de la red durante la lectura del cuerpo de respuesta\nmejora de la gestión de errores de conexión: añadido ECONNRESET + ECONNABORTED casos y caída predeterminada para códigos de error desconocidos\ndependencias actualizadas",
+        "pl": "stałe błąd HTTP 200 log wiadomość spowodowane przerwaniem sieci podczas odczytu organu odpowiedzi\nulepszona obsługa błędów połączenia: dodany ECONNRESET + ECONNABORTED przypadków i domyślny błąd dla nieznanych kodów błędów\nzaktualizowane zależności",
+        "uk": "виправлено вводнення HTTP помилки 200 лог повідомлення, викликане перериванням мережі під час читання тіла відповіді\nпокращена обробка помилок з'єднання: додано ECONNRESET + ECONNABORTED випадки та випадання за замовчуванням для невідомих кодів помилок\nоновлені залежності",
+        "zh-cn": "固定误导 HTTP 错误 200 日志消息, 由响应机体读取过程中的网络中断导致\n改进连接错误处理: 添加 ECONNRESET + ECONNABORTED 大小写和未知错误代码的默认倒置\n更新的依赖关系"
+      },
       "7.0.5": {
         "en": "Adapter requires admin >= 7.8.23 now\nremoved chai-based unit test dependencies; modernized test harness to Node.js assert\nupdated dependencies",
         "de": "Der Adapter benötigt jetzt Administratorrechte ab Version 7.8.23.\nChai-basierte Unit-Test-Abhängigkeiten entfernt; Test-Framework auf Node.js-Assertions modernisiert\naktualisierte Abhängigkeiten",
@@ -80,19 +93,6 @@
         "pl": "BREAKING: adapter wymaga node.js > = 22\naktualizacji zależności",
         "uk": "BREAKING: адаптер вимагає node.js >= 22 тепер\nоновлення залежності",
         "zh-cn": "适配器需要节点 Js 22 现在\n更新依赖关系"
-      },
-      "6.0.7": {
-        "en": "switch to ES2023 code\nfix vulnerability in axios\nmin admin 7.6.20 as recommended (#893)\nupdate dependencies",
-        "de": "eS2023-Code wechseln\nschwachstelle in axios beheben\nmin admin 7.6.20 wie empfohlen (#893)\naktualisierung der abhängigkeiten",
-        "ru": "переход на код ES2023\nуязвимость в axios\nmin admin 7.6.20 as recommended (#893)\nобновление зависимостей",
-        "pt": "mudar para o código ES2023\ncorrigir vulnerabilidade em axios\nmin admin 7.6.20 como recomendado (# 893)\natualizar dependências",
-        "nl": "schakel naar ES2023 code\nfix kwetsbaarheid in axios\nmin. toediening 7.6.20 zoals aanbevolen (#893)\nafhankelijkheden bijwerken",
-        "fr": "passer au code ES2023\ncorriger la vulnérabilité dans les axios\nadmin 7.6.20 min comme recommandé (#893)\nmettre à jour les dépendances",
-        "it": "passare al codice ES2023\nfissare la vulnerabilità in assios\nmin admin 7.6.20 come raccomandato (#893)\naggiornamento dipendenze",
-        "es": "conmutación al código ES2023\nfijar vulnerabilidad en axios\nmin admin 7.6.20 como se recomienda (#893)\ndependencias de actualización",
-        "pl": "przełączanie na kod ES2023\nnaprawić wrażliwość w aksjozach\nmin admin 7.6.20 zgodnie z zaleceniami (# 893)\naktualizacji zależności",
-        "uk": "перемкніть код ES2023\nзафіксувати вразливість в осях\nmin admin 7.6.20 як рекомендується (#893)\nоновлення залежності",
-        "zh-cn": "切换到 ES2023 代码\n在轴线中固定脆弱性\n建议(第893号)\n更新依赖关系"
       }
     },
     "titleLang": {
