@@ -62,9 +62,11 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ### **WORK IN PROGRESS**
 
+- (HombachC) switch to iobroker testing 6.x
 - (HombachC) fixed vulnerability
 - (HombachC) updated dependencies, axios
 - (HombachC) added node 26 tests
+- (HombachC) fixed repochecker warnings
 
 ### 7.0.6 (2026-07-27)
 
