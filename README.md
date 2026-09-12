@@ -59,8 +59,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 7.0.7 (2026-09-12)
 
 - (HombachC) switch to iobroker testing 6.x
 - (HombachC) fixed vulnerability
@@ -90,10 +89,6 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 - (HombachC) fixed instanceObject roles
 - (HombachC) fixed warnings of adapter checker
 - (HombachC) updated dependencies
-
-### 7.0.2 (2026-05-17)
-
-- (HombachC) fix tsconfig
 
 ### Old Changes see [CHANGELOG OLD](CHANGELOG_OLD.md)
 

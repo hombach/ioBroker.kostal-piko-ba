@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "7.0.6",
+    "version": "7.0.7",
     "news": {
+      "7.0.7": {
+        "en": "switch to iobroker testing 6.x\nfixed vulnerability\nupdated dependencies, axios\nadded node 26 tests\nfixed repochecker warnings",
+        "de": "zu iobroker test 6.x wechseln\nSchwachstelle behoben\nNeue Abhängigkeiten, Axios\nNode 26 Tests hinzugefügt\nRepocheckerwarnungen behoben",
+        "ru": "перейти к тестированию iobroker 6.x\nисправленная уязвимость\nобновленные зависимости, axios\nдобавлен узел 26 тестов\nисправлены предупреждения repochecker",
+        "pt": "vá para o teste iobroker 6.x\nvulnerabilidade fixa\nnovas dependências, axios\nadicionou testes\navisos fixos do repochecker",
+        "nl": "overschakelen naar iobroker testing 6.x\nkwetsbaarheid opgelost\nbijgewerkte afhankelijkheden, axios\nKnooppunt 26 tests toegevoegd\nRepochecker-waarschuwingen opgelost",
+        "fr": "passer à iobroker testing 6.x\nvulnérabilité corrigée\ndépendances mises à jour, axios\najout de 26 tests\nalertes Repochecker fixes",
+        "it": "passare a iobroker testing 6.x\nvulnerabilità fissa\ndipendenze nuove, axios\naggiunto nodo 26\navvisi repochecker fissi",
+        "es": "cambiar a iobroker testing 6.x\nvulnerabilidad fija\ndependencias actualizadas, axios\nañadió nodo 26 pruebas\navisos de repochecker fijos",
+        "pl": "przejdź do testowania iobroker 6.x\nnaprawiona luka\nzaktualizowane zależności, aksję\ndodano testy węzła 26\nnaprawiono ostrzeżenia repochecker",
+        "uk": "переключитися на тестування іоброкера 6.x\nвиправлена вразливість\nоновлені залежності, аксіоси\nдодано вузол 26 тестів\nвиправлені попередження про повторну перевірку",
+        "zh-cn": "切换到 iobroker 测试 6.x\n修复了漏洞\n更新的依赖关系，axios\n添加了节点 26 测试\n修复了 repochecker 警告"
+      },
       "7.0.6": {
         "en": "fixed misleading HTTP error 200 log message caused by network interruption during response body reading\nimproved connection error handling: added ECONNRESET + ECONNABORTED cases and default fallback for unknown error codes\nupdated dependencies",
         "de": "fixe irreführende HTTP-Fehler 200 Lognachricht verursacht durch Netzwerkunterbrechung während des Lesens des Response Body\nverbesserte Handhabung von Verbindungsfehlern: hinzugefügte ECONNRESET + ECONNABORTED-Fälle und Standard-Fallback für unbekannte Fehlercodes\naktualisierte abhängigkeiten",
@@ -80,19 +93,6 @@
         "pl": "zaktualizuj maszynopis z wersji 5.9.3 do wersji 6.0.3\nnaprawić lukę w axios\nzaktualizować zależności",
         "uk": "оновити Typescript з 5.9.3 до 6.0.3\nвиправити вразливість в axios\nоновити залежності",
         "zh-cn": "将打字稿从 5.9.3 更新到 6.0.3\n修复axios中的漏洞\n更新依赖关系"
-      },
-      "7.0.0": {
-        "en": "BREAKING: adapter requires node.js >= 22 now\nupdate dependencies",
-        "de": "BREAKING: Adapter erfordert jetzt node.js >= 22\naktualisierung der abhängigkeiten",
-        "ru": "Адаптер требует node.js >= 22 сейчас\nобновление зависимостей",
-        "pt": "BREAKING: adaptador requer nod.js >= 22 agora\natualizar dependências",
-        "nl": "BREAKING: adapter vereist node.js < 22 nu\nafhankelijkheden bijwerken",
-        "fr": "BREAKING: adaptateur nécessite node.js >= 22 maintenant\nmettre à jour les dépendances",
-        "it": "BREAKING: l'adattatore richiede node.js >= 22 ora\naggiornamento dipendenze",
-        "es": "BREAKING: adaptador requiere node.js >= 22 ahora\ndependencias de actualización",
-        "pl": "BREAKING: adapter wymaga node.js > = 22\naktualizacji zależności",
-        "uk": "BREAKING: адаптер вимагає node.js >= 22 тепер\nоновлення залежності",
-        "zh-cn": "适配器需要节点 Js 22 现在\n更新依赖关系"
       }
     },
     "titleLang": {

@@ -15,6 +15,9 @@
 Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates some states and updates them sequentially.
 
 ## Changelog - OLD CHANGES
+## 7.0.2 (2026-05-17)
+
+- (HombachC) fix tsconfig
 
 ## 7.0.1 (2026-05-16)
 
