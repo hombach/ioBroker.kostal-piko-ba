@@ -64,6 +64,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 - (HombachC) fixed vulnerability
 - (HombachC) updated dependencies
+- (HombachC) added node 26 tests
 
 ### 7.0.6 (2026-07-27)
 
