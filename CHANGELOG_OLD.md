@@ -15,11 +15,11 @@
 Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates some states and updates them sequentially.
 
 ## Changelog - OLD CHANGES
+
 ## 7.0.1 (2026-05-16)
 
 - (HombachC) update typescript from 5.9.3 to 6.0.3
 - (HombachC) fix vulnerability in axios
-- (HombachC) update dependencies
 
 ## 7.0.0 (2026-05-09)
 
@@ -44,7 +44,7 @@ Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates 
 
 - (HombachC) optimize dependabot config (#856)
 - (HombachC) update axios
-- (HombachC) update dependencies, fix vulnerability
+- (HombachC) fix vulnerability
 
 ## 6.0.3 (2025-10-19)
 

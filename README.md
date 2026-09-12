@@ -63,7 +63,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 ### **WORK IN PROGRESS**
 
 - (HombachC) fixed vulnerability
-- (HombachC) updated dependencies
+- (HombachC) updated dependencies, axios
 - (HombachC) added node 26 tests
 
 ### 7.0.6 (2026-07-27)
