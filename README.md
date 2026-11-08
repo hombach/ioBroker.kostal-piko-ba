@@ -62,6 +62,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 
 ### **WORK IN PROGRESS**
 
+- (HombachC) updated iobroker/testing
 - (HombachC) updated dependencies
 
 ### 7.0.7 (2026-09-12)
