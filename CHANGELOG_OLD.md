@@ -15,6 +15,12 @@
 Adapter for reading Kostal Piko, Piko BA and PIKO MP plus data. Adapter creates some states and updates them sequentially.
 
 ## Changelog - OLD CHANGES
+## 7.0.3 (2026-06-03)
+
+- (HombachC) fixed instanceObject roles
+- (HombachC) fixed warnings of adapter checker
+- (HombachC) updated dependencies
+
 ## 7.0.2 (2026-05-17)
 
 - (HombachC) fix tsconfig

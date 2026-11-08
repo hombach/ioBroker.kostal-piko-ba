@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "kostal-piko-ba",
-    "version": "7.0.7",
+    "version": "7.0.8",
     "news": {
+      "7.0.8": {
+        "en": "updated iobroker/testing\nupdated dependencies",
+        "de": "Iobroker/Testing aktualisiert\nNeue Abhängigkeiten",
+        "ru": "обновленный iobroker/тестирование\nобновленные зависимости",
+        "pt": "corretor/teste atualizado\nnovas dependências",
+        "nl": "iobroker/testing bijgewerkt\nbijgewerkte afhankelijkheden",
+        "fr": "iobroker/testing mis à jour\ndépendances mises à jour",
+        "it": "iobroker/test aggiornati\ndipendenze aggiornate",
+        "es": "iobroker/testing actualizado\ndependencias actualizadas",
+        "pl": "zaktualizowany iobroker/testy\nzaktualizowane zależności",
+        "uk": "оновлений іоброкер/тестування\nоновлені залежності",
+        "zh-cn": "更新了 iobroker/测试\n更新的依赖关系"
+      },
       "7.0.7": {
         "en": "switch to iobroker testing 6.x\nfixed vulnerability\nupdated dependencies, axios\nadded node 26 tests\nfixed repochecker warnings",
         "de": "zu iobroker test 6.x wechseln\nSchwachstelle behoben\nNeue Abhängigkeiten, Axios\nNode 26 Tests hinzugefügt\nRepocheckerwarnungen behoben",
@@ -80,19 +93,6 @@
         "pl": "napraw tsconfig",
         "uk": "виправити tsconfig",
         "zh-cn": "修复 tsconfig"
-      },
-      "7.0.1": {
-        "en": "update typescript from 5.9.3 to 6.0.3\nfix vulnerability in axios\nupdate dependencies",
-        "de": "Typescript von 5.9.3 auf 6.0.3upgedated\nSchwachstelle in Axios behoben\nAbhängigkeiten aktualisiert",
-        "ru": "обновить машинописный текст с 5.9.3 до 6.0.3\nисправить уязвимость в аксиомах\nобновить зависимости",
-        "pt": "atualizar o texto digitado de 5.9.3 para 6.0.3\ncorrigir vulnerabilidade em axios\natualizar dependências",
-        "nl": "update typoscript van 5.9.3 naar 6.0.3\nkwetsbaarheid in axios oplossen\nafhankelijkheden bijwerken",
-        "fr": "mettre à jour TypeScript de 5.9.3 à 6.0.3\ncorriger une vulnérabilité dans axios\nmettre à jour les dépendances",
-        "it": "aggiorna il dattiloscritto da 5.9.3 a 6.0.3\nCorreggere la vulnerabilità in Axios\naggiornare le dipendenze",
-        "es": "actualizar mecanografiado de 5.9.3 a 6.0.3\narreglar vulnerabilidad en axios\nactualizar dependencias",
-        "pl": "zaktualizuj maszynopis z wersji 5.9.3 do wersji 6.0.3\nnaprawić lukę w axios\nzaktualizować zależności",
-        "uk": "оновити Typescript з 5.9.3 до 6.0.3\nвиправити вразливість в axios\nоновити залежності",
-        "zh-cn": "将打字稿从 5.9.3 更新到 6.0.3\n修复axios中的漏洞\n更新依赖关系"
       }
     },
     "titleLang": {

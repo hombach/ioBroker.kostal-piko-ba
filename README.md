@@ -59,8 +59,7 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 7.0.8 (2026-11-08)
 
 - (HombachC) updated iobroker/testing
 - (HombachC) updated dependencies
@@ -88,12 +87,6 @@ If you enjoyed this project — or just feeling generous, consider buying me a b
 ### 7.0.4 (2026-06-19)
 
 - (HombachC) fixed adapterchecker warnings
-- (HombachC) updated dependencies
-
-### 7.0.3 (2026-06-03)
-
-- (HombachC) fixed instanceObject roles
-- (HombachC) fixed warnings of adapter checker
 - (HombachC) updated dependencies
 
 ### Old Changes see [CHANGELOG OLD](CHANGELOG_OLD.md)
